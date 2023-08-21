@@ -26,10 +26,7 @@
 			value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:mappers/UserMapper.xml</value>
-				<value>classpath:mappers/MissingBoardMapper.xml</value>
-				<value>classpath:mappers/ChatMapper.xml</value>
-				<value>classpath:mappers/NoticeMapper.xml</value>
+				<!-- <value>classpath:mappers/UserMapper.xml</value> -->
 			</list>
 		</property>
 	</bean>

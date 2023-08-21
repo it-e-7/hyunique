@@ -18,13 +18,7 @@
 		위해 사용합니다. -->
 
 	<typeAliases>
-		<typeAlias alias="UserVO" type="kosa.hdit5spring.whereru.user.vo.UserVO" />
-		<typeAlias alias="MissingBoard" type="kosa.hdit5spring.whereru.main.vo.MissingBoardVo" />
-		<typeAlias alias="DetailMissingBoard" type="kosa.hdit5spring.whereru.main.vo.DetailMissingBoardVo" />
-		<typeAlias alias="ChatVO" type="kosa.hdit5spring.whereru.chat.vo.ChatVO" />
-		<typeAlias alias="ChatListVO" type="kosa.hdit5spring.whereru.chat.vo.ChatListVO" />		
-		<typeAlias alias="NoticeVO" type="kosa.hdit5spring.whereru.notice.vo.NoticeVO" />		
-		<typeAlias alias="LocationVO" type="kosa.hdit5spring.whereru.notice.vo.LocationVO" />		
+				
 	</typeAliases>
 
 </configuration>	
