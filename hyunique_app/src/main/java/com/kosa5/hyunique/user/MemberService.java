@@ -1,4 +1,4 @@
-package com.kosa5.hyunique;
+package com.kosa5.hyunique.user;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -27,8 +27,6 @@ public class MemberService {
 		String refresh_Token = "";
 		String reqURL = "https://kauth.kakao.com/oauth/token";
 		
-		
-
 		try {
 			URL url = new URL(reqURL);
             
