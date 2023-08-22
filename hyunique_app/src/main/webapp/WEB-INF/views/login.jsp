@@ -11,6 +11,7 @@
 
 	
 		<img src="https://developers.kakao.com/docs/static/image/ko/m/kakaologin.png" style="height:200px">
+		<img src="/resources/icon/kakao_login_large_wide.png" style="height:200px">
 	</a>
 </body>
 </html>
