@@ -8,5 +8,5 @@ public class StockVO {
 	private String productColor;
 	private String productSize;
 	private String productId;
-	private int sQuantity;
+	private int squantity;
 }

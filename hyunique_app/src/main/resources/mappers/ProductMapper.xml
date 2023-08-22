@@ -26,7 +26,7 @@
 		<result property="productColor" column="product_color" />
 		<result property="productSize" column="product_size" />
 		<result property="productId" column="product_id" />
-		<result property="sQuantity" column="s_quantity" />
+		<result property="squantity" column="s_quantity" />
 	</resultMap>
 	
 	<select id="getProductDetailById" parameterType="String" resultMap="ProductDetailMap">
@@ -40,6 +40,7 @@
 		FROM department_store d LEFT JOIN 
 			(SELECT * FROM hy_stock WHERE product_id = #{productId}) s 
 			ON (d.store_id = s.store_id)
+		ORDER BY product_size
 	</select>
 
 </mapper>  

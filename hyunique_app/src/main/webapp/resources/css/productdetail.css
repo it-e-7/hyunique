@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+ul {
+	list-style: none;
+}
+
+.stock-card-list {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.stock-card {
+	border: 1px solid #B6D0F6;
+	border-radius: 6px;
+	padding: 8px;
+}
