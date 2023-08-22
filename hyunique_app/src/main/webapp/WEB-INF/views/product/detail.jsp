@@ -17,7 +17,9 @@
 	
 </head>
 <body>
-	<img src="${product.productImg}" />
+	<div class="product-img-wrapper">
+		<img src="${product.productImg}" class="product-img" />
+	</div>
 	<p>${product.productName}</p>
 	\<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
 	<br>

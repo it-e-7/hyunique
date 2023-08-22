@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+.product-img-wrapper {
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	overflow: hidden;
+}
+
+.product-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(50, 50);
+	width: 100%;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	margin: auto;
+}
+
 ul {
 	list-style: none;
 }
