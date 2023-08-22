@@ -24,11 +24,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
 			value="classpath:mybatis-config.xml" />
-		<property name="mapperLocations">
-			<list>
-				<!-- <value>classpath:mappers/UserMapper.xml</value> -->
-			</list>
-		</property>
+		<property name="mapperLocations" value="classpath:mappers/*.xml" />
 	</bean>
 
 	<!-- sqlSession을 Bean으로 등록해요! -->

@@ -18,7 +18,9 @@
 		위해 사용합니다. -->
 
 	<typeAliases>
-				
+		<typeAlias alias="ProductDetailVO" type="com.kosa5.hyunique.product.vo.ProductDetailVO" />
+		<typeAlias alias="StockVO" type="com.kosa5.hyunique.product.vo.StockVO" />
+		<typeAlias alias="DepartStockVO" type="com.kosa5.hyunique.product.vo.DepartStockVO" />  
 	</typeAliases>
 
 </configuration>	
