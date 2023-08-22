@@ -107,6 +107,7 @@ public class MemberService {
 
 			JsonElement element = JsonParser.parseString(result);
 			
+			
 			JsonObject properties = null;
 			JsonObject kakao_account = null;
 
@@ -122,6 +123,9 @@ public class MemberService {
 			    // kakao_account가 없을 경우, 적절한 처리
 			}
 
+			String id;
+			id = element.getAsJsonObject().get("id").getAsString(); // 정수 ID를 문자열로 변환
+
 			String nickname;
 			try {
 			    nickname = properties.getAsJsonObject().get("nickname").getAsString();
@@ -135,6 +139,7 @@ public class MemberService {
 			    email = ""; // 이메일이 없을 경우 빈 문자열로 처리
 			}
 
+			userInfo.put("id",id);
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 

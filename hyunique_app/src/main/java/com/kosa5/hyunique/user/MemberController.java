@@ -40,6 +40,7 @@ public class MemberController {
 			System.out.println("###access_Token#### : " + access_Token);
 			System.out.println("###nickname#### : " + userInfo.get("nickname"));
 			System.out.println("###email#### : " + userInfo.get("email"));
+			System.out.println("###id#### : " + userInfo.get("id"));
 		return "main_temp";
 		
     	}
