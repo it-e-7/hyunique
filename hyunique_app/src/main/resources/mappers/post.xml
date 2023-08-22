@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosa5.hyunique.post.mapper.PostMapper">
+
+    <select id="findOnePost" parameterType="Integer" resultType="PostVO">
+        <![CDATA[
+        SELECT * FROM HY_POST
+        WHERE POST_ID = #{postId}
+        ]]>
+    </select>
+
+ <!--   <select id="findMemberById" parameterType="Integer" resultType="MemberVO">
+        <![CDATA[
+        SELECT * FROM MEMBER
+        WHERE ID = #{memberId}
+        ]]>
+    </select>
+
+    <select id="findGroupIdById" parameterType="Integer" resultType="Integer">
+        <![CDATA[
+        SELECT GROUP_ID FROM MEMBER
+        WHERE ID = #{memberId}
+        ]]>
+    </select>
+
+    <select id="findFcmToken" parameterType="Integer" resultType="String">
+        <![CDATA[
+        select token from "GROUP"
+		where id=#{groupId}
+        ]]>
+    </select>
+
+    <update id="updateGroup" parameterType="GroupMemberVO">
+        <![CDATA[
+        UPDATE MEMBER SET GROUP_NICKNAME = #{groupNickname}, GROUP_ID = #{groupId}
+        WHERE id = #{memberId}
+        ]]>
+    </update>
+
+
+
+    <update id="updateGroupNickname" parameterType="MemberGroupNicknameVO">
+        <![CDATA[
+        UPDATE MEMBER SET GROUP_NICKNAME = #{groupNickname}
+        WHERE id = #{memberId}
+        ]]>
+    </update>
+
+    <delete id="deleteGroupIdById" parameterType="Integer">
+        <![CDATA[
+        UPDATE MEMBER SET group_id = NULL
+        WHERE id = #{memberId}
+        ]]>
+    </delete>
+
+    <select id="findAllByGroupId" parameterType="Integer" resultType="MemberVO">
+        <![CDATA[
+        SELECT * FROM MEMBER
+        WHERE ID = #{groupId}
+        ]]>
+    </select>
+
+    <select id="findUserByEmail" parameterType="String" resultType="MemberVO">
+        <![CDATA[
+        SELECT * FROM MEMBER
+        WHERE EMAIL = #{email}
+        ]]>
+    </select>
+
+    <insert id="insertUser" parameterType="MemberVO">
+        <![CDATA[
+    INSERT INTO MEMBER (EMAIL, USERNAME)
+    VALUES (#{email}, #{username})
+    ]]>
+    </insert>
+
+    <update id="updateUser" parameterType="MemberVO">
+        <![CDATA[
+    UPDATE MEMBER
+    SET EMAIL = #{email}, USERNAME = #{username}
+    WHERE EMAIL = #{email}
+    ]]>
+    </update>-->
+
+
+</mapper>
