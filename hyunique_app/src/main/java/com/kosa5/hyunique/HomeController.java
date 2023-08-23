@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-	@Value("${key.KAKAO}")
-	private String kakaoApiKey;
-	
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
@@ -29,10 +25,4 @@ public class HomeController {
 		
 		return "home";
 	}
-	
-	@GetMapping("/login")
-    public String login(Model model) {
-		 model.addAttribute("kakaoApiKey", kakaoApiKey);
-        return "login";
-    }
 }
