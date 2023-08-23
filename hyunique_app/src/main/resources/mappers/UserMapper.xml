@@ -3,5 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kosa.hdit5.hyunique.mapper.UserMapper">
+<mapper namespace="com.kosa5.hyunique.user.mapper.UserMapper">
+
+	<select id="insertOrGetUser" statementType="CALLABLE" resultType="java.util.Map">
+		{call insert_or_get_user(#{inputValue, mode=IN, jdbcType=VARCHAR},
+		#{inputType, mode=IN, jdbcType=VARCHAR},
+		#{userId, mode=OUT, jdbcType=VARCHAR})}
+	</select>
+
+	<select id="selectOneUser" resultType="User">
+		<![CDATA[
+		SELECT * FROM "HY_USER" WHERE "USER_ID"={userId}
+		]]>
+	</select>
 </mapper>

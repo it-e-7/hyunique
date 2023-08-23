@@ -1,4 +1,4 @@
-package com.kosa5.hyunique.user;
+package com.kosa5.hyunique.oauth;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
 

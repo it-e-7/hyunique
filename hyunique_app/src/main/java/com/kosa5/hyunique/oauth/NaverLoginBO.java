@@ -1,4 +1,4 @@
-package com.kosa5.hyunique.user;
+package com.kosa5.hyunique.oauth;
 
 import java.io.IOException;
 import java.util.UUID;

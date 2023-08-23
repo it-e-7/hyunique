@@ -1,4 +1,4 @@
-package com.kosa5.hyunique.user;
+package com.kosa5.hyunique.oauth;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Service
-public class MemberService {
+public class OAuthService {
 
 	@Value("${key.KAKAO}")
 	private String kakaoApiKey;

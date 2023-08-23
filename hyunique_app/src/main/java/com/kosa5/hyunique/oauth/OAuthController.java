@@ -1,4 +1,4 @@
-package com.kosa5.hyunique.user;
+package com.kosa5.hyunique.oauth;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,17 +18,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.kosa5.hyunique.user.service.UserService;
 
 @Controller
 @RequestMapping(value = "/")
-public class MemberController {
+public class OAuthController {
 
 	@Value("${key.KAKAO}")
 	private String kakaoApiKey;
 
 	@Autowired
-	private MemberService ms;
+	private OAuthService ms;
 
+	@Autowired
+	private UserService service;
+	
 	// NaverLoginBO
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
@@ -39,7 +43,9 @@ public class MemberController {
 	}
 	
 	//세션에 id저장
-	private void setSessionId(HttpSession session, String id) {
+	private void setSessionId(HttpSession session, String id, String type) {
+		//받은 Id로 서버에 이미 있으면 시퀀스 아이디 pl/sql out으로 받아오고, 없으면 정보 삽입 후 시퀀스 아이디 받아오기
+		service.insertOrGetUser(id, type);
 	    session.setAttribute("sessionId", id);
 	}
 
@@ -63,7 +69,7 @@ public class MemberController {
 		System.out.println("###nickname#### : " + userInfo.get("nickname"));
 		System.out.println("###email#### : " + userInfo.get("email"));
 		System.out.println("###id#### : " + userInfo.get("id"));
-		setSessionId(session, (String) userInfo.get("id"));
+		setSessionId(session, (String) userInfo.get("id"),"kakao");
 		return "redirect:userInfo";
 	}
 
@@ -84,7 +90,7 @@ public class MemberController {
 		System.out.println(id);
 		session.setAttribute("sessionId", nickname);
 		model.addAttribute("result", apiResult);
-	    setSessionId(session, (String) response_obj.get("id")); // 세션에 ID 저장
+	    setSessionId(session, (String) response_obj.get("id"),"naver"); // 세션에 ID 저장
 		return "redirect:userInfo";
 	}
 	
