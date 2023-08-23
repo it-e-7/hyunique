@@ -6,18 +6,18 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 0 12px;
+	padding: 30px 30px;
 }
 
 .left-user-info {
 	display: flex;
 	flex-direction: row;
-	gap: 8px;
+	gap: 20px;
 }
 
 .left-user-info img {
-	width: 32px;
-	height: 32px;
+	width: 3em;
+	height: 3em;
 	border-radius: 70%;
 }
 
@@ -25,7 +25,12 @@
 	
 }
 
+.img-slider-container {
+	position: relative;
+}
+
 .img-slider-wrapper {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	overflow: scroll;
@@ -44,13 +49,42 @@
 	object-fit: cover;
 }
 
+.img-slider-wrapper button {
+	position: absolute;
+	bottom: 2em;
+	left: 2em;
+}
+
+.img-index-bar {
+	position: absolute;
+	bottom: 2em;
+	right: 2em;
+	display: flex;
+	gap: 0.4em;
+}
+
+.img-index-circle {
+	width: 0.6em;
+	height: 0.6em;
+	border-radius: 70%;
+	background-color: #aaaaaa;
+	opacity: 0.8;
+}
+
+.img-index-selected {
+	width: 1.2em;
+	border-radius: 0.5em;
+	background-color: white;
+	opacity: 1.0;
+}
+
 .product-list {
 	
 }
 
 .product-list img {
-	width: 80px;
-	height: 80px;
+	width: 5em;
+	height: 5em;
 }
 
 ul {
@@ -65,10 +99,10 @@ ul {
 
 .post-thumbnail-list-wrapper {
 	display: flex;
-	gap: 4px;
+	gap: 3px;
 	overflow-x: auto;
 	flex-wrap: nowrap;
-	padding: 0 0 24px 32px;
+	padding: 0 0 1.5em 2em;
 }
 
 .post-thumbnail-list-wrapper div {

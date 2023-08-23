@@ -30,10 +30,22 @@
 			</div>
 			<button>팔로우</button>
 		</div>
+		<div class="img-slider-container">
 		<div class="img-slider-wrapper">
 			<c:forEach var="url" items="${postVO.imgList}">
 				<img src="${url}"/>
 			</c:forEach>
+			<button>태그</button>
+			
+		</div>
+		<c:if test="${fn:length(postVO.imgList) > 1}">
+				<div class="img-index-bar">
+					<c:forEach var="img" items="${postVO.imgList}" varStatus="status">
+						<div class="img-index-circle" id="index-circle-${status.index}">
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
 		</div>
 		<div class="post-content-wrapper">
 			<button>좋아요</button>
@@ -69,7 +81,7 @@
 			<div class="post-padding-wrapper">
 				<div class="post-thumbnail-list-wrapper">
 					<c:forEach var="thumbnail" items="${postVO.postThumbnailList}">
-						<div onclick="location.href='/hyunique/post/${thumbnail.postId}'">
+						<div onclick="moveToPost('${thumbnail.postId}')">
 							<img src="${thumbnail.thumbnailUrl}" />
 						</div>
 					</c:forEach>
