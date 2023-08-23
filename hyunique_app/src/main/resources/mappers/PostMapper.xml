@@ -10,6 +10,7 @@
 		<collection property="imgList" column="post_id" select="getImgList" />
 		<collection property="productList" column="post_id" select="getProductList" />
 		<collection property="styleTagList" column="post_id" select="getStyleTagList" />
+		<collection property="postThumbnailList" column="post_id" select="getPostThumbnailListByProduct" />
 	</resultMap>
 
 	<select id="getPostDetailByPostIdUserId" parameterType="map" resultMap="PostDetailMap">
@@ -48,6 +49,14 @@
 		SELECT t.style_name
 		FROM hy_styletag t, (SELECT * FROM post_style_tag WHERE post_id = #{postId}) s
 		WHERE t.style_id = s.style_id
+	</select>
+	
+	<select id="getPostThumbnailListByProduct" parameterType="int" resultType="PostThumbnailVO">
+		SELECT DISTINCT p.post_id, thumbnail_url
+		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
+		WHERE t.product_id IN (SELECT product_id
+                        		FROM post_pin
+                        		WHERE post_id = #{postId}) AND p.post_id != #{postId}
 	</select>
 
 </mapper>  

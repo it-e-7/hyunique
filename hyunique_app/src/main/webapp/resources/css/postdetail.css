@@ -1,3 +1,7 @@
+.content-wrapper {
+	width: 100%;
+}
+
 .user-info-wrapper {
 	display: flex;
 	flex-direction: row;
@@ -36,6 +40,8 @@
 .img-slider-wrapper img {
 	width: 100%;
 	scroll-snap-align: start;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
 }
 
 .product-list {
@@ -55,4 +61,23 @@ ul {
 	display: flex;
 	flex-direction: row;
 	gap: 6px;
+}
+
+.post-thumbnail-list-wrapper {
+	display: flex;
+	gap: 4px;
+	overflow-x: auto;
+	flex-wrap: nowrap;
+	padding: 0 0 24px 32px;
+}
+
+.post-thumbnail-list-wrapper div {
+	flex-basis: 37%;
+	flex-shrink: 0;
+}
+
+.post-thumbnail-list-wrapper img {
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
 }

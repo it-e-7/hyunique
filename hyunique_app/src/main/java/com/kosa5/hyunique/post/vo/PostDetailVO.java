@@ -21,4 +21,5 @@ public class PostDetailVO {
 	private List<String> styleTagList;
 	private String seasonName;
 	private String tpoName;
+	private List<PostThumbnailVO> postThumbnailList;
 }

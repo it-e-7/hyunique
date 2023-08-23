@@ -23,6 +23,7 @@
 		<typeAlias alias="DepartStockVO" type="com.kosa5.hyunique.product.vo.DepartStockVO" />
 		<typeAlias alias="PostDetailVO" type="com.kosa5.hyunique.post.vo.PostDetailVO" />
 		<typeAlias alias="PostProductVO" type="com.kosa5.hyunique.post.vo.PostProductVO" /> 
+		<typeAlias alias="PostThumbnailVO" type="com.kosa5.hyunique.post.vo.PostThumbnailVO" /> 
 	</typeAliases>
 
 </configuration>	

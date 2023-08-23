@@ -60,9 +60,21 @@
 				<li>${postVO.seasonName}</li>
 				<li>${postVO.tpoName}</li>
 				<c:forEach var="tag" items="${postVO.styleTagList}">
-				<li>${tag}</li>
+					<li>${tag}</li>
 				</c:forEach>
 			</ul>
+		</div>
+		<div>
+			<p>${postVO.userNickname}님이 착용한 제품의 다른 스타일</p>
+			<div class="post-padding-wrapper">
+				<div class="post-thumbnail-list-wrapper">
+					<c:forEach var="thumbnail" items="${postVO.postThumbnailList}">
+						<div onclick="location.href='/hyunique/post/${thumbnail.postId}'">
+							<img src="${thumbnail.thumbnailUrl}" />
+						</div>
+					</c:forEach>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
