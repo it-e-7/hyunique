@@ -32,7 +32,7 @@ public class OAuthController {
 
 	@Autowired
 	private UserService service;
-	
+
 	// NaverLoginBO
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
@@ -41,12 +41,14 @@ public class OAuthController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
-	
-	//세션에 id저장
+
+	// 세션에 id저장
 	private void setSessionId(HttpSession session, String id, String type) {
-		//받은 Id로 서버에 이미 있으면 시퀀스 아이디 pl/sql out으로 받아오고, 없으면 정보 삽입 후 시퀀스 아이디 받아오기
-		service.insertOrGetUser(id, type);
-	    session.setAttribute("sessionId", id);
+		try {
+			session.setAttribute("sessionId", service.insertOrGetUser(id, type));
+		} catch (NullPointerException e) {
+			System.out.println("로그인 혹은 회원가입 실패");
+		}
 	}
 
 	// 공통 로그인 화면 이동
@@ -61,7 +63,8 @@ public class OAuthController {
 
 	// 카카오 API 호출
 	@RequestMapping(value = "/KakaoLogin", method = RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpSession session)
+			throws Exception {
 		System.out.println("#########" + code);
 		String access_Token = ms.getAccessToken(code);
 		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
@@ -69,7 +72,7 @@ public class OAuthController {
 		System.out.println("###nickname#### : " + userInfo.get("nickname"));
 		System.out.println("###email#### : " + userInfo.get("email"));
 		System.out.println("###id#### : " + userInfo.get("id"));
-		setSessionId(session, (String) userInfo.get("id"),"kakao");
+		setSessionId(session, (String) userInfo.get("id"), "kakao");
 		return "redirect:userInfo";
 	}
 
@@ -90,23 +93,24 @@ public class OAuthController {
 		System.out.println(id);
 		session.setAttribute("sessionId", nickname);
 		model.addAttribute("result", apiResult);
-	    setSessionId(session, (String) response_obj.get("id"),"naver"); // 세션에 ID 저장
+		setSessionId(session, (String) response_obj.get("id"), "naver"); // 세션에 ID 저장
 		return "redirect:userInfo";
 	}
-	
-	//로그인 성공 후 유저 정보 페이지(임시) 이동
+
+	// 로그인 성공 후 유저 정보 페이지(임시) 이동
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-    public String example(HttpSession session) {
-        String sessionId = (String) session.getAttribute("sessionId");
-        if (sessionId != null) {
-            System.out.println("세션 ID: " + sessionId);
-            
-        } else {
-            System.out.println("로그인되지 않은 사용자");
-            // 로그인되지 않은 사용자 처리
-        }
-        return "userInfopage";
-    }
+	public String example(HttpSession session) {
+		String sessionId = (String) session.getAttribute("sessionId");
+		if (sessionId != null) {
+			System.out.println("세션 ID: " + sessionId);
+
+		} else {
+			System.out.println("로그인되지 않은 사용자");
+			// 로그인되지 않은 사용자 처리
+		}
+		return "userInfopage";
+	}
+
 	// 네이버 로그아웃
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session) throws IOException {
