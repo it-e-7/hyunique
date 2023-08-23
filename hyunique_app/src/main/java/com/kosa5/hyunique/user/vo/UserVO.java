@@ -1,0 +1,21 @@
+package com.kosa5.hyunique.user.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserVO {
+	private Integer userId;
+	private String userImg;
+	private String userBackimg;
+	private String userNickname;
+	private String userSex;
+	private Integer userHeight;
+	private String userForm;
+	private String userIntroduce;
+	private String kakaoOauth;
+	private String naverOauth;
+}

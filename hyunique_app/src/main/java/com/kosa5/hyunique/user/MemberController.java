@@ -2,7 +2,10 @@ package com.kosa5.hyunique.user;
 
 import java.io.IOException;
 import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
@@ -33,6 +37,11 @@ public class MemberController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
+	
+	//세션에 id저장
+	private void setSessionId(HttpSession session, String id) {
+	    session.setAttribute("sessionId", id);
+	}
 
 	// 공통 로그인 화면 이동
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
@@ -46,7 +55,7 @@ public class MemberController {
 
 	// 카카오 API 호출
 	@RequestMapping(value = "/KakaoLogin", method = RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpSession session) throws Exception {
 		System.out.println("#########" + code);
 		String access_Token = ms.getAccessToken(code);
 		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
@@ -54,7 +63,8 @@ public class MemberController {
 		System.out.println("###nickname#### : " + userInfo.get("nickname"));
 		System.out.println("###email#### : " + userInfo.get("email"));
 		System.out.println("###id#### : " + userInfo.get("id"));
-		return "main_temp";
+		setSessionId(session, (String) userInfo.get("id"));
+		return "redirect:userInfo";
 	}
 
 	// 네이버 로그인 성공시 callback호출 메소드
@@ -74,14 +84,28 @@ public class MemberController {
 		System.out.println(id);
 		session.setAttribute("sessionId", nickname);
 		model.addAttribute("result", apiResult);
-		return "redirect:/";
+	    setSessionId(session, (String) response_obj.get("id")); // 세션에 ID 저장
+		return "redirect:userInfo";
 	}
-
+	
+	//로그인 성공 후 유저 정보 페이지(임시) 이동
+	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    public String example(HttpSession session) {
+        String sessionId = (String) session.getAttribute("sessionId");
+        if (sessionId != null) {
+            System.out.println("세션 ID: " + sessionId);
+            
+        } else {
+            System.out.println("로그인되지 않은 사용자");
+            // 로그인되지 않은 사용자 처리
+        }
+        return "userInfopage";
+    }
 	// 네이버 로그아웃
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session) throws IOException {
 		System.out.println("여기는 logout");
 		session.invalidate();
-		return "redirect:main_temp";
+		return "redirect:userInfopage";
 	}
 }
