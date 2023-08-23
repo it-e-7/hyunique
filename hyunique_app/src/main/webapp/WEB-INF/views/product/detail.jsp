@@ -14,6 +14,8 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="/hyunique/resources/css/productdetail.css" />
+<link rel="stylesheet" type="text/css"
+	href="/hyunique/resources/css/main.css" />
 	
 </head>
 <body>

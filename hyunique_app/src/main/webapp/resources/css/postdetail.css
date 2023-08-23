@@ -1,0 +1,58 @@
+.user-info-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 12px;
+}
+
+.left-user-info {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.left-user-info img {
+	width: 32px;
+	height: 32px;
+	border-radius: 70%;
+}
+
+.left-user-info div {
+	
+}
+
+.img-slider-wrapper {
+	display: flex;
+	flex-direction: row;
+	overflow: scroll;
+	width: 100%;
+	scroll-snap-type: x mandatory;
+}
+
+.img-wrapper {
+	width: 100%;
+}
+
+.img-slider-wrapper img {
+	width: 100%;
+	scroll-snap-align: start;
+}
+
+.product-list {
+	
+}
+
+.product-list img {
+	width: 80px;
+	height: 80px;
+}
+
+ul {
+	list-style: none;
+}
+
+.tag-list {
+	display: flex;
+	flex-direction: row;
+	gap: 6px;
+}
