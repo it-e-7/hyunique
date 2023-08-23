@@ -11,6 +11,40 @@
         ]]>
     </select>
 
+    <select id="findTwelvePostList" parameterType="Integer" resultType="PostVO">
+        <![CDATA[
+        SELECT *
+        FROM (
+            SELECT hp.*, (
+                SELECT COUNT(*)
+                FROM hy_stylelike hsl
+                WHERE hsl.post_id = hp.post_id
+            ) AS like_count
+            FROM hy_post hp
+            ORDER BY like_count DESC
+        )
+        WHERE ROWNUM <= 20
+        ]]>
+    </select>
+
+    <select id="loadMorePost" parameterType="map" resultType="PostVO">
+        <![CDATA[
+        SELECT *
+        FROM (
+            SELECT hp.*, (
+                SELECT COUNT(*)
+                FROM hy_stylelike hsl
+                WHERE hsl.post_id = hp.post_id
+            ) AS like_count
+            FROM hy_post hp
+            ORDER BY like_count DESC
+        )
+        WHERE ROWNUM BETWEEN #{startIndex} AND #{endIndex}
+        ]]>
+    </select>
+
+
+
  <!--   <select id="findMemberById" parameterType="Integer" resultType="MemberVO">
         <![CDATA[
         SELECT * FROM MEMBER
