@@ -8,6 +8,7 @@ html {
 body {
 	max-width: 760px;
 	font-family: 'Noto Sans KR', sans-serif;
+	margin: 0 auto;
 }
 
 :root {
@@ -25,10 +26,6 @@ body {
 	--grey4: #A7A4A4;
 	--grey5: #8E8B8B;
 	--grey6: #747171;
-}
-
-img {
-	width: 50%;
 }
 
 button {

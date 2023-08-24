@@ -14,6 +14,7 @@
 		<result property="productUrl" column="product_url" />
 		<result property="typeName" column="type_name" />
 		<collection property="storeList" column="product_id" ofType="DepartStockVO" select="getDepartmentStock" />
+		<collection property="postThumbnailList" column="product_id" select="getPostThumbnailListByProduct" />
 	</resultMap>
 	
 	<resultMap id="DepartmentMap" type="DepartStockVO">
@@ -41,6 +42,14 @@
 			(SELECT * FROM hy_stock WHERE product_id = #{productId}) s 
 			ON (d.store_id = s.store_id)
 		ORDER BY product_size
+	</select>
+	
+	<select id="getPostThumbnailListByProduct" parameterType="String" resultType="PostThumbnailVO">
+		<![CDATA[
+		SELECT DISTINCT p.post_id, thumbnail_url
+		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
+		WHERE t.product_id = #{productId} AND ROWNUM <= 10
+		]]>
 	</select>
 
 </mapper>  
