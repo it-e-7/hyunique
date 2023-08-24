@@ -22,4 +22,5 @@ public class UserVO {
     private String xUrl;
     private String instagramUrl;
     private int followerCount;
+    private String styleNames;
 }
