@@ -22,8 +22,6 @@ public class ProductController {
 		
 		ProductDetailVO detailVO = productService.getProductDetailById(productId);
 		
-		System.out.println(detailVO);
-		
 		model.addAttribute("product", detailVO);
 		
 		return "product/detail";

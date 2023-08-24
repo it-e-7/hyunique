@@ -83,7 +83,7 @@
 			</div>
 		</div>
 	</div>
-	<button class="jw-btn buy-btn">
+	<button class="jw-btn jw-btn-fixed buy-btn" onclick="window.open('${product.productUrl}')">
 		<img src="/hyunique/resources/img/ic-buy.png">
 		구매하기
 	</button>
