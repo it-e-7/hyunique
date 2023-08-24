@@ -11,11 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.UserVO;
 
 @Controller
+@RequestMapping("user")
 public class UserController {
 
 	private UserService userService;
@@ -25,7 +28,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/user/{userId}")
+	@GetMapping("{userId}")
 	public String getUserInfoAndFollowerCount(HttpSession session, Model model) {
 		String sessionId = (String) session.getAttribute("sessionId"); // 세션에서 아이디 가져오기
 		if (sessionId != null) {
@@ -41,7 +44,7 @@ public class UserController {
 		return "myStylePage";
 	}
 
-	@GetMapping("/user/update")
+	@GetMapping("update")
 	public String userUpdatePage(HttpServletRequest request, Model model) {
 		UserVO user = (UserVO) request.getSession().getAttribute("user"); // 세션에서 UserVO 가져오기
 		if (user != null) {
@@ -52,12 +55,15 @@ public class UserController {
 		return "userInfoUpdatePage";
 	}
 
-	@PostMapping("/user/updateUser")
-	public ResponseEntity<String> updateUser(@RequestBody UserVO user) {
+	@PostMapping("updateUser")
+	public ResponseEntity<String> updateUser(@RequestBody UserVO user,@SessionAttribute int sessionId) {
+		System.out.println(sessionId);
+		user.setUserId(sessionId);
 		try {
 			userService.updateUser(user);
 			return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
 		} catch (Exception e) {
+			System.out.println(e);
 			return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
 		}
 	}

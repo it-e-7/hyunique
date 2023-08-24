@@ -7,19 +7,20 @@ function updateUser() {
     const facebookUrl = $('input[name="facebookUrl"]').val();
 
     $.ajax({
-        url: '/hyunique/updateUser',
+        url: '/hyunique/user/updateUser',
         type: 'POST',
-        data: {
+        contentType: 'application/json',
+        data: JSON.stringify({
             userNickname,
             userIntroduce,
             userSex,
             instagramUrl,
             twitterUrl,
             facebookUrl
-        },
+        }),
         success: function (response) {
             alert('업데이트 성공!');
-            window.location.reload();
+            window.location.href = 'myStylePage';
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');

@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUser(UserVO user) {
+		System.out.println("업데이트 시도는 함");
         userMapper.updateUser(user);
 	}
 
