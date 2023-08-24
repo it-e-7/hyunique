@@ -8,14 +8,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserVO {
-	private Integer userId;
-	private String userImg;
-	private String userBackimg;
-	private String userNickname;
-	private String userSex;
-	private Integer userHeight;
-	private String userForm;
-	private String userIntroduce;
-	private String kakaoOauth;
-	private String naverOauth;
+    private int userId;
+    private String userImg;
+    private String userBackimg;
+    private String userNickname;
+    private String userSex;
+    private int userHeight;
+    private String userForm;
+    private String userIntroduce;
+    private String kakaoOauth;
+    private String naverOauth;
+    private String facebookUrl;
+    private String xUrl;
+    private String instagramUrl;
+    private int followerCount;
 }
