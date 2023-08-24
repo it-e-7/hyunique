@@ -1,8 +1,16 @@
 let imgIdx = 0;
 let imgWidth = $(".img-slider-wrapper").width();
 
+function follow(follower, following) {
+	console.log(follower, following);
+}
+
 function moveToPost(postId) {
 	location.href=`/hyunique/post/${postId}`;
+}
+
+function moveToProduct(productId) {
+	location.href=`/hyunique/product/${productId}`;
 }
 
 $('.img-slider-wrapper').scroll(() => {

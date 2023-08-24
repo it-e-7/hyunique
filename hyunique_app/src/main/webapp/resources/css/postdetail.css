@@ -6,23 +6,25 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 30px 30px;
+	align-items: center;
+	padding: 1rem 1rem;
 }
 
 .left-user-info {
 	display: flex;
 	flex-direction: row;
-	gap: 20px;
+	align-items: center;
+	gap: 0.6rem;
 }
 
 .left-user-info img {
-	width: 3em;
-	height: 3em;
+	width: 2.8rem;
+	height: 2.8rem;
 	border-radius: 70%;
 }
 
-.left-user-info div {
-	
+.left-user-info p {
+	color: var(--grey5);
 }
 
 .img-slider-container {
@@ -40,6 +42,7 @@
 
 .img-wrapper {
 	width: 100%;
+	cursor: pointer;
 }
 
 .img-slider-wrapper img {
@@ -49,42 +52,67 @@
 	object-fit: cover;
 }
 
-.img-slider-wrapper button {
+.tag-btn {
 	position: absolute;
-	bottom: 2em;
-	left: 2em;
+	bottom: 0.6rem;
+	left: 1rem;
+}
+
+.tag-btn img {
+	width: 1.9rem;
 }
 
 .img-index-bar {
 	position: absolute;
-	bottom: 2em;
-	right: 2em;
+	bottom: 1.5rem;
+	right: 1.5rem;
 	display: flex;
-	gap: 0.4em;
+	gap: 0.3rem;
 }
 
 .img-index-circle {
-	width: 0.6em;
-	height: 0.6em;
+	width: 0.4rem;
+	height: 0.4rem;
 	border-radius: 70%;
 	background-color: #aaaaaa;
 	opacity: 0.8;
 }
 
 .img-index-selected {
-	width: 1.2em;
-	border-radius: 0.5em;
+	width: 1rem;
+	border-radius: 0.4rem;
 	background-color: white;
 	opacity: 1.0;
 }
 
 .product-list {
-	
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	margin: 0 1.3rem;
 }
 
 .product-list img {
-	width: 5em;
-	height: 5em;
+	width: 5rem;
+	height: 5rem;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-bottom-left-radius: 0.4rem;
+	border-top-left-radius: 0.4rem;
+}
+
+.product-list li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.4rem;
+	border: 1px solid #b7b7b7;
+	border-radius: 0.3rem;
+	cursor: pointer;
+}
+
+.product-list .brand {
+	
 }
 
 ul {
@@ -94,15 +122,15 @@ ul {
 .tag-list {
 	display: flex;
 	flex-direction: row;
-	gap: 6px;
+	gap: 0.2rem;
 }
 
 .post-thumbnail-list-wrapper {
 	display: flex;
-	gap: 3px;
+	gap: 0.2rem;
 	overflow-x: auto;
 	flex-wrap: nowrap;
-	padding: 0 0 1.5em 2em;
+	padding: 0 0 1.5rem 2rem;
 }
 
 .post-thumbnail-list-wrapper div {

@@ -8,14 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>스타일 상세보기</title>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"
-	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-	crossorigin="anonymous"></script>
+<%@ include file="/WEB-INF/views/common.jsp" %>
 <link rel="stylesheet" type="text/css"
 	href="/hyunique/resources/css/postdetail.css" />
-<link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/main.css" />
 	
 </head>
 <body>
@@ -24,18 +19,27 @@
 			<div class="left-user-info">
 				<img src="${postVO.userImg}">
 				<div>
-					<p>${postVO.userNickname}</p>
-					<p>${postVO.userHeight}</p>
+					<strong style="font-size: 1.2rem;">${postVO.userNickname}</strong>
+					<p>${postVO.userHeight}cm</p>
 				</div>
 			</div>
-			<button>팔로우</button>
+			<c:choose>
+				<c:when test="${postVO.follow == 0}">
+					<button class="jw-btn-nonshadow" onclick="follow(22, ${postVO.userId})">팔로우</button>
+				</c:when>
+				<c:otherwise>
+					<button class="jw-btn-selected">팔로잉</button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="img-slider-container">
 		<div class="img-slider-wrapper">
 			<c:forEach var="url" items="${postVO.imgList}">
 				<img src="${url}"/>
 			</c:forEach>
-			<button>태그</button>
+			<button class="tag-btn">
+				<img src="/hyunique/resources/img/ic-posttag.png"/>
+			</button>
 			
 		</div>
 		<c:if test="${fn:length(postVO.imgList) > 1}">
@@ -48,8 +52,12 @@
 			</c:if>
 		</div>
 		<div class="post-content-wrapper">
-			<button>좋아요</button>
-			<button>공유</button>
+			<button>
+				<img src="/hyunique/resources/img/ic-like.png"/>
+			</button>
+			<button>
+				<img src="/hyunique/resources/img/ic-share.png"/>
+			</button>
 			<br>
 			<p>${postVO.postDate}</p>
 			<p>${postVO.userNickname}</p>
@@ -58,11 +66,13 @@
 			<p>착용 제품</p>
 			<ul class="product-list">
 				<c:forEach var="product" items="${postVO.productList}">
-					<li>
+					<li onclick="moveToProduct('${product.productId}')">
 						<img src="${product.productImg}"/>
-						<p>${product.productBrand}</p>
-						<p>${product.productName}</p>
-						<p>${product.productPrice}</p>
+						<div>
+							<strong>${product.productBrand}</strong>
+							<p>${product.productName}</p>
+							<p>${product.productPrice}</p>
+						</div>
 					</li>
 				</c:forEach>
 			</ul>

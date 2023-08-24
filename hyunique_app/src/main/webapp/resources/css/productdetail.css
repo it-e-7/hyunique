@@ -24,11 +24,11 @@ ul {
 .stock-card-list {
 	display: none;
 	flex-direction: row;
-	gap: 10px;
+	gap: 0.3rem;
 }
 
 .stock-card {
 	border: 1px solid #B6D0F6;
-	border-radius: 6px;
-	padding: 8px;
+	border-radius: 0.2rem;
+	padding: 0.3rem;
 }
