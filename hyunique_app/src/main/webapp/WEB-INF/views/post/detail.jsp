@@ -63,7 +63,7 @@
 					</c:otherwise>
 				</c:choose>
 			</button>
-				<button>
+				<button onclick="sharePost('${postVO.userNickname}')">
 					<img src="/hyunique/resources/img/ic-share.png"/>
 				</button>
 			</div>
@@ -119,5 +119,6 @@
 		</div>
 	</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
 <script src="/hyunique/resources/js/postdetail.js"></script>
 </html>

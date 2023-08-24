@@ -31,14 +31,14 @@ public class PostController {
 	
 	@PostMapping("like")
 	@ResponseBody
-	public int postLikePost(int postId) {
+	public int postLikePostHandler(int postId) {
 		int userId = 22;
 		return postService.postLikePost(postId, userId);
 	}
 	
 	@PostMapping("unlike")
 	@ResponseBody
-	public int postUnlikePost(int postId) {
+	public int postUnlikePostHandler(int postId) {
 		int userId = 22;
 		return postService.postUnlikePost(postId, userId);
 	}

@@ -97,9 +97,19 @@
 	gap: 1rem;
 }
 
-.post-low-btn img {
+.post-low-btn button {
 	width: 2rem;
 	height: 2rem;
+}
+
+.post-low-btn img {
+	width: 100%;
+}
+
+.like-btn img {
+	transform: scale(1);
+	transition: transform 100ms;
+	background: white;
 }
 
 .post-content-date {
