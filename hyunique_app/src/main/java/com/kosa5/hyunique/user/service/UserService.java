@@ -7,4 +7,6 @@ public interface UserService {
 
 	UserVO getUserInfoAndFollowerCount(int userId);
 
+	public void updateUser(UserVO user);
+
 }

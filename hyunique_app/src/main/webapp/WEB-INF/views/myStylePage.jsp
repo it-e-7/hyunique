@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 	<br><img src="${user.userBackimg}">
@@ -14,5 +14,9 @@
 	<br> ${user.followerCount}
 	<br> ${user.styleNames}
 	<br> ${user.userIntroduce}
+	<br> ${user.facebookUrl}
+	<br> ${user.twitterUrl}
+	<br> ${user.instagramUrl}
+	<a href="update">회원정보 수정</a>
 </body>
 </html>

@@ -10,5 +10,5 @@ import com.kosa5.hyunique.user.vo.UserVO;
 public interface UserMapper {
 	void insertOrGetUser(Map<String, Object> params);
     UserVO getUserInfoAndFollowerCount(int userId);
-
+	void updateUser(UserVO user);
 }

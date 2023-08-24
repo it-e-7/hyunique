@@ -34,4 +34,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getUserInfoAndFollowerCount(userId);
 	}
 
+	@Override
+	public void updateUser(UserVO user) {
+        userMapper.updateUser(user);
+	}
+
 }

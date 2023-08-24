@@ -19,7 +19,7 @@ public class UserVO {
     private String kakaoOauth;
     private String naverOauth;
     private String facebookUrl;
-    private String xUrl;
+    private String twitterUrl;
     private String instagramUrl;
     private int followerCount;
     private String styleNames;
