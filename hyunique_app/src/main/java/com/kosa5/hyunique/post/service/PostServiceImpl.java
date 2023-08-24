@@ -16,4 +16,14 @@ public class PostServiceImpl implements PostService {
 	public PostDetailVO getPostDetailByPostIdUserId(int postId, int userId) {
 		return postMapper.getPostDetailByPostIdUserId(postId, userId);
 	}
+	
+	@Override
+	public int postLikePost(int postId, int userId) {
+		return postMapper.insertPostLike(postId, userId);
+	}
+	
+	@Override
+	public int postUnlikePost(int postId, int userId) {
+		return postMapper.deletePostLike(postId, userId);
+	}
 }

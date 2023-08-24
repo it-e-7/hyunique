@@ -25,7 +25,7 @@
 			</div>
 			<c:choose>
 				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow" onclick="follow(22, ${postVO.userId})">팔로우</button>
+					<button class="jw-btn-nonshadow" onclick="follow(${postVO.userId})">팔로우</button>
 				</c:when>
 				<c:otherwise>
 					<button class="jw-btn-selected">팔로잉</button>
@@ -53,9 +53,16 @@
 		</div>
 		<div class="post-content-wrapper">
 			<div class="post-low-btn">
-				<button>
-					<img src="/hyunique/resources/img/ic-like.png"/>
-				</button>
+			<button onclick="likeTogglePost(${postVO.postId})" class="like-btn">
+				<c:choose>
+					<c:when test="${postVO.styleLike == 0}">
+						<img src="/hyunique/resources/img/ic-like.png"/>
+					</c:when>
+					<c:otherwise>
+						<img src="/hyunique/resources/img/ic-like-selected.png"/>
+					</c:otherwise>
+				</c:choose>
+			</button>
 				<button>
 					<img src="/hyunique/resources/img/ic-share.png"/>
 				</button>

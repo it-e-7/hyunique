@@ -58,5 +58,15 @@
                         		FROM post_pin
                         		WHERE post_id = #{postId}) AND p.post_id != #{postId}
 	</select>
+	
+	<insert id="insertPostLike" parameterType="map">
+		INSERT INTO hy_stylelike
+		VALUES (#{userId}, #{postId})
+	</insert>
+	
+	<delete id="deletePostLike" parameterType="map">
+		DELETE FROM hy_stylelike
+		WHERE user_id = #{userId} AND post_id = #{postId}
+	</delete>
 
 </mapper>  

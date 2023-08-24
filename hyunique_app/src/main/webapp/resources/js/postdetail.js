@@ -1,8 +1,39 @@
 let imgIdx = 0;
-let imgWidth = $(".img-slider-wrapper").width();
+const imgWidth = $(".img-slider-wrapper").width();
+const likeBtnImgSrc = {
+	unselect: '/hyunique/resources/img/ic-like.png',
+	selected: '/hyunique/resources/img/ic-like-selected.png',
+};
+const likeToggle = {
+	selected: 'unselect',
+	unselect: 'selected',
+};
 
-function follow(follower, following) {
-	console.log(follower, following);
+function follow(following) {
+	console.log(following);
+}
+
+function likeTogglePost(postId) {
+	let url = `/hyunique/post/like`;
+	let present = 'unselect';
+	
+	if($('.like-btn img').attr('src') !== likeBtnImgSrc[present]) {
+		url = `/hyunique/post/unlike`;
+		present = 'selected';
+	}
+	
+	$('.like-btn img').attr('src', likeBtnImgSrc[likeToggle[present]]);
+	
+	$.ajax({
+		url,
+		type: 'POST',
+		data: {
+			postId
+		},
+		success: function(response) {
+			console.log(response);
+		}
+	});
 }
 
 function moveToPost(postId) {
@@ -28,3 +59,8 @@ function changeIndexCircle(newIdx) {
 }
 
 changeIndexCircle(imgIdx);
+
+$(document).ready(() => {
+	$('.img-slider-wrapper').scrollLeft(0);
+	console.log($('.img-slider-wrapper').scrollLeft());
+});

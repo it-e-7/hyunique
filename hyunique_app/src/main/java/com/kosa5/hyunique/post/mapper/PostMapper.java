@@ -9,4 +9,6 @@ import com.kosa5.hyunique.post.vo.PostDetailVO;
 public interface PostMapper {
 
 	PostDetailVO getPostDetailByPostIdUserId(@Param("postId") int postId, @Param("userId") int userId);
+	int insertPostLike(@Param("postId") int postId, @Param("userId") int userId);
+	int deletePostLike(@Param("postId") int postId, @Param("userId") int userId);
 }
