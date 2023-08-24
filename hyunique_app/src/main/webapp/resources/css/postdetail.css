@@ -85,11 +85,49 @@
 	opacity: 1.0;
 }
 
+.post-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1rem 1.5rem 2rem 1.5rem;
+}
+
+.post-low-btn {
+	display: flex;
+	gap: 1rem;
+}
+
+.post-low-btn img {
+	width: 2rem;
+	height: 2rem;
+}
+
+.post-content-date {
+	color: var(--grey3);
+}
+
+.post-content span {
+	display: flex;
+	gap: 0.5rem;
+	font-size: 1.1rem;
+	margin-top: 0.5rem;
+	padding: 0.1rem 0 0.1rem 0.8rem;
+	border-left: 2px solid var(--grey3);
+}
+
+.post-product {
+	margin-bottom: 1rem;
+}
+
 .product-list {
 	display: flex;
 	flex-direction: column;
-	gap: 0.6rem;
-	margin: 0 1.3rem;
+	gap: 0.8rem;
+}
+
+.post-product-title {
+	margin-bottom: 0.8rem;
+	color: var(--grey3);
 }
 
 .product-list img {
@@ -105,24 +143,57 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 0.4rem;
-	border: 1px solid #b7b7b7;
+	border: 1.5px solid var(--grey2);
 	border-radius: 0.3rem;
 	cursor: pointer;
 }
 
-.product-list .brand {
-	
+.product-list li div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	padding: 0.3rem 1rem 0.3rem 1.5rem;
+	overflow: hidden;
+}
+
+.product-item-name {
+	color: var(--grey4);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 ul {
 	list-style: none;
 }
 
+.post-tag p {
+	color: var(--grey3);
+	margin-bottom: 0.8rem;
+}
+
 .tag-list {
 	display: flex;
 	flex-direction: row;
-	gap: 0.2rem;
+	gap: 0.4rem;
+	flex-wrap: wrap;
+}
+
+.tag-list li {
+	padding: 0.3rem 0.8rem 0.4rem 0.8rem;
+	border-radius: 0.6rem;
+	background: var(--jw-light-blue2);
+	color: var(--jw-blue2);
+	font-weight: 600;
+}
+
+.post-product-post-wrapper span {
+	display: flex;
+	padding: 0 0 0.5rem 1.5rem;
+}
+
+.post-product-post-wrapper span p {
+	color: var(--grey3);
 }
 
 .post-thumbnail-list-wrapper {
@@ -130,11 +201,11 @@ ul {
 	gap: 0.2rem;
 	overflow-x: auto;
 	flex-wrap: nowrap;
-	padding: 0 0 1.5rem 2rem;
+	padding: 0 0 1.5rem 1.5rem;
 }
 
 .post-thumbnail-list-wrapper div {
-	flex-basis: 37%;
+	flex-basis: 45%;
 	flex-shrink: 0;
 }
 

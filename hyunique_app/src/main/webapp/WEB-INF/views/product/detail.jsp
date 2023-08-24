@@ -24,7 +24,7 @@
 		<img src="${product.productImg}" class="product-img" />
 	</div>
 	<p>${product.productName}</p>
-	\<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
+	&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
 	<br>
 	
 	<p>현대백화점 재고 확인</p>

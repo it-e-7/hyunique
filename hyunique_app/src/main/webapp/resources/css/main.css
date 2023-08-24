@@ -27,6 +27,10 @@ body {
 	--grey6: #747171;
 }
 
+img {
+	width: 50%;
+}
+
 button {
 	all: unset;
 	cursor: pointer;

@@ -52,42 +52,54 @@
 			</c:if>
 		</div>
 		<div class="post-content-wrapper">
-			<button>
-				<img src="/hyunique/resources/img/ic-like.png"/>
-			</button>
-			<button>
-				<img src="/hyunique/resources/img/ic-share.png"/>
-			</button>
-			<br>
-			<p>${postVO.postDate}</p>
-			<p>${postVO.userNickname}</p>
-			<p>${postVO.postContent}</p>
-			<br>
-			<p>착용 제품</p>
-			<ul class="product-list">
-				<c:forEach var="product" items="${postVO.productList}">
-					<li onclick="moveToProduct('${product.productId}')">
-						<img src="${product.productImg}"/>
-						<div>
-							<strong>${product.productBrand}</strong>
-							<p>${product.productName}</p>
-							<p>${product.productPrice}</p>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-			<br>
-			<p>연관 태그</p>
-			<ul class="tag-list">
-				<li>${postVO.seasonName}</li>
-				<li>${postVO.tpoName}</li>
-				<c:forEach var="tag" items="${postVO.styleTagList}">
-					<li>${tag}</li>
-				</c:forEach>
-			</ul>
+			<div class="post-low-btn">
+				<button>
+					<img src="/hyunique/resources/img/ic-like.png"/>
+				</button>
+				<button>
+					<img src="/hyunique/resources/img/ic-share.png"/>
+				</button>
+			</div>
+			<div class="post-content">
+				<p class="post-content-date">${postVO.postDate}</p>
+				<span>
+					<strong>${postVO.userNickname}</strong>
+					<p>${postVO.postContent}</p>
+				</span>
+			</div>
+			<div class="post-product">
+				<p class="post-product-title">착용 제품</p>
+				<ul class="product-list">
+					<c:forEach var="product" items="${postVO.productList}">
+						<li onclick="moveToProduct('${product.productId}')">
+							<img src="${product.productImg}"/>
+							<div>
+								<strong>${product.productBrand}</strong>
+								<p class="product-item-name">${product.productName}</p>
+								<p class="product-item-price">
+									&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
+								</p>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="post-tag">
+				<p>연관 태그</p>
+				<ul class="tag-list">
+					<li>${postVO.seasonName}</li>
+					<li>${postVO.tpoName}</li>
+					<c:forEach var="tag" items="${postVO.styleTagList}">
+						<li>${tag}</li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
-		<div>
-			<p>${postVO.userNickname}님이 착용한 제품의 다른 스타일</p>
+		<div class="post-product-post-wrapper">
+			<span>
+				<strong>@${postVO.userNickname}</strong>
+				<p>님이 착용한 제품의 다른 스타일</p>
+			</span>
 			<div class="post-padding-wrapper">
 				<div class="post-thumbnail-list-wrapper">
 					<c:forEach var="thumbnail" items="${postVO.postThumbnailList}">
