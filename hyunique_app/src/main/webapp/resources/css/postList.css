@@ -5,26 +5,22 @@
 
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
 #photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#photo-gallery{
-    width: calc(50% - 10px); /* 화면의 50% 폭을 차지하고 여백을 고려 */
-    margin-bottom: 20px;
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 10px;
 }
 
 .photo {
-    display : block;
+    float: left;
+    width: calc(50% - 2px);
+    padding: 1px;
+    box-sizing: border-box;
 }
 
 .photo img{
     max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비에 맞춤 */
-    max-height: 200px; /* 이미지의 최대 높이를 200px로 제한 (원하는 높이로 수정 가능) */
     display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
     margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
-    padding: 10px; /* 이미지 주위에 패딩 추가 (원하는 값으로 수정 가능) */
+    aspect-ratio: 3 / 4;
 }

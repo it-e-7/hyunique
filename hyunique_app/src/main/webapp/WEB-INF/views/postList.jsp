@@ -18,6 +18,37 @@
 <div id= "hyunique-main-top-recommend">
 </div>
 <div id= "hyunique-main-top-filter">
+    <button id="filterModalButton">모달 띄우기</button>
+
+    <div class="modal">
+        <div class="modal_body">
+                <div>
+                    <label for="maleRadio">MEN</label>
+                    <input type="radio" id="maleRadio" name="gender" value="MEN">
+                    <label for="femaleRadio">WOMEN</label>
+                    <input type="radio" id="femaleRadio" name="gender" value="WOMEN">
+                </div>
+
+                <div>
+                    <label for="heightRange">키: <span id="selectedHeight">150</span> cm</label>
+                    <input type="range" id="heightRange" name="height" min="0" max="200" value="150">
+                </div>
+
+                <div>
+                    <label>TPO</label>
+                    <label for="beachCheckbox">바다</label>
+                    <input type="checkbox" id="beachCheckbox" name="tpo" value="beach">
+                    <label for="travelCheckbox">여행</label>
+                    <input type="checkbox" id="travelCheckbox" name="tpo" value="travel">
+                </div>
+
+                <div>
+                    <input type="submit" id="applyFilter" value="적용">
+                </div>
+            <button id="closeModalButton">모달 닫기</button>
+        </div>
+    </div>
+
     <script src="/hyunique/resources/js/filterModal.js"></script>
 </div>
 

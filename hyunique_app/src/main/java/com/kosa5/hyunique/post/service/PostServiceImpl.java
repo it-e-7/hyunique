@@ -40,4 +40,53 @@ public class PostServiceImpl implements PostService{
         System.out.println("postVOList check  -- "+postVOList);
         return postVOList;
     }
+
+    @Override
+    public List<PostVO> getfilterPostList(String gender, List<String> tpo) {
+        List<PostVO> postVOList = new ArrayList<>();
+        PageVO pageVO = new PageVO();
+        System.out.println(tpo);
+        Integer tpoNubmer;
+        //받아온 데이터 정리
+
+        //성별
+        if (gender.equals("MAN")||gender.equals("WOMAN")){
+            //성별 그대로
+        }
+        else {
+            gender=null;
+        }
+
+        //tpo
+        if (tpo.equals("kosa")){
+            tpoNubmer = 21;
+        }
+        else if (tpo.equals("travel")){
+            tpoNubmer = 22;
+        }
+        else if (tpo.equals("campus")){
+            tpoNubmer = 23;
+        }
+        else if (tpo.equals("cafe")){
+            tpoNubmer = 24;
+        }
+        else if (tpo.equals("date")){
+            tpoNubmer = 25;
+        }
+        else if (tpo.equals("merry")){
+            tpoNubmer = 26;
+        }
+        else if (tpo.equals("office")){
+            tpoNubmer = 27;
+        }
+        else if (tpo.equals("daily")){
+            tpoNubmer = 28;
+        }
+        else{
+            tpoNubmer = null;
+        }
+        //postVOList = postMapper.loadMorePost(startIndex, endIndex);
+        System.out.println("postVOList check  -- "+postVOList);
+        return postVOList;
+    }
 }

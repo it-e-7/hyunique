@@ -20,9 +20,9 @@ public class FilterController {
 	private PostService postService;
 
 	@GetMapping(value = "getFilterPost")
-	public String getFilterPost(@RequestParam("page") int page, Model model) {
+	public String getFilterPost(@RequestParam("gender") String gender, @RequestParam(value = "tpo[]", required = false) List<String> tpo, Model model) {
 		List<PostVO> postVOList = new ArrayList<>();
-		postVOList = postService.loadMorePost(page);
+		postVOList = postService.getfilterPostList(gender,tpo);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}
