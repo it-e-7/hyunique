@@ -13,6 +13,7 @@ import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostVO;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class PostController {
 		int userId = 22;
 		return postService.postUnlikePost(postId, userId);
 	}
+
+
 
 	@GetMapping(value = "getOnePost")
 	public String getPostingHandler(Model model) {
