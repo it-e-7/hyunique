@@ -1,0 +1,28 @@
+img {
+    width: 30%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.write-container {
+    display: none;
+}
+
+.post-container {
+    display: none;
+}
+
+.image-view li {
+    width: 30%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    position: relative;
+    display: inline-block;
+}
+
+.tag {
+    position: absolute;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
