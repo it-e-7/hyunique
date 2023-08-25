@@ -37,12 +37,11 @@ public class PostServiceImpl implements PostService{
         int startIndex = page*20+1;
         int endIndex = (page+1)*20;
         postVOList = postMapper.loadMorePost(startIndex, endIndex);
-        System.out.println("postVOList check  -- "+postVOList);
         return postVOList;
     }
 
     @Override
-    public List<PostVO> getfilterPostList(String gender, List<String> tpo, List<String> season, List<String> mood) {
+    public List<PostVO> getfilterPostList(String gender, List<String> tpo, List<String> season, List<String> mood, Integer minHeight, Integer maxHeight) {
         List<PostVO> postVOList = new ArrayList<>();
         List<Integer> tpoNumber = new ArrayList<>();
         List<Integer> seasonNumber = new ArrayList<>();
@@ -142,14 +141,16 @@ public class PostServiceImpl implements PostService{
             }
         }
 
-        System.out.println("*gender check  -- "+gender);
+/*        System.out.println("*gender check  -- "+gender);
         System.out.println("tpoNumber check  -- "+tpoNumber);
         System.out.println("seasonNumber check  -- "+seasonNumber);
         System.out.println("moodNumber check  -- "+moodNumber);
         System.out.println("mood check  -- "+mood);
+        System.out.println("check  -- "+minHeight + maxHeight);*/
 
-
-        postVOList = postMapper.loadFilterPost(gender,tpoNumber,seasonNumber,moodNumber);
+        System.out.println("RESULT START --- " +tpoNumber);
+        postVOList = postMapper.loadFilterPost(gender,tpoNumber,seasonNumber,moodNumber,minHeight,maxHeight);
+        System.out.println("RESULT END --- " +postVOList);
         return postVOList;
     }
 }

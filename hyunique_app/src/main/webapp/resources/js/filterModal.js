@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal = document.querySelector(".modal");
     const closeModalButton = document.getElementById("closeModalButton"); // 모달 닫기 버튼
 
+    const formData = {
+                minHeight: 140, // 초기 값 설정
+                maxHeight: 180, // 초기 값 설정
+    };
+
     filterModalButton.addEventListener("click", function() {
         modal.style.display = "block"; // 모달을 표시
         updateRangeBackgroundColor();
@@ -37,8 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
             let selectedMoodValues = [];
-
-            const formData = {};
 
                 if (selectedGender) {
                     formData.gender = selectedGender.value;
@@ -106,6 +109,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // rs-height 업데이트 반올림으로
         rsHeight.textContent = `${currentMinHeight.toFixed(0)}cm - ${currentMaxHeight.toFixed(0)}cm`;
+
+        formData.minHeight = parseInt(currentMinHeight.toFixed(0));
+        formData.maxHeight = parseInt(currentMaxHeight.toFixed(0));
+
     }
 
     // 슬라이더 드래그 이벤트 처리
