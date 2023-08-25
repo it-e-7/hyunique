@@ -15,7 +15,7 @@ $(document).ready(function() {
         function loadMoreImages() {
         isLoading = true;
             $.ajax({
-                url: "/hyunique/api/post/getMorePost",
+                url: "/hyunique/post/getMorePost",
                 type: "GET",
                 data: {
                     page: currentPage

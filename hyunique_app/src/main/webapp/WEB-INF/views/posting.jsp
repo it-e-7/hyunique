@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>posting</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <%@ include file="/WEB-INF/views/common.jsp"%>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="/hyunique/resources/js/posting.js"></script>
