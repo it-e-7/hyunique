@@ -1,7 +1,9 @@
+//유저 정보 업데이트
 function updateUser() {
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
-    const userSex = $('input[name="userSex"]:checked').val();
+    const userSex = $('#userSex').val();
+    const userHeight = $('input[name="userHeight"]').val();
     const instagramUrl = $('input[name="instagramUrl"]').val();
     const twitterUrl = $('input[name="twitterUrl"]').val();
     const facebookUrl = $('input[name="facebookUrl"]').val();
@@ -14,6 +16,7 @@ function updateUser() {
             userNickname,
             userIntroduce,
             userSex,
+            userHeight,
             instagramUrl,
             twitterUrl,
             facebookUrl
@@ -28,6 +31,19 @@ function updateUser() {
     });
 }
 
+//유저 성별 미리 설정
+//수정필요
+$(document).ready(function() {
+	const userSex = "${user.userSex}"; // 서버에서 가져온 성별 값을 할당
+
+	$("#userSex option").each(function() {
+	  if ($(this).val() === userSex) {
+	    $(this).prop('selected', true); // prop 메서드로 선택 상태 설정
+	  }
+	});
+});
+
+//유저 게시글 썸네일, 이미지 세팅
 function userPostList(sessionId) {
 	  $.ajax({
 	    url: '/hyunique/user/userpostlist',

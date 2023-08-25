@@ -21,8 +21,8 @@
 		</div>
 		<hr>
 		<div class="form-label">
-			<img src="${user.userBackimg}"><br>
-			<img src="${user.userImg}">
+			<img src="${user.userBackimg}"><br> <img
+				src="${user.userImg}">
 		</div>
 
 		<div class="form-label">
@@ -30,7 +30,7 @@
 		</div>
 		<div class="form-content">
 			<input id="userNickname" type="text" name="userNickname"
-				placeholder="${user.userNickname}">
+				value="${user.userNickname}">
 		</div>
 
 		<div class="form-label">
@@ -38,35 +38,44 @@
 		</div>
 		<div class="form-content">
 			<input id="userIntroduce" type="text" name="userIntroduce"
-				placeholder="${user.userIntroduce}">
+				value="${user.userIntroduce}">
 		</div>
 
 		<div class="form-label">
-			<label for="gender">성별</label>
+			<label for="userSex">성별</label>
 		</div>
 		<div class="form-content">
-			<select id="gender" name="gender">
-				<option value="남자">남자</option>
-				<option value="여자">여자</option>
+			<select id="userSex" name="userSex">
+				<option value="남성">남성</option>
+				<option value="여성">여성</option>
 				<option value="기타">기타</option>
-				<option value="무응답">알리지 않음</option>
+				<option value="알리지 않음">알리지 않음</option>
 			</select>
 		</div>
 
 
+
+		<div class="form-label">
+			<label for="userHeight">신장</label>
+		</div>
+		<div class="form-content">
+			<input id="userHeight" type="number" name=userHeight
+				value="${user.userHeight}">
+		</div>
 		<div class="form-label">
 			<label for="instagramUrl">인스타그램</label>
 		</div>
 		<div class="form-content">
 			<input id="instagramUrl" type="text" name=instagramUrl
-				placeholder="${user.instagramUrl}">
+				value="${user.instagramUrl}">
 		</div>
 
 		<div class="form-label">
 			<label for="twitterUrl">트위터</label>
 		</div>
 		<div class="form-content">
-			<input id="twitterUrl" type="text" name=twitterUrl placeholder="${user.twitterUrl}">
+			<input id="twitterUrl" type="text" name=twitterUrl
+				value="${user.twitterUrl}">
 		</div>
 
 		<div class="form-label">
@@ -74,7 +83,7 @@
 		</div>
 		<div class="form-content">
 			<input id="facebookUrl" type="text" name=facebookUrl
-				placeholder="${user.facebookUrl}">
+				value="${user.facebookUrl}">
 		</div>
 
 
