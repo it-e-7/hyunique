@@ -18,6 +18,12 @@
 		위해 사용합니다. -->
 
 	<typeAliases>
+		<typeAlias alias="ProductDetailVO" type="com.kosa5.hyunique.product.vo.ProductDetailVO" />
+		<typeAlias alias="StockVO" type="com.kosa5.hyunique.product.vo.StockVO" />
+		<typeAlias alias="DepartStockVO" type="com.kosa5.hyunique.product.vo.DepartStockVO" />
+		<typeAlias alias="PostDetailVO" type="com.kosa5.hyunique.post.vo.PostDetailVO" />
+		<typeAlias alias="PostProductVO" type="com.kosa5.hyunique.post.vo.PostProductVO" /> 
+		<typeAlias alias="PostThumbnailVO" type="com.kosa5.hyunique.post.vo.PostThumbnailVO" /> 
 		<typeAlias alias="User" type="com.kosa5.hyunique.user.vo.UserVO" />
 		<typeAlias alias="PostVO" type="com.kosa5.hyunique.post.vo.PostVO" />
 	</typeAliases>

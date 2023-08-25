@@ -1,21 +1,54 @@
 package com.kosa5.hyunique.post.controller;
 
-import com.kosa5.hyunique.post.service.PostService;
-import com.kosa5.hyunique.post.vo.PostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kosa5.hyunique.post.service.PostService;
+import com.kosa5.hyunique.post.vo.PostDetailVO;
+import com.kosa5.hyunique.post.vo.PostVO;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping ("/api/post")
+@RequestMapping("post")
 public class PostController {
-
+	
 	@Autowired
-	private PostService postService;
+	PostService postService;
+
+	@GetMapping("{postId}")
+	public String getPostDetailHandler(@PathVariable("postId") int postId, Model model) {
+		
+		PostDetailVO postDetailVO = postService.getPostDetailByPostIdUserId(postId, 22);
+		
+		model.addAttribute("postVO", postDetailVO);
+		
+		return "post/detail";
+	}
+	
+	@PostMapping("like")
+	@ResponseBody
+	public int postLikePostHandler(int postId) {
+		int userId = 22;
+		return postService.postLikePost(postId, userId);
+	}
+	
+	@PostMapping("unlike")
+	@ResponseBody
+	public int postUnlikePostHandler(int postId) {
+		int userId = 22;
+		return postService.postUnlikePost(postId, userId);
+	}
+
+
 
 	@GetMapping(value = "getOnePost")
 	public String getPostingHandler(Model model) {
@@ -39,5 +72,4 @@ public class PostController {
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}
-	
 }

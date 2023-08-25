@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa5.hyunique.post.mapper.PostMapper">
+
+	<resultMap id="PostDetailMap" type="PostDetailVO">
+		<result property="postId" column="post_id" />
+		<collection property="imgList" column="post_id"
+			select="getImgList" />
+		<collection property="productList" column="post_id"
+			select="getProductList" />
+		<collection property="styleTagList" column="post_id"
+			select="getStyleTagList" />
+		<collection property="postThumbnailList" column="post_id"
+			select="getPostThumbnailListByProduct" />
+	</resultMap>
+
+	<select id="getPostDetailByPostIdUserId" parameterType="map"
+		resultMap="PostDetailMap">
+		SELECT post_id, p.user_id, user_img,
+		user_nickname, user_height, post_date,
+		post_content, season_name, tpo_name,
+		(SELECT user_id
+		FROM hy_stylelike
+		WHERE user_id = #{userId} AND post_id = #{postId}) as style_like ,
+		(SELECT follower_id
+		FROM hy_follow
+		WHERE follower_id = #{userId} AND
+		following_id = (SELECT user_id
+		FROM hy_post
+		WHERE post_id = #{postId})) as follow
+		FROM hy_post p
+		JOIN hy_seasontag s ON p.season_id = s.season_id
+		JOIN hy_tpotag t ON p.tpo_id = t.tpo_id
+		JOIN hy_user u ON p.user_id = u.user_id
+		WHERE p.post_id = #{postId}
+	</select>
+
+	<select id="getImgList" parameterType="int" resultType="String">
+		SELECT
+		img_url
+		FROM hy_image
+		WHERE post_id = #{postId}
+	</select>
+
+	<select id="getProductList" parameterType="int"
+		resultType="PostProductVO">
+		SELECT *
+		FROM (SELECT * FROM post_pin WHERE post_id =
+		#{postId})p, hy_product r
+		WHERE p.product_id = r.product_id
+	</select>
+
+	<select id="getStyleTagList" parameterType="int"
+		resultType="String">
+		SELECT t.style_name
+		FROM hy_styletag t, (SELECT * FROM
+		post_style_tag WHERE post_id = #{postId}) s
+		WHERE t.style_id =
+		s.style_id
+	</select>
+
+	<select id="getPostThumbnailListByProduct" parameterType="int"
+		resultType="PostThumbnailVO">
+		<![CDATA[
+		SELECT DISTINCT p.post_id, thumbnail_url
+		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
+		WHERE t.product_id IN (SELECT product_id
+                        		FROM post_pin
+                        		WHERE post_id = #{postId}) AND p.post_id != #{postId} AND ROWNUM <= 10
+        ]]>
+	</select>
+
+	<insert id="insertPostLike" parameterType="map">
+		INSERT INTO
+		hy_stylelike
+		VALUES (#{userId}, #{postId})
+	</insert>
+
+	<delete id="deletePostLike" parameterType="map">
+		DELETE FROM
+		hy_stylelike
+		WHERE user_id = #{userId} AND post_id = #{postId}
+	</delete>
+
+</mapper>  
