@@ -29,7 +29,9 @@
 	<div id="thumbnails"></div>
 	<div id="postUrl"></div>
 	<a>세션아이디 : ${sessionId}</a>
-<button onclick="userPostList(${sessionId})">asdf</button>
+<button onclick="userPostList(${sessionId})">내 포스트</button>
+<button onclick="userPostList(24)">다른유저 포스트</button>
+
 
 </body>
 </html>
