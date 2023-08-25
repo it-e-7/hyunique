@@ -13,6 +13,7 @@
 
 	<!-- Static Resource Mapping -->
 	<resources mapping="/resources/**" location="/resources/" />
+<!--	<resources mapping="/resources/img/**" location="/resources/img/"/>-->
 
 	<!-- Internal Resource View Resolver -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

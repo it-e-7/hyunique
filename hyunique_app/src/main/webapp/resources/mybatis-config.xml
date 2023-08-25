@@ -18,7 +18,8 @@
 		위해 사용합니다. -->
 
 	<typeAliases>
-		<typeAlias alias="User" type="com.kosa5.hyunique.user.vo.UserVO" />  
+		<typeAlias alias="User" type="com.kosa5.hyunique.user.vo.UserVO" />
+		<typeAlias alias="PostVO" type="com.kosa5.hyunique.post.vo.PostVO" />
 	</typeAliases>
 	
 </configuration>	

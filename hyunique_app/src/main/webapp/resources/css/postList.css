@@ -1,0 +1,26 @@
+#main-wrapper {
+    margin : 0 auto;
+    width : 800px;
+}
+
+/* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
+#photo-gallery {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.photo {
+    float: left;
+    width: calc(50% - 2px);
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.photo img{
+    max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비에 맞춤 */
+    display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
+    margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
+    aspect-ratio: 3 / 4;
+}
