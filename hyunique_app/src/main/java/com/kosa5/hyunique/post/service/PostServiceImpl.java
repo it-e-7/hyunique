@@ -42,51 +42,114 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostVO> getfilterPostList(String gender, List<String> tpo) {
+    public List<PostVO> getfilterPostList(String gender, List<String> tpo, List<String> season, List<String> mood) {
         List<PostVO> postVOList = new ArrayList<>();
+        List<Integer> tpoNumber = new ArrayList<>();
+        List<Integer> seasonNumber = new ArrayList<>();
+        List<Integer> moodNumber = new ArrayList<>();
         PageVO pageVO = new PageVO();
-        System.out.println(tpo);
-        Integer tpoNubmer;
         //받아온 데이터 정리
 
         //성별
-        if (gender.equals("MAN")||gender.equals("WOMAN")){
+        if (gender.equals("MEN")||gender.equals("WOMEN")){
             //성별 그대로
         }
         else {
-            gender=null;
+            gender="";
         }
 
         //tpo
-        if (tpo.equals("kosa")){
-            tpoNubmer = 21;
+        if (tpo != null) {
+            if (tpo.contains("kosa")) {
+                tpoNumber.add(21);
+            }
+            if (tpo.contains("travel")) {
+                tpoNumber.add(22);
+            }
+            if (tpo.contains("campus")) {
+                tpoNumber.add(23);
+            }
+            if (tpo.contains("cafe")) {
+                tpoNumber.add(24);
+            }
+            if (tpo.contains("date")) {
+                tpoNumber.add(25);
+            }
+            if (tpo.contains("merry")) {
+                tpoNumber.add(26);
+            }
+            if (tpo.contains("office")) {
+                tpoNumber.add(27);
+            }
+            if (tpo.contains("daily")) {
+                tpoNumber.add(28);
+            }
         }
-        else if (tpo.equals("travel")){
-            tpoNubmer = 22;
+            //season
+
+        if(season != null) {
+            if (season.contains("spring")) {
+                seasonNumber.add(21);
+            }
+            if (season.contains("summer")) {
+                seasonNumber.add(22);
+            }
+            if (season.contains("fall")) {
+                seasonNumber.add(23);
+            }
+            if (season.contains("winter")) {
+                seasonNumber.add(24);
+            }
         }
-        else if (tpo.equals("campus")){
-            tpoNubmer = 23;
+
+        //mood
+        if (mood != null) {
+            if (mood.contains("minimal")) {
+                moodNumber.add(21);
+            }
+            if (mood.contains("easy")) {
+                moodNumber.add(22);
+            }
+            if (mood.contains("business")) {
+                moodNumber.add(23);
+            }
+            if (mood.contains("amekaji")) {
+                moodNumber.add(24);
+            }
+            if (mood.contains("street")) {
+                moodNumber.add(25);
+            }
+            if (mood.contains("city")) {
+                moodNumber.add(26);
+            }
+            if (mood.contains("onemile")) {
+                moodNumber.add(27);
+            }
+            if (mood.contains("sporty")) {
+                moodNumber.add(28);
+            }
+            if (mood.contains("unique")) {
+                moodNumber.add(29);
+            }
+            if (mood.contains("retro")) {
+                moodNumber.add(30);
+            }
+            if (mood.contains("lovely")) {
+                moodNumber.add(31);
+            }
+            if (mood.contains("moderncasual")) {
+                moodNumber.add(32);
+            }
         }
-        else if (tpo.equals("cafe")){
-            tpoNubmer = 24;
-        }
-        else if (tpo.equals("date")){
-            tpoNubmer = 25;
-        }
-        else if (tpo.equals("merry")){
-            tpoNubmer = 26;
-        }
-        else if (tpo.equals("office")){
-            tpoNubmer = 27;
-        }
-        else if (tpo.equals("daily")){
-            tpoNubmer = 28;
-        }
-        else{
-            tpoNubmer = null;
-        }
-        //postVOList = postMapper.loadMorePost(startIndex, endIndex);
-        System.out.println("postVOList check  -- "+postVOList);
+
+        System.out.println("*gender check  -- "+gender);
+        System.out.println("tpoNumber check  -- "+tpoNumber);
+        System.out.println("seasonNumber check  -- "+seasonNumber);
+        System.out.println("moodNumber check  -- "+moodNumber);
+        System.out.println("mood check  -- "+mood);
+
+
+        postVOList = postMapper.loadFilterPost(gender,tpoNumber,seasonNumber,moodNumber);
         return postVOList;
     }
 }

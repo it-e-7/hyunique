@@ -8,7 +8,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* 배경을 어둡게 만듭니다. */
     z-index: 1;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -18,4 +17,51 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 슬라이더 스타일 및 레이아웃 CSS */
+.rs-container {
+    position: relative;
+    height: 20px;
+}
+
+.rs-scale {
+    position : relative;
+}
+
+.rs-bg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+}
+
+.rs-selected {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    background-color: #007bff;
+    transform: translateY(-50%);
+}
+
+.rs-pointer {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.rs-slider-region {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    background-color: #007bff; /* 배경색을 파란색으로 설정합니다 */
+    transform: translateY(-50%);
 }

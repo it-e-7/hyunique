@@ -20,9 +20,17 @@ public class FilterController {
 	private PostService postService;
 
 	@GetMapping(value = "getFilterPost")
-	public String getFilterPost(@RequestParam("gender") String gender, @RequestParam(value = "tpo[]", required = false) List<String> tpo, Model model) {
+	public String getFilterPost(@RequestParam(value = "gender", required = false) String gender,
+								@RequestParam(value = "tpo[]", required = false) List<String> tpo,
+								@RequestParam(value = "season[]", required = false) List<String> season,
+								@RequestParam(value = "mood[]", required = false) List<String> mood,
+								Model model) {
+/*		System.out.println(gender);
+		System.out.println(tpo);
+		System.out.println(season);
+		System.out.println(mood);*/
 		List<PostVO> postVOList = new ArrayList<>();
-		postVOList = postService.getfilterPostList(gender,tpo);
+		postVOList = postService.getfilterPostList(gender,tpo,season,mood);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}

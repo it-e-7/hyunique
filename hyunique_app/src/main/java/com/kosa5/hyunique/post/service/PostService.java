@@ -10,5 +10,5 @@ public interface PostService {
     List<PostVO> findTwelvePostList (Integer user_id);
     List<PostVO> loadMorePost (Integer page);
 
-    List<PostVO> getfilterPostList (String gender, List<String> tpo);
+    List<PostVO> getfilterPostList (String gender, List<String> tpo, List<String> season, List<String> mood);
 }
