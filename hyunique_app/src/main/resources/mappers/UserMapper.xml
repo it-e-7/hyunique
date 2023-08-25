@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa5.hyunique.user.mapper.UserMapper">
+
+	<select id="insertOrGetUser" statementType="CALLABLE"
+		resultType="java.util.Map">
+		{call insert_or_get_user(#{inputValue, mode=IN,
+		jdbcType=VARCHAR},
+		#{inputType, mode=IN, jdbcType=VARCHAR},
+		#{userId,
+		mode=OUT, jdbcType=VARCHAR})}
+	</select>
+
+	<select id="getUserInfoAndFollowerCount" parameterType="int"
+		resultType="com.kosa5.hyunique.user.vo.UserVO">
+		SELECT
+		hy_user.user_id as userId,
+		hy_user.user_img as
+		userImg,
+		hy_user.user_backimg as userBackimg,
+		hy_user.user_nickname as
+		userNickname,
+		hy_user.user_sex as userSex,
+		hy_user.user_height as
+		userHeight,
+		hy_user.user_form as userForm,
+		hy_user.user_introduce as
+		userIntroduce,
+		hy_user.kakao_oauth as kakaoOauth,
+		hy_user.naver_oauth as
+		naverOauth,
+		hy_sns_url.facebook_url as facebookUrl,
+		hy_sns_url.twitter_url as twitterUrl,
+		hy_sns_url.instagram_url as
+		instagramUrl,
+		COUNT(DISTINCT hy_follow.follower_id) AS followerCount,
+		LISTAGG(DISTINCT hy_styletag.style_name, ', ') WITHIN GROUP (ORDER BY
+		hy_styletag.style_name) AS styleNames
+		FROM
+		hy_user
+		LEFT JOIN hy_sns_url
+		ON hy_user.user_id = hy_sns_url.user_id
+		LEFT JOIN hy_follow ON
+		hy_user.user_id = hy_follow.following_id
+		LEFT JOIN user_preference ON
+		hy_user.user_id = user_preference.user_id
+		LEFT JOIN hy_styletag ON
+		user_preference.style_id =
+		hy_styletag.style_id
+		WHERE
+		hy_user.user_id =
+		#{userId}
+		GROUP BY
+		hy_user.user_id,
+		hy_user.user_img,
+		hy_user.user_backimg,
+		hy_user.user_nickname,
+		hy_user.user_sex,
+		hy_user.user_height,
+		hy_user.user_form,
+		hy_user.user_introduce,
+		hy_user.kakao_oauth,
+		hy_user.naver_oauth,
+		hy_sns_url.facebook_url,
+		hy_sns_url.twitter_url,
+		hy_sns_url.instagram_url
+	</select>
+
+	<update id="updateUser"
+		parameterType="com.kosa5.hyunique.user.vo.UserVO">
+		{call updateUserProcedure(
+		#{userNickname},
+		#{userIntroduce},
+		#{userSex},
+		#{userHeight},
+		#{instagramUrl},
+		#{twitterUrl},
+		#{facebookUrl},
+		#{userId}
+		)}
+	</update>
+
+	<select id="getPostsByUserId" parameterType="int"
+		resultType="com.kosa5.hyunique.user.vo.PostVO">
+		SELECT
+		hy_post.post_id as postId,
+		hy_post.thumbnail_url as thumbnailUrl
+		FROM
+		hy_user
+		LEFT JOIN hy_post ON hy_user.user_id = hy_post.user_id
+		WHERE
+		hy_user.user_id = #{userId}
+	</select>
+
+</mapper>

@@ -1,18 +1,36 @@
 package com.kosa5.hyunique.post.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.kosa5.hyunique.post.mapper.PostMapper;
+import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PageVO;
 import com.kosa5.hyunique.post.vo.PostVO;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-public class PostServiceImpl implements PostService{
-    private final PostMapper postMapper;
+public class PostServiceImpl implements PostService {
+
+	@Autowired
+	PostMapper postMapper;
+	
+	@Override
+	public PostDetailVO getPostDetailByPostIdUserId(int postId, int userId) {
+		return postMapper.getPostDetailByPostIdUserId(postId, userId);
+	}
+	
+	@Override
+	public int postLikePost(int postId, int userId) {
+		return postMapper.insertPostLike(postId, userId);
+	}
+	
+	@Override
+	public int postUnlikePost(int postId, int userId) {
+		return postMapper.deletePostLike(postId, userId);
+	}
 
     @Override
     public PostVO getOnePost(Integer post_id) {
