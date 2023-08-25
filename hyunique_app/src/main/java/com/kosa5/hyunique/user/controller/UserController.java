@@ -1,5 +1,7 @@
 package com.kosa5.hyunique.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,9 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa5.hyunique.user.service.UserService;
+import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
 
 @Controller
@@ -28,7 +33,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("{userId}")
+	@GetMapping("{userId}")//유저페이지, 마이페이지 분리? 통합 후 ajax처리?
 	public String getUserInfoAndFollowerCount(HttpSession session, Model model) {
 		String sessionId = (String) session.getAttribute("sessionId"); // 세션에서 아이디 가져오기
 		if (sessionId != null) {
@@ -56,7 +61,7 @@ public class UserController {
 	}
 
 	@PostMapping("updateUser")
-	public ResponseEntity<String> updateUser(@RequestBody UserVO user,@SessionAttribute int sessionId) {
+	public ResponseEntity<String> updateUser(@RequestBody UserVO user, @SessionAttribute int sessionId) {
 		System.out.println(sessionId);
 		user.setUserId(sessionId);
 		try {
@@ -67,4 +72,15 @@ public class UserController {
 			return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	@GetMapping("userpostlist")
+	@ResponseBody
+	public List<PostVO> getPostsByUserId(HttpServletRequest request, @RequestParam(required = false) Integer userId, @SessionAttribute("sessionId") int sessionId) {
+	    if (userId == null) {
+	        userId = sessionId;
+	    }
+	    return userService.getPostsByUserId(userId);
+	}
+
+
 }

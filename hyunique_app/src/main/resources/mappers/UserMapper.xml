@@ -68,6 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hy_sns_url.twitter_url,
 		hy_sns_url.instagram_url
 	</select>
+
 	<update id="updateUser"
 		parameterType="com.kosa5.hyunique.user.vo.UserVO">
 		{call updateUserProcedure(
@@ -81,6 +82,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)}
 	</update>
 
-
+	<select id="getPostsByUserId" parameterType="int"
+		resultType="com.kosa5.hyunique.user.vo.PostVO">
+		SELECT
+		hy_post.post_id as postId,
+		hy_post.thumbnail_url as thumbnailUrl
+		FROM
+		hy_user
+		LEFT JOIN hy_post ON hy_user.user_id = hy_post.user_id
+		WHERE
+		hy_user.user_id = #{userId}
+	</select>
 
 </mapper>

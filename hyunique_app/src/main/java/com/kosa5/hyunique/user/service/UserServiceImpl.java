@@ -1,12 +1,14 @@
 package com.kosa5.hyunique.user.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa5.hyunique.user.mapper.UserMapper;
+import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
 
 @Service
@@ -37,7 +39,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(UserVO user) {
 		System.out.println("업데이트 시도는 함");
-        userMapper.updateUser(user);
+		userMapper.updateUser(user);
+	}
+
+	@Override
+	public List<PostVO> getPostsByUserId(Integer userId) {
+		return userMapper.getPostsByUserId(userId);
 	}
 
 }

@@ -27,3 +27,32 @@ function updateUser() {
         }
     });
 }
+
+function userPostList(sessionId) {
+	  $.ajax({
+	    url: '/hyunique/user/userpostlist',
+	    type: 'GET',
+	    data: { userId: sessionId },
+	    success: function(posts) {
+	      var thumbnailsDiv = $('#thumbnails');
+	      thumbnailsDiv.empty(); // 기존 썸네일 이미지 제거
+	      posts.forEach(function(post) {
+	    	  var thumbnailImage = $('<img/>', {
+	    	    src: post.thumbnailUrl,
+	    	    class: 'thumbnail-image'
+	    	  });
+
+	    	  var postLink = $('<a/>', {
+	    	    href: '/hyunique/post/' + post.postId
+	    	  });
+
+	    	  postLink.append(thumbnailImage);
+	    	  thumbnailsDiv.append(postLink); // 하이퍼링크로 된 썸네일 이미지 추가
+	    	});
+
+	    },
+	    error: function(error) {
+	      console.log('게시물을 불러오는 데 실패했습니다:', error);
+	    }
+	  });
+	}
