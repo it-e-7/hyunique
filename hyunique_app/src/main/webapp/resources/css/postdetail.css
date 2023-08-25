@@ -7,7 +7,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1rem 1rem;
+	padding: 0.5rem 1rem 1rem 1rem;
 }
 
 .left-user-info {
@@ -25,6 +25,12 @@
 
 .left-user-info p {
 	color: var(--grey5);
+}
+
+.follow-btn {
+	font-size: 1.05rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.7rem;
 }
 
 .img-slider-container {

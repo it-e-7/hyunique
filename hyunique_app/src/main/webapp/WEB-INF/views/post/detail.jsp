@@ -14,6 +14,11 @@
 	
 </head>
 <body>
+	<div class="header-wrapper">
+		<button onclick="backward()">
+			<img src="/hyunique/resources/img/ic-backward.png" />
+		</button>
+	</div>
 	<div class="content-wrapper">
 		<div class="user-info-wrapper">
 			<div class="left-user-info">
@@ -25,7 +30,7 @@
 			</div>
 			<c:choose>
 				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow" onclick="follow(${postVO.userId})">팔로우</button>
+					<button class="jw-btn-nonshadow follow-btn" onclick="follow(${postVO.userId})">팔로우</button>
 				</c:when>
 				<c:otherwise>
 					<button class="jw-btn-selected">팔로잉</button>

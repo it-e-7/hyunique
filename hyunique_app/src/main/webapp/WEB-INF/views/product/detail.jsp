@@ -14,6 +14,11 @@
 
 </head>
 <body>
+	<div class="header-wrapper">
+		<button onclick="backward()">
+			<img src="/hyunique/resources/img/ic-backward.png" />
+		</button>
+	</div>
 	<div class="content-wrapper">
 		<div class="product-img-wrapper">
 			<img src="${product.productImg}" class="product-img" />
