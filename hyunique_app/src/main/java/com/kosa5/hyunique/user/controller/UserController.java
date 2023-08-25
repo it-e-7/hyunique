@@ -33,7 +33,8 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("{userId}")//유저페이지, 마이페이지 분리? 통합 후 ajax처리?
+	// 유저 기본정보 가져오기
+	@GetMapping("{userId}")
 	public String getUserInfoAndFollowerCount(HttpSession session, Model model) {
 		String sessionId = (String) session.getAttribute("sessionId"); // 세션에서 아이디 가져오기
 		if (sessionId != null) {
@@ -49,6 +50,7 @@ public class UserController {
 		return "myStylePage";
 	}
 
+	// 유저 기본정보 업데이트 화면 이동
 	@GetMapping("update")
 	public String userUpdatePage(HttpServletRequest request, Model model) {
 		UserVO user = (UserVO) request.getSession().getAttribute("user"); // 세션에서 UserVO 가져오기
@@ -60,6 +62,7 @@ public class UserController {
 		return "userInfoUpdatePage";
 	}
 
+	// 유저 기본정보 업데이트 삽입
 	@PostMapping("updateUser")
 	public ResponseEntity<String> updateUser(@RequestBody UserVO user, @SessionAttribute int sessionId) {
 		System.out.println(sessionId);
@@ -73,14 +76,15 @@ public class UserController {
 		}
 	}
 
+	// 유저 게시글 썸네일 및 URL가져오기
 	@GetMapping("userpostlist")
 	@ResponseBody
-	public List<PostVO> getPostsByUserId(HttpServletRequest request, @RequestParam(required = false) Integer userId, @SessionAttribute("sessionId") int sessionId) {
-	    if (userId == null) {
-	        userId = sessionId;
-	    }
-	    return userService.getPostsByUserId(userId);
+	public List<PostVO> getPostsByUserId(HttpServletRequest request, @RequestParam(required = false) Integer userId,
+			@SessionAttribute("sessionId") int sessionId) {
+		if (userId == null) {
+			userId = sessionId;
+		}
+		return userService.getPostsByUserId(userId);
 	}
-
 
 }

@@ -12,6 +12,6 @@ public interface UserService {
 
 	public void updateUser(UserVO user);
 
-    List<PostVO> getPostsByUserId(Integer userId);
+	List<PostVO> getPostsByUserId(Integer userId);
 
 }
