@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<%@ include file="/WEB-INF/views/common.jsp"%>
 </head>
 <body>
 	<!-- 카카오 로그인 -->
