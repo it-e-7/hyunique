@@ -50,14 +50,30 @@
 	color: var(--grey3);
 }
 
-select[name="depart"] {
+.select-depart {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: scroll;
 	width: 100%;
-	height: 5rem;
-	padding: 1rem 0;
+	height: 4.8rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	scroll-snap-type: y mandatory;
+}
+
+.select-depart li {
+	scroll-snap-align: start;
+	height: 1.6rem;
 }
 
 ul {
 	list-style: none;
+}
+
+.stock-card-list-wrapper {
+	position: relative;
 }
 
 .stock-card-list {
@@ -151,4 +167,43 @@ ul {
 .buy-btn img {
 	width: 1.4rem;
 	margin: 0.1rem 0.3rem 0 0;
+}
+
+.select-depart-wrapper {
+	position: relative;
+	width: 100%;
+	margin: 0.5rem 0;
+	padding: 0.1rem 0;
+}
+
+.fade-out {
+	position: absolute;
+	width: 100%;
+	height: 1.8rem;
+	top: 0;
+	left: 0;
+
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 58.33%, #FFFFFF 100%);
+	transform: rotate(-180deg);
+	z-index: 1;
+}
+
+.fade-out-reverse {
+	position: absolute;
+	width: 100%;
+	height: 1.8rem;
+	bottom: 0;
+	left: 0;
+
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 58.33%, #FFFFFF 100%);
+}
+
+.fade-out-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2rem;
+	height: 100%;
+
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 60.19%);
 }

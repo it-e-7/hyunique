@@ -30,38 +30,46 @@
 			</strong>
 			<div class="product-stock-wrapper">
 				<p class="stock-title">현대백화점 재고 확인</p>
-				<select name="depart">
-					<c:forEach var="depart" items="${product.storeList}">
-						<option value='${depart.storeId}'>${depart.storeName}</option>
-					</c:forEach>
-				</select>
+				<div class="select-depart-wrapper">
+					<div class="fade-out"></div>
+					<ul class="select-depart">
+						<li id="select-depart-0">&nbsp;</li>
+						<c:forEach var="depart" items="${product.storeList}">
+							<li id='select-depart-${depart.storeId}'>${depart.storeName}</li>
+						</c:forEach>
+						<li>&nbsp;</li>
+					</ul>
+					<div class="fade-out-reverse"></div>
+				</div>
 				<c:forEach var="depart" items="${product.storeList}">
 					<c:if test="${fn:length(depart.stockList) > 0}">
-						<ul class="stock-card-list" id="card-list-${depart.storeId}">
-							<c:forEach var="stock" items="${depart.stockList}">
-								<c:choose>
-									<c:when test="${stock.squantity > 0}">
-										<li class="stock-card">
-											<div class="grey-text">
-												<p>${stock.productColor}</p>
-												<p>${stock.productSize}</p>
-											</div>
-											<p class="stock-quantity">${stock.squantity}개</p>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="stock-card sold-out">
-											<div class="grey-text">
-												<p>${stock.productColor}</p>
-												<p>${stock.productSize}</p>
-											</div>
-											<p class="stock-quantity">품절</p>
-										</li>
-									</c:otherwise>
-								</c:choose>
-
-							</c:forEach>
-						</ul>
+						<div class="stock-card-list-wrapper">
+							<ul class="stock-card-list" id="card-list-${depart.storeId}">
+								<c:forEach var="stock" items="${depart.stockList}">
+									<c:choose>
+										<c:when test="${stock.squantity > 0}">
+											<li class="stock-card">
+												<div class="grey-text">
+													<p>${stock.productColor}</p>
+													<p>${stock.productSize}</p>
+												</div>
+												<p class="stock-quantity">${stock.squantity}개</p>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="stock-card sold-out">
+												<div class="grey-text">
+													<p>${stock.productColor}</p>
+													<p>${stock.productSize}</p>
+												</div>
+												<p class="stock-quantity">품절</p>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</ul>
+							<div class="fade-out-right"></div>
+						</div>
 					</c:if>
 					<c:if test="${fn:length(depart.stockList) == 0}">
 						<div class="stock-card-list" id="card-list-${depart.storeId}">
@@ -83,9 +91,9 @@
 			</div>
 		</div>
 	</div>
-	<button class="jw-btn jw-btn-fixed buy-btn" onclick="window.open('${product.productUrl}')">
-		<img src="/hyunique/resources/img/ic-buy.png">
-		구매하기
+	<button class="jw-btn jw-btn-fixed buy-btn"
+		onclick="window.open('${product.productUrl}')">
+		<img src="/hyunique/resources/img/ic-buy.png"> 구매하기
 	</button>
 </body>
 <script

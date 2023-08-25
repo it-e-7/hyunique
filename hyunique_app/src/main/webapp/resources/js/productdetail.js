@@ -1,14 +1,23 @@
-let presentDisplayId = $('select[name="depart"]').val();
+let presentDisplayId = 1;
+let scrollLock = false;
 
 $(`#card-list-${presentDisplayId}`).css('display', 'flex');
 
-$('select[name="depart"]').on('change', (e) => {
-	const nextDisplayId = e.target.value;
+$('.select-depart').scroll((e) => {
+	if(scrollLock) return;
+	scrollLock = true;
+	
+	const departHeight = $('#select-depart-0').height();
+	const nextDisplayId = Math.round($('.select-depart').scrollTop() / departHeight) + 1;
 	
 	$(`#card-list-${presentDisplayId}`).css('display', 'none');
 	$(`#card-list-${nextDisplayId}`).css('display', 'flex');
 	
 	presentDisplayId = nextDisplayId;
+	
+	setTimeout(() => {
+		scrollLock = false;
+	}, 100);
 });
 
 function moveToPost(postId) {
