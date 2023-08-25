@@ -225,6 +225,7 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 config/
+.idea
 
 pom.properties
 MANIFEST.MF
