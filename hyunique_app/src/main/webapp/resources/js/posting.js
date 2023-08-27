@@ -4,22 +4,10 @@ let tpoChecked;
 let seasonChecked;
 let content;
 
-let x;
-let y;
-let tag;
-let tagFloatingDiv;
+let dragTag;
+let container;
 
-let pressTimer;
-
-var container = $("#image-view");
-
-var active = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
+let items = {};
 
 $(document).ready(function() {
     $("#uploadButton").click(function() {
@@ -31,14 +19,14 @@ $(document).ready(function() {
         $(".write-container").show();
     });
 
-    $('#upload-button').click(function(){
+    $('#upload-button').click(function() {
         getFormValue();
         $(".write-container").hide();
         $(".post-container").show();
-        console.log(img);
         sendPostToServer();
-    });
 
+        console.log(items);
+    });
 
     $("#fileInput").change(function(e) {
         const files = e.target.files;
@@ -53,129 +41,118 @@ $(document).ready(function() {
                 const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
                 const li = $("<li>").append(imageElement);
                 $('#image-list').append(li);
+                container = imageElement;
 
-                // 좌표 선택 (저장할 때 퍼센트로 저장하기)
-                imageElement.click(function(e){
-                    var offsetX = e.offsetX;
-                    var offsetY = e.offsetY;
-                    var tagValue = prompt("태그를 입력하세요:"); // 태그 값을 입력받습니다.
+                imageElement.click(function(e) {
+                    var XOffset = e.offsetX;
+                    var YOffset = e.offsetY;
+
+                    var tagValue = prompt("태그를 입력하세요:");
                     if (tagValue) {
-                        var tagElement = $("<span>").addClass("tag").text(tagValue).css({
-                            left: offsetX + "px",
-                            top: offsetY + "px",
+
+                        var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
+                            left: XOffset + "px",
+                            top: YOffset + "px",
                             position: "absolute"
                         });
-//                        li.append(tagElement);
-                        $(this).parent().append(tagElement);
-                        tagElement.draggable();
 
+                        const id = tagElement.attr('id');
+                        console.log("id: "+ id);
 
-container.on("mousedown touchstart", function(event) {
-    dragStart(event);
-});
+                        items[id] = {
+                            initialX: 0,
+                            initialY: 0,
+                            currentX: 0,
+                            currentY: 0,
+                            xOffset: 0,
+                            yOffset: 0,
+                            active: false
+                        };
 
-container.on("mouseup touchend", function(event) {
-    dragEnd(event);
-});
+                        console.log("전역 : " + XOffset, YOffset);
 
-container.on("mousemove touchmove", function(event) {
-    drag(event);
-});
+                        items[id].xOffset = XOffset;
+                        items[id].yOffset = YOffset;
 
-function dragStart(event) {
-    if (event.type === "touchstart") {
-        initialX = event.touches[0].clientX - xOffset;
-        initialY = event.touches[0].clientY - yOffset;
-    } else {
-        initialX = event.clientX - xOffset;
-        initialY = event.clientY - yOffset;
-    }
+                        li.append(tagElement);
 
-    if (event.target === container.get(0)) {
-        active = true;
-    }
-}
+                        tagElement.on("mousedown touchstart", function(event) {
+                            dragStart(event);
+                        });
 
-function dragEnd(event) {
-    initialX = currentX;
-    initialY = currentY;
+                        tagElement.on("mouseup touchend", function(event) {
+                            dragEnd(event);
+                        });
 
-    active = false;
-}
-
-function drag(event) {
-    if (active) {
-        event.preventDefault();
-
-        if (event.type === "touchmove") {
-            currentX = event.touches[0].clientX - initialX;
-            currentY = event.touches[0].clientY - initialY;
-        } else {
-            currentX = event.clientX - initialX;
-            currentY = event.clientY - initialY;
-        }
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        container.css("transform", "translate3d(" + currentX + "px, " + currentY + "px, 0)");
-    }
-}
-
-
-    function dragStart(e) {
-      if (e.type === "touchstart") {
-        initialX = e.touches[0].clientX - xOffset;
-        initialY = e.touches[0].clientY - yOffset;
-      } else {
-        initialX = e.clientX - xOffset;
-        initialY = e.clientY - yOffset;
-      }
-
-      if (e.target === tagElement) {
-        active = true;
-      }
-    }
-
-    function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-
-      active = false;
-    }
-
-    function drag(e) {
-      if (active) {
-
-        e.preventDefault();
-
-        if (e.type === "touchmove") {
-          currentX = e.touches[0].clientX - initialX;
-          currentY = e.touches[0].clientY - initialY;
-        } else {
-          currentX = e.clientX - initialX;
-          currentY = e.clientY - initialY;
-        }
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        setTranslate(currentX, currentY, tagElement);
-      }
-    }
-
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    }
-
+                        tagElement.on("mousemove touchmove", function(event) {
+                            drag(event, tagElement);
+                        });
                     }
                 });
             };
             reader.readAsDataURL(file);
         });
     });
-
 });
+
+function dragStart(event) {
+    const id = event.target.id;
+    const item = items[id];
+
+    console.log(item.xOffset, item.yOffset);
+
+    if (event.type === "touchstart") {
+        item.initialX = event.touches[0].clientX - item.xOffset;
+        item.initialY = event.touches[0].clientY - item.yOffset;
+    } else {
+        item.initialX = event.clientX - item.xOffset;
+        item.initialY = event.clientY - item.yOffset;
+    }
+
+    if ($(event.target).hasClass("tag")) {
+        item.active = true;
+    }
+}
+
+function dragEnd(event) {
+    const id = event.target.id;
+    const item = items[id];
+
+    item.initialX = item.currentX;
+    item.initialY = item.currentY;
+    item.active = false;
+}
+
+function drag(event, tagElement) {
+    const id = event.target.id;
+    const item = items[id];
+
+    if (item.active) {
+        event.preventDefault();
+
+        if (event.type === "touchmove") {
+            item.currentX = event.touches[0].clientX - item.initialX;
+            item.currentY = event.touches[0].clientY - item.initialY;
+        } else {
+            item.currentX = event.clientX - item.initialX;
+            item.currentY = event.clientY - item.initialY;
+        }
+
+        item.xOffset = item.currentX;
+        item.yOffset = item.currentY;
+
+        setTranslate(item.currentX, item.currentY, tagElement);
+    }
+}
+
+
+function setTranslate(xPos, yPos, el) {
+    el.css({
+        "left": xPos + "px",
+        "top": yPos + "px"
+    });
+}
+
 
 function getFormValue() {
     styleChecked = $('input[name="style"]:checked').val();
@@ -183,10 +160,10 @@ function getFormValue() {
     seasonChecked = $('input[name="season"]:checked').val();
     content = $('#content').val();
 
-    $('.post-image-container').append(img);
+    $('.post-image-container').append(imgList[0]);
     $('.tag-container').append(styleChecked + ' ' + tpoChecked + ' ' + seasonChecked);
 
-    console.log(styleChecked, tpoChecked, seasonChecked, content, img);
+    console.log(styleChecked, tpoChecked, seasonChecked, content, imgList[0]);
 }
 
 function sendPostToServer() {
@@ -212,7 +189,3 @@ function sendPostToServer() {
         }
     });
 }
-
-
-
-

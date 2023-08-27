@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>posting</title>
+    <%@ include file="/WEB-INF/views/common.jsp" %>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="/hyunique/resources/js/posting.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css"
         href="/hyunique/resources/css/posting.css"/>
 </head>
@@ -34,7 +41,8 @@
             <form action="post" method="post" enctype="multipart/form-data">
                 <div class="image-view">
                     <ul id="image-list"></ul>
-                    <div class="tag-container" id="tag-container"></div>
+                    <div class="tag-container" id="tag-container">
+                    </div>
                 </div>
                 <div class="style-button-group">
                     <label>스타일</label>
