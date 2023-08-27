@@ -47,16 +47,21 @@ $(document).ready(function() {
                     var XOffset = e.offsetX;
                     var YOffset = e.offsetY;
 
-                    var tagValue = prompt("태그를 입력하세요:");
-                    if (tagValue) {
 
+                    var tagValue = searchProduct();
+
+                    console.log(tagValue);
+
+                    if (tagValue) {
+                        searchProduct(tagValue);
                         var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
                             left: XOffset + "px",
                             top: YOffset + "px",
                             position: "absolute"
                         });
 
-                        const id = tagElement.attr('id');
+                        // 위치 정보 초기화
+                        const id = tagElement.attr('id');  // 아이템에 고유한 ID를 설정해야 합니다.
                         console.log("id: "+ id);
 
                         items[id] = {
@@ -76,6 +81,7 @@ $(document).ready(function() {
 
                         li.append(tagElement);
 
+                        // 새로 생성된 태그에 드래그 이벤트 바인딩
                         tagElement.on("mousedown touchstart", function(event) {
                             dragStart(event);
                         });
@@ -130,18 +136,30 @@ function drag(event, tagElement) {
     if (item.active) {
         event.preventDefault();
 
+        let newX, newY;
+
         if (event.type === "touchmove") {
-            item.currentX = event.touches[0].clientX - item.initialX;
-            item.currentY = event.touches[0].clientY - item.initialY;
+            newX = event.touches[0].clientX - item.initialX;
+            newY = event.touches[0].clientY - item.initialY;
         } else {
-            item.currentX = event.clientX - item.initialX;
-            item.currentY = event.clientY - item.initialY;
+            newX = event.clientX - item.initialX;
+            newY = event.clientY - item.initialY;
         }
 
-        item.xOffset = item.currentX;
-        item.yOffset = item.currentY;
+        // 이미지의 크기와 위치를 가져옵니다.
+        const imgWidth = container.width();
+        const imgHeight = container.height();
+        const imgOffset = container.offset();
 
-        setTranslate(item.currentX, item.currentY, tagElement);
+        if (newX >= imgOffset.left && newX <= imgOffset.left + imgWidth &&
+            newY >= imgOffset.top && newY <= imgOffset.top + imgHeight) {
+
+            // 현재 위치를 저장합니다.
+            item.xOffset = newX;
+            item.yOffset = newY;
+
+            setTranslate(newX, newY, tagElement);
+        }
     }
 }
 
@@ -153,6 +171,21 @@ function setTranslate(xPos, yPos, el) {
     });
 }
 
+function searchProduct(productName) {
+    $.ajax({
+        url: '/hyunique/post/search',
+        type: 'GET',
+        contentType: 'application/json',
+        data: {productName},
+        success: function(response) {
+            window.location.href = 'post/search';
+        }
+    });
+
+    $("#search-btn").click(function() {
+        return $("#productName").val();
+    });
+}
 
 function getFormValue() {
     styleChecked = $('input[name="style"]:checked').val();
