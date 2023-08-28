@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.post.service;
 
+import com.kosa5.hyunique.post.vo.FilterPostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,105 +60,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostVO> getfilterPostList(String gender, List<String> tpo, List<String> season, List<String> mood, Integer minHeight, Integer maxHeight) {
+    public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
         List<PostVO> postVOList = new ArrayList<>();
         List<Integer> tpoNumber = new ArrayList<>();
         List<Integer> seasonNumber = new ArrayList<>();
         List<Integer> moodNumber = new ArrayList<>();
         PageVO pageVO = new PageVO();
         //받아온 데이터 정리
-
-        //성별
-        if (gender.equals("MEN")||gender.equals("WOMEN")){
-            //성별 그대로
-        }
-        else {
-            gender="";
-        }
-
-        //tpo
-        if (tpo != null) {
-            if (tpo.contains("kosa")) {
-                tpoNumber.add(21);
-            }
-            if (tpo.contains("travel")) {
-                tpoNumber.add(22);
-            }
-            if (tpo.contains("campus")) {
-                tpoNumber.add(23);
-            }
-            if (tpo.contains("cafe")) {
-                tpoNumber.add(24);
-            }
-            if (tpo.contains("date")) {
-                tpoNumber.add(25);
-            }
-            if (tpo.contains("merry")) {
-                tpoNumber.add(26);
-            }
-            if (tpo.contains("office")) {
-                tpoNumber.add(27);
-            }
-            if (tpo.contains("daily")) {
-                tpoNumber.add(28);
-            }
-        }
-            //season
-
-        if(season != null) {
-            if (season.contains("spring")) {
-                seasonNumber.add(21);
-            }
-            if (season.contains("summer")) {
-                seasonNumber.add(22);
-            }
-            if (season.contains("fall")) {
-                seasonNumber.add(23);
-            }
-            if (season.contains("winter")) {
-                seasonNumber.add(24);
-            }
-        }
-
-        //mood
-        if (mood != null) {
-            if (mood.contains("minimal")) {
-                moodNumber.add(21);
-            }
-            if (mood.contains("easy")) {
-                moodNumber.add(22);
-            }
-            if (mood.contains("business")) {
-                moodNumber.add(23);
-            }
-            if (mood.contains("amekaji")) {
-                moodNumber.add(24);
-            }
-            if (mood.contains("street")) {
-                moodNumber.add(25);
-            }
-            if (mood.contains("city")) {
-                moodNumber.add(26);
-            }
-            if (mood.contains("onemile")) {
-                moodNumber.add(27);
-            }
-            if (mood.contains("sporty")) {
-                moodNumber.add(28);
-            }
-            if (mood.contains("unique")) {
-                moodNumber.add(29);
-            }
-            if (mood.contains("retro")) {
-                moodNumber.add(30);
-            }
-            if (mood.contains("lovely")) {
-                moodNumber.add(31);
-            }
-            if (mood.contains("moderncasual")) {
-                moodNumber.add(32);
-            }
-        }
+        String gender = filterPostVO.getGender();
+        List<Integer>tpo = filterPostVO.getTpo();
+        List<Integer>season = filterPostVO.getSeason();
+        List<Integer>mood = filterPostVO.getMood();
+        Integer maxHeight = filterPostVO.getMaxHeight();
+        Integer minHeight = filterPostVO.getMinHeight();
 
 /*        System.out.println("*gender check  -- "+gender);
         System.out.println("tpoNumber check  -- "+tpoNumber);

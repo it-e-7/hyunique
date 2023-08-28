@@ -48,7 +48,7 @@
         SELECT *
         FROM HY_POST
         WHERE TPO_ID IN
-        <foreach collection="tpoNumber" item="tpoItem" open="(" close=")" separator=",">
+        <foreach collection="tpoNumber" item="tpoItem" separator=",">
             #{tpoItem}
         </foreach>
         ]]>
