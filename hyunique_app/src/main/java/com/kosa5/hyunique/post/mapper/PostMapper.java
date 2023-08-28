@@ -1,6 +1,7 @@
 package com.kosa5.hyunique.post.mapper;
 
 import com.kosa5.hyunique.post.vo.PostProductVO;
+import com.kosa5.hyunique.post.vo.FilterPostVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,9 +25,7 @@ public interface PostMapper {
 
     List<PostVO> loadMorePost(@Param("startIndex") Integer startIndex, @Param("endIndex") Integer endIndex);
 
-    List<PostVO> loadFilterPost(@Param("gender") String gender, @Param("tpoNumber") List<Integer> tpoNumber,
-                                @Param("seasonNumber") List<Integer> seasonNumber, @Param("moodNumber") List<Integer> moodNumber,
-                                @Param("minHeight") Integer minHeight, @Param("moodNumber") Integer maxHeight);
+    List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
     List<PostProductVO> selectSearchProductList(@Param("productName") String productName);
 }

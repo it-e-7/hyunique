@@ -8,9 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>posting</title>
-    <%@ include file="/WEB-INF/views/common.jsp" %>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <%@ include file="/WEB-INF/views/common.jsp"%>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/hyunique/resources/js/posting.js"></script>
 

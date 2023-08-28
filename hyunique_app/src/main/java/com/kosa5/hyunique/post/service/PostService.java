@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.post.service;
 
+import com.kosa5.hyunique.post.vo.FilterPostVO;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostVO;
@@ -14,13 +15,13 @@ public interface PostService {
 
     int postUnlikePost(int postId, int userId);
 
-    PostVO getOnePost(Integer post_id);
+    PostVO getOnePost (Integer postId);
 
-    List<PostVO> findTwelvePostList(Integer user_id);
+    List<PostVO> findTwelvePostList (Integer userId);
 
     List<PostVO> loadMorePost(Integer page);
 
-    List<PostVO> getfilterPostList(String gender, List<String> tpo, List<String> season, List<String> mood, Integer minHeight, Integer maxHeight);
+    List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
 
     List<PostProductVO> getSearchProductList(String productName);
 }

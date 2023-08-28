@@ -24,9 +24,9 @@
         <div class="modal_body">
                 <div>
                     <label for="maleRadio">MEN</label>
-                    <input type="radio" id="maleRadio" name="gender" value="MEN">
+                    <input type="radio" id="maleRadio" name="gender" value="M">
                     <label for="femaleRadio">WOMEN</label>
-                    <input type="radio" id="femaleRadio" name="gender" value="WOMEN">
+                    <input type="radio" id="femaleRadio" name="gender" value="W">
                 </div>
                 <div class="rs-height">
                 140cm - 180cm
@@ -48,61 +48,61 @@
                 <div>
                     <label>TPO</label>
                     <label for="beachCheckbox">코사 🏄</label>
-                    <input type="checkbox" id="kosaCheckbox" name="tpo" value="kosa">
+                    <input type="checkbox" id="kosaCheckbox" name="tpo" value="21">
                     <label for="travelCheckbox">여행 🏖</label>
-                    <input type="checkbox" id="travelCheckbox" name="tpo" value="travel">
+                    <input type="checkbox" id="travelCheckbox" name="tpo" value="22">
                     <label for="beachCheckbox">캠퍼스 🎓</label>
-                    <input type="checkbox" id="campusCheckbox" name="tpo" value="campus">
+                    <input type="checkbox" id="campusCheckbox" name="tpo" value="23">
                     <label for="travelCheckbox">카페 ☕</label>
-                    <input type="checkbox" id="cafeCheckbox" name="tpo" value="cafe">
+                    <input type="checkbox" id="cafeCheckbox" name="tpo" value="24">
                     <label for="beachCheckbox">데이트 💄</label>
-                    <input type="checkbox" id="dateCheckbox" name="tpo" value="date">
+                    <input type="checkbox" id="dateCheckbox" name="tpo" value="25">
                     <label for="travelCheckbox">결혼식 👰</label>
-                    <input type="checkbox" id="merryCheckbox" name="tpo" value="merry">
+                    <input type="checkbox" id="merryCheckbox" name="tpo" value="26">
                     <label for="beachCheckbox">출근 🧔</label>
-                    <input type="checkbox" id="officeCheckbox" name="tpo" value="office">
+                    <input type="checkbox" id="officeCheckbox" name="tpo" value="27">
                     <label for="travelCheckbox">데일리 🍴</label>
-                    <input type="checkbox" id="dailyCheckbox" name="tpo" value="daily">
+                    <input type="checkbox" id="dailyCheckbox" name="tpo" value="28">
                 </div>
 
                 <div>
                     <label>SEASON</label>
                     <label for="beachCheckbox">봄 🌱</label>
-                    <input type="checkbox" id="springCheckbox" name="season" value="spring">
+                    <input type="checkbox" id="springCheckbox" name="season" value="21">
                     <label for="travelCheckbox">여름 ☀</label>
-                    <input type="checkbox" id="summerCheckbox" name="season" value="summer">
+                    <input type="checkbox" id="summerCheckbox" name="season" value="22">
                     <label for="beachCheckbox">가을 🍂</label>
-                    <input type="checkbox" id="fallCheckbox" name="season" value="fall">
+                    <input type="checkbox" id="fallCheckbox" name="season" value="23">
                     <label for="travelCheckbox">겨울 ☃</label>
-                    <input type="checkbox" id="winterCheckbox" name="season" value="winter">
+                    <input type="checkbox" id="winterCheckbox" name="season" value="24">
                 </div>
 
                 <div>
                     <label>MOOD</label>
                     <label for="minimalCheckbox">미니멀</label>
-                    <input type="checkbox" id="minimalCheckbox" name="mood" value="minimal">
+                    <input type="checkbox" id="minimalCheckbox" name="mood" value="21">
                     <label for="easyCheckbox">이지캐주얼</label>
-                    <input type="checkbox" id="easyCheckbox" name="mood" value="easy">
+                    <input type="checkbox" id="easyCheckbox" name="mood" value="22">
                     <label for="businessCheckbox">비즈니스캐주얼</label>
-                    <input type="checkbox" id="businessCheckbox" name="mood" value="business">
+                    <input type="checkbox" id="businessCheckbox" name="mood" value="23">
                     <label for="amekajiCheckbox">아메카지</label>
-                    <input type="checkbox" id="amekajiCheckbox" name="mood" value="amekaji">
+                    <input type="checkbox" id="amekajiCheckbox" name="mood" value="24">
                     <label for="streetCheckbox">스트릿</label>
-                    <input type="checkbox" id="streetCheckbox" name="mood" value="street">
+                    <input type="checkbox" id="streetCheckbox" name="mood" value="25">
                     <label for="cityboyCheckbox">시티보이</label>
-                    <input type="checkbox" id="cityboyCheckbox" name="mood" value="city">
+                    <input type="checkbox" id="cityboyCheckbox" name="mood" value="26">
                     <label for="onemileCheckbox">원마일웨어</label>
-                    <input type="checkbox" id="onemileCheckbox" name="mood" value="onemile">
+                    <input type="checkbox" id="onemileCheckbox" name="mood" value="27">
                     <label for="sportyCheckbox">스포티</label>
-                    <input type="checkbox" id="sportyCheckbox" name="mood" value="sporty">
+                    <input type="checkbox" id="sportyCheckbox" name="mood" value="28">
                     <label for="uniqueCheckbox">유니크</label>
-                    <input type="checkbox" id="uniqueCheckbox" name="mood" value="unique">
+                    <input type="checkbox" id="uniqueCheckbox" name="mood" value="29">
                     <label for="retroCheckbox">레트로</label>
-                    <input type="checkbox" id="retroCheckbox" name="mood" value="retro">
+                    <input type="checkbox" id="retroCheckbox" name="mood" value="30">
                     <label for="lovelyCheckbox">러블리</label>
-                    <input type="checkbox" id="lovelyCheckbox" name="mood" value="lovely">
+                    <input type="checkbox" id="lovelyCheckbox" name="mood" value="31">
                     <label for="moderncasualCheckbox">모던캐주얼</label>
-                    <input type="checkbox" id="moderncasualCheckbox" name="mood" value="moderncasual">
+                    <input type="checkbox" id="moderncasualCheckbox" name="mood" value="32">
                 </div>
 
                 <div>
