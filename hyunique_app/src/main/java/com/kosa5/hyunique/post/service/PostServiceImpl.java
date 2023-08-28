@@ -61,18 +61,6 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
-        List<PostVO> postVOList = new ArrayList<>();
-        List<Integer> tpoNumber = new ArrayList<>();
-        List<Integer> seasonNumber = new ArrayList<>();
-        List<Integer> moodNumber = new ArrayList<>();
-        PageVO pageVO = new PageVO();
-        //받아온 데이터 정리
-        String gender = filterPostVO.getGender();
-        List<Integer>tpo = filterPostVO.getTpo();
-        List<Integer>season = filterPostVO.getSeason();
-        List<Integer>mood = filterPostVO.getMood();
-        Integer maxHeight = filterPostVO.getMaxHeight();
-        Integer minHeight = filterPostVO.getMinHeight();
 
 /*        System.out.println("*gender check  -- "+gender);
         System.out.println("tpoNumber check  -- "+tpoNumber);
@@ -80,10 +68,11 @@ public class PostServiceImpl implements PostService {
         System.out.println("moodNumber check  -- "+moodNumber);
         System.out.println("mood check  -- "+mood);
         System.out.println("check  -- "+minHeight + maxHeight);*/
+        List<PostVO> postVOList = new ArrayList<>();
 
-        System.out.println("RESULT START --- " +tpoNumber);
-        postVOList = postMapper.loadFilterPost(gender,tpoNumber,seasonNumber,moodNumber,minHeight,maxHeight);
-        System.out.println("RESULT END --- " +postVOList);
+        System.out.println("RESULT START --- " +filterPostVO);
+        postVOList = postMapper.loadFilterPost(filterPostVO);
+        System.out.println("RESULT END --- " +filterPostVO);
         return postVOList;
     }
 }

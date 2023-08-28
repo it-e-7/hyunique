@@ -43,14 +43,11 @@
         ]]>
     </select>
 
-    <select id="loadFilterPost" parameterType="map" resultType="PostVO">
+
+    <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
         <![CDATA[
         SELECT *
         FROM HY_POST
-        WHERE TPO_ID IN
-        <foreach collection="tpoNumber" item="tpoItem" separator=",">
-            #{tpoItem}
-        </foreach>
         ]]>
 
     </select>

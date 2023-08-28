@@ -24,7 +24,7 @@ public class FilterController {
 	@GetMapping(value = "getFilterPost")
 	public String getFilterPost(@ModelAttribute FilterPostVO filterPostVO) {
 		List<PostVO> postVOList = new ArrayList<>();
-		System.out.println("test---"+filterPostVO);//model.addAttribute("postVOList", postVOList);
+		postVOList = postService.getfilterPostList(filterPostVO);
 		return "ajax_response";
 	}
 	
