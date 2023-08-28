@@ -24,9 +24,9 @@
         <div class="modal_body">
                 <div>
                     <label for="maleRadio">MEN</label>
-                    <input type="radio" id="maleRadio" name="gender" value="MEN">
+                    <input type="radio" id="maleRadio" name="gender" value="M">
                     <label for="femaleRadio">WOMEN</label>
-                    <input type="radio" id="femaleRadio" name="gender" value="WOMEN">
+                    <input type="radio" id="femaleRadio" name="gender" value="W">
                 </div>
                 <div class="rs-height">
                 140cm - 180cm

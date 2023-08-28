@@ -15,30 +15,30 @@ import java.util.List;
 @Service
 public class PostServiceImpl implements PostService {
 
-	@Autowired
-	PostMapper postMapper;
-	
-	@Override
-	public PostDetailVO getPostDetailByPostIdUserId(int postId, int userId) {
-		return postMapper.getPostDetailByPostIdUserId(postId, userId);
-	}
-	
-	@Override
-	public int postLikePost(int postId, int userId) {
-		return postMapper.insertPostLike(postId, userId);
-	}
-	
-	@Override
-	public int postUnlikePost(int postId, int userId) {
-		return postMapper.deletePostLike(postId, userId);
-	}
+    @Autowired
+    PostMapper postMapper;
+
+    @Override
+    public PostDetailVO getPostDetailByPostIdUserId(int postId, int userId) {
+        return postMapper.getPostDetailByPostIdUserId(postId, userId);
+    }
+
+    @Override
+    public int postLikePost(int postId, int userId) {
+        return postMapper.insertPostLike(postId, userId);
+    }
+
+    @Override
+    public int postUnlikePost(int postId, int userId) {
+        return postMapper.deletePostLike(postId, userId);
+    }
 
     @Override
     public PostVO getOnePost(Integer post_id) {
         PostVO postVO = new PostVO();
-        System.out.println("postVO check  -- before mapper "+postVO);
+        System.out.println("postVO check  -- before mapper " + postVO);
         postVO = postMapper.findOnePost(post_id);
-        System.out.println("postVO check  -- after mapper "+postVO);
+        System.out.println("postVO check  -- after mapper " + postVO);
         return postVO;
     }
 
@@ -53,8 +53,8 @@ public class PostServiceImpl implements PostService {
     public List<PostVO> loadMorePost(Integer page) {
         List<PostVO> postVOList = new ArrayList<>();
         PageVO pageVO = new PageVO();
-        int startIndex = page*20+1;
-        int endIndex = (page+1)*20;
+        int startIndex = page * 20 + 1;
+        int endIndex = (page + 1) * 20;
         postVOList = postMapper.loadMorePost(startIndex, endIndex);
         return postVOList;
     }
@@ -62,17 +62,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
 
-/*        System.out.println("*gender check  -- "+gender);
-        System.out.println("tpoNumber check  -- "+tpoNumber);
-        System.out.println("seasonNumber check  -- "+seasonNumber);
-        System.out.println("moodNumber check  -- "+moodNumber);
-        System.out.println("mood check  -- "+mood);
-        System.out.println("check  -- "+minHeight + maxHeight);*/
         List<PostVO> postVOList = new ArrayList<>();
 
-        System.out.println("RESULT START --- " +filterPostVO);
+        System.out.println("RESULT START --- " + filterPostVO);
         postVOList = postMapper.loadFilterPost(filterPostVO);
-        System.out.println("RESULT END --- " +filterPostVO);
+        System.out.println("RESULT END --- " + postVOList);
         return postVOList;
     }
 }
