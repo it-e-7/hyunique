@@ -37,7 +37,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostVO> loadMorePost(Integer page) {
         List<PostVO> postVOList = new ArrayList<>();
-        Integer pageSize = 17;
+        Integer pageSize = 10;
         PageVO pageVO = new PageVO();
         postVOList = postMapper.loadMorePost(page,pageSize);
         return postVOList;
@@ -45,7 +45,6 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
-
         List<PostVO> postVOList = new ArrayList<>();
         postVOList = postMapper.loadFilterPost(filterPostVO);
         return postVOList;
