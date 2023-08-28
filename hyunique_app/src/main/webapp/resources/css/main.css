@@ -11,6 +11,12 @@ body {
 	margin: 0 auto;
 }
 
+@media (min-width: 700px) {
+	body {
+		border: 1px solid #D9D8D8;
+	}
+}
+
 :root {
 	--jw-blue: #032962;
 	--jw-blue2: #32517F;

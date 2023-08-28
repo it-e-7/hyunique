@@ -6,27 +6,15 @@
 <mapper namespace="com.kosa5.hyunique.product.mapper.ProductMapper">
 
 	<resultMap id="ProductDetailMap" type="ProductDetailVO">
-		<result property="productId" column="product_id" />
-		<result property="productName" column="product_name" />
-		<result property="productPrice" column="product_price" />
-		<result property="productBrand" column="product_brand" />
-		<result property="productImg" column="product_img" />
-		<result property="productUrl" column="product_url" />
-		<result property="typeName" column="type_name" />
 		<collection property="storeList" column="product_id" ofType="DepartStockVO" select="getDepartmentStock" />
 		<collection property="postThumbnailList" column="product_id" select="getPostThumbnailListByProduct" />
 	</resultMap>
 	
 	<resultMap id="DepartmentMap" type="DepartStockVO">
-		<result property="storeId" column="store_id" />
-		<result property="storeName" column="store_name" />
 		<collection property="stockList" column="store_id" resultMap="StockMap" />
 	</resultMap>
 	
 	<resultMap id="StockMap" type="StockVO">
-		<result property="productColor" column="product_color" />
-		<result property="productSize" column="product_size" />
-		<result property="productId" column="product_id" />
 		<result property="squantity" column="s_quantity" />
 	</resultMap>
 	
@@ -50,6 +38,14 @@
 		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
 		WHERE t.product_id = #{productId} AND ROWNUM <= 10
 		]]>
+	</select>
+	
+	<select id="getProductStyleById" parameterType="map" resultMap="ProductStyleMap">
+		SELECT DISTINCT p.post_id, thumbnail_url
+		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
+		WHERE t.product_id = #{productId}
+		ORDER BY post_id
+		OFFSET #{offset} ROWS FETCH FIRST 3 ROWS ONLY;
 	</select>
 
 </mapper>  

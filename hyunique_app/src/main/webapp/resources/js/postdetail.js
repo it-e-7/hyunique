@@ -68,6 +68,8 @@ function moveToProduct(productId) {
 	location.href=`/hyunique/product/${productId}`;
 }
 
+
+
 $('.img-slider-wrapper').scroll(() => {
 	if($('.img-slider-wrapper').scrollLeft() % imgWidth === 0) {
 		const newIdx = $('.img-slider-wrapper').scrollLeft() / imgWidth;
@@ -82,9 +84,8 @@ function changeIndexCircle(newIdx) {
 	imgIdx = newIdx;
 }
 
-changeIndexCircle(imgIdx);
-
 $(document).ready(() => {
 	$('.img-slider-wrapper').scrollLeft(0);
 	console.log($('.img-slider-wrapper').scrollLeft());
+	changeIndexCircle(imgIdx);
 });
