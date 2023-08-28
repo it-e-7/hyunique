@@ -25,6 +25,7 @@ img {
 }
 
 .tag {
+    white-space: nowrap;
     padding: 5px;
     border: 1px solid #ccc;
     background-color: #f0f0f0;
