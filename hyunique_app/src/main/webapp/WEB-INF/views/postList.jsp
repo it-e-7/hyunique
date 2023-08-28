@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Post List</title>
+	<%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
 </head>

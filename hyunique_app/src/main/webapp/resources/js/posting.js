@@ -175,7 +175,7 @@ function setTranslate(xPos, yPos, el) {
 
 function searchProduct(productName) {
     $.ajax({
-        url: '/hyunique/post/search',
+        url: '/post/search',
         type: 'GET',
         contentType: 'application/json',
         data: {productName},
@@ -211,7 +211,7 @@ function sendPostToServer() {
     };
 
     $.ajax({
-        url: `${url}/post`,
+        url: `/post`,
         type: 'POST',
         enctype:"multipart/form-data",
         contentType: 'application/json',
@@ -226,7 +226,7 @@ function sendPostToServer() {
 
 function getSearchProduct(productName) {
     $.ajax({
-        url: 'url: '/hyunique/post/search/' + productName,
+        url: '/post/search/' + productName,
         type: 'GET',
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {

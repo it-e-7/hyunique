@@ -15,7 +15,7 @@ $(document).ready(function() {
         function loadMoreImages() {
         isLoading = true;
             $.ajax({
-                url: `${url}/post/getMorePost`,
+                url: `/post/getMorePost`,
                 type: "GET",
                 data: {
                     page: currentPage

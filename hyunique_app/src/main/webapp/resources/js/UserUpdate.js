@@ -9,7 +9,7 @@ function updateUser() {
     const facebookUrl = $('input[name="facebookUrl"]').val();
 
     $.ajax({
-        url: `${url}/user/updateUser`,
+        url: `/user/updateUser`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -46,7 +46,7 @@ $(document).ready(function() {
 //유저 게시글 썸네일, 이미지 세팅
 function userPostList(sessionId) {
 	  $.ajax({
-	    url: `${url}/user/userpostlist`,
+	    url: `/user/userpostlist`,
 	    type: 'GET',
 	    data: { userId: sessionId },
 	    success: function(posts) {
@@ -59,7 +59,7 @@ function userPostList(sessionId) {
 	    	  });
 
 	    	  var postLink = $('<a/>', {
-	    	    href: `${url}/post/` + post.postId
+	    	    href: `/post/` + post.postId
 	    	  });
 
 	    	  postLink.append(thumbnailImage);

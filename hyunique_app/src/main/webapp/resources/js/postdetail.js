@@ -1,8 +1,8 @@
 let imgIdx = 0;
 const imgWidth = $(".img-slider-wrapper").width();
 const likeBtnImgSrc = {
-	unselect: `${url}/resources/img/ic-like.png`,
-	selected: `${url}/resources/img/ic-like-selected.png`,
+	unselect: `/resources/img/ic-like.png`,
+	selected: `/resources/img/ic-like-selected.png`,
 };
 const likeToggle = {
 	selected: 'unselect',
@@ -14,11 +14,11 @@ function follow(following) {
 }
 
 function likeTogglePost(postId) {
-	let url = `${url}/post/like`;
+	let url = `/post/like`;
 	let present = 'unselect';
 	
 	if($('.like-btn img').attr('src') !== likeBtnImgSrc[present]) {
-		url = `${url}/post/unlike`;
+		url = `/post/unlike`;
 		present = 'selected';
 	}
 	
