@@ -11,6 +11,6 @@
 	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/main.css" />
-	<script src="/hyunique/resources/js/config.js"></script>
-<script src="/hyunique/resources/js/common.js"></script>
+	href="/resources/css/main.css" />
+	<script src="/resources/js/config.js"></script>
+<script src="/resources/js/common.js"></script>

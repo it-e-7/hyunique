@@ -7,9 +7,9 @@
     <%@ include file="/WEB-INF/views/common.jsp"%>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="/hyunique/resources/js/posting.js"></script>
+    <script src="/resources/js/posting.js"></script>
     <link rel="stylesheet" type="text/css"
-        href="/hyunique/resources/css/posting.css"/>
+        href="/resources/css/posting.css"/>
 </head>
 <body>
     <div class="container">
@@ -17,7 +17,7 @@
             <p>스타일링 공유를 위해 사진을 선택해주세요</p>
         </div>
         <div class="image-container">
-            <img src="/hyunique/resources/img/heendy.png" alt="중앙 이미지" />
+            <img src="/resources/img/heendy.png" alt="중앙 이미지" />
         </div>
         <div>
             <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>

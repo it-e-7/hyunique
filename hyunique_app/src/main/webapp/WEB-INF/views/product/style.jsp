@@ -10,13 +10,13 @@
 <title>${product.productName}</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/productstyle.css" />
+	href="/resources/css/productstyle.css" />
 
 </head>
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/hyunique/resources/img/ic-backward.png" />
+			<img src="/resources/img/ic-backward.png" />
 		</button>
 	</div>
 	<div class="">
@@ -36,5 +36,5 @@
 	</div>
 
 </body>
-<script src="/hyunique/resources/js/productstyle.js"></script>
+<script src="/resources/js/productstyle.js"></script>
 </html>

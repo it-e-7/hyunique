@@ -10,13 +10,13 @@
 <title>${product.productName}</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/productdetail.css" />
+	href="/resources/css/productdetail.css" />
 
 </head>
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/hyunique/resources/img/ic-backward.png" />
+			<img src="/resources/img/ic-backward.png" />
 		</button>
 	</div>
 	<div class="content-wrapper">
@@ -27,7 +27,7 @@
 			<div class="name-btn-wrapper">
 				<p>${product.productName}</p>
 				<button onclick="sharePost('${product.productName}')">
-					<img src="/hyunique/resources/img/ic-share.png" />
+					<img src="/resources/img/ic-share.png" />
 				</button>
 			</div>
 			<strong style="font-size: 1.2rem;"> &#8361; <fmt:formatNumber
@@ -98,10 +98,10 @@
 	</div>
 	<button class="jw-btn jw-btn-fixed buy-btn"
 		onclick="window.open('${product.productUrl}')">
-		<img src="/hyunique/resources/img/ic-buy.png"> 구매하기
+		<img src="/resources/img/ic-buy.png"> 구매하기
 	</button>
 </body>
 <script
 	src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
-<script src="/hyunique/resources/js/productdetail.js"></script>
+<script src="/resources/js/productdetail.js"></script>
 </html>
