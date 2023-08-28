@@ -22,6 +22,9 @@ import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
 
+import lombok.extern.java.Log;
+
+@Log
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -40,12 +43,10 @@ public class UserController {
 		if (sessionId != null) {
 			int userId = Integer.parseInt(sessionId);
 			UserVO user = userService.getUserInfoAndFollowerCount(userId);
-			System.out.println(user);
 			model.addAttribute("user", user);
 			session.setAttribute("user", user); // 세션에 UserVO 저장
 		} else {
-			System.out.println("세션 아이디가 null임");
-			// 로그인되지 않은 사용자 처리
+			log.info("세션 아이디가 null");
 		}
 		return "myStylePage";
 	}
@@ -57,7 +58,7 @@ public class UserController {
 		if (user != null) {
 			model.addAttribute("user", user);
 		} else {
-			System.out.println("user값이 null임");
+			log.info("user값이 null");
 		}
 		return "userInfoUpdatePage";
 	}
