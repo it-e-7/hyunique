@@ -10,7 +10,7 @@
 <title>${product.productName}</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/productdetail.css" />
+	href="/hyunique/resources/css/productstyle.css" />
 
 </head>
 <body>
@@ -19,9 +19,22 @@
 			<img src="/hyunique/resources/img/ic-backward.png" />
 		</button>
 	</div>
-	
+	<div class="">
+		<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
+			<img src="${product.productImg}" />
+			<div>
+				<strong>${product.productBrand}</strong>
+				<p class="product-item-name">${product.productName}</p>
+				<p class="product-item-price">
+					&#8361;
+					<fmt:formatNumber value="${product.productPrice}" pattern="#,###" />
+				</p>
+			</div>
+		</div>
+		<p>이 아이템을 활용한 다양한 스타일</p>
+		<div class="post-thumbnail-list-wrapper"></div>
+	</div>
+
 </body>
-<script
-	src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
 <script src="/hyunique/resources/js/productstyle.js"></script>
 </html>

@@ -26,7 +26,6 @@
 		<typeAlias alias="PostThumbnailVO" type="com.kosa5.hyunique.post.vo.PostThumbnailVO" /> 
 		<typeAlias alias="User" type="com.kosa5.hyunique.user.vo.UserVO" />
 		<typeAlias alias="PostVO" type="com.kosa5.hyunique.post.vo.PostVO" />
-		<typeAlias alias="ProductDetailVO" type="com.kosa5.hyunique.product.vo.ProductStyleVO" />
 	</typeAliases>
 	
 </configuration>	

@@ -34,7 +34,6 @@ public class ProductController {
 	
 	@GetMapping("style")
 	public String getProductStyle(@RequestParam("productId") String productId, Model model) {
-		
 		ProductDetailVO detailVO = productService.getProductDetailById(productId);
 		model.addAttribute("product", detailVO);
 		
