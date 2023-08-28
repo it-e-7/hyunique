@@ -76,6 +76,26 @@
             </form>
     </div>
     <br>
+
+     <div class="search-container">
+            <!-- 헤더 -->
+            <div class="header">
+                <!-- 뒤로 가기 버튼 -->
+                <button onclick="window.history.back();">뒤로가기</button>
+
+                <!-- 검색창 -->
+                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+
+                <!-- 검색 버튼 -->
+                <button id="search-btn">검색</button>
+            </div>
+
+            <!-- 검색 결과 리스트 -->
+            <div class="result-list" id="resultList">
+                <!-- 여기에 검색 결과가 표시됩니다 -->
+            </div>
+     </div>
+
     <div class="post-container">
             <div class="header">
                 <p>게시가 완료되었습니다!</p>

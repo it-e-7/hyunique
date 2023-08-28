@@ -12,6 +12,10 @@ img {
     display: none;
 }
 
+.search-container {
+    display: none;
+}
+
 .image-view li {
     width: 100%;
     aspect-ratio: 3 / 4;
