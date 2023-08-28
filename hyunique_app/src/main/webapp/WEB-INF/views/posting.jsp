@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +29,7 @@
             <input type="file" id="fileInput" class="real-upload" style="display:none;" accept="image/*" required multiple>
         </div>
     </div>
-    <br>
+
     <div class="write-container">
             <div class="upload"></div>
             <form action="post" method="post" enctype="multipart/form-data">
@@ -72,26 +69,23 @@
                 </div>
             </form>
     </div>
-    <br>
 
-     <div class="search-container">
-            <!-- 헤더 -->
+    <div class="search-container">
             <div class="header">
-                <!-- 뒤로 가기 버튼 -->
-                <button onclick="window.history.back();">뒤로가기</button>
-
-                <!-- 검색창 -->
+                <button onclick="backward()">뒤로가기</button>
                 <input type="text" id="search-input" placeholder="검색어를 입력하세요">
-
-                <!-- 검색 버튼 -->
                 <button id="search-btn">검색</button>
             </div>
 
-            <!-- 검색 결과 리스트 -->
-            <div class="result-list" id="resultList">
-                <!-- 여기에 검색 결과가 표시됩니다 -->
-            </div>
-     </div>
+            <div class="search-body">
+                <p class="search-value"></p>
+                <p>상품 검색 결과입니다.</p>
+
+                <ul class="result-list">
+
+                </ul>
+            <div>
+    </div>
 
     <div class="post-container">
             <div class="header">
@@ -102,6 +96,6 @@
             <div class="tag-container">
             </div>
             <button type="button" id="next-button">계속하기</button>
-        </div>
+    </div>
 </body>
 </html>
