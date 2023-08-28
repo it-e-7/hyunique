@@ -1,5 +1,5 @@
 img {
-    width: 30%;
+    width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
 }
@@ -12,8 +12,12 @@ img {
     display: none;
 }
 
+.search-container {
+    display: none;
+}
+
 .image-view li {
-    width: 30%;
+    width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     position: relative;
@@ -21,7 +25,7 @@ img {
 }
 
 .tag {
-    position: absolute;
+    white-space: nowrap;
     padding: 5px;
     border: 1px solid #ccc;
     background-color: #f0f0f0;

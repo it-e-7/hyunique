@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.post.service;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.FilterPostVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,10 @@ public class PostServiceImpl implements PostService {
         postVOList = postMapper.loadFilterPost(filterPostVO);
         System.out.println("RESULT END --- " + postVOList);
         return postVOList;
+    }
+
+    @Override
+    public List<PostProductVO> getSearchProductList(String productName) {
+        return postMapper.selectSearchProductList(productName);
     }
 }
