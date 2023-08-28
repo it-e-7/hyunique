@@ -50,7 +50,6 @@ public class OAuthService {
             
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
             
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -60,17 +59,12 @@ public class OAuthService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
             
 			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 			JsonElement element = JsonParser.parseString(result);
-
             
 			access_Token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-            
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
             
 			br.close();
 			bw.close();
@@ -93,7 +87,6 @@ public class OAuthService {
 			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -103,7 +96,6 @@ public class OAuthService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
 
 			JsonElement element = JsonParser.parseString(result);
 			
@@ -114,14 +106,16 @@ public class OAuthService {
 			try {
 			    properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			} catch (NullPointerException e) {
-			    // properties가 없을 경우, 적절한 처리
-			}
+				e.printStackTrace();
+				throw e;
+				}
 
 			try {
 			    kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			} catch (NullPointerException e) {
-			    // kakao_account가 없을 경우, 적절한 처리
-			}
+				e.printStackTrace();
+				throw e;
+				}
 
 			String id;
 			id = element.getAsJsonObject().get("id").getAsString(); // 정수 ID를 문자열로 변환

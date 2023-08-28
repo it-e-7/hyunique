@@ -4,32 +4,40 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<annotation-driven />
 
 	<!-- Static Resource Mapping -->
 	<resources mapping="/resources/**" location="/resources/" />
-<!--	<resources mapping="/resources/img/**" location="/resources/img/"/>-->
 
 	<!-- Internal Resource View Resolver -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
 	<!-- Property Placeholder Configurer -->
-	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<beans:property name="locations" value="classpath:/config/key.properties" />
+	<beans:bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations"
+			value="classpath:/config/key.properties" />
 	</beans:bean>
 
 	<!-- Component Scanning -->
-	<context:component-scan base-package="com.kosa5.hyunique" />
+	<context:component-scan
+		base-package="com.kosa5.hyunique" />
 
 	<!-- Custom Beans -->
-	<beans:bean id="naverLoginBO" class="com.kosa5.hyunique.oauth.NaverLoginBO" />
-
+	<beans:bean id="naverLoginBO"
+		class="com.kosa5.hyunique.oauth.NaverLoginBO" />
+	
+	<!-- AOP 설정 추가 -->
+	<aop:aspectj-autoproxy />
 </beans:beans>
