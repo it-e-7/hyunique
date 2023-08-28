@@ -61,13 +61,11 @@ $(document).ready(function() {
 function attachTag(xOffset, yOffset, li) {
     return function() {
         var tagValue = $("#search-input").val();
-        $(".search-container").hide();
-        $("#search-input").val("");
-        $(".write-container").show();
 
         if (tagValue) {
             getSearchProduct(tagValue);
-            var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
+
+            var tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
                 left: xOffset + "px",
                 top: yOffset + "px",
                 position: "absolute"
@@ -81,8 +79,31 @@ function attachTag(xOffset, yOffset, li) {
                 currentY: 0,
                 xOffset: 0,
                 yOffset: 0,
-                active: false
+                active: false,
+                productBrand: '',
+                productName: '',
+                productPrice: 0,
+                productSize: '',
+                productColor: ''
             };
+
+            $(".result-list").on("click", ".search-product-li", function() {
+                items[id].productBrand = $(this).find(".search-product-brand").text();
+                items[id].productName = $(this).find(".search-product-name").text();
+                items[id].productPrice = $(this).find(".search-product-price").text();
+                items[id].productSize = $(this).find(".search-product-size").text();
+
+                console.log("Brand: " + items[id].productBrand);
+                console.log("Name: " + items[id].productName);
+                console.log("Price: " + items[id].productPrice);
+                console.log("Size: " + items[id].productSize);
+
+                tagElement.data("tag-value", items[id]);
+                $(".search-container").hide();
+                $(".write-container").show();
+                $("#search-input").val("");
+
+            });
 
             items[id].xOffset = xOffset;
             items[id].yOffset = yOffset;
@@ -173,22 +194,6 @@ function setTranslate(xPos, yPos, el) {
     });
 }
 
-function searchProduct(productName) {
-    $.ajax({
-        url: '/post/search',
-        type: 'GET',
-        contentType: 'application/json',
-        data: {productName},
-        success: function(response) {
-            window.location.href = 'post/search';
-        }
-    });
-
-    $("#search-btn").click(function() {
-        return $("#productName").val();
-    });
-}
-
 function getFormValue() {
     styleChecked = $('input[name="style"]:checked').val();
     tpoChecked = $('input[name="tpo"]:checked').val();
@@ -226,11 +231,25 @@ function sendPostToServer() {
 
 function getSearchProduct(productName) {
     $.ajax({
-        url: '/post/search/' + productName,
+        url: '/product/search/' + productName,
         type: 'GET',
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {
-            console.log(response);
+            var resultList = $(".result-list");
+            resultList.empty();
+            $('.search-value').val(productName);
+
+            $.each(response, function(index, product) {
+                var listItem = $("<li>").addClass("search-product-li");
+                var divItem = $("<div>").addClass("search-product-div");
+                listItem.append($("<img>").attr("src", product.productImg).addClass("search-product-img"));
+                divItem.append($("<p>").text(product.productBrand).addClass("search-product-brand"));
+                divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
+                divItem.append($("<p>").text(product.productPrice).addClass("search-product-price"));
+                divItem.append($("<p>").text(product.productSize).addClass("search-product-size"));
+                listItem.append(divItem);
+                resultList.append(listItem);
+            });
         }
     });
 }

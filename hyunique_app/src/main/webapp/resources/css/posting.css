@@ -30,3 +30,24 @@ img {
     border: 1px solid #ccc;
     background-color: #f0f0f0;
 }
+
+.search-product-li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-product-img {
+    flex: 1;
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.search-product-brand,
+.search-product-name,
+.search-product-price,
+.search-product-size {
+    flex: 1;
+    margin: 5px;
+}
