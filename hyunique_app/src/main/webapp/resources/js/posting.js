@@ -17,6 +17,7 @@ $(document).ready(function() {
     $("#fileInput").change(function() {
         $(".container").hide();
         $(".write-container").show();
+        $(".search-container").hide();
     });
 
     $('#upload-button').click(function() {
@@ -24,8 +25,6 @@ $(document).ready(function() {
         $(".write-container").hide();
         $(".post-container").show();
         sendPostToServer();
-
-        console.log(items);
     });
 
     $("#fileInput").change(function(e) {
@@ -46,54 +45,12 @@ $(document).ready(function() {
                 imageElement.click(function(e) {
                     var XOffset = e.offsetX;
                     var YOffset = e.offsetY;
+                    console.log("offset: ", XOffset, YOffset);
 
+                    $(".write-container").hide();
+                    $(".search-container").show();
 
-                    var tagValue = searchProduct();
-
-                    console.log(tagValue);
-
-                    if (tagValue) {
-                        searchProduct(tagValue);
-                        var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
-                            left: XOffset + "px",
-                            top: YOffset + "px",
-                            position: "absolute"
-                        });
-
-                        // 위치 정보 초기화
-                        const id = tagElement.attr('id');  // 아이템에 고유한 ID를 설정해야 합니다.
-                        console.log("id: "+ id);
-
-                        items[id] = {
-                            initialX: 0,
-                            initialY: 0,
-                            currentX: 0,
-                            currentY: 0,
-                            xOffset: 0,
-                            yOffset: 0,
-                            active: false
-                        };
-
-                        console.log("전역 : " + XOffset, YOffset);
-
-                        items[id].xOffset = XOffset;
-                        items[id].yOffset = YOffset;
-
-                        li.append(tagElement);
-
-                        // 새로 생성된 태그에 드래그 이벤트 바인딩
-                        tagElement.on("mousedown touchstart", function(event) {
-                            dragStart(event);
-                        });
-
-                        tagElement.on("mouseup touchend", function(event) {
-                            dragEnd(event);
-                        });
-
-                        tagElement.on("mousemove touchmove", function(event) {
-                            drag(event, tagElement);
-                        });
-                    }
+                    $("#search-btn").off('click').click(attachTag(XOffset, YOffset, li));
                 });
             };
             reader.readAsDataURL(file);
@@ -101,11 +58,55 @@ $(document).ready(function() {
     });
 });
 
+function attachTag(xOffset, yOffset, li) {
+    return function() {
+        var tagValue = $("#search-input").val();
+        $(".search-container").hide();
+        $("#search-input").val("");
+        $(".write-container").show();
+
+        if (tagValue) {
+            var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
+                left: xOffset + "px",
+                top: yOffset + "px",
+                position: "absolute"
+            });
+
+            const id = tagElement.attr('id');  // 아이템에 고유한 ID를 설정해야 합니다.
+            items[id] = {
+                initialX: 0,
+                initialY: 0,
+                currentX: 0,
+                currentY: 0,
+                xOffset: 0,
+                yOffset: 0,
+                active: false
+            };
+
+            items[id].xOffset = xOffset;
+            items[id].yOffset = yOffset;
+
+            li.append(tagElement);
+
+            // 새로 생성된 태그에 드래그 이벤트 바인딩
+            tagElement.on("mousedown touchstart", function(event) {
+                dragStart(event);
+            });
+
+            tagElement.on("mouseup touchend", function(event) {
+                dragEnd(event);
+            });
+
+            tagElement.on("mousemove touchmove", function(event) {
+                drag(event, tagElement);
+            });
+        }
+    };
+}
+
 function dragStart(event) {
     const id = event.target.id;
     const item = items[id];
-
-    console.log(item.xOffset, item.yOffset);
 
     if (event.type === "touchstart") {
         item.initialX = event.touches[0].clientX - item.xOffset;
