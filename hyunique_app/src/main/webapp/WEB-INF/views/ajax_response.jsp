@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/common.jsp" %>
 
         <c:forEach items="${postVOList}" var="post" varStatus="loop">
-            <div class="photo" onclick="moveToPost('${thumbnail.postId}')">
+            <div class="photo" onclick="moveToPost('${post.postId}')">
                 <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
             </div>
         </c:forEach>

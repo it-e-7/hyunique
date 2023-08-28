@@ -15,10 +15,6 @@ public interface PostService {
 
     int postUnlikePost(int postId, int userId);
 
-    PostVO getOnePost (Integer postId);
-
-    List<PostVO> findTwelvePostList (Integer userId);
-
     List<PostVO> loadMorePost(Integer page);
 
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);

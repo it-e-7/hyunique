@@ -120,11 +120,13 @@
 <div id= "main-wrapper-bottom">
 <div id="infinite-scroll">
     <div id="photo-gallery">
-        <c:forEach items="${postVOList}" var="post" varStatus="loop">
-            <div class="photo" onclick="moveToPost('${thumbnail.postId}')">
-                <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
-            </div>
-        </c:forEach>
+
+        <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
+             <div class="photo" onclick="moveToPost('${post.postId}')">
+                 <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
+             </div>
+             </c:forEach> --%>
+
     </div>
 </div>
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -4,29 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa5.hyunique.post.mapper.PostMapper">
 
-    <select id="findOnePost" parameterType="Integer" resultType="PostVO">
-        <![CDATA[
-        SELECT * FROM HY_POST
-        WHERE POST_ID = #{postId}
-        ]]>
-    </select>
-
-    <select id="findTwelvePostList" parameterType="Integer" resultType="PostVO">
-        <![CDATA[
-        SELECT *
-        FROM (
-            SELECT hp.*, (
-                SELECT COUNT(*)
-                FROM hy_stylelike hsl
-                WHERE hsl.post_id = hp.post_id
-            ) AS like_count
-            FROM hy_post hp
-            ORDER BY like_count DESC
-        )
-        WHERE ROWNUM <= 20
-        ]]>
-    </select>
-
     <select id="loadMorePost" parameterType="map" resultType="PostVO">
         <![CDATA[
         SELECT *
@@ -39,9 +16,10 @@
             FROM hy_post hp
             ORDER BY like_count DESC
         )
-        WHERE ROWNUM BETWEEN #{startIndex} AND #{endIndex}
+        OFFSET #{page} ROWS FETCH NEXT #{pageSize} ROWS ONLY
         ]]>
     </select>
+
 
 
     <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
