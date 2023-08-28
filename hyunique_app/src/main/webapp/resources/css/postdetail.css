@@ -15,6 +15,7 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 0.6rem;
+	cursor: pointer;
 }
 
 .left-user-info img {
@@ -44,6 +45,7 @@
 	overflow: scroll;
 	width: 100%;
 	scroll-snap-type: x mandatory;
+	cursor: pointer;
 }
 
 .img-wrapper {
@@ -218,6 +220,7 @@ ul {
 	overflow-x: auto;
 	flex-wrap: nowrap;
 	padding: 0 0 1.5rem 1.5rem;
+	cursor: pointer;
 }
 
 .post-thumbnail-list-wrapper div {

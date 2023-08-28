@@ -9,6 +9,6 @@
 <body>
 	<h1>로그인 성공</h1>
 	<a>${sessionId}</a>
-	<a href="/hyunique/user/${sessionId}">마이페이지</a>
+	<a href="/user/${sessionId}">마이페이지</a>
 </body>
 </html>

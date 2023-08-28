@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Post List</title>
-    <link rel="stylesheet" type="text/css" href="/hyunique/resources/css/postList.css" />
-    <link rel="stylesheet" type="text/css" href="/hyunique/resources/css/filterModal.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
 </head>
 <body>
 
@@ -112,7 +112,7 @@
         </div>
     </div>
 
-    <script src="/hyunique/resources/js/filterModal.js"></script>
+    <script src="/resources/js/filterModal.js"></script>
 </div>
 
 </div>
@@ -127,7 +127,7 @@
     </div>
 </div>
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <script src="/hyunique/resources/js/infiniteScroll.js"></script>
+       <script src="/resources/js/infiniteScroll.js"></script>
 
 </div>
 </div>

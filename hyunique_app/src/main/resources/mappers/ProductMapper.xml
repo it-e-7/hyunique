@@ -51,5 +51,13 @@
 		WHERE t.product_id = #{productId} AND ROWNUM <= 10
 		]]>
 	</select>
+	
+	<select id="getProductStyleById" parameterType="map" resultType="PostThumbnailVO">
+		SELECT DISTINCT p.post_id, thumbnail_url
+		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
+		WHERE t.product_id = #{productId}
+		ORDER BY post_id
+		OFFSET #{offset} ROWS FETCH FIRST 3 ROWS ONLY
+	</select>
 
 </mapper>  

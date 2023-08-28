@@ -20,10 +20,6 @@ $('.select-depart').scroll((e) => {
 	}, 100);
 });
 
-function moveToPost(postId) {
-	location.href=`/hyunique/post/${postId}`;
-}
-
 function sharePost(productName) {
 	if(navigator.share && (isMobile.apple.phone || isMobile.android.phone)) {
 		navigator.share({

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +7,13 @@
 <title>스타일 상세보기</title>
 <%@ include file="/WEB-INF/views/common.jsp" %>
 <link rel="stylesheet" type="text/css"
-	href="/hyunique/resources/css/postdetail.css" />
+	href="/resources/css/postdetail.css" />
 	
 </head>
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/hyunique/resources/img/ic-backward.png" />
+			<img src="/resources/img/ic-backward.png" />
 		</button>
 	</div>
 	<div class="content-wrapper">
@@ -43,7 +40,7 @@
 				<img src="${url}"/>
 			</c:forEach>
 			<button class="tag-btn">
-				<img src="/hyunique/resources/img/ic-posttag.png"/>
+				<img src="/resources/img/ic-posttag.png"/>
 			</button>
 			
 		</div>
@@ -61,15 +58,15 @@
 			<button onclick="likeTogglePost(${postVO.postId})" class="like-btn">
 				<c:choose>
 					<c:when test="${postVO.styleLike == 0}">
-						<img src="/hyunique/resources/img/ic-like.png"/>
+						<img src="/resources/img/ic-like.png"/>
 					</c:when>
 					<c:otherwise>
-						<img src="/hyunique/resources/img/ic-like-selected.png"/>
+						<img src="/resources/img/ic-like-selected.png"/>
 					</c:otherwise>
 				</c:choose>
 			</button>
 				<button onclick="sharePost('${postVO.userNickname}')">
-					<img src="/hyunique/resources/img/ic-share.png"/>
+					<img src="/resources/img/ic-share.png"/>
 				</button>
 			</div>
 			<div class="post-content">
@@ -125,5 +122,5 @@
 	</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
-<script src="/hyunique/resources/js/postdetail.js"></script>
+<script src="/resources/js/postdetail.js"></script>
 </html>
