@@ -12,4 +12,5 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="/hyunique/resources/css/main.css" />
+	<script src="/hyunique/resources/js/config.js"></script>
 <script src="/hyunique/resources/js/common.js"></script>

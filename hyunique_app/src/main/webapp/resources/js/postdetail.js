@@ -1,8 +1,8 @@
 let imgIdx = 0;
 const imgWidth = $(".img-slider-wrapper").width();
 const likeBtnImgSrc = {
-	unselect: '/hyunique/resources/img/ic-like.png',
-	selected: '/hyunique/resources/img/ic-like-selected.png',
+	unselect: `${url}/resources/img/ic-like.png`,
+	selected: `${url}/resources/img/ic-like-selected.png`,
 };
 const likeToggle = {
 	selected: 'unselect',
@@ -14,11 +14,11 @@ function follow(following) {
 }
 
 function likeTogglePost(postId) {
-	let url = `/hyunique/post/like`;
+	let url = `${url}/post/like`;
 	let present = 'unselect';
 	
 	if($('.like-btn img').attr('src') !== likeBtnImgSrc[present]) {
-		url = `/hyunique/post/unlike`;
+		url = `${url}/post/unlike`;
 		present = 'selected';
 	}
 	
@@ -58,14 +58,6 @@ function sharePost(userNickname) {
 		document.body.removeChild(t);
 		alert('클립보드에 복사되었습니다 !');
 	}
-}
-
-function moveToPost(postId) {
-	location.href=`/hyunique/post/${postId}`;
-}
-
-function moveToProduct(productId) {
-	location.href=`/hyunique/product/${productId}`;
 }
 
 

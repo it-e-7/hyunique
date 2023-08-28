@@ -3,21 +3,13 @@ const productId = new URL(location.href).searchParams.get('productId');
 const gridBox = $('.post-thumbnail-list-wrapper');
 let scrollLock = false;
 
-function moveToPost(postId) {
-	location.href=`/hyunique/post/${postId}`;
-}
-
-function moveToProduct(productId) {
-	location.href=`/hyunique/product/${productId}`;
-}
-
 getNextPost();
 
 function getNextPost() {
 	if(scrollLock) return; 
 	scrollLock = true;
 	$.ajax({
-	    url: `/hyunique/product/style/post?productId=${productId}&page=${page}`,
+	    url: `${url}/product/style/post?productId=${productId}&page=${page}`,
 	    type: 'GET',
 	    success: function (response) {
 	    	console.log(response);

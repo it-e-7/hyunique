@@ -200,7 +200,7 @@ function sendPostToServer() {
     };
 
     $.ajax({
-        url: '/hyunique/post',
+        url: `${url}/post`,
         type: 'POST',
         enctype:"multipart/form-data",
         contentType: 'application/json',
