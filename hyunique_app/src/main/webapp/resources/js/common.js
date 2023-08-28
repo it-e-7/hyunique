@@ -3,9 +3,9 @@ function backward() {
 }
 
 function moveToPost(postId) {
-	location.href=`${url}/post/${postId}`;
+	location.href=`/post/${postId}`;
 }
 
 function moveToProduct(productId) {
-	location.href=`${url}/product/${productId}`;
+	location.href=`/product/${productId}`;
 }

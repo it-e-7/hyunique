@@ -12,5 +12,4 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/main.css" />
-	<script src="/resources/js/config.js"></script>
 <script src="/resources/js/common.js"></script>

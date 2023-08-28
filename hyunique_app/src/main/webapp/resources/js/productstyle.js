@@ -9,7 +9,7 @@ function getNextPost() {
 	if(scrollLock) return; 
 	scrollLock = true;
 	$.ajax({
-	    url: `${url}/product/style/post?productId=${productId}&page=${page}`,
+	    url: `/product/style/post?productId=${productId}&page=${page}`,
 	    type: 'GET',
 	    success: function (response) {
 	    	console.log(response);

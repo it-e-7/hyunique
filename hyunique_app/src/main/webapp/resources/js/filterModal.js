@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // AJAX를 사용하여 서버로 데이터 전송
             $.ajax({
                 type: "GET",
-                url: `${url}/api/filter/getFilterPost`, // 서버 측 URL 설정
+                url: `/api/filter/getFilterPost`, // 서버 측 URL 설정
                 data: formData,
                 success: function(response) {
                     modal.style.display = "none";
