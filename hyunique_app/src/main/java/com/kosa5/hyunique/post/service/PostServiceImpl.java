@@ -71,8 +71,4 @@ public class PostServiceImpl implements PostService {
         return postVOList;
     }
 
-    @Override
-    public List<PostProductVO> getSearchProductList(String productName) {
-        return postMapper.selectSearchProductList(productName);
-    }
 }

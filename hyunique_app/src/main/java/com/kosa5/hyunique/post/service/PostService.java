@@ -22,6 +22,4 @@ public interface PostService {
     List<PostVO> loadMorePost(Integer page);
 
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
-
-    List<PostProductVO> getSearchProductList(String productName);
 }

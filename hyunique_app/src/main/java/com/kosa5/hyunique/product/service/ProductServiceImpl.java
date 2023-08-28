@@ -3,6 +3,7 @@ package com.kosa5.hyunique.product.service;
 import java.util.Collections;
 import java.util.List;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<PostThumbnailVO> getProductStyleById(String productId, int offset) {
 		return productMapper.getProductStyleById(productId, offset);
+	}
+
+
+	@Override
+	public List<PostProductVO> getSearchProductList(String productName) {
+		return productMapper.selectSearchProductList(productName);
 	}
 }

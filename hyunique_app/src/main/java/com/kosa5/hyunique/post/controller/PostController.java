@@ -87,18 +87,4 @@ public class PostController {
         return null;
     }
 
-    @GetMapping("/search")
-    public String requestSearch() {
-        return "/search";
-    }
-
-    @GetMapping("/search/{productName}")
-    @ResponseBody
-    public List<PostProductVO> getSearchProduct(@PathVariable("productName") String productName) {
-        System.out.println("productName = " + productName);
-        List<PostProductVO> value = postService.getSearchProductList(productName);
-        System.out.println("value = " + value);
-        return postService.getSearchProductList(productName);
-    }
-
 }

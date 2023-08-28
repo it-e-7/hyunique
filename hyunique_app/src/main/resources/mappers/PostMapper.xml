@@ -85,11 +85,4 @@
 		WHERE user_id = #{userId} AND post_id = #{postId}
 	</delete>
 
-	<select id="selectSearchProductList" parameterType="String"
-			resultType="PostProductVO">
-		SELECT *
-		FROM HY_PRODUCT
-		WHERE PRODUCT_NAME like '%' || #{productName} || '%'
-	</select>
-
 </mapper>  

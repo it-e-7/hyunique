@@ -2,6 +2,7 @@ package com.kosa5.hyunique.product.controller;
 
 import java.util.List;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,4 +46,21 @@ public class ProductController {
 	public List<PostThumbnailVO> getProductPost(@RequestParam("productId") String productId, @RequestParam("page") int page) {
 		return productService.getProductStyleById(productId, (page - 1) * 3);
 	}
+
+	// 태그 상품 검색
+	@GetMapping("/search")
+	public String requestSearch() {
+		return "/search";
+	}
+
+	@GetMapping("/search/{productName}")
+	@ResponseBody
+	public List<PostProductVO> getSearchProduct(@PathVariable("productName") String productName, Model model) {
+		System.out.println("productName = " + productName);
+		List<PostProductVO> value = productService.getSearchProductList(productName);
+		System.out.println("value = " + value);
+		model.addAttribute("searchProduct", value);
+		return productService.getSearchProductList(productName);
+	}
+
 }

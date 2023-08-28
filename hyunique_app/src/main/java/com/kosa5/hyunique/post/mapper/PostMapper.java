@@ -27,5 +27,4 @@ public interface PostMapper {
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
-    List<PostProductVO> selectSearchProductList(@Param("productName") String productName);
 }
