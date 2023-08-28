@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<%@ include file="/WEB-INF/views/common.jsp"%>
-	<script src="/hyunique/resources/js/UserUpdate.js"></script>
+	<script src="/resources/js/UserUpdate.js"></script>
 </head>
 <body>
 

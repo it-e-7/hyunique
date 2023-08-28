@@ -1,12 +1,17 @@
 package com.kosa5.hyunique.product.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 
@@ -25,5 +30,19 @@ public class ProductController {
 		model.addAttribute("product", detailVO);
 		
 		return "product/detail";
+	}
+	
+	@GetMapping("style")
+	public String getProductStyle(@RequestParam("productId") String productId, Model model) {
+		ProductDetailVO detailVO = productService.getProductDetailById(productId);
+		model.addAttribute("product", detailVO);
+		
+		return "product/style";
+	}
+	
+	@GetMapping("style/post")
+	@ResponseBody
+	public List<PostThumbnailVO> getProductPost(@RequestParam("productId") String productId, @RequestParam("page") int page) {
+		return productService.getProductStyleById(productId, (page - 1) * 3);
 	}
 }

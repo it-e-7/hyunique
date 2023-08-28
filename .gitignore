@@ -226,6 +226,7 @@ fabric.properties
 
 config/
 .idea
+config.js
 
 pom.properties
 MANIFEST.MF
