@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kosa5.hyunique.user.mapper.ClosetMapper">
+<mapper namespace="com.kosa5.hyunique.closet.mapper.ClosetMapper">
 	<select id="getPostsByUserId" parameterType="int"
 		resultType="com.kosa5.hyunique.user.vo.PostVO">
 		SELECT
