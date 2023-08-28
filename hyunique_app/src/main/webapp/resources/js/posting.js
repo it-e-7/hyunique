@@ -66,6 +66,7 @@ function attachTag(xOffset, yOffset, li) {
         $(".write-container").show();
 
         if (tagValue) {
+            getSearchProduct(tagValue);
             var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
                 left: xOffset + "px",
                 top: yOffset + "px",
@@ -201,7 +202,6 @@ function getFormValue() {
 }
 
 function sendPostToServer() {
-
     var PostingVO = {
         postContent: content,
         tpoName: tpoChecked,
@@ -218,6 +218,17 @@ function sendPostToServer() {
         data: JSON.stringify(PostingVO),
         processData: false,   // 업로드를 위한 필수 파라미터
         contentType: false,   // 업로드를 위한 필수 파라미터
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
+
+function getSearchProduct(productName) {
+    $.ajax({
+        url: 'url: '/hyunique/post/search/' + productName,
+        type: 'GET',
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {
             console.log(response);
         }
