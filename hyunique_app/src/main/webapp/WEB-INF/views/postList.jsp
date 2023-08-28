@@ -121,7 +121,7 @@
 <div id="infinite-scroll">
     <div id="photo-gallery">
         <c:forEach items="${postVOList}" var="post" varStatus="loop">
-            <div class="photo">
+            <div class="photo" onclick="moveToPost('${thumbnail.postId}')">
                 <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
             </div>
         </c:forEach>

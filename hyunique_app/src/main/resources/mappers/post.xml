@@ -46,16 +46,33 @@
 
     <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
         SELECT *
-        FROM HY_POST
+        FROM HY_POST P
+        INNER JOIN HY_USER U ON P.USER_ID = U.USER_ID
         <where>
             <if test="gender != null and gender != ''">
-                AND GENDER = #{gender}
+                AND U.USER_SEX = #{gender}
             </if>
             <if test="tpo != null and tpo.size() > 0">
                 AND TPO_ID IN
                 <foreach collection="tpo" item="item" separator="," open="(" close=")">
                     #{item}
                 </foreach>
+            </if>
+            <if test="minHeight != null">
+                <![CDATA[
+                AND (
+                U.USER_HEIGHT >= #{minHeight}
+                OR U.USER_HEIGHT IS NULL
+                )
+                ]]>
+            </if>
+            <if test="maxHeight != null">
+                <![CDATA[
+                AND (
+                U.USER_HEIGHT <= #{maxHeight}
+                OR U.USER_HEIGHT IS NULL
+                )
+                ]]>
             </if>
             <if test="season != null and season.size() > 0">
                 AND SEASON_ID IN

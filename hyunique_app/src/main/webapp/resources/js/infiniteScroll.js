@@ -21,7 +21,7 @@ $(document).ready(function() {
                     page: currentPage
                 },
                 success: function(data) {
-                     $("#photo-gallery").append(data);
+                    $("#photo-gallery").append(data);
                     currentPage++;
                     isLoading = false;
                 }

@@ -75,8 +75,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 type: "GET",
                 url: `/api/filter/getFilterPost`, // 서버 측 URL 설정
                 data: formData,
-                success: function(response) {
+                success: function(data) {
                     modal.style.display = "none";
+                    //$("#photo-gallery").append(data);
                 },
                 error: function(err) {
                     // 오류 처리

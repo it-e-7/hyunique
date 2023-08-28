@@ -65,9 +65,9 @@ public class PostServiceImpl implements PostService {
 
         List<PostVO> postVOList = new ArrayList<>();
 
-        System.out.println("RESULT START --- " + filterPostVO);
+/*        System.out.println("RESULT START --- " + filterPostVO);*/
         postVOList = postMapper.loadFilterPost(filterPostVO);
-        System.out.println("RESULT END --- " + postVOList);
+/*        System.out.println("RESULT END --- " + postVOList);*/
         return postVOList;
     }
 
