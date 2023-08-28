@@ -43,16 +43,37 @@
         ]]>
     </select>
 
-    <select id="loadFilterPost" parameterType="map" resultType="PostVO">
-        <![CDATA[
+
+    <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
         SELECT *
         FROM HY_POST
-        WHERE TPO_ID IN
-        <foreach collection="tpoNumber" item="tpoItem" open="(" close=")" separator=",">
-            #{tpoItem}
-        </foreach>
-        ]]>
-
+        <where>
+            <if test="gender != null and gender != ''">
+                AND GENDER = #{gender}
+            </if>
+            <if test="tpo != null and tpo.size() > 0">
+                AND TPO_ID IN
+                <foreach collection="tpo" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="season != null and season.size() > 0">
+                AND SEASON_ID IN
+                <foreach collection="season" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="mood != null and mood.size() > 0">
+                AND MOOD_ID IN
+                <foreach collection="mood" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
     </select>
+
+
+
+
 
 </mapper>

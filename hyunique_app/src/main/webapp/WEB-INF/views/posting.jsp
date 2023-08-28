@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +38,8 @@
             <form action="post" method="post" enctype="multipart/form-data">
                 <div class="image-view">
                     <ul id="image-list"></ul>
-                    <div class="tag-container" id="tag-container"></div>
+                    <div class="tag-container" id="tag-container">
+                    </div>
                 </div>
                 <div class="style-button-group">
                     <label>스타일</label>
@@ -68,6 +73,26 @@
             </form>
     </div>
     <br>
+
+     <div class="search-container">
+            <!-- 헤더 -->
+            <div class="header">
+                <!-- 뒤로 가기 버튼 -->
+                <button onclick="window.history.back();">뒤로가기</button>
+
+                <!-- 검색창 -->
+                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+
+                <!-- 검색 버튼 -->
+                <button id="search-btn">검색</button>
+            </div>
+
+            <!-- 검색 결과 리스트 -->
+            <div class="result-list" id="resultList">
+                <!-- 여기에 검색 결과가 표시됩니다 -->
+            </div>
+     </div>
+
     <div class="post-container">
             <div class="header">
                 <p>게시가 완료되었습니다!</p>
