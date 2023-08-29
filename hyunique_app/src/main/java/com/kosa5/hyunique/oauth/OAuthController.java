@@ -99,7 +99,7 @@ public class OAuthController {
 			System.out.println("로그인되지 않은 사용자");
 			// 로그인되지 않은 사용자 처리
 		}
-		return "userInfopage";
+		return "redirect:post/getPostList";
 	}
 
 	// 네이버 로그아웃
