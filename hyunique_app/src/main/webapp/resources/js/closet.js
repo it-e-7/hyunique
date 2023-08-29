@@ -1,30 +1,71 @@
-function fetchClosetInfo(sessionId) {
-  $.ajax({
-    url: `/closet/${sessionId}`,
-    type: 'GET',
-    success: function(closetItems) {
-      var closetDiv = $('#closet'); // HTML에서 옷장 정보를 표시할 div
-      closetDiv.empty(); // 기존 옷장 아이템 제거
+// 현재 보여줄 카테고리를 저장하는 변수
+let currentCategory = '';
+const sessionId = document.getElementById('session-id').value;
 
-      closetItems.forEach(function(item) {
-        var productImage = $('<img/>', {
-          src: item.productImg,
-          class: 'thumbnail-image'
-        });
 
-        var productInfo = $('<div/>', {
-          text: item.typeName
-        });
-
-        var productDiv = $('<div/>');
-        productDiv.append(productImage);
-        productDiv.append(productInfo);
-
-        closetDiv.append(productDiv); // 옷장 아이템 추가
-      });
-    },
-    error: function(error) {
-      console.log('옷장 정보를 불러오는 데 실패했습니다:', error);
-    }
-  });
+function loadCloset(userId) {
+    console.log("loadCloset 함수 실행, userId: " + userId);
+    $.ajax({
+        url: `/closet/${userId}`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            displayCloset(data);
+        },
+        error: function() {
+            console.error('옷장 정보를 가져오는 데 실패했습니다.');
+        }
+    });
 }
+
+function displayCloset(closetVO) {
+    console.log("displayCloset 함수 실행");
+    console.log(closetVO);
+
+
+    const categories = [
+        'bagList', 'dressList', 'outerList', 'topList',
+        'bottomList', 'shoesList', 'hatList', 'accessoryList'
+    ];
+
+    for (const category of categories) {
+        let productHtml = '';
+        const productList = closetVO[category];
+        for (const product of productList) {
+            productHtml += generateProductCard(product);
+        }
+        $(`#${category}`).html(productHtml).hide();
+    }
+
+    // 초기 카테고리를 설정
+    filterProducts('bagList', categories);
+}
+function filterProducts(category) {
+    console.log("filterProducts 함수 실행, 카테고리: " + category);
+
+    const categories = [
+        'bagList', 'dressList', 'outerList', 'topList',
+        'bottomList', 'shoesList', 'hatList', 'accessoryList'
+    ];
+
+    for (const current of categories) {
+        $(`#${current}`).hide();
+    }
+    $(`#${category}`).show();
+    currentCategory = category;
+}
+
+
+
+function generateProductCard(product) {
+    return `<div class="product-card">
+                <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
+                <p>${product.productName}</p>
+                <p>${product.productBrand}</p>
+                <p>${product.productPrice}</p>
+            </div>`;
+}
+$(document).ready(function() {
+	userId = sessionId
+    loadCloset(userId);
+});

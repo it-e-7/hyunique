@@ -4,16 +4,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosa5.hyunique.closet.mapper.ClosetMapper">
-	<select id="getClosetByUserId" parameterType="int"
-		resultType="com.kosa5.hyunique.closet.vo.ClosetVO">
-		SELECT
-		    hy_closet.product_id,
-		    hy_product.type_name,
-	        hy_product.product_img		    
-		FROM
-		         hy_closet
-		    INNER JOIN hy_product ON hy_closet.product_id = hy_product.product_id
-		WHERE
-		    hy_closet.user_id = #{user_id}
-	</select>
+    <select id="getClosetByUserId" parameterType="int" resultType="java.util.HashMap">
+        SELECT
+            hy_closet.product_id,
+            hy_product.type_name,
+            hy_product.product_name,
+            hy_product.product_img,
+            hy_product.product_price,
+            hy_product.product_brand
+        FROM
+            hy_closet
+            INNER JOIN hy_product ON hy_closet.product_id = hy_product.product_id
+        WHERE
+            hy_closet.user_id = #{user_id}
+        ORDER BY hy_product.type_name
+    </select>
 </mapper>

@@ -1,9 +1,8 @@
 package com.kosa5.hyunique.closet.mapper;
 
 import java.util.List;
-
-import com.kosa5.hyunique.closet.vo.ClosetVO;
+import java.util.Map;
 
 public interface ClosetMapper {
-    List<ClosetVO> getClosetByUserId(int userId);
+    List<Map<String, Object>> getClosetByUserId(int userId);
 }
