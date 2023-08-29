@@ -5,6 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +25,13 @@ import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
 
-import lombok.extern.java.Log;
-
-@Log
 @Controller
 @RequestMapping("user")
 public class UserController {
 
 	private UserService userService;
 
+	Logger log = LogManager.getLogger("case3");
 	@Autowired
 	public UserController(UserService userService) {
 		this.userService = userService;

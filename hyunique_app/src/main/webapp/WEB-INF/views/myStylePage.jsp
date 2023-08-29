@@ -6,16 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+<%@ include file="/WEB-INF/views/common.jsp"%>
 <style>
 .thumbnail-image {
 	width: 200px;
 	height: 200px;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"
-	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-	crossorigin="anonymous"></script>
-<script src="/resources/js/UserUpdate.js"></script>
 </head>
 <body>
 	<br>
@@ -31,10 +28,16 @@
 	<a href="update">회원정보 수정</a>
 	<div id="thumbnails"></div>
 	<div id="postUrl"></div>
-	<a>세션아이디 : ${sessionId}</a>
+	<div id="tabs">
+	    <button onclick="handleTabClick('all')">전체보기</button>
+	    <button onclick="handleTabClick('상의')">상의보기</button>
+	    <button onclick="handleTabClick('하의')">하의보기</button>
+	  </div>
+	  <div id="closet"></div>	<a>세션아이디 : ${sessionId}</a>
 	<button onclick="userPostList(${sessionId})">내 포스트</button>
 	<button onclick="userPostList(24)">다른유저 포스트</button>
-
-
+	<button onclick="fetchClosetInfo(${sessionId})">내 옷장 정보 보기</button>
 </body>
+<script src="/resources/js/UserUpdate.js"></script>
+<script src="/resources/js/closet.js"></script>
 </html>
