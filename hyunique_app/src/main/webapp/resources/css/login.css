@@ -1,0 +1,43 @@
+.content-wrapper {
+	width: 100%;
+}
+.login-btn-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content:center;
+	margin-bottom:0.5rem
+}
+.logo-wrapper{
+	display:flex;
+	flex-direction:row;
+	margin-left:1.3rem;
+	margin-top:1rem;
+}
+.instruct-text-wrapper{
+	display:flex;
+	justify-content:center;
+	text-align:center;
+	margin-top:6rem;
+	margin-bottom:5rem;
+}
+.login-text-wrapper{
+	display:flex;
+	justify-content:center;
+	text-align:center;
+	color: var(--grey5);
+	margin-bottom:1rem;
+}
+.img-login-btn {
+	height : 4rem;
+}
+.img-logo{
+	height : 2rem;
+}
+.txt-instruct{
+	font-size:1.7rem;
+	font-family:Spoqa Han Sans;
+	font-weight:bold;
+}
+.txt-login{
+	font-size:0.85rem;
+}
