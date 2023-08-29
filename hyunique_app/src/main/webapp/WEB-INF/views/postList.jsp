@@ -9,6 +9,7 @@
 	<%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 </head>
 <body>
 
@@ -34,7 +35,16 @@
       <div class="button" id="following">팔로잉</div>
 </div>
 <div id= "hyunique-main-top-filter">
-    <button id="filterModalButton">모달 띄우기</button>
+    <button id="filterModalButton" class="filter-img-div jw-blue">
+        <img src="/resources/img/filter.png" />
+    </button>
+    <c:forEach var="tag" items="${['남', '여', '미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이']}">
+      <button id="filterModalButton">
+        <div id=textLine>
+        ${tag}
+        </div>
+      </button>
+    </c:forEach>
 
     <div class="modal">
         <div class="modal_body">

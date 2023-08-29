@@ -2,6 +2,22 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
+// 태그 버튼 요소들을 선택합니다.
+    var tagButtons = $(".filterModalButton");
+
+    // 각 태그 버튼에 클릭 이벤트를 추가합니다.
+    tagButtons.click(function() {
+        // 버튼에 'active' 클래스가 있는지 확인합니다.
+        var hasClass = $(this).hasClass("active");
+
+        // 'active' 클래스가 있는 경우 제거하고, 없는 경우 추가합니다.
+        if (hasClass) {
+            $(this).removeClass("active");
+        } else {
+            $(this).addClass("active");
+        }
+    });
+
 var itemsPerPage = 10;
         var currentPage = 1;
         var isLoading = false; //로딩중이다 아니다를 판단하기 위함
@@ -16,13 +32,65 @@ var itemsPerPage = 10;
         });
 
         function loadMoreImages() {
+        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
+
+            const formData = {
+                        minHeight: 140, // 초기 값 설정
+                        maxHeight: 180, // 초기 값 설정
+            };
+
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
+            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
+            const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
+            const rsHeightElement = document.querySelector('.rs-height');
+            const rsHeightValue = rsHeightElement.textContent;
+            const regex = /(\d+)cm - (\d+)cm/;
+            const match = rsHeightValue.match(regex);
+            const minHeight = match[1];
+            const maxHeight = match[2];
+
+            let selectedTpoValues = [];
+            let selectedSeasonValues = [];
+            let selectedMoodValues = [];
+
+            formData.minHeight = minHeight;
+            formData.maxHeight = maxHeight;
+
+            if (selectedGender) {
+                formData.gender = selectedGender.value;
+            } else {
+                formData.gender = null;
+            }
+
+            if (selectedTpoCheckboxes.length > 0) {
+                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
+                formData.tpo = selectedTpoValues;
+            } else {
+                formData.tpo  = [];
+            }
+
+            if (selectedSeasonCheckboxes.length > 0) {
+                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
+                formData.season = selectedSeasonValues;
+            } else {
+                formData.season  = [];
+            }
+
+            if (selectedMoodCheckboxes.length > 0) {
+                selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
+                formData.mood = selectedMoodValues;
+            } else {
+                formData.mood  = [];
+            }
+
+            formData.page = currentPage;
+
         isLoading = true;
             $.ajax({
                 url: `/filter/getFilterPost`,
                 type: "GET",
-                data: {
-                    page: currentPage
-                },
+                data: formData,
                 success: function(data) {
                     $("#photo-gallery").append(data);
                     currentPage++;
@@ -73,45 +141,48 @@ var itemsPerPage = 10;
 
         const applyFilterButton = document.getElementById("applyFilter"); // 적용 버튼 선택
         // 적용 버튼을 클릭할 때 AJAX로 데이터를 서버로 전송
-        applyFilterButton.addEventListener("click", function() {
 
-        //데이터를 가져옵니다.
-        const selectedGender = document.querySelector('input[name="gender"]:checked');
-        const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
-        const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-        const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
+        applyFilterButton.addEventListener("click", applyFilter);
+
+        function applyFilter() {
+            // 데이터를 가져옵니다.
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
+            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
+            const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
             let selectedMoodValues = [];
-            formData.page = currentPage;
+            formData.page = 1;
+            currentPage = 1;
 
-                if (selectedGender) {
-                    formData.gender = selectedGender.value;
-                } else {
-                    formData.gender = null;
-                }
+            if (selectedGender) {
+                formData.gender = selectedGender.value;
+            } else {
+                formData.gender = null;
+            }
 
-                if (selectedTpoCheckboxes.length > 0) {
-                    selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
-                    formData.tpo = selectedTpoValues;
-                } else {
-                    formData.tpo  = [];
-                }
+            if (selectedTpoCheckboxes.length > 0) {
+                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
+                formData.tpo = selectedTpoValues;
+            } else {
+                formData.tpo  = [];
+            }
 
-                if (selectedSeasonCheckboxes.length > 0) {
-                    selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
-                    formData.season = selectedSeasonValues;
-                } else {
-                    formData.season  = [];
-                }
+            if (selectedSeasonCheckboxes.length > 0) {
+                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
+                formData.season = selectedSeasonValues;
+            } else {
+                formData.season  = [];
+            }
 
-                if (selectedMoodCheckboxes.length > 0) {
-                    selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
-                    formData.mood = selectedMoodValues;
-                } else {
-                    formData.mood  = [];
-                }
+            if (selectedMoodCheckboxes.length > 0) {
+                selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
+                formData.mood = selectedMoodValues;
+            } else {
+                formData.mood  = [];
+            }
 
             // AJAX를 사용하여 서버로 데이터 전송
             $.ajax({
@@ -122,7 +193,7 @@ var itemsPerPage = 10;
                     modal.style.display = "none";
                     $("#photo-gallery").empty();
                     $("#photo-gallery").append(data);
-                    currentPage = 1;
+                    currentPage = currentPage + 1;
                     loadMoreImages();
                 },
                 error: function(err) {
@@ -130,7 +201,7 @@ var itemsPerPage = 10;
                     console.error(err);
                 }
             });
-        });
+        }
 
     // 각 요소 가져오기
     const sliderContainer = document.querySelector('.rs-container');

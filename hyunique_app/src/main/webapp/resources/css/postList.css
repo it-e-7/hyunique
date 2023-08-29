@@ -7,7 +7,6 @@
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 10px;
 }
 
 .photo {
@@ -95,4 +94,36 @@
 #hyunique-main-top-recommend .button.selected {
   border-color: black; /* 선택된 버튼에만 밑줄 색상을 변경 */
   color: black;
+}
+
+#filterModalButton {
+    border: 1px solid #BBBBBB;
+    border-radius: 10px;
+    padding: 10px 10px; /* 버튼 내부 여백을 상하 10px, 좌우 20px으로 조절합니다. */
+    background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+#filterModalButton >img{
+    height: 16px;
+}
+
+#filterModalButton >div{
+    height: 32px;
+}
+
+#filterModalButton > div#textLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 부모 요소의 높이에 맞게 설정 */
+}
+
+#hyunique-main-top-filter{
+    white-space: nowrap;
+    overflow : hidden;
+    overflow-x: auto;
+    padding : 3%;
 }
