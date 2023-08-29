@@ -56,14 +56,6 @@ public class PostController {
         return "postList";
     }
 
-    @GetMapping(value = "getMorePost")
-    public String loadMorePost(@RequestParam("page") int page, Model model) {
-        List<PostVO> postVOList = new ArrayList<>();
-        postVOList = postService.loadMorePost(page);
-        model.addAttribute("postVOList", postVOList);
-        return "ajax_response";
-    }
-
     // 게시글 작성
     @GetMapping
     public String requestPosting() {

@@ -18,7 +18,7 @@ var itemsPerPage = 10;
         function loadMoreImages() {
         isLoading = true;
             $.ajax({
-                url: `/post/getMorePost`,
+                url: `/filter/getFilterPost`,
                 type: "GET",
                 data: {
                     page: currentPage
@@ -41,6 +41,7 @@ var itemsPerPage = 10;
         }
 
         loadMoreImages();
+        //이건 첫 로딩을 위한 로드 모어 이미지입니다!
 
     const filterModalButton = document.getElementById("filterModalButton");
     const modal = document.querySelector(".modal");
@@ -115,7 +116,7 @@ var itemsPerPage = 10;
             // AJAX를 사용하여 서버로 데이터 전송
             $.ajax({
                 type: "GET",
-                url: `/api/filter/getFilterPost`, // 서버 측 URL 설정
+                url: `/filter/getFilterPost`, // 서버 측 URL 설정
                 data: formData,
                 success: function(data) {
                     modal.style.display = "none";

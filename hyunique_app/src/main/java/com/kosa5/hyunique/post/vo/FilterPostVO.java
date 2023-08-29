@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -17,4 +16,6 @@ public class FilterPostVO {
     private List<Integer> mood;
     private Integer minHeight;
     private Integer maxHeight;
+    private Integer page;
+    private Integer pageSize = 10;
 }

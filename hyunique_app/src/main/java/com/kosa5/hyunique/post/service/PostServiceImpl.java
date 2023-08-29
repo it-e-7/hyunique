@@ -46,7 +46,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
         List<PostVO> postVOList = new ArrayList<>();
+        System.out.println("Before : "+filterPostVO);
+        filterPostVO.setPage((filterPostVO.getPageSize())*(filterPostVO.getPage() - 1));
         postVOList = postMapper.loadFilterPost(filterPostVO);
+        System.out.println("After : "+postVOList);
         return postVOList;
     }
 

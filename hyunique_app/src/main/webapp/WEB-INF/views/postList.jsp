@@ -14,9 +14,24 @@
 
 <div id="main-wrapper">
 <div id= "main-wrapper-top">
-<div id= "hyunique-main-top-logo">
+    <div id="hyunique-main-top-logo">
+             <button id="hyunique-main-top-logo-image" onclick="backward()">
+                    <img src="/resources/img/hyunique.png" />
+             </button>
+             <div id="hyunique-main-top-buttons">
+                  <button id="search-button">
+                    <img src="/resources/img/ic-search.png" />
+                  </button>
+                  <button id="my-page-button">
+                    <img src="/resources/img/ic-person.png" />
+                  </button>
+             </div>
+    </div>
 </div>
 <div id= "hyunique-main-top-recommend">
+      <div class="button" id="recommend">추천</div>
+      <div class="button" id="style-ranking">스타일 랭킹</div>
+      <div class="button" id="following">팔로잉</div>
 </div>
 <div id= "hyunique-main-top-filter">
     <button id="filterModalButton">모달 띄우기</button>
@@ -129,9 +144,8 @@
 
     </div>
 </div>
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <script src="/resources/js/infiniteScroll.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/resources/js/postList.js"></script>
 </div>
 </div>
 

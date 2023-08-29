@@ -65,6 +65,10 @@
                 </foreach>
             </if>
         </where>
+        <if test="page != null">
+            OFFSET  #{page}
+            ROWS FETCH NEXT #{pageSize} ROWS ONLY
+        </if>
     </select>
 
 

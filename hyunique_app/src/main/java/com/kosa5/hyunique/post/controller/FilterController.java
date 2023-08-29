@@ -9,22 +9,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping ("/api/filter")
+@RequestMapping ("/filter")
 public class FilterController {
 
 	@Autowired
 	private PostService postService;
 
 	@GetMapping(value = "getFilterPost")
-	public String getFilterPost(@ModelAttribute FilterPostVO filterPostVO) {
+	public String getFilterPost(@ModelAttribute FilterPostVO filterPostVO, Model model) {
 		List<PostVO> postVOList = new ArrayList<>();
 		postVOList = postService.getfilterPostList(filterPostVO);
+		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}
 	

@@ -19,8 +19,6 @@ public interface PostMapper {
 
     int deletePostLike(@Param("postId") int postId, @Param("userId") int userId);
 
-    PostVO findOnePost(Integer postId);
-
     List<PostVO> loadMorePost(@Param("page") Integer page, @Param("pageSize") Integer pageSize);
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);

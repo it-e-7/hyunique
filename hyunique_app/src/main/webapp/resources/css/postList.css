@@ -1,6 +1,5 @@
 #main-wrapper {
     margin : 0 auto;
-    width : 800px;
 }
 
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
@@ -23,4 +22,77 @@
     display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
     margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
     aspect-ratio: 3 / 4;
+}
+
+#hyunique-main-top-logo{
+    display : flex;
+    margin-top : 10%;
+}
+
+#hyunique-main-top-logo-image{
+    margin-left : 5%;
+    width: 30%;
+}
+
+#hyunique-main-top-logo-image >img{
+    width: 100%;
+    height: auto;
+}
+
+#hyunique-main-top-buttons{
+    display : flex;
+    margin-left : auto;
+    margin-right: 5%;
+    width: 20%;
+}
+
+#hyunique-main-top-buttons >#search-button{
+   width: 35%;
+   margin-right: 20%;
+}
+
+#hyunique-main-top-buttons >#my-page-button{
+   width: 35%;
+}
+
+#hyunique-main-top-buttons >#search-button > img{
+   width: 100%;
+}
+
+#hyunique-main-top-buttons >#my-page-button > img{
+   width: 100%;
+}
+
+#hyunique-main-top-recommend {
+  display: flex;
+  margin-left : 5%;
+  font-size: 25px;
+  font-weight: bold;
+  color : #BBBBBB;
+}
+
+@media screen and (max-width: 700px) {
+  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
+  #hyunique-main-top-recommend {
+    display: flex;
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: bold;
+    color : #BBBBBB;
+  }
+}
+
+#hyunique-main-top-recommend .button {
+  cursor: pointer;
+  margin-right: 20px;
+  text-decoration: none;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent; /* 밑줄 추가 */
+  color: #BBBBBB;
+  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+}
+
+#hyunique-main-top-recommend .button.selected {
+  border-color: black; /* 선택된 버튼에만 밑줄 색상을 변경 */
+  color: black;
 }
