@@ -42,15 +42,13 @@ function likeTogglePost(postId) {
 
 function sharePost(userNickname) {
 	if(isMobile()) {
-		alert("모바일");
 		navigator.share({
 			title: `@${userNickname}님의 스타일 | 더 hyunique하게`,
-			text: `하이`,
 			url: location.href,
 		}).then(() => {
-			alert('공유 완료');
+			console.log("공유 완료");
 		}).catch(() => {
-			alert('모바일 error');
+			console.error('공유  error');
 		});
 	} else {
 		const t = document.createElement("textarea");
