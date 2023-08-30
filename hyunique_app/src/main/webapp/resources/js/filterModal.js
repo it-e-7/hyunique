@@ -2,22 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-// 태그 버튼 요소들을 선택합니다.
-    var tagButtons = $(".filterModalButton");
-
-    // 각 태그 버튼에 클릭 이벤트를 추가합니다.
-    tagButtons.click(function() {
-        // 버튼에 'active' 클래스가 있는지 확인합니다.
-        var hasClass = $(this).hasClass("active");
-
-        // 'active' 클래스가 있는 경우 제거하고, 없는 경우 추가합니다.
-        if (hasClass) {
-            $(this).removeClass("active");
-        } else {
-            $(this).addClass("active");
-        }
-    });
-
 var itemsPerPage = 10;
         var currentPage = 1;
         var isLoading = false; //로딩중이다 아니다를 판단하기 위함
@@ -39,7 +23,7 @@ var itemsPerPage = 10;
                         maxHeight: 180, // 초기 값 설정
             };
 
-            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
             const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
             const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
             const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
@@ -53,14 +37,16 @@ var itemsPerPage = 10;
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
             let selectedMoodValues = [];
+            let selectedGenderValues = [];
 
             formData.minHeight = minHeight;
             formData.maxHeight = maxHeight;
 
-            if (selectedGender) {
-                formData.gender = selectedGender.value;
+            if (selectedGenderCheckboxes.length > 0) {
+                selectedGenderValues = Array.from(selectedGenderCheckboxes).map(checkbox => checkbox.value);
+                formData.gender = selectedGenderValues;
             } else {
-                formData.gender = null;
+                formData.gender  = [];
             }
 
             if (selectedTpoCheckboxes.length > 0) {
@@ -285,18 +271,6 @@ var itemsPerPage = 10;
     document.addEventListener('mouseup', function () {
         isLeftDragging = false;
         isRightDragging = false;
-    });
-
-    // 라디오 버튼위한 스크립트 (ex.성별)
-    const maleRadio = document.getElementById("maleRadio");
-    const femaleRadio = document.getElementById("femaleRadio");
-
-    maleRadio.addEventListener("click", function() {
-        femaleRadio.checked = false;
-    });
-
-    femaleRadio.addEventListener("click", function() {
-        maleRadio.checked = false;
     });
 
     function updateRangeBackgroundColor() {

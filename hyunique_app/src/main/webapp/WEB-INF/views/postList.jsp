@@ -35,11 +35,11 @@
       <div class="button" id="following">팔로잉</div>
 </div>
 <div id= "hyunique-main-top-filter">
-    <button id="filterModalButton" class="filter-img-div jw-blue">
+    <button id="filterModalButton" class="filter-img-div">
         <img src="/resources/img/filter.png" />
     </button>
     <c:forEach var="tag" items="${['남', '여', '미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이']}">
-      <button id="filterModalButton">
+      <button id="filterModalButton${loop.index}" onclick="handleButtonClick('${tag}')">
         <div id=textLine>
         ${tag}
         </div>
@@ -49,11 +49,12 @@
     <div class="modal">
         <div class="modal_body">
                 <div>
-                    <label for="maleRadio">MEN</label>
-                    <input type="radio" id="maleRadio" name="gender" value="M">
-                    <label for="femaleRadio">WOMEN</label>
-                    <input type="radio" id="femaleRadio" name="gender" value="W">
+                  <label for="maleCheckbox">MEN</label>
+                  <input type="checkbox" id="maleCheckbox" name="gender" value="M">
+                  <label for="femaleCheckbox">WOMEN</label>
+                  <input type="checkbox" id="femaleCheckbox" name="gender" value="W">
                 </div>
+
                 <div class="rs-height">
                 140cm - 180cm
                 </div>
@@ -145,13 +146,11 @@
 <div id= "main-wrapper-bottom">
 <div id="infinite-scroll">
     <div id="photo-gallery">
-
         <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
              <div class="photo" onclick="moveToPost('${post.postId}')">
                  <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
              </div>
              </c:forEach> --%>
-
     </div>
 </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
