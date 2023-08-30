@@ -10,6 +10,25 @@
     z-index: 1;
     align-items: center;
     justify-content: center;
+    overflow: auto;
+}
+
+#modal_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+#modal_bottom {
+  display: flex;
+  flex-flow: column;
+  gap: 38px;
+}
+
+#modal_name {
+  flex: 1;
+  text-align: center;
 }
 
 .modal_body {
@@ -17,12 +36,71 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 760px;
+    min-height: 100vh;
+    margin: auto;
+    font-size: 18px;
+    overflow-y: auto;
+}
+
+#main-wrapper {
+    margin-top : 5px;
+}
+
+#select-type-button{
+    display : flex;
+    justify-content: space-between;
+}
+
+.gender-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 12px 32px;
+}
+
+#tpo-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 12px 32px;
+}
+
+#season-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 12px 32px;
+}
+
+#tpo-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 12px 32px;
+}
+
+#fixed-button-div{
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+    text-align: center;
+}
+
+#type {
+display: flex;
+flex-direction: column;
+gap: 16px;
 }
 
 /* 슬라이더 스타일 및 레이아웃 CSS */
 .rs-container {
     position: relative;
     height: 20px;
+    margin: 0 auto;
+    width : 90%;
 }
 
 .rs-scale {
@@ -44,7 +122,7 @@
     top: 50%;
     left: 0;
     height: 4px;
-    background-color: #007bff;
+    background-color: var(--jw-blue);
     transform: translateY(-50%);
 }
 
@@ -52,7 +130,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #007bff;
+    background-color: var(--jw-blue);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -62,6 +140,6 @@
     top: 50%;
     left: 0;
     height: 4px;
-    background-color: #007bff; /* 배경색을 파란색으로 설정합니다 */
+    background-color: var(--jw-blue); /* 배경색을 파란색으로 설정합니다 */
     transform: translateY(-50%);
 }

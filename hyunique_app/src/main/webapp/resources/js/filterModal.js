@@ -33,6 +33,7 @@ var itemsPerPage = 10;
             const match = rsHeightValue.match(regex);
             const minHeight = match[1];
             const maxHeight = match[2];
+            const selectedButton = document.querySelector(".selected").id;
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
@@ -41,6 +42,8 @@ var itemsPerPage = 10;
 
             formData.minHeight = minHeight;
             formData.maxHeight = maxHeight;
+
+            formData.selectedType = selectedButton;
 
             if (selectedGenderCheckboxes.length > 0) {
                 selectedGenderValues = Array.from(selectedGenderCheckboxes).map(checkbox => checkbox.value);
@@ -136,12 +139,15 @@ var itemsPerPage = 10;
             const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
             const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
             const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
+            const selectedButton = document.querySelector(".selected").id;
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
             let selectedStyleValues = [];
             formData.page = 1;
             currentPage = 1;
+
+            formData.selectedType = selectedButton;
 
             if (selectedGender) {
                 formData.gender = selectedGender.value;

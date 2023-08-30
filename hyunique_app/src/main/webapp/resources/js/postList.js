@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
+      document.getElementById("applyFilter").click();
     });
 
     if (index === parseInt(selectedIndex)) {
@@ -61,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 체크되어 있지 않을 때의 스타일 (기본 스타일)
             if (buttons.length > 0) {
               var button = buttons[0];
-              button.style.backgroundColor = "var(--jw-light-blue)";
+              button.style.backgroundColor = "var(--jw-light-blue2)";
               button.style.fontWeight = "bold";
-              button.style.color = "var(--jw-blue)";
+              button.style.color = "var(--jw-blue3)";
             }
           }
 
