@@ -36,28 +36,37 @@
 			<img src="${user.userImg}" width="200" height="200">
 		</div>
 		<div class="user-details">
-			<div class="user-detail-bar-wrapper">
-				<p id="user-detail-title">팔로워 |</p>
-				<p id="user-follower">${user.followerCount}</p>
+			<div class=user-sns-btn-wrapper>
+				<%-- ${user.facebookUrl} ${user.twitterUrl} ${user.instagramUrl}--%>
+				<img src="/resources/icon/facebook_logo_null.png" />
+				<img src="/resources/icon/twitter_logo_null.png" />
+				<img src="/resources/icon/instagram_logo.png" />
+				<img src="/resources/icon/threads_logo.png" />
 			</div>
 			<div class="user-detail-bar-wrapper">
-				<p id="user-detail-title">스타일 |</p>
+				<p id="user-detail-title">팔로워</p>
+				<p id="vertical-bar">|</p>
+				<p id="user-follower">${user.followerCount}명</p>
+			</div>
+			<div class="user-detail-bar-wrapper">
+				<p id="user-detail-title">스타일</p>
+				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.styleNames}</p>
 			</div>
 			<div class="user-introduce-wrapper">${user.userIntroduce}</div>
-			${user.facebookUrl} ${user.twitterUrl} ${user.instagramUrl}
 		</div>
 	</div>
 	
-<ul class="tab-bar">
-    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
-    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2">옷장</li>
-    <div class="indicator"></div>
-</ul>
+	<div class="horizontal-bar"> </div>
+	<ul class="tab-bar">
+	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
+	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2">옷장</li>
+	    <div class="indicator"></div>
+	</ul>
 
 	<div id="tab1" class="tab-content">
 		<button onclick="userPostList(${sessionId})">내 포스트</button>
-		<div id="thumbnails"></div>
+		<div id="thumbnails" class="style-thumbnail-list-wrapper"></div>
 		<div id="postUrl"></div>
 	</div>
 
