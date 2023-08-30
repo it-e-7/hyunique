@@ -48,8 +48,10 @@ function sharePost(userNickname) {
 			text: `하이`,
 			url: location.href,
 		}).then(() => {
-			console.log('공유 완료');
-		}).catch(console.error);
+			alert('공유 완료');
+		}).catch(() => {
+			alert('모바일 error');
+		});
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);
