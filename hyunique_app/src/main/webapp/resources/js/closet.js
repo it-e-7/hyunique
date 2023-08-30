@@ -58,7 +58,7 @@ function filterProducts(category) {
 
 
 function generateProductCard(product) {
-    return `<div class="product-card">
+    return `<div class="product-card" onclick="moveToProduct(${product.productId})">
                 <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
                 <p id="product-brand">${product.productBrand}</p>
                 <p id="product-name">${product.productName}</p>
