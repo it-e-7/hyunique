@@ -11,11 +11,19 @@
 	object-position:center;
 }
 .product-card {
-    width: 150px;
-    height: 200px;
-    border: 1px solid black;
-    margin: 10px;
-    display: inline-block;
+    min-height: auto;
+    aspect-ratio:178/264;
+    margin: 0.5rem;
+    display:flex;
+    flex-direction:column;
+}
+.product-card img{
+	min-width:100%;
+	height:auto;
+	aspect-ratio: 1/1.2;
+	object-fit:cover;
+	object-position:center;
+	
 }
 .img-backimg-wrapper {
   width: 100%;
@@ -48,9 +56,20 @@
 	width:24px;
 	height:24px;
 }
+.button-section{
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	margin-top:1rem;
+	overflow-x: auto;
+	white-space: nowrap;
+}
 .button-section img{
-	height : 1.7rem;
-	
+	height : 1.5rem;
+	margin-right:2rem;
+}
+.button-section img:first-child {
+	margin-left: 2rem;
 }
 .user-details{
 	display:flex;
@@ -123,11 +142,11 @@
 }
 
 #product-section > div {
-	display: none;
+	display: grid;
 }
 
 #product-section > div.active {
-	display: block;
+	display: grid;
 }
 
 .tab-bar {
@@ -144,17 +163,16 @@
   height: 10px;
  }
 .tab {
-  padding: 20px 0;
+  padding: 0.8rem 0;
   background: white;
   color: #607D8B;
   overflow: hidden;
   text-align: center;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   cursor: pointer;
   position: relative;
-  
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -166,11 +184,9 @@
   height: 3px;
   background: var(--jw-blue2);
   position: absolute;
-  margin-top: 58px;
+  margin-top: 46px;
   margin-left:0;
-  
   -webkit-transition: margin 0.5s ease;
-  
   transition: margin 0.5s ease;
 }
 
@@ -217,15 +233,26 @@
 	gap: 0.2rem;
 	align-content: end;
 }
+.product-list-wrapper {
+	display: grid;
+	gap: 0.2rem;
+	align-content: end;
+}
 
 @media (max-width: 700px) {
 	.style-thumbnail-list-wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+	.product-list-wrapper{
 		grid-template-columns: 1fr 1fr;
 	}
 }
 
 @media (min-width: 700px) {
 	.style-thumbnail-list-wrapper {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.product-list-wrapper{
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
@@ -237,4 +264,20 @@
 
 #postUrl{
 	display: none;
+}
+
+#product-brand, #product-price {
+	padding-left:1rem;
+	font-family:Spoqa Han Sans;
+	font-weight:bold;
+}
+#product-name{
+	max-inline-size:100%;
+	max-width:100%;"
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	padding-left:1rem;
+	margin-top:0.5rem;
+	margin-bottom:1rem;
 }

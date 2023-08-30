@@ -102,3 +102,7 @@ function fetchClosetInfo(sessionId) {
 	    }
 	  });
 	}
+
+$(document).ready(function() {
+	  userPostList(sessionId);
+	});

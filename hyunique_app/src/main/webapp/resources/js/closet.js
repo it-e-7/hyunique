@@ -60,12 +60,13 @@ function filterProducts(category) {
 function generateProductCard(product) {
     return `<div class="product-card">
                 <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
-                <p>${product.productName}</p>
-                <p>${product.productBrand}</p>
-                <p>${product.productPrice}</p>
+                <p id="product-brand">${product.productBrand}</p>
+                <p id="product-name">${product.productName}</p>
+                <p id="product-price">₩${product.productPrice}</p>
             </div>`;
 }
 $(document).ready(function() {
 	userId = sessionId
     loadCloset(userId);
+	
 });

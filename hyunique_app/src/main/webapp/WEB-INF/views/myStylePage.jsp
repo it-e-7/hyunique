@@ -36,12 +36,33 @@
 			<img src="${user.userImg}" width="200" height="200">
 		</div>
 		<div class="user-details">
-			<div class=user-sns-btn-wrapper>
-				<%-- ${user.facebookUrl} ${user.twitterUrl} ${user.instagramUrl}--%>
-				<img src="/resources/icon/facebook_logo_null.png" />
-				<img src="/resources/icon/twitter_logo_null.png" />
-				<img src="/resources/icon/instagram_logo.png" />
-				<img src="/resources/icon/threads_logo.png" />
+			<div class="user-sns-btn-wrapper">
+			    <c:choose>
+			        <c:when test="${not empty user.facebookUrl}">
+			            <a href="${user.facebookUrl}"><img src="/resources/icon/facebook_logo.png" /></a>
+			        </c:when>
+			        <c:otherwise>
+			            <img src="/resources/icon/facebook_logo_null.png" />
+			        </c:otherwise>
+			    </c:choose>
+			
+			    <c:choose>
+			        <c:when test="${not empty user.twitterUrl}">
+			            <a href="${user.twitterUrl}"><img src="/resources/icon/twitter_logo.png" /></a>
+			        </c:when>
+			        <c:otherwise>
+			            <img src="/resources/icon/twitter_logo_null.png" />
+			        </c:otherwise>
+			    </c:choose>
+			
+			    <c:choose>
+			        <c:when test="${not empty user.instagramUrl}">
+			            <a href="${user.instagramUrl}"><img src="/resources/icon/instagram_logo.png" /></a>
+			        </c:when>
+			        <c:otherwise>
+			            <img src="/resources/icon/instagram_logo_null.png" />
+			        </c:otherwise>
+			    </c:choose>
 			</div>
 			<div class="user-detail-bar-wrapper">
 				<p id="user-detail-title">팔로워</p>
@@ -64,13 +85,12 @@
 	    <div class="indicator"></div>
 	</ul>
 
-	<div id="tab1" class="tab-content">
-		<button onclick="userPostList(${sessionId})">내 포스트</button>
+	<div id="tab1" class="tab-content"style="display: block;">
 		<div id="thumbnails" class="style-thumbnail-list-wrapper"></div>
 		<div id="postUrl"></div>
 	</div>
 
-	<div id="tab2" class="tab-content">
+	<div id="tab2" class="tab-content"style="display: none;">
 		<div class="button-section">
 			<button onclick="filterProducts('bagList')">
 				<img src="/resources/img/ic-bag.png" />
@@ -98,14 +118,14 @@
 			</button>
 		</div>
 		<div id="product-section">
-			<div id="bagList"></div>
-			<div id="dressList"></div>
-			<div id="bottomList"></div>
-			<div id="topList"></div>
-			<div id="outerList"></div>
-			<div id="shoesList"></div>
-			<div id="hatList"></div>
-			<div id="accessoryList"></div>
+			<div id="bagList" class="product-list-wrapper"></div>
+			<div id="dressList"class="product-list-wrapper"></div>
+			<div id="bottomList"class="product-list-wrapper"></div>
+			<div id="topList"class="product-list-wrapper"></div>
+			<div id="outerList"class="product-list-wrapper"></div>
+			<div id="shoesList"class="product-list-wrapper"></div>
+			<div id="hatList"class="product-list-wrapper"></div>
+			<div id="accessoryList"class="product-list-wrapper"></div>
 		</div>
 	</div>
 
