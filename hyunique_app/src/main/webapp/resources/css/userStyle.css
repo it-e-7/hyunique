@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+.content-wrapper {
+	width: 100%;
+}
+.thumbnail-image {
+    width: 200px;
+    height: 200px;
+}
+.product-card {
+    width: 150px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+    display: inline-block;
+}
+#settings {
+	width:24px;
+	height:24px;
+}
+.button-section img{
+	height : 1.7rem;
+	
+}
+#user-detail-title-id {
+    white-space: nowrap;
+}
+
+.tab-button {
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 15px;
+	font-size: 16px;
+}
+
+.tab-content {
+	display: none;
+}
+
+#product-section > div {
+	display: none;
+}
+
+#product-section > div.active {
+	display: block;
+}
+
+
+
+/* 
+body {
+  height: 100%;
+  background: #FAFAFA;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+ */
+.tab-bar {
+  margin: 30px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  -webkit-padding-start: 0;
+  /* box-shadow: -13px -10px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+}
+
+.tab {
+  padding: 20px 0;
+  background: white;
+  color: #607D8B;
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.indicator {
+  height: 3px;
+  background: #2196F3;
+  position: absolute;
+  margin-top: 58px;
+  margin-left:0;
+  
+  -webkit-transition: margin 0.5s ease;
+  
+  transition: margin 0.5s ease;
+}
+
+.cercle {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+}
+
+.light .cercle {background: white}
+.dark .cercle {background: black}
+
+.anim {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  -webkit-animation: touch 1.2s ease-out;
+          animation: touch 1.2s ease-out;
+}
+
+@-webkit-keyframes touch {
+  100% { 
+    width: 600px;
+    height: 600px;
+    border-radius: 600px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    margin: -300px;
+  }
+}
+
+@keyframes touch {
+  100% { 
+    width: 600px;
+    height: 600px;
+    border-radius: 600px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    margin: -300px;
+  }
+}
