@@ -58,9 +58,9 @@
                     #{item}
                 </foreach>
             </if>
-            <if test="mood != null and mood.size() > 0">
-                AND MOOD_ID IN
-                <foreach collection="mood" item="item" separator="," open="(" close=")">
+            <if test="style != null and style.size() > 0">
+                AND STYLE_ID IN
+                <foreach collection="style" item="item" separator="," open="(" close=")">
                     #{item}
                 </foreach>
             </if>

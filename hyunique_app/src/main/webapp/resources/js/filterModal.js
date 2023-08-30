@@ -26,7 +26,7 @@ var itemsPerPage = 10;
             const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
             const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
             const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-            const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
+            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
             const rsHeightElement = document.querySelector('.rs-height');
             const rsHeightValue = rsHeightElement.textContent;
             const regex = /(\d+)cm - (\d+)cm/;
@@ -36,7 +36,7 @@ var itemsPerPage = 10;
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
-            let selectedMoodValues = [];
+            let selectedStyleValues = [];
             let selectedGenderValues = [];
 
             formData.minHeight = minHeight;
@@ -63,11 +63,11 @@ var itemsPerPage = 10;
                 formData.season  = [];
             }
 
-            if (selectedMoodCheckboxes.length > 0) {
-                selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
-                formData.mood = selectedMoodValues;
+            if (selectedStyleCheckboxes.length > 0) {
+                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
+                formData.style = selectedStyleValues;
             } else {
-                formData.mood  = [];
+                formData.style  = [];
             }
 
             formData.page = currentPage;
@@ -135,11 +135,11 @@ var itemsPerPage = 10;
             const selectedGender = document.querySelector('input[name="gender"]:checked');
             const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
             const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-            const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
+            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
-            let selectedMoodValues = [];
+            let selectedStyleValues = [];
             formData.page = 1;
             currentPage = 1;
 
@@ -163,11 +163,11 @@ var itemsPerPage = 10;
                 formData.season  = [];
             }
 
-            if (selectedMoodCheckboxes.length > 0) {
-                selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
-                formData.mood = selectedMoodValues;
+            if (selectedStyleCheckboxes.length > 0) {
+                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
+                formData.style = selectedStyleValues;
             } else {
-                formData.mood  = [];
+                formData.style  = [];
             }
 
             // AJAX를 사용하여 서버로 데이터 전송

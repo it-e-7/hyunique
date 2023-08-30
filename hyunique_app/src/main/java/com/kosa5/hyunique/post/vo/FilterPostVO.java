@@ -13,7 +13,7 @@ public class FilterPostVO {
     private String gender;
     private List<Integer> tpo;
     private List<Integer> season;
-    private List<Integer> mood;
+    private List<Integer> style;
     private Integer minHeight;
     private Integer maxHeight;
     private Integer page;

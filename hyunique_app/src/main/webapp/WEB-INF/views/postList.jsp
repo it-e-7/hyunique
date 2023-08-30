@@ -39,7 +39,7 @@
         <img src="/resources/img/filter.png" />
     </button>
     <c:forEach var="tag" items="${['남', '여', '미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이']}">
-      <button id="filterModalButton${loop.index}" onclick="handleButtonClick('${tag}')">
+      <button id="filterModalButton${loop.index}" class="FilterModalButton${tag}" onclick="handleButtonClick('${tag}')">
         <div id=textLine>
         ${tag}
         </div>
@@ -105,31 +105,31 @@
                 </div>
 
                 <div>
-                    <label>MOOD</label>
+                    <label>STYLE</label>
                     <label for="minimalCheckbox">미니멀</label>
-                    <input type="checkbox" id="minimalCheckbox" name="mood" value="21">
+                    <input type="checkbox" id="minimalCheckbox" name="style" value="21">
                     <label for="easyCheckbox">이지캐주얼</label>
-                    <input type="checkbox" id="easyCheckbox" name="mood" value="22">
+                    <input type="checkbox" id="easyCheckbox" name="style" value="22">
                     <label for="businessCheckbox">비즈니스캐주얼</label>
-                    <input type="checkbox" id="businessCheckbox" name="mood" value="23">
+                    <input type="checkbox" id="businessCheckbox" name="style" value="23">
                     <label for="amekajiCheckbox">아메카지</label>
-                    <input type="checkbox" id="amekajiCheckbox" name="mood" value="24">
+                    <input type="checkbox" id="amekajiCheckbox" name="style" value="24">
                     <label for="streetCheckbox">스트릿</label>
-                    <input type="checkbox" id="streetCheckbox" name="mood" value="25">
+                    <input type="checkbox" id="streetCheckbox" name="style" value="25">
                     <label for="cityboyCheckbox">시티보이</label>
-                    <input type="checkbox" id="cityboyCheckbox" name="mood" value="26">
+                    <input type="checkbox" id="cityboyCheckbox" name="style" value="26">
                     <label for="onemileCheckbox">원마일웨어</label>
-                    <input type="checkbox" id="onemileCheckbox" name="mood" value="27">
+                    <input type="checkbox" id="onemileCheckbox" name="style" value="27">
                     <label for="sportyCheckbox">스포티</label>
-                    <input type="checkbox" id="sportyCheckbox" name="mood" value="28">
+                    <input type="checkbox" id="sportyCheckbox" name="style" value="28">
                     <label for="uniqueCheckbox">유니크</label>
-                    <input type="checkbox" id="uniqueCheckbox" name="mood" value="29">
+                    <input type="checkbox" id="uniqueCheckbox" name="style" value="29">
                     <label for="retroCheckbox">레트로</label>
-                    <input type="checkbox" id="retroCheckbox" name="mood" value="30">
+                    <input type="checkbox" id="retroCheckbox" name="style" value="30">
                     <label for="lovelyCheckbox">러블리</label>
-                    <input type="checkbox" id="lovelyCheckbox" name="mood" value="31">
+                    <input type="checkbox" id="lovelyCheckbox" name="style" value="31">
                     <label for="moderncasualCheckbox">모던캐주얼</label>
-                    <input type="checkbox" id="moderncasualCheckbox" name="mood" value="32">
+                    <input type="checkbox" id="moderncasualCheckbox" name="style" value="32">
                 </div>
 
                 <div>

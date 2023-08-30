@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       button.classList.add('selected');
-
       localStorage.setItem('selectedButtonIndex', index.toString());
     });
 
@@ -42,14 +41,37 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       var checkboxId = checkboxes[tag];
+      var buttonClass = "FilterModalButton" + tag;
+      var buttons = document.getElementsByClassName(buttonClass);
 
       if (checkboxId) {
         var checkbox = document.getElementById(checkboxId);
 
         if (checkbox) {
-          checkbox.checked = !checkbox.checked; // 체크 상태 토글
+          // 체크 상태 확인
+          if (checkbox.checked) {
+            // 체크되어 있을 때의 스타일
+            if (buttons.length > 0) {
+              var button = buttons[0];
+              button.style.backgroundColor = "initial";
+              button.style.fontWeight = "normal";
+              button.style.color = "initial";
+            }
+          } else {
+            // 체크되어 있지 않을 때의 스타일 (기본 스타일)
+            if (buttons.length > 0) {
+              var button = buttons[0];
+              button.style.backgroundColor = "var(--jw-light-blue)";
+              button.style.fontWeight = "bold";
+              button.style.color = "var(--jw-blue)";
+            }
+          }
+
+          // 체크 상태 토글
+          checkbox.checked = !checkbox.checked;
         }
       }
-      //검색 시작
+
+      // 검색 시작
       document.getElementById("applyFilter").click();
   }
