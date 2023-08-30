@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>Home</title>
+<%@ include file="/WEB-INF/views/common.jsp"%>
 </head>
 <body>
 <h1>
@@ -10,5 +11,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+	<button onclick="moveToCamera()" class="qr-btn" />
 </body>
 </html>
