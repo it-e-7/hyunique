@@ -47,9 +47,7 @@ function sharePost(userNickname) {
 			url: location.href,
 		}).then(() => {
 			console.log("공유 완료");
-		}).catch(() => {
-			alert;
-		});
+		}).catch(alert);
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);
