@@ -41,7 +41,7 @@ function likeTogglePost(postId) {
 }
 
 function sharePost(userNickname) {
-	if(navigator.share && (isMobile.apple.phone || isMobile.android.phone)) {
+	if(isMobile()) {
 		navigator.share({
 			title: `@${userNickname}님의 스타일 | 더 hyunique하게`,
 			text: `하이`,

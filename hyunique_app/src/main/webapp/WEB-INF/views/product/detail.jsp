@@ -36,7 +36,6 @@
 			<div class="product-stock-wrapper">
 				<p class="stock-title">현대백화점 재고 확인</p>
 				<div class="select-depart-wrapper">
-					<div class="fade-out"></div>
 					<ul class="select-depart">
 						<li id="select-depart-0">&nbsp;</li>
 						<c:forEach var="depart" items="${product.storeList}">
@@ -44,6 +43,7 @@
 						</c:forEach>
 						<li>&nbsp;</li>
 					</ul>
+					<div class="fade-out"></div>
 					<div class="fade-out-reverse"></div>
 				</div>
 				<c:forEach var="depart" items="${product.storeList}">
@@ -101,7 +101,5 @@
 		<img src="/resources/img/ic-buy.png"> 구매하기
 	</button>
 </body>
-<script
-	src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
 <script src="/resources/js/productdetail.js"></script>
 </html>
