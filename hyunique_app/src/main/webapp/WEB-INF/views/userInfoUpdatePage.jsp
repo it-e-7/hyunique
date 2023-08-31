@@ -9,87 +9,119 @@
 <title>Insert title here</title>
 	<%@ include file="/WEB-INF/views/common.jsp"%>
 	<script src="/resources/js/UserUpdate.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/userupdatestyle.css" />
+	
 </head>
 <body>
-
-	<div class="inner-content">
+	<div class="header-wrapper">
+		<button onclick="backward()">
+			<img src="/resources/img/ic-backward.png" />
+		</button>
+	</div>
+	<div class="content-wrapper">
 		<div class="form-label">
-			<p class="bold">프로필 설정</p>
-			<p>*필수입력사항</p>
+			<p class="txt-profile-title">프로필 설정</p>
 		</div>
-		<hr>
-		<div class="form-label">
-			<img src="${user.userBackimg}"><br> <img
-				src="${user.userImg}">
-		</div>
-
-		<div class="form-label">
-			<label for="userNickname">닉네임 *</label>
-		</div>
-		<div class="form-content">
-			<input id="userNickname" type="text" name="userNickname"
-				value="${user.userNickname}">
-		</div>
-
-		<div class="form-label">
-			<label for="userIntroduce">한 줄 자기소개</label>
-		</div>
-		<div class="form-content">
-			<input id="userIntroduce" type="text" name="userIntroduce"
-				value="${user.userIntroduce}">
-		</div>
-
-		<div class="form-label">
-			<label for="userSex">성별</label>
-		</div>
-		<div class="form-content">
-			<select id="userSex" name="userSex">
-				<option value="남성">남성</option>
-				<option value="여성">여성</option>
-				<option value="기타">기타</option>
-				<option value="알리지 않음">알리지 않음</option>
-			</select>
-		</div>
-
-
-
-		<div class="form-label">
-			<label for="userHeight">신장</label>
-		</div>
-		<div class="form-content">
-			<input id="userHeight" type="number" name=userHeight
-				value="${user.userHeight}">
-		</div>
-		<div class="form-label">
-			<label for="instagramUrl">인스타그램</label>
-		</div>
-		<div class="form-content">
-			<input id="instagramUrl" type="text" name=instagramUrl
-				value="${user.instagramUrl}">
-		</div>
-
-		<div class="form-label">
-			<label for="twitterUrl">트위터</label>
-		</div>
-		<div class="form-content">
-			<input id="twitterUrl" type="text" name=twitterUrl
-				value="${user.twitterUrl}">
-		</div>
-
-		<div class="form-label">
-			<label for="facebookUrl">페이스북</label>
-		</div>
-		<div class="form-content">
-			<input id="facebookUrl" type="text" name=facebookUrl
-				value="${user.facebookUrl}">
-		</div>
-
-
-		<div class="form-content">
-			<div class="form-buttons">
-				<button class="btn-submit" onclick="updateUser()">수정 완료하기</button>
+		<div class="form-label" id="user-img-section-wrapper">
+			<div class="user-img-wrapper">
+				<img src="${user.userImg}">
+				<p class="txt-user-img-change">
+					프로필 사진 바꾸기
+				</p>
+			</div>
+			<div class="user-img-wrapper">
+				<img src="${user.userBackimg}">
+				<p class="txt-user-img-change">
+					배경 사진 바꾸기
+				</p>
 			</div>
 		</div>
+		<div class="form-wrapper">
+			<div class="form-label">
+				<label for="userNickname">닉네임 *</label>
+			</div>
+			<div class="form-content">
+				<input id="userNickname" type="text" name="userNickname"
+					value="${user.userNickname}" placeholder="다른 사람에게 보여질 이름이에요">
+			</div>
+	
+			<div class="form-label">
+				<label for="userIntroduce">한 줄 자기소개</label>
+			</div>
+			<div class="form-content">
+				<input id="userIntroduce" type="text" name="userIntroduce"
+					value="${user.userIntroduce}" placeholder="${user.userNickname}님을 소개해보세요">
+			</div>
+	
+
+			<div class="form-label">
+				<label for="userHeight">신장</label>
+			</div>
+			<div class="form-content">
+				<input id="userHeight" type="number" name=userHeight
+					value="${user.userHeight}" placeholder="${user.userNickname}님의 키를 입력해주세요">
+			</div>
+			<div class="form-label">
+				<label for="userSex">성별</label>
+			</div>
+			<div class="form-content">
+			    <div id="userSex">
+			        <input type="radio" name="userSex" value="M" id="male"><label for="male">남성</label>
+			        <input type="radio" name="userSex" value="W" id="female"><label for="female">여성</label>
+			        <input type="radio" name="userSex" value="O" id="other"><label for="other">기타</label>
+			        <input type="radio" name="userSex" value="N" id="preferNotToSay"><label for="preferNotToSay">알리지 않음</label>
+			    </div>
+			</div>
+			<div class="form-label">
+				<label for="userPrefer">선호 스타일</label>
+			</div>
+			<div class="form-content">
+			    <div id="userPrefer">
+			        <input type="checkbox" name="userPrefer" value=21 id="21"><label for="21">미니멀</label>
+			        <input type="checkbox" name="userPrefer" value=22 id="22"><label for="22">이지캐주얼</label>
+			        <input type="checkbox" name="userPrefer" value=23 id="23"><label for="23">비즈니스캐주얼</label>
+			        <input type="checkbox" name="userPrefer" value=24 id="24"><label for="24">아메카지</label>
+			        <input type="checkbox" name="userPrefer" value=25 id="25"><label for="25">스트릿</label>
+			        <input type="checkbox" name="userPrefer" value=26 id="26"><label for="26">시티보이</label>
+			        <input type="checkbox" name="userPrefer" value=27 id="27"><label for="27">원마일웨어</label>
+			        <input type="checkbox" name="userPrefer" value=28 id="28"><label for="28">스포티</label>
+			        <input type="checkbox" name="userPrefer" value=29 id="29"><label for="29">유니크</label>
+			        <input type="checkbox" name="userPrefer" value=30 id="30"><label for="30">레트로</label>
+			        <input type="checkbox" name="userPrefer" value=31 id="31"><label for="31">러블리</label>
+			        <input type="checkbox" name="userPrefer" value=32 id="32"><label for="32">모던캐주얼</label>
+			    </div>
+			</div>
+			<div class="form-label">
+				<label for="instagramUrl">인스타그램</label>
+			</div>
+			<div class="form-content">
+				<input id="instagramUrl" type="text" name=instagramUrl
+					value="${user.instagramUrl}" placeholder="아이디 혹은 주소를 입력해주세요">
+			</div>
+	
+			<div class="form-label">
+				<label for="twitterUrl">트위터</label>
+			</div>
+			<div class="form-content">
+				<input id="twitterUrl" type="text" name=twitterUrl
+					value="${user.twitterUrl}" placeholder="아이디 혹은 주소를 입력해주세요">
+			</div>
+	
+			<div class="form-label">
+				<label for="facebookUrl">페이스북</label>
+			</div>
+			<div class="form-content">
+				<input id="facebookUrl" type="text" name=facebookUrl
+					value="${user.facebookUrl}" placeholder="아이디 혹은 주소를 입력해주세요">
+			</div>
+			<div class="form-content">
+				<div class="form-buttons">
+        			<button class="btn-submit jw-btn" onclick="updateUser()">수정 완료하기</button>
+				</div>
+			</div>
+		</div>
+		
 
 	</div>
 </body>

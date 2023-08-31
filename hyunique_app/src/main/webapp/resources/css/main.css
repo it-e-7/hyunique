@@ -61,6 +61,9 @@ button {
 	height: fit-content;
 	font-weight: 600;
 	font-size: 0.95rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans';
+	font-weight: 500;
 }
 
 .jw-btn-nonshadow {

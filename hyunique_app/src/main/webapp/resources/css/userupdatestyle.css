@@ -1,0 +1,147 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+.txt-profile-title{
+    font-family:Spoqa Han Sans;
+    font-size:2rem;
+    font-weight:bold;
+    margin-top:1rem;
+	color: #111111;
+
+}
+.content-wrapper {
+	width: 100%;
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+.form-content{
+	width:90%;
+	display:flex;
+	margin-bottom:1.6rem;
+
+}
+.form-wrapper{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width: 100%;
+}
+
+.form-label{
+	width:90%;
+	font-family:Spoqa Han Sans;
+	font-weight:400;
+	font-size:0.9rem;
+	color: #5A5959;
+}
+
+.user-img-wrapper{
+	width:7rem;
+	height:auto;
+	display:flex;
+	flex-direction:column;
+	align-content:center;
+	margin-bottom:5rem;
+}
+.user-img-wrapper img{
+	width:100%;
+	aspect-ratio:1/1;
+	object-fit:cover;
+	object-position:center;	
+	border-radius:10rem;
+}
+.txt-user-img-change{
+	font-family:Spoqa Han sans;
+	font-size:0.5rem;
+	color: #3F86F0;
+	text-align:center;
+	font-weight:400;
+	margin-top:1rem;
+}
+#user-img-section-wrapper{
+	display:flex;
+	flex-direction:row;
+	width:100%;
+	justify-content: space-evenly;
+	margin-left:0;
+	margin-right:0;
+	margin-top:4rem;
+}
+input{
+	border: none;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #f4f4f4;
+	outline: none;
+	padding: 0.7rem 0 0.5rem 0;
+	width:100%;
+	font-family:Spoqa Han Sans;
+	font-size:1.3rem;
+	font-weight:400;
+	color: #111111;
+}
+.form-buttons{
+	width:100%;
+
+	
+}
+.btn-submit{
+	width:100%;
+	height:48px;
+	padding:0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+
+input[type="radio"] + label {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+	border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+	padding:0.1rem 1.3rem;
+    cursor: pointer;
+	line-height:2rem;
+	margin-right:0.1rem;
+	margin-top:1rem;
+    font-family:Spoqa Han Sans;
+	letter-spacing:0.05rem;
+	text-align:center;
+	color:var(--grey4);
+}
+
+input[type="radio"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+
+}
+input[type="checkbox"] {
+    display: none;
+}
+
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+	border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+	padding:0.1rem 1.3rem;
+    cursor: pointer;
+	line-height:2rem;
+	margin-right:0.1rem;
+	margin-top:1rem;
+    font-family:Spoqa Han Sans;
+	letter-spacing:0.05rem;
+	text-align:center;
+	color:var(--grey4);
+}
+
+input[type="checkbox"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+
+}
