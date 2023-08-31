@@ -11,6 +11,8 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-	<button onclick="moveToCamera()" class="qr-btn" />
+	<input type="file" accept="image/*" capture="camera" class="qr-btn" />
+	<input type="file" accept="image/*" capture="capture" class="qr-btn" />
+	<input type="file" accept="image/*" capture="environment" class="qr-btn" />
 </body>
 </html>
