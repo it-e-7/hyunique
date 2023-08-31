@@ -51,3 +51,40 @@ img {
     flex: 1;
     margin: 5px;
 }
+
+.pre-container .header p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.pre-container .body p {
+    text-align: center;
+    color: var(--grey6);
+    font-size: 20px;
+}
+
+.button-container button {
+    font-size: 16px;
+    line-height: 18px;
+    height: 48px;
+    width: 320px;
+    background: var(--jw-blue);
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.write-container label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.write-container span {
+    height: 20px;
+    width: 40px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    font-size: 16px;
+    border: 1px solid var(--jw-blue3);
+}
