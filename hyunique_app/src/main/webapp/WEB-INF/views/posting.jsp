@@ -13,14 +13,20 @@
         href="/resources/css/posting.css"/>
 </head>
 <body>
-    <div class="container">
+    <div class="header-wrapper">
+        <button onclick="backward()">
+            <img src="/resources/img/ic-backward.png" />
+        </button>
+    </div>
+
+    <div class="pre-container">
         <div class="header">
-            <p>스타일링 공유를 위해 사진을 선택해주세요</p>
+            <p>스타일링을 공유해주세요</p>
         </div>
         <div class="image-container">
             <img src="/resources/img/heendy.png" alt="중앙 이미지" />
         </div>
-        <div>
+        <div class="body">
             <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
         </div>
 
@@ -40,24 +46,38 @@
                 </div>
                 <div class="style-button-group">
                     <label>스타일</label>
-                    <br>
-                    <input type="radio" name="style" value="스트릿">스트릿
-                    <input type="radio" name="style" value="이지캐주얼">이지캐주얼
-                    <input type="radio" name="style" value="러블리">러블리
+                    <span><input type="radio" name="style" value="21">미니멀</span>
+                    <span><input type="radio" name="style" value="22">이지캐주얼</span>
+                    <span><input type="radio" name="style" value="23">비즈니스캐주얼</span>
+                    <span><input type="radio" name="style" value="24">아메카지</span>
+                    <span><input type="radio" name="style" value="25">스트릿</span>
+                    <span><input type="radio" name="style" value="26">시티보이</span>
+                    <span><input type="radio" name="style" value="27">원마일웨어</span>
+                    <span><input type="radio" name="style" value="28">스포티</span>
+                    <span><input type="radio" name="style" value="29">유니크</span>
+                    <span><input type="radio" name="style" value="30">레트로</span>
+                    <span><input type="radio" name="style" value="31">러블리</span>
+                    <span><input type="radio" name="style" value="32">모던캐주얼</span>
                 </div>
                 <div class="tpo-button-group">
                     <label>상황</label>
                     <br>
-                    <input type="radio" name="tpo" value="데이트">데이트
-                    <input type="radio" name="tpo" value="데일리">데일리
+                    <input type="radio" name="tpo" value="21">코사
+                    <input type="radio" name="tpo" value="22">여행
+                    <input type="radio" name="tpo" value="23">캠퍼스
+                    <input type="radio" name="tpo" value="24">카페
+                    <input type="radio" name="tpo" value="25">데이트
+                    <input type="radio" name="tpo" value="26">결혼식
+                    <input type="radio" name="tpo" value="27">출근
+                    <input type="radio" name="tpo" value="28">데일리
                 </div>
                 <div class="season-button-group">
                     <label>시즌</label>
                     <br>
-                    <input type="radio" name="season" value="봄">봄
-                    <input type="radio" name="season" value="여름">여름
-                    <input type="radio" name="season" value="가을">가을
-                    <input type="radio" name="season" value="겨울">겨울
+                    <input type="radio" name="season" value="21">봄
+                    <input type="radio" name="season" value="22">여름
+                    <input type="radio" name="season" value="23">가을
+                    <input type="radio" name="season" value="24">겨울
                 </div>
                 <div class="form-group">
                     <label for="content">내용</label>
