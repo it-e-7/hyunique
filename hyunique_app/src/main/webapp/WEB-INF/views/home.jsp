@@ -14,5 +14,6 @@
 	<input type="file" accept="image/*" capture="camera" class="qr-btn" />
 	<input type="file" accept="image/*" capture="capture" class="qr-btn" />
 	<input type="file" accept="image/*" capture="environment" class="qr-btn" />
+	<a href="camera://" class="qr-btn">카메라</a>
 </body>
 </html>
