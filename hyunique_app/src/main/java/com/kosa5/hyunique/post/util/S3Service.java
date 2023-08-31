@@ -36,37 +36,34 @@ public class S3Service {
         this.bucketName = bucketName;
     }
 
-    // 업로드 트랜잭션 처리
-    public boolean decodingBase64Img(List<String> base64Images) {
-        List<URL> urls = new ArrayList<>();
+    public List<URL> decodingBase64Img(List<String> base64Images) {
         Map<String, URL> imgUploadState = new HashMap<>();
 
         for(String base64Img : base64Images) {
-            String fileName = UUID.randomUUID().toString() + ".jpg";
+            String fileName = createImgFileName();
+
             URL returnUrl = uploadBase64Img(base64Img, fileName);
 
-            Iterator<String> keyIterator = imgUploadState.keySet().iterator();
-
-            while (keyIterator.hasNext()) {
-                String key = keyIterator.next();
-                System.out.println("Key: " + key + ", Value: " + imgUploadState.get(key));
-            }
-//            return false;
-
-/*            // s3에 이미지 업로드를 실패한 경우
+            // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
-
+                List<String> deleteKeys = new ArrayList<>();
                 Iterator<String> keyIterator = imgUploadState.keySet().iterator();
 
                 while (keyIterator.hasNext()) {
                     String key = keyIterator.next();
-                    System.out.println("Key: " + key + ", Value: " + imgUploadState.get(key));
+                    deleteKeys.add("/post"+key);
                 }
-                return false;
-            }*/
+                deleteImgFile(deleteKeys);
+                return null;
+            }
+            // 업로드 성공한 경우
             imgUploadState.put(fileName, returnUrl);
         }
-        return true;
+        return new ArrayList<>(imgUploadState.values());
+    }
+
+    public String createImgFileName() {
+        return UUID.randomUUID().toString() + ".jpg";
     }
 
     // base64 디코딩 및 업로드
@@ -86,7 +83,7 @@ public class S3Service {
     }
 
     // 이미지 삭제
-    public void deleteImg(String[] files) {
+    public void deleteImgFile(List<String> files) {
 
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
@@ -96,7 +93,7 @@ public class S3Service {
                 .build();
 
         try {
-            DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(files);
+            DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(String.valueOf(files));
             DeleteObjectsResult deleteObjectsResult = s3.deleteObjects(dor);
             List<DeleteObjectsResult.DeletedObject> deletedObjects = deleteObjectsResult.getDeletedObjects();
 
