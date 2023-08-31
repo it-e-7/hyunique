@@ -20,7 +20,7 @@ var itemsPerPage = 10;
 
             const formData = {
                         minHeight: 140, // 초기 값 설정
-                        maxHeight: 180, // 초기 값 설정
+                        maxHeight: 190, // 초기 값 설정
             };
 
             const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
@@ -106,7 +106,7 @@ var itemsPerPage = 10;
 
     const formData = {
                 minHeight: 140, // 초기 값 설정
-                maxHeight: 180, // 초기 값 설정
+                maxHeight: 190, // 초기 값 설정
     };
 
     filterModalButton.addEventListener("click", function() {
@@ -208,7 +208,7 @@ var itemsPerPage = 10;
     // 슬라이더 이벤트 핸들러
     function updateRsHeight() {
         const minHeight = 140; // 최소 키
-        const maxHeight = 180; // 최대 키
+        const maxHeight = 190; // 최대 키
 
         // 슬라이더의 현재 위치 계산 찾을 수 없으면 뒤에 나온 퍼센트로
         const leftValue = parseFloat(leftPointer.style.left) || 0;

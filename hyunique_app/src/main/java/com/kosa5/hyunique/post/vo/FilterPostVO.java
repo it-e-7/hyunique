@@ -19,4 +19,5 @@ public class FilterPostVO {
     private Integer page;
     private Integer pageSize = 10;
     private String selectedType;
+    private Integer userId;
 }

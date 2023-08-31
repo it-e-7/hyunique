@@ -23,10 +23,13 @@
 
 
     <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
-        SELECT *
+        SELECT DISTINCT P.*
         FROM HY_POST P
         INNER JOIN HY_USER U ON P.USER_ID = U.USER_ID
         <where>
+            <if test='selectedType != null and selectedType.equals("following")'>
+                AND P.USER_ID IN (SELECT FOLLOWING_ID FROM HY_FOLLOW WHERE FOLLOWER_ID = #{userId})
+            </if>
             <if test="gender != null and gender != ''">
                 AND U.USER_SEX = #{gender}
             </if>

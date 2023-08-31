@@ -17,7 +17,8 @@
 }
 
 .photo img{
-    max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비에 맞춤 */
+    max-width: 100%;
+    min-width: 100%;
     display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
     margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
     aspect-ratio: 3 / 4;

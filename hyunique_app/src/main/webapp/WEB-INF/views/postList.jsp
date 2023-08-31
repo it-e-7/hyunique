@@ -77,7 +77,7 @@
             <div id ="heightDiv">
                 <label>HEIGHT</label>
             </div>
-            140cm - 180cm
+            140cm - 190cm
             </div>
             <div class="rs-container sliding">
                 <div class="rs-bg"></div>

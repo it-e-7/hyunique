@@ -23,7 +23,8 @@ public class FilterController {
 	@GetMapping(value = "getFilterPost")
 	public String getFilterPost(@ModelAttribute FilterPostVO filterPostVO, Model model) {
 		List<PostVO> postVOList = new ArrayList<>();
-		System.out.println(filterPostVO);
+		//로그인과 연결 되어 있지 않기 때문에, 우선적으로 24라는 테스트 유저아이디를 사용합니다.
+		filterPostVO.setUserId(24);
 		postVOList = postService.getfilterPostList(filterPostVO);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
