@@ -26,6 +26,7 @@
         SELECT DISTINCT P.*
         FROM HY_POST P
         INNER JOIN HY_USER U ON P.USER_ID = U.USER_ID
+        LEFT JOIN hy_stylelike SL ON P.post_id = SL.post_id
         <where>
             <if test='selectedType != null and selectedType.equals("following")'>
                 AND P.USER_ID IN (SELECT FOLLOWING_ID FROM HY_FOLLOW WHERE FOLLOWER_ID = #{userId})
@@ -68,6 +69,16 @@
                 </foreach>
             </if>
         </where>
+        <if test='selectedType != null and selectedType.equals("following")'>
+            ORDER BY P.POST_DATE DESC
+        </if>
+        <if test='selectedType != null and selectedType.equals("style-ranking")'>
+            GROUP BY P.post_id
+            ORDER BY like_count DESC
+        </if>
+        <if test='selectedType != null and selectedType.equals("recommend")'>
+            ORDER BY P.POST_DATE DESC
+        </if>
         <if test="page != null">
             OFFSET  #{page}
             ROWS FETCH NEXT #{pageSize} ROWS ONLY

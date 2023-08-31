@@ -16,7 +16,7 @@
 <div id="main-wrapper">
 <div id= "main-wrapper-top">
     <div id="hyunique-main-top-logo">
-             <button id="hyunique-main-top-logo-image" onclick="backward()">
+             <button id="hyunique-main-top-logo-image" onclick="location.href=`/`;">
                     <img src="/resources/img/hyunique.png" />
              </button>
              <div id="hyunique-main-top-buttons">
