@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
 
     $("#fileInput").change(function() {
-        $(".container").hide();
+        $(".pre-container").hide();
         $(".write-container").show();
         $(".search-container").hide();
     });
@@ -28,7 +28,8 @@ $(document).ready(function() {
         sendPostToServer(postVO, items);
         $(".write-container").hide();
         $(".post-container").show();
-//        sendPostToServer();
+        $(".header-wrapper").hide();
+        //        sendPostToServer();
     });
 
     $("#fileInput").change(function(e) {
