@@ -36,7 +36,7 @@ public class S3Service {
         this.bucketName = bucketName;
     }
 
-    public List<URL> decodingBase64Img(List<String> base64Images) {
+    public List<URL> getUploadImgURL(List<String> base64Images) {
         Map<String, URL> imgUploadState = new HashMap<>();
 
         for(String base64Img : base64Images) {
