@@ -1,13 +1,112 @@
 // 모달을 띄우기 위한 스크립트
 
 document.addEventListener("DOMContentLoaded", function() {
+
+var itemsPerPage = 10;
+        var currentPage = 1;
+        var isLoading = false; //로딩중이다 아니다를 판단하기 위함
+
+        $(window).scroll(function() {
+            if (isScrollbarAtBottom()) {
+                            if (isLoading) {
+                                return;
+                            }
+                loadMoreImages();
+            }
+        });
+
+        function loadMoreImages() {
+        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
+
+            const formData = {
+                        minHeight: 140, // 초기 값 설정
+                        maxHeight: 190, // 초기 값 설정
+            };
+
+            const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
+            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
+            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
+            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
+            const rsHeightElement = document.querySelector('.rs-height');
+            const rsHeightValue = rsHeightElement.textContent;
+            const regex = /(\d+)cm - (\d+)cm/;
+            const match = rsHeightValue.match(regex);
+            const minHeight = match[1];
+            const maxHeight = match[2];
+            const selectedButton = document.querySelector(".selected").id;
+
+            let selectedTpoValues = [];
+            let selectedSeasonValues = [];
+            let selectedStyleValues = [];
+            let selectedGenderValues = [];
+
+            formData.minHeight = minHeight;
+            formData.maxHeight = maxHeight;
+
+            formData.selectedType = selectedButton;
+
+            if (selectedGenderCheckboxes.length > 0) {
+                selectedGenderValues = Array.from(selectedGenderCheckboxes).map(checkbox => checkbox.value);
+                formData.gender = selectedGenderValues;
+            } else {
+                formData.gender  = [];
+            }
+
+            if (selectedTpoCheckboxes.length > 0) {
+                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
+                formData.tpo = selectedTpoValues;
+            } else {
+                formData.tpo  = [];
+            }
+
+            if (selectedSeasonCheckboxes.length > 0) {
+                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
+                formData.season = selectedSeasonValues;
+            } else {
+                formData.season  = [];
+            }
+
+            if (selectedStyleCheckboxes.length > 0) {
+                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
+                formData.style = selectedStyleValues;
+            } else {
+                formData.style  = [];
+            }
+
+            formData.page = currentPage;
+
+        isLoading = true;
+            $.ajax({
+                url: `/filter/getFilterPost`,
+                type: "GET",
+                data: formData,
+                success: function(data) {
+                    $("#photo-gallery").append(data);
+                    currentPage++;
+                    isLoading = false;
+                }
+            });
+        }
+
+        function isScrollbarAtBottom() {
+            var element = document.documentElement;
+            var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (element.scrollTop || 0);
+            var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
+            var windowHeight = element.clientHeight || window.innerHeight;
+
+            return scrollTop + windowHeight >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
+        }
+
+        loadMoreImages();
+        //이건 첫 로딩을 위한 로드 모어 이미지입니다!
+
     const filterModalButton = document.getElementById("filterModalButton");
     const modal = document.querySelector(".modal");
     const closeModalButton = document.getElementById("closeModalButton"); // 모달 닫기 버튼
 
     const formData = {
                 minHeight: 140, // 초기 값 설정
-                maxHeight: 180, // 초기 값 설정
+                maxHeight: 190, // 초기 값 설정
     };
 
     filterModalButton.addEventListener("click", function() {
@@ -31,59 +130,72 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const applyFilterButton = document.getElementById("applyFilter"); // 적용 버튼 선택
         // 적용 버튼을 클릭할 때 AJAX로 데이터를 서버로 전송
-        applyFilterButton.addEventListener("click", function() {
 
-        //데이터를 가져옵니다.
-        const selectedGender = document.querySelector('input[name="gender"]:checked');
-        const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
-        const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-        const selectedMoodCheckboxes = document.querySelectorAll('input[name="mood"]:checked');
+        applyFilterButton.addEventListener("click", applyFilter);
+
+        function applyFilter() {
+            // 데이터를 가져옵니다.
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
+            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
+            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
+            const selectedButton = document.querySelector(".selected").id;
 
             let selectedTpoValues = [];
             let selectedSeasonValues = [];
-            let selectedMoodValues = [];
+            let selectedStyleValues = [];
+            formData.page = 1;
+            currentPage = 1;
 
-                if (selectedGender) {
-                    formData.gender = selectedGender.value;
-                } else {
-                    formData.gender = null;
-                }
+            formData.selectedType = selectedButton;
 
-                if (selectedTpoCheckboxes.length > 0) {
-                    selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
-                    formData.tpo = selectedTpoValues;
-                } else {
-                    formData.tpo  = [];
-                }
+            if (selectedGender) {
+                formData.gender = selectedGender.value;
+            } else {
+                formData.gender = null;
+            }
 
-                if (selectedSeasonCheckboxes.length > 0) {
-                    selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
-                    formData.season = selectedSeasonValues;
-                } else {
-                    formData.season  = [];
-                }
+            if (selectedTpoCheckboxes.length > 0) {
+                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
+                formData.tpo = selectedTpoValues;
+            } else {
+                formData.tpo  = [];
+            }
 
-                if (selectedMoodCheckboxes.length > 0) {
-                    selectedMoodValues = Array.from(selectedMoodCheckboxes).map(checkbox => checkbox.value);
-                    formData.mood = selectedMoodValues;
-                } else {
-                    formData.mood  = [];
-                }
+            if (selectedSeasonCheckboxes.length > 0) {
+                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
+                formData.season = selectedSeasonValues;
+            } else {
+                formData.season  = [];
+            }
+
+            if (selectedStyleCheckboxes.length > 0) {
+                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
+                formData.style = selectedStyleValues;
+            } else {
+                formData.style  = [];
+            }
 
             // AJAX를 사용하여 서버로 데이터 전송
             $.ajax({
                 type: "GET",
-                url: `/api/filter/getFilterPost`, // 서버 측 URL 설정
+                url: `/filter/getFilterPost`, // 서버 측 URL 설정
                 data: formData,
-                success: function(response) {
+                success: function(data) {
                     modal.style.display = "none";
+                    $("#photo-gallery").empty();
+                    $("#photo-gallery").append(data);
+                    currentPage = currentPage + 1;
+                    loadMoreImages();
+                    if (data == null){
+                    console.log("리턴값이 null 입니다")}
                 },
                 error: function(err) {
                     // 오류 처리
                     console.error(err);
                 }
             });
-        });
+        }
 
     // 각 요소 가져오기
     const sliderContainer = document.querySelector('.rs-container');
@@ -98,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 슬라이더 이벤트 핸들러
     function updateRsHeight() {
         const minHeight = 140; // 최소 키
-        const maxHeight = 180; // 최대 키
+        const maxHeight = 190; // 최대 키
 
         // 슬라이더의 현재 위치 계산 찾을 수 없으면 뒤에 나온 퍼센트로
         const leftValue = parseFloat(leftPointer.style.left) || 0;
@@ -167,18 +279,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('mouseup', function () {
         isLeftDragging = false;
         isRightDragging = false;
-    });
-
-    // 라디오 버튼위한 스크립트 (ex.성별)
-    const maleRadio = document.getElementById("maleRadio");
-    const femaleRadio = document.getElementById("femaleRadio");
-
-    maleRadio.addEventListener("click", function() {
-        femaleRadio.checked = false;
-    });
-
-    femaleRadio.addEventListener("click", function() {
-        maleRadio.checked = false;
     });
 
     function updateRangeBackgroundColor() {

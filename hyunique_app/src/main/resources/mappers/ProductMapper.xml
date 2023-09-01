@@ -60,4 +60,10 @@
 		OFFSET #{offset} ROWS FETCH FIRST 3 ROWS ONLY
 	</select>
 
+	<select id="selectSearchProductList" parameterType="String" resultType="PostProductVO">
+		SELECT *
+		FROM HY_PRODUCT
+		WHERE PRODUCT_NAME like '%' || #{productName} || '%'
+	</select>
+
 </mapper>  

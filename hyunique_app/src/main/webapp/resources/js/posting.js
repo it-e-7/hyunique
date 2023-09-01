@@ -15,21 +15,25 @@ $(document).ready(function() {
     });
 
     $("#fileInput").change(function() {
-        $(".container").hide();
+        $(".pre-container").hide();
         $(".write-container").show();
         $(".search-container").hide();
     });
 
+    // 작성 완료 버튼
     $('#upload-button').click(function() {
-        getFormValue();
+
+        var postVO = getFormValue();
+
+        sendPostToServer(postVO, items);
         $(".write-container").hide();
         $(".post-container").show();
-        sendPostToServer();
+        $(".header-wrapper").hide();
+        //        sendPostToServer();
     });
 
     $("#fileInput").change(function(e) {
         const files = e.target.files;
-        imgList.push(files);
         $.each(files, function(index, file) {
             if (!file.type.match("image/.*")) {
                 alert("이미지 파일만 업로드할 수 있습니다.");
@@ -38,6 +42,9 @@ $(document).ready(function() {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+                const img = reader.result.split(',')[1];
+                imgList.push(img);
+
                 const li = $("<li>").append(imageElement);
                 $('#image-list').append(li);
                 container = imageElement;
@@ -45,8 +52,8 @@ $(document).ready(function() {
                 imageElement.click(function(e) {
                     var XOffset = e.offsetX;
                     var YOffset = e.offsetY;
-                    console.log("offset: ", XOffset, YOffset);
 
+                    $(".result-list").empty();
                     $(".write-container").hide();
                     $(".search-container").show();
 
@@ -61,19 +68,17 @@ $(document).ready(function() {
 function attachTag(xOffset, yOffset, li) {
     return function() {
         var tagValue = $("#search-input").val();
-        $(".search-container").hide();
-        $("#search-input").val("");
-        $(".write-container").show();
 
         if (tagValue) {
             getSearchProduct(tagValue);
-            var tagElement = $("<span>").addClass("tag").text(tagValue).attr("id","tag_"+new Date().getTime()).css({
+
+            var tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
                 left: xOffset + "px",
                 top: yOffset + "px",
                 position: "absolute"
             });
 
-            const id = tagElement.attr('id');  // 아이템에 고유한 ID를 설정해야 합니다.
+            var id = tagElement.attr('id');
             items[id] = {
                 initialX: 0,
                 initialY: 0,
@@ -81,8 +86,36 @@ function attachTag(xOffset, yOffset, li) {
                 currentY: 0,
                 xOffset: 0,
                 yOffset: 0,
-                active: false
+                active: false,
+                productId: '',
+                productBrand: '',
+                productName: '',
+                productPrice: 0,
+                productSize: '',
+                productColor: ''
             };
+
+            $(".result-list").off("click").on("click", ".search-product-li", function() {
+                items[id].productId = $(this).find(".search-product-id").text();
+                items[id].productBrand = $(this).find(".search-product-brand").text();
+                items[id].productName = $(this).find(".search-product-name").text();
+                items[id].productPrice = $(this).find(".search-product-price").text();
+                items[id].productSize = $(this).find(".search-product-size").text();
+
+                console.log(id, items[id]);
+
+                tagElement.html(`
+                  ${items[id].productBrand}
+                  ${items[id].productName}
+                  ${items[id].productPrice}
+                  ${items[id].productSize}
+                `);
+
+                $(".search-container").hide();
+                $(".write-container").show();
+                $("#search-input").val("");
+
+            });
 
             items[id].xOffset = xOffset;
             items[id].yOffset = yOffset;
@@ -148,7 +181,6 @@ function drag(event, tagElement) {
             newY = event.clientY - item.initialY;
         }
 
-        // 이미지의 크기와 위치를 가져옵니다.
         const imgWidth = container.width();
         const imgHeight = container.height();
         const imgOffset = container.offset();
@@ -156,7 +188,6 @@ function drag(event, tagElement) {
         if (newX >= imgOffset.left && newX <= imgOffset.left + imgWidth &&
             newY >= imgOffset.top && newY <= imgOffset.top + imgHeight) {
 
-            // 현재 위치를 저장합니다.
             item.xOffset = newX;
             item.yOffset = newY;
 
@@ -165,7 +196,6 @@ function drag(event, tagElement) {
     }
 }
 
-
 function setTranslate(xPos, yPos, el) {
     el.css({
         "left": xPos + "px",
@@ -173,51 +203,42 @@ function setTranslate(xPos, yPos, el) {
     });
 }
 
-function searchProduct(productName) {
-    $.ajax({
-        url: '/post/search',
-        type: 'GET',
-        contentType: 'application/json',
-        data: {productName},
-        success: function(response) {
-            window.location.href = 'post/search';
-        }
-    });
-
-    $("#search-btn").click(function() {
-        return $("#productName").val();
-    });
-}
-
 function getFormValue() {
-    styleChecked = $('input[name="style"]:checked').val();
-    tpoChecked = $('input[name="tpo"]:checked').val();
-    seasonChecked = $('input[name="season"]:checked').val();
-    content = $('#content').val();
 
-    $('.post-image-container').append(imgList[0]);
-    $('.tag-container').append(styleChecked + ' ' + tpoChecked + ' ' + seasonChecked);
+   var PostingVO = {
+        postContent: $('#content').val(),
+        tpoId: +$('input[name="tpo"]:checked').val(),
+        seasonId: +$('input[name="season"]:checked').val(),
+        styleId: +$('input[name="style"]:checked').val(),
+        imgList: imgList,
+    };
 
-    console.log(styleChecked, tpoChecked, seasonChecked, content, imgList[0]);
+//    $('.post-image-container').append(imgList[0]);
+//    $('.tag-container').append(styleChecked + ' ' + tpoChecked + ' ' + seasonChecked);
+
+    return PostingVO;
 }
 
-function sendPostToServer() {
-    var PostingVO = {
-        postContent: content,
-        tpoName: tpoChecked,
-        seasonName: seasonChecked,
-        styleName: styleChecked,
-        imgUrl: img
-    };
+function sendPostToServer(post, product) {
+    const productArray = Object.values(items).map(item => {
+        return {
+            pinX: item.xOffset,
+            pinY: item.yOffset,
+            productId: item.productId,
+            productBrand: item.productBrand,
+            productName: item.productName,
+            productPrice: item.productPrice,
+            productSize: item.productSize,
+        };
+    });
+
+    let combineObject = {postVO: post, postProductVO: productArray};
 
     $.ajax({
         url: `/post`,
         type: 'POST',
-        enctype:"multipart/form-data",
         contentType: 'application/json',
-        data: JSON.stringify(PostingVO),
-        processData: false,   // 업로드를 위한 필수 파라미터
-        contentType: false,   // 업로드를 위한 필수 파라미터
+        data: JSON.stringify(combineObject),
         success: function(response) {
             console.log(response);
         }
@@ -226,11 +247,25 @@ function sendPostToServer() {
 
 function getSearchProduct(productName) {
     $.ajax({
-        url: '/post/search/' + productName,
+        url: '/product/search/' + productName,
         type: 'GET',
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {
-            console.log(response);
+            var resultList = $(".result-list");
+            $('.search-value').val(productName);
+
+            $.each(response, function(index, product) {
+                var listItem = $("<li>").addClass("search-product-li");
+                var divItem = $("<div>").addClass("search-product-div");
+                listItem.append($("<img>").attr("src", product.productImg).addClass("search-product-img"));
+                divItem.append($("<p>").text(product.productId).addClass("search-product-id"));
+                divItem.append($("<p>").text(product.productBrand).addClass("search-product-brand"));
+                divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
+                divItem.append($("<p>").text(product.productPrice).addClass("search-product-price"));
+                divItem.append($("<p>").text(product.productSize).addClass("search-product-size"));
+                listItem.append(divItem);
+                resultList.append(listItem);
+            });
         }
     });
 }

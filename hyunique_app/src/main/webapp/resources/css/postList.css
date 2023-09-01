@@ -1,6 +1,5 @@
 #main-wrapper {
     margin : 0 auto;
-    width : 800px;
 }
 
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
@@ -8,19 +7,126 @@
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
 }
 
 .photo {
-    float: left;
-    width: calc(50% - 2px);
-    padding: 1px;
     box-sizing: border-box;
 }
 
 .photo img{
-    max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비에 맞춤 */
+    max-width: 100%;
+    min-width: 100%;
     display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
     margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
     aspect-ratio: 3 / 4;
+}
+
+#hyunique-main-top-logo{
+    display : flex;
+    margin-top : 10%;
+}
+
+#hyunique-main-top-logo-image{
+    margin-left : 5%;
+    width: 30%;
+}
+
+#hyunique-main-top-logo-image >img{
+    width: 100%;
+    height: auto;
+}
+
+#hyunique-main-top-buttons{
+    display : flex;
+    margin-left : auto;
+    margin-right: 5%;
+    width: 20%;
+}
+
+#hyunique-main-top-buttons >#search-button{
+   width: 35%;
+   margin-right: 20%;
+}
+
+#hyunique-main-top-buttons >#my-page-button{
+   width: 35%;
+}
+
+#hyunique-main-top-buttons >#search-button > img{
+   width: 100%;
+}
+
+#hyunique-main-top-buttons >#my-page-button > img{
+   width: 100%;
+}
+
+#hyunique-main-top-recommend {
+  display: flex;
+  margin-left : 5%;
+  font-size: 25px;
+  font-weight: bold;
+  color : #BBBBBB;
+  border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+@media screen and (max-width: 700px) {
+  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
+  #hyunique-main-top-recommend {
+    display: flex;
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: bold;
+    color : #BBBBBB;
+  }
+}
+
+#hyunique-main-top-recommend .button {
+  cursor: pointer;
+  margin-right: 20px;
+  text-decoration: none;
+  padding-bottom: 5px;
+  border-bottom: 3px solid transparent; /* 밑줄 추가 */
+  color: #BBBBBB;
+  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+}
+
+#hyunique-main-top-recommend .button.selected {
+  border-color: black; /* 선택된 버튼에만 밑줄 색상을 변경 */
+  color: black;
+}
+
+#filterModalButton {
+    border: 1px solid #BBBBBB;
+    border-radius: 10px;
+    padding: 10px 10px; /* 버튼 내부 여백을 상하 10px, 좌우 20px으로 조절합니다. */
+    background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+#filterModalButton >img{
+    height: 16px;
+}
+
+#filterModalButton >div{
+    height: 32px;
+}
+
+#filterModalButton > div#textLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 부모 요소의 높이에 맞게 설정 */
+}
+
+#hyunique-main-top-filter{
+    white-space: nowrap;
+    overflow : hidden;
+    overflow-x: auto;
+    padding : 3%;
 }

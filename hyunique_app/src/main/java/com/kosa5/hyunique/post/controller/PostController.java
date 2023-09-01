@@ -1,23 +1,22 @@
 package com.kosa5.hyunique.post.controller;
 
+import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostProductVO;
+import com.kosa5.hyunique.post.vo.PostingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostVO;
 
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,6 +25,9 @@ public class PostController {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    S3Service s3Service;
 
     @GetMapping("{postId}")
     public String getPostDetailHandler(@PathVariable("postId") int postId, Model model) {
@@ -51,28 +53,9 @@ public class PostController {
         return postService.postUnlikePost(postId, userId);
     }
 
-    @GetMapping(value = "getOnePost")
-    public String getPostingHandler(Model model) {
-        PostVO postVO = new PostVO();
-        postVO = postService.getOnePost(29);
-        model.addAttribute(postVO);
-        return "postList";
-    }
-
     @GetMapping(value = "getPostList")
     public String getPostingListHandler(Model model) {
-        List<PostVO> postVOList = new ArrayList<>();
-        postVOList = postService.findTwelvePostList(21);
-        model.addAttribute(postVOList);
         return "postList";
-    }
-
-    @GetMapping(value = "getMorePost")
-    public String loadMorePost(@RequestParam("page") int page, Model model) {
-        List<PostVO> postVOList = new ArrayList<>();
-        postVOList = postService.loadMorePost(page);
-        model.addAttribute("postVOList", postVOList);
-        return "ajax_response";
     }
 
     // 게시글 작성
@@ -82,23 +65,22 @@ public class PostController {
     }
 
     @PostMapping
-    public String handlePostUpload(PostVO vo) {
-        System.out.println("vo = " + vo);
-        return null;
-    }
-
-    @GetMapping("/search")
-    public String requestSearch() {
-        return "/search";
-    }
-
-    @GetMapping("/search/{productName}")
     @ResponseBody
-    public List<PostProductVO> getSearchProduct(@PathVariable("productName") String productName) {
-        System.out.println("productName = " + productName);
-        List<PostProductVO> value = postService.getSearchProductList(productName);
-        System.out.println("value = " + value);
-        return postService.getSearchProductList(productName);
+    public String handlePostUpload(@RequestBody PostingVO posting) {
+        int state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+        System.out.println("state = " + state);
+
+        return "ok";
+    }
+
+    @GetMapping("/upload")
+    @ResponseBody
+    public String uploadFile() {
+        List<String> object_keys = Arrays.asList("post/66118058-139b-43d9-88a3-0f75f316d48f.jpg",
+                "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
+
+        s3Service.deleteImgFile(object_keys);
+        return "ok";
     }
 
 }

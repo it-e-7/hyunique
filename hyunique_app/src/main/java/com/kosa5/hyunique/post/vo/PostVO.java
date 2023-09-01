@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +17,8 @@ public class PostVO {
     private String postContent;
     private Integer tpoId;
     private Integer seasonId;
+    private Integer styleId;
     private Integer userId;
     private String thumbnailUrl;
-
+    private List<String> imgList;
 }

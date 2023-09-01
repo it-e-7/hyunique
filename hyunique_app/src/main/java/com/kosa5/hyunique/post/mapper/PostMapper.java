@@ -19,13 +19,10 @@ public interface PostMapper {
 
     int deletePostLike(@Param("postId") int postId, @Param("userId") int userId);
 
-    PostVO findOnePost(Integer postId);
-
-    List<PostVO> findTwelvePostList(Integer memberId);
-
-    List<PostVO> loadMorePost(@Param("startIndex") Integer startIndex, @Param("endIndex") Integer endIndex);
+    List<PostVO> loadMorePost(@Param("page") Integer page, @Param("pageSize") Integer pageSize);
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
-    List<PostProductVO> selectSearchProductList(@Param("productName") String productName);
+    int insertOnePost(PostVO postVO);
+
 }
