@@ -78,18 +78,18 @@
 			</div>
 			<div class="form-content">
 			    <div id="userPrefer">
-			        <input type="checkbox" name="userPrefer" value=21 id="21"><label for="21">미니멀</label>
-			        <input type="checkbox" name="userPrefer" value=22 id="22"><label for="22">이지캐주얼</label>
-			        <input type="checkbox" name="userPrefer" value=23 id="23"><label for="23">비즈니스캐주얼</label>
-			        <input type="checkbox" name="userPrefer" value=24 id="24"><label for="24">아메카지</label>
-			        <input type="checkbox" name="userPrefer" value=25 id="25"><label for="25">스트릿</label>
-			        <input type="checkbox" name="userPrefer" value=26 id="26"><label for="26">시티보이</label>
-			        <input type="checkbox" name="userPrefer" value=27 id="27"><label for="27">원마일웨어</label>
-			        <input type="checkbox" name="userPrefer" value=28 id="28"><label for="28">스포티</label>
-			        <input type="checkbox" name="userPrefer" value=29 id="29"><label for="29">유니크</label>
-			        <input type="checkbox" name="userPrefer" value=30 id="30"><label for="30">레트로</label>
-			        <input type="checkbox" name="userPrefer" value=31 id="31"><label for="31">러블리</label>
-			        <input type="checkbox" name="userPrefer" value=32 id="32"><label for="32">모던캐주얼</label>
+			        <input type="checkbox" name="userPrefer" value="미니멀" id="21"><label for="21">미니멀</label>
+			        <input type="checkbox" name="userPrefer" value="이지캐주얼" id="22"><label for="22">이지캐주얼</label>
+			        <input type="checkbox" name="userPrefer" value="비즈니스캐주얼" id="23"><label for="23">비즈니스캐주얼</label>
+			        <input type="checkbox" name="userPrefer" value="아메카지" id="24"><label for="24">아메카지</label>
+			        <input type="checkbox" name="userPrefer" value="스트릿" id="25"><label for="25">스트릿</label>
+			        <input type="checkbox" name="userPrefer" value="시티보이" id="26"><label for="26">시티보이</label>
+			        <input type="checkbox" name="userPrefer" value="원마일웨어" id="27"><label for="27">원마일웨어</label>
+			        <input type="checkbox" name="userPrefer" value="스포티" id="28"><label for="28">스포티</label>
+			        <input type="checkbox" name="userPrefer" value="유니크" id="29"><label for="29">유니크</label>
+			        <input type="checkbox" name="userPrefer" value="레트로" id="30"><label for="30">레트로</label>
+			        <input type="checkbox" name="userPrefer" value="러블리" id="31"><label for="31">러블리</label>
+			        <input type="checkbox" name="userPrefer" value="모던캐주얼" id="32"><label for="32">모던캐주얼</label>
 			    </div>
 			</div>
 			<div class="form-label">
