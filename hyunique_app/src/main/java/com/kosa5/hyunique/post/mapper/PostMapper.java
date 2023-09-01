@@ -27,4 +27,6 @@ public interface PostMapper {
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
+    int insertOnePost(PostVO postVO);
+
 }
