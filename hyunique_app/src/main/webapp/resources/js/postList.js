@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => {
       buttons.forEach((btn) => {
         btn.classList.remove('selected');
+        scrollToTop()
       });
 
       button.classList.add('selected');
@@ -75,4 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 검색 시작
       document.getElementById("applyFilter").click();
+  }
+
+  // 버튼을 클릭하면 페이지 상단으로 스크롤하는 함수
+  function scrollToTop() {
+      window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
   }

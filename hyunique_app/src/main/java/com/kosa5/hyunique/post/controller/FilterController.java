@@ -29,5 +29,4 @@ public class FilterController {
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}
-	
 }

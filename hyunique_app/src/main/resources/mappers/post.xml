@@ -23,10 +23,19 @@
 
 
     <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
-        SELECT DISTINCT P.*
+        <if test='selectedType != null and selectedType.equals("following")'>
+            SELECT DISTINCT P.*
+        </if>
+        <if test='selectedType != null and selectedType.equals("recommend")'>
+            SELECT DISTINCT P.*
+        </if>
+        <if test='selectedType != null and selectedType.equals("style-ranking")'>
+            SELECT DISTINCT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL, COUNT(SL.POST_ID) AS LIKE_COUNT
+        </if>
+        FROM (
+        SELECT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
         FROM HY_POST P
         INNER JOIN HY_USER U ON P.USER_ID = U.USER_ID
-        LEFT JOIN hy_stylelike SL ON P.post_id = SL.post_id
         <where>
             <if test='selectedType != null and selectedType.equals("following")'>
                 AND P.USER_ID IN (SELECT FOLLOWING_ID FROM HY_FOLLOW WHERE FOLLOWER_ID = #{userId})
@@ -69,11 +78,13 @@
                 </foreach>
             </if>
         </where>
+        ) P
+        LEFT JOIN HY_STYLELIKE SL ON P.POST_ID = SL.POST_ID
         <if test='selectedType != null and selectedType.equals("following")'>
             ORDER BY P.POST_DATE DESC
         </if>
         <if test='selectedType != null and selectedType.equals("style-ranking")'>
-            GROUP BY P.post_id
+            GROUP BY P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
             ORDER BY like_count DESC
         </if>
         <if test='selectedType != null and selectedType.equals("recommend")'>

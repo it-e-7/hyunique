@@ -187,6 +187,8 @@ var itemsPerPage = 10;
                     $("#photo-gallery").append(data);
                     currentPage = currentPage + 1;
                     loadMoreImages();
+                    if (data == null){
+                    console.log("리턴값이 null 입니다")}
                 },
                 error: function(err) {
                     // 오류 처리
