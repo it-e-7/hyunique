@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.post.service;
 
+import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.FilterPostVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PageVO;
 import com.kosa5.hyunique.post.vo.PostVO;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     PostMapper postMapper;
+
+    S3Service s3Service;
 
     @Override
     public PostDetailVO getPostDetailByPostIdUserId(int postId, int userId) {
@@ -72,7 +76,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostProductVO> getSearchProductList(String productName) {
-        return postMapper.selectSearchProductList(productName);
+    public int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
+        List<URL> urls = s3Service.getUploadImgURL(postVO.getImgList());
+
+        return 0;
     }
+
 }

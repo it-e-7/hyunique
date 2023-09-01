@@ -23,5 +23,5 @@ public interface PostService {
 
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
 
-    List<PostProductVO> getSearchProductList(String productName);
+    int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 }
