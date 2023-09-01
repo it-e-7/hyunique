@@ -22,4 +22,6 @@ public interface PostService {
     List<PostVO> loadMorePost(Integer page);
 
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
+
+    int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 }
