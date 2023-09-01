@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hy_user.kakao_oauth as kakaoOauth,
 		hy_user.naver_oauth as
 		naverOauth,
+		hy_user.user_preference as userPrefer,
 		hy_sns_url.facebook_url as facebookUrl,
 		hy_sns_url.twitter_url as twitterUrl,
 		hy_sns_url.instagram_url as
@@ -64,6 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hy_user.user_introduce,
 		hy_user.kakao_oauth,
 		hy_user.naver_oauth,
+		hy_user.user_preference,
 		hy_sns_url.facebook_url,
 		hy_sns_url.twitter_url,
 		hy_sns_url.instagram_url

@@ -72,7 +72,7 @@
 			<div class="user-detail-bar-wrapper">
 				<p id="user-detail-title">스타일</p>
 				<p id="vertical-bar">|</p>
-				<p id="user-follower">${user.styleNames}</p>
+				<p id="user-follower">${user.userPrefer}</p>
 			</div>
 			<div class="user-introduce-wrapper">${user.userIntroduce}</div>
 		</div>
