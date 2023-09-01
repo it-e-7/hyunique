@@ -2,6 +2,8 @@ package com.kosa5.hyunique.post.vo;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class PostProductVO {
 
