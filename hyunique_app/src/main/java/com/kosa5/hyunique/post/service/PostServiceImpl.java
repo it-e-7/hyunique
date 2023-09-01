@@ -39,39 +39,21 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostVO getOnePost(Integer post_id) {
-        PostVO postVO = new PostVO();
-        System.out.println("postVO check  -- before mapper " + postVO);
-        postVO = postMapper.findOnePost(post_id);
-        System.out.println("postVO check  -- after mapper " + postVO);
-        return postVO;
-    }
-
-    @Override
-    public List<PostVO> findTwelvePostList(Integer member_id) {
-        List<PostVO> postVOList = new ArrayList<>();
-        postVOList = postMapper.findTwelvePostList(member_id);
-        return postVOList;
-    }
-
-    @Override
     public List<PostVO> loadMorePost(Integer page) {
         List<PostVO> postVOList = new ArrayList<>();
+        Integer pageSize = 10;
         PageVO pageVO = new PageVO();
-        int startIndex = page * 20 + 1;
-        int endIndex = (page + 1) * 20;
-        postVOList = postMapper.loadMorePost(startIndex, endIndex);
+        postVOList = postMapper.loadMorePost(page,pageSize);
         return postVOList;
     }
 
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
-
         List<PostVO> postVOList = new ArrayList<>();
-
-        System.out.println("RESULT START --- " + filterPostVO);
+        System.out.println("Before : "+filterPostVO);
+        filterPostVO.setPage((filterPostVO.getPageSize())*(filterPostVO.getPage() - 1));
         postVOList = postMapper.loadFilterPost(filterPostVO);
-        System.out.println("RESULT END --- " + postVOList);
+        System.out.println("After : "+postVOList);
         return postVOList;
     }
 

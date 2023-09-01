@@ -1,49 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  
+<!-- FATAL > ERROR > WARN > INFO > DEBUG > TRACE -->
 <Configuration>
-  
     <Appenders>
-        <File name="File_1" fileName="c:/log_test/myLog_1.log"
-            append="true">
-            <PatternLayout pattern="%t %-5p %c{2} - %m%n" />
-        </File>
-        <File name="File_2" fileName="c:/log_test/myLog_2.log"
-            append="true">
-            <PatternLayout pattern="%d - %m%n" />
-        </File>
-        <Console name="stdout_1" target="SYSTEM_OUT">
-            <PatternLayout pattern="%p == %m == %d%n" />
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p [%c][%L LINE] %m%n" />
         </Console>
-        <Console name="stdout_2" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd:HH:mm} >> %m%n" />
-        </Console>
+        <!-- Query Loggers 쿼리 과정(파라미터까지) -->
+        <appender name="console-dblog" class="org.apache.log4j.ConsoleAppender">
+            <PatternLayout pattern="%d %5p %m%n" />
+        </appender>
     </Appenders>
-  
     <Loggers>
-  
-        <Logger name="case1" level="warn">
-            <AppenderRef ref="File_1" />
+        <Logger name="java.sql" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
         </Logger>
-  
-        <!-- additivity="false" 상위 appender를 상속받지 않습니다. 즉, 여기서는 Root를 제외시키는 역할을 
-            합니다. 로그가 중복으로 출력되는것을 제어할 목적으로 사용됩니다. -->
-        <Logger name="case2" level="info" additivity="false">
-            <AppenderRef ref="File_2" />
-            <AppenderRef ref="stdout_1" />
+        <Logger name="egovframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
         </Logger>
-  
-        <Logger name="case3" level="debug" additivity="false">
-            <AppenderRef ref="stdout_1" />
+        <Logger name="org.springframework" level="ERROR" additivity="false">
+            <AppenderRef ref="console" />
         </Logger>
-        
-        <Logger name="myBook" level="debug"></Logger>
-        <Logger name="myMember" level="debug"></Logger>
-        <Logger name="myPoint" level="debug"></Logger>
-  
-  
-        <Root level="INFO">
-            <AppenderRef ref="stdout_2" />
+        <!-- Query Loggers 쿼리(파라미터까지) -->
+        <Logger name="jdbc.sqlonly" additivity="false">
+            <level value="info"/>
+            <appender-ref ref="console" />
+        </Logger>
+        <!--  SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함한다. 필요시 open -->
+<!--        <Logger name="jdbc.sqltiming" level="ERROR" additivity="false">
+            <AppenderRef ref="WARN" />
+        </Logger>-->
+        <Root level="DEBUG">
+            <AppenderRef ref="console" />
         </Root>
     </Loggers>
-  
 </Configuration>
