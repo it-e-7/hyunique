@@ -42,7 +42,7 @@ public class OAuthService {
 			sb.append("grant_type=authorization_code");
             
 			sb.append("&client_id="+kakaoApiKey); //발급 api키
-			sb.append("&redirect_uri=http://localhost:8080/hyunique/KakaoLogin"); // 본인이 설정한 주소
+			sb.append("&redirect_uri=http://localhost:8080/KakaoLogin"); // 본인이 설정한 주소
             
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());

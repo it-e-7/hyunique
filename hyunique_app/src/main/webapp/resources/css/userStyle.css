@@ -1,0 +1,283 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+
+.content-wrapper {
+	width: 100%;
+}
+.thumbnail-image {
+    min-width: 100%;
+    min-height: auto;
+	aspect-ratio : 1/1;
+	object-fit:cover;
+	object-position:center;
+}
+.product-card {
+    min-height: auto;
+    aspect-ratio:178/264;
+    margin: 0.5rem;
+    display:flex;
+    flex-direction:column;
+}
+.product-card img{
+	min-width:100%;
+	height:auto;
+	aspect-ratio: 1/1.2;
+	object-fit:cover;
+	object-position:center;
+	
+}
+.img-backimg-wrapper {
+  width: 100%;
+}
+
+.img-backimg-wrapper img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 360 / 150;
+	object-fit:cover;
+	object-position: top;
+}
+.img-userimg-wrapper{
+	width: 10rem;
+	height: 10rem;
+	z-index: 1;
+	position:absolute;
+	margin-top:-5.5rem;
+	margin-left:1rem;
+}
+.img-userimg-wrapper img{
+	width:100%;
+	height:100%;
+	aspect-ratio:1/1;
+	object-fit:cover;
+	object-position:center;	
+	border-radius:10rem;
+}
+#settings {
+	width:24px;
+	height:24px;
+}
+.button-section{
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	margin-top:1rem;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+.button-section img{
+	height : 1.5rem;
+	margin-right:2rem;
+}
+.button-section img:first-child {
+	margin-left: 2rem;
+}
+.user-details{
+	display:flex;
+	flex-direction:column;
+	align-items: flex-start;
+	margin-bottom:1.5rem;
+}
+.user-details p{
+	font-family:Spoqa Han Sans;
+	font-size:1rem;
+}
+#user-detail-title{
+	min-width: 3em;
+	color:var(--grey4);
+}
+.user-sns-btn-wrapper{
+	width: 100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-bottom:4rem;
+}
+.user-sns-btn-wrapper img{
+	width:auto;
+	height:1.7rem;
+	margin-right:1rem;
+	margin-top:0.5rem;
+}
+.user-detail-bar-wrapper{
+	margin-left: 1rem;
+	margin-bottom:0.5rem;
+	display:flex;
+	width:100%;
+	justify-content: flex-start;
+}
+.user-detail-bar-wrapper p{
+	margin-right:1rem;
+}
+.txt-user-profile{
+	margin-top:-0.5rem;
+	font-size:1.15rem;
+	font-family:Spoqa Han Sans;
+	font-weight:600;
+}
+#vertical-bar{
+	font-weight:bold;
+	color:var(--grey4);
+}
+.user-introduce-wrapper{
+	font-family:Spoqa Han Sans;
+	margin-left: 1rem;
+	font-size:1.1rem;
+	font-weight:;
+	margin-top:0.5rem;
+	margin-right:1rem;
+}
+#user-follower{
+	margin-right:2rem;
+}
+.tab-button {
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 15px;
+	font-size: 16px;
+}
+
+.tab-content {
+	display: none;
+}
+
+#product-section > div {
+	display: grid;
+}
+
+#product-section > div.active {
+	display: grid;
+}
+
+.tab-bar {
+  margin-bottom:0.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  -webkit-padding-start: 0;
+}
+.horizontal-bar{
+  background-color: var(--grey1);
+  width: 100%;
+  height: 10px;
+ }
+.tab {
+  padding: 0.8rem 0;
+  background: white;
+  color: #607D8B;
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.indicator {
+  height: 3px;
+  background: var(--jw-blue2);
+  position: absolute;
+  margin-top: 46px;
+  margin-left:0;
+  -webkit-transition: margin 0.5s ease;
+  transition: margin 0.5s ease;
+}
+
+.cercle {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+}
+
+.light .cercle {background: white}
+.dark .cercle {background: black}
+
+.anim {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  -webkit-animation: touch 1.2s ease-out;
+          animation: touch 1.2s ease-out;
+}
+
+@-webkit-keyframes touch {
+  100% { 
+    width: 600px;
+    height: 600px;
+    border-radius: 600px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    margin: -300px;
+  }
+}
+
+@keyframes touch {
+  100% { 
+    width: 600px;
+    height: 600px;
+    border-radius: 600px;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    margin: -300px;
+  }
+}
+
+.style-thumbnail-list-wrapper {
+	display: grid;
+	gap: 0.2rem;
+	align-content: end;
+}
+.product-list-wrapper {
+	display: grid;
+	gap: 0.2rem;
+	align-content: end;
+}
+
+@media (max-width: 700px) {
+	.style-thumbnail-list-wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+	.product-list-wrapper{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 700px) {
+	.style-thumbnail-list-wrapper {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.product-list-wrapper{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+.style-thumbnail-list-wrapper img {
+	width: 100%;
+	cursor: pointer;
+}
+
+#postUrl{
+	display: none;
+}
+
+#product-brand, #product-price {
+	padding-left:1rem;
+	font-family:Spoqa Han Sans;
+	font-weight:bold;
+}
+#product-name{
+	max-inline-size:100%;
+	max-width:100%;"
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	padding-left:1rem;
+	margin-top:0.5rem;
+	margin-bottom:1rem;
+}
