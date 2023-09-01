@@ -21,14 +21,15 @@ $('.select-depart').scroll((e) => {
 });
 
 function sharePost(productName) {
-	if(navigator.share && (isMobile.apple.phone || isMobile.android.phone)) {
+	if(isMobile()) {
 		navigator.share({
 			title: `${productName} | 더 hyunique하게`,
-			text: `하이`,
 			url: location.href,
 		}).then(() => {
-			console.log('공유 완료');
-		}).catch(console.error);
+			console.log("공유 완료");
+		}).catch(() => {
+			console.error('공유  error');
+		});
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);

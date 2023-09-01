@@ -41,14 +41,13 @@ function likeTogglePost(postId) {
 }
 
 function sharePost(userNickname) {
-	if(navigator.share && (isMobile.apple.phone || isMobile.android.phone)) {
+	if(isMobile()) {
 		navigator.share({
 			title: `@${userNickname}님의 스타일 | 더 hyunique하게`,
-			text: `하이`,
 			url: location.href,
 		}).then(() => {
-			console.log('공유 완료');
-		}).catch(console.error);
+			console.log("공유 완료");
+		}).catch(alert);
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);

@@ -121,6 +121,5 @@
 		</div>
 	</div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
 <script src="/resources/js/postdetail.js"></script>
 </html>
