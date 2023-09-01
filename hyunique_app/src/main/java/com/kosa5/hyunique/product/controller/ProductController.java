@@ -56,9 +56,7 @@ public class ProductController {
 	@GetMapping("/search/{productName}")
 	@ResponseBody
 	public List<PostProductVO> getSearchProduct(@PathVariable("productName") String productName) {
-		System.out.println("productName = " + productName);
 		List<PostProductVO> value = productService.getSearchProductList(productName);
-		System.out.println("value = " + value);
 		return value;
 	}
 
