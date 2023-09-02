@@ -35,13 +35,13 @@ public class S3Service {
         this.bucketName = bucketName;
     }
 
-    public List<URL> getUploadImgURL(List<String> base64Images) {
-        Map<String, URL> imgUploadState = new HashMap<>();
+    public List<String> getUploadImgURL(List<String> base64Images) {
+        Map<String, String> imgUploadState = new HashMap<>();
 
         for(String base64Img : base64Images) {
             String fileName = createImgFileName();
 
-            URL returnUrl = uploadBase64Img(base64Img, fileName);
+            String returnUrl = uploadBase64Img(base64Img, fileName);
 
             // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
@@ -66,15 +66,17 @@ public class S3Service {
     }
 
     // base64 디코딩 및 업로드
-    public URL uploadBase64Img(String base64Img, String fileName) {
+    public String uploadBase64Img(String base64Img, String fileName) {
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentLength(imgBytes.length);
+            metadata.setContentType("image/jpeg");
             amazonS3.putObject(new PutObjectRequest(bucketName, "post/" + fileName, inputStream, metadata));
 
-            return amazonS3Client.getUrl(bucketName, fileName);
+
+            return amazonS3Client.getUrl(bucketName, fileName).toString();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("e.printStackTrace(); = " + e.getStackTrace());
