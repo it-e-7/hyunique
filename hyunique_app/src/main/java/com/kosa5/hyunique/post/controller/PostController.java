@@ -1,7 +1,6 @@
 package com.kosa5.hyunique.post.controller;
 
 import com.kosa5.hyunique.post.util.S3Service;
-import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostingVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
-import com.kosa5.hyunique.post.vo.PostVO;
-
-
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +20,6 @@ public class PostController {
     @Autowired
     PostService postService;
 
-    @Autowired
     S3Service s3Service;
 
     @GetMapping("{postId}")
@@ -67,6 +60,7 @@ public class PostController {
     @PostMapping
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting) {
+        System.out.println("post controller test");
         int state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
         System.out.println("state = " + state);
 
