@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.*;
 import java.io.*;
 
-
 @Service
 public class S3Service {
 
@@ -78,6 +77,7 @@ public class S3Service {
             return amazonS3Client.getUrl(bucketName, fileName);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("e.printStackTrace(); = " + e.getStackTrace());
             return null;
         }
     }

@@ -21,6 +21,7 @@ public class PostServiceImpl implements PostService {
     @Autowired
     PostMapper postMapper;
 
+    @Autowired
     S3Service s3Service;
 
     @Override
@@ -60,7 +61,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
         List<URL> urls = s3Service.getUploadImgURL(postVO.getImgList());
-
         return 0;
     }
 
