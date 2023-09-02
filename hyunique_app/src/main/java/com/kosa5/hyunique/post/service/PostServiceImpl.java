@@ -60,7 +60,17 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
-        List<URL> urls = s3Service.getUploadImgURL(postVO.getImgList());
+        List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
+
+        // urls의 값을 postVO의 imgList에 설정
+        List<String> newImgList = new ArrayList<>();
+        for (String url : urls) {
+            newImgList.add(url);
+        }
+        postVO.setImgList(newImgList);  // imgList를 새로운 URL 문자열로 업데이트
+
+        System.out.println("postVO = " + postVO);
+//        postMapper.insertOnePost(postVO);
         return 0;
     }
 
