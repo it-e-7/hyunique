@@ -64,18 +64,7 @@ img {
     font-size: 20px;
 }
 
-.button-container button {
-    font-size: 16px;
-    line-height: 18px;
-    height: 48px;
-    width: 320px;
-    background: var(--jw-blue);
-    color: #FFFFFF;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.write-container label {
+.write-container p {
     font-weight: bold;
     font-size: 16px;
 }
@@ -87,4 +76,86 @@ img {
     border-radius: 12px;
     font-size: 16px;
     border: 1px solid var(--jw-blue3);
+}
+
+#img-load-button {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 80%;
+    background: url(.png);
+    border-radius: 24px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+	border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+	padding:0.1rem 1.3rem;
+    cursor: pointer;
+	line-height:2rem;
+	margin-right:0.1rem;
+	margin-top:1rem;
+    font-family:Spoqa Han Sans;
+	letter-spacing:0.05rem;
+	text-align:center;
+	color:var(--grey4);
+}
+
+input[type="checkbox"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+}
+
+.style-button-group, .tpo-button-group, .season-button-group, .content-group {
+    padding: 20px;
+}
+
+.style-button-group div, .tpo-button-group div, .season-button-group div {
+    margin-right: 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-group textarea {
+    width: 100%;  /* 너비를 부모 요소에 맞춤 */
+    min-height: 100px;  /* 최소 높이 설정 */
+    resize: vertical;  /* 세로로만 크기 조절 가능하게 설정 */
+    overflow: auto;  /* 내용이 넘칠 경우 스크롤 표시 */
+}
+
+.form-group {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
 }

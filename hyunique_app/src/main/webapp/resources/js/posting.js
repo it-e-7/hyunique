@@ -10,7 +10,7 @@ let container;
 let items = {};
 
 $(document).ready(function() {
-    $("#uploadButton").click(function() {
+    $("#img-load-button").click(function() {
         $("#fileInput").click();
     });
 
@@ -225,9 +225,6 @@ function sendPostToServer(post, product) {
             pinX: item.xOffset,
             pinY: item.yOffset,
             productId: item.productId,
-            productBrand: item.productBrand,
-            productName: item.productName,
-            productPrice: item.productPrice,
             productSize: item.productSize,
         };
     });
@@ -268,4 +265,20 @@ function getSearchProduct(productName) {
             });
         }
     });
+}
+
+
+function handleCheckBoxState(tag) {
+    console.log(tag);
+
+    var checkbox = $(`#${tag}`);
+    console.log("checkbox: ", checkbox);
+
+    var label = $(`label[for='${tag}']`);
+    console.log("label: ", label);
+
+    if (checkbox.length > 0) {
+        var isChecked = checkbox.prop('checked');
+        console.log("isChecked: ", isChecked);
+    }
 }
