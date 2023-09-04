@@ -14,6 +14,9 @@
 	
 </head>
 <body>
+	<div id="session-info">
+		<input type="hidden" id="session-id" value="${sessionId}">
+	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
 			<img src="/resources/img/ic-backward.png" />

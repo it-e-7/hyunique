@@ -1,6 +1,7 @@
 // 현재 보여줄 카테고리를 저장하는 변수
 let currentCategory = '';
 const sessionId = document.getElementById('session-id').value;
+const userId = document.getElementById('user-id').value;
 
 
 function loadCloset(userId) {

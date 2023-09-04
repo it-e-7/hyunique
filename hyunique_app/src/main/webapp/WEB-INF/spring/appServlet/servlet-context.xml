@@ -42,9 +42,6 @@
 	<beans:bean id="naverLoginBO"
 		class="com.kosa5.hyunique.oauth.NaverLoginBO" />
 
-	<beans:bean id="S3Service"
-				class="com.kosa5.hyunique.post.util.S3Service"/>
-
 	<!-- AOP 설정 추가 -->
 	<aop:aspectj-autoproxy />
 </beans:beans>

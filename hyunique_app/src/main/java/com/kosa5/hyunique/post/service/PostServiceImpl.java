@@ -21,6 +21,7 @@ public class PostServiceImpl implements PostService {
     @Autowired
     PostMapper postMapper;
 
+    @Autowired
     S3Service s3Service;
 
     @Override

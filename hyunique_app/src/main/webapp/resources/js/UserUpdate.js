@@ -1,4 +1,5 @@
 //유저 정보 업데이트
+
 function updateUser() {
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
@@ -9,6 +10,7 @@ function updateUser() {
     }).get().join(',');    const instagramUrl = $('input[name="instagramUrl"]').val();
     const twitterUrl = $('input[name="twitterUrl"]').val();
     const facebookUrl = $('input[name="facebookUrl"]').val();
+    const sessionId = document.getElementById('session-id').value;
 
     $.ajax({
         url: `/user/updateUser`,
@@ -26,7 +28,7 @@ function updateUser() {
         }),
         success: function (response) {
             alert('업데이트 성공!');
-            window.location.href = 'myStylePage';
+            window.location.href = `${sessionId}`;
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
@@ -40,11 +42,11 @@ $(document).ready(function() {
 	});
 
 //유저 게시글 썸네일, 이미지 세팅
-function userPostList(sessionId) {
+function userPostList(userId) {
 	  $.ajax({
 	    url: `/user/userpostlist`,
 	    type: 'GET',
-	    data: { userId: sessionId },
+	    data: { userId: userId },
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty(); // 기존 썸네일 이미지 제거
@@ -68,9 +70,9 @@ function userPostList(sessionId) {
 	    }
 	  });
 	}
-function fetchClosetInfo(sessionId) {
+function fetchClosetInfo(userId) {
 	  $.ajax({
-	    url: `/closet/${sessionId}`,
+	    url: `/closet/${userId}`,
 	    type: 'GET',
 	    success: function(closetItems) {
 	      var closetDiv = $('#closet'); // HTML에서 옷장 정보를 표시할 div
@@ -100,5 +102,5 @@ function fetchClosetInfo(sessionId) {
 	}
 
 $(document).ready(function() {
-	  userPostList(sessionId);
+	  userPostList(userId);
 	});

@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,30 +39,38 @@ public class UserController {
 
 	// 유저 기본정보 가져오기
 	@GetMapping("{userId}")
-	public String getUserInfoAndFollowerCount(HttpSession session, Model model) {
-		String sessionId = (String) session.getAttribute("sessionId"); // 세션에서 아이디 가져오기
-		if (sessionId != null) {
-			int userId = Integer.parseInt(sessionId);
-			UserVO user = userService.getUserInfoAndFollowerCount(userId);
-			model.addAttribute("user", user);
-			session.setAttribute("user", user); // 세션에 UserVO 저장
-		} else {
-			log.info("세션 아이디가 null");
-		}
-		return "myStylePage";
+	public String getUserInfoAndFollowerCount(@PathVariable int userId, HttpSession session, Model model) {
+	    String sessionId = (String) session.getAttribute("sessionId");
+	    UserVO user = userService.getUserInfoAndFollowerCount(userId);
+	    
+	    if (user != null) {
+	        model.addAttribute("user", user);
+	        if (sessionId != null && Integer.parseInt(sessionId) == userId) {
+	            model.addAttribute("isCurrentUser", true);
+	        }
+	    } else {
+	        log.info("유저 정보가 존재하지 않음");
+	    }
+	    model.addAttribute("userId", userId); // 이 부분 추가
+	    return "myStylePage";
 	}
+
 
 	// 유저 기본정보 업데이트 화면 이동
 	@GetMapping("update")
-	public String userUpdatePage(HttpServletRequest request, Model model) {
-		UserVO user = (UserVO) request.getSession().getAttribute("user"); // 세션에서 UserVO 가져오기
-		if (user != null) {
-			model.addAttribute("user", user);
-		} else {
-			log.info("user값이 null");
-		}
-		return "userInfoUpdatePage";
+	public String userUpdatePage(HttpSession session, Model model) {
+		String sessionIdString = (String) session.getAttribute("sessionId");
+		int sessionId = Integer.parseInt(sessionIdString);
+	    UserVO user = userService.getUserInfoAndFollowerCount(sessionId); // 여기에서 변경
+
+	    if (user != null) {
+	        model.addAttribute("user", user);
+	    } else {
+	        log.info("user값이 null");
+	    }
+	    return "userInfoUpdatePage";
 	}
+
 
 	// 유저 기본정보 업데이트 삽입
 	@PostMapping("updateUser")
@@ -82,11 +90,11 @@ public class UserController {
 	@GetMapping("userpostlist")
 	@ResponseBody
 	public List<PostVO> getPostsByUserId(HttpServletRequest request, @RequestParam(required = false) Integer userId,
-			@SessionAttribute("sessionId") int sessionId) {
-		if (userId == null) {
-			userId = sessionId;
-		}
-		return userService.getPostsByUserId(userId);
+	        HttpSession session) {
+	    if (userId == null) {
+	        userId = (Integer) session.getAttribute("sessionId");
+	    }
+	    return userService.getPostsByUserId(userId);
 	}
 
 }

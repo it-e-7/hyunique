@@ -14,6 +14,7 @@
 <body>
 	<div id="session-info">
 		<input type="hidden" id="session-id" value="${sessionId}">
+		<input type="hidden" id="user-id" value="${user.userId}">
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
@@ -22,9 +23,18 @@
 		<div class="txt-user-profile">
 			<p>${user.userNickname}</p>
 		</div>
-		<a href="update"> <img src="/resources/img/ic-settings.png"
-			id="settings" />
-		</a>
+		<c:choose>
+		    <c:when test="${isCurrentUser == true}">
+		        <a href="update">
+		            <img src="/resources/img/ic-settings.png" id="settings" />
+		        </a>
+		    </c:when>
+		    <c:otherwise>
+		        <div style="visibility: hidden;">
+		            <img src="/resources/img/ic-settings.png" id="settings" />
+		        </div>
+		    </c:otherwise>
+		</c:choose>
 	</div>
 
 	<!-- User Profile -->
@@ -130,6 +140,10 @@
 	</div>
 
 </body>
+ <script>
+	let userIdFromModel = ${userId}; // 서버에서 넘겨준 userId
+	userPostList(userIdFromModel);
+</script>
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
 <script src="/resources/js/tab.js"></script>
