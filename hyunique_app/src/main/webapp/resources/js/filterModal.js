@@ -222,8 +222,7 @@ var itemsPerPage = 10;
                     $("#photo-gallery").append(data);
                     currentPage = currentPage + 1;
                     loadMoreImages();
-                    if (data == null){
-                    console.log("리턴값이 null 입니다")}
+                    changeFilterColor();
                 },
                 error: function(err) {
                     // 오류 처리
@@ -327,6 +326,62 @@ var itemsPerPage = 10;
         // Set the width and position of the range background
         rangeElement.style.left = leftValue + '%';
         rangeElement.style.width = rangeWidth + '%';
+    }
+
+    function changeFilterColor() {
+    const checkedCheckboxIds = [];
+    const notcheckedCheckboxIds = [];
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        checkedCheckboxIds.push(checkbox.id);
+      }
+    });
+
+    //색 초기화
+    const buttons = document.querySelectorAll('[class^="FilterModalButton"]');
+
+    buttons.forEach(button => {
+          button.style.backgroundColor = "initial";
+          button.style.fontWeight = "normal";
+          button.style.color = "initial";
+    });
+
+    //checkedCheckboxIds 안에 체크된 체크박스의 아이디들이 저장된다.
+    //해당 아이디들을 바탕으로, 앞에 있는 애들의 스타일을 바꾼다.
+
+    let reversedCheckboxes = {
+        'maleCheckbox': '남',
+        'femaleCheckbox': '여',
+        'minimalCheckbox': '미니멀',
+        'easyCheckbox': '이지캐주얼',
+        'businessCheckbox': '비즈니스캐주얼',
+        'streetCheckbox': '스트릿',
+        'onemileCheckbox': '원마일웨어',
+        'uniqueCheckbox': '유니크',
+        'lovelyCheckbox': '러블리',
+        'amekajiCheckbox': '아메카지',
+        'cityboyCheckbox': '시티보이'
+    };
+
+    //체크된 것들 색 바꾸기
+    for (let i = 0; i < checkedCheckboxIds.length; i++) {
+        let checkboxId = checkedCheckboxIds[i];
+        let buttonClass = 'FilterModalButton' + reversedCheckboxes[checkboxId];
+        let button = document.querySelector('.' + buttonClass);
+        console.log(buttonClass);
+
+
+        if (button!=null) {
+            button.style.backgroundColor = "var(--jw-light-blue2)";
+            button.style.fontWeight = "bold";
+            button.style.color = "var(--jw-blue3)";
+        }
+    }
+
+
+
     }
 
 });

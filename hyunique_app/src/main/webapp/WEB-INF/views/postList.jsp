@@ -99,7 +99,7 @@
                     </div>
                     <div id="tpo-options">
                         <div id=select-type-button>
-                        <label for="beachCheckbox">코사 🏄</label>
+                        <label for="kosaCheckbox">코사 🏄</label>
                         <input type="checkbox" id="kosaCheckbox" name="tpo" value="21">
                         </div>
                         <div id=select-type-button>
@@ -107,7 +107,7 @@
                         <input type="checkbox" id="travelCheckbox" name="tpo" value="22">
                         </div>
                         <div id=select-type-button>
-                        <label for="beachCheckbox">캠퍼스 🎓</label>
+                        <label for="campusCheckbox">캠퍼스 🎓</label>
                         <input type="checkbox" id="campusCheckbox" name="tpo" value="23">
                         </div>
                         <div id=select-type-button>
@@ -115,15 +115,15 @@
                         <input type="checkbox" id="cafeCheckbox" name="tpo" value="24">
                         </div>
                         <div id=select-type-button>
-                        <label for="beachCheckbox">데이트 💄</label>
+                        <label for="dateCheckbox">데이트 💄</label>
                         <input type="checkbox" id="dateCheckbox" name="tpo" value="25">
                         </div>
                         <div id=select-type-button>
-                        <label for="travelCheckbox">결혼식 👰</label>
+                        <label for="merryCheckbox">결혼식 👰</label>
                         <input type="checkbox" id="merryCheckbox" name="tpo" value="26">
                         </div>
                         <div id=select-type-button>
-                        <label for="beachCheckbox">출근 🧔</label>
+                        <label for="officeCheckbox">출근 🧔</label>
                         <input type="checkbox" id="officeCheckbox" name="tpo" value="27">
                         </div>
                         <div id=select-type-button>
@@ -139,19 +139,19 @@
                     </div>
                         <div id="season-options">
                             <div id="select-type-button">
-                            <label for="beachCheckbox">봄 🌱</label>
+                            <label for="springCheckbox">봄 🌱</label>
                             <input type="checkbox" id="springCheckbox" name="season" value="21">
                             </div>
                             <div id="select-type-button">
-                            <label for="travelCheckbox">여름 ☀</label>
+                            <label for="summerCheckbox">여름 ☀</label>
                             <input type="checkbox" id="summerCheckbox" name="season" value="22">
                             </div>
                             <div id="select-type-button">
-                            <label for="beachCheckbox">가을 🍂</label>
+                            <label for="fallCheckbox">가을 🍂</label>
                             <input type="checkbox" id="fallCheckbox" name="season" value="23">
                             </div>
                             <div id="select-type-button">
-                            <label for="travelCheckbox">겨울 ☃</label>
+                            <label for="winterCheckbox">겨울 ☃</label>
                             <input type="checkbox" id="winterCheckbox" name="season" value="24">
                         </div>
                     </div>
