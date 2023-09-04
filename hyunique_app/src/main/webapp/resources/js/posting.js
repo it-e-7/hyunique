@@ -18,18 +18,17 @@ $(document).ready(function() {
         $(".pre-container").hide();
         $(".write-container").show();
         $(".search-container").hide();
+        $(".post-container").hide();
     });
 
     // 작성 완료 버튼
     $('#upload-button').click(function() {
+        let postVO = handleGroupCheckBoxState();
 
-        var postVO = getFormValue();
-
-        sendPostToServer(postVO, items);
-        $(".write-container").hide();
+//        sendPostToServer(postVO, items);
         $(".post-container").show();
+        $(".write-container").hide();
         $(".header-wrapper").hide();
-        //        sendPostToServer();
     });
 
     $("#fileInput").change(function(e) {
@@ -50,8 +49,8 @@ $(document).ready(function() {
                 container = imageElement;
 
                 imageElement.click(function(e) {
-                    var XOffset = e.offsetX;
-                    var YOffset = e.offsetY;
+                    let XOffset = e.offsetX;
+                    let YOffset = e.offsetY;
 
                     $(".result-list").empty();
                     $(".write-container").hide();
@@ -65,20 +64,21 @@ $(document).ready(function() {
     });
 });
 
+// 터치한 위치에 선택한 상품을 태그로 붙이기
 function attachTag(xOffset, yOffset, li) {
     return function() {
-        var tagValue = $("#search-input").val();
+        let tagValue = $("#search-input").val();
 
         if (tagValue) {
             getSearchProduct(tagValue);
 
-            var tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
+            let tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
                 left: xOffset + "px",
                 top: yOffset + "px",
                 position: "absolute"
             });
 
-            var id = tagElement.attr('id');
+            let id = tagElement.attr('id');
             items[id] = {
                 initialX: 0,
                 initialY: 0,
@@ -203,22 +203,6 @@ function setTranslate(xPos, yPos, el) {
     });
 }
 
-function getFormValue() {
-
-   var PostingVO = {
-        postContent: $('#content').val(),
-        tpoId: +$('input[name="tpo"]:checked').val(),
-        seasonId: +$('input[name="season"]:checked').val(),
-        styleId: +$('input[name="style"]:checked').val(),
-        imgList: imgList,
-    };
-
-//    $('.post-image-container').append(imgList[0]);
-//    $('.tag-container').append(styleChecked + ' ' + tpoChecked + ' ' + seasonChecked);
-
-    return PostingVO;
-}
-
 function sendPostToServer(post, product) {
     const productArray = Object.values(items).map(item => {
         return {
@@ -248,14 +232,14 @@ function getSearchProduct(productName) {
         type: 'GET',
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         success: function(response) {
-            var resultList = $(".result-list");
+            let resultList = $(".result-list");
             $('.search-value').val(productName);
 
             $.each(response, function(index, product) {
-                var listItem = $("<li>").addClass("search-product-li");
-                var divItem = $("<div>").addClass("search-product-div");
+                let listItem = $("<li>").addClass("search-product-li");
+                let divItem = $("<div>").addClass("search-product-div");
                 listItem.append($("<img>").attr("src", product.productImg).addClass("search-product-img"));
-                divItem.append($("<p>").text(product.productId).addClass("search-product-id"));
+                divItem.append($("<p>").text(product.productId).addClass("search-product-id").attr("hidden", true));
                 divItem.append($("<p>").text(product.productBrand).addClass("search-product-brand"));
                 divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
                 divItem.append($("<p>").text(product.productPrice).addClass("search-product-price"));
@@ -268,17 +252,55 @@ function getSearchProduct(productName) {
 }
 
 
-function handleCheckBoxState(tag) {
+// 태그 선택했을 때 값 확인용
+function handleCheckBoxState(tag, groupClass) {
     console.log(tag);
 
-    var checkbox = $(`#${tag}`);
+    let checkbox = $(`#${tag}`);
     console.log("checkbox: ", checkbox);
+}
 
-    var label = $(`label[for='${tag}']`);
-    console.log("label: ", label);
+// 각 그룹별로 체크된 체크박스의 값을 ,단위로 구분해서 하나의 String 으로 반환
+function getCheckedValuesInGroup(groupClass, type) {
+    let checkedValuesString = "";
 
-    if (checkbox.length > 0) {
-        var isChecked = checkbox.prop('checked');
-        console.log("isChecked: ", isChecked);
-    }
+    $(`.${groupClass} input[type=${type}]:checked`).each(function() {
+        checkedValuesString += $(this).attr('id') + ',';
+    });
+
+    checkedValuesString = checkedValuesString.slice(0, -1);
+    return checkedValuesString;
+}
+
+
+// 태그 그룹별로 체크된 태그값 추출
+function handleGroupCheckBoxState() {
+    let styleCheckedValues = getCheckedValuesInGroup('style-button-group', 'checkbox');
+    let tpoCheckedValues = getCheckedValuesInGroup('tpo-button-group', 'radio');
+    let seasonCheckedValues = getCheckedValuesInGroup('season-button-group', 'radio');
+
+    console.log('Style:', styleCheckedValues);
+    console.log('TPO:', tpoCheckedValues);
+    console.log('Season:', seasonCheckedValues);
+
+    let PostingVO = {
+        postContent: $('#content').val(),
+        tpoId: tpoCheckedValues,
+        seasonId: seasonCheckedValues,
+        styleId: styleCheckedValues,
+        imgList: imgList,
+    };
+
+    return PostingVO;
+}
+
+function getTagName(tagType) {
+    $.ajax({
+        url: `/post/tag/${tagType}`,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.log(response);
+        }
+    });
 }
