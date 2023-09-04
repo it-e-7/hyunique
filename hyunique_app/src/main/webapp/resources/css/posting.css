@@ -1,18 +1,10 @@
-img {
+.image-view img {
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
 }
 
-.write-container {
-    display: none;
-}
-
-.post-container {
-    display: none;
-}
-
-.search-container {
+.write-container, .search-container, .post-container {
     display: none;
 }
 
@@ -33,9 +25,9 @@ img {
 
 .search-product-li {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 20px;
+    border: 2px solid var(--grey1);
+    border-radius: 10px;
+    margin-bottom: 6px;
 }
 
 .search-product-img {
@@ -52,9 +44,9 @@ img {
     margin: 5px;
 }
 
-.pre-container .header p {
+.pre-container .header p, .post-container .header p {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -91,6 +83,19 @@ img {
     text-align: center;
 }
 
+#next-button {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+    text-align: center;
+}
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -104,11 +109,11 @@ img {
     margin-bottom: 30px;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
     display: none;
 }
 
-input[type="checkbox"] + label {
+input[type="checkbox"] + label, input[type="radio"] + label {
     display: inline-block;
     width: auto;
     height: 2rem;
@@ -125,7 +130,7 @@ input[type="checkbox"] + label {
 	color:var(--grey4);
 }
 
-input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 	color:var(--jw-blue);
     border: 1px solid var(--jw-blue);
 }
@@ -158,4 +163,52 @@ input[type="checkbox"]:checked + label {
     width: 90%;
     max-width: 760px;
     flex-direction: column;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+.search-text {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    font-size: 16px;
+    outline: none;
+    background: var(--grey1);
+    border-radius: 20px;
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+.search-icon {
+    margin-right: 10px; /* 필요에 따라 조정 */
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searching {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.searching img {
+    width: 20px;
+}
+
+.search-body {
+    padding: 20px;
 }
