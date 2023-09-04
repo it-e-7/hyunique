@@ -237,7 +237,7 @@
     </div>
 </div>
 <div id="qr-button">
-    <a href="URL_TO_GENERATE_QR_CODE" target="_blank">
+    <a href="/post/getQRPage">
         <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
     </a>
 </div>

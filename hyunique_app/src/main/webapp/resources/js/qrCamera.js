@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+        let passOneQR = 0;
+
 		var video = document.createElement("video");
 		var canvasElement = document.getElementById("canvas");
 		var canvas = canvasElement.getContext("2d");
@@ -35,14 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
         		      var code = jsQR(imageData.data, imageData.width, imageData.height, {
                                     inversionAttempts : "dontInvert",
         		      });
-                              if(code) {
+                              if(code) { //QR코드 인식에 성공한 경우
                                     drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF0000");
                                     drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF0000");
                                     drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF0000");
                                     drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF0000");
                                     outputMessage.hidden = true;
                                     outputData.parentElement.hidden = false;
-                                    outputData.innerHTML = code.data;
+                                    //코드에 있는 데이터를 출력하지만 이내 이동으로 바뀐다
+                                    if (passOneQR == 0){
+                                    let newWindow = window.open(code.data, '_blank');
+                                    passOneQR = 1;
+                                    history.back();
+                                    }
                               }
                               // QR코드 인식에 실패한 경우
                               else {
@@ -52,4 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
                       }
       		      requestAnimationFrame(tick);
 		}
+
+		//URL 로직검사
 	});
