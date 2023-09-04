@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     outputMessage.hidden = true;
                                     outputData.parentElement.hidden = false;
                                     //코드에 있는 데이터를 출력하지만 이내 이동으로 바뀐다
-                                    if (passOneQR == 0){
+                                    if (passOneQR == 0 && inValidURL(code.data)){
                                     let newWindow = window.open(code.data, '_blank');
                                     passOneQR = 1;
                                     history.back();
@@ -61,4 +61,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		//URL 로직검사
+		function inValidURL(url){
+		    let pattern  = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+		    if (pattern.test(url)){
+		        return true ;
+           }
+           else{
+                return false;
+           }
+		}
 	});
