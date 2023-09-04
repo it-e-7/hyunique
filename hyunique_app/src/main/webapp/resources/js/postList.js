@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
               var button = buttons[0];
               button.style.backgroundColor = "initial";
               button.style.fontWeight = "normal";
-              button.style.color = "initial";
+              button.style.color = "#A5A5A5";
             }
           } else {
             // 체크되어 있지 않을 때의 스타일 (기본 스타일)

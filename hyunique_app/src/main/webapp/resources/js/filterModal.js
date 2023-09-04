@@ -345,7 +345,7 @@ var itemsPerPage = 10;
     buttons.forEach(button => {
           button.style.backgroundColor = "initial";
           button.style.fontWeight = "normal";
-          button.style.color = "initial";
+          button.style.color = "#A5A5A5";
     });
 
     //checkedCheckboxIds 안에 체크된 체크박스의 아이디들이 저장된다.
