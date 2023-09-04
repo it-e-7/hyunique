@@ -12,4 +12,5 @@ public interface ProductService {
 	List<PostThumbnailVO> getProductStyleById(String productId, int offset);
 
 	List<PostProductVO> getSearchProductList(String productName);
+	List<PostProductVO> getnSearchProductList(String keyword, int offset);
 }

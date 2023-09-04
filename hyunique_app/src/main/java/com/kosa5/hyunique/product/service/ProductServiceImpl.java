@@ -36,4 +36,9 @@ public class ProductServiceImpl implements ProductService {
 	public List<PostProductVO> getSearchProductList(String productName) {
 		return productMapper.selectSearchProductList(productName);
 	}
+	
+	@Override
+	public List<PostProductVO> getnSearchProductList(String keyword, int offset) {
+		return productMapper.selectnSearchProductList(keyword, offset);
+	}
 }
