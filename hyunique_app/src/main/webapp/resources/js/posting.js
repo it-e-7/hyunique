@@ -10,6 +10,7 @@ let container;
 let items = {};
 
 $(document).ready(function() {
+
     $("#img-load-button").click(function() {
         $("#fileInput").click();
     });
@@ -26,6 +27,7 @@ $(document).ready(function() {
         let postVO = handleGroupCheckBoxState();
 
 //        sendPostToServer(postVO, items);
+        printSelectTagAndContent(postVO);
         $(".post-container").show();
         $(".write-container").hide();
         $(".header-wrapper").hide();
@@ -303,4 +305,17 @@ function getTagName(tagType) {
             console.log(response);
         }
     });
+}
+
+function printSelectTagAndContent(vo) {
+    let tpoIdStr = '#' + vo['tpoId'];
+    let seasonIdStr = '#' + vo['seasonId'];
+    let styleId = vo['styleId'].split(',').map(id => "#" + id.trim());
+    let styleIdStr = styleId.join(" ");
+
+    const imageElement = $(`<p>${tpoIdStr} ${seasonIdStr} ${styleIdStr}</p>`);
+    const li = $("<li>").append(imageElement);
+    $(".tag-list").append(li);
+
+    $(".content-text").append(vo['postContent']);
 }

@@ -108,10 +108,13 @@
             <div class="header">
                 <p>게시가 완료되었습니다!</p>
             </div>
-            <div class="post-image-container">
+            <div class="image-container">
+                <img src="/resources/img/heendy.png"/>
             </div>
             <div class="tag-container">
+                <ul class="tag-list"></ul>
             </div>
+            <div class="content-text"></div>
             <div class="button-container">
                 <button id="next-button" class="jw-btn">계속하기</button>
             </div>
