@@ -14,12 +14,6 @@
         href="/resources/css/posting.css"/>
 </head>
 <body>
-    <div class="header-wrapper">
-        <button onclick="backward()">
-            <img src="/resources/img/ic-backward.png" />
-        </button>
-    </div>
-
     <div class="pre-container">
         <div class="header">
             <p>스타일링을 공유해주세요</p>
@@ -61,7 +55,7 @@
                     <div>
                         <c:forEach var="tag" items="${['코사', '여행', '캠퍼스', '카페', '데이트', '결혼식', '출근', '데일리']}">
                             <div>
-                                <input type="checkbox" id="${tag}" onclick="handleCheckBoxState('${tag}')">
+                                <input type="radio" id="${tag}" name="tpo-radio-group">
                                 <label for="${tag}">${tag}</label>
                             </div>
                         </c:forEach>
@@ -72,7 +66,7 @@
                     <div>
                         <c:forEach var="tag" items="${['봄', '여름', '가을', '겨울']}">
                             <div>
-                                <input type="checkbox" id="${tag}" onclick="handleCheckBoxState('${tag}')">
+                                <input type="radio" id="${tag}" name="season-radio-group">
                                 <label for="${tag}">${tag}</label>
                             </div>
                         </c:forEach>
@@ -90,19 +84,24 @@
 
     <div class="search-container">
             <div class="header">
-                <button onclick="backward()">뒤로가기</button>
-                <input type="text" id="search-input" placeholder="검색어를 입력하세요">
-                <button id="search-btn">검색</button>
+                <div class="header-wrapper">
+                    <button onclick="backward()">
+                        <img src="/resources/img/ic-backward.png" />
+                    </button>
+                    <div class="search-box">
+                        <input type="search" class="search-text" id="search-input">
+                        <button class="searching" id="search-btn">
+                            <img src="/resources/img/ic-search.png" class="search-icon">
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="search-body">
-                <p class="search-value"></p>
-                <p>상품 검색 결과입니다.</p>
-
+                <p class="search-value">상품 검색 결과입니다.</p>
                 <ul class="result-list">
-
                 </ul>
-            <div>
+            </div>
     </div>
 
     <div class="post-container">
@@ -113,7 +112,9 @@
             </div>
             <div class="tag-container">
             </div>
-            <button type="button" id="next-button">계속하기</button>
+            <div class="button-container">
+                <button id="next-button" class="jw-btn">계속하기</button>
+            </div>
     </div>
 </body>
 </html>
