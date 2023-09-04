@@ -31,8 +31,8 @@
     </div>
     <div id= "hyunique-main-top-recommend">
           <div class="button selected" id="recommend">추천</div>
-          <div class="button" id="style-ranking">스타일 랭킹</div>
-          <div class="button" id="following">팔로잉</div>
+          <div class="button" id="style-ranking">스타일랭킹</div>
+          <div class="button" id="following">팔로우</div>
     </div>
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">

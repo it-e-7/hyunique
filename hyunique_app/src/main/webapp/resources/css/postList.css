@@ -6,6 +6,12 @@
     margin-bottom : 30px;
 }
 
+@media screen and (max-width: 700px) {
+    #main-wrapper-top{
+        margin-bottom : 20px;
+    }
+}
+
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
 #photo-gallery {
     width: 100%;
@@ -70,22 +76,11 @@
 
 #hyunique-main-top-recommend {
   display: flex;
-  margin-left : 5%;
+  margin-left: 40px;
   font-size: 34px;
   font-weight: bold;
   color : #BBBBBB;
   border-bottom: 1px solid rgb(244, 244, 244);
-}
-
-@media screen and (max-width: 700px) {
-  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
-  #hyunique-main-top-recommend {
-    display: flex;
-    margin-left: 5%;
-    font-size: 18px;
-    font-weight: bold;
-    color : #BBBBBB;
-  }
 }
 
 #hyunique-main-top-recommend .button {
@@ -96,6 +91,28 @@
   border-bottom: 4px solid transparent; /* 밑줄 추가 */
   color: #BBBBBB;
   transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+}
+
+@media screen and (max-width: 700px) {
+  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
+  #hyunique-main-top-recommend {
+    display: flex;
+    margin-left: 5%;
+    font-size: 21px;
+    font-weight: bold;
+    color : #BBBBBB;
+  }
+
+  #hyunique-main-top-recommend .button {
+    cursor: pointer;
+    margin-right: 15px;
+    text-decoration: none;
+    text-decoration: none;
+    padding-bottom: 13px;
+    border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
+    color: #BBBBBB;
+    transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+    }
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -114,10 +131,42 @@
     margin-right: 15px;
 }
 
+@media screen and (max-width: 700px) {
+     #filterModalButton {
+         font-size: 16px;
+         border: 3px solid #E9E9E9;
+         border-radius: 10px;
+         padding: 3px 10px;
+         background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+         cursor: pointer;
+         white-space: nowrap;
+         margin-right: 6px;
+     }
+}
+
 #filterModalButton >img{
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 35px;
+}
+
+@media screen and (max-width: 700px) {
+    #filterModalButton >img {
+        display: flex;
+        align-items: center;
+        height: 25px;
+    }
+}
+
+
+.filter-img-div{
+   padding: 10px 10px !important;
+}
+
+@media screen and (max-width: 700px) {
+.filter-img-div{
+   padding: 5px 5px !important;
+}
 }
 
 #filterModalButton >div{
