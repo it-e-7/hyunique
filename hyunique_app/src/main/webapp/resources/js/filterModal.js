@@ -109,22 +109,57 @@ var itemsPerPage = 10;
                 maxHeight: 190, // 초기 값 설정
     };
 
+    let initialModalState = null; // 모달의 초기 상태를 저장
+
+    // 모달을 표시
     filterModalButton.addEventListener("click", function() {
-        modal.style.display = "block"; // 모달을 표시
+        initialModalState = captureModalState();
+        modal.style.display = "block";
         updateRangeBackgroundColor();
     });
 
     // 모달 닫기 버튼 클릭 시 모달 닫음
     closeModalButton.addEventListener("click", function() {
+        if (initialModalState) {
+            restoreModalState(initialModalState);
+          }
         modal.style.display = "none";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
     modal.addEventListener("click", function(event) {
         if (event.target === modal) {
+            if (initialModalState) {
+                restoreModalState(initialModalState);
+              }
             modal.style.display = "none";
         }
     });
+
+    // 모달 상태를 기록하는 함수
+    function captureModalState() {
+
+      // 처음 모달을 열었을때, 체크되어있는 아이디를 모두 저장하여 리턴
+      const state = {};
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+          state[checkbox.id] = checkbox.checked;
+        });
+
+        return state;
+    }
+
+    // 초기 모달 상태를 복원하는 함수
+    function restoreModalState(state) {
+      // 초기 상태로 각 요소를 복원
+      for (const elementId in state) {
+          const element = document.getElementById(elementId);
+          if (element && element.tagName === 'INPUT') {
+            element.checked = state[elementId];
+          }
+        }
+    }
 
     //필터 검색
 
