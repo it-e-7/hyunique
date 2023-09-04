@@ -236,6 +236,10 @@
         <script src="/resources/js/filterModal.js"></script>
     </div>
 </div>
-
+<div id="qr-button">
+    <a href="URL_TO_GENERATE_QR_CODE" target="_blank">
+        <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
+    </a>
+</div>
 </body>
 </html>

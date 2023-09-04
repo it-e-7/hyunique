@@ -58,6 +58,10 @@ public class PostController {
         return "postList";
     }
 
+    @GetMapping(value = "getQRPage")
+    public String getQRPage(Model model){
+        return "readQRPage";
+    }
     // 게시글 작성
     @GetMapping
     public String requestPosting() {

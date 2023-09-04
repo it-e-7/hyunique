@@ -188,3 +188,33 @@
     overflow-x: auto;
     padding : 4.5%;
 }
+
+#qr-button {
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+#qr-img{
+    width: 150px;
+    height: 150px;
+}
+
+@media screen and (max-width: 700px) {
+#qr-button {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 999;
+}
+
+#qr-img{
+    width: 100px;
+    height: 100px;
+}
+}
