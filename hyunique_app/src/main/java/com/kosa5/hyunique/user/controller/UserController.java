@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
@@ -57,6 +58,7 @@ public class UserController {
 
 
 	// 유저 기본정보 업데이트 화면 이동
+	@Auth
 	@GetMapping("update")
 	public String userUpdatePage(HttpSession session, Model model) {
 		String sessionIdString = (String) session.getAttribute("sessionId");

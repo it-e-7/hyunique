@@ -67,7 +67,5 @@ function generateProductCard(product) {
             </div>`;
 }
 $(document).ready(function() {
-	userId = sessionId
     loadCloset(userId);
-	
 });
