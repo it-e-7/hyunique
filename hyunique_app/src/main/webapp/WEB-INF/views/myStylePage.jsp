@@ -84,7 +84,24 @@
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.userPrefer}</p>
 			</div>
-			<div class="user-introduce-wrapper">${user.userIntroduce}</div>
+			<div class="introduce-follower-section">
+				<div class="user-introduce-wrapper">${user.userIntroduce}</div>
+				<c:choose>
+				    <c:when test="${isCurrentUser == true}">
+				        <div class="follower-btn-wrapper">
+					  		<input  type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
+					  		<label style="visibility: hidden;" for="follower-toggle" id="follower-label">팔로우</label>
+						</div>
+				    </c:when>
+				    <c:otherwise>
+				        <div class="follower-btn-wrapper">
+					  		<input type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
+					  		<label for="follower-toggle" id="follower-label">팔로우 +</label>
+						</div>
+				    </c:otherwise>
+				</c:choose>
+				
+			</div>
 		</div>
 	</div>
 	
@@ -138,6 +155,10 @@
 			<div id="accessoryList"class="product-list-wrapper"></div>
 		</div>
 	</div>
+	
+	<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
+		<img src="/resources/img/posting-btn.png"/>
+	</button>
 
 </body>
  <script>

@@ -61,6 +61,8 @@ public class PostController {
     // 게시글 작성
     @GetMapping
     public String requestPosting() {
+    	System.out.println("test");
+    	
         return "posting";
     }
 

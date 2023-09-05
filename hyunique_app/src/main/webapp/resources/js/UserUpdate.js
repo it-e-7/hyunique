@@ -1,22 +1,46 @@
 //유저 정보 업데이트
 
+$(document).ready(function() {
+	  var userSex = "${user.userSex}";
+	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
+	  $("#userUpdateForm").submit(function(event) {
+	        event.preventDefault(); 
+	        updateUser();
+	    });
+	  
+	  userPostList(userId);
+	  
+});
+
+const checkbox = document.getElementById('follower-toggle');
+const label = document.getElementById('follower-label');
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    label.innerText = '팔로잉 -';
+  } else {
+    label.innerText = '팔로우 +';
+  }
+});
 function updateUser() {
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
     const userSex = $("input[name='userSex']:checked").val();
     const userHeight = $('input[name="userHeight"]').val();
+    const sessionId = $('#session-id').val(); 
     let userPrefer = $('input[name="userPrefer"]:checked').map(function() {
         return $(this).val();
-    }).get().join(',');    const instagramUrl = $('input[name="instagramUrl"]').val();
+    }).get().join(',');
+    const instagramUrl = $('input[name="instagramUrl"]').val();
     const twitterUrl = $('input[name="twitterUrl"]').val();
     const facebookUrl = $('input[name="facebookUrl"]').val();
-    const sessionId = document.getElementById('session-id').value;
 
     $.ajax({
         url: `/user/updateUser`,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
+            sessionId,
             userNickname,
             userIntroduce,
             userSex,
@@ -28,18 +52,13 @@ function updateUser() {
         }),
         success: function (response) {
             alert('업데이트 성공!');
-            window.location.href = `${sessionId}`;
+            window.location.replace(`/user/${sessionId}`);
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
         }
     });
 }
-
-$(document).ready(function() {
-	  var userSex = "${user.userSex}";
-	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
-	});
 
 //유저 게시글 썸네일, 이미지 세팅
 function userPostList(userId) {
@@ -69,7 +88,8 @@ function userPostList(userId) {
 	      console.log('게시물을 불러오는 데 실패했습니다:', error);
 	    }
 	  });
-	}
+}
+
 function fetchClosetInfo(userId) {
 	  $.ajax({
 	    url: `/closet/${userId}`,
@@ -101,6 +121,17 @@ function fetchClosetInfo(userId) {
 	  });
 	}
 
-$(document).ready(function() {
-	  userPostList(userId);
-	});
+function movePostPage() {
+	$.ajax({
+        type: "GET",
+        url: '/post',
+        success: function(response) {
+        	window.location.href = '/post';
+            console.log("success");
+        },
+        error: function(error) {
+            console.error("Error sending GET request:", error);
+        }
+    });
+	
+}
