@@ -370,7 +370,6 @@ var itemsPerPage = 10;
         let checkboxId = checkedCheckboxIds[i];
         let buttonClass = 'FilterModalButton' + reversedCheckboxes[checkboxId];
         let button = document.querySelector('.' + buttonClass);
-        console.log(buttonClass);
 
 
         if (button!=null) {
