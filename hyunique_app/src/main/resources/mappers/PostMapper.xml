@@ -17,6 +17,8 @@
 			select="getPostThumbnailListByProduct" />
 	</resultMap>
 
+
+
 	<select id="getPostDetailByPostIdUserId" parameterType="map"
 		resultMap="PostDetailMap">
 		SELECT post_id, p.user_id, user_img,
@@ -85,4 +87,13 @@
 		WHERE user_id = #{userId} AND post_id = #{postId}
 	</delete>
 
+<!--	<select id="insertOnePost" statementType="CALLABLE" parameterType="map">-->
+<!--	</select>-->
+
+	<select id="testInsertOnePost" statementType="CALLABLE" parameterType="map">
+		call insert_one_post(
+			#{postProduct, typeHandler=com.kosa5.hyunique.post.util.PostProductTypeHandler}
+			#{post}
+		)
+	</select>
 </mapper>  

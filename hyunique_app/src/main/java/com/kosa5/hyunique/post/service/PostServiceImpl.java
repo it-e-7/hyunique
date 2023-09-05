@@ -13,7 +13,9 @@ import com.kosa5.hyunique.post.vo.PostVO;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -59,7 +61,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
+    public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
 
         // urls의 값을 postVO의 imgList에 설정
@@ -69,9 +71,24 @@ public class PostServiceImpl implements PostService {
         }
         postVO.setImgList(newImgList);  // imgList를 새로운 URL 문자열로 업데이트
 
-        System.out.println("postVO = " + postVO);
-//        postMapper.insertOnePost(postVO);
-        return 0;
+        String state = "";
+
+        Map<String, Object> post = new HashMap<>();
+        post.put("posting", postVO);
+        post.put("postProduct", postProductVO);
+        post.put("postState", state);
+//        postMapper.insertOnePost(post);
+
+        return post.get("state").toString();
+    }
+
+    @Override
+    public void testUploadOnePost(List<PostProductVO> postProductVO) {
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("postProduct", postProductVO);
+
+        postMapper.testInsertOnePost(params);
     }
 
 }
