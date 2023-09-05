@@ -41,7 +41,10 @@
                 AND P.USER_ID IN (SELECT FOLLOWING_ID FROM HY_FOLLOW WHERE FOLLOWER_ID = #{userId})
             </if>
             <if test="gender != null and gender != ''">
-                AND U.USER_SEX = #{gender}
+                AND U.USER_SEX IN
+                <foreach collection="gender" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
             </if>
             <if test="tpo != null and tpo.size() > 0">
                 AND TPO_ID IN

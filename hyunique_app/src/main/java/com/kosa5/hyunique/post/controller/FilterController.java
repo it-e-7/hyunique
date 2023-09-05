@@ -27,7 +27,6 @@ public class FilterController {
 		if(session.getAttribute("sessionId")!=null){
 			Integer sessionId = Integer.parseInt((String)session.getAttribute("sessionId"));
 			filterPostVO.setUserId(sessionId);
-			System.out.println(sessionId);
 		}
 		postVOList = postService.getfilterPostList(filterPostVO);
 		model.addAttribute("postVOList", postVOList);

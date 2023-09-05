@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FilterPostVO {
-    private String gender;
+    private List<String> gender;
     private List<Integer> tpo;
     private List<Integer> season;
     private List<Integer> style;

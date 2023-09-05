@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-var itemsPerPage = 10;
         var currentPage = 1;
         var isLoading = false; //로딩중이다 아니다를 판단하기 위함
 
@@ -165,71 +164,15 @@ var itemsPerPage = 10;
 
         const applyFilterButton = document.getElementById("applyFilter"); // 적용 버튼 선택
         // 적용 버튼을 클릭할 때 AJAX로 데이터를 서버로 전송
-
-        applyFilterButton.addEventListener("click", applyFilter);
-
-        function applyFilter() {
-            // 데이터를 가져옵니다.
-            const selectedGender = document.querySelector('input[name="gender"]:checked');
-            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
-            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
-            const selectedButton = document.querySelector(".selected").id;
-
-            let selectedTpoValues = [];
-            let selectedSeasonValues = [];
-            let selectedStyleValues = [];
-            formData.page = 1;
-            currentPage = 1;
-
-            formData.selectedType = selectedButton;
-
-            if (selectedGender) {
-                formData.gender = selectedGender.value;
-            } else {
-                formData.gender = null;
-            }
-
-            if (selectedTpoCheckboxes.length > 0) {
-                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
-                formData.tpo = selectedTpoValues;
-            } else {
-                formData.tpo  = [];
-            }
-
-            if (selectedSeasonCheckboxes.length > 0) {
-                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
-                formData.season = selectedSeasonValues;
-            } else {
-                formData.season  = [];
-            }
-
-            if (selectedStyleCheckboxes.length > 0) {
-                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
-                formData.style = selectedStyleValues;
-            } else {
-                formData.style  = [];
-            }
-
-            // AJAX를 사용하여 서버로 데이터 전송
-            $.ajax({
-                type: "GET",
-                url: `/filter/getFilterPost`, // 서버 측 URL 설정
-                data: formData,
-                success: function(data) {
-                    modal.style.display = "none";
-                    $("#photo-gallery").empty();
-                    $("#photo-gallery").append(data);
-                    currentPage = currentPage + 1;
-                    loadMoreImages();
-                    changeFilterColor();
-                },
-                error: function(err) {
-                    // 오류 처리
-                    console.error(err);
-                }
-            });
-        }
+        currentPage=1;
+        applyFilterButton.addEventListener("click", function() {
+            currentPage =1;
+            modal.style.display = "none";
+            $("#photo-gallery").empty();
+            //$("#photo-gallery").append(data);
+            changeFilterColor();
+            loadMoreImages();
+        });
 
     // 각 요소 가져오기
     const sliderContainer = document.querySelector('.rs-container');
