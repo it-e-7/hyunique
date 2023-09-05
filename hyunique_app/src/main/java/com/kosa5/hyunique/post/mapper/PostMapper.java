@@ -9,6 +9,7 @@ import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostVO;
 
 import java.util.List;
+import java.util.logging.Filter;
 
 @Mapper
 public interface PostMapper {
@@ -23,6 +24,6 @@ public interface PostMapper {
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
-    int insertOnePost(PostVO postVO);
+    List<PostVO> loadPopularPost(FilterPostVO filterPostVO);
 
 }

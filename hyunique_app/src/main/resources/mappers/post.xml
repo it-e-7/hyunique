@@ -101,6 +101,33 @@
         </if>
     </select>
 
+    <select id="loadPopularPost" parameterType="FilterPostVO" resultType="PostVO">
+        SELECT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
+        FROM HY_POST P
+        <where>
+            <if test="tpo != null and tpo.size() > 0">
+                AND TPO_ID IN
+                <foreach collection="tpo" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="season != null and season.size() > 0">
+                AND SEASON_ID IN
+                <foreach collection="season" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="style != null and style.size() > 0">
+                AND P.POST_ID IN
+                ( SELECT POST_ID FROM post_style_tag WHERE STYLE_ID IN
+                <foreach collection="style" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </where>
+    </select>
+
 
 
 

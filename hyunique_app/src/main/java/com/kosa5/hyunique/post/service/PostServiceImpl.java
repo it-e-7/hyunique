@@ -13,6 +13,7 @@ import com.kosa5.hyunique.post.vo.PostVO;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -50,10 +51,18 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostVO> getfilterPostList(FilterPostVO filterPostVO) {
         List<PostVO> postVOList = new ArrayList<>();
-        System.out.println("Before : "+filterPostVO);
         filterPostVO.setPage((filterPostVO.getPageSize())*(filterPostVO.getPage() - 1));
-        postVOList = postMapper.loadFilterPost(filterPostVO);
-        System.out.println("After : "+postVOList);
+        if (filterPostVO.getSelectedType().equals("following")){
+            FilterPostVO followFilterPostVO = new FilterPostVO();
+            //현재 인기있는 스타일을 넣어주면 됩니다. 백오피스가 없으니까... 일단 여기에다가 둘게요!
+            followFilterPostVO.setTpo(Arrays.asList(21));
+            System.out.println(followFilterPostVO);
+            postVOList = postMapper.loadPopularPost(followFilterPostVO);
+        }
+        else{
+            System.out.println(filterPostVO);
+            postVOList = postMapper.loadFilterPost(filterPostVO);
+        }
         return postVOList;
     }
 
