@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const filterModalButton = document.getElementById("filterModalButton");
     const modal = document.querySelector(".modal");
+    const qr = document.querySelector("#qr-img")
     const closeModalButton = document.getElementById("closeModalButton"); // 모달 닫기 버튼
 
     const formData = {
@@ -114,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
     filterModalButton.addEventListener("click", function() {
         initialModalState = captureModalState();
         modal.style.display = "block";
+        qr.style.display = "none";
         updateRangeBackgroundColor();
     });
 
@@ -123,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
             restoreModalState(initialModalState);
           }
         modal.style.display = "none";
+        qr.style.display = "block";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
@@ -132,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 restoreModalState(initialModalState);
               }
             modal.style.display = "none";
+            qr.style.display = "block";
         }
     });
 
