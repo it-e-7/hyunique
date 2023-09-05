@@ -75,10 +75,12 @@
                 </foreach>
             </if>
             <if test="style != null and style.size() > 0">
-                AND STYLE_ID IN
+                AND P.POST_ID IN
+                ( SELECT POST_ID FROM post_style_tag WHERE STYLE_ID IN
                 <foreach collection="style" item="item" separator="," open="(" close=")">
                     #{item}
                 </foreach>
+                )
             </if>
         </where>
         ) P
