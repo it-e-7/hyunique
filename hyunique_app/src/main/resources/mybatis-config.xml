@@ -28,5 +28,11 @@
 		<typeAlias alias="PostVO" type="com.kosa5.hyunique.post.vo.PostVO" />
 		<typeAlias alias="FilterPostVO" type="com.kosa5.hyunique.post.vo.FilterPostVO" />
 	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler
+				handler="com.kosa5.hyunique.post.util.PostProductTypeHandler"
+				javaType="java.util.List" jdbcType="ARRAY"/>
+	</typeHandlers>
 	
 </configuration>	
