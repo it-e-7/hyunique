@@ -15,7 +15,7 @@ public class PostVO {
     private String postContent;
     private Integer tpoId;
     private Integer seasonId;
-    private Integer styleId;
+    private List<Integer> styleId;
     private Integer userId;
     private String thumbnailUrl;
     private List<String> imgList;
