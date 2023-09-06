@@ -1,16 +1,13 @@
 package com.kosa5.hyunique.post.service;
 
 import com.kosa5.hyunique.post.util.S3Service;
-import com.kosa5.hyunique.post.vo.PostProductVO;
-import com.kosa5.hyunique.post.vo.FilterPostVO;
+import com.kosa5.hyunique.post.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa5.hyunique.post.mapper.PostMapper;
-import com.kosa5.hyunique.post.vo.PostDetailVO;
-import com.kosa5.hyunique.post.vo.PageVO;
-import com.kosa5.hyunique.post.vo.PostVO;
 
+import javax.swing.text.html.HTML;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +61,7 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
 
+        System.out.println("urls = " + urls);
         // urls의 값을 postVO의 imgList에 설정
         List<String> newImgList = new ArrayList<>();
         for (String url : urls) {
@@ -83,12 +81,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void testUploadOnePost(List<PostProductVO> postProductVO) {
+    public void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
+        params.put("post", postVO);
 
         postMapper.testInsertOnePost(params);
+    }
+
+    @Override
+    public List<TagVO> getTagInform(String type) {
+        return postMapper.getTagInform(type);
     }
 
 }
