@@ -119,6 +119,9 @@
 
 	<div id="tab2" class="tab-content"style="display: none;">
 		<div class="button-section">
+			<button onclick="filterProducts('allList')">
+				<img src="/resources/img/ic-allproducts.png" />
+			</button>
 			<button onclick="filterProducts('bagList')">
 				<img src="/resources/img/ic-bag.png" />
 			</button>
@@ -145,6 +148,7 @@
 			</button>
 		</div>
 		<div id="product-section">
+			<div id="allList" class="product-list-wrapper"></div>
 			<div id="bagList" class="product-list-wrapper"></div>
 			<div id="dressList"class="product-list-wrapper"></div>
 			<div id="bottomList"class="product-list-wrapper"></div>
