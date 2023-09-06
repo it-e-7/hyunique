@@ -1,7 +1,9 @@
 package com.kosa5.hyunique.post.controller;
 
 import com.kosa5.hyunique.post.util.S3Service;
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostingVO;
+import com.kosa5.hyunique.post.vo.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +24,7 @@ public class PostController {
     @Autowired
     PostService postService;
 
+    @Autowired
     S3Service s3Service;
 
     @GetMapping("{postId}")
@@ -61,7 +66,8 @@ public class PostController {
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting) {
         System.out.println("post controller test");
-        int state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+//        System.out.println("posting = " + posting);
+        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
         System.out.println("state = " + state);
 
         return "ok";
@@ -74,6 +80,16 @@ public class PostController {
                 "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
 
         s3Service.deleteImgFile(object_keys);
+        return "ok";
+    }
+
+    @PostMapping("/test")
+    @ResponseBody
+    public String testHandleTagUpload(@RequestBody PostingVO vo) {
+        System.out.println("start post controller");
+        System.out.println("vo = " + vo);
+
+        postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
         return "ok";
     }
 
