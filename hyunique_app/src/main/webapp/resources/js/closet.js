@@ -63,7 +63,7 @@ function filterProducts(category) {
 
 //새로운 함수: allList에 카테고리별 미리보기 추가
 function addCategoryPreviewToAllList(category, productList) {
-    let previewHtml = '<div class="category-preview">';
+    let previewHtml = '<div class="category-preview" onclick="filterProducts(category)">';
     
     // 이미지 4개를 묶는 div 추가
     previewHtml += '<div class="image-wrapper">';
@@ -76,14 +76,26 @@ function addCategoryPreviewToAllList(category, productList) {
         count++;
     }
 
-    // 아이템이 없거나 4개 미만인 경우 light-gray로 채우기
+    // 아이템이 없거나 4개 미만인 경우 lightgray로 채우기
     while (count < 4) {
         previewHtml += '<div class="preview-thumbnail empty-thumbnail"></div>';
         count++;
     }
     previewHtml += '</div>';  // 이미지 4개를 묶는 div 닫기
-
-    previewHtml += `<div class="category-name">${category}</div>`;
+    // 카테고리 이름을 한글로 변환
+    const categoryNames = {
+        'bagList': '가방',
+        'dressList': '원피스',
+        'outerList': '겉옷',
+        'topList': '상의',
+        'bottomList': '하의',
+        'shoesList': '신발',
+        'hatList': '모자',
+        'accessoryList': '액세서리'
+    };
+    const categoryName = categoryNames[category] || category;
+    
+    previewHtml += `<div class="category-name">${categoryName}</div>`;
     previewHtml += '</div>';
 
     $('#allList').append(previewHtml);
