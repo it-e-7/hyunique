@@ -11,33 +11,22 @@ let items = {};
 
 $(document).ready(function() {
 
+    getTagInform();
+
     $("#img-load-button").click(function() {
         $("#fileInput").click();
     });
 
     $("#fileInput").change(function() {
-        getTagInform();
         $(".pre-container").hide();
         $(".write-container").show();
         $(".search-container").hide();
         $(".post-container").hide();
-
     });
 
     // 작성 완료 버튼
-    $('#upload-button').click(function() {
-        let postVO = getGroupCheckBoxState();
+    $('#upload-button').click(compileAndSendPostData);
 
-        console.log('postVO ', postVO);
-        console.log('items ', items)
-
-        sendPostToServer(postVO, items);
-        printSelectTagAndContent(postVO);
-
-        $(".post-container").show();
-        $(".write-container").hide();
-        $(".header-wrapper").hide();
-    });
 
     $("#fileInput").change(function(e) {
         const files = e.target.files;
@@ -72,6 +61,46 @@ $(document).ready(function() {
     });
 });
 
+
+// 게시글 내용 업로드
+function compileAndSendPostData() {
+    let tagValues = getGroupCheckBoxState();
+
+    let PostVO = {
+        postContent: $('#content').val(),
+        tpoId: -1,
+        seasonId: -1,
+        styleId: -1,
+        imgList: imgList,
+    };
+
+    let nextPost = {
+        postContent: $('#content').val(),
+        tpoId: -1,
+        seasonId: -1,
+        styleId: -1,
+    };
+
+    Object.keys(tagValues).forEach(groupName => {
+        let tagValueObj = tagValues[groupName];
+        let tagNames = Object.keys(tagValueObj);
+        let tagIds = Object.values(tagValueObj);
+
+        PostVO[groupName] = tagIds;
+        nextPost[groupName] = tagNames
+    });
+
+    PostVO['seasonId'] = PostVO['seasonId'][0];
+    PostVO['tpoId'] = PostVO['tpoId'][0];
+
+    sendPostToServer(PostVO, items);
+    printSelectTagAndContent(nextPost);
+
+    $(".post-container").show();
+    $(".write-container").hide();
+    $(".header-wrapper").hide();
+}
+
 // 터치한 위치에 선택한 상품을 태그로 붙이기
 function attachTag(xOffset, yOffset, li) {
     return function() {
@@ -101,6 +130,7 @@ function attachTag(xOffset, yOffset, li) {
                 productPrice: 0,
                 productSize: '',
                 productColor: ''
+
             };
 
             $(".result-list").off("click").on("click", ".search-product-li", function() {
@@ -273,14 +303,15 @@ function handleCheckBoxState(tag, groupClass) {
 
 // 각 그룹별로 체크된 체크박스의 값을 ,단위로 구분해서 하나의 String 으로 반환
 function getCheckedValuesInGroup(groupClass, type) {
-    let checkedValuesString = "";
+    let checkedValuesMap = {};
 
     $(`.${groupClass} input[type=${type}]:checked`).each(function() {
-        checkedValuesString += $(this).attr('id') + ',';
+        let tagId = +$(this).attr('tag-id');
+        let tagName = $(this).attr('id');
+        checkedValuesMap[tagName] = tagId;
     });
 
-    checkedValuesString = checkedValuesString.slice(0, -1);
-    return checkedValuesString;
+    return checkedValuesMap;
 }
 
 
@@ -290,19 +321,13 @@ function getGroupCheckBoxState() {
     let tpoCheckedValues = getCheckedValuesInGroup('tpo-button-group', 'radio');
     let seasonCheckedValues = getCheckedValuesInGroup('season-button-group', 'radio');
 
-    console.log('Style:', styleCheckedValues);
-    console.log('TPO:', tpoCheckedValues);
-    console.log('Season:', seasonCheckedValues);
-
-    let PostingVO = {
-        postContent: $('#content').val(),
+    let tagValues = {
         tpoId: tpoCheckedValues,
         seasonId: seasonCheckedValues,
         styleId: styleCheckedValues,
-        imgList: imgList,
     };
 
-    return PostingVO;
+    return tagValues;
 }
 
 // 1. 태그 받아오는 함수
@@ -322,9 +347,8 @@ function insertTags(tagType, tagData) {
         const inputType = (tagType === 'style') ? 'checkbox' : 'radio';
         const tagElement = `
             <div>
-                <input type="${inputType}" id="${tag.TAGNAME}" name="${tagType}-radio-group">
+                <input type="${inputType}" id="${tag.TAGNAME}" tag-id="${tag.TAGID}" name="${tagType}-radio-group">
                 <label for="${tag.TAGNAME}">${tag.TAGNAME}</label>
-                <p class="tagId" hidden="true">${tag.TAGID}</p>
             </div>
         `;
         $tagContainer.append(tagElement);
@@ -332,10 +356,9 @@ function insertTags(tagType, tagData) {
 }
 
 function printSelectTagAndContent(vo) {
-    let tpoIdStr = '#' + vo['tpoId'];
-    let seasonIdStr = '#' + vo['seasonId'];
-    let styleId = vo['styleId'].split(',').map(id => "#" + id.trim());
-    let styleIdStr = styleId.join(" ");
+    let tpoIdStr = '#' + vo['tpoId'][0];
+    let seasonIdStr = '#' + vo['seasonId'][0];
+    let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
 
     const imageElement = $(`<p>${tpoIdStr} ${seasonIdStr} ${styleIdStr}</p>`);
     const li = $("<li>").append(imageElement);
