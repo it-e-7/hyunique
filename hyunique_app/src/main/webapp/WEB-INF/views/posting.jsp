@@ -41,35 +41,17 @@
                 </div>
                 <div class="style-button-group">
                     <p>스타일</p>
-                    <div>
-                        <c:forEach var="tag" items="${['미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이']}">
-                            <div>
-                                <input type="checkbox" id="${tag}" onclick="handleCheckBoxState('${tag}')">
-                                <label for="${tag}">${tag}</label>
-                            </div>
-                        </c:forEach>
+                    <div id="style-tags">
                     </div>
                 </div>
                 <div class="tpo-button-group">
                     <p>상황</p>
-                    <div>
-                        <c:forEach var="tag" items="${['코사', '여행', '캠퍼스', '카페', '데이트', '결혼식', '출근', '데일리']}">
-                            <div>
-                                <input type="radio" id="${tag}" name="tpo-radio-group">
-                                <label for="${tag}">${tag}</label>
-                            </div>
-                        </c:forEach>
+                    <div id="tpo-tags">
                     </div>
                 </div>
                 <div class="season-button-group">
                     <p>시즌</p>
-                    <div>
-                        <c:forEach var="tag" items="${['봄', '여름', '가을', '겨울']}">
-                            <div>
-                                <input type="radio" id="${tag}" name="season-radio-group">
-                                <label for="${tag}">${tag}</label>
-                            </div>
-                        </c:forEach>
+                    <div id="season-tags">
                     </div>
                 </div>
                 <div class="content-group">

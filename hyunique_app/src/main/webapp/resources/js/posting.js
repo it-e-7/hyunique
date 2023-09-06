@@ -16,18 +16,24 @@ $(document).ready(function() {
     });
 
     $("#fileInput").change(function() {
+        getTagInform();
         $(".pre-container").hide();
         $(".write-container").show();
         $(".search-container").hide();
         $(".post-container").hide();
+
     });
 
     // 작성 완료 버튼
     $('#upload-button').click(function() {
-        let postVO = handleGroupCheckBoxState();
+        let postVO = getGroupCheckBoxState();
 
-//        sendPostToServer(postVO, items);
+        console.log('postVO ', postVO);
+        console.log('items ', items)
+
+        sendPostToServer(postVO, items);
         printSelectTagAndContent(postVO);
+
         $(".post-container").show();
         $(".write-container").hide();
         $(".header-wrapper").hide();
@@ -216,6 +222,7 @@ function sendPostToServer(post, product) {
     });
 
     let combineObject = {postVO: post, postProductVO: productArray};
+    console.log('test: ' + combineObject);
 
     $.ajax({
         url: `/post`,
@@ -224,6 +231,9 @@ function sendPostToServer(post, product) {
         data: JSON.stringify(combineObject),
         success: function(response) {
             console.log(response);
+        },
+        error: function(error) {
+            console.log('error', error);
         }
     });
 }
@@ -253,7 +263,6 @@ function getSearchProduct(productName) {
     });
 }
 
-
 // 태그 선택했을 때 값 확인용
 function handleCheckBoxState(tag, groupClass) {
     console.log(tag);
@@ -276,7 +285,7 @@ function getCheckedValuesInGroup(groupClass, type) {
 
 
 // 태그 그룹별로 체크된 태그값 추출
-function handleGroupCheckBoxState() {
+function getGroupCheckBoxState() {
     let styleCheckedValues = getCheckedValuesInGroup('style-button-group', 'checkbox');
     let tpoCheckedValues = getCheckedValuesInGroup('tpo-button-group', 'radio');
     let seasonCheckedValues = getCheckedValuesInGroup('season-button-group', 'radio');
@@ -296,14 +305,29 @@ function handleGroupCheckBoxState() {
     return PostingVO;
 }
 
-function getTagName(tagType) {
-    $.ajax({
-        url: `/post/tag/${tagType}`,
-        type: 'GET',
-        contentType: 'application/json',
-        success: function(response) {
-            console.log(response);
-        }
+// 1. 태그 받아오는 함수
+function getTagInform() {
+    $.getJSON("/post/tag", function(data) {
+        insertTags('style', data.styleTags);
+        insertTags('tpo', data.tpoTags);
+        insertTags('season', data.seasonTags);
+    });
+}
+
+// 2. 태그 넣어주는 함수
+function insertTags(tagType, tagData) {
+    const $tagContainer = $('#' + tagType + '-tags');
+
+    $.each(tagData, function(index, tag) {
+        const inputType = (tagType === 'style') ? 'checkbox' : 'radio';
+        const tagElement = `
+            <div>
+                <input type="${inputType}" id="${tag.TAGNAME}" name="${tagType}-radio-group">
+                <label for="${tag.TAGNAME}">${tag.TAGNAME}</label>
+                <p class="tagId" hidden="true">${tag.TAGID}</p>
+            </div>
+        `;
+        $tagContainer.append(tagElement);
     });
 }
 
