@@ -63,7 +63,7 @@ function filterProducts(category) {
 
 //새로운 함수: allList에 카테고리별 미리보기 추가
 function addCategoryPreviewToAllList(category, productList) {
-    let previewHtml = '<div class="category-preview" onclick="filterProducts(category)">';
+    let previewHtml = `<div class="category-preview" onclick="filterProducts('${category}')">`;
     
     // 이미지 4개를 묶는 div 추가
     previewHtml += '<div class="image-wrapper">';
