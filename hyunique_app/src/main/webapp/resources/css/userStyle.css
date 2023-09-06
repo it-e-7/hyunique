@@ -363,14 +363,14 @@ body{
 
 .image-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* 2x2 배열을 위한 설정 */
-    border-radius: 2rem;  /* 둥근 모서리 추가 */
-    overflow: hidden;  /* 내부 요소가 둥근 모서리를 따르도록 함 */
+    grid-template-columns: 1fr 1fr;
+    border-radius: 2rem;
+    overflow: hidden; 
+    border: 1px solid rgb(0 0 0 / 10%);
 }
 
 .image-container {
-    margin: 0.5px;  /* 1px 간격을 위해 각 이미지에 0.5px 마진 적용 */
-    
+    margin: 0.5px; 
 }
 .category-preview {
    margin:1rem;
