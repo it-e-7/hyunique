@@ -80,15 +80,8 @@ $(document).ready(function() {
 
     $('.result-list').on('click', '.search-product-li', function() {
         vo = getSelectItem($(this));
-        showProductModal(vo);
-
+        showProductModal(XOffset, YOffset, vo);
     });
-
-
-//    $("#search-results-button").click(function() {
-//        attachTag(XOffset, YOffset, li)();
-//    });
-
 
 });
 
@@ -99,8 +92,8 @@ function modalEvent() {
 
     $('#color-picker, #size-picker').off('touchstart touchmove touchend'); // 기존 이벤트 리스너 제거
 
-    console.log(colorItems);
-    console.log(sizeItems);
+    const colorItems = $('#color-picker .slide-item');
+    const sizeItems = $('#size-picker .slide-item');
 
     const colorCount = colorItems.length;
     const sizeCount = sizeItems.length;
@@ -110,11 +103,13 @@ function modalEvent() {
 
     function updateSlide(newTop = null, pickerId) {
       if (pickerId === 'color-picker') {
+        $('#color-picker').data('selected-index', $(colorItems[colorIndex]).text());
         if (newTop === null) {
           newTop = -colorIndex * 50;
         }
         $('#colorContent').css('top', `${newTop}px`);
       } else if (pickerId === 'size-picker') {
+        $('#size-picker').data('selected-index', $(sizeItems[sizeIndex]).text());
         if (newTop === null) {
           newTop = -sizeIndex * 50;
         }
@@ -224,7 +219,7 @@ function compileAndSendPostData() {
 }
 
 // 터치한 위치에 선택한 상품을 태그로 붙이기
-function attachTag(xOffset, yOffset, li) {
+function attachTag(xOffset, yOffset, vo) {
     return function() {
 
         let tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
@@ -243,60 +238,50 @@ function attachTag(xOffset, yOffset, li) {
             xOffset: 0,
             yOffset: 0,
             active: false,
-            productId: '',
-            productBrand: '',
-            productName: '',
-            productPrice: 0,
-            productSize: '',
-            productColor: ''
+            productId: vo['productId'],
+            productBrand: vo['productBrand'],
+            productName: vo['productName'],
+            productPrice: vo['productPrice'],
+            productSize: vo['productSize'],
+            productColor: vo['productColor']
         };
 
+        tagElement.html(`
+          ${items[id].productBrand}
+          ${items[id].productName}
+          ${items[id].productPrice}
+          ${items[id].productSize}
+        `);
 
-        $(".result-list").off("click").on("click", ".search-product-li", function() {
-            items[id].productId = $(this).find(".search-product-id").text();
-            items[id].productBrand = $(this).find(".search-product-brand").text();
-            items[id].productName = $(this).find(".search-product-name").text();
-
-            items[id].productSize = $("#sizeContent .slide-item.active").text();
-            items[id].productColor = $("#colorContent .slide-item.active").text();
-
-            console.log(id, items[id]);
-
-            tagElement.html(`
-              ${items[id].productBrand}
-              ${items[id].productName}
-              ${items[id].productPrice}
-              ${items[id].productSize}
-            `);
-
-            $('.modal').hide();
-            $(".search-container").hide();
-            $(".write-container").show();
-            $("#search-input").val("");
-
-        });
+        $('.modal').hide();
+        $(".search-container").hide();
+        $(".write-container").show();
+        $("#search-input").val("");
 
         items[id].xOffset = xOffset;
         items[id].yOffset = yOffset;
 
-        li.append(tagElement);
+        console.log(JSON.stringify(items[id]));
+
+        $('.tag-container').append(tagElement);
 
         // 새로 생성된 태그에 드래그 이벤트 바인딩
         tagElement.on("mousedown touchstart", function(event) {
+            console.log("start");
             dragStart(event);
-        }, { passive: true });
+        });
 
         tagElement.on("mouseup touchend", function(event) {
             dragEnd(event);
-        }, { passive: true });
+        });
 
         tagElement.on("mousemove touchmove", function(event) {
             drag(event, tagElement);
-        }, { passive: true });
+        });
     };
 }
 
-function showProductModal(product) {
+function showProductModal(XOffset, YOffset, product) {
     $("#product-info").text('사이즈 색상');
     let modal = $("#product-search-modal");
 
@@ -311,10 +296,10 @@ function showProductModal(product) {
     });
 
     $('#search-results-button').click(function() {
-        size = $("#sizeContent .slide-item.active").text();
-        color = $("#colorContent .slide-item.active").text();
+        product['productSize'] = $('#color-picker').data('selected-index');
+        product['productColor'] = $('#size-picker').data('selected-index');
 
-        console.log(size, color);
+        attachTag(XOffset, YOffset, product)();
     });
 }
 
@@ -349,6 +334,7 @@ function requestProductSizeAndColor(productId) {
 }
 
 function dragStart(event) {
+    console.log('dragStart ' + item);
     const id = event.target.id;
     const item = items[id];
 
