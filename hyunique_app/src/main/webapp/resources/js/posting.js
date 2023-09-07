@@ -71,9 +71,18 @@ $(document).ready(function() {
     // 상품 검색
     $("#search-btn").off('click').click(function(){
         let productName = $("#search-input").val();
-
         if(productName){
           getSearchProduct(productName);
+        }
+    });
+
+    // 상품 검색 엔터 이벤트
+    $("#search-input").on('keydown', function(e){
+        if(e.keyCode == 13) {
+            let productName = $("#search-input").val();
+            if(productName){
+              getSearchProduct(productName);
+            }
         }
     });
 
