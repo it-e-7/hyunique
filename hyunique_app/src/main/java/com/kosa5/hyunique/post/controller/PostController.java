@@ -14,6 +14,7 @@ import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostVO;
 
 
+import javax.servlet.http.HttpSession;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +55,8 @@ public class PostController {
     }
 
     @GetMapping(value = "getPostList")
-    public String getPostingListHandler(Model model) {
+    public String getPostingListHandler(HttpSession session,Model model) {
+        model.addAttribute("userId",session.getAttribute("sessionId"));
         return "postList";
     }
 

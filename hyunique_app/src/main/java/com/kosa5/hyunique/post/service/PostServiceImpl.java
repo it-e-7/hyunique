@@ -64,13 +64,15 @@ public class PostServiceImpl implements PostService {
                 postVOList = postMapper.loadFilterPost(followFilterPostVO);
             }
             else {
-                //로그인 한 경우, 팔로워가 0명, 인기 있는 스타일을 보여준다.
-                if (postMapper.countFollower(followFilterPostVO)==0){
+                Integer followCount = postMapper.countFollower(followFilterPostVO);
+                //로그인 한 경우, 팔로워의 포스트가 0개 인경우, 인기 있는 스타일을 보여준다.
+                if (followCount == 0){
                     followFilterPostVO.setSelectedType("recommend");
                     postVOList = postMapper.loadFilterPost(followFilterPostVO);
                 }
-                //로그인 한 경우, 팔로워가 1명 이상,
+                //로그인 한 경우, 팔로워의 포스트가 1 이상인 경우
                 else {
+                    filterPostVO.setFollower(followCount);
                     postVOList = postMapper.loadFilterPost(filterPostVO);
                 }
             }

@@ -20,4 +20,5 @@ public class FilterPostVO {
     private Integer pageSize = 12;
     private String selectedType;
     private Integer userId;
+    private Integer follower = 0;
 }

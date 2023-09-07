@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = buttonContainer.querySelectorAll('.button');
 
   const selectedIndex = localStorage.getItem('selectedButtonIndex');
-
   buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
       buttons.forEach((btn) => {
@@ -15,12 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
       const filterElement = $('#hyunique-main-top-filter');
+      const popularStyle = $('#popular-style');
       //팔로우가 아니라면 필터 보이게 처리
       if(button.textContent.trim()==='팔로우'){
         filterElement.hide();
+        popularStyle.show();
       }
       else{
         filterElement.show();
+        popularStyle.hide();
       }
       document.getElementById("applyFilter").click();
     });
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.click();
     }
   });
+     buttons[0].click();
 });
 
   function handleButtonClick(tag) {

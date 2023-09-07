@@ -102,9 +102,10 @@
     </select>
 
     <select id="countFollower" parameterType="FilterPostVO" resultType="Integer">
-        SELECT COUNT(*)
-        FROM HY_FOLLOW
-        WHERE FOLLOWER_ID = #{userId}
+        SELECT COUNT(P.POST_ID) AS POST_COUNT
+        FROM HY_FOLLOW F
+        JOIN HY_POST P ON F.FOLLOWER_ID = P.USER_ID
+        WHERE F.FOLLOWER_ID = #{userId}
     </select>
 
 </mapper>

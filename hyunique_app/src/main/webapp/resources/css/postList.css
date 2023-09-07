@@ -231,3 +231,22 @@
 }
 }
 
+#popular-style {
+    display: flex;
+    margin-left: 5%;
+    font-size: 30px;
+    height: 60px;
+    font-weight: bold;
+    align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+    #popular-style {
+        display: flex;
+        margin-left: 5%;
+        font-size: 21px;
+        height: 40px;
+        font-weight: bold;
+        align-items: center;
+}
+}
