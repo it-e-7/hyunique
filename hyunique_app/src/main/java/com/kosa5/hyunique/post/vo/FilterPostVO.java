@@ -17,7 +17,7 @@ public class FilterPostVO {
     private Integer minHeight;
     private Integer maxHeight;
     private Integer page;
-    private Integer pageSize = 10;
+    private Integer pageSize = 12;
     private String selectedType;
     private Integer userId;
 }
