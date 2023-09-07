@@ -97,5 +97,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 		hy_user.user_id = #{userId}
 	</select>
+	
+	<insert id="insertFollower" parameterType="map">
+		INSERT INTO hy_follow
+		VALUES(#{follower}, #{following})
+	</insert>
+	
+	<delete id="deleteFollower" parameterType="map">
+		DELETE FROM hy_follow
+		WHERE follower_id = #{follower} AND 
+			  following_id = #{following}
+	</delete>
 
 </mapper>

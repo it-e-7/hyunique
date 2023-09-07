@@ -88,5 +88,19 @@ public class UserController {
 		}
 		return userService.getPostsByUserId(userId);
 	}
+	
+	@PostMapping("follow")
+	@ResponseBody
+	public String postFollowByUserId(int userId, @SessionAttribute int sessionId) {
+		userService.followByUserId(sessionId, userId);
+		return "ok";
+	}
+	
+	@PostMapping("unfollow")
+	@ResponseBody
+	public String postUnfollowByUserId(int userId, @SessionAttribute int sessionId) {
+		userService.unfollowByUserId(sessionId, userId);
+		return "ok";
+	}
 
 }

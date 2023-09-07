@@ -14,4 +14,8 @@ public interface UserService {
 
 	List<PostVO> getPostsByUserId(Integer userId);
 
+	public int followByUserId(int follower, int following);
+	
+	public int unfollowByUserId(int follower, int following);
+	
 }

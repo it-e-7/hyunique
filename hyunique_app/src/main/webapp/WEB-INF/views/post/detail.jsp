@@ -18,7 +18,7 @@
 	</div>
 	<div class="content-wrapper">
 		<div class="user-info-wrapper">
-			<div class="left-user-info">
+			<div class="left-user-info" onclick="location.href='/user/${postVO.userId}'">
 				<img src="${postVO.userImg}">
 				<div>
 					<strong style="font-size: 1.2rem;">${postVO.userNickname}</strong>
