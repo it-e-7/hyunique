@@ -80,7 +80,34 @@
             </div>
 
             <div class="search-body">
-                <p class="search-value">상품 검색 결과입니다.</p>
+                <div id="product-search-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="product-info"></p>
+                            <!-- 새로운 코드 시작 -->
+                            <div id="size-picker" class="custom-picker">
+                                <div class="slide-content" id="sizeContent">
+                                  <div class="slide-item">Small</div>
+                                  <div class="slide-item">Medium</div>
+                                  <div class="slide-item">Large</div>
+                                </div>
+                            </div>
+
+                            <div id="color-picker" class="custom-picker">
+                                <div class="slide-content" id="colorContent">
+                                    <div class="slide-item">Red</div>
+                                    <div class="slide-item">Yellow</div>
+                                    <div class="slide-item">Blue</div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="button" id="search-results-button" value="확인">
+                            </div>
+                          <!-- 새로운 코드 끝 -->
+                    </div>
+                </div>
+
+                <p class="search-value"></p>
                 <ul class="result-list">
                 </ul>
             </div>
