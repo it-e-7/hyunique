@@ -61,37 +61,41 @@ checkbox.addEventListener('change', function() {
   }
 });
 
-//유저 정보 삽입
+//유저 정보 업데이트
 function updateUser() {
+    const sessionId = $('#session-id').val();
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
     const userSex = $("input[name='userSex']:checked").val();
     const userHeight = $('input[name="userHeight"]').val();
-    const sessionId = $('#session-id').val(); 
-    let userPrefer = $('input[name="userPrefer"]:checked').map(function() {
+    const userPrefer = $('input[name="userPrefer"]:checked').map(function() {
         return $(this).val();
     }).get().join(',');
     const instagramUrl = $('input[name="instagramUrl"]').val();
     const twitterUrl = $('input[name="twitterUrl"]').val();
     const facebookUrl = $('input[name="facebookUrl"]').val();
+    const userImgData = imgList[0];
+    const userBackImgData = imgList[1];
+
+    const requestData = {
+        sessionId,
+        userNickname,
+        userIntroduce,
+        userSex,
+        userHeight,
+        userPrefer,
+        instagramUrl,
+        twitterUrl,
+        facebookUrl,
+        userImg: userImgData,
+        userBackImg: userBackImgData
+    };
 
     $.ajax({
         url: `/user/updateUser`,
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({
-            sessionId,
-            userNickname,
-            userIntroduce,
-            userSex,
-            userHeight,
-            userPrefer,
-            instagramUrl,
-            twitterUrl,
-            facebookUrl,
-            userImg: imgList[0],
-            userBackImg: imgList[1]
-        }),
+        data: JSON.stringify(requestData),
         success: function (response) {
             alert('업데이트 성공!');
             window.location.replace(`/user/${sessionId}`);
@@ -101,6 +105,7 @@ function updateUser() {
         }
     });
 }
+
 
 //유저 게시글 썸네일, 이미지 세팅
 function userPostList(userId) {
