@@ -53,15 +53,28 @@ public class PostServiceImpl implements PostService {
         List<PostVO> postVOList = new ArrayList<>();
         filterPostVO.setPage((filterPostVO.getPageSize())*(filterPostVO.getPage() - 1));
         if (filterPostVO.getSelectedType().equals("following")){
+                //팔로워를 선택한 경우
             FilterPostVO followFilterPostVO = new FilterPostVO();
-            //현재 인기있는 스타일을 넣어주면 됩니다. 백오피스가 없으니까... 일단 여기에다가 둘게요!
-            //내가 팔로우 하고 있는 사람이 0인 경우
             followFilterPostVO.setTpo(Arrays.asList(21));
-            System.out.println(followFilterPostVO);
-            postVOList = postMapper.loadPopularPost(followFilterPostVO);
+            followFilterPostVO.setUserId(filterPostVO.getUserId());
+            if (filterPostVO.getUserId() == null){
+                //로그인 하지 않은 경우, 인기있는 스타일을 보여준다.
+                followFilterPostVO.setSelectedType("recommend");
+                postVOList = postMapper.loadFilterPost(followFilterPostVO);
+            }
+            else {
+                //로그인 한 경우, 팔로워가 0명, 인기 있는 스타일을 보여준다.
+                if (postMapper.countFollower(followFilterPostVO)==0){
+                    followFilterPostVO.setSelectedType("recommend");
+                    postVOList = postMapper.loadFilterPost(followFilterPostVO);
+                }
+                //로그인 한 경우, 팔로워가 1명 이상,
+                else {
+                    postVOList = postMapper.loadFilterPost(filterPostVO);
+                }
+            }
         }
         else{
-            System.out.println(filterPostVO);
             postVOList = postMapper.loadFilterPost(filterPostVO);
         }
         return postVOList;

@@ -110,6 +110,12 @@
         )}
     </select>
 
+    <select id="countFollower" parameterType="FilterPostVO" resultType="Integer">
+        SELECT COUNT(*)
+        FROM HY_FOLLOW
+        WHERE FOLLOWER_ID = #{userId}
+    </select>
+
 
 
 
