@@ -12,9 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.remove('selected');
         scrollToTop()
       });
-
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
+      const filterElement = $('#hyunique-main-top-filter');
+      //팔로우가 아니라면 필터 보이게 처리
+      if(button.textContent.trim()==='팔로우'){
+        filterElement.hide();
+      }
+      else{
+        filterElement.show();
+      }
       document.getElementById("applyFilter").click();
     });
 

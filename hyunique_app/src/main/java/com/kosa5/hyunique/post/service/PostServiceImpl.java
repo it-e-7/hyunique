@@ -57,6 +57,7 @@ public class PostServiceImpl implements PostService {
             FilterPostVO followFilterPostVO = new FilterPostVO();
             followFilterPostVO.setTpo(Arrays.asList(21));
             followFilterPostVO.setUserId(filterPostVO.getUserId());
+            followFilterPostVO.setPage(filterPostVO.getPage());
             if (filterPostVO.getUserId() == null){
                 //로그인 하지 않은 경우, 인기있는 스타일을 보여준다.
                 followFilterPostVO.setSelectedType("recommend");
