@@ -25,45 +25,6 @@
     aspect-ratio: 3 / 4;
 }
 
-#hyunique-main-top-logo{
-    display : flex;
-    margin-top : 10%;
-}
-
-#hyunique-main-top-logo-image{
-    margin-left : 5%;
-    width: 30%;
-}
-
-#hyunique-main-top-logo-image >img{
-    width: 100%;
-    height: auto;
-}
-
-#hyunique-main-top-buttons{
-    display : flex;
-    margin-left : auto;
-    margin-right: 5%;
-    width: 20%;
-}
-
-#hyunique-main-top-buttons >#search-button{
-   width: 35%;
-   margin-right: 20%;
-}
-
-#hyunique-main-top-buttons >#my-page-button{
-   width: 35%;
-}
-
-#hyunique-main-top-buttons >#search-button > img{
-   width: 100%;
-}
-
-#hyunique-main-top-buttons >#my-page-button > img{
-   width: 100%;
-}
-
 #hyunique-main-top-recommend {
   display: flex;
   margin-left : 5%;
@@ -128,5 +89,5 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding : 3%;
+    padding : 10px 10px 0 10px;
 }

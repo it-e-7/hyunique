@@ -11,47 +11,8 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
 </head>
 <body>
-
 <div id="main-wrapper">
-<div id= "main-wrapper-top">
-    <div id="hyunique-main-top-logo">
-             <button id="hyunique-main-top-logo-image" onclick="location.href=`/`;">
-                    <img src="/resources/img/hyunique.png" />
-             </button>
-             <div id="hyunique-main-top-buttons">
-                  <button id="search-button" onclick="displaySearch()">
-                    <img src="/resources/img/ic-search.png" />
-                  </button>
-                  <button id="my-page-button">
-                    <img src="/resources/img/ic-person.png" />
-                  </button>
-             </div>
-    </div>
-    
-    <link rel="stylesheet" type="text/css" href="/resources/css/search.css" />
-    <div class="header-search-area">
-    	<div class="search-area-wrapper">
-    		<div class="search-input-wrapper">
-    			<input type="text" id="search-input" placeholder="검색어를 입력하세요" />
-    			<img src="/resources/img/ic-search.png" />
-    		</div>
-    		<ul class="product-list">
-    			<li onclick="moveToProduct('ADIDAS-1')">
-					<img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/product/adidas.png"/>
-					<div>
-						<strong>아디다스</strong>
-						<p class="product-item-name">아디다스 가젤</p>
-						<p class="product-item-price">
-							&#8361;<fmt:formatNumber value="89000" pattern="#,###"/>
-						</p>
-					</div>
-				</li>
-    		</ul>
-    	</div>
-    </div>
-    <script src="/resources/js/search.js"></script>
-    
-</div>
+<%@ include file="/WEB-INF/views/header.jsp"%>
 <div id= "hyunique-main-top-recommend">
       <div class="button" id="recommend">추천</div>
       <div class="button" id="style-ranking">스타일 랭킹</div>
