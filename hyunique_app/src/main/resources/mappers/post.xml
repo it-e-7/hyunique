@@ -101,23 +101,10 @@
         </if>
     </select>
 
-    <select id="loadPopularPost" statementType="CALLABLE" parameterType="FilterPostVO" resultType="PostVO">
-        {call get_posts_with_zero_followers(
-        #{p_tpo_id, mode=IN, jdbcType=NUMERIC},
-        #{p_cursor, mode=OUT, jdbcType=CURSOR,
-        javaType=java.sql.ResultSet,
-        resultMap=resultMap}
-        )}
-    </select>
-
     <select id="countFollower" parameterType="FilterPostVO" resultType="Integer">
         SELECT COUNT(*)
         FROM HY_FOLLOW
         WHERE FOLLOWER_ID = #{userId}
     </select>
-
-
-
-
 
 </mapper>

@@ -26,6 +26,4 @@ public interface PostMapper {
 
     Integer countFollower(FilterPostVO filterPostVO);
 
-    List<PostVO> loadPopularPost(FilterPostVO filterPostVO);
-
 }
