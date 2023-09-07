@@ -6,7 +6,6 @@ let content;
 
 let dragTag;
 let container;
-
 let items = {};
 
 let imgWidth;
@@ -263,7 +262,8 @@ function attachTag(xOffset, yOffset, vo) {
 
         console.log(JSON.stringify(items[id]));
 
-        $('.tag-container').append(tagElement);
+        let imgContainer = $('#image-list li:first-child');
+        imgContainer.append(tagElement);
 
         // 새로 생성된 태그에 드래그 이벤트 바인딩
         tagElement.on("mousedown touchstart", function(event) {
@@ -334,7 +334,6 @@ function requestProductSizeAndColor(productId) {
 }
 
 function dragStart(event) {
-    console.log('dragStart ' + item);
     const id = event.target.id;
     const item = items[id];
 
@@ -470,7 +469,6 @@ function getCheckedValuesInGroup(groupClass, type) {
 
     return checkedValuesMap;
 }
-
 
 // 태그 그룹별로 체크된 태그값 추출
 function getGroupCheckBoxState() {
