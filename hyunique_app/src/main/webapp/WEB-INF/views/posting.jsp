@@ -87,17 +87,11 @@
                             <!-- 새로운 코드 시작 -->
                             <div id="size-picker" class="custom-picker">
                                 <div class="slide-content" id="sizeContent">
-                                  <div class="slide-item">Small</div>
-                                  <div class="slide-item">Medium</div>
-                                  <div class="slide-item">Large</div>
                                 </div>
                             </div>
 
                             <div id="color-picker" class="custom-picker">
                                 <div class="slide-content" id="colorContent">
-                                    <div class="slide-item">Red</div>
-                                    <div class="slide-item">Yellow</div>
-                                    <div class="slide-item">Blue</div>
                                 </div>
                             </div>
                             <div>
