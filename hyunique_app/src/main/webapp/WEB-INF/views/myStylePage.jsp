@@ -84,6 +84,11 @@
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.userPrefer}</p>
 			</div>
+			<div class="user-detail-bar-wrapper">
+				<p id="user-detail-title">체     형</p>
+				<p id="vertical-bar">|</p>
+				<p id="user-follower">${user.userForm}</p>
+			</div>
 			<div class="introduce-follower-section">
 				<div class="user-introduce-wrapper">${user.userIntroduce}</div>
 				<c:choose>

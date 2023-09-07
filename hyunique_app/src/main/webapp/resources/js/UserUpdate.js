@@ -68,6 +68,7 @@ function updateUser() {
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
     const userSex = $("input[name='userSex']:checked").val();
+    const userForm = $("input[name='userForm']").val();
     const userHeight = $('input[name="userHeight"]').val();
     const userPrefer = $('input[name="userPrefer"]:checked').map(function() {
         return $(this).val();
@@ -83,6 +84,7 @@ function updateUser() {
         userNickname,
         userIntroduce,
         userSex,
+        userForm,
         userHeight,
         userPrefer,
         instagramUrl,

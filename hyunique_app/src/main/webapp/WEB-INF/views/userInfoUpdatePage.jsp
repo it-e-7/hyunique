@@ -62,14 +62,19 @@
 					<input id="userIntroduce" type="text" name="userIntroduce"
 						value="${user.userIntroduce}" placeholder="${user.userNickname}님을 소개해보세요">
 				</div>
-		
-	
 				<div class="form-label">
 					<label for="userHeight">신장</label>
 				</div>
 				<div class="form-content">
 					<input id="userHeight" type="number" name=userHeight
 						value="${user.userHeight}" placeholder="${user.userNickname}님의 키를 입력해주세요">
+				</div>
+				<div class="form-label">
+					<label for="userForm">체형</label>
+				</div>
+				<div class="form-content">
+					<input id="userForm" type="text" name=userForm
+						value="${user.userForm}" placeholder="${user.userNickname}님의 체형을 입력해주세요">
 				</div>
 				<div class="form-label">
 					<label for="userSex">성별</label>
