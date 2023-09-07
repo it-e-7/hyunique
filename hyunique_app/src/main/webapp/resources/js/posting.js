@@ -81,22 +81,30 @@ $(document).ready(function() {
     $('.result-list').on('click', '.search-product-li', function() {
         vo = getSelectItem($(this));
         showProductModal(vo);
+
     });
 
 
-    $("#search-results-button").click(function() {
-        attachTag(XOffset, YOffset, li)();
-    });
+//    $("#search-results-button").click(function() {
+//        attachTag(XOffset, YOffset, li)();
+//    });
 
 
+});
 
+function modalEvent() {
     // 새로운 코드 시작
     let colorIndex = 0;
     let sizeIndex = 0;
-    const colorItems = $('#color-picker .slide-item');
-    const sizeItems = $('#size-picker .slide-item');
+
+    $('#color-picker, #size-picker').off('touchstart touchmove touchend'); // 기존 이벤트 리스너 제거
+
+    console.log(colorItems);
+    console.log(sizeItems);
+
     const colorCount = colorItems.length;
     const sizeCount = sizeItems.length;
+
     let initialTouchPos = null;
     let lastTouchPos = null;
 
@@ -148,7 +156,7 @@ $(document).ready(function() {
       updateSlide(null, this.id);
     });
     // 새로운 코드 끝
-});
+}
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
 function getSelectItem(obj) {
@@ -292,9 +300,7 @@ function showProductModal(product) {
     $("#product-info").text('사이즈 색상');
     let modal = $("#product-search-modal");
 
-    console.log(product['productId']);
-
-    requestProductSizeAndColor(product['productId']);
+    requestProductSizeAndColor(product['productId'])
 
     modal.show();
 
@@ -305,14 +311,16 @@ function showProductModal(product) {
     });
 
     $('#search-results-button').click(function() {
+        size = $("#sizeContent .slide-item.active").text();
+        color = $("#colorContent .slide-item.active").text();
 
+        console.log(size, color);
     });
 }
 
 // 상품 사이즈, 색상 DB에서 조회
 function requestProductSizeAndColor(productId) {
     $.getJSON(`/product/inform?productId=${productId}`, function(data) {
-        // 기존 내용 삭제
 
         // size 처리
         if (data.productSize.length > 0) {
@@ -321,19 +329,22 @@ function requestProductSizeAndColor(productId) {
                 $("#sizeContent").append(slideItem);
             });
         } else {
-            console.log("No sizes available");
+            const slideItem = $("<div>").addClass("slide-item").text("one");
+            $("#sizeContent").append(slideItem);
         }
 
         // color 처리
         if (data.productColor.length > 0) {
-
             $.each(data.productColor, function(index, color) {
                 const slideItem = $("<div>").addClass("slide-item").text(color);
                 $("#colorContent").append(slideItem);
             });
         } else {
-            console.log("No colors available");
+            const slideItem = $("<div>").addClass("slide-item").text("one");
+            $("#colorContent").append(slideItem);
         }
+
+        modalEvent();
     });
 }
 
@@ -512,14 +523,6 @@ function insertTags(tagType, tagData) {
             </div>
         `;
         $tagContainer.append(tagElement);
-    });
-}
-
-function getProductSizeAndColor() {
-    $.getJSON("/post/tag", function(data) {
-        insertTags('style', data.styleTags);
-        insertTags('tpo', data.tpoTags);
-        insertTags('season', data.seasonTags);
     });
 }
 
