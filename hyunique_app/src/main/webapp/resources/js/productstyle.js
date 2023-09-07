@@ -1,4 +1,4 @@
-let page = 0;
+let page = 1;
 const productId = new URL(location.href).searchParams.get('productId');
 const gridBox = $('.post-thumbnail-list-wrapper');
 let scrollLock = false;
@@ -18,6 +18,7 @@ function getNextPost() {
 	    						onclick="moveToPost('${post.postId}')" />`);
 	    	});
 	        scrollLock = false;
+	        page++;
 	    },
 	    error: function (response) {
 	    	console.log(response);

@@ -7,49 +7,33 @@
 }
 
 
-.main-wrapper-top {
-	width: 100%;
+#main-wrapper-top {
 	position: relative;
-	margin-top: 14px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
 }
 
 #hyunique-main-top-logo{
     display : flex;
+    justify-content: space-between;
     margin-bottom: 14px;
 }
 
-#hyunique-main-top-logo-image{
-    margin-left : 5%;
-    width: 30%;
-}
-
 #hyunique-main-top-logo-image >img {
-    width: 100%;
-    height: auto;
+    width: 115px;
 }
 
 #hyunique-main-top-buttons{
     display : flex;
-    margin-left : auto;
-    margin-right: 5%;
-    width: 20%;
-}
-
-#hyunique-main-top-buttons >#search-button{
-   width: 35%;
-   margin-right: 20%;
-}
-
-#hyunique-main-top-buttons >#my-page-button{
-   width: 35%;
+    gap: 12px;
 }
 
 #hyunique-main-top-buttons >#search-button > img{
-   width: 100%;
+   width: 26px;
 }
 
 #hyunique-main-top-buttons >#my-page-button > img{
-   width: 100%;
+   width: 26px;
 }
 
 .header-search-area {

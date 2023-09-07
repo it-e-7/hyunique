@@ -28,8 +28,10 @@
 			</div>
 		</div>
 	</div>
-	<p>이 아이템을 활용한 다양한 스타일</p>
-	<div class="post-thumbnail-list-wrapper"></div>
+	<div class="content-wrapper">
+		<p>이 아이템을 활용한 다양한 스타일</p>
+		<div class="post-thumbnail-list-wrapper"></div>
+	</div>
 
 </body>
 <script src="/resources/js/productstyle.js"></script>
