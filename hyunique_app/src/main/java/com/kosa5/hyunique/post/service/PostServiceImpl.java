@@ -55,6 +55,7 @@ public class PostServiceImpl implements PostService {
         if (filterPostVO.getSelectedType().equals("following")){
             FilterPostVO followFilterPostVO = new FilterPostVO();
             //현재 인기있는 스타일을 넣어주면 됩니다. 백오피스가 없으니까... 일단 여기에다가 둘게요!
+            //내가 팔로우 하고 있는 사람이 0인 경우
             followFilterPostVO.setTpo(Arrays.asList(21));
             System.out.println(followFilterPostVO);
             postVOList = postMapper.loadPopularPost(followFilterPostVO);
