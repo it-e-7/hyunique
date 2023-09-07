@@ -84,20 +84,27 @@ public class UserController {
 	    System.out.println(sessionId);
 	    user.setUserId(sessionId);
 	    
+	    boolean isBackImgChanged = user.getUserBackimg() != null && !user.getUserBackimg().isEmpty();
+        boolean isProfileImgChanged = user.getUserImg() != null && !user.getUserImg().isEmpty();
 	    // S3에 이미지 업로드 및 URL 받기
-	    URL profileImgUrl = s3Service.uploadBase64Img(user.getUserImg(), "profile_" + sessionId + ".jpg", "profile/");
-	    URL backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
-
-	    user.setUserImg(profileImgUrl.toString());
-	    user.setUserBackimg(backImgUrl.toString());
-
-	    try {
-	        userService.updateUser(user);
-	        return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
-	    } catch (Exception e) {
-	        System.out.println(e);
-	        return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
-	    }
+	    
+        if (isBackImgChanged) {
+            URL backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
+            user.setUserBackimg(backImgUrl.toString());
+        }
+        
+        if (isProfileImgChanged) {
+            URL profileImgUrl = s3Service.uploadBase64Img(user.getUserImg(), "profile_" + sessionId + ".jpg", "profile/");
+            user.setUserImg(profileImgUrl.toString());
+        }
+        
+        try {
+            userService.updateUser(user);  // 기존의 updateUser 메서드를 그대로 사용
+            return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
+        }
 	}
 
 	// 유저 게시글 썸네일 및 URL가져오기

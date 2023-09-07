@@ -52,6 +52,7 @@ function handleImageUpload(e, previewElement) {
         reader.readAsDataURL(file);
     });
 }
+
 //팔로우 버튼 텍스트 변경
 checkbox.addEventListener('change', function() {
   if (this.checked) {
