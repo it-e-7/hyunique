@@ -14,6 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.*;
+
+import javax.imageio.ImageIO;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 
@@ -42,7 +47,7 @@ public class S3Service {
         for(String base64Img : base64Images) {
             String fileName = createImgFileName();
 
-            URL returnUrl = uploadBase64Img(base64Img, fileName);
+            URL returnUrl = uploadBase64Img(base64Img, fileName, "post/");
 
             // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
@@ -67,15 +72,17 @@ public class S3Service {
     }
 
     // base64 디코딩 및 업로드
-    public URL uploadBase64Img(String base64Img, String fileName) {
+    public URL uploadBase64Img(String base64Img, String fileName, String dir) {
+    	
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentLength(imgBytes.length);
-            amazonS3.putObject(new PutObjectRequest(bucketName, "post/" + fileName, inputStream, metadata));
+            metadata.setContentType("image/jpeg");
+            amazonS3.putObject(new PutObjectRequest(bucketName, dir + fileName, inputStream, metadata));
 
-            return amazonS3Client.getUrl(bucketName, fileName);
+            return amazonS3Client.getUrl(bucketName, dir + fileName);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -117,4 +124,5 @@ public class S3Service {
         }
 
     }
+
 }

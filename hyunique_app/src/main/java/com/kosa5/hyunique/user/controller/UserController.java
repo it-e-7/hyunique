@@ -1,5 +1,7 @@
 package com.kosa5.hyunique.user.controller;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa5.hyunique.interceptor.annotation.Auth;
+import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
@@ -31,7 +34,8 @@ import com.kosa5.hyunique.user.vo.UserVO;
 public class UserController {
 
 	private UserService userService;
-
+	@Autowired
+    S3Service s3Service;
 	Logger log = LogManager.getLogger("case3");
 	@Autowired
 	public UserController(UserService userService) {
@@ -76,16 +80,24 @@ public class UserController {
 
 	// 유저 기본정보 업데이트 삽입
 	@PostMapping("updateUser")
-	public ResponseEntity<String> updateUser(@RequestBody UserVO user, @SessionAttribute int sessionId) {
-		System.out.println(sessionId);
-		user.setUserId(sessionId);
-		try {
-			userService.updateUser(user);
-			return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
-		} catch (Exception e) {
-			System.out.println(e);
-			return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
-		}
+	public ResponseEntity<String> updateUser(@RequestBody UserVO user, @SessionAttribute int sessionId) throws IOException {
+	    System.out.println(sessionId);
+	    user.setUserId(sessionId);
+	    
+	    // S3에 이미지 업로드 및 URL 받기
+	    URL profileImgUrl = s3Service.uploadBase64Img(user.getUserImg(), "profile_" + sessionId + ".jpg", "profile/");
+	    URL backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
+
+	    user.setUserImg(profileImgUrl.toString());
+	    user.setUserBackimg(backImgUrl.toString());
+
+	    try {
+	        userService.updateUser(user);
+	        return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
+	    } catch (Exception e) {
+	        System.out.println(e);
+	        return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
+	    }
 	}
 
 	// 유저 게시글 썸네일 및 URL가져오기

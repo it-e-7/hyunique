@@ -82,7 +82,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{twitterUrl},
 		#{facebookUrl},
 		#{userId},
-		#{userPrefer}
+		#{userPrefer},
+		#{userImg},
+    	#{userBackimg} 
 		)}
 	</update>
 

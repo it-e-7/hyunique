@@ -31,7 +31,7 @@
 			    <!-- 프로필 사진 영역 -->
 			    <div class="user-img-wrapper" id="user-profile-img-change-section">
 			        <img src="${user.userImg}" id="profile-preview">
-			        <input type="file" id="profile-file-input" style="display:none;">
+			        <input type="file" id="profile-file-input" accept="image/*" style="display:none;">
 			        <p class="txt-user-img-change">
 			            프로필 사진 바꾸기
 			        </p>
@@ -39,7 +39,7 @@
 			    <!-- 배경 사진 영역 -->
 			    <div class="user-img-wrapper" id="user-back-img-change-section">
 			        <img src="${user.userBackimg}" id="back-preview">
-			        <input type="file" id="back-file-input" style="display:none;">
+			        <input type="file" id="back-file-input" accept="image/*" style="display:none;">
 			        <p class="txt-user-img-change">
 			            배경 사진 바꾸기
 			        </p>

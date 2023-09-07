@@ -1,7 +1,7 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
 let userImg;
-let userBackImg;
+let userBackimg;
 let imgList = []; // 이미지 리스트 초기화
 
 $(document).ready(function() {
@@ -88,7 +88,7 @@ function updateUser() {
         twitterUrl,
         facebookUrl,
         userImg: userImgData,
-        userBackImg: userBackImgData
+        userBackimg: userBackImgData
     };
 
     $.ajax({
