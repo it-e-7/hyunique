@@ -28,7 +28,7 @@
 	color: var(--grey5);
 }
 
-.follow-btn {
+#follow-btn {
 	font-size: 1.05rem;
 	padding-top: 0.5rem;
 	padding-bottom: 0.7rem;

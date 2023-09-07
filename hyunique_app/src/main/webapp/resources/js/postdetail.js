@@ -59,7 +59,39 @@ function sharePost(userNickname) {
 	}
 }
 
-
+function toggleFollow(userId) {
+	const btn = $('#follow-btn');
+	
+	if(btn.hasClass('jw-btn-nonshadow')) {
+		btn.attr('class', 'jw-btn-selected');
+		btn.text('팔로잉');
+		$.ajax({
+			url: `/user/follow`,
+			type: 'POST',
+			data: { userId, },
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.error(response);
+			},
+		});
+	} else {
+		btn.attr('class', 'jw-btn-nonshadow');
+		btn.text('팔로우');
+		$.ajax({
+			url: `/user/unfollow`,
+			type: 'POST',
+			data: { userId, },
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.error(response);
+			},
+		});
+	}
+}
 
 $('.img-slider-wrapper').scroll(() => {
 	if($('.img-slider-wrapper').scrollLeft() % imgWidth === 0) {

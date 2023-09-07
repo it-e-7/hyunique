@@ -27,10 +27,10 @@
 			</div>
 			<c:choose>
 				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow follow-btn" onclick="follow(${postVO.userId})">팔로우</button>
+					<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
 				</c:when>
 				<c:otherwise>
-					<button class="jw-btn-selected">팔로잉</button>
+					<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
 				</c:otherwise>
 			</c:choose>
 		</div>
