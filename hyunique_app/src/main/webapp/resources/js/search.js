@@ -33,6 +33,7 @@ function getSearchResult(keyword, callback) {
 					</div>
 	    		</li>`)
 	    	).join('');
+	    	console.log(response);
 	    	callback(listItems);
 	    },
 	    error: function (response) {
@@ -41,12 +42,12 @@ function getSearchResult(keyword, callback) {
 	});
 }
 
-function isScrollbarAtBottom() {
+function isSearchScrollbarAtBottom() {
     const element = document.getElementsByClassName('product-list')[0];
     const scrollTop = (element.pageYOffset !== undefined) ? element.pageYOffset : (element.scrollTop || 0);
     const scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight - 5 : 0;
     const windowHeight = element.clientHeight || element.innerHeight;
-
+    
     return scrollTop + windowHeight >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
 }
 
@@ -66,7 +67,7 @@ $('#search-input').keyup((e) => {
 });
 
 $('.product-list').scroll((e) => {
-	if(isScrollbarAtBottom()) {
+	if(isSearchScrollbarAtBottom()) {
 		searchResultPage++;
 		getSearchResult($('#search-input').val(), addList);
 	}
