@@ -1,4 +1,5 @@
-//유저 정보 업데이트
+const checkbox = document.getElementById('follower-toggle');
+const label = document.getElementById('follower-label');
 
 $(document).ready(function() {
 	  var userSex = "${user.userSex}";
@@ -12,9 +13,7 @@ $(document).ready(function() {
 	  
 });
 
-const checkbox = document.getElementById('follower-toggle');
-const label = document.getElementById('follower-label');
-
+//팔로우 버튼 텍스트 변경
 checkbox.addEventListener('change', function() {
   if (this.checked) {
     label.innerText = '팔로잉 -';
@@ -22,6 +21,8 @@ checkbox.addEventListener('change', function() {
     label.innerText = '팔로우 +';
   }
 });
+
+//유저 정보 삽입
 function updateUser() {
     const userNickname = $('input[name="userNickname"]').val();
     const userIntroduce = $('input[name="userIntroduce"]').val();
@@ -68,7 +69,7 @@ function userPostList(userId) {
 	    data: { userId: userId },
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
-	      thumbnailsDiv.empty(); // 기존 썸네일 이미지 제거
+	      thumbnailsDiv.empty();
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
@@ -80,7 +81,7 @@ function userPostList(userId) {
 	    	  });
 
 	    	  postLink.append(thumbnailImage);
-	    	  thumbnailsDiv.append(postLink); // 하이퍼링크로 된 썸네일 이미지 추가
+	    	  thumbnailsDiv.append(postLink);
 	    	});
 
 	    },
@@ -90,13 +91,14 @@ function userPostList(userId) {
 	  });
 }
 
+//옷장 아이템 추가
 function fetchClosetInfo(userId) {
 	  $.ajax({
 	    url: `/closet/${userId}`,
 	    type: 'GET',
 	    success: function(closetItems) {
-	      var closetDiv = $('#closet'); // HTML에서 옷장 정보를 표시할 div
-	      closetDiv.empty(); // 기존 옷장 아이템 제거
+	      var closetDiv = $('#closet');
+	      closetDiv.empty();
 
 	      closetItems.forEach(function(item) {
 	        var productImage = $('<img/>', {
@@ -112,7 +114,7 @@ function fetchClosetInfo(userId) {
 	        productDiv.append(productImage);
 	        productDiv.append(productInfo);
 
-	        closetDiv.append(productDiv); // 옷장 아이템 추가
+	        closetDiv.append(productDiv);
 	      });
 	    },
 	    error: function(error) {
@@ -121,6 +123,7 @@ function fetchClosetInfo(userId) {
 	  });
 	}
 
+//게시글 작성 이동
 function movePostPage() {
 	$.ajax({
         type: "GET",

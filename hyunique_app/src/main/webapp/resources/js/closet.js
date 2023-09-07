@@ -1,9 +1,12 @@
-// 현재 보여줄 카테고리를 저장하는 변수
 let currentCategory = '';
 const sessionId = document.getElementById('session-id').value;
 const userId = document.getElementById('user-id').value;
 
+$(document).ready(function() {
+    loadCloset(userId);
+});
 
+//옷장 로드하는 함수
 function loadCloset(userId) {
     console.log("loadCloset 함수 실행, userId: " + userId);
     $.ajax({
@@ -19,6 +22,7 @@ function loadCloset(userId) {
     });
 }
 
+//옷장 보여주는 함수
 function displayCloset(closetVO) {
     console.log("displayCloset 함수 실행");
     console.log(closetVO);
@@ -28,7 +32,6 @@ function displayCloset(closetVO) {
         'bagList', 'dressList', 'outerList', 'topList',
         'bottomList', 'shoesList', 'hatList', 'accessoryList'
     ];
- // allList 영역 초기화
     $('#allList').empty();
 
     for (const category of categories) {
@@ -39,13 +42,13 @@ function displayCloset(closetVO) {
         }
         $(`#${category}`).html(productHtml).hide();
 
-        // allList에 미리보기 추가
         addCategoryPreviewToAllList(category, productList);
     }
 
-    // 초기 카테고리를 설정
     filterProducts('bagList', categories);
 }
+
+//카테고리별로 나누는 함수
 function filterProducts(category) {
     console.log("filterProducts 함수 실행, 카테고리: " + category);
 
@@ -61,28 +64,21 @@ function filterProducts(category) {
     currentCategory = category;
 }
 
-//새로운 함수: allList에 카테고리별 미리보기 추가
+//allList에 카테고리별 미리보기 추가 함수
 function addCategoryPreviewToAllList(category, productList) {
     let previewHtml = `<div class="category-preview" onclick="filterProducts('${category}')">`;
     
-    // 이미지 4개를 묶는 div 추가
     previewHtml += '<div class="image-wrapper">';
-    
     let count = 0;
-
     for (const product of productList.slice(0, 4)) {
-    	
         previewHtml += `<img src="${product.productImg}" alt="${product.productName}" class="preview-thumbnail" />`;
         count++;
     }
-
-    // 아이템이 없거나 4개 미만인 경우 lightgray로 채우기
     while (count < 4) {
         previewHtml += '<div class="preview-thumbnail empty-thumbnail"></div>';
         count++;
     }
-    previewHtml += '</div>';  // 이미지 4개를 묶는 div 닫기
-    // 카테고리 이름을 한글로 변환
+    previewHtml += '</div>';
     const categoryNames = {
         'bagList': '가방',
         'dressList': '원피스',
@@ -101,6 +97,7 @@ function addCategoryPreviewToAllList(category, productList) {
     $('#allList').append(previewHtml);
 }
 
+//상품 영역 생성 함수
 function generateProductCard(product) {
     return `<div class="product-card" onclick="moveToProduct(${product.productId})">
                 <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
@@ -109,6 +106,3 @@ function generateProductCard(product) {
                 <p id="product-price">₩${product.productPrice}</p>
             </div>`;
 }
-$(document).ready(function() {
-    loadCloset(userId);
-});
