@@ -28,19 +28,24 @@
 				<p class="txt-profile-title">프로필 설정</p>
 			</div>
 			<div class="form-label" id="user-img-section-wrapper">
-				<div class="user-img-wrapper">
-					<img src="${user.userImg}">
-					<p class="txt-user-img-change">
-						프로필 사진 바꾸기
-					</p>
-				</div>
-				<div class="user-img-wrapper">
-					<img src="${user.userBackimg}">
-					<p class="txt-user-img-change">
-						배경 사진 바꾸기
-					</p>
-				</div>
+			    <!-- 프로필 사진 영역 -->
+			    <div class="user-img-wrapper" id="user-profile-img-change-section">
+			        <img src="${user.userImg}" id="profile-preview">
+			        <input type="file" id="profile-file-input" style="display:none;">
+			        <p class="txt-user-img-change">
+			            프로필 사진 바꾸기
+			        </p>
+			    </div>
+			    <!-- 배경 사진 영역 -->
+			    <div class="user-img-wrapper" id="user-back-img-change-section">
+			        <img src="${user.userBackimg}" id="back-preview">
+			        <input type="file" id="back-file-input" style="display:none;">
+			        <p class="txt-user-img-change">
+			            배경 사진 바꾸기
+			        </p>
+			    </div>
 			</div>
+
 			<div class="form-wrapper">
 				<div class="form-label">
 					<label for="userNickname">닉네임 *</label>

@@ -1,7 +1,30 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
+let userImg;
+let userBackImg;
+let imgList = []; // 이미지 리스트 초기화
 
 $(document).ready(function() {
+	// 프로필 사진 업로드
+	  $("#profile-preview").click(function() {
+		  $("#profile-file-input").click();
+	  });
+		
+	  // 배경 사진 업로드
+	  $("#back-preview").click(function() {
+		  $("#back-file-input").click();
+	  });
+		
+	  // 프로필 사진 변경
+	  $("#profile-file-input").change(function(e) {
+		  handleImageUpload(e, '#profile-preview');
+	  });
+		
+	  // 배경 사진 변경
+	  $("#back-file-input").change(function(e) {
+		  handleImageUpload(e, '#back-preview');
+	  });
+	  
 	  var userSex = "${user.userSex}";
 	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
 	  $("#userUpdateForm").submit(function(event) {
@@ -12,7 +35,23 @@ $(document).ready(function() {
 	  userPostList(userId);
 	  
 });
-
+//이미지 업로드 및 미리보기 함수
+function handleImageUpload(e, previewElement) {
+    const files = e.target.files;
+    $.each(files, function(index, file) {
+        if (!file.type.match("image/.*")) {
+            alert("이미지 파일만 업로드할 수 있습니다.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            $(previewElement).attr("src", e.target.result);
+            const img = reader.result.split(',')[1];
+            imgList.push(img);
+        };
+        reader.readAsDataURL(file);
+    });
+}
 //팔로우 버튼 텍스트 변경
 checkbox.addEventListener('change', function() {
   if (this.checked) {
@@ -49,7 +88,9 @@ function updateUser() {
             userPrefer,
             instagramUrl,
             twitterUrl,
-            facebookUrl
+            facebookUrl,
+            userImg: imgList[0],
+            userBackImg: imgList[1]
         }),
         success: function (response) {
             alert('업데이트 성공!');
