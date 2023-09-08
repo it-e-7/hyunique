@@ -18,19 +18,19 @@
 	</div>
 	<div class="content-wrapper">
 		<div class="user-info-wrapper">
-			<div class="left-user-info">
+			<div class="left-user-info" onclick="location.href='/user/${postVO.userId}'">
 				<img src="${postVO.userImg}">
 				<div>
-					<strong style="font-size: 1.2rem;">${postVO.userNickname}</strong>
+					<strong>${postVO.userNickname}</strong>
 					<p>${postVO.userHeight}cm</p>
 				</div>
 			</div>
 			<c:choose>
 				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow follow-btn" onclick="follow(${postVO.userId})">팔로우</button>
+					<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
 				</c:when>
 				<c:otherwise>
-					<button class="jw-btn-selected">팔로잉</button>
+					<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -42,7 +42,13 @@
 			<button class="tag-btn">
 				<img src="/resources/img/ic-posttag.png"/>
 			</button>
-			
+			<c:forEach var="product" items="${postVO.productList}">
+				<div class="post-pin arrow-top" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
+					<p class="pin-brand">${product.productBrand}</p>
+					<p class="pin-price">&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/></p>
+					<p class="pin-size">${product.productColor}  ${product.productSize}</p>
+				</div>
+			</c:forEach>
 		</div>
 		<c:if test="${fn:length(postVO.imgList) > 1}">
 				<div class="img-index-bar">
@@ -70,7 +76,11 @@
 				</button>
 			</div>
 			<div class="post-content">
-				<p class="post-content-date">${postVO.postDate}</p>
+				<p class="post-content-date">
+					<fmt:parseDate var="dateParse" pattern="yyyy-MM-dd HH:mm:ss" value="${postVO.postDate}"/>
+					<fmt:formatDate var="date" pattern="yyyy-MM-dd" value="${dateParse}"/>
+					<c:out value="${date}"/>
+				</p>
 				<span>
 					<strong>${postVO.userNickname}</strong>
 					<p>${postVO.postContent}</p>
@@ -85,9 +95,12 @@
 							<div>
 								<strong>${product.productBrand}</strong>
 								<p class="product-item-name">${product.productName}</p>
-								<p class="product-item-price">
-									&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
-								</p>
+								<span class="product-price-size-wrapper">
+									<p class="product-item-price">
+										&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
+									</p>
+									<p class="product-item-size">${product.productColor} ${product.productSize} 사이즈</p>
+								</span>
 							</div>
 						</li>
 					</c:forEach>

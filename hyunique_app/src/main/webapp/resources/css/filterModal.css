@@ -43,15 +43,6 @@
     overflow-y: auto;
 }
 
-#main-wrapper {
-    margin-top : 5px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0; /* 고정시킬 위치를 조절합니다. */
-    z-index: 100; /* 다른 내용 위에 표시되도록 z-index를 설정합니다. */
-    background-color: white; /* 원하는 배경색을 설정합니다. */
-}
-
 #select-type-button{
     display : flex;
     justify-content: space-between;

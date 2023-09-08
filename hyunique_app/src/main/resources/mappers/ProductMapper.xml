@@ -65,6 +65,16 @@
 		FROM HY_PRODUCT
 		WHERE PRODUCT_NAME like '%' || #{productName} || '%'
 	</select>
+	
+	<select id="selectnSearchProductList" parameterType="map" resultType="PostProductVO">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT HY_PRODUCT.*, ROWNUM as RNUM
+				FROM HY_PRODUCT
+				WHERE PRODUCT_NAME like '%' || #{keyword} || '%')
+		WHERE #{offset}-10 < RNUM AND RNUM <= #{offset}
+		]]>
+	</select>
 
 	<select id="selectProductSize" parameterType="String" resultType="String">
 		SELECT PRODUCT_SIZE FROM PRODUCT_SIZE WHERE PRODUCT_ID = #{productId}

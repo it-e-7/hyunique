@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.kosa5.hyunique.user.vo.PostVO;
 import com.kosa5.hyunique.user.vo.UserVO;
@@ -18,4 +19,8 @@ public interface UserMapper {
 
 	List<PostVO> getPostsByUserId(Integer userId);
 
+	int insertFollower(@Param("follower") int follower, @Param("following") int following);
+
+	int deleteFollower(@Param("follower") int follower, @Param("following") int following);
+	
 }

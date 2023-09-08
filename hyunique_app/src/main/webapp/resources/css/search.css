@@ -1,0 +1,136 @@
+#main-wrapper {
+    position: sticky;
+    top: 0; /* 고정시킬 위치를 조절합니다. */
+    z-index: 100; /* 다른 내용 위에 표시되도록 z-index를 설정합니다. */
+    background-color: white; /* 원하는 배경색을 설정합니다. */
+    padding: 18px 0 10px 0;
+}
+
+
+#main-wrapper-top {
+	position: relative;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+}
+
+#hyunique-main-top-logo{
+    display : flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+#hyunique-main-top-logo-image >img {
+    width: 115px;
+}
+
+#hyunique-main-top-buttons{
+    display : flex;
+    gap: 12px;
+}
+
+#hyunique-main-top-buttons >#search-button > img{
+   width: 26px;
+}
+
+#hyunique-main-top-buttons >#my-page-button > img{
+   width: 26px;
+}
+
+.header-search-area {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(155, 155, 155, 0.7);
+	z-index: 1;
+}
+
+.search-area-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: 100%;
+	height: 70%;
+	padding-top: 16px;
+	background-color: white;
+}
+
+.search-input-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 75%;
+	height: 36px;
+	margin: 0 auto;
+	padding: 6px 24px;
+	border: 1px solid var(--grey5);
+	border-radius: 40px;
+}
+
+.search-input-wrapper input {
+	width: 80%;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.search-input-wrapper img {
+	position: absolute;
+	right: 24px;
+	top: 50%;
+	width: 2.3rem;
+	transform: translate(0, -50%);
+}
+
+.product-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	flex: 1;
+	padding: 8px 1.5rem;
+	background-color: var(--grey1);
+	list-style: none;
+	overflow: scroll;
+}
+
+.post-product-title {
+	margin-bottom: 0.8rem;
+	color: var(--grey3);
+}
+
+.product-list img {
+	width: 5rem;
+	height: 5rem;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-bottom-left-radius: 0.6rem;
+	border-top-left-radius: 0.6rem;
+}
+
+.product-list li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: 2px solid var(--grey2);
+	border-radius: 0.6rem;
+	background-color: white;
+	cursor: pointer;
+}
+
+.product-list li div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+	padding: 0.3rem 1rem 0.3rem 1.5rem;
+	overflow: hidden;
+}
+
+.product-item-name {
+	color: var(--grey4);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

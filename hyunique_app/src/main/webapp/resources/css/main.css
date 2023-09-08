@@ -112,6 +112,64 @@ button {
 	background-color: var(--jw-blue);
 }
 
+.post-pin {
+	position: absolute;
+	display: block;
+	padding: 6px 12px;
+	background-color: rgba(255, 255, 255, 85%);
+	border-radius: 10px;
+}
+
+.pin-brand {
+	font-weight: 700;
+}
+
+.pin-price {
+	color: var(--grey5);
+}
+
+.pin-size {
+	font-weight: 550;
+	color: var(--jw-blue);
+}
+
+.post-pin:after {
+	border: 10px solid transparent;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+}
+
+.arrow-left:after {
+	left: -20px;
+	top: 50%;
+	border-right-color: rgba(255, 255, 255, 85%);
+	transform: translate(0, -50%);
+}
+
+.arrow-right:after {
+	left: 100%;
+	top: 50%;
+	border-left-color: rgba(255, 255, 255, 85%);
+	transform: translate(0, -50%);
+}
+
+.arrow-bottom:after {
+	left: 50%;
+	top: 100%;
+	border-top-color: rgba(255, 255, 255, 85%);
+	transform: translate(-50%, 0);
+}
+
+.arrow-top:after {
+	left: 50%;
+	top: -20px;
+	border-bottom-color: rgba(255, 255, 255, 85%);
+	transform: translate(-50%, 0);
+
 #backward-btn{
 	width:30px;
 	height:30px;

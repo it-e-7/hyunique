@@ -14,12 +14,8 @@
 
 </head>
 <body>
-	<div class="header-wrapper">
-		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
-		</button>
-	</div>
-	<div class="">
+	<div id="main-wrapper">
+	<%@ include file="/WEB-INF/views/header.jsp"%>
 		<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
 			<img src="${product.productImg}" />
 			<div>
@@ -31,6 +27,8 @@
 				</p>
 			</div>
 		</div>
+	</div>
+	<div class="content-wrapper">
 		<p>이 아이템을 활용한 다양한 스타일</p>
 		<div class="post-thumbnail-list-wrapper"></div>
 	</div>

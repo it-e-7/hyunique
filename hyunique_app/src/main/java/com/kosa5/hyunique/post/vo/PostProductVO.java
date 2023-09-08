@@ -7,6 +7,7 @@ public class PostProductVO {
 
 	private float pinX;
 	private float pinY;
+	private String pinType;
 	private String productId;
 	private String productBrand;
 	private String productName;

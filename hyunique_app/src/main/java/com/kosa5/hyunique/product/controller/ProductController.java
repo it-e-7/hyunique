@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,5 +60,11 @@ public class ProductController {
 		List<PostProductVO> value = productService.getSearchProductList(productName);
 		return value;
 	}
-
+	
+	@PostMapping("/nsearch")
+	@ResponseBody
+	public List<PostProductVO> getnSearchProduct(String keyword, int page) {
+		List<PostProductVO> value = productService.getnSearchProductList(keyword, page * 10);
+		return value;
+	}
 }

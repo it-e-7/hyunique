@@ -15,9 +15,9 @@ public interface ProductMapper {
 
 	ProductDetailVO getProductDetailById(String productId);
 	List<PostThumbnailVO> getProductStyleById(@Param("productId") String productId,@Param("offset") int offset);
+	List<PostProductVO> selectnSearchProductList(@Param("keyword") String keyword, @Param("offset") int offset);
 	List<PostProductVO> selectSearchProductList(String productName);
 	List<String> selectProductSize(String productName);
 	List<String> selectProductColor(String productName);
-
 
 }
