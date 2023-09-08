@@ -252,7 +252,7 @@
                     <div id="bottom-login-message">
                     더 많은 스타일을 보고 싶다면<br>로그인을 해보세요!
                     </div>
-                    <button id="login-block">
+                    <button id="login-block" onclick="location.href='/login'">
                     로그인 하기
                     </button>
                 </div>
