@@ -6,14 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var isLoading = false; //로딩중이다 아니다를 판단하기 위함
 
         $(window).scroll(function() {
-            console.log("굴러가요");
             if (isScrollbarAtBottom()) {
-                            console.log("바닥이에요");
                             if (isLoading) {
-                                console.log("바닥인데 로딩중이래요");
                                 return;
                             }
-                            console.log("로드해올게요");
                             loadMoreImages();
             }
         });
@@ -96,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function() {
             var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (element.scrollTop || 0);
             var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
             var windowHeight = element.clientHeight || window.innerHeight;
-            console.log(scrollTop,windowHeight,scrollHeight);
 
             return scrollTop + windowHeight+10 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
         }
