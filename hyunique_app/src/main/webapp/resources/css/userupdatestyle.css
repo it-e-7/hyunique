@@ -1,11 +1,15 @@
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+/* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); */
 .txt-profile-title{
     font-family:Spoqa Han Sans;
     font-size:2rem;
     font-weight:bold;
     margin-top:1rem;
 	color: #111111;
-
+}
+#userUpdateForm{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
 }
 .content-wrapper {
 	width: 100%;
@@ -17,7 +21,6 @@
 	width:90%;
 	display:flex;
 	margin-bottom:1.6rem;
-
 }
 .form-wrapper{
 	display:flex;
@@ -81,15 +84,20 @@ input{
 	color: #111111;
 }
 .form-buttons{
+	display: flex;
 	width:100%;
-
-	
+	justify-content: center;
 }
 .btn-submit{
-	width:100%;
+	width: calc(100% - 60px);
 	height:48px;
 	padding:0;
+	position: fixed;
+	z-index:1000;
+	bottom:calc(3vh);
+	max-width: 700px;
 }
+
 
 input[type="radio"] {
     display: none;
@@ -144,4 +152,8 @@ input[type="checkbox"]:checked + label {
 	color:var(--jw-blue);
     border: 1px solid var(--jw-blue);
 
+}
+
+#facebookUrl{
+	margin-bottom: 4rem;
 }

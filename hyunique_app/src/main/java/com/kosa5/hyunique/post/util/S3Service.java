@@ -14,6 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.*;
+
+import javax.imageio.ImageIO;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 @Service
@@ -66,17 +71,16 @@ public class S3Service {
     }
 
     // base64 디코딩 및 업로드
-    public String uploadBase64Img(String base64Img, String fileName) {
-        System.out.println("base64Img = " + base64Img);
+    public String uploadBase64Img(String base64Img, String fileName, String dir) {
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentLength(imgBytes.length);
             metadata.setContentType("image/jpeg");
-            amazonS3.putObject(new PutObjectRequest(bucketName, "post/" + fileName, inputStream, metadata));
+            amazonS3.putObject(new PutObjectRequest(bucketName, dir + fileName, inputStream, metadata));
 
-            return amazonS3Client.getUrl(bucketName, fileName).toString();
+            return amazonS3Client.getUrl(bucketName, dir + fileName);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("e.printStackTrace(); = " + e.getStackTrace());
@@ -122,4 +126,5 @@ public class S3Service {
         }
 
     }
+
 }

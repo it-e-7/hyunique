@@ -3,7 +3,6 @@ package com.kosa5.hyunique.oauth;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -18,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.user.service.UserService;
 
 @Controller
 @RequestMapping(value = "/")
+
 public class OAuthController {
 
 	@Value("${key.KAKAO}")
@@ -52,6 +53,7 @@ public class OAuthController {
 	}
 
 	// 공통 로그인 화면 이동
+	@Auth(role = Auth.Role.UNAUTH)
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {
 		model.addAttribute("kakaoApiKey", kakaoApiKey);

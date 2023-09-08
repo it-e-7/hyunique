@@ -33,6 +33,15 @@
 		</beans:property>
 	</beans:bean>
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<exclude-mapping path="/resources/**" />
+			<beans:bean
+				class="com.kosa5.hyunique.interceptor.AuthInterceptor" />
+		</interceptor>
+	</interceptors>
+
 	<!-- Component Scanning -->
 	<context:component-scan
 		base-package="com.kosa5.hyunique" />

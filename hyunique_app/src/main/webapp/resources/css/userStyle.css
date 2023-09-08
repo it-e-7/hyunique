@@ -106,7 +106,7 @@
 	justify-content: flex-start;
 }
 .user-detail-bar-wrapper p{
-	margin-right:1rem;
+	margin-right:0.3rem;
 }
 .txt-user-profile{
 	margin-top:-0.5rem;
@@ -125,7 +125,49 @@
 	font-weight:;
 	margin-top:0.5rem;
 	margin-right:1rem;
+	max-width:19rem;
 }
+.introduce-follower-section{
+	display:flex;
+	flex-direction:row;
+	width:100%;
+	justify-content:space-between;
+}
+.follower-btn-wrapper{
+	margin-top:1rem;
+	height:100%;
+	justify-content:center;
+	min-width:6rem;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    border: 1px solid;
+	border-color:var(--jw-blue2);
+	border-radius: 0.4rem;
+	padding: 0.2rem 0.7rem;
+	font-family:Spoqa Han Sans;
+	color:var(--jw-blue2);
+}
+
+input[type="checkbox"]:checked + label {
+	color:var(--grey4);
+    border: 1px solid var(--grey4);
+
+}
+
+.btn-follower{
+	border: 1px solid;
+	border-color:var(--jw-blue3);
+	border-radius: 0.4rem;
+	padding: 0.2rem 0.7rem;
+	font-family:Spoqa Han Sans;
+	color:var(--jw-blue3);
+}
+
 #user-follower{
 	margin-right:2rem;
 }
@@ -256,6 +298,43 @@
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }
+body{
+	position: absoulute;
+}
+.posting-btn {
+    position: fixed;
+    width: 78px;
+    height: 78px;
+    background: rgb(212 233 255 / 38%);
+    border: 1px rgb(255 255 255 / 19%) solid;
+    backdrop-filter: blur(10px);
+    border-radius: 5rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+	right:30px;
+	bottom: calc(5vh);
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
+            drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
+            drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
+            drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+            drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+@media (min-width: 760px) {
+  .posting-btn {
+    right: calc(30px + (100% - 760px) * 0.5); /* 수정된 부분 */
+  }
+}
+.posting-btn img{
+	width: 35px;
+	height: 35px;
+	
+}
+
+.posting-btn:active {
+	background: rgb(61 140 222 / 38%);
+}
 
 .style-thumbnail-list-wrapper img {
 	width: 100%;
@@ -280,4 +359,54 @@
 	padding-left:1rem;
 	margin-top:0.5rem;
 	margin-bottom:1rem;
+}
+
+.image-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 2rem;
+    overflow: hidden; 
+}
+
+.image-container {
+    margin: 0.5px; 
+}
+.category-preview {
+   margin:1.5rem;
+}
+
+.preview-thumbnail {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid white;
+}
+
+.empty-thumbnail {
+    background-color: #f2f2f2;
+    border: 1px solid white;
+}
+
+.category-name {
+    grid-column: span 2;
+    text-align: center;
+    font-family: 'Spoqa Han Sans';
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.overlay {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+#txt-more-style{
+	text-align: center;
+    font-family: 'Spoqa Han Sans';
+    font-size: 1rem;
 }

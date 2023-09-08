@@ -111,3 +111,9 @@ button {
 	border-radius: 70%;
 	background-color: var(--jw-blue);
 }
+
+#backward-btn{
+	width:30px;
+	height:30px;
+	transform: rotateY(180deg);
+}

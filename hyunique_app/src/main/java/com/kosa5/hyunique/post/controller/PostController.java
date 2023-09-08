@@ -7,11 +7,18 @@ import com.kosa5.hyunique.post.vo.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.web.bind.annotation.*;
-
+import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.post.service.PostService;
+import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
+import com.kosa5.hyunique.post.vo.PostingVO;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -39,14 +46,14 @@ public class PostController {
 
         return "post/detail";
     }
-
+    @Auth
     @PostMapping("like")
     @ResponseBody
     public int postLikePostHandler(int postId) {
         int userId = 22;
         return postService.postLikePost(postId, userId);
     }
-
+    @Auth
     @PostMapping("unlike")
     @ResponseBody
     public int postUnlikePostHandler(int postId) {
@@ -70,6 +77,8 @@ public class PostController {
     // 게시글 작성
     @GetMapping
     public String requestPosting() {
+    	System.out.println("test");
+    	
         return "posting";
     }
 

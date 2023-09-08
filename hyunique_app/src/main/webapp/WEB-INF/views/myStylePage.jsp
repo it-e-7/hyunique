@@ -9,22 +9,51 @@
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/userStyle.css" />
-
 </head>
 <body>
 	<div id="session-info">
 		<input type="hidden" id="session-id" value="${sessionId}">
+		<input type="hidden" id="user-id" value="${user.userId}">
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<!-- <img src="/resources/img/ic-backward.png" /> -->
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331">
+			</lord-icon>
 		</button>
 		<div class="txt-user-profile">
 			<p>${user.userNickname}</p>
 		</div>
-		<a href="update"> <img src="/resources/img/ic-settings.png"
-			id="settings" />
-		</a>
+		<c:choose>
+		    <c:when test="${isCurrentUser == true}">
+		        <a href="update">
+		           <lord-icon
+		           		id="settings"
+					    src="https://cdn.lordicon.com/hwuyodym.json"
+					    trigger="hover"
+					    colors="primary:#121331"
+					    state="hover-1"
+					    style="width:30px;height:30px">
+					</lord-icon>
+		        </a>
+		    </c:when>
+		    <c:otherwise>
+		        <div style="visibility: hidden;">
+ 					<lord-icon
+		           		id="settings"
+					    src="https://cdn.lordicon.com/hwuyodym.json"
+					    trigger="hover"
+					    colors="primary:#121331"
+					    state="hover-1"
+					    style="width:30px;height:30px">
+					</lord-icon>		        
+				</div>
+		    </c:otherwise>
+		</c:choose>
 	</div>
 
 	<!-- User Profile -->
@@ -74,14 +103,36 @@
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.userPrefer}</p>
 			</div>
-			<div class="user-introduce-wrapper">${user.userIntroduce}</div>
+			<div class="user-detail-bar-wrapper">
+				<p id="user-detail-title">체형</p>
+				<p id="vertical-bar">|</p>
+				<p id="user-follower">${user.userForm}</p>
+			</div>
+			<div class="introduce-follower-section">
+				<div class="user-introduce-wrapper">${user.userIntroduce}</div>
+				<c:choose>
+				    <c:when test="${isCurrentUser == true}">
+				        <div class="follower-btn-wrapper">
+					  		<input  type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
+					  		<label style="visibility: hidden;" for="follower-toggle" id="follower-label">팔로우</label>
+						</div>
+				    </c:when>
+				    <c:otherwise>
+				        <div class="follower-btn-wrapper">
+					  		<input type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
+					  		<label for="follower-toggle" id="follower-label">팔로우 +</label>
+						</div>
+				    </c:otherwise>
+				</c:choose>
+				
+			</div>
 		</div>
 	</div>
 	
 	<div class="horizontal-bar"> </div>
 	<ul class="tab-bar">
 	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
-	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2">옷장</li>
+	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" onclick="filterProducts('allList')">옷장</li>
 	    <div class="indicator"></div>
 	</ul>
 
@@ -92,6 +143,9 @@
 
 	<div id="tab2" class="tab-content"style="display: none;">
 		<div class="button-section">
+			<button onclick="filterProducts('allList')">
+				<img src="/resources/img/ic-allproducts.png" />
+			</button>
 			<button onclick="filterProducts('bagList')">
 				<img src="/resources/img/ic-bag.png" />
 			</button>
@@ -118,6 +172,7 @@
 			</button>
 		</div>
 		<div id="product-section">
+			<div id="allList" class="product-list-wrapper"></div>
 			<div id="bagList" class="product-list-wrapper"></div>
 			<div id="dressList"class="product-list-wrapper"></div>
 			<div id="bottomList"class="product-list-wrapper"></div>
@@ -128,8 +183,16 @@
 			<div id="accessoryList"class="product-list-wrapper"></div>
 		</div>
 	</div>
+	
+	<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
+		<img src="/resources/img/posting-btn.png"/>
+	</button>
 
 </body>
+ <script>
+	let userIdFromModel = ${userId}; // 서버에서 넘겨준 userId
+	userPostList(userIdFromModel);
+</script>
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
 <script src="/resources/js/tab.js"></script>
