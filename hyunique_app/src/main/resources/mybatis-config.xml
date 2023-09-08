@@ -8,8 +8,7 @@
 		설정된 내용을 그대로 사용. 아래부분만 일반적으로 설정해서 사용해요! -->
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
-
-		<!-- Log4J설정 Query가 실행될때만다 실행되는 SQL Query와 그 결과를 Log로 출력! -->
+		<!-- Log4J설정 Query가 실행될때마다 실행되는 SQL Query와 그 결과를 Log로 출력! -->
 		<setting name="logImpl" value="LOG4J2" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
@@ -27,6 +26,14 @@
 		<typeAlias alias="User" type="com.kosa5.hyunique.user.vo.UserVO" />
 		<typeAlias alias="PostVO" type="com.kosa5.hyunique.post.vo.PostVO" />
 		<typeAlias alias="FilterPostVO" type="com.kosa5.hyunique.post.vo.FilterPostVO" />
+		<typeAlias alias="TagVO" type="com.kosa5.hyunique.post.vo.TagVO" />
+		<typeAlias alias="ProductInformVO" type="com.kosa5.hyunique.product.vo.ProductInformVO" />
 	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler
+				handler="com.kosa5.hyunique.post.util.PostProductTypeHandler"
+				javaType="java.util.List" jdbcType="ARRAY"/>
+	</typeHandlers>
 	
 </configuration>	

@@ -5,16 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = buttonContainer.querySelectorAll('.button');
 
   const selectedIndex = localStorage.getItem('selectedButtonIndex');
-
   buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
       buttons.forEach((btn) => {
         btn.classList.remove('selected');
         scrollToTop()
       });
-
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
+      const filterElement = $('#hyunique-main-top-filter');
+      const popularStyle = $('#popular-style');
+      //팔로우가 아니라면 필터 보이게 처리
+      if(button.textContent.trim()==='팔로우'){
+        filterElement.hide();
+        popularStyle.show();
+      }
+      else{
+        filterElement.show();
+        popularStyle.hide();
+      }
       document.getElementById("applyFilter").click();
     });
 
@@ -22,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.click();
     }
   });
+     buttons[0].click();
 });
 
   function handleButtonClick(tag) {
@@ -57,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
               var button = buttons[0];
               button.style.backgroundColor = "initial";
               button.style.fontWeight = "normal";
-              button.style.color = "initial";
+              button.style.color = "#A5A5A5";
             }
           } else {
             // 체크되어 있지 않을 때의 스타일 (기본 스타일)

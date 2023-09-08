@@ -28,7 +28,7 @@ function likeTogglePost(postId) {
 		$('.like-btn img').css("transform", "scale(1)");
 	}, 100);
 	
-	$.ajax({
+	ajax({
 		url,
 		type: 'POST',
 		data: {

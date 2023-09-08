@@ -3,17 +3,25 @@ package com.kosa5.hyunique.post.controller;
 import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostingVO;
+import com.kosa5.hyunique.post.vo.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.web.bind.annotation.*;
-
+import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.post.service.PostService;
+import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
-import com.kosa5.hyunique.post.vo.PostVO;
+import com.kosa5.hyunique.post.vo.PostingVO;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import javax.servlet.http.HttpSession;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,14 +46,14 @@ public class PostController {
 
         return "post/detail";
     }
-
+    @Auth
     @PostMapping("like")
     @ResponseBody
     public int postLikePostHandler(int postId) {
         int userId = 22;
         return postService.postLikePost(postId, userId);
     }
-
+    @Auth
     @PostMapping("unlike")
     @ResponseBody
     public int postUnlikePostHandler(int postId) {
@@ -54,21 +62,34 @@ public class PostController {
     }
 
     @GetMapping(value = "getPostList")
-    public String getPostingListHandler(Model model) {
+    public String getPostingListHandler(HttpSession session,Model model) {
+        model.addAttribute("userId",session.getAttribute("sessionId"));
+        if(session.getAttribute("sessionId")!=null){
+            model.addAttribute("followerCount",postService.countFollower(Integer.parseInt((String)session.getAttribute("sessionId"))));
+        }
         return "postList";
     }
 
+    @GetMapping(value = "getQRPage")
+    public String getQRPage(Model model){
+        return "readQRPage";
+    }
     // 게시글 작성
     @GetMapping
     public String requestPosting() {
+    	System.out.println("test");
+    	
         return "posting";
     }
 
     @PostMapping
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting) {
-        int state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-        System.out.println("state = " + state);
+        System.out.println("post controller test");
+//        System.out.println("posting = " + posting);
+        postService.testUploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+//        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+//        System.out.println("state = " + state);
 
         return "ok";
     }
@@ -80,6 +101,16 @@ public class PostController {
                 "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
 
         s3Service.deleteImgFile(object_keys);
+        return "ok";
+    }
+
+    @PostMapping("/test")
+    @ResponseBody
+    public String testHandleTagUpload(@RequestBody PostingVO vo) {
+        System.out.println("start post controller");
+//        System.out.println("vo = " + vo);
+
+        postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
         return "ok";
     }
 

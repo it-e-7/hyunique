@@ -41,7 +41,10 @@
                 AND P.USER_ID IN (SELECT FOLLOWING_ID FROM HY_FOLLOW WHERE FOLLOWER_ID = #{userId})
             </if>
             <if test="gender != null and gender != ''">
-                AND U.USER_SEX = #{gender}
+                AND U.USER_SEX IN
+                <foreach collection="gender" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
             </if>
             <if test="tpo != null and tpo.size() > 0">
                 AND TPO_ID IN
@@ -72,10 +75,12 @@
                 </foreach>
             </if>
             <if test="style != null and style.size() > 0">
-                AND STYLE_ID IN
+                AND P.POST_ID IN
+                ( SELECT POST_ID FROM post_style_tag WHERE STYLE_ID IN
                 <foreach collection="style" item="item" separator="," open="(" close=")">
                     #{item}
                 </foreach>
+                )
             </if>
         </where>
         ) P
@@ -96,8 +101,11 @@
         </if>
     </select>
 
-
-
-
+    <select id="countFollower" parameterType="FilterPostVO" resultType="Integer">
+        SELECT COUNT(P.POST_ID) AS POST_COUNT
+        FROM HY_FOLLOW F
+        JOIN HY_POST P ON F.FOLLOWER_ID = P.USER_ID
+        WHERE F.FOLLOWER_ID = #{userId}
+    </select>
 
 </mapper>

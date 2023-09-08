@@ -169,4 +169,9 @@ button {
 	top: -20px;
 	border-bottom-color: rgba(255, 255, 255, 85%);
 	transform: translate(-50%, 0);
+
+#backward-btn{
+	width:30px;
+	height:30px;
+	transform: rotateY(180deg);
 }

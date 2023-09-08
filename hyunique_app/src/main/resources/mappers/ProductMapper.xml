@@ -76,4 +76,12 @@
 		]]>
 	</select>
 
+	<select id="selectProductSize" parameterType="String" resultType="String">
+		SELECT PRODUCT_SIZE FROM PRODUCT_SIZE WHERE PRODUCT_ID = #{productId}
+	</select>
+
+	<select id="selectProductColor" parameterType="String" resultType="String">
+		SELECT PRODUCT_COLOR FROM PRODUCT_COLOR WHERE PRODUCT_ID = #{productId}
+	</select>
+
 </mapper>  

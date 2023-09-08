@@ -33,6 +33,14 @@
 		</beans:property>
 	</beans:bean>
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<exclude-mapping path="/resources/**" />
+			<beans:bean
+				class="com.kosa5.hyunique.interceptor.AuthInterceptor" />
+		</interceptor>
+	</interceptors>
 
 	<!-- Component Scanning -->
 	<context:component-scan
@@ -41,9 +49,6 @@
 	<!-- Custom Beans -->
 	<beans:bean id="naverLoginBO"
 		class="com.kosa5.hyunique.oauth.NaverLoginBO" />
-
-	<beans:bean id="S3Service"
-				class="com.kosa5.hyunique.post.util.S3Service"/>
 
 	<!-- AOP 설정 추가 -->
 	<aop:aspectj-autoproxy />
