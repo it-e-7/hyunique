@@ -31,13 +31,27 @@
 		<c:choose>
 		    <c:when test="${isCurrentUser == true}">
 		        <a href="update">
-		            <img src="/resources/img/ic-settings.png" id="settings" />
+		           <lord-icon
+		           		id="settings"
+					    src="https://cdn.lordicon.com/hwuyodym.json"
+					    trigger="hover"
+					    colors="primary:#121331"
+					    state="hover-1"
+					    style="width:30px;height:30px">
+					</lord-icon>
 		        </a>
 		    </c:when>
 		    <c:otherwise>
 		        <div style="visibility: hidden;">
-		            <img src="/resources/img/ic-settings.png" id="settings" />
-		        </div>
+ 					<lord-icon
+		           		id="settings"
+					    src="https://cdn.lordicon.com/hwuyodym.json"
+					    trigger="hover"
+					    colors="primary:#121331"
+					    state="hover-1"
+					    style="width:30px;height:30px">
+					</lord-icon>		        
+				</div>
 		    </c:otherwise>
 		</c:choose>
 	</div>
