@@ -1,14 +1,11 @@
 package com.kosa5.hyunique.post.mapper;
 
-import com.kosa5.hyunique.post.vo.PostProductVO;
-import com.kosa5.hyunique.post.vo.FilterPostVO;
+import com.kosa5.hyunique.post.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.kosa5.hyunique.post.vo.PostDetailVO;
-import com.kosa5.hyunique.post.vo.PostVO;
-
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface PostMapper {
@@ -23,6 +20,12 @@ public interface PostMapper {
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
-    int insertOnePost(PostVO postVO);
+    Integer countFollower(FilterPostVO filterPostVO);
+  
+//    int insertOnePost(Map<String, Object> post);
+
+    void testInsertOnePost(Map<String, Object> params);
+
+    List<TagVO> getTagInform(String type);
 
 }

@@ -10,14 +10,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FilterPostVO {
-    private String gender;
+    private List<String> gender;
     private List<Integer> tpo;
     private List<Integer> season;
     private List<Integer> style;
     private Integer minHeight;
     private Integer maxHeight;
     private Integer page;
-    private Integer pageSize = 10;
+    private Integer pageSize = 12;
     private String selectedType;
     private Integer userId;
+    private Integer follower = 0;
 }

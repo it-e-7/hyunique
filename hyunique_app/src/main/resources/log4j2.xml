@@ -21,7 +21,7 @@
         </Console>
         <!-- Query Loggers 쿼리 과정(파라미터까지) -->
         <appender name="console-dblog" class="org.apache.log4j.ConsoleAppender">
-            <PatternLayout pattern="%d %5p %m%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%c][%L LINE] %m%n" />
         </appender>
     </Appenders>
     <Loggers>

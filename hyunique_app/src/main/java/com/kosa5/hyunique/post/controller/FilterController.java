@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,12 @@ public class FilterController {
 	private PostService postService;
 
 	@GetMapping(value = "getFilterPost")
-	public String getFilterPost(@ModelAttribute FilterPostVO filterPostVO, Model model) {
+	public String getFilterPost(HttpSession session, @ModelAttribute FilterPostVO filterPostVO, Model model) {
 		List<PostVO> postVOList = new ArrayList<>();
-		//로그인과 연결 되어 있지 않기 때문에, 우선적으로 24라는 테스트 유저아이디를 사용합니다.
-		filterPostVO.setUserId(24);
+		if(session.getAttribute("sessionId")!=null){
+			Integer sessionId = Integer.parseInt((String)session.getAttribute("sessionId"));
+			filterPostVO.setUserId(sessionId);
+		}
 		postVOList = postService.getfilterPostList(filterPostVO);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";

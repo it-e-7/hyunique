@@ -21,7 +21,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-
 @Service
 public class S3Service {
 
@@ -41,13 +40,13 @@ public class S3Service {
         this.bucketName = bucketName;
     }
 
-    public List<URL> getUploadImgURL(List<String> base64Images) {
-        Map<String, URL> imgUploadState = new HashMap<>();
+    public List<String> getUploadImgURL(List<String> base64Images) {
+        Map<String, String> imgUploadState = new HashMap<>();
 
         for(String base64Img : base64Images) {
             String fileName = createImgFileName();
 
-            URL returnUrl = uploadBase64Img(base64Img, fileName, "post/");
+            String returnUrl = uploadBase64Img(base64Img, fileName);
 
             // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
@@ -56,7 +55,7 @@ public class S3Service {
 
                 while (keyIterator.hasNext()) {
                     String key = keyIterator.next();
-                    deleteKeys.add("/post"+key);
+                    deleteKeys.add("post/"+key);
                 }
                 deleteImgFile(deleteKeys);
                 return null;
@@ -72,8 +71,7 @@ public class S3Service {
     }
 
     // base64 디코딩 및 업로드
-    public URL uploadBase64Img(String base64Img, String fileName, String dir) {
-    	
+    public String uploadBase64Img(String base64Img, String fileName, String dir) {
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
@@ -85,7 +83,10 @@ public class S3Service {
             return amazonS3Client.getUrl(bucketName, dir + fileName);
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("e.printStackTrace(); = " + e.getStackTrace());
             return null;
+        } finally {
+            amazonS3.shutdown();
         }
     }
 
@@ -98,7 +99,6 @@ public class S3Service {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.AP_NORTHEAST_2)
                 .build();
-
         try {
             DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(String.valueOf(files));
             DeleteObjectsResult deleteObjectsResult = s3.deleteObjects(dor);
@@ -121,6 +121,8 @@ public class S3Service {
             for (MultiObjectDeleteException.DeleteError error : errors) {
                 System.out.println("Error: " + error.getCode() + ", Key: " + error.getKey());
             }
+        } finally {
+            amazonS3.shutdown();
         }
 
     }

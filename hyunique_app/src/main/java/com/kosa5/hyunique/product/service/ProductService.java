@@ -1,10 +1,12 @@
 package com.kosa5.hyunique.product.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
+import com.kosa5.hyunique.product.vo.ProductInformVO;
 
 public interface ProductService {
 
@@ -12,4 +14,5 @@ public interface ProductService {
 	List<PostThumbnailVO> getProductStyleById(String productId, int offset);
 
 	List<PostProductVO> getSearchProductList(String productName);
+	ProductInformVO getProductSizeAndColor(String productId);
 }
