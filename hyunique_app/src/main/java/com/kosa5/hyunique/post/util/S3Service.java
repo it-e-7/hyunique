@@ -50,7 +50,7 @@ public class S3Service {
 
                 while (keyIterator.hasNext()) {
                     String key = keyIterator.next();
-                    deleteKeys.add("/post"+key);
+                    deleteKeys.add("post/"+key);
                 }
                 deleteImgFile(deleteKeys);
                 return null;
@@ -67,6 +67,7 @@ public class S3Service {
 
     // base64 디코딩 및 업로드
     public String uploadBase64Img(String base64Img, String fileName) {
+        System.out.println("base64Img = " + base64Img);
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
@@ -75,12 +76,13 @@ public class S3Service {
             metadata.setContentType("image/jpeg");
             amazonS3.putObject(new PutObjectRequest(bucketName, "post/" + fileName, inputStream, metadata));
 
-
             return amazonS3Client.getUrl(bucketName, fileName).toString();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("e.printStackTrace(); = " + e.getStackTrace());
             return null;
+        } finally {
+            amazonS3.shutdown();
         }
     }
 
@@ -93,7 +95,6 @@ public class S3Service {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.AP_NORTHEAST_2)
                 .build();
-
         try {
             DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(String.valueOf(files));
             DeleteObjectsResult deleteObjectsResult = s3.deleteObjects(dor);
@@ -116,6 +117,8 @@ public class S3Service {
             for (MultiObjectDeleteException.DeleteError error : errors) {
                 System.out.println("Error: " + error.getCode() + ", Key: " + error.getKey());
             }
+        } finally {
+            amazonS3.shutdown();
         }
 
     }
