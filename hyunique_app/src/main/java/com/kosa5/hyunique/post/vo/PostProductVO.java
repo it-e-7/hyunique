@@ -16,4 +16,5 @@ public class PostProductVO {
 	private String productImg;
 	private int productPrice;
 	private String productSize;
+	private String productColor;
 }

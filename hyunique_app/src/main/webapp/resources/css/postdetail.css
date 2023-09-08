@@ -244,24 +244,3 @@ ul {
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
 }
-
-.post-pin {
-	position: absolute;
-	display: block;
-	padding: 8px 12px;
-	background-color: rgba(255, 255, 255, 85%);
-	border-radius: 10px;
-}
-
-.pin-brand {
-	font-weight: 700;
-}
-
-.pin-price {
-	color: var(--grey5);
-}
-
-.pin-size {
-	font-weight: 550;
-	color: var(--jw-blue);
-}

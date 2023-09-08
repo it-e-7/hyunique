@@ -43,7 +43,7 @@
 				<img src="/resources/img/ic-posttag.png"/>
 			</button>
 			<c:forEach var="product" items="${postVO.productList}">
-				<div class="post-pin" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
+				<div class="post-pin arrow-top" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
 					<p class="pin-brand">${product.productBrand}</p>
 					<p class="pin-price">&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/></p>
 					<p class="pin-size">${product.productSize} 사이즈</p>
@@ -99,7 +99,7 @@
 									<p class="product-item-price">
 										&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/>
 									</p>
-									<p class="product-item-size">${product.productSize} 사이즈</p>
+									<p class="product-item-size">${product.productColor} / ${product.productSize}</p>
 								</span>
 							</div>
 						</li>
