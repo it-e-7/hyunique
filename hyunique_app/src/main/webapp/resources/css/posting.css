@@ -1,18 +1,10 @@
-img {
+.image-view img {
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
 }
 
-.write-container {
-    display: none;
-}
-
-.post-container {
-    display: none;
-}
-
-.search-container {
+.write-container, .search-container, .post-container {
     display: none;
 }
 
@@ -33,9 +25,9 @@ img {
 
 .search-product-li {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 20px;
+    border: 2px solid var(--grey1);
+    border-radius: 10px;
+    margin-bottom: 6px;
 }
 
 .search-product-img {
@@ -52,9 +44,9 @@ img {
     margin: 5px;
 }
 
-.pre-container .header p {
+.pre-container .header p, .post-container .header p {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -64,18 +56,7 @@ img {
     font-size: 20px;
 }
 
-.button-container button {
-    font-size: 16px;
-    line-height: 18px;
-    height: 48px;
-    width: 320px;
-    background: var(--jw-blue);
-    color: #FFFFFF;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.write-container label {
+.write-container p {
     font-weight: bold;
     font-size: 16px;
 }
@@ -88,3 +69,189 @@ img {
     font-size: 16px;
     border: 1px solid var(--jw-blue3);
 }
+
+#img-load-button {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+    text-align: center;
+}
+
+#next-button {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 80%;
+    background: url(.png);
+    border-radius: 24px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    display: none;
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+	border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+	padding:0.1rem 1.3rem;
+    cursor: pointer;
+	line-height:2rem;
+	margin-right:0.1rem;
+	margin-top:1rem;
+    font-family:Spoqa Han Sans;
+	letter-spacing:0.05rem;
+	text-align:center;
+	color:var(--grey4);
+}
+
+input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+}
+
+.style-button-group, .tpo-button-group, .season-button-group, .content-group {
+    padding: 20px;
+}
+
+.style-button-group div, .tpo-button-group div, .season-button-group div {
+    margin-right: 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-group textarea {
+    width: 100%;  /* 너비를 부모 요소에 맞춤 */
+    min-height: 100px;  /* 최소 높이 설정 */
+    resize: vertical;  /* 세로로만 크기 조절 가능하게 설정 */
+    overflow: auto;  /* 내용이 넘칠 경우 스크롤 표시 */
+}
+
+.form-group {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 760px;
+    flex-direction: column;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+.search-text {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    font-size: 16px;
+    outline: none;
+    background: var(--grey1);
+    border-radius: 20px;
+    padding-right: 40px;
+    padding-left: 20px;
+}
+
+.search-icon {
+    margin-right: 10px; /* 필요에 따라 조정 */
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searching {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.searching img {
+    width: 20px;
+}
+
+.search-body {
+    padding: 20px;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    margin: auto;
+    padding: 20px;
+    background: white;
+    width: 50%;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+/* 기존 코드 */
+/* 새로운 코드 시작 */
+.custom-picker {
+  overflow: hidden;
+  height: 50px;
+  position: relative;
+}
+.slide-content {
+  position: absolute;
+  top: 0;
+  transition: top 0.3s ease;
+}
+.slide-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 새로운 코드 끝 */
+/* 기존 코드 끝 */
