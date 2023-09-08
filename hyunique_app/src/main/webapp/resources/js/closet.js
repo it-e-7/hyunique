@@ -33,6 +33,8 @@ function displayCloset(closetVO) {
         'bottomList', 'shoesList', 'hatList', 'accessoryList'
     ];
     $('#allList').empty();
+    
+    let emptyCategory = 0;
 
     for (const category of categories) {
         let productHtml = '';
@@ -41,8 +43,16 @@ function displayCloset(closetVO) {
             productHtml += generateProductCard(product);
         }
         $(`#${category}`).html(productHtml).hide();
-
-        addCategoryPreviewToAllList(category, productList);
+        
+        if(productList.length === 0) {
+        	emptyCategory++;
+        } else {
+        	addCategoryPreviewToAllList(category, productList);
+        }
+    }
+    
+    if(emptyCategory === 8) {
+    	$('#allList').addClass('empty');
     }
 
     filterProducts('bagList', categories);
@@ -133,8 +143,9 @@ function addCategoryPreviewToAllList(category, productList) {
     
     previewHtml += `<div class="category-name">${categoryName}</div>`;
     previewHtml += '</div>';
-
+    
     $('#allList').append(previewHtml);
+    
 }
 
 //상품 영역 생성 함수
