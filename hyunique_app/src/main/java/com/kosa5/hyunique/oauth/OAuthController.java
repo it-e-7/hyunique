@@ -31,6 +31,9 @@ public class OAuthController {
 
 	@Value("${key.KAKAO}")
 	private String kakaoApiKey;
+	
+	@Value("${api.url}")
+	private String API_URL;
 
 	@Autowired
 	private OAuthService ms;
@@ -57,6 +60,7 @@ public class OAuthController {
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {
 		model.addAttribute("kakaoApiKey", kakaoApiKey);
+		model.addAttribute("API_URL", API_URL);
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
 		return "login";
