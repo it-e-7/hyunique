@@ -1,3 +1,5 @@
+$.getScript('https://cdn.lordicon.com/bhenfmcm.js');
+
 function ajax(config) {
 	const success = config.success;
 	console.log("ajax들어옴");

@@ -9,8 +9,6 @@
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/userStyle.css" />
-<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-
 </head>
 <body>
 	<div id="session-info">

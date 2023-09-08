@@ -56,19 +56,52 @@ function filterProducts(category) {
         'allList', 'bagList', 'dressList', 'outerList', 'topList',
         'bottomList', 'shoesList', 'hatList', 'accessoryList'
     ];
-    
+
+ // 기존 코드 4줄
     const wrapper = document.getElementById(category);
-    if (wrapper.children.length !== 0) {
-      wrapper.classList.remove("empty");  // 상품이 있으면 empty 클래스 제거
+    const overlayDiv = document.createElement('div');
+    overlayDiv.className = 'overlay';
+    overlayDiv.innerHTML = `
+      <lord-icon
+        src="https://cdn.lordicon.com/vixtkkbk.json"
+	    trigger="loop"
+	    delay="1500"
+	    colors="primary:#121331,secondary:#545454"
+	    style="width:170px;height:170px">
+      </lord-icon>
+      <p id="txt-more-style">다양한 스타일링을 올려보세요!</p>
+    `;
+
+    // .overlay를 제외한 실제 상품의 개수를 확인한다.
+    const realChildrenCount = Array.from(wrapper.children).filter(child => !child.classList.contains('overlay')).length;
+
+    if (realChildrenCount !== 0) {
+      wrapper.classList.remove("empty");
+      wrapper.style.display = 'grid'; // 상품이 있을 때는 display를 grid로 설정
+
+      // 만약 overlay div가 있으면, 삭제한다.
+      const existingOverlay = wrapper.querySelector('.overlay');
+      if(existingOverlay) {
+        wrapper.removeChild(existingOverlay);
+      }
+
     } else {
-      wrapper.classList.add("empty");  // 상품이 없으면 empty 클래스 추가
+      wrapper.classList.add("empty");
+      wrapper.style.display = 'flex'; // 상품이 없을 때는 display를 flex로 설정
+
+      // 이미 overlay div가 있다면 추가하지 않는다.
+      if(!wrapper.querySelector('.overlay')) {
+        wrapper.appendChild(overlayDiv);
+      }
     }
-    
+
+    // 기존 코드 4줄
     for (const current of categories) {
-        $(`#${current}`).hide();
+      $(`#${current}`).hide();
     }
     $(`#${category}`).show();
     currentCategory = category;
+
 }
 
 //allList에 카테고리별 미리보기 추가 함수
