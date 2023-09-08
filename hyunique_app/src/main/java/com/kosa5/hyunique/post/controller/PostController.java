@@ -67,8 +67,9 @@ public class PostController {
     public String handlePostUpload(@RequestBody PostingVO posting) {
         System.out.println("post controller test");
 //        System.out.println("posting = " + posting);
-        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-        System.out.println("state = " + state);
+        postService.testUploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+//        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+//        System.out.println("state = " + state);
 
         return "ok";
     }
@@ -87,7 +88,7 @@ public class PostController {
     @ResponseBody
     public String testHandleTagUpload(@RequestBody PostingVO vo) {
         System.out.println("start post controller");
-        System.out.println("vo = " + vo);
+//        System.out.println("vo = " + vo);
 
         postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
         return "ok";

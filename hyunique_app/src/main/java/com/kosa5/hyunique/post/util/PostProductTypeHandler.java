@@ -12,6 +12,7 @@ import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.List;
 
 @MappedTypes(java.util.ArrayList.class)
@@ -32,14 +33,14 @@ public class PostProductTypeHandler implements TypeHandler {
             params[2] = pack.getProductId();
             params[3] = pack.getProductSize();
 
-            System.out.println("params = " + params);
+            System.out.println("params = " + params.toString());
 
             STRUCT struct = new STRUCT(structDescriptor, ps.getConnection(), params);
             structs[idx] = struct;
 
             ArrayDescriptor desc = ArrayDescriptor.createDescriptor("POSTPRODUCTVOLIST", ps.getConnection());
             ARRAY oracleArray = new ARRAY(desc, ps.getConnection(), structs);
-            System.out.println("oracleArray = " + oracleArray);
+            System.out.println("oracleArray = " + Arrays.toString((Object[])oracleArray.getArray()));
             ps.setArray(i, oracleArray);
         }
     }
