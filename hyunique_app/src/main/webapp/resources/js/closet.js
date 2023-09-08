@@ -56,7 +56,14 @@ function filterProducts(category) {
         'allList', 'bagList', 'dressList', 'outerList', 'topList',
         'bottomList', 'shoesList', 'hatList', 'accessoryList'
     ];
-
+    
+    const wrapper = document.getElementById(category);
+    if (wrapper.children.length !== 0) {
+      wrapper.classList.remove("empty");  // 상품이 있으면 empty 클래스 제거
+    } else {
+      wrapper.classList.add("empty");  // 상품이 없으면 empty 클래스 추가
+    }
+    
     for (const current of categories) {
         $(`#${current}`).hide();
     }

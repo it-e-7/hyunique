@@ -22,7 +22,9 @@ function ajax(config) {
 }
 
 function backward() {
-	history.back();
+	setTimeout(function() {
+		history.back();
+	}, 600);
 }
 
 function moveToPost(postId) {

@@ -9,6 +9,7 @@
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/userStyle.css" />
+<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 
 </head>
 <body>
@@ -18,7 +19,13 @@
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<!-- <img src="/resources/img/ic-backward.png" /> -->
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331">
+			</lord-icon>
 		</button>
 		<div class="txt-user-profile">
 			<p>${user.userNickname}</p>
@@ -85,7 +92,7 @@
 				<p id="user-follower">${user.userPrefer}</p>
 			</div>
 			<div class="user-detail-bar-wrapper">
-				<p id="user-detail-title">체     형</p>
+				<p id="user-detail-title">체형</p>
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.userForm}</p>
 			</div>
@@ -113,7 +120,7 @@
 	<div class="horizontal-bar"> </div>
 	<ul class="tab-bar">
 	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
-	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2">옷장</li>
+	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" onclick="filterProducts('allList')">옷장</li>
 	    <div class="indicator"></div>
 	</ul>
 

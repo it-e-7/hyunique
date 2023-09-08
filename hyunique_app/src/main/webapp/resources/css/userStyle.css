@@ -396,3 +396,8 @@ body{
     margin-top: 0.5rem;
 }
 
+.product-list-wrapper:empty::before {
+  content: "상품을 추가해주세요";
+  text-align: center;
+  display: block;
+}

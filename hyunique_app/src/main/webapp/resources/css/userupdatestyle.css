@@ -157,3 +157,9 @@ input[type="checkbox"]:checked + label {
 #facebookUrl{
 	margin-bottom: 4rem;
 }
+
+.product-list-wrapper:empty::before {
+  content: "상품을 추가해주세요";
+  text-align: center;
+  display: block;
+}
