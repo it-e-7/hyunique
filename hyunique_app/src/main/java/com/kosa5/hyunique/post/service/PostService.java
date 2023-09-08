@@ -1,11 +1,9 @@
 package com.kosa5.hyunique.post.service;
 
-import com.kosa5.hyunique.post.vo.FilterPostVO;
-import com.kosa5.hyunique.post.vo.PostDetailVO;
-import com.kosa5.hyunique.post.vo.PostProductVO;
-import com.kosa5.hyunique.post.vo.PostVO;
+import com.kosa5.hyunique.post.vo.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PostService {
 
@@ -22,4 +20,11 @@ public interface PostService {
     int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 
     int countFollower(Integer userId);
+
+    String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
+
+    void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
+
+    List<TagVO> getTagInform(String type);
+
 }
