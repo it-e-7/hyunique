@@ -10,13 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
                             if (isLoading) {
                                 return;
                             }
+                            if ($('#bottom-for-login').length == 1){
+                                isLoading = false;
+                                return;
+                            }
                             loadMoreImages();
             }
         });
 
         function loadMoreImages() {
-        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
 
+        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
             const formData = {
                         minHeight: 140, // 초기 값 설정
                         maxHeight: 190, // 초기 값 설정
