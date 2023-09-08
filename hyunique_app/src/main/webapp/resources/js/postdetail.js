@@ -1,5 +1,5 @@
 let imgIdx = 0;
-const imgWidth = $(".img-slider-wrapper").width();
+const imgWidth = Math.round($(".img-slider-wrapper").width());
 const likeBtnImgSrc = {
 	unselect: `/resources/img/ic-like.png`,
 	selected: `/resources/img/ic-like-selected.png`,
@@ -93,15 +93,31 @@ function toggleFollow(userId) {
 	}
 }
 
+function togglePin(e) {
+	if(e.target.closest('.post-pin')) return;
+	if(e.target.closest('.img-slider-wrapper').scrollLeft !== 0) return;
+	$('.post-pin').each((idx, pin) => {
+		if(pin.style.display !== 'none') {
+			pin.style.display = 'none';
+			$('.tag-btn').css('opacity', '0.7');
+		} else {
+			pin.style.display = 'block';
+			$('.tag-btn').css('opacity', '1');
+		}
+	});
+}
+
+$('.img-slider-wrapper').click(togglePin);
+
 $('.img-slider-wrapper').scroll(() => {
-	if($('.img-slider-wrapper').scrollLeft() % imgWidth === 0) {
-		const newIdx = $('.img-slider-wrapper').scrollLeft() / imgWidth;
+	const scrollLeft = Math.round($('.img-slider-wrapper').scrollLeft())
+	if(scrollLeft % imgWidth === 0) {
+		const newIdx = scrollLeft / imgWidth;
 		changeIndexCircle(newIdx);
 	}
 });
 
 function changeIndexCircle(newIdx) {
-	console.log(newIdx);
 	$(`#index-circle-${imgIdx}`).removeClass('img-index-selected');
 	$(`#index-circle-${newIdx}`).addClass('img-index-selected');
 	imgIdx = newIdx;

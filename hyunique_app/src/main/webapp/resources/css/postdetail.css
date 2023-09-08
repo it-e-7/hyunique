@@ -14,7 +14,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 0.6rem;
+	gap: 0.8rem;
 	cursor: pointer;
 }
 
@@ -26,6 +26,7 @@
 
 .left-user-info p {
 	color: var(--grey5);
+	font-size: 0.9rem;
 }
 
 #follow-btn {
@@ -181,6 +182,16 @@
 	white-space: nowrap;
 }
 
+.product-price-size-wrapper {
+	display: flex;
+	gap: 0.6rem;
+} 
+
+.product-item-size {
+	color: var(--jw-blue3);
+	font-weight: 550;
+}
+
 ul {
 	list-style: none;
 }
@@ -232,4 +243,25 @@ ul {
 	width: 100%;
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
+}
+
+.post-pin {
+	position: absolute;
+	display: block;
+	padding: 8px 12px;
+	background-color: rgba(255, 255, 255, 85%);
+	border-radius: 10px;
+}
+
+.pin-brand {
+	font-weight: 700;
+}
+
+.pin-price {
+	color: var(--grey5);
+}
+
+.pin-size {
+	font-weight: 550;
+	color: var(--jw-blue);
 }
