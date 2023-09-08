@@ -1,11 +1,15 @@
 package com.kosa5.hyunique.post.mapper;
 
-import com.kosa5.hyunique.post.vo.*;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-import java.util.Map;
+import com.kosa5.hyunique.post.vo.FilterPostVO;
+import com.kosa5.hyunique.post.vo.PostDetailVO;
+import com.kosa5.hyunique.post.vo.PostVO;
+import com.kosa5.hyunique.post.vo.TagVO;
 
 @Mapper
 public interface PostMapper {

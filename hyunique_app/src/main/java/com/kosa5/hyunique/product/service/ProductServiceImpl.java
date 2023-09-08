@@ -2,16 +2,15 @@ package com.kosa5.hyunique.product.service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-import com.kosa5.hyunique.post.vo.PostProductVO;
-import com.kosa5.hyunique.product.vo.ProductInformVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.mapper.ProductMapper;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
+import com.kosa5.hyunique.product.vo.ProductInformVO;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -49,8 +48,6 @@ public class ProductServiceImpl implements ProductService {
 		ProductInformVO vo = new ProductInformVO();
 		vo.setProductSize(productMapper.selectProductSize(productId));
 		vo.setProductColor(productMapper.selectProductColor(productId));
-
-		System.out.println("vo = " + vo);
 
 		return vo;
 	}

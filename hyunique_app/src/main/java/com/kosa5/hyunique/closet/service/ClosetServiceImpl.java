@@ -21,7 +21,6 @@ public class ClosetServiceImpl implements ClosetService {
     @Override
     public ClosetVO getClosetByUserId(int userId) {
         List<Map<String, Object>> results = closetMapper.getClosetByUserId(userId);
-        System.out.println(results);
         ClosetVO closetVO = new ClosetVO();
 
         // 리스트 초기화
@@ -45,12 +44,10 @@ public class ClosetServiceImpl implements ClosetService {
             BigDecimal priceDecimal = (BigDecimal) result.get("PRODUCT_PRICE");
             product.setProductPrice(priceDecimal.intValue());
             product.setTypeName(typeName);
-            System.out.println(typeName);
 
             // 매핑된 제품 정보를 ClosetVO 객체에 추가
             switch (typeName) {
                 case "가방":
-                    System.out.println(product);
                     closetVO.getBagList().add(product);
                     break;
                 case "원피스":
@@ -63,8 +60,6 @@ public class ClosetServiceImpl implements ClosetService {
                     closetVO.getTopList().add(product);
                     break;
                 case "하의":
-                    System.out.println(product);
-
                     closetVO.getBottomList().add(product);
                     break;
                 case "신발":
@@ -78,7 +73,6 @@ public class ClosetServiceImpl implements ClosetService {
                     break;
             }
         }
-        System.out.println(closetVO);
         return closetVO;
     }
 

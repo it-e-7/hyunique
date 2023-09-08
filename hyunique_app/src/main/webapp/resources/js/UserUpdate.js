@@ -135,7 +135,7 @@ function userPostList(userId) {
 
 	    },
 	    error: function(error) {
-	      console.log('게시물을 불러오는 데 실패했습니다:', error);
+	      console.error('게시물을 불러오는 데 실패했습니다:', error);
 	    }
 	  });
 }
@@ -167,7 +167,7 @@ function fetchClosetInfo(userId) {
 	      });
 	    },
 	    error: function(error) {
-	      console.log('옷장 정보를 불러오는 데 실패했습니다:', error);
+	      console.error('옷장 정보를 불러오는 데 실패했습니다:', error);
 	    }
 	  });
 	}
@@ -179,7 +179,6 @@ function movePostPage() {
         url: '/post',
         success: function(response) {
         	window.location.href = '/post';
-            console.log("success");
         },
         error: function(error) {
             console.error("Error sending GET request:", error);
