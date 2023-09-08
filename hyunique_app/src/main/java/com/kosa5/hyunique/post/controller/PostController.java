@@ -1,9 +1,10 @@
 package com.kosa5.hyunique.post.controller;
 
-import com.kosa5.hyunique.post.util.S3Service;
-import com.kosa5.hyunique.post.vo.PostProductVO;
-import com.kosa5.hyunique.post.vo.PostingVO;
-import com.kosa5.hyunique.post.vo.TagVO;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostingVO;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.kosa5.hyunique.post.vo.TagVO;
 
 @Controller
 @RequestMapping("post")
@@ -46,28 +42,19 @@ public class PostController {
 
         return "post/detail";
     }
+    
     @Auth
     @PostMapping("like")
     @ResponseBody
-    public int postLikePostHandler(int postId) {
-        int userId = 22;
-        return postService.postLikePost(postId, userId);
+    public int postLikePostHandler(@SessionAttribute int sessionId, int postId) {
+        return postService.postLikePost(postId, sessionId);
     }
+    
     @Auth
     @PostMapping("unlike")
     @ResponseBody
-    public int postUnlikePostHandler(int postId) {
-        int userId = 22;
-        return postService.postUnlikePost(postId, userId);
-    }
-
-    @GetMapping(value = "getPostList")
-    public String getPostingListHandler(HttpSession session,Model model) {
-        model.addAttribute("userId",session.getAttribute("sessionId"));
-        if(session.getAttribute("sessionId")!=null){
-            model.addAttribute("followerCount",postService.countFollower(Integer.parseInt((String)session.getAttribute("sessionId"))));
-        }
-        return "postList";
+    public int postUnlikePostHandler(@SessionAttribute int sessionId, int postId) {
+        return postService.postUnlikePost(postId, sessionId);
     }
 
     @GetMapping(value = "getQRPage")
@@ -77,7 +64,6 @@ public class PostController {
     // 게시글 작성
     @GetMapping
     public String requestPosting() {
-    	System.out.println("test");
     	
         return "posting";
     }
@@ -85,11 +71,8 @@ public class PostController {
     @PostMapping
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting) {
-        System.out.println("post controller test");
-//        System.out.println("posting = " + posting);
         postService.testUploadOnePost(posting.getPostVO(), posting.getPostProductVO());
 //        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-//        System.out.println("state = " + state);
 
         return "ok";
     }
@@ -107,11 +90,21 @@ public class PostController {
     @PostMapping("/test")
     @ResponseBody
     public String testHandleTagUpload(@RequestBody PostingVO vo) {
-        System.out.println("start post controller");
-//        System.out.println("vo = " + vo);
 
         postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
         return "ok";
+    }
+    
+    @GetMapping("/tag")
+    @ResponseBody
+    public Map<String, List<TagVO>> getTagName() {
+
+        Map<String, List<TagVO>> tagsMap = new HashMap<>();
+        tagsMap.put("styleTags", postService.getTagInform("HY_STYLETAG"));
+        tagsMap.put("tpoTags", postService.getTagInform("HY_TPOTAG"));
+        tagsMap.put("seasonTags", postService.getTagInform("HY_SEASONTAG"));
+
+        return tagsMap;
     }
 
 }

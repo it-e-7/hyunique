@@ -9,10 +9,6 @@ const likeToggle = {
 	unselect: 'selected',
 };
 
-function follow(following) {
-	console.log(following);
-}
-
 function likeTogglePost(postId) {
 	let url = `/post/like`;
 	let present = 'unselect';
@@ -35,7 +31,7 @@ function likeTogglePost(postId) {
 			postId
 		},
 		success: function(response) {
-			console.log(response);
+			
 		}
 	});
 }
@@ -65,12 +61,12 @@ function toggleFollow(userId) {
 	if(btn.hasClass('jw-btn-nonshadow')) {
 		btn.attr('class', 'jw-btn-selected');
 		btn.text('팔로잉');
-		$.ajax({
+		ajax({
 			url: `/user/follow`,
 			type: 'POST',
 			data: { userId, },
 			success: function(response) {
-				console.log(response);
+				
 			},
 			error: function(response) {
 				console.error(response);
@@ -79,12 +75,12 @@ function toggleFollow(userId) {
 	} else {
 		btn.attr('class', 'jw-btn-nonshadow');
 		btn.text('팔로우');
-		$.ajax({
+		ajax({
 			url: `/user/unfollow`,
 			type: 'POST',
 			data: { userId, },
 			success: function(response) {
-				console.log(response);
+				
 			},
 			error: function(response) {
 				console.error(response);
@@ -125,6 +121,5 @@ function changeIndexCircle(newIdx) {
 
 $(document).ready(() => {
 	$('.img-slider-wrapper').scrollLeft(0);
-	console.log($('.img-slider-wrapper').scrollLeft());
 	changeIndexCircle(imgIdx);
 });

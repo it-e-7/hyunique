@@ -269,14 +269,12 @@ function attachTag(xOffset, yOffset, vo) {
         items[id].xOffset = xOffset;
         items[id].yOffset = yOffset;
 
-        console.log(JSON.stringify(items[id]));
 
         let imgContainer = $('#image-list li:first-child');
         imgContainer.append(tagElement);
 
         // 새로 생성된 태그에 드래그 이벤트 바인딩
         tagElement.on("mousedown touchstart", function(event) {
-            console.log("start");
             dragStart(event);
         });
 
@@ -414,10 +412,10 @@ function sendPostToServer(postingVO) {
         contentType: 'application/json',
         data: JSON.stringify(postingVO),
         success: function(response) {
-            console.log(response);
+            
         },
         error: function(error) {
-            console.log('error', error);
+            console.error('error', error);
         }
     });
 }
@@ -456,14 +454,6 @@ function renderSearchProductResults(results, productName) {
 
         resultList.append(listItem);
     });
-}
-
-// 태그 선택했을 때 값 확인용
-function handleCheckBoxState(tag, groupClass) {
-    console.log(tag);
-
-    let checkbox = $(`#${tag}`);
-    console.log("checkbox: ", checkbox);
 }
 
 // 각 그룹별로 체크된 체크박스의 값을 Map<TagName, TagId> 로 반환

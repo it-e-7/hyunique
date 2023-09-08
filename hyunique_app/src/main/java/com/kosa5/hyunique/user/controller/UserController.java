@@ -1,7 +1,6 @@
 package com.kosa5.hyunique.user.controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +33,7 @@ import com.kosa5.hyunique.user.vo.UserVO;
 public class UserController {
 
 	private UserService userService;
+	
 	@Autowired
     S3Service s3Service;
 	Logger log = LogManager.getLogger("case3");
@@ -79,9 +79,9 @@ public class UserController {
 
 
 	// 유저 기본정보 업데이트 삽입
+	@Auth
 	@PostMapping("updateUser")
 	public ResponseEntity<String> updateUser(@RequestBody UserVO user, @SessionAttribute int sessionId) throws IOException {
-	    System.out.println(sessionId);
 	    user.setUserId(sessionId);
 	    
 	    boolean isBackImgChanged = user.getUserBackimg() != null && !user.getUserBackimg().isEmpty();
@@ -89,12 +89,12 @@ public class UserController {
 	    // S3에 이미지 업로드 및 URL 받기
 	    
         if (isBackImgChanged) {
-            URL backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
+            String backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
             user.setUserBackimg(backImgUrl.toString());
         }
         
         if (isProfileImgChanged) {
-            URL profileImgUrl = s3Service.uploadBase64Img(user.getUserImg(), "profile_" + sessionId + ".jpg", "profile/");
+        	String profileImgUrl = s3Service.uploadBase64Img(user.getUserImg(), "profile_" + sessionId + ".jpg", "profile/");
             user.setUserImg(profileImgUrl.toString());
         }
         
@@ -102,7 +102,7 @@ public class UserController {
             userService.updateUser(user);  // 기존의 updateUser 메서드를 그대로 사용
             return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println(e);
+            log.info(e);
             return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
         }
 	}
@@ -118,6 +118,7 @@ public class UserController {
 	    return userService.getPostsByUserId(userId);
 	}
 	
+	@Auth
 	@PostMapping("follow")
 	@ResponseBody
 	public String postFollowByUserId(int userId, @SessionAttribute int sessionId) {
@@ -125,6 +126,7 @@ public class UserController {
 		return "ok";
 	}
 	
+	@Auth
 	@PostMapping("unfollow")
 	@ResponseBody
 	public String postUnfollowByUserId(int userId, @SessionAttribute int sessionId) {

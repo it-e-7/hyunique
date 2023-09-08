@@ -1,7 +1,6 @@
 package com.kosa5.hyunique.product.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;

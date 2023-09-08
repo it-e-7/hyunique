@@ -26,7 +26,7 @@ function sharePost(productName) {
 			title: `${productName} | 더 hyunique하게`,
 			url: location.href,
 		}).then(() => {
-			console.log("공유 완료");
+			
 		}).catch(() => {
 			console.error('공유  error');
 		});

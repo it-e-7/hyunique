@@ -2,7 +2,6 @@ package com.kosa5.hyunique.product.controller;
 
 import java.util.List;
 
-import com.kosa5.hyunique.post.vo.PostProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
+import com.kosa5.hyunique.product.vo.ProductInformVO;
 
 @Controller
 @RequestMapping("product")
@@ -48,12 +49,6 @@ public class ProductController {
 		return productService.getProductStyleById(productId, (page - 1) * 3);
 	}
 
-	// 태그 상품 검색
-	@GetMapping("/search")
-	public String requestSearch() {
-		return "/search";
-	}
-
 	@GetMapping("/search/{productName}")
 	@ResponseBody
 	public List<PostProductVO> getSearchProduct(@PathVariable("productName") String productName) {
@@ -67,4 +62,13 @@ public class ProductController {
 		List<PostProductVO> value = productService.getnSearchProductList(keyword, page * 10);
 		return value;
 	}
+	
+	@GetMapping("/inform")
+	@ResponseBody
+    public ProductInformVO getProductSizeAndColor(@RequestParam("productId") String productId) {
+
+        ProductInformVO vo = productService.getProductSizeAndColor(productId);
+
+        return vo;
+    }
 }

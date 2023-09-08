@@ -8,7 +8,6 @@ $(document).ready(function() {
 
 //옷장 로드하는 함수
 function loadCloset(userId) {
-    console.log("loadCloset 함수 실행, userId: " + userId);
     $.ajax({
         url: `/closet/${userId}`,
         type: 'GET',
@@ -24,8 +23,6 @@ function loadCloset(userId) {
 
 //옷장 보여주는 함수
 function displayCloset(closetVO) {
-    console.log("displayCloset 함수 실행");
-    console.log(closetVO);
 
 
     const categories = [
@@ -60,7 +57,6 @@ function displayCloset(closetVO) {
 
 //카테고리별로 나누는 함수
 function filterProducts(category) {
-    console.log("filterProducts 함수 실행, 카테고리: " + category);
 
     const categories = [
         'allList', 'bagList', 'dressList', 'outerList', 'topList',

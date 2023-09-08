@@ -14,21 +14,7 @@
 <body>
 
 <div id="main-wrapper">
-    <div id= "main-wrapper-top">
-        <div id="hyunique-main-top-logo">
-                 <button id="hyunique-main-top-logo-image" onclick="location.href=`/`;">
-                        <img src="/resources/img/hyunique.png" />
-                 </button>
-                 <div id="hyunique-main-top-buttons">
-                      <button id="search-button">
-                        <img src="/resources/img/ic-search.png" />
-                      </button>
-                      <button id="my-page-button">
-                        <img src="/resources/img/ic-person.png" />
-                      </button>
-                 </div>
-        </div>
-    </div>
+    <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
           <div class="button selected" id="recommend">추천</div>
           <div class="button" id="style-ranking">스타일랭킹</div>

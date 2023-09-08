@@ -2,24 +2,21 @@ $.getScript('https://cdn.lordicon.com/bhenfmcm.js');
 
 function ajax(config) {
 	const success = config.success;
-	console.log("ajax들어옴");
 	config.success = (response) => {
 		try {
 			response = JSON.parse(response);
 			if(response.redirect) {
 				alert(response.msg);
 				window.location.href = response.redirect;
-				console.log(response.redirect);
 				return;
 			}
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 		}
 		if(success) {
 			success(response);
 		}
 	}
-	console.log("ajax거침");
 	$.ajax(config);
 }
 

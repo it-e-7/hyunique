@@ -1,28 +1,22 @@
 package com.kosa5.hyunique.post.service;
 
-import com.kosa5.hyunique.post.util.S3Service;
-import com.kosa5.hyunique.post.vo.*;
-import oracle.sql.ARRAY;
-import oracle.sql.ArrayDescriptor;
-import oracle.sql.STRUCT;
-import oracle.sql.StructDescriptor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa5.hyunique.post.mapper.PostMapper;
-
-import javax.swing.text.html.HTML;
-import java.net.URL;
-import java.sql.Array;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Struct;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Filter;
-import java.util.HashMap;
-import java.util.Map;
+import com.kosa5.hyunique.post.util.S3Service;
+import com.kosa5.hyunique.post.vo.FilterPostVO;
+import com.kosa5.hyunique.post.vo.PageVO;
+import com.kosa5.hyunique.post.vo.PostDetailVO;
+import com.kosa5.hyunique.post.vo.PostProductVO;
+import com.kosa5.hyunique.post.vo.PostVO;
+import com.kosa5.hyunique.post.vo.TagVO;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -103,10 +97,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
-        System.out.println("service start");
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
 
-        System.out.println("urls = " + urls);
         // urls의 값을 postVO의 imgList에 설정
         List<String> newImgList = new ArrayList<>();
         for (String url : urls) {
@@ -134,7 +126,6 @@ public class PostServiceImpl implements PostService {
         params.put("imgUrl", postVO.getImgList());
         params.put("styleId", postVO.getStyleId());
 
-        System.out.println("params = " + params);
 
         postMapper.testInsertOnePost(params);
     }

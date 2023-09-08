@@ -33,11 +33,10 @@ function getSearchResult(keyword, callback) {
 					</div>
 	    		</li>`)
 	    	).join('');
-	    	console.log(response);
 	    	callback(listItems);
 	    },
 	    error: function (response) {
-	    	console.log(response);
+	    	console.error(response);
 	    }
 	});
 }

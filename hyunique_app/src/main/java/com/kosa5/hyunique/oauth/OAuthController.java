@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -24,6 +26,8 @@ import com.kosa5.hyunique.user.service.UserService;
 @RequestMapping(value = "/")
 
 public class OAuthController {
+
+	Logger log = LogManager.getLogger("case3");
 
 	@Value("${key.KAKAO}")
 	private String kakaoApiKey;
@@ -48,7 +52,7 @@ public class OAuthController {
 		try {
 			session.setAttribute("sessionId", service.insertOrGetUser(id, type));
 		} catch (NullPointerException e) {
-			System.out.println("로그인 혹은 회원가입 실패");
+			log.info("로그인 혹은 회원가입 실패");
 		}
 	}
 
@@ -95,13 +99,13 @@ public class OAuthController {
 	public String example(HttpSession session) {
 		String sessionId = (String) session.getAttribute("sessionId");
 		if (sessionId != null) {
-			System.out.println("세션 ID: " + sessionId);
+			log.info("세션 ID: " + sessionId);
 
 		} else {
-			System.out.println("로그인되지 않은 사용자");
+			log.info("로그인되지 않은 사용자");
 			// 로그인되지 않은 사용자 처리
 		}
-		return "redirect:post/getPostList";
+		return "redirect:/";
 	}
 
 	// 네이버 로그아웃

@@ -12,7 +12,6 @@ function getNextPost() {
 	    url: `/product/style/post?productId=${productId}&page=${page}`,
 	    type: 'GET',
 	    success: function (response) {
-	    	console.log(response);
 	    	response.forEach((post) => {
 	    		gridBox.append(`<img src="${post.thumbnailUrl}"
 	    						onclick="moveToPost('${post.postId}')" />`);
@@ -21,7 +20,7 @@ function getNextPost() {
 	        page++;
 	    },
 	    error: function (response) {
-	    	console.log(response);
+	    	console.error(response);
 	    	scrollLock = false;
 	    }
 	});
