@@ -2,7 +2,28 @@
     margin : 0 auto;
 }
 
+#main-wrapper-top{
+    margin-bottom : 30px;
+}
+
+@media screen and (max-width: 700px) {
+    #main-wrapper-top{
+        margin-bottom : 20px;
+    }
+}
+
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
+#photo-gallery {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+}
+
+@media screen and (max-width: 700px) {
 #photo-gallery {
     width: 100%;
     margin: 0 auto;
@@ -11,6 +32,7 @@
     grid-template-columns: repeat(2, minmax(0px, 1fr));
     grid-column-gap: 4px;
     grid-row-gap: 4px;
+}
 }
 
 .photo {
@@ -66,11 +88,21 @@
 
 #hyunique-main-top-recommend {
   display: flex;
-  margin-left : 5%;
-  font-size: 25px;
+  margin-left: 40px;
+  font-size: 34px;
   font-weight: bold;
   color : #BBBBBB;
   border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+#hyunique-main-top-recommend .button {
+  cursor: pointer;
+  margin-right: 30px;
+  text-decoration: none;
+  padding-bottom: 20px;
+  border-bottom: 4px solid transparent; /* 밑줄 추가 */
+  color: #BBBBBB;
+  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
 }
 
 @media screen and (max-width: 700px) {
@@ -78,20 +110,21 @@
   #hyunique-main-top-recommend {
     display: flex;
     margin-left: 5%;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
     color : #BBBBBB;
   }
-}
 
-#hyunique-main-top-recommend .button {
-  cursor: pointer;
-  margin-right: 20px;
-  text-decoration: none;
-  padding-bottom: 5px;
-  border-bottom: 3px solid transparent; /* 밑줄 추가 */
-  color: #BBBBBB;
-  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+  #hyunique-main-top-recommend .button {
+    cursor: pointer;
+    margin-right: 15px;
+    text-decoration: none;
+    text-decoration: none;
+    padding-bottom: 13px;
+    border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
+    color: #BBBBBB;
+    transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+    }
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -100,17 +133,52 @@
 }
 
 #filterModalButton {
-    border: 1px solid #BBBBBB;
+    font-size: 25px;
+    border: 3px solid #E9E9E9;
     border-radius: 10px;
-    padding: 10px 10px; /* 버튼 내부 여백을 상하 10px, 좌우 20px으로 조절합니다. */
+    padding: 10px 20px;
     background-color: transparent; /* 배경색을 투명하게 설정합니다. */
     cursor: pointer;
     white-space: nowrap;
-    margin-right: 5px;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 700px) {
+     #filterModalButton {
+         font-size: 16px;
+         border: 3px solid #E9E9E9;
+         border-radius: 10px;
+         padding: 3px 10px;
+         background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+         cursor: pointer;
+         white-space: nowrap;
+         margin-right: 6px;
+     }
 }
 
 #filterModalButton >img{
-    height: 16px;
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+@media screen and (max-width: 700px) {
+    #filterModalButton >img {
+        display: flex;
+        align-items: center;
+        height: 25px;
+    }
+}
+
+
+.filter-img-div{
+   padding: 10px 10px !important;
+}
+
+@media screen and (max-width: 700px) {
+.filter-img-div{
+   padding: 5px 5px !important;
+}
 }
 
 #filterModalButton >div{
@@ -125,8 +193,106 @@
 }
 
 #hyunique-main-top-filter{
+    display: flex;
+    color: #A5A5A5;
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding : 3%;
+    padding : 4.5%;
+}
+
+#qr-button {
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+#qr-img{
+    width: 150px;
+    height: 150px;
+}
+
+@media screen and (max-width: 700px) {
+#qr-button {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 999;
+}
+
+#qr-img{
+    width: 100px;
+    height: 100px;
+}
+}
+
+#popular-style {
+    display: flex;
+    margin-left: 5%;
+    font-size: 30px;
+    height: 60px;
+    font-weight: bold;
+    align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+    #popular-style {
+        display: flex;
+        margin-left: 5%;
+        font-size: 21px;
+        height: 40px;
+        font-weight: bold;
+        align-items: center;
+}
+}
+
+#bottom-for-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 12px;
+    padding: 40px 0px;
+}
+
+#bottom-for-logo-img{
+    display: flex;
+    justify-content: center;
+}
+
+#bottom-for-logo-img >img{
+width: 30%;
+    height: auto;
+}
+
+#bottom-login-message {
+    text-align: center;
+}
+
+#login-block {
+    display: flex;
+    min-height: 48px;
+    max-height: 52px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: var(--border-radius-8,8px);
+    background: linear-gradient(90deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    animation: 2s ease 0s infinite alternate none running kcinZC;
 }

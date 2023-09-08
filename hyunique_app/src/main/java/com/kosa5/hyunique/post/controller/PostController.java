@@ -14,6 +14,9 @@ import com.kosa5.hyunique.post.service.PostService;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,10 +55,18 @@ public class PostController {
     }
 
     @GetMapping(value = "getPostList")
-    public String getPostingListHandler(Model model) {
+    public String getPostingListHandler(HttpSession session,Model model) {
+        model.addAttribute("userId",session.getAttribute("sessionId"));
+        if(session.getAttribute("sessionId")!=null){
+            model.addAttribute("followerCount",postService.countFollower(Integer.parseInt((String)session.getAttribute("sessionId"))));
+        }
         return "postList";
     }
 
+    @GetMapping(value = "getQRPage")
+    public String getQRPage(Model model){
+        return "readQRPage";
+    }
     // 게시글 작성
     @GetMapping
     public String requestPosting() {

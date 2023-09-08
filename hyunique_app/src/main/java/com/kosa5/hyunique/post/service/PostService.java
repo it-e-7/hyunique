@@ -17,9 +17,14 @@ public interface PostService {
 
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
 
+    int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
+
+    int countFollower(Integer userId);
+
     String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 
     void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 
     List<TagVO> getTagInform(String type);
+
 }

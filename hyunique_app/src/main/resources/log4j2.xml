@@ -7,7 +7,7 @@
         </Console>
         <!-- Query Loggers 쿼리 과정(파라미터까지) -->
         <appender name="console-dblog" class="org.apache.log4j.ConsoleAppender">
-            <PatternLayout pattern="%d %5p %m%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%c][%L LINE] %m%n" />
         </appender>
     </Appenders>
     <Loggers>
@@ -22,13 +22,16 @@
         </Logger>
         <!-- Query Loggers 쿼리(파라미터까지) -->
         <Logger name="jdbc.sqlonly" additivity="false">
-            <level value="info"/>
+            <level value="DEBUG"/>
             <appender-ref ref="console" />
         </Logger>
         <!--  SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함한다. 필요시 open -->
-<!--        <Logger name="jdbc.sqltiming" level="ERROR" additivity="false">
-            <AppenderRef ref="WARN" />
-        </Logger>-->
+        <Logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="org.mybatis" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
         <Root level="DEBUG">
             <AppenderRef ref="console" />
         </Root>

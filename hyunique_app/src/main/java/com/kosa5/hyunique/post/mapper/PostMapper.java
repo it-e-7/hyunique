@@ -20,6 +20,8 @@ public interface PostMapper {
 
     List<PostVO> loadFilterPost(FilterPostVO filterPostVO);
 
+    Integer countFollower(FilterPostVO filterPostVO);
+  
 //    int insertOnePost(Map<String, Object> post);
 
     void testInsertOnePost(Map<String, Object> params);

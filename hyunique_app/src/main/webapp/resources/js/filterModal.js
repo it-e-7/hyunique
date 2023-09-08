@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-var itemsPerPage = 10;
         var currentPage = 1;
         var isLoading = false; //로딩중이다 아니다를 판단하기 위함
 
@@ -11,13 +10,17 @@ var itemsPerPage = 10;
                             if (isLoading) {
                                 return;
                             }
-                loadMoreImages();
+                            if ($('#bottom-for-login').length == 1){
+                                isLoading = false;
+                                return;
+                            }
+                            loadMoreImages();
             }
         });
 
         function loadMoreImages() {
-        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
 
+        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
             const formData = {
                         minHeight: 140, // 초기 값 설정
                         maxHeight: 190, // 초기 값 설정
@@ -94,7 +97,7 @@ var itemsPerPage = 10;
             var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
             var windowHeight = element.clientHeight || window.innerHeight;
 
-            return scrollTop + windowHeight >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
+            return scrollTop + windowHeight+10 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
         }
 
         loadMoreImages();
@@ -102,6 +105,7 @@ var itemsPerPage = 10;
 
     const filterModalButton = document.getElementById("filterModalButton");
     const modal = document.querySelector(".modal");
+    const qr = document.querySelector("#qr-img")
     const closeModalButton = document.getElementById("closeModalButton"); // 모달 닫기 버튼
 
     const formData = {
@@ -109,93 +113,74 @@ var itemsPerPage = 10;
                 maxHeight: 190, // 초기 값 설정
     };
 
+    let initialModalState = null; // 모달의 초기 상태를 저장
+
+    // 모달을 표시
     filterModalButton.addEventListener("click", function() {
-        modal.style.display = "block"; // 모달을 표시
+        initialModalState = captureModalState();
+        modal.style.display = "block";
+        qr.style.display = "none";
         updateRangeBackgroundColor();
     });
 
     // 모달 닫기 버튼 클릭 시 모달 닫음
     closeModalButton.addEventListener("click", function() {
+        if (initialModalState) {
+            restoreModalState(initialModalState);
+          }
         modal.style.display = "none";
+        qr.style.display = "block";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
     modal.addEventListener("click", function(event) {
         if (event.target === modal) {
+            if (initialModalState) {
+                restoreModalState(initialModalState);
+              }
             modal.style.display = "none";
+            qr.style.display = "block";
         }
     });
+
+    // 모달 상태를 기록하는 함수
+    function captureModalState() {
+
+      // 처음 모달을 열었을때, 체크되어있는 아이디를 모두 저장하여 리턴
+      const state = {};
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+          state[checkbox.id] = checkbox.checked;
+        });
+
+        return state;
+    }
+
+    // 초기 모달 상태를 복원하는 함수
+    function restoreModalState(state) {
+      // 초기 상태로 각 요소를 복원
+      for (const elementId in state) {
+          const element = document.getElementById(elementId);
+          if (element && element.tagName === 'INPUT') {
+            element.checked = state[elementId];
+          }
+        }
+    }
 
     //필터 검색
 
         const applyFilterButton = document.getElementById("applyFilter"); // 적용 버튼 선택
         // 적용 버튼을 클릭할 때 AJAX로 데이터를 서버로 전송
-
-        applyFilterButton.addEventListener("click", applyFilter);
-
-        function applyFilter() {
-            // 데이터를 가져옵니다.
-            const selectedGender = document.querySelector('input[name="gender"]:checked');
-            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
-            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
-            const selectedButton = document.querySelector(".selected").id;
-
-            let selectedTpoValues = [];
-            let selectedSeasonValues = [];
-            let selectedStyleValues = [];
-            formData.page = 1;
-            currentPage = 1;
-
-            formData.selectedType = selectedButton;
-
-            if (selectedGender) {
-                formData.gender = selectedGender.value;
-            } else {
-                formData.gender = null;
-            }
-
-            if (selectedTpoCheckboxes.length > 0) {
-                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
-                formData.tpo = selectedTpoValues;
-            } else {
-                formData.tpo  = [];
-            }
-
-            if (selectedSeasonCheckboxes.length > 0) {
-                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
-                formData.season = selectedSeasonValues;
-            } else {
-                formData.season  = [];
-            }
-
-            if (selectedStyleCheckboxes.length > 0) {
-                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
-                formData.style = selectedStyleValues;
-            } else {
-                formData.style  = [];
-            }
-
-            // AJAX를 사용하여 서버로 데이터 전송
-            $.ajax({
-                type: "GET",
-                url: `/filter/getFilterPost`, // 서버 측 URL 설정
-                data: formData,
-                success: function(data) {
-                    modal.style.display = "none";
-                    $("#photo-gallery").empty();
-                    $("#photo-gallery").append(data);
-                    currentPage = currentPage + 1;
-                    loadMoreImages();
-                    if (data == null){
-                    console.log("리턴값이 null 입니다")}
-                },
-                error: function(err) {
-                    // 오류 처리
-                    console.error(err);
-                }
-            });
-        }
+        currentPage=1;
+        applyFilterButton.addEventListener("click", function() {
+            currentPage =1;
+            modal.style.display = "none";
+            $("#photo-gallery").empty();
+            //$("#photo-gallery").append(data);
+            changeFilterColor();
+            loadMoreImages();
+        });
 
     // 각 요소 가져오기
     const sliderContainer = document.querySelector('.rs-container');
@@ -292,6 +277,61 @@ var itemsPerPage = 10;
         // Set the width and position of the range background
         rangeElement.style.left = leftValue + '%';
         rangeElement.style.width = rangeWidth + '%';
+    }
+
+    function changeFilterColor() {
+    const checkedCheckboxIds = [];
+    const notcheckedCheckboxIds = [];
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        checkedCheckboxIds.push(checkbox.id);
+      }
+    });
+
+    //색 초기화
+    const buttons = document.querySelectorAll('[class^="FilterModalButton"]');
+
+    buttons.forEach(button => {
+          button.style.backgroundColor = "initial";
+          button.style.fontWeight = "normal";
+          button.style.color = "#A5A5A5";
+    });
+
+    //checkedCheckboxIds 안에 체크된 체크박스의 아이디들이 저장된다.
+    //해당 아이디들을 바탕으로, 앞에 있는 애들의 스타일을 바꾼다.
+
+    let reversedCheckboxes = {
+        'maleCheckbox': '남',
+        'femaleCheckbox': '여',
+        'minimalCheckbox': '미니멀',
+        'easyCheckbox': '이지캐주얼',
+        'businessCheckbox': '비즈니스캐주얼',
+        'streetCheckbox': '스트릿',
+        'onemileCheckbox': '원마일웨어',
+        'uniqueCheckbox': '유니크',
+        'lovelyCheckbox': '러블리',
+        'amekajiCheckbox': '아메카지',
+        'cityboyCheckbox': '시티보이'
+    };
+
+    //체크된 것들 색 바꾸기
+    for (let i = 0; i < checkedCheckboxIds.length; i++) {
+        let checkboxId = checkedCheckboxIds[i];
+        let buttonClass = 'FilterModalButton' + reversedCheckboxes[checkboxId];
+        let button = document.querySelector('.' + buttonClass);
+
+
+        if (button!=null) {
+            button.style.backgroundColor = "var(--jw-light-blue2)";
+            button.style.fontWeight = "bold";
+            button.style.color = "var(--jw-blue3)";
+        }
+    }
+
+
+
     }
 
 });
