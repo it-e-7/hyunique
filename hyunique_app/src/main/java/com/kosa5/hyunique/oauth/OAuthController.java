@@ -39,13 +39,9 @@ public class OAuthController {
 	private UserService service;
 
 	// NaverLoginBO
+	@Autowired
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
-
-	@Autowired
-	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-		this.naverLoginBO = naverLoginBO;
-	}
 
 	// 세션에 id저장
 	private void setSessionId(HttpSession session, String id, String type) {
