@@ -20,4 +20,6 @@ public interface PostService {
     List<PostVO> getfilterPostList (FilterPostVO filterPostVO);
 
     int uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
+
+    int countFollower(Integer userId);
 }

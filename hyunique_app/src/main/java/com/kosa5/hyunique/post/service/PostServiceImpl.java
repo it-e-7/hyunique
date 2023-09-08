@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Filter;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -81,6 +82,14 @@ public class PostServiceImpl implements PostService {
             postVOList = postMapper.loadFilterPost(filterPostVO);
         }
         return postVOList;
+    }
+
+
+    @Override
+    public int countFollower(Integer userId){
+        FilterPostVO followFilterPostVO = new FilterPostVO();
+        followFilterPostVO.setUserId(userId);
+        return postMapper.countFollower(followFilterPostVO);
     }
 
     @Override

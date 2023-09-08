@@ -250,3 +250,49 @@
         align-items: center;
 }
 }
+
+#bottom-for-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 12px;
+    padding: 40px 0px;
+}
+
+#bottom-for-logo-img{
+    display: flex;
+    justify-content: center;
+}
+
+#bottom-for-logo-img >img{
+width: 30%;
+    height: auto;
+}
+
+#bottom-login-message {
+    text-align: center;
+}
+
+#login-block {
+    display: flex;
+    min-height: 48px;
+    max-height: 52px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: var(--border-radius-8,8px);
+    background: linear-gradient(90deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    animation: 2s ease 0s infinite alternate none running kcinZC;
+}

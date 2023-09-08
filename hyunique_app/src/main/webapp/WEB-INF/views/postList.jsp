@@ -39,6 +39,14 @@
             인기있는 스타일
         </div>
     </c:if>
+    <c:if test="${not empty userId}">
+        <c:if test="${followerCount ne 0}">
+            <div id="popular-style">
+                인기있는 스타일
+            </div>
+        </c:if>
+    </c:if>
+
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">
             <img src="/resources/img/filter.png" />
@@ -236,6 +244,19 @@
                      </c:forEach> --%>
             </div>
         </div>
+            <c:if test="${empty userId}">
+                <div id="bottom-for-login">
+                    <div id="bottom-for-logo-img">
+                        <img src="/resources/img/hyunique.png" class="login-logo-img">
+                    </div>
+                    <div id="bottom-login-message">
+                    더 많은 스타일을 보고 싶다면<br>로그인을 해보세요!
+                    </div>
+                    <button id="login-block">
+                    로그인 하기
+                    </button>
+                </div>
+            </c:if>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
         <script src="/resources/js/filterModal.js"></script>
