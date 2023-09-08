@@ -34,7 +34,7 @@
 		</div>
 		<div class="login-btn-wrapper">
 			<div id="kakao-login-btn">
-				<a href="https://kauth.kakao.com/oauth/authorize?client_id=${kakaoApiKey}&redirect_uri=http://localhost:8080/KakaoLogin&response_type=code">
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=${kakaoApiKey}&redirect_uri=${API_URL}KakaoLogin&response_type=code">
 					<img src="/resources/icon/kakao_login_wide_btn.png"  class="img-login-btn"/>
 				</a>
 			</div>
