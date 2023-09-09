@@ -101,9 +101,9 @@
 	<insert id="testInsertOnePost" statementType="CALLABLE" parameterType="map">
 		call insert_one_post(
 		#{postProduct, typeHandler=com.kosa5.hyunique.post.util.PostProductTypeHandler},
-<!--		#{post, jdbcType=STRUCT, javaType=java.sql.Struct},-->
-<!--		#{imgUrl, jdbcType=ARRAY, javaType=java.sql.Array},-->
-<!--        #{styleId, jdbcType=ARRAY, javaType=java.sql.Array}-->
+		#{post, typeHandler=com.kosa5.hyunique.post.util.PostTypeHandler},
+		#{imgUrl},
+        #{styleId}
 		)
 	</insert>
 	

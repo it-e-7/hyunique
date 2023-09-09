@@ -34,6 +34,10 @@
 		<typeHandler
 				handler="com.kosa5.hyunique.post.util.PostProductTypeHandler"
 				javaType="java.util.List" jdbcType="ARRAY"/>
+
+		<typeHandler
+				handler="com.kosa5.hyunique.post.util.PostTypeHandler"
+				javaType="java.sql.Struct" jdbcType="STRUCT"/>
 	</typeHandlers>
 	
 </configuration>	
