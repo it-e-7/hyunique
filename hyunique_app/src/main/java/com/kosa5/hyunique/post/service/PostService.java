@@ -24,8 +24,6 @@ public interface PostService {
 
     String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
 
-    void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO);
-
     List<TagVO> getTagInform(String type);
 
 }

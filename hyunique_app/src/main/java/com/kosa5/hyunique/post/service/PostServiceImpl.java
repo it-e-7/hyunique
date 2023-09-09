@@ -99,35 +99,17 @@ public class PostServiceImpl implements PostService {
 
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
 
-        // urls의 값을 postVO의 imgList에 설정
-        List<String> newImgList = new ArrayList<>();
-        for (String url : urls) {
-            newImgList.add(url);
-        }
-        postVO.setImgList(newImgList);  // imgList를 새로운 URL 문자열로 업데이트
-
-        String state = "";
-
-        Map<String, Object> post = new HashMap<>();
-        post.put("posting", postVO);
-        post.put("postProduct", postProductVO);
-        post.put("postState", state);
-//        postMapper.insertOnePost(post);
-
-        return post.get("state").toString();
-    }
-
-    @Override
-    public void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
+        String state = null;
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
         params.put("post", postVO);
-        params.put("imgUrl", postVO.getImgList());
+        params.put("imgUrl", urls);
         params.put("styleId", postVO.getStyleId());
+        params.put("postState", state);
+        postMapper.insertOnePost(params);
 
-
-        postMapper.testInsertOnePost(params);
+        return params.get("state").toString();
     }
 
     @Override

@@ -26,9 +26,7 @@ public interface PostMapper {
 
     Integer countFollower(FilterPostVO filterPostVO);
   
-//    int insertOnePost(Map<String, Object> post);
-
-    void testInsertOnePost(Map<String, Object> params);
+    void insertOnePost(Map<String, Object> params);
 
     List<TagVO> getTagInform(String type);
 

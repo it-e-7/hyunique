@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,8 @@ import com.kosa5.hyunique.post.vo.TagVO;
 @Controller
 @RequestMapping("post")
 public class PostController {
+
+    Logger log = LogManager.getLogger("case3");
 
     @Autowired
     PostService postService;
@@ -61,19 +65,18 @@ public class PostController {
     public String getQRPage(Model model){
         return "readQRPage";
     }
+
     // 게시글 작성
     @GetMapping
     public String requestPosting() {
-    	
         return "posting";
     }
 
     @PostMapping
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting) {
-        postService.testUploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-//        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-
+        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+        log.info("upload state : " + state);
         return "ok";
     }
 
@@ -84,14 +87,6 @@ public class PostController {
                 "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
 
         s3Service.deleteImgFile(object_keys);
-        return "ok";
-    }
-
-    @PostMapping("/test")
-    @ResponseBody
-    public String testHandleTagUpload(@RequestBody PostingVO vo) {
-
-        postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
         return "ok";
     }
     
