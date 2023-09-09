@@ -102,8 +102,8 @@
 		call insert_one_post(
 		#{postProduct, typeHandler=com.kosa5.hyunique.post.util.PostProductTypeHandler},
 		#{post, typeHandler=com.kosa5.hyunique.post.util.PostTypeHandler},
-		#{imgUrl},
-        #{styleId}
+		#{imgUrl, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler},
+        #{styleId, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler}
 		)
 	</insert>
 	
