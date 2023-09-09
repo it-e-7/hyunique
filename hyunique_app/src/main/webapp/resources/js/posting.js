@@ -48,7 +48,7 @@ $(document).ready(function() {
                 $('#image-list').append(li);
                 container = imageElement;
             }
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file); // base64 인코딩
         });
     });
 
@@ -86,6 +86,7 @@ $(document).ready(function() {
         }
     });
 
+    // 상품 리스트 중에서 선택한 상품데이터를 뽑아내고, 색상, 사이즈 선택 모달 띄움
     $('.result-list').on('click', '.search-product-li', function() {
         vo = getSelectItem($(this));
         showProductModal(XOffset, YOffset, vo);
@@ -435,6 +436,7 @@ function getSearchProduct(productName) {
 function renderSearchProductResults(results, productName) {
 
     let resultList = $(".result-list");
+    resultList.empty();
     $('.search-value').text(`${productName} 검색 결과`);
 
     $.each(results, function(index, product) {
@@ -446,12 +448,6 @@ function renderSearchProductResults(results, productName) {
         divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
         divItem.append($("<p>").text(product.productPrice).addClass("search-product-price"));
         listItem.append(divItem);
-
-//        listItem.click(function() {
-//            // 상품 클릭하면 해당 상품의 번호를 조회해서 모달 띄움
-//            showProductModal(product);
-//        })
-
         resultList.append(listItem);
     });
 }
