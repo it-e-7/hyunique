@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import com.kosa5.hyunique.post.vo.TagVO;
 
 @Service
 public class PostServiceImpl implements PostService {
+
+    Logger log = LogManager.getLogger("case3");
 
     @Autowired
     PostMapper postMapper;
@@ -98,15 +102,14 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
-
-        String state = null;
+        postVO.setThumbnailUrl(s3Service.uploadBase64Img(postVO.getThumbnailUrl(), "test.jpg", "post/"));
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
         params.put("post", postVO);
         params.put("imgUrl", urls);
         params.put("styleId", postVO.getStyleId());
-        params.put("postState", state);
+        params.put("state", null);
         postMapper.insertOnePost(params);
 
         return params.get("state").toString();
