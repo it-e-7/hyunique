@@ -95,7 +95,7 @@ $(document).ready(function() {
 });
 
 function modalEvent() {
-    // 새로운 코드 시작
+
     let colorIndex = 0;
     let sizeIndex = 0;
 
@@ -127,7 +127,7 @@ function modalEvent() {
     }
 
     updateSlide(null, 'color-picker');
-    updateSlide(null, 'size-picker'); // 초기 위치 설정
+    updateSlide(null, 'size-picker');
 
     $('#color-picker, #size-picker').on('touchstart', function(e) {
       initialTouchPos = e.originalEvent.touches[0].clientY;
@@ -212,8 +212,10 @@ function compileAndSendPostData() {
         return {
             pinX: item.xOffset / imgWidth,
             pinY: item.yOffset / imgHeight,
+            pinType: item.pinType,
             productId: item.productId,
             productSize: item.productSize,
+            productColor: item.productColor
         };
     });
 
@@ -247,6 +249,7 @@ function attachTag(xOffset, yOffset, vo) {
             xOffset: 0,
             yOffset: 0,
             active: false,
+            pinType: null,
             productId: vo['productId'],
             productBrand: vo['productBrand'],
             productName: vo['productName'],

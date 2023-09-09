@@ -25,10 +25,10 @@ public class ListTypeHandler implements TypeHandler {
         String typeName = null;
 
         if (firstElement instanceof Integer) {
-            typeName = "TAG_LIST";
+            typeName = "TAGLIST";
         }
         else if (firstElement instanceof String) {
-            typeName = "URL_LIST";
+            typeName = "URLLIST";
         }
 
         ArrayDescriptor desc = ArrayDescriptor.createDescriptor(typeName, ps.getConnection());
