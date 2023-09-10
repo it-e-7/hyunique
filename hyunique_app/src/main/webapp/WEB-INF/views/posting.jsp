@@ -27,7 +27,7 @@
 
         <div class="button-container">
             <button id="img-load-button" class="jw-btn">사진 불러오기</button>
-            <input type="file" id="fileInput" class="real-upload" style="display:none;" accept="image/*" required multiple>
+            <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
         </div>
     </div>
 
@@ -35,7 +35,8 @@
             <div class="upload"></div>
             <form action="post" method="post" enctype="multipart/form-data">
                 <div class="image-view">
-                    <ul id="image-list"></ul>
+                    <div id="thumbnail-img"></div>
+                    <input type="file" id="fileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
                     <div class="tag-container" id="tag-container">
                     </div>
                 </div>
@@ -84,7 +85,6 @@
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
                         <p id="product-info"></p>
-                            <!-- 새로운 코드 시작 -->
                             <div id="size-picker" class="custom-picker">
                                 <div class="slide-content" id="sizeContent">
                                 </div>
@@ -97,10 +97,8 @@
                             <div>
                                 <input type="button" id="search-results-button" value="확인">
                             </div>
-                          <!-- 새로운 코드 끝 -->
                     </div>
                 </div>
-
                 <p class="search-value"></p>
                 <ul class="result-list">
                 </ul>

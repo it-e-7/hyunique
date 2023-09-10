@@ -1,4 +1,5 @@
 let imgList = [];
+let thumbnailBox;
 let styleChecked;
 let tpoChecked;
 let seasonChecked;
@@ -29,34 +30,32 @@ $(document).ready(function() {
     // 작성 완료 버튼
     $('#upload-button').click(compileAndSendPostData);
 
-    // 입력 이미지 출력
+    // 썸네일 이미지 출력
     $("#fileInput").change(function(e) {
         const files = e.target.files;
-        $.each(files, function(index, file) {
-            if (!file.type.match("image/.*")) {
-                alert("이미지 파일만 업로드할 수 있습니다.");
-                return;
-            }
-            const reader = new FileReader();
+        const file = files[0];
+        if (!file.type.match("image/.*")) {
+            alert("이미지 파일만 업로드할 수 있습니다.");
+            return;
+        }
+        const reader = new FileReader();
 
-            reader.onload = function(e) {
-                const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
-                const img = reader.result.split(',')[1];
-                imgList.push(img);
-
-                const li = $("<li>").append(imageElement);
-                $('#image-list').append(li);
-                container = imageElement;
-            }
-            reader.readAsDataURL(file); // base64 인코딩
-        });
+        reader.onload = function(e) {
+            const img = reader.result.split(',')[1];
+            thumbnailBox = img;
+            const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+            $('#thumbnail-img').append(imageElement);
+            container = imageElement;
+        }
+        reader.readAsDataURL(file); // base64 인코딩
     });
+
 
     // 사용자가 클릭한 좌표 정보 저장
     let XOffset = 0;
     let YOffset = 0;
 
-    $('#image-list').on('click', 'li:first-child img', function(e){
+    $('#thumbnail-img').on('click', 'img', function(e){
         imgWidth = $(this).width();
         imgHeight = $(this).height();
 
@@ -93,6 +92,10 @@ $(document).ready(function() {
     });
 
 });
+
+function imageLoad() {
+
+}
 
 function modalEvent() {
 
@@ -185,6 +188,7 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
+        thumbnail: null,
         imgList: imgList,
     };
 
@@ -193,6 +197,7 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
+        thumbnail: null,
     };
 
     Object.keys(tagValues).forEach(groupName => {
@@ -259,6 +264,7 @@ function attachTag(xOffset, yOffset, vo) {
         };
 
         tagElement.html(`
+
           ${items[id].productBrand}
           ${items[id].productName}
           ${items[id].productPrice}
@@ -274,7 +280,7 @@ function attachTag(xOffset, yOffset, vo) {
         items[id].yOffset = yOffset;
 
 
-        let imgContainer = $('#image-list li:first-child');
+        let imgContainer = $('#thumbnail-img');
         imgContainer.append(tagElement);
 
         // 새로 생성된 태그에 드래그 이벤트 바인딩
