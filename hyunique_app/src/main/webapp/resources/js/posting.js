@@ -12,6 +12,8 @@ let items = {};
 let imgWidth;
 let imgHeight;
 
+let classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
+
 $(document).ready(function() {
 
     getTagInform();
@@ -117,11 +119,43 @@ $(document).ready(function() {
         showProductModal(XOffset, YOffset, vo);
     });
 
+    let isMouseDown = false;  // 마우스를 누르고 있는지 판단하는 변수
+
+    // 마우스를 누르면 isMouseDown을 true로 설정
+    $(".image-view").on("mousedown", ".post-pin", function() {
+        isMouseDown = true;
+    });
+
+    // 마우스를 뗄 때 동작
+    $(".image-view").on("mouseup", ".post-pin", function(event) {
+        let id = event.target.id;
+
+        console.log(id);
+
+        if (isMouseDown) { // 마우스가 눌러져 있는 상태에서 뗐을 때만 동작
+            if ($(this).data("currentIndex") === undefined) {
+                $(this).data("currentIndex", 0);
+            }
+
+            let currentIndex = $(this).data("currentIndex");
+
+            $(this).removeClass('arrow-left arrow-right arrow-bottom arrow-top');
+
+            // 다음 클래스 인덱스 계산
+            currentIndex = (currentIndex + 1) % classes.length;
+
+            // 새로운 클래스 추가
+            $(this).addClass(classes[currentIndex]);
+            items[id].pinType = classes[currentIndex];
+
+            // 새로운 인덱스 저장
+            $(this).data("currentIndex", currentIndex);
+        }
+
+        isMouseDown = false;
+    });
+
 });
-
-function imageLoad() {
-
-}
 
 function modalEvent() {
 
@@ -188,7 +222,6 @@ function modalEvent() {
       }
       updateSlide(null, this.id);
     });
-    // 새로운 코드 끝
 }
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
@@ -260,13 +293,15 @@ function compileAndSendPostData() {
     $(".post-container").show();
     $(".write-container").hide();
     $(".header-wrapper").hide();
+
 }
+
+
 
 // 터치한 위치에 선택한 상품을 태그로 붙이기
 function attachTag(xOffset, yOffset, vo) {
     return function() {
-
-        let tagElement = $("<span>").addClass("tag").attr("id","tag_"+new Date().getTime()).css({
+        let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_"+new Date().getTime()).css({
             left: xOffset + "px",
             top: yOffset + "px",
             position: "absolute"
@@ -292,7 +327,6 @@ function attachTag(xOffset, yOffset, vo) {
         };
 
         tagElement.html(`
-
           ${items[id].productBrand}
           ${items[id].productName}
           ${items[id].productPrice}
@@ -390,7 +424,7 @@ function dragStart(event) {
         item.initialY = event.clientY - item.yOffset;
     }
 
-    if ($(event.target).hasClass("tag")) {
+    if ($(event.target).hasClass("post-pin")) {
         item.active = true;
     }
 }
