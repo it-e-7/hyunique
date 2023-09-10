@@ -35,6 +35,12 @@ $(document).ready(function() {
 	  userPostList(userId);
 	  
 });
+document.getElementById('updateLink').addEventListener('click', function(e) {
+    e.preventDefault(); // 기본 링크 동작을 취소
+    setTimeout(function() {
+        window.location.href = 'update'; // 1초 후에 페이지 이동
+    }, 500);
+});
 //이미지 업로드 및 미리보기 함수
 function handleImageUpload(e, previewElement) {
     const files = e.target.files;

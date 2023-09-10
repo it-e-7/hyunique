@@ -67,9 +67,16 @@
     <div class="search-container">
             <div class="header">
                 <div class="header-wrapper">
-                    <button onclick="backward()">
-                        <img src="/resources/img/ic-backward.png" />
-                    </button>
+                   <button onclick="backward()">
+						<lord-icon
+							id="backward-btn"
+						    src="https://cdn.lordicon.com/zmkotitn.json"
+						    trigger="click"
+						    colors="primary:#121331"
+						    style="transform: rotateY(180deg);
+						">
+						</lord-icon>
+					</button>
                     <div class="search-box">
                         <input type="search" class="search-text" id="search-input">
                         <button class="searching" id="search-btn">

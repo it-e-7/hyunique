@@ -13,7 +13,14 @@
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331"
+			    style="transform: rotateY(180deg);
+			">
+			</lord-icon>
 		</button>
 	</div>
 	<div class="content-wrapper">
@@ -72,7 +79,14 @@
 				</c:choose>
 			</button>
 				<button onclick="sharePost('${postVO.userNickname}')">
-					<img src="/resources/img/ic-share.png"/>
+					<lord-icon
+					    src="https://cdn.lordicon.com/udwhdpod.json"
+					    colors="primary:#121331,secondary:#110a5c"
+					    trigger="loop"
+   						delay="1000"
+					    stroke="100"
+					    style="width:30px;height:30px">
+					</lord-icon>
 				</button>
 			</div>
 			<div class="post-content">
