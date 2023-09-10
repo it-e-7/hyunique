@@ -235,8 +235,6 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     cursor: pointer;
 }
 
-/* 기존 코드 */
-/* 새로운 코드 시작 */
 .custom-picker {
   overflow: hidden;
   height: 50px;
@@ -247,11 +245,28 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
   top: 0;
   transition: top 0.3s ease;
 }
+
 .slide-item {
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* 새로운 코드 끝 */
-/* 기존 코드 끝 */
+
+.add-img-container {
+    display: flex;
+    list-style-type: none;
+    overflow-x: auto;
+}
+
+.add-img-container li {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+.add-img-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+

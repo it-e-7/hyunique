@@ -50,6 +50,32 @@ $(document).ready(function() {
         reader.readAsDataURL(file); // base64 인코딩
     });
 
+    $('#addImgBtn').click(function() {
+        $('#addFileInput').click();
+    });
+
+    // 추가 이미지
+    $("#addFileInput").change(function(e) {
+      const files = e.target.files;
+
+      $.each(files, function(index, file) {
+        if (!file.type.match("image/.*")) {
+          alert("이미지 파일만 업로드할 수 있습니다.");
+          return;
+        }
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const li = $("<li>");
+          const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+          const img = reader.result.split(',')[1];
+          imgList.push(img);
+          li.append(imageElement);
+          $('.add-img-container').append(li);
+        }
+        reader.readAsDataURL(file); // base64 인코딩
+      });
+    });
 
     // 사용자가 클릭한 좌표 정보 저장
     let XOffset = 0;
@@ -188,16 +214,18 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        thumbnail: null,
+        thumbnailUrl: thumbnailBox,
         imgList: imgList,
     };
+
+    console.log(JSON.stringify(post));
 
     let nextPost = {
         postContent: $('#content').val(),
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        thumbnail: null,
+        thumbnail: thumbnailBox,
     };
 
     Object.keys(tagValues).forEach(groupName => {
@@ -514,11 +542,13 @@ function insertTags(tagType, tagData) {
     });
 }
 
-
+// 업로드 후 화면에 태그값, 썸네일, 글 출력
 function printSelectTagAndContent(vo) {
     let tpoIdStr = '#' + vo['tpoId'][0];
     let seasonIdStr = '#' + vo['seasonId'][0];
     let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
+
+    $(".image-container img").attr("src", "data:image/png;base64," + thumbnailBox);
 
     const imageElement = $(`<p>${tpoIdStr} ${seasonIdStr} ${styleIdStr}</p>`);
     const li = $("<li>").append(imageElement);

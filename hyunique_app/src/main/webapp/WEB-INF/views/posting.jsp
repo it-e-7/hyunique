@@ -36,7 +36,10 @@
             <form action="post" method="post" enctype="multipart/form-data">
                 <div class="image-view">
                     <div id="thumbnail-img"></div>
-                    <input type="file" id="fileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
+                    <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
+                    <button type="button" id="addImgBtn">스타일 사진 추가</button>
+                    <ul class="add-img-container">
+                    </ul>
                     <div class="tag-container" id="tag-container">
                     </div>
                 </div>
