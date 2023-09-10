@@ -35,7 +35,7 @@
 			</p>
 		</div>
 		<div class="intro-gif">
-			<img src="/resources/img/STG_vSnap-2.gif"/>
+			<img src="/resources/img/gif-intro.gif"/>
 		</div>
 		<div class="login-text-wrapper">
 			<p class="txt-login">
