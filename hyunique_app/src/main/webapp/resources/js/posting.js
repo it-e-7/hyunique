@@ -90,6 +90,7 @@ $(document).ready(function() {
         XOffset = e.offsetX;
         YOffset = e.offsetY;
 
+        $('.search-value').empty();
         $(".result-list").empty();
         $(".write-container").hide();
         $(".search-container").show();
@@ -295,7 +296,6 @@ function compileAndSendPostData() {
     $(".header-wrapper").hide();
 
 }
-
 
 
 // 터치한 위치에 선택한 상품을 태그로 붙이기
