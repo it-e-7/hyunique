@@ -37,7 +37,7 @@
         <button id="filterModalButton" class="filter-img-div">
             <img src="/resources/img/filter.png" />
         </button>
-        <c:forEach var="tag" items="${['남', '여', '미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이']}">
+        <c:forEach var="tag" items="${['남', '여', '미니멀', '이지캐주얼', '비즈니스캐주얼', '스트릿', '원마일웨어', '유니크', '러블리', '아메카지','시티보이', '스포티', '레트로']}">
           <button id="filterModalButton${loop.index}" class="FilterModalButton${tag}" onclick="handleButtonClick('${tag}')">
             <div id=textLine>
             ${tag}

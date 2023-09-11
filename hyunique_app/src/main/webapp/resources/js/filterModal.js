@@ -313,7 +313,10 @@ document.addEventListener("DOMContentLoaded", function() {
         'uniqueCheckbox': '유니크',
         'lovelyCheckbox': '러블리',
         'amekajiCheckbox': '아메카지',
-        'cityboyCheckbox': '시티보이'
+        'cityboyCheckbox': '시티보이',
+        'sportyCheckbox' : '스포티',
+        'retroCheckbox' : '레트로'
+
     };
 
     //체크된 것들 색 바꾸기
