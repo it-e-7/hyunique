@@ -107,7 +107,7 @@ function updateUser() {
         data: JSON.stringify(requestData),
         success: function (response) {
             alert('업데이트 성공!');
-            window.location.replace(`/user/${sessionId}`);
+            window.location.replace('/');
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
