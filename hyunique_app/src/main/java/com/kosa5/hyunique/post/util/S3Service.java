@@ -94,8 +94,6 @@ public class S3Service {
             e.printStackTrace();
             log.info("e.printStackTrace(); = " + e.getStackTrace());
             return null;
-        } finally {
-            amazonS3.shutdown();
         }
     }
 
@@ -120,8 +118,6 @@ public class S3Service {
             for (MultiObjectDeleteException.DeleteError error : errors) {
                 log.info("Error: " + error.getCode() + ", Key: " + error.getKey());
             }
-        } finally {
-            amazonS3.shutdown();
         }
 
     }
