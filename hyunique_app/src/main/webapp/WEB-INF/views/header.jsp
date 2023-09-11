@@ -10,7 +10,7 @@
 	                  <button id="search-button" onclick="displaySearch()">
 	                    <img src="/resources/img/ic-search.png" />
 	                  </button>
-	                  <button id="my-page-button">
+	                  <button id="my-page-button" onclick="location.href=`/user/${sessionId}`;">
 	                    <img src="/resources/img/ic-person.png" />
 	                  </button>
 	             </div>
