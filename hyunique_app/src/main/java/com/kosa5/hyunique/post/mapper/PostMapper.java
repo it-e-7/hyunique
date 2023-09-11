@@ -28,6 +28,6 @@ public interface PostMapper {
   
     void insertOnePost(Map<String, Object> params);
 
-    List<TagVO> getTagInform(String type);
+    List<TagVO> getTagInform();
 
 }

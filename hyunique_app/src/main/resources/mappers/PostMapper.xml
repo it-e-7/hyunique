@@ -87,13 +87,14 @@
 		WHERE user_id = #{userId} AND post_id = #{postId}
 	</delete>
 
-	<select id="getTagInform" parameterType="String" resultType="map">
-		<choose>
-			<when test="type == 'HY_STYLETAG'">SELECT style_id as tagId, style_name as tagName FROM HY_STYLETAG</when>
-			<when test="type == 'HY_TPOTAG'">SELECT tpo_id as tagId, tpo_name as tagName FROM HY_TPOTAG</when>
-			<when test="type == 'HY_SEASONTAG'">SELECT season_id as tagId, season_name as tagName FROM HY_SEASONTAG</when>
-		</choose>
+	<select id="getTagInform" resultType="tagVO">
+		SELECT 'style' as type, style_id as tagId, style_name as tagName FROM HY_STYLETAG
+		UNION ALL
+		SELECT 'tpo' as type, tpo_id as tagId, tpo_name as tagName FROM HY_TPOTAG
+		UNION ALL
+		SELECT 'season' as type, season_id as tagId, season_name as tagName FROM HY_SEASONTAG
 	</select>
+
 
 	<insert id="insertOnePost" statementType="CALLABLE" parameterType="map">
 		call insert_one_post(

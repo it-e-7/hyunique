@@ -13,6 +13,8 @@ let imgWidth;
 let imgHeight;
 
 let classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
+let pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
+let currentPage;
 
 // 사용자가 클릭한 좌표 정보 저장
 let XOffset = 0;
@@ -25,14 +27,14 @@ $("#img-load-button").click(function() {
 });
 
 $("#fileInput").change(function() {
-    $(".pre-container").hide();
-    $(".write-container").show();
-    $(".search-container").hide();
-    $(".post-container").hide();
+    let page = '.write-container';
+    showPage(page);
 });
 
 // 작성 완료 버튼
-$('#upload-button').click(compileAndSendPostData);
+$('#upload-button').click(function() {
+    compileAndSendPostData();
+});
 
 // 썸네일 이미지 출력
 $("#fileInput").change(function(e) {
@@ -90,10 +92,9 @@ $('#thumbnail-img').on('click', 'img', function(e){
     XOffset = e.offsetX;
     YOffset = e.offsetY;
 
+    showPage('.search-container');
     $('.search-value').empty();
-    $(".result-list").empty();
-    $(".write-container").hide();
-    $(".search-container").show();
+    $('.result-list').empty();
 });
 
 // 상품 검색
@@ -162,6 +163,22 @@ $(".image-view").on("mouseup", ".post-pin", function(event) {
 });
 
 
+// 화면 전환 함수
+function showPage(page) {
+    $(pages.join(', ')).hide();
+    $(page).show();
+    currentPage = page;
+}
+
+// 뒤로 가기 함수
+function goBack() {
+    const preIndex = pages.indexOf(currentPage);
+
+    if (preIndex >= 0) {
+        const targetPage = pages[preIndex - 1];
+        showPage(targetPage);
+    }
+}
 
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
@@ -191,8 +208,6 @@ function compileAndSendPostData() {
         imgList: imgList,
     };
 
-    console.log(JSON.stringify(post));
-
     let nextPost = {
         postContent: $('#content').val(),
         tpoId: -1,
@@ -213,6 +228,7 @@ function compileAndSendPostData() {
     post['seasonId'] = post['seasonId'][0];
     post['tpoId'] = post['tpoId'][0];
 
+
     // 핀
     let product = Object.values(items).map(item => {
         return {
@@ -230,10 +246,7 @@ function compileAndSendPostData() {
     sendPostToServer(postingVO);
     printSelectTagAndContent(nextPost);
 
-    $(".post-container").show();
-    $(".write-container").hide();
-    $(".header-wrapper").hide();
-
+    showPage('.post-container');
 }
 
 
@@ -443,9 +456,13 @@ function getGroupCheckBoxState() {
 // 1. 태그 받아오는 함수
 function getTagInform() {
     $.getJSON("/post/tag", function(data) {
-        insertTags('style', data.styleTags);
-        insertTags('tpo', data.tpoTags);
-        insertTags('season', data.seasonTags);
+        const styleTags = data.filter(tag => tag.type === 'style');
+        const tpoTags = data.filter(tag => tag.type === 'tpo');
+        const seasonTags = data.filter(tag => tag.type === 'season');
+
+        insertTags('style', styleTags);
+        insertTags('tpo', tpoTags);
+        insertTags('season', seasonTags);
     });
 }
 
@@ -457,8 +474,8 @@ function insertTags(tagType, tagData) {
         const inputType = (tagType === 'style') ? 'checkbox' : 'radio';
         const tagElement = `
             <div>
-                <input type="${inputType}" id="${tag.TAGNAME}" tag-id="${tag.TAGID}" name="${tagType}-radio-group">
-                <label for="${tag.TAGNAME}">${tag.TAGNAME}</label>
+                <input type="${inputType}" id="${tag.tagName}" tag-id="${tag.tagId}" name="${tagType}-radio-group">
+                <label for="${tag.tagName}">${tag.tagName}</label>
             </div>
         `;
         $tagContainer.append(tagElement);
