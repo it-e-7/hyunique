@@ -154,6 +154,13 @@ document.addEventListener("DOMContentLoaded", function() {
           state[checkbox.id] = checkbox.checked;
         });
 
+        // 슬라이더의 위치를 읽어와서 상태 객체에 추가
+        const slider = document.querySelector(".rs-pointer[data-dir='left']");
+        if (slider) {
+            const sliderPosition = slider.getAttribute("data-slider-position");
+            state["sliderPosition"] = sliderPosition;
+        }
+
         return state;
     }
 
