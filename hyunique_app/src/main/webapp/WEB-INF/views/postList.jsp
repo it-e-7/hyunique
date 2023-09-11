@@ -26,7 +26,7 @@
         </div>
     </c:if>
     <c:if test="${not empty userId}">
-        <c:if test="${followerCount ne 0}">
+        <c:if test="${followerCount eq 0}">
             <div id="popular-style">
                 인기있는 스타일
             </div>

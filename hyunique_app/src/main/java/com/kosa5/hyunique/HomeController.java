@@ -20,6 +20,7 @@ public class HomeController {
         model.addAttribute("userId",session.getAttribute("sessionId"));
         if(session.getAttribute("sessionId")!=null){
             model.addAttribute("followerCount",postService.countFollower(Integer.parseInt((String)session.getAttribute("sessionId"))));
+            System.out.println(model.getAttribute("followerCount"));
         }
         return "postList";
     }
