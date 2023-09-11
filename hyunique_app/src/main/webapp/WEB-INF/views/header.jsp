@@ -8,7 +8,7 @@
 	             </button>
 	             <div id="hyunique-main-top-buttons">
 	                  <button id="search-button" onclick="displaySearch()">
-	                    <img src="/resources/img/ic-search.png" />
+	                    <img src="/resources/img/ic-search-n.png" />
 	                  </button>
 	                  <button id="my-page-button">
 	                    <img src="/resources/img/ic-person.png" />
@@ -19,9 +19,14 @@
 	    <link rel="stylesheet" type="text/css" href="/resources/css/search.css" />
 	    <div class="header-search-area">
 	    	<div class="search-area-wrapper">
-	    		<div class="search-input-wrapper">
-	    			<input type="text" id="search-input" placeholder="검색어를 입력하세요" />
-	    			<img src="/resources/img/ic-search.png" />
+	    		<div class="search-top-wrapper">
+	    			<div class="search-input-wrapper">
+	    				<input type="text" id="search-input" placeholder="검색어를 입력하세요" />
+	    				<img src="/resources/img/ic-search-n.png" />
+	    			</div>
+	    			<button onclick="hideSearch()">
+	    				<img src="/resources/img/ic-close.png" />
+	    			</button>
 	    		</div>
 	    		<ul class="product-list">
 	    		</ul>

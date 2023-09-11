@@ -2,14 +2,18 @@ let searchResultPage = 1;
 
 function hideSearchModal(e) {
 	if(!e.target.closest('.search-area-wrapper')) {
-		$('.header-search-area').css('display', 'none');
-		$('body').css('overflow-y', 'scroll');
+		hideSearch();
 	}
 }
 
 function displaySearch() {
 	$('.header-search-area').css('display', 'block');
 	$('body').css('overflow-y', 'hidden');
+}
+
+function hideSearch() {
+	$('.header-search-area').css('display', 'none');
+	$('body').css('overflow-y', 'scroll');
 }
 
 function getSearchResult(keyword, callback) {
