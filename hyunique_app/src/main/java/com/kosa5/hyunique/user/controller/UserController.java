@@ -135,4 +135,9 @@ public class UserController {
 		return "ok";
 	}
 
+//	@Auth
+	@GetMapping("onboarding")
+	public String onboarding() {
+	    return "useronboarding";
+	}
 }
