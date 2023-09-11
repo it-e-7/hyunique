@@ -70,6 +70,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
     gap: 12px 32px;
+    margin-bottom: 50px;
 }
 
 #fixed-button-div{
