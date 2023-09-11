@@ -23,21 +23,14 @@ let YOffset = 0;
 getTagInform();
 
 $("#img-load-button").click(function() {
+    $("#fileInput").val("");
     $("#fileInput").click();
 });
 
-$("#fileInput").change(function() {
-    let page = '.write-container';
-    showPage(page);
-});
-
-// 작성 완료 버튼
-$('#upload-button').click(function() {
-    compileAndSendPostData();
-});
+$("#fileInput").change(thumbnailUpload);
 
 // 썸네일 이미지 출력
-$("#fileInput").change(function(e) {
+function thumbnailUpload(e) {
     const files = e.target.files;
     const file = files[0];
     if (!file.type.match("image/.*")) {
@@ -54,7 +47,16 @@ $("#fileInput").change(function(e) {
         container = imageElement;
     }
     reader.readAsDataURL(file); // base64 인코딩
+
+    showPage('.write-container');
+}
+
+// 작성 완료 버튼
+$('#upload-button').click(function() {
+    compileAndSendPostData();
 });
+
+
 
 $('#addImgBtn').click(function() {
     $('#addFileInput').click();
@@ -82,7 +84,6 @@ $("#addFileInput").change(function(e) {
     reader.readAsDataURL(file); // base64 인코딩
   });
 });
-
 
 
 $('#thumbnail-img').on('click', 'img', function(e){
@@ -126,6 +127,7 @@ $('.result-list').on('click', '.search-product-li', function() {
         product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
 
         attachTag(XOffset, YOffset, product);
+        $('.result-list').empty();
     });
 });
 
@@ -173,11 +175,22 @@ function showPage(page) {
 // 뒤로 가기 함수
 function goBack() {
     const preIndex = pages.indexOf(currentPage);
+    const targetPage = pages[preIndex - 1];
 
-    if (preIndex >= 0) {
-        const targetPage = pages[preIndex - 1];
-        showPage(targetPage);
+    if (pages[preIndex] === pages[1]) {
+        $('#thumbnail-img').empty();
+        $('.add-img-container').empty();
+        $("#style-tags input[type='checkbox']:checked").prop("checked", false);
+        $("#tpo-tags input[type='radio']").prop("checked", false);
+        $("#season-tags input[type='radio']").prop("checked", false);
+        $('#content').val('');
     }
+
+    if (pages[preIndex] === pages[2]) {
+        $('.result-list').empty();
+    }
+
+    showPage(targetPage);
 }
 
 
@@ -270,8 +283,6 @@ function attachTag(xOffset, yOffset, vo) {
     });
 
     let id = tagElement.attr('id');
-
-    console.log('attach tag id: ', id);
 
     items[id] = {
         initialX: 0,

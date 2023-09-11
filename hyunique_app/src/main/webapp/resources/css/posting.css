@@ -211,11 +211,47 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 9px;
     margin: auto;
     padding: 20px;
     background: white;
     width: 50%;
+    position: absolute;
+    width: 318px;
+    height: 179px;
+    left: 19px;
+    top: 285px;
 }
+
+.modal-content p {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.product-search-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.color-wrap, .size-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 
 .close-button {
     cursor: pointer;

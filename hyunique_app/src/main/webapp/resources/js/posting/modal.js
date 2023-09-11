@@ -41,6 +41,8 @@ $(".close-button").click(function() {
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
+    $('.select-product-color').empty();
+    $('.select-product-size').empty();
 });
 
 // 모달 띄우기
