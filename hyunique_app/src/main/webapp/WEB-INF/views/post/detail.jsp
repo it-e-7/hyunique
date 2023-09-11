@@ -25,14 +25,16 @@
 					<p>${postVO.userHeight}cm</p>
 				</div>
 			</div>
-			<c:choose>
-				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
-				</c:when>
-				<c:otherwise>
-					<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
-				</c:otherwise>
-			</c:choose>
+			<c:if test="${sessionId != postVO.userId}">
+				<c:choose>
+					<c:when test="${postVO.follow == 0}">
+						<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
+					</c:when>
+					<c:otherwise>
+						<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
 		</div>
 		<div class="img-slider-container">
 		<div class="img-slider-wrapper">

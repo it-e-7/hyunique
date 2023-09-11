@@ -122,8 +122,12 @@ public class UserController {
 	@PostMapping("follow")
 	@ResponseBody
 	public String postFollowByUserId(int userId, @SessionAttribute int sessionId) {
-		userService.followByUserId(sessionId, userId);
-		return "ok";
+		if(sessionId == userId) {
+			return "fail";
+		} else {
+			userService.followByUserId(sessionId, userId);
+			return "ok";
+		}
 	}
 	
 	@Auth
