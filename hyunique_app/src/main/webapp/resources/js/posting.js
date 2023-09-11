@@ -14,153 +14,158 @@ let imgHeight;
 
 let classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
 
-$(document).ready(function() {
+// 사용자가 클릭한 좌표 정보 저장
+let XOffset = 0;
+let YOffset = 0;
 
-    getTagInform();
+getTagInform();
 
-    $("#img-load-button").click(function() {
-        $("#fileInput").click();
-    });
+$("#img-load-button").click(function() {
+    $("#fileInput").click();
+});
 
-    $("#fileInput").change(function() {
-        $(".pre-container").hide();
-        $(".write-container").show();
-        $(".search-container").hide();
-        $(".post-container").hide();
-    });
+$("#fileInput").change(function() {
+    $(".pre-container").hide();
+    $(".write-container").show();
+    $(".search-container").hide();
+    $(".post-container").hide();
+});
 
-    // 작성 완료 버튼
-    $('#upload-button').click(compileAndSendPostData);
+// 작성 완료 버튼
+$('#upload-button').click(compileAndSendPostData);
 
-    // 썸네일 이미지 출력
-    $("#fileInput").change(function(e) {
-        const files = e.target.files;
-        const file = files[0];
-        if (!file.type.match("image/.*")) {
-            alert("이미지 파일만 업로드할 수 있습니다.");
-            return;
-        }
-        const reader = new FileReader();
+// 썸네일 이미지 출력
+$("#fileInput").change(function(e) {
+    const files = e.target.files;
+    const file = files[0];
+    if (!file.type.match("image/.*")) {
+        alert("이미지 파일만 업로드할 수 있습니다.");
+        return;
+    }
+    const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const img = reader.result.split(',')[1];
-            thumbnailBox = img;
-            const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
-            $('#thumbnail-img').append(imageElement);
-            container = imageElement;
-        }
-        reader.readAsDataURL(file); // base64 인코딩
-    });
+    reader.onload = function(e) {
+        const img = reader.result.split(',')[1];
+        thumbnailBox = img;
+        const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+        $('#thumbnail-img').append(imageElement);
+        container = imageElement;
+    }
+    reader.readAsDataURL(file); // base64 인코딩
+});
 
-    $('#addImgBtn').click(function() {
-        $('#addFileInput').click();
-    });
+$('#addImgBtn').click(function() {
+    $('#addFileInput').click();
+});
 
-    // 추가 이미지
-    $("#addFileInput").change(function(e) {
-      const files = e.target.files;
+// 추가 이미지
+$("#addFileInput").change(function(e) {
+  const files = e.target.files;
 
-      $.each(files, function(index, file) {
-        if (!file.type.match("image/.*")) {
-          alert("이미지 파일만 업로드할 수 있습니다.");
-          return;
-        }
-        const reader = new FileReader();
+  $.each(files, function(index, file) {
+    if (!file.type.match("image/.*")) {
+      alert("이미지 파일만 업로드할 수 있습니다.");
+      return;
+    }
+    const reader = new FileReader();
 
-        reader.onload = function(e) {
-          const li = $("<li>");
-          const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
-          const img = reader.result.split(',')[1];
-          imgList.push(img);
-          li.append(imageElement);
-          $('.add-img-container').append(li);
-        }
-        reader.readAsDataURL(file); // base64 인코딩
-      });
-    });
+    reader.onload = function(e) {
+      const li = $("<li>");
+      const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+      const img = reader.result.split(',')[1];
+      imgList.push(img);
+      li.append(imageElement);
+      $('.add-img-container').append(li);
+    }
+    reader.readAsDataURL(file); // base64 인코딩
+  });
+});
 
-    // 사용자가 클릭한 좌표 정보 저장
-    let XOffset = 0;
-    let YOffset = 0;
 
-    $('#thumbnail-img').on('click', 'img', function(e){
-        imgWidth = $(this).width();
-        imgHeight = $(this).height();
 
-        XOffset = e.offsetX;
-        YOffset = e.offsetY;
+$('#thumbnail-img').on('click', 'img', function(e){
+    imgWidth = $(this).width();
+    imgHeight = $(this).height();
 
-        $('.search-value').empty();
-        $(".result-list").empty();
-        $(".write-container").hide();
-        $(".search-container").show();
-    });
+    XOffset = e.offsetX;
+    YOffset = e.offsetY;
 
-    // 상품 검색
-    $("#search-btn").off('click').click(function(){
+    $('.search-value').empty();
+    $(".result-list").empty();
+    $(".write-container").hide();
+    $(".search-container").show();
+});
+
+// 상품 검색
+$("#search-btn").off('click').click(function(){
+    let productName = $("#search-input").val();
+    if(productName){
+      getSearchProduct(productName);
+    }
+});
+
+// 상품 검색 엔터 이벤트
+$("#search-input").on('keydown', function(e){
+    if(e.keyCode == 13) {
         let productName = $("#search-input").val();
         if(productName){
           getSearchProduct(productName);
         }
-    });
+    }
+});
 
-    // 상품 검색 엔터 이벤트
-    $("#search-input").on('keydown', function(e){
-        if(e.keyCode == 13) {
-            let productName = $("#search-input").val();
-            if(productName){
-              getSearchProduct(productName);
-            }
-        }
-    });
+// 상품 리스트 중에서 선택한 상품 id를 뽑아서, 해당 상품의 색상, 사이즈 선택 모달 띄움
+$('.result-list').on('click', '.search-product-li', function() {
+    let product = getSelectItem($(this));
+    showProductModal(product);
 
-    // 상품 리스트 중에서 선택한 상품데이터를 뽑아내고, 색상, 사이즈 선택 모달 띄움
-    $('.result-list').on('click', '.search-product-li', function() {
-        vo = getSelectItem($(this));
-        showProductModal(XOffset, YOffset, vo);
-    });
+    // 확인 버튼을 누르면 핀이 표시됨
+    $('#search-results-button').off('click').on('click', function() {
+        product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
+        product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
 
-    let isMouseDown = false;  // 마우스를 누르고 있는지 판단하는 변수
-
-    // 마우스를 누르면 isMouseDown을 true로 설정
-    $(".image-view").on("mousedown", ".post-pin", function() {
-        isMouseDown = true;
-    });
-
-    // 마우스를 뗄 때 동작
-    $(".image-view").on("mouseup", ".post-pin", function(event) {
-        let id = event.target.id;
-
-        console.log(id);
-
-        if (isMouseDown) { // 마우스가 눌러져 있는 상태에서 뗐을 때만 동작
-            if ($(this).data("currentIndex") === undefined) {
-                $(this).data("currentIndex", 0);
-            }
-
-            let currentIndex = $(this).data("currentIndex");
-
-            $(this).removeClass('arrow-left arrow-right arrow-bottom arrow-top');
-
-            // 다음 클래스 인덱스 계산
-            currentIndex = (currentIndex + 1) % classes.length;
-
-            // 새로운 클래스 추가
-            $(this).addClass(classes[currentIndex]);
-            items[id].pinType = classes[currentIndex];
-
-            // 새로운 인덱스 저장
-            $(this).data("currentIndex", currentIndex);
-        }
-
-        isMouseDown = false;
+        attachTag(XOffset, YOffset, product);
     });
 });
+
+let isMouseDown = false;  // 마우스를 누르고 있는지 판단하는 변수
+
+// 마우스를 누르면 isMouseDown을 true로 설정
+$(".image-view").on("mousedown", ".post-pin", function() {
+    isMouseDown = true;
+});
+
+// 마우스를 뗄 때 동작
+$(".image-view").on("mouseup", ".post-pin", function(event) {
+
+    if (isMouseDown) { // 마우스가 눌러져 있는 상태에서 뗐을 때만 동작
+        if ($(this).data("currentIndex") === undefined) {
+            $(this).data("currentIndex", 0);
+        }
+
+        let currentIndex = $(this).data("currentIndex");
+
+        $(this).removeClass('arrow-left arrow-right arrow-bottom arrow-top');
+
+        // 다음 클래스 인덱스 계산
+        currentIndex = (currentIndex + 1) % classes.length;
+
+        // 새로운 클래스 추가
+        $(this).addClass(classes[currentIndex]);
+        items[this.id].pinType = classes[currentIndex];
+
+        // 새로운 인덱스 저장
+        $(this).data("currentIndex", currentIndex);
+    }
+
+    isMouseDown = false;
+});
+
+
 
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
 function getSelectItem(obj) {
-
     itemVO = {
         productId : obj.find(".search-product-id").text(),
         productBrand : obj.find(".search-product-brand").text(),
@@ -242,6 +247,8 @@ function attachTag(xOffset, yOffset, vo) {
 
     let id = tagElement.attr('id');
 
+    console.log('attach tag id: ', id);
+
     items[id] = {
         initialX: 0,
         initialY: 0,
@@ -260,11 +267,10 @@ function attachTag(xOffset, yOffset, vo) {
     };
 
     tagElement.html(`
-      <span class="pin-brand">${items[id].productBrand}</span>
-      <span class="pin-price">${items[id].productPrice}</span>
-      <span class="pin-size">${items[id].productSize}</span>
+      <p class="pin-brand">${items[id].productBrand}</p>
+      <p class="pin-price">${items[id].productPrice}</p>
+      <p class="pin-size-color">${items[id].productSize} / ${items[id].productColor}</p>
     `);
-
 
     $('.modal').hide();
     $(".search-container").hide();
@@ -282,25 +288,24 @@ function attachTag(xOffset, yOffset, vo) {
 
     // 새로 생성된 태그에 드래그 이벤트 바인딩
     tagElement.on("mousedown touchstart", function(event) {
-        dragStart(event);
+        dragStart(event, id);
     });
 
     tagElement.on("mouseup touchend", function(event) {
-        dragEnd(event);
+        dragEnd(event, id);
     });
 
     tagElement.on("mousemove touchmove", function(event) {
-        drag(event, tagElement);
+        drag(event, tagElement, id);
     });
 }
 
 
-
-
-
-function dragStart(event) {
-    const id = event.target.id;
+function dragStart(event, id) {
     const item = items[id];
+
+    console.log('item ' + item);
+    console.log('id ' + id);
 
     if (event.type === "touchstart") {
         item.initialX = event.touches[0].clientX - item.xOffset;
@@ -310,13 +315,12 @@ function dragStart(event) {
         item.initialY = event.clientY - item.yOffset;
     }
 
-    if ($(event.target).hasClass("post-pin")) {
+    if ($(event.currentTarget).hasClass("post-pin")) {
         item.active = true;
     }
 }
 
-function dragEnd(event) {
-    const id = event.target.id;
+function dragEnd(event, id) {
     const item = items[id];
 
     item.initialX = item.currentX;
@@ -324,8 +328,7 @@ function dragEnd(event) {
     item.active = false;
 }
 
-function drag(event, tagElement) {
-    const id = event.target.id;
+function drag(event, tagElement, id) {
     const item = items[id];
 
     if (item.active) {

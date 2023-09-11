@@ -44,7 +44,7 @@ $(".close-button").click(function() {
 });
 
 // 모달 띄우기
-function showProductModal(XOffset, YOffset, product) {
+function showProductModal(product) {
     $("#product-info").text('사이즈 색상');
 
     colorPresentDisplayId = 1;
@@ -55,15 +55,6 @@ function showProductModal(XOffset, YOffset, product) {
     $(".select-product-size").empty();
     $(".select-product-color").empty();
     $("#product-search-modal").show();
-
-    // 확인 버튼을 누르면 핀이 표시됨
-    $('#search-results-button').off('click').on('click', function() {
-        product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
-        product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
-
-        console.log('product : ', JSON.stringify(product));
-        attachTag(XOffset, YOffset, product);
-    });
 }
 
 // 상품 사이즈, 색상 DB에서 조회 후 html 렌더링
