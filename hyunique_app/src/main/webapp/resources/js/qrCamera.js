@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 outputData.parentElement.hidden = false;
 
                 if (passOneQR == 0 && inValidURL(code.data)) {
-                    //let newWindow = window.open(code.data, '_blank');
+                    window.open(code.data, '_blank');
                     console.log(code.data);
                     passOneQR = 1;
                     //history.back();
