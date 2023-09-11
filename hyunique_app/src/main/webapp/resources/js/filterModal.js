@@ -220,16 +220,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     leftPointer.addEventListener('mousedown', function (e) {
             isLeftDragging = true;
+                        console.log(" L mousedown");
+    });
+
+    leftPointer.addEventListener('touchstart', function (e) {
+            isLeftDragging = true;
+            console.log(" L touchstart");
     });
 
     rightPointer.addEventListener('mousedown', function (e) {
             isRightDragging = true;
+                        console.log(" R mousedown");
     });
+
+    rightPointer.addEventListener('touchstart', function (e) {
+            isRightDragging = true;
+                        console.log(" R touchstart");
+    });
+
 
     document.addEventListener('mousemove', function (e) {
         if (isLeftDragging) {
             const newLeftValue = (e.clientX - leftOffsetX - sliderContainer.getBoundingClientRect().left) / sliderContainer.clientWidth * 100;
             // 보정: 왼쪽 원은 오른쪽 원을 넘어가지 못하도록 체크
+                            console.log(newLeftValue);
             const rightValue = parseFloat(rightPointer.style.left) || 100;
             if (newLeftValue < 0) {
                 leftPointer.style.left = '0%';
@@ -261,7 +275,50 @@ document.addEventListener("DOMContentLoaded", function() {
         updateRsHeight();
     });
 
+    document.addEventListener('touchmove', function (e) {
+            console.log('touchmove' + 'isLeftDragging : '+isLeftDragging + ' isRightDragging : '+isRightDragging);
+            if (isLeftDragging) {
+                const newLeftValue = (e.touches[0].clientX - leftOffsetX - sliderContainer.getBoundingClientRect().left) / sliderContainer.clientWidth * 100;
+                // 보정: 왼쪽 원은 오른쪽 원을 넘어가지 못하도록 체크
+                const rightValue = parseFloat(rightPointer.style.left) || 100;
+                if (newLeftValue < 0) {
+                    leftPointer.style.left = '0%';
+                } else if (newLeftValue + 3 > rightValue) { // 여기서 10은 원의 크기에 따라 조절해야 할 수치입니다.
+                    leftPointer.style.left = (rightValue - 3) + '%';
+                } else {
+                    leftPointer.style.left = newLeftValue + '%';
+                    leftPointer.style.left = newLeftValue + '%';
+                }
+                    updateRangeBackgroundColor();
+            }
+
+
+            if (isRightDragging) {
+                const newRightValue = (e.touches[0].clientX - rightOffsetX - sliderContainer.getBoundingClientRect().left) / sliderContainer.clientWidth * 100;
+
+                // 보정: 오른쪽 원은 왼쪽 원을 넘어가지 못하도록 체크
+                const leftValue = parseFloat(leftPointer.style.left) || 0;
+                if (newRightValue > 100) {
+                    rightPointer.style.left = '100%';
+                } else if (newRightValue - 3 < leftValue) { // 여기서 10은 원의 크기에 따라 조절해야 할 수치입니다.
+                    rightPointer.style.left = (leftValue + 3) + '%';
+                } else {
+                    rightPointer.style.left = newRightValue + '%';
+                }
+                    updateRangeBackgroundColor();
+            }
+
+            updateRsHeight();
+        });
+
     document.addEventListener('mouseup', function () {
+        console.log("mouseup");
+        isLeftDragging = false;
+        isRightDragging = false;
+    });
+
+    document.addEventListener('touchend', function () {
+            console.log("touchend");
         isLeftDragging = false;
         isRightDragging = false;
     });
@@ -280,61 +337,97 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function changeFilterColor() {
-    const checkedCheckboxIds = [];
-    const notcheckedCheckboxIds = [];
+        const checkedCheckboxIds = [];
+        const notcheckedCheckboxIds = [];
 
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      if (checkbox.checked) {
-        checkedCheckboxIds.push(checkbox.id);
-      }
-    });
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.checked) {
+            checkedCheckboxIds.push(checkbox.id);
+          }
+        });
 
-    //색 초기화
-    const buttons = document.querySelectorAll('[class^="FilterModalButton"]');
+        //색 초기화
+        const buttons = document.querySelectorAll('[class^="FilterModalButton"]');
 
-    buttons.forEach(button => {
-          button.style.backgroundColor = "initial";
-          button.style.fontWeight = "normal";
-          button.style.color = "#A5A5A5";
-    });
+        buttons.forEach(button => {
+              button.style.backgroundColor = "initial";
+              button.style.fontWeight = "normal";
+              button.style.color = "#A5A5A5";
+        });
 
-    //checkedCheckboxIds 안에 체크된 체크박스의 아이디들이 저장된다.
-    //해당 아이디들을 바탕으로, 앞에 있는 애들의 스타일을 바꾼다.
+        //checkedCheckboxIds 안에 체크된 체크박스의 아이디들이 저장된다.
+        //해당 아이디들을 바탕으로, 앞에 있는 애들의 스타일을 바꾼다.
 
-    let reversedCheckboxes = {
-        'maleCheckbox': '남',
-        'femaleCheckbox': '여',
-        'minimalCheckbox': '미니멀',
-        'easyCheckbox': '이지캐주얼',
-        'businessCheckbox': '비즈니스캐주얼',
-        'streetCheckbox': '스트릿',
-        'onemileCheckbox': '원마일웨어',
-        'uniqueCheckbox': '유니크',
-        'lovelyCheckbox': '러블리',
-        'amekajiCheckbox': '아메카지',
-        'cityboyCheckbox': '시티보이',
-        'sportyCheckbox' : '스포티',
-        'retroCheckbox' : '레트로'
+        let reversedCheckboxes = {
+            'maleCheckbox': '남',
+            'femaleCheckbox': '여',
+            'minimalCheckbox': '미니멀',
+            'easyCheckbox': '이지캐주얼',
+            'businessCheckbox': '비즈니스캐주얼',
+            'streetCheckbox': '스트릿',
+            'onemileCheckbox': '원마일웨어',
+            'uniqueCheckbox': '유니크',
+            'lovelyCheckbox': '러블리',
+            'amekajiCheckbox': '아메카지',
+            'cityboyCheckbox': '시티보이',
+            'sportyCheckbox' : '스포티',
+            'retroCheckbox' : '레트로'
 
-    };
+        };
 
-    //체크된 것들 색 바꾸기
-    for (let i = 0; i < checkedCheckboxIds.length; i++) {
-        let checkboxId = checkedCheckboxIds[i];
-        let buttonClass = 'FilterModalButton' + reversedCheckboxes[checkboxId];
-        let button = document.querySelector('.' + buttonClass);
+        //체크된 것들 색 바꾸기
+        for (let i = 0; i < checkedCheckboxIds.length; i++) {
+            let checkboxId = checkedCheckboxIds[i];
+            let buttonClass = 'FilterModalButton' + reversedCheckboxes[checkboxId];
+            let button = document.querySelector('.' + buttonClass);
 
 
-        if (button!=null) {
-            button.style.backgroundColor = "var(--jw-light-blue2)";
-            button.style.fontWeight = "bold";
-            button.style.color = "var(--jw-blue3)";
+            if (button!=null) {
+                button.style.backgroundColor = "var(--jw-light-blue2)";
+                button.style.fontWeight = "bold";
+                button.style.color = "var(--jw-blue3)";
+            }
         }
-    }
 
+        function restCheckBox() {
+            document.getElementById('maleCheckbox').checked = false;
+            document.getElementById('femaleCheckbox').checked = false;
+//
+//            // 슬라이더 초기화
+//            const sliderRegion = document.querySelector('.rs-slider-region');
+//            sliderRegion.style.left = '0';
 
+            // tpo 체크박스 초기화
+            document.getElementById('kosaCheckbox').checked = false;
+            document.getElementById('travelCheckbox').checked = false;
+            document.getElementById('campusCheckbox').checked = false;
+            document.getElementById('cafeCheckbox').checked = false;
+            document.getElementById('dateCheckbox').checked = false;
+            document.getElementById('merryCheckbox').checked = false;
+            document.getElementById('officeCheckbox').checked = false;
+            document.getElementById('dailyCheckbox').checked = false;
 
+            // season 체크박스 초기화
+            document.getElementById('springCheckbox').checked = false;
+            document.getElementById('summerCheckbox').checked = false;
+            document.getElementById('fallCheckbox').checked = false;
+            document.getElementById('winterCheckbox').checked = false;
+
+            // style 체크박스 초기화
+            document.getElementById('minimalCheckbox').checked = false;
+            document.getElementById('easyCheckbox').checked = false;
+            document.getElementById('businessCheckbox').checked = false;
+            document.getElementById('amekajiCheckbox').checked = false;
+            document.getElementById('streetCheckbox').checked = false;
+            document.getElementById('cityboyCheckbox').checked = false;
+            document.getElementById('onemileCheckbox').checked = false;
+            document.getElementById('sportyCheckbox').checked = false;
+            document.getElementById('uniqueCheckbox').checked = false;
+            document.getElementById('retroCheckbox').checked = false;
+            document.getElementById('lovelyCheckbox').checked = false;
+            document.getElementById('moderncasualCheckbox').checked = false;
+        }
     }
 
 });
