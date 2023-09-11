@@ -16,12 +16,7 @@
     display: inline-block;
 }
 
-.tag {
-    white-space: nowrap;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-}
+
 
 .search-product-li {
     display: flex;
@@ -235,24 +230,32 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     cursor: pointer;
 }
 
-.custom-picker {
-  overflow: hidden;
-  height: 50px;
-  position: relative;
-}
-.slide-content {
-  position: absolute;
-  top: 0;
-  transition: top 0.3s ease;
-}
-
-.slide-item {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 상품, 사이즈 선택 모달 css */
+.select-product-size, .select-product-color {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: scroll;
+	width: 100%;
+	height: 4.8rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	scroll-snap-type: y mandatory;
 }
 
+.select-product-size li, .select-product-color li {
+	scroll-snap-align: start;
+	height: 1.6rem;
+}
+
+ul {
+	list-style: none;
+}
+
+
+
+/* 추가 이미지 */
 .add-img-container {
     display: flex;
     list-style-type: none;

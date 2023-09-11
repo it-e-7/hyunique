@@ -155,13 +155,6 @@ $(document).ready(function() {
 
         isMouseDown = false;
     });
-
-    $(".close-button").click(function() {
-        modal.hide();
-        $("#sizeContent").empty();
-        $("#colorContent").empty();
-    });
-
 });
 
 

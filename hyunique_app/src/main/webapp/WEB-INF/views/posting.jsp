@@ -87,19 +87,12 @@
                 <div id="product-search-modal" class="modal">
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
-                        <p id="product-info"></p>
-                            <div id="size-picker" class="custom-picker">
-                                <div class="slide-content" id="sizeContent">
-                                </div>
-                            </div>
-
-                            <div id="color-picker" class="custom-picker">
-                                <div class="slide-content" id="colorContent">
-                                </div>
-                            </div>
-                            <div>
-                                <input type="button" id="search-results-button" value="확인">
-                            </div>
+                        <div>
+                            <p id="product-info"></p>
+                            <ul class="select-product-color"></ul>
+                            <ul class="select-product-size"></ul>
+                            <input type="button" id="search-results-button" value="확인">
+                        </div>
                     </div>
                 </div>
                 <p class="search-value"></p>
@@ -124,4 +117,5 @@
             </div>
     </div>
 </body>
+<script src="/resources/js/posting/modal.js"></script>
 </html>

@@ -1,67 +1,92 @@
-function modalEvent() {
-    // 새로운 코드 시작
-    let colorIndex = 0;
-    let sizeIndex = 0;
+let colorScrollLock = false;
+let sizeScrollLock = false;
+let colorPresentDisplayId;
+let sizePresentDisplayId;
 
-    $('#color-picker, #size-picker').off('touchstart touchmove touchend'); // 기존 이벤트 리스너 제거
+// 사이즈 스크롤
+$('.select-product-size').scroll((e) => {
+   if (sizeScrollLock) return;
+   sizeScrollLock = true;
 
-    const colorItems = $('#color-picker .slide-item');
-    const sizeItems = $('#size-picker .slide-item');
+   const sizeHeight = $('#select-product-size-0').height();
+   const nextDisplayId = Math.round($('.select-product-size').scrollTop() / sizeHeight) + 1;
+   sizePresentDisplayId = nextDisplayId;
 
-    const colorCount = colorItems.length;
-    const sizeCount = sizeItems.length;
+   setTimeout(() => {
+   		sizeScrollLock = false;
+   }, 100);
+});
 
-    let initialTouchPos = null;
-    let lastTouchPos = null;
+// 색상 스크롤
+$('.select-product-color').scroll((e) => {
+    if (colorScrollLock) return;
+    colorScrollLock = true;
 
-    function updateSlide(newTop = null, pickerId) {
-      if (pickerId === 'color-picker') {
-        $('#color-picker').data('selected-index', $(colorItems[colorIndex]).text());
-        if (newTop === null) {
-          newTop = -colorIndex * 50;
-        }
-        $('#colorContent').css('top', `${newTop}px`);
-      } else if (pickerId === 'size-picker') {
-        $('#size-picker').data('selected-index', $(sizeItems[sizeIndex]).text());
-        if (newTop === null) {
-          newTop = -sizeIndex * 50;
-        }
-        $('#sizeContent').css('top', `${newTop}px`);
-      }
-    }
+    const colorHeight = $('#select-product-color-0').height();
+    const nextDisplayId = Math.round($('.select-product-color').scrollTop() / sizeHeight) + 1;
+    colorPresentDisplayId = nextDisplayId;
 
-    updateSlide(null, 'color-picker');
-    updateSlide(null, 'size-picker'); // 초기 위치 설정
+    setTimeout(() => {
+        colorScrollLock = false;
+    }, 100);
+});
 
-    $('#color-picker, #size-picker').on('touchstart', function(e) {
-      initialTouchPos = e.originalEvent.touches[0].clientY;
+// 모달 닫기
+$(".close-button").click(function() {
+    $("#product-search-modal").hide();
+    $("#sizeContent").empty();
+    $("#colorContent").empty();
+});
+
+// 모달 띄우기
+function showProductModal(XOffset, YOffset, product) {
+    $("#product-info").text('사이즈 색상');
+    requestProductSizeAndColor(product['productId'])
+    $(".select-product-size").empty();
+    $(".select-product-color").empty();
+    $("#product-search-modal").show();
+
+    // 확인 버튼을 누르면 핀이 표시됨
+    $('#search-results-button').off('click').on('click', function() {
+        product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
+        product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
+
+        attachTag(XOffset, YOffset, product);
     });
+}
 
-    $('#color-picker, #size-picker').on('touchmove', function(e) {
-      e.preventDefault();
-      lastTouchPos = e.originalEvent.touches[0].clientY;
-      const offset = lastTouchPos - initialTouchPos;
-      const newTop = this.id === 'color-picker' ? -colorIndex * 50 + offset : -sizeIndex * 50 + offset;
-      updateSlide(newTop, this.id);
-    });
+// 상품 사이즈, 색상 DB에서 조회 후 html 렌더링
+function requestProductSizeAndColor(productId) {
+   $.getJSON(`/product/inform?productId=${productId}`, function(data) {
 
-    $('#color-picker, #size-picker').on('touchend', function(e) {
-      const finalTouchPos = e.originalEvent.changedTouches[0].clientY;
+       let slideItem;
 
-      if (initialTouchPos - finalTouchPos > 30) {  // Upward swipe
-        if (this.id === 'color-picker') {
-          colorIndex = (colorIndex + 1) % colorCount;
-        } else {
-          sizeIndex = (sizeIndex + 1) % sizeCount;
-        }
-      } else if (initialTouchPos - finalTouchPos < -30) { // Downward swipe
-        if (this.id === 'color-picker') {
-          colorIndex = (colorIndex - 1 + colorCount) % colorCount;
-        } else {
-          sizeIndex = (sizeIndex - 1 + sizeCount) % sizeCount;
-        }
-      }
-      updateSlide(null, this.id);
-    });
-    // 새로운 코드 끝
+       slideItem = $("<li>").attr("id", 'select-product-size-0').html('&nbsp;');
+       $(".select-product-size").append(slideItem);
+
+       // size 처리
+       if (data.productSize.length > 0) {
+           $.each(data.productSize, function(index, size) {
+               slideItem = $("<li>").attr("id", `select-product-size-${index+1}`).text(size);
+               $(".select-product-size").append(slideItem);
+           });
+       } else {
+           slideItem = $("<li>").attr("id", "select-product-size-1").text("one");
+           $(".select-product-size").append(slideItem);
+       }
+
+       // color 처리
+       if (data.productColor.length > 0) {
+           $.each(data.productColor, function(index, color) {
+               slideItem = $("<li>").attr("id", `select-product-color-${index+1}`).text(color);  // id도 올바르게 수정
+               $(".select-product-color").append(slideItem);
+           });
+       } else {
+           slideItem = $("<li>").attr("id", "select-product-color-1").text("one");  // id도 올바르게 수정
+           $(".select-product-color").append(slideItem);
+       }
+
+       slideItem = $("<li>").html('&nbsp;');
+       $(".select-product-size").append(slideItem);
+   });
 }
