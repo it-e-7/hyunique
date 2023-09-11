@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.open(code.data, '_blank');
                     console.log(code.data);
                     passOneQR = 1;
-                    //history.back();
+                    history.back();
                 }
             } else {
                 outputMessage.hidden = false;
