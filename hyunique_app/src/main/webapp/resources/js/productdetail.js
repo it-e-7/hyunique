@@ -14,6 +14,7 @@ $('.select-depart').scroll((e) => {
 	$(`#card-list-${nextDisplayId}`).css('display', 'flex');
 	
 	presentDisplayId = nextDisplayId;
+	console.log(presentDisplayId);
 	
 	setTimeout(() => {
 		scrollLock = false;
@@ -27,9 +28,7 @@ function sharePost(productName) {
 			url: location.href,
 		}).then(() => {
 			
-		}).catch(() => {
-			console.error('공유  error');
-		});
+		}).catch(console.log);
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);
