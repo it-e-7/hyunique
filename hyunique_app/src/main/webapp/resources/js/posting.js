@@ -156,74 +156,14 @@ $(document).ready(function() {
         isMouseDown = false;
     });
 
+    $(".close-button").click(function() {
+        modal.hide();
+        $("#sizeContent").empty();
+        $("#colorContent").empty();
+    });
+
 });
 
-function modalEvent() {
-
-    let colorIndex = 0;
-    let sizeIndex = 0;
-
-    $('#color-picker, #size-picker').off('touchstart touchmove touchend'); // 기존 이벤트 리스너 제거
-
-    const colorItems = $('#color-picker .slide-item');
-    const sizeItems = $('#size-picker .slide-item');
-
-    const colorCount = colorItems.length;
-    const sizeCount = sizeItems.length;
-
-    let initialTouchPos = null;
-    let lastTouchPos = null;
-
-    function updateSlide(newTop = null, pickerId) {
-      if (pickerId === 'color-picker') {
-        $('#color-picker').data('selected-index', $(colorItems[colorIndex]).text());
-        if (newTop === null) {
-          newTop = -colorIndex * 50;
-        }
-        $('#colorContent').css('top', `${newTop}px`);
-      } else if (pickerId === 'size-picker') {
-        $('#size-picker').data('selected-index', $(sizeItems[sizeIndex]).text());
-        if (newTop === null) {
-          newTop = -sizeIndex * 50;
-        }
-        $('#sizeContent').css('top', `${newTop}px`);
-      }
-    }
-
-    updateSlide(null, 'color-picker');
-    updateSlide(null, 'size-picker');
-
-    $('#color-picker, #size-picker').on('touchstart', function(e) {
-      initialTouchPos = e.originalEvent.touches[0].clientY;
-    });
-
-    $('#color-picker, #size-picker').on('touchmove', function(e) {
-      e.preventDefault();
-      lastTouchPos = e.originalEvent.touches[0].clientY;
-      const offset = lastTouchPos - initialTouchPos;
-      const newTop = this.id === 'color-picker' ? -colorIndex * 50 + offset : -sizeIndex * 50 + offset;
-      updateSlide(newTop, this.id);
-    });
-
-    $('#color-picker, #size-picker').on('touchend', function(e) {
-      const finalTouchPos = e.originalEvent.changedTouches[0].clientY;
-
-      if (initialTouchPos - finalTouchPos > 30) {  // Upward swipe
-        if (this.id === 'color-picker') {
-          colorIndex = (colorIndex + 1) % colorCount;
-        } else {
-          sizeIndex = (sizeIndex + 1) % sizeCount;
-        }
-      } else if (initialTouchPos - finalTouchPos < -30) { // Downward swipe
-        if (this.id === 'color-picker') {
-          colorIndex = (colorIndex - 1 + colorCount) % colorCount;
-        } else {
-          sizeIndex = (sizeIndex - 1 + sizeCount) % sizeCount;
-        }
-      }
-      updateSlide(null, this.id);
-    });
-}
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
 function getSelectItem(obj) {
@@ -232,6 +172,7 @@ function getSelectItem(obj) {
         productId : obj.find(".search-product-id").text(),
         productBrand : obj.find(".search-product-brand").text(),
         productName : obj.find(".search-product-name").text(),
+        productPrice : obj.find(".search-product-price").text(),
         productSize : '',
         productColor : '',
     };
@@ -300,117 +241,69 @@ function compileAndSendPostData() {
 
 // 터치한 위치에 선택한 상품을 태그로 붙이기
 function attachTag(xOffset, yOffset, vo) {
-    return function() {
-        let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_"+new Date().getTime()).css({
-            left: xOffset + "px",
-            top: yOffset + "px",
-            position: "absolute"
-        });
+    let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_"+new Date().getTime()).css({
+        left: xOffset + "px",
+        top: yOffset + "px",
+        position: "absolute"
+    });
 
-        let id = tagElement.attr('id');
+    let id = tagElement.attr('id');
 
-        items[id] = {
-            initialX: 0,
-            initialY: 0,
-            currentX: 0,
-            currentY: 0,
-            xOffset: 0,
-            yOffset: 0,
-            active: false,
-            pinType: null,
-            productId: vo['productId'],
-            productBrand: vo['productBrand'],
-            productName: vo['productName'],
-            productPrice: vo['productPrice'],
-            productSize: vo['productSize'],
-            productColor: vo['productColor']
-        };
-
-        tagElement.html(`
-          ${items[id].productBrand}
-          ${items[id].productName}
-          ${items[id].productPrice}
-          ${items[id].productSize}
-        `);
-
-        $('.modal').hide();
-        $(".search-container").hide();
-        $(".write-container").show();
-        $("#search-input").val("");
-
-        items[id].xOffset = xOffset;
-        items[id].yOffset = yOffset;
-
-
-        let imgContainer = $('#thumbnail-img');
-        imgContainer.append(tagElement);
-
-        // 새로 생성된 태그에 드래그 이벤트 바인딩
-        tagElement.on("mousedown touchstart", function(event) {
-            dragStart(event);
-        });
-
-        tagElement.on("mouseup touchend", function(event) {
-            dragEnd(event);
-        });
-
-        tagElement.on("mousemove touchmove", function(event) {
-            drag(event, tagElement);
-        });
+    items[id] = {
+        initialX: 0,
+        initialY: 0,
+        currentX: 0,
+        currentY: 0,
+        xOffset: 0,
+        yOffset: 0,
+        active: false,
+        pinType: null,
+        productId: vo['productId'],
+        productBrand: vo['productBrand'],
+        productName: vo['productName'],
+        productPrice: vo['productPrice'],
+        productSize: vo['productSize'],
+        productColor: vo['productColor']
     };
-}
 
-function showProductModal(XOffset, YOffset, product) {
-    $("#product-info").text('사이즈 색상');
-    let modal = $("#product-search-modal");
+    tagElement.html(`
+      ${items[id].productBrand}
+      ${items[id].productName}
+      ${items[id].productPrice}
+      ${items[id].productSize}
+    `);
 
-    requestProductSizeAndColor(product['productId'])
+    $('.modal').hide();
+    $(".search-container").hide();
+    $(".write-container").show();
+    $("#search-input").val("");
 
-    modal.show();
+    items[id].xOffset = xOffset;
+    items[id].yOffset = yOffset;
 
-    $(".close-button").click(function() {
-        modal.hide();
-        $("#sizeContent").empty();
-        $("#colorContent").empty();
+    console.log(tagElement);
+    console.log(items);
+
+    let imgContainer = $('#thumbnail-img');
+    imgContainer.append(tagElement);
+
+    // 새로 생성된 태그에 드래그 이벤트 바인딩
+    tagElement.on("mousedown touchstart", function(event) {
+        dragStart(event);
     });
 
-    $('#search-results-button').click(function() {
-        product['productSize'] = $('#color-picker').data('selected-index');
-        product['productColor'] = $('#size-picker').data('selected-index');
+    tagElement.on("mouseup touchend", function(event) {
+        dragEnd(event);
+    });
 
-        attachTag(XOffset, YOffset, product)();
+    tagElement.on("mousemove touchmove", function(event) {
+        drag(event, tagElement);
     });
 }
 
-// 상품 사이즈, 색상 DB에서 조회
-function requestProductSizeAndColor(productId) {
-    $.getJSON(`/product/inform?productId=${productId}`, function(data) {
 
-        // size 처리
-        if (data.productSize.length > 0) {
-            $.each(data.productSize, function(index, size) {
-                const slideItem = $("<div>").addClass("slide-item").text(size);
-                $("#sizeContent").append(slideItem);
-            });
-        } else {
-            const slideItem = $("<div>").addClass("slide-item").text("one");
-            $("#sizeContent").append(slideItem);
-        }
 
-        // color 처리
-        if (data.productColor.length > 0) {
-            $.each(data.productColor, function(index, color) {
-                const slideItem = $("<div>").addClass("slide-item").text(color);
-                $("#colorContent").append(slideItem);
-            });
-        } else {
-            const slideItem = $("<div>").addClass("slide-item").text("one");
-            $("#colorContent").append(slideItem);
-        }
 
-        modalEvent();
-    });
-}
 
 function dragStart(event) {
     const id = event.target.id;
