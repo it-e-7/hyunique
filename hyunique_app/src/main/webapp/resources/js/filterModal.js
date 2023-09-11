@@ -220,22 +220,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     leftPointer.addEventListener('mousedown', function (e) {
             isLeftDragging = true;
-                        console.log(" L mousedown");
     });
 
     leftPointer.addEventListener('touchstart', function (e) {
             isLeftDragging = true;
-            console.log(" L touchstart");
     });
 
     rightPointer.addEventListener('mousedown', function (e) {
             isRightDragging = true;
-                        console.log(" R mousedown");
     });
 
     rightPointer.addEventListener('touchstart', function (e) {
             isRightDragging = true;
-                        console.log(" R touchstart");
     });
 
 
@@ -243,7 +239,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (isLeftDragging) {
             const newLeftValue = (e.clientX - leftOffsetX - sliderContainer.getBoundingClientRect().left) / sliderContainer.clientWidth * 100;
             // 보정: 왼쪽 원은 오른쪽 원을 넘어가지 못하도록 체크
-                            console.log(newLeftValue);
             const rightValue = parseFloat(rightPointer.style.left) || 100;
             if (newLeftValue < 0) {
                 leftPointer.style.left = '0%';
@@ -276,7 +271,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener('touchmove', function (e) {
-            console.log('touchmove' + 'isLeftDragging : '+isLeftDragging + ' isRightDragging : '+isRightDragging);
             if (isLeftDragging) {
                 const newLeftValue = (e.touches[0].clientX - leftOffsetX - sliderContainer.getBoundingClientRect().left) / sliderContainer.clientWidth * 100;
                 // 보정: 왼쪽 원은 오른쪽 원을 넘어가지 못하도록 체크
@@ -312,13 +306,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
     document.addEventListener('mouseup', function () {
-        console.log("mouseup");
         isLeftDragging = false;
         isRightDragging = false;
     });
 
     document.addEventListener('touchend', function () {
-            console.log("touchend");
         isLeftDragging = false;
         isRightDragging = false;
     });
@@ -389,45 +381,47 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.style.color = "var(--jw-blue3)";
             }
         }
+    }
+        $('#resetModalButton').click(restCheckBox);
 
         function restCheckBox() {
-            document.getElementById('maleCheckbox').checked = false;
-            document.getElementById('femaleCheckbox').checked = false;
-//
-//            // 슬라이더 초기화
-//            const sliderRegion = document.querySelector('.rs-slider-region');
-//            sliderRegion.style.left = '0';
+                    document.getElementById('maleCheckbox').checked = false;
+                    document.getElementById('femaleCheckbox').checked = false;
 
-            // tpo 체크박스 초기화
-            document.getElementById('kosaCheckbox').checked = false;
-            document.getElementById('travelCheckbox').checked = false;
-            document.getElementById('campusCheckbox').checked = false;
-            document.getElementById('cafeCheckbox').checked = false;
-            document.getElementById('dateCheckbox').checked = false;
-            document.getElementById('merryCheckbox').checked = false;
-            document.getElementById('officeCheckbox').checked = false;
-            document.getElementById('dailyCheckbox').checked = false;
+                    // 슬라이더 초기화
+                    leftPointer.style.left = '0%';
+                    rightPointer.style.left = '100%';
+                    updateRangeBackgroundColor();
+                    updateRsHeight();
 
-            // season 체크박스 초기화
-            document.getElementById('springCheckbox').checked = false;
-            document.getElementById('summerCheckbox').checked = false;
-            document.getElementById('fallCheckbox').checked = false;
-            document.getElementById('winterCheckbox').checked = false;
+                    // tpo 체크박스 초기화
+                    document.getElementById('kosaCheckbox').checked = false;
+                    document.getElementById('travelCheckbox').checked = false;
+                    document.getElementById('campusCheckbox').checked = false;
+                    document.getElementById('cafeCheckbox').checked = false;
+                    document.getElementById('dateCheckbox').checked = false;
+                    document.getElementById('merryCheckbox').checked = false;
+                    document.getElementById('officeCheckbox').checked = false;
+                    document.getElementById('dailyCheckbox').checked = false;
 
-            // style 체크박스 초기화
-            document.getElementById('minimalCheckbox').checked = false;
-            document.getElementById('easyCheckbox').checked = false;
-            document.getElementById('businessCheckbox').checked = false;
-            document.getElementById('amekajiCheckbox').checked = false;
-            document.getElementById('streetCheckbox').checked = false;
-            document.getElementById('cityboyCheckbox').checked = false;
-            document.getElementById('onemileCheckbox').checked = false;
-            document.getElementById('sportyCheckbox').checked = false;
-            document.getElementById('uniqueCheckbox').checked = false;
-            document.getElementById('retroCheckbox').checked = false;
-            document.getElementById('lovelyCheckbox').checked = false;
-            document.getElementById('moderncasualCheckbox').checked = false;
-        }
-    }
+                    // season 체크박스 초기화
+                    document.getElementById('springCheckbox').checked = false;
+                    document.getElementById('summerCheckbox').checked = false;
+                    document.getElementById('fallCheckbox').checked = false;
+                    document.getElementById('winterCheckbox').checked = false;
 
+                    // style 체크박스 초기화
+                    document.getElementById('minimalCheckbox').checked = false;
+                    document.getElementById('easyCheckbox').checked = false;
+                    document.getElementById('businessCheckbox').checked = false;
+                    document.getElementById('amekajiCheckbox').checked = false;
+                    document.getElementById('streetCheckbox').checked = false;
+                    document.getElementById('cityboyCheckbox').checked = false;
+                    document.getElementById('onemileCheckbox').checked = false;
+                    document.getElementById('sportyCheckbox').checked = false;
+                    document.getElementById('uniqueCheckbox').checked = false;
+                    document.getElementById('retroCheckbox').checked = false;
+                    document.getElementById('lovelyCheckbox').checked = false;
+                    document.getElementById('moderncasualCheckbox').checked = false;
+                }
 });
