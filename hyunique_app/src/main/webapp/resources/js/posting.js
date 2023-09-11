@@ -228,6 +228,17 @@ function compileAndSendPostData() {
     post['seasonId'] = post['seasonId'][0];
     post['tpoId'] = post['tpoId'][0];
 
+    if (typeof post['seasonId'] === 'undefined' || typeof post['tpoId'] === 'undefined'
+        || (Array.isArray(post['styleId']) && post['styleId'].length === 0)) {
+        alert('태그를 선택해주세요');
+        return;
+    }
+
+
+    if (post['postContent'] === '') {
+        alert('내용을 작성해주세요');
+        return;
+    }
 
     // 핀
     let product = Object.values(items).map(item => {
