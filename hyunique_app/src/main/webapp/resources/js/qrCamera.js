@@ -58,10 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 outputData.parentElement.hidden = false;
 
                 if (passOneQR == 0 && inValidURL(code.data)) {
-                    location.href(code.data);
+                    location.href = code.data;
                     console.log(code.data);
                     passOneQR = 1;
-                    history.back();
                 }
             } else {
                 outputMessage.hidden = false;
