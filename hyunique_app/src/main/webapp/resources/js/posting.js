@@ -232,7 +232,7 @@ function compileAndSendPostData() {
 }
 
 
-// 터치한 위치에 선택한 상품을 태그로 붙이기
+// 터치한 위치에 상품 정보 핀 찍기
 function attachTag(xOffset, yOffset, vo) {
     let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_"+new Date().getTime()).css({
         left: xOffset + "px",
@@ -260,11 +260,11 @@ function attachTag(xOffset, yOffset, vo) {
     };
 
     tagElement.html(`
-      ${items[id].productBrand}
-      ${items[id].productName}
-      ${items[id].productPrice}
-      ${items[id].productSize}
+      <span class="pin-brand">${items[id].productBrand}</span>
+      <span class="pin-price">${items[id].productPrice}</span>
+      <span class="pin-size">${items[id].productSize}</span>
     `);
+
 
     $('.modal').hide();
     $(".search-container").hide();

@@ -1,7 +1,9 @@
 let colorScrollLock = false;
 let sizeScrollLock = false;
-let colorPresentDisplayId;
-let sizePresentDisplayId;
+
+let colorPresentDisplayId = 1;
+let sizePresentDisplayId = 1;
+
 
 // 사이즈 스크롤
 $('.select-product-size').scroll((e) => {
@@ -11,6 +13,9 @@ $('.select-product-size').scroll((e) => {
    const sizeHeight = $('#select-product-size-0').height();
    const nextDisplayId = Math.round($('.select-product-size').scrollTop() / sizeHeight) + 1;
    sizePresentDisplayId = nextDisplayId;
+
+
+    console.log('pin size', sizePresentDisplayId);
 
    setTimeout(() => {
    		sizeScrollLock = false;
@@ -25,7 +30,7 @@ $('.select-product-color').scroll((e) => {
     const colorHeight = $('#select-product-color-0').height();
     const nextDisplayId = Math.round($('.select-product-color').scrollTop() / sizeHeight) + 1;
     colorPresentDisplayId = nextDisplayId;
-
+    console.log('pin color', colorPresentDisplayId);
     setTimeout(() => {
         colorScrollLock = false;
     }, 100);
@@ -41,7 +46,12 @@ $(".close-button").click(function() {
 // 모달 띄우기
 function showProductModal(XOffset, YOffset, product) {
     $("#product-info").text('사이즈 색상');
-    requestProductSizeAndColor(product['productId'])
+
+    colorPresentDisplayId = 1;
+    sizePresentDisplayId = 1;
+
+    requestProductSizeAndColor(product['productId']);
+
     $(".select-product-size").empty();
     $(".select-product-color").empty();
     $("#product-search-modal").show();
@@ -51,42 +61,44 @@ function showProductModal(XOffset, YOffset, product) {
         product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
         product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
 
+        console.log('product : ', JSON.stringify(product));
         attachTag(XOffset, YOffset, product);
     });
 }
 
 // 상품 사이즈, 색상 DB에서 조회 후 html 렌더링
 function requestProductSizeAndColor(productId) {
-   $.getJSON(`/product/inform?productId=${productId}`, function(data) {
+    $.getJSON(`/product/inform?productId=${productId}`, function(data) {
 
-       let slideItem;
+        let selectSize = $(".select-product-size");
+        let selectColor = $(".select-product-color");
 
-       slideItem = $("<li>").attr("id", 'select-product-size-0').html('&nbsp;');
-       $(".select-product-size").append(slideItem);
+        selectSize.append($("<li>").attr("id", 'select-product-size-0').html('&nbsp;'));
+        selectColor.append($("<li>").attr("id", 'select-product-color-0').html('&nbsp;'));
 
-       // size 처리
-       if (data.productSize.length > 0) {
+        // size 처리
+        if (data.productSize.length > 0) {
            $.each(data.productSize, function(index, size) {
-               slideItem = $("<li>").attr("id", `select-product-size-${index+1}`).text(size);
-               $(".select-product-size").append(slideItem);
+               let slideItem = $("<li>").attr("id", `select-product-size-${index+1}`).text(size);
+               selectSize.append(slideItem);
            });
-       } else {
+        } else {
            slideItem = $("<li>").attr("id", "select-product-size-1").text("one");
-           $(".select-product-size").append(slideItem);
-       }
+           selectSize.append(slideItem);
+        }
 
-       // color 처리
-       if (data.productColor.length > 0) {
+        // color 처리
+        if (data.productColor.length > 0) {
            $.each(data.productColor, function(index, color) {
                slideItem = $("<li>").attr("id", `select-product-color-${index+1}`).text(color);  // id도 올바르게 수정
-               $(".select-product-color").append(slideItem);
+               selectColor.append(slideItem);
            });
-       } else {
+        } else {
            slideItem = $("<li>").attr("id", "select-product-color-1").text("one");  // id도 올바르게 수정
-           $(".select-product-color").append(slideItem);
-       }
+           selectColor.append(slideItem);
+        }
 
-       slideItem = $("<li>").html('&nbsp;');
-       $(".select-product-size").append(slideItem);
-   });
+        selectSize.append($("<li>").html('&nbsp;'));
+        selectColor.append($("<li>").html('&nbsp;'));
+    });
 }
