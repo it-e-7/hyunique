@@ -17,12 +17,12 @@ $(document).ready(function() {
 		
 	// 프로필 사진 변경
 	  $("#profile-file-input").change(function(e) {
-	      handleImageUpload(e, '#profile-preview', 280); // 세로 크기를 140px로 설정
+	      handleImageUpload(e, '#profile-preview', 280); 
 	  });
 
 	  // 배경 사진 변경
 	  $("#back-file-input").change(function(e) {
-	      handleImageUpload(e, '#back-preview', 760); // 세로 크기를 760px로 설정
+	      handleImageUpload(e, '#back-preview', 760); 
 	  });
 
 	  
