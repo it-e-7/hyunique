@@ -219,11 +219,11 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     padding: 20px;
     background: white;
     width: 50%;
-    position: absolute;
+    position: relative;
     width: 318px;
     height: 179px;
-    left: 19px;
-    top: 285px;
+    left: 0;
+    top: 35vh;
 }
 
 .modal-content p {
@@ -299,4 +299,8 @@ ul {
     height: auto;
 }
 
+#thumbnail-img {
+    position: relative;
+    overflow: hidden;
+}
 
