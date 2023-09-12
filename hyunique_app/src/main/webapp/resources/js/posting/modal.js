@@ -38,6 +38,7 @@ $('.select-product-color').scroll((e) => {
 
 // 모달 닫기
 $(".close-button").click(function() {
+    closeModal();
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
@@ -47,6 +48,7 @@ $(".close-button").click(function() {
 
 // 모달 띄우기
 function showProductModal(product) {
+    openModal();
     $("#product-info").text('사이즈 색상');
 
     colorPresentDisplayId = 1;
@@ -94,4 +96,29 @@ function requestProductSizeAndColor(productId) {
         selectSize.append($("<li>").html('&nbsp;'));
         selectColor.append($("<li>").html('&nbsp;'));
     });
+}
+
+// 모달 띄웠을 때, 스크롤 되는거 막기
+let scrollPosition = 0;
+
+// 모달 열기
+function openModal() {
+  scrollPosition = $(window).scrollTop();
+  $('body').css({
+    'overflow': 'hidden',
+    'position': 'fixed',
+    'top': `-${scrollPosition}px`,
+    'width': '100%'
+  });
+}
+
+// 모달 닫기
+function closeModal() {
+  $('body').css({
+    'overflow': '',
+    'position': '',
+    'top': '',
+    'width': ''
+  });
+  $(window).scrollTop(scrollPosition);
 }
