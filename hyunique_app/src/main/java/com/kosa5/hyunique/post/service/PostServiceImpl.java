@@ -102,7 +102,7 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
-        postVO.setThumbnailUrl(s3Service.getUploadOneImgURL(postVO.getThumbnailUrl()));
+        postVO.setThumbnailUrl(urls.get(0));
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
