@@ -45,8 +45,9 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public UserVO getUserInfoAndFollowerCount(int userId) {
-		return userMapper.getUserInfoAndFollowerCount(userId);
+	public UserVO getUserInfoAndFollowerCount(int userId, String sessionId) {
+		
+		return userMapper.getUserInfoAndFollowerCount(userId, sessionId);
 	}
 
 	@Override

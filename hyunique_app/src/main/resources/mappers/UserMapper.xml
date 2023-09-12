@@ -5,15 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.kosa5.hyunique.user.mapper.UserMapper">
 
-	<!-- <select id="insertOrGetUser" statementType="CALLABLE"
-		resultType="java.util.Map">
-		{call insert_or_get_user(#{inputValue, mode=IN,
-		jdbcType=VARCHAR},
-		#{inputType, mode=IN, jdbcType=VARCHAR},
-		#{userId,
-		mode=OUT, jdbcType=VARCHAR})}
-	</select> -->
-
 	<select id="insertOrGetUser" statementType="CALLABLE" resultType="java.util.Map">
 	    {call insert_or_get_user(
 	        #{inputValue, mode=IN, jdbcType=VARCHAR},
@@ -23,8 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    )}
 	</select>
 	
-	<select id="getUserInfoAndFollowerCount" parameterType="int"
-		resultType="com.kosa5.hyunique.user.vo.UserVO">
+	<select id="getUserInfoAndFollowerCount" resultType="com.kosa5.hyunique.user.vo.UserVO">
 		SELECT
 		hy_user.user_id as userId,
 		hy_user.user_img as
@@ -50,8 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LISTAGG(DISTINCT hy_styletag.style_name, ', ') WITHIN GROUP (ORDER BY
 		hy_styletag.style_name) AS styleNames,
 		CASE WHEN EXISTS (
-		SELECT 1 FROM hy_follow WHERE hy_follow.follower_id = #{sessionId} AND hy_follow.following_id = #{userId}
-		)THEN 1 ELSE 0 END AS isFollowing
+		SELECT 1 FROM hy_follow WHERE hy_follow.follower_id = #{sessionId, jdbcType=VARCHAR} AND hy_follow.following_id = #{userId, jdbcType=INTEGER}
+		) THEN 1 ELSE 0 END AS isFollowing
 		FROM
 		hy_user
 		LEFT JOIN hy_sns_url

@@ -46,8 +46,12 @@ public class UserController {
 	@GetMapping("{userId}")
 	public String getUserInfoAndFollowerCount(@PathVariable int userId, HttpSession session, Model model) {
 	    String sessionId = (String) session.getAttribute("sessionId");
-	    UserVO user = userService.getUserInfoAndFollowerCount(userId);
-	    
+	    UserVO user = userService.getUserInfoAndFollowerCount(userId, sessionId);
+	   
+	    log.info("팔로우 여부" + user.getIsFollowing());
+	    log.info("다른유저 아이디" + user.getUserId());
+	    log.info("세션 아이디" + sessionId);
+
 	    if (user != null) {
 	        model.addAttribute("user", user);
 	        if (sessionId != null && Integer.parseInt(sessionId) == userId) {
@@ -67,8 +71,7 @@ public class UserController {
 	public String userUpdatePage(HttpSession session, Model model) {
 		String sessionIdString = (String) session.getAttribute("sessionId");
 		int sessionId = Integer.parseInt(sessionIdString);
-	    UserVO user = userService.getUserInfoAndFollowerCount(sessionId); // 여기에서 변경
-
+	    UserVO user = userService.getUserInfoAndFollowerCount(sessionId,sessionIdString); // 여기에서 변경
 	    if (user != null) {
 	        model.addAttribute("user", user);
 	    } else {
