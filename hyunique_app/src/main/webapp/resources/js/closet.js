@@ -19,7 +19,7 @@ function loadCloset(userId) {
             console.error('옷장 정보를 가져오는 데 실패했습니다.');
         }
     });
-}
+} 
 
 //옷장 보여주는 함수
 function displayCloset(closetVO) {

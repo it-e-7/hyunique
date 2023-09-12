@@ -24,4 +24,5 @@ public class UserVO {
     private int followerCount;
     private String styleNames;
     private String userPrefer;
+    private int isFollowing;
 }

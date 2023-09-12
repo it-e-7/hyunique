@@ -67,7 +67,7 @@
 				</div>
 				<div class="form-content">
 					<input id="userHeight" type="number" name=userHeight
-						value="${user.userHeight}" placeholder="${user.userNickname}님의 키를 입력해주세요">
+						value="${user.userHeight}" placeholder="키(신장)를 입력해주세요">
 				</div>
 	     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
 				<div class="skip-buttons">나중에 입력할게요</div>

@@ -48,7 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		instagramUrl,
 		COUNT(DISTINCT hy_follow.follower_id) AS followerCount,
 		LISTAGG(DISTINCT hy_styletag.style_name, ', ') WITHIN GROUP (ORDER BY
-		hy_styletag.style_name) AS styleNames
+		hy_styletag.style_name) AS styleNames,
+		CASE WHEN EXISTS (
+		SELECT 1 FROM hy_follow WHERE hy_follow.follower_id = #{sessionId} AND hy_follow.following_id = #{userId}
+		)THEN 1 ELSE 0 END AS isFollowing
 		FROM
 		hy_user
 		LEFT JOIN hy_sns_url

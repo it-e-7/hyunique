@@ -113,16 +113,23 @@
 				<div class="user-introduce-wrapper">${user.userIntroduce}</div>
 				<c:choose>
 				    <c:when test="${isCurrentUser == true}">
-				        <div class="follower-btn-wrapper">
-					  		<input  type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
-					  		<label style="visibility: hidden;" for="follower-toggle" id="follower-label">팔로우</label>
-						</div>
+				       <div></div>
 				    </c:when>
 				    <c:otherwise>
-				        <div class="follower-btn-wrapper">
-					  		<input type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
-					  		<label for="follower-toggle" id="follower-label">팔로우 +</label>
-						</div>
+						<c:if test="${sessionId != user.userId}">
+							<c:choose>
+								<c:when test="${user.isFollowing == 0}">
+									<div class="follower-btn-wrapper">
+								  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
+									</div>
+								</c:when>								
+								<c:otherwise>
+									<div class="follower-btn-wrapper">
+								  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로잉 -</label>
+									</div>								
+								</c:otherwise>
+							</c:choose>
+						</c:if>
 				    </c:otherwise>
 				</c:choose>
 				

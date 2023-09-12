@@ -1,5 +1,6 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
+
 let userImg;
 let userBackimg;
 let imgList = []; // 이미지 리스트 초기화
@@ -36,12 +37,14 @@ $(document).ready(function() {
 	  userPostList(userId);
 	  
 });
+
 document.getElementById('updateLink').addEventListener('click', function(e) {
     e.preventDefault(); // 기본 링크 동작을 취소
     setTimeout(function() {
         window.location.href = 'update'; // 1초 후에 페이지 이동
     }, 500);
 });
+
 //이미지 업로드 및 미리보기 함수
 function handleImageUpload(e, previewElement, newHeight) {
     const files = e.target.files;
@@ -79,12 +82,41 @@ function resizeImage(image, newHeight) {
 }
 //팔로우 버튼 텍스트 변경
 checkbox.addEventListener('change', function() {
-  if (this.checked) {
-    label.innerText = '팔로잉 -';
-  } else {
-    label.innerText = '팔로우 +';
-  }
-});
+	  if (this.checked) {
+	    label.innerText = '팔로잉 -';
+	  } else {
+	    label.innerText = '팔로우 +';
+	  }
+	  toggleFollow(this.getAttribute('data-userId'));
+	});
+
+function toggleFollow(userId) {
+	  const url = checkbox.checked ? '/user/follow' : '/user/unfollow';
+	  if (checkbox.checked)  {
+	    ajax({
+	      url: `/user/follow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	      },
+	      error: function(response) {
+	        console.error(response);
+	      },
+	    });
+	  } else {
+	    ajax({
+	      url: `/user/unfollow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	      },
+	      error: function(response) {
+	        console.error(response);
+	      },
+	    });
+	  }
+	}
+
 
 //유저 정보 업데이트
 function updateUser() {
