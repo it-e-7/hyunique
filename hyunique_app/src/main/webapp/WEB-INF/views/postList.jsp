@@ -110,7 +110,7 @@
                         <input type="checkbox" id="campusCheckbox" name="tpo" value="23">
                         </div>
                         <div id=select-type-button>
-                        <label for="travelCheckbox">카페 ☕</label>
+                        <label for="cafeCheckbox">카페 ☕</label>
                         <input type="checkbox" id="cafeCheckbox" name="tpo" value="24">
                         </div>
                         <div id=select-type-button>

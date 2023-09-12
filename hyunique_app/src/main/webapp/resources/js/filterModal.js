@@ -431,4 +431,52 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('lovelyCheckbox').checked = false;
                     document.getElementById('moderncasualCheckbox').checked = false;
                 }
+
+
+      const checkboxIds = [
+        'maleCheckbox',
+        'femaleCheckbox',
+        'kosaCheckbox',
+        'travelCheckbox',
+        'campusCheckbox',
+        'cafeCheckbox',
+        'dateCheckbox',
+        'merryCheckbox',
+        'officeCheckbox',
+        'dailyCheckbox',
+        'springCheckbox',
+        'summerCheckbox',
+        'fallCheckbox',
+        'winterCheckbox',
+        'minimalCheckbox',
+        'easyCheckbox',
+        'businessCheckbox',
+        'amekajiCheckbox',
+        'streetCheckbox',
+        'cityboyCheckbox',
+        'onemileCheckbox',
+        'sportyCheckbox',
+        'uniqueCheckbox',
+        'retroCheckbox',
+        'lovelyCheckbox',
+        'moderncasualCheckbox',
+        // 다른 체크박스 id들을 여기에 추가
+      ];
+
+      checkboxIds.forEach(function (checkboxId) {
+        const checkbox = document.getElementById(checkboxId);
+        const label = document.querySelector('label[for="' + checkboxId + '"]');
+
+        if (checkbox && label) {
+          checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+              label.style.color = 'var(--jw-blue)'; // 원하는 색상으로 변경
+              label.style.fontWeight = '500';
+            } else {
+              label.style.color = '#A5A5A5'; // 초기 색상으로 변경
+              label.style.fontWeight = 'initial';
+            }
+          });
+        }
+      });
 });

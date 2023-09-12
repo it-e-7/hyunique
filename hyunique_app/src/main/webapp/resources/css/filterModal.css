@@ -21,6 +21,10 @@
   height: 56px;
 }
 
+#genderDiv, .rs-height, #tpoDiv, #seasonDiv, #seasonDiv  {
+  color: black;
+}
+
 #modal_bottom {
   display: flex;
   flex-flow: column;
