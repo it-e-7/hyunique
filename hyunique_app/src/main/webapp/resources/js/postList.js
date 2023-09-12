@@ -49,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         '유니크': 'uniqueCheckbox',
         '러블리': 'lovelyCheckbox',
         '아메카지': 'amekajiCheckbox',
-        '시티보이': 'cityboyCheckbox'
+        '시티보이': 'cityboyCheckbox',
+        '스포티' : 'sportyCheckbox',
+        '레트로' : 'retroCheckbox'
       };
 
       var checkboxId = checkboxes[tag];

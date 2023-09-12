@@ -168,7 +168,6 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 999;
 }
 
 #qr-img{
@@ -183,7 +182,6 @@
     position: fixed;
     bottom: 50px;
     right: 20px;
-    z-index: 999;
 }
 
 #qr-img{

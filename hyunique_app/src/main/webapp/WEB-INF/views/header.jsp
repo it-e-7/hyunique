@@ -10,7 +10,7 @@
 	                  <button id="search-button" onclick="displaySearch()">
 	                    <img src="/resources/img/ic-search-n.png" />
 	                  </button>
-	                  <button id="my-page-button">
+	                  <button id="my-page-button" onclick="redirectToUserPage(${sessionId})">
 	                    <img src="/resources/img/ic-person.png" />
 	                  </button>
 	             </div>
@@ -33,5 +33,6 @@
 	    	</div>
 	    </div>
 	    <script src="/resources/js/search.js"></script>
+	    <script src="/resources/js/mypage.js"></script>
 	    
 	</div>
