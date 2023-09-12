@@ -16,12 +16,7 @@
     display: inline-block;
 }
 
-.tag {
-    white-space: nowrap;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-}
+
 
 .search-product-li {
     display: flex;
@@ -59,15 +54,6 @@
 .write-container p {
     font-weight: bold;
     font-size: 16px;
-}
-
-.write-container span {
-    height: 20px;
-    width: 40px;
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    font-size: 16px;
-    border: 1px solid var(--jw-blue3);
 }
 
 #img-load-button {
@@ -225,33 +211,96 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 9px;
     margin: auto;
     padding: 20px;
     background: white;
     width: 50%;
+    position: relative;
+    width: 318px;
+    height: 179px;
+    left: 0;
+    top: 35vh;
 }
+
+.modal-content p {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.product-search-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.color-wrap, .size-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 
 .close-button {
     cursor: pointer;
 }
 
-/* 기존 코드 */
-/* 새로운 코드 시작 */
-.custom-picker {
-  overflow: hidden;
-  height: 50px;
-  position: relative;
+/* 상품, 사이즈 선택 모달 css */
+.select-product-size, .select-product-color {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: scroll;
+	width: 100%;
+	height: 4.8rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	scroll-snap-type: y mandatory;
 }
-.slide-content {
-  position: absolute;
-  top: 0;
-  transition: top 0.3s ease;
+
+.select-product-size li, .select-product-color li {
+	scroll-snap-align: start;
+	height: 1.6rem;
 }
-.slide-item {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+ul {
+	list-style: none;
 }
-/* 새로운 코드 끝 */
-/* 기존 코드 끝 */
+
+
+
+/* 추가 이미지 */
+.add-img-container {
+    display: flex;
+    list-style-type: none;
+    overflow-x: auto;
+}
+
+.add-img-container li {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+.add-img-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+#thumbnail-img {
+    position: relative;
+    overflow: hidden;
+}
+

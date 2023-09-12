@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class TagVO {
-    String tagName;
-    int tagId;
+    private String type;
+    private int tagId;
+    private String tagName;
 }

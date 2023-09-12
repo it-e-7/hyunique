@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import com.kosa5.hyunique.post.vo.TagVO;
 
 @Service
 public class PostServiceImpl implements PostService {
+
+    Logger log = LogManager.getLogger("case3");
 
     @Autowired
     PostMapper postMapper;
@@ -98,41 +102,23 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
-
-        // urls의 값을 postVO의 imgList에 설정
-        List<String> newImgList = new ArrayList<>();
-        for (String url : urls) {
-            newImgList.add(url);
-        }
-        postVO.setImgList(newImgList);  // imgList를 새로운 URL 문자열로 업데이트
-
-        String state = "";
-
-        Map<String, Object> post = new HashMap<>();
-        post.put("posting", postVO);
-        post.put("postProduct", postProductVO);
-        post.put("postState", state);
-//        postMapper.insertOnePost(post);
-
-        return post.get("state").toString();
-    }
-
-    @Override
-    public void testUploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
+        postVO.setThumbnailUrl(urls.get(0));
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
         params.put("post", postVO);
-        params.put("imgUrl", postVO.getImgList());
+        params.put("imgUrl", urls);
         params.put("styleId", postVO.getStyleId());
+        params.put("state", null);
+        postMapper.insertOnePost(params);
 
-
-        postMapper.testInsertOnePost(params);
+        return params.get("state").toString();
     }
 
     @Override
-    public List<TagVO> getTagInform(String type) {
-        return postMapper.getTagInform(type);
+    public List<TagVO> getTagInform() {
+        // TagVO(type, tagId, tagName) 형태
+        return postMapper.getTagInform();
     }
 
 }

@@ -29,8 +29,8 @@ import com.kosa5.hyunique.post.vo.TagVO;
 @RequestMapping("post")
 public class PostController {
 
-	Logger log = LogManager.getLogger("case3");
-	
+    Logger log = LogManager.getLogger("case3");
+
     @Autowired
     PostService postService;
 
@@ -69,50 +69,26 @@ public class PostController {
     public String getQRPage(Model model){
         return "readQRPage";
     }
-    // 게시글 작성
+
+    // 게시글 작성 페이지
     @GetMapping
     public String requestPosting() {
-    	
         return "posting";
     }
 
     @PostMapping
     @ResponseBody
-    public String handlePostUpload(@RequestBody PostingVO posting) {
-        postService.testUploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-//        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-
-        return "ok";
-    }
-
-    @GetMapping("/upload")
-    @ResponseBody
-    public String uploadFile() {
-        List<String> object_keys = Arrays.asList("post/66118058-139b-43d9-88a3-0f75f316d48f.jpg",
-                "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
-
-        s3Service.deleteImgFile(object_keys);
-        return "ok";
-    }
-
-    @PostMapping("/test")
-    @ResponseBody
-    public String testHandleTagUpload(@RequestBody PostingVO vo) {
-
-        postService.testUploadOnePost(vo.getPostVO(), vo.getPostProductVO());
+    public String handlePostUpload(@RequestBody PostingVO posting, @SessionAttribute int sessionId) {
+        posting.getPostVO().setUserId(sessionId);
+        String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
+        log.info("upload state : " + state);
         return "ok";
     }
     
     @GetMapping("/tag")
     @ResponseBody
-    public Map<String, List<TagVO>> getTagName() {
-
-        Map<String, List<TagVO>> tagsMap = new HashMap<>();
-        tagsMap.put("styleTags", postService.getTagInform("HY_STYLETAG"));
-        tagsMap.put("tpoTags", postService.getTagInform("HY_TPOTAG"));
-        tagsMap.put("seasonTags", postService.getTagInform("HY_SEASONTAG"));
-
-        return tagsMap;
+    public List<TagVO> getTagInfo() {
+        return postService.getTagInform();
     }
 
 }

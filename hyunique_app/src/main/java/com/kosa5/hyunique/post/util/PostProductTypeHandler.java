@@ -1,6 +1,5 @@
 package com.kosa5.hyunique.post.util;
 
-
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,20 +30,19 @@ public class PostProductTypeHandler implements TypeHandler {
         STRUCT[] structs = new STRUCT[objects.size()];
         for (int idx=0; idx < objects.size(); idx++) {
             PostProductVO pack = objects.get(idx);
-            Object[] params = new Object[4];
+            Object[] params = new Object[6];
             params[0] = pack.getPinX();
             params[1] = pack.getPinY();
-            params[2] = pack.getProductId();
-            params[3] = pack.getProductSize();
-
-            //System.out.println("params = " + params.toString());
+            params[2] = pack.getPinType();
+            params[3] = pack.getProductId();
+            params[4] = pack.getProductSize();
+            params[5] = pack.getProductColor();
 
             STRUCT struct = new STRUCT(structDescriptor, ps.getConnection(), params);
             structs[idx] = struct;
 
             ArrayDescriptor desc = ArrayDescriptor.createDescriptor("POSTPRODUCTVOLIST", ps.getConnection());
             ARRAY oracleArray = new ARRAY(desc, ps.getConnection(), structs);
-            //System.out.println("oracleArray = " + Arrays.toString((Object[])oracleArray.getArray()));
             ps.setArray(i, oracleArray);
         }
     }
