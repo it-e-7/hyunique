@@ -25,14 +25,16 @@
 					<p>${postVO.userHeight}cm</p>
 				</div>
 			</div>
-			<c:choose>
-				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
-				</c:when>
-				<c:otherwise>
-					<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
-				</c:otherwise>
-			</c:choose>
+			<c:if test="${sessionId != postVO.userId}">
+				<c:choose>
+					<c:when test="${postVO.follow == 0}">
+						<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
+					</c:when>
+					<c:otherwise>
+						<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
 		</div>
 		<div class="img-slider-container">
 		<div class="img-slider-wrapper">
@@ -43,7 +45,7 @@
 				<img src="/resources/img/ic-posttag.png"/>
 			</button>
 			<c:forEach var="product" items="${postVO.productList}">
-				<div class="post-pin arrow-top" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
+				<div class="post-pin ${product.pinType}" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
 					<p class="pin-brand">${product.productBrand}</p>
 					<p class="pin-price">&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/></p>
 					<p class="pin-size">${product.productColor}  ${product.productSize}</p>

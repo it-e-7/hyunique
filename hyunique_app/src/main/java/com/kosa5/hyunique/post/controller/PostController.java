@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,8 @@ import com.kosa5.hyunique.post.vo.TagVO;
 @RequestMapping("post")
 public class PostController {
 
+	Logger log = LogManager.getLogger("case3");
+	
     @Autowired
     PostService postService;
 
@@ -34,9 +38,13 @@ public class PostController {
     S3Service s3Service;
 
     @GetMapping("{postId}")
-    public String getPostDetailHandler(@PathVariable("postId") int postId, Model model) {
+    public String getPostDetailHandler(@SessionAttribute(value="sessionId", required=false) Integer sessionId, @PathVariable("postId") int postId, Model model) {
+    	
+    	if(sessionId == null) {
+    		sessionId = -1;
+    	}
 
-        PostDetailVO postDetailVO = postService.getPostDetailByPostIdUserId(postId, 22);
+        PostDetailVO postDetailVO = postService.getPostDetailByPostIdUserId(postId, sessionId);
 
         model.addAttribute("postVO", postDetailVO);
 
