@@ -99,11 +99,11 @@ function requestProductSizeAndColor(productId) {
 }
 
 // 모달 띄웠을 때, 스크롤 되는거 막기
+
 let scrollPosition = 0;
 
 // 모달 열기
 function openModal() {
-  scrollPosition = $(window).scrollTop();
   $('body').css({
     'overflow': 'hidden',
     'position': 'fixed',
@@ -120,5 +120,6 @@ function closeModal() {
     'top': '',
     'width': ''
   });
-  $(window).scrollTop(scrollPosition);
+  $(window).scrollTop(scrollPosition);  // 저장한 스크롤 위치로 이동
 }
+
