@@ -66,7 +66,7 @@ public class PostController {
         return "readQRPage";
     }
 
-    // 게시글 작성
+    // 게시글 작성 페이지
     @GetMapping
     public String requestPosting() {
         return "posting";
@@ -76,7 +76,6 @@ public class PostController {
     @ResponseBody
     public String handlePostUpload(@RequestBody PostingVO posting, @SessionAttribute int sessionId) {
         posting.getPostVO().setUserId(sessionId);
-        log.info("posting {} ", posting.getPostProductVO());
         String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
         log.info("upload state : " + state);
         return "ok";

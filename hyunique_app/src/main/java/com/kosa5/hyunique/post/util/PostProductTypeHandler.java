@@ -43,7 +43,6 @@ public class PostProductTypeHandler implements TypeHandler {
 
             ArrayDescriptor desc = ArrayDescriptor.createDescriptor("POSTPRODUCTVOLIST", ps.getConnection());
             ARRAY oracleArray = new ARRAY(desc, ps.getConnection(), structs);
-            //System.out.println("oracleArray = " + Arrays.toString((Object[])oracleArray.getArray()));
             ps.setArray(i, oracleArray);
         }
     }
