@@ -130,4 +130,5 @@
 </body>
 <script src="/resources/js/posting.js"></script>
 <script src="/resources/js/posting/modal.js"></script>
+<script src="/resources/js/posting/pin.js"></script>
 </html>
