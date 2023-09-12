@@ -74,32 +74,18 @@ public class PostController {
 
     @PostMapping
     @ResponseBody
-    public String handlePostUpload(@RequestBody PostingVO posting) {
+    public String handlePostUpload(@RequestBody PostingVO posting, @SessionAttribute int sessionId) {
+        posting.getPostVO().setUserId(sessionId);
+        log.info("posting {} ", posting.getPostProductVO());
         String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
         log.info("upload state : " + state);
-        return "ok";
-    }
-
-    @GetMapping("/upload")
-    @ResponseBody
-    public String uploadFile() {
-        List<String> object_keys = Arrays.asList("post/66118058-139b-43d9-88a3-0f75f316d48f.jpg",
-                "post/685925ec-93e8-470f-a986-3855b2091d45.jpg");
-
-        s3Service.deleteImgFile(object_keys);
         return "ok";
     }
     
     @GetMapping("/tag")
     @ResponseBody
-    public Map<String, List<TagVO>> getTagName() {
-
-        Map<String, List<TagVO>> tagsMap = new HashMap<>();
-        tagsMap.put("styleTags", postService.getTagInform("HY_STYLETAG"));
-        tagsMap.put("tpoTags", postService.getTagInform("HY_TPOTAG"));
-        tagsMap.put("seasonTags", postService.getTagInform("HY_SEASONTAG"));
-
-        return tagsMap;
+    public List<TagVO> getTagInfo() {
+        return postService.getTagInform();
     }
 
 }

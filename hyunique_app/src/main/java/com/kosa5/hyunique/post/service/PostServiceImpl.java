@@ -102,7 +102,7 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         List<String> urls = s3Service.getUploadImgURL(postVO.getImgList());
-        postVO.setThumbnailUrl(s3Service.uploadBase64Img(postVO.getThumbnailUrl(), "test.jpg", "post/"));
+        postVO.setThumbnailUrl(s3Service.getUploadOneImgURL(postVO.getThumbnailUrl()));
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
@@ -116,8 +116,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<TagVO> getTagInform(String type) {
-        return postMapper.getTagInform(type);
+    public List<TagVO> getTagInform() {
+        // TagVO(type, tagId, tagName) 형태
+        return postMapper.getTagInform();
     }
 
 }
