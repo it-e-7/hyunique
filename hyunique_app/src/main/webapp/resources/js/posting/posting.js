@@ -338,11 +338,5 @@ function printSelectTagAndContent(vo) {
 }
 
 function moveHome() {
-    $.ajax({
-        url: '/',
-        type: 'GET',
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-        success: function(response) {
-        }
-    });
+    window.location.href = '/';
 }
