@@ -36,80 +36,80 @@
     </div>
 
     <div class="write-container">
-        	<div class="header-wrapper">
-        		<button onclick="goBack()">
-        			<img src="/resources/img/ic-backward.png" />
-        		</button>
-        	</div>
-            <div class="upload"></div>
-            <form action="post" method="post" enctype="multipart/form-data">
-                <div class="image-view">
-                    <div id="thumbnail-img"></div>
-                        <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
-                        <button type="button" id="addImgBtn">스타일 사진 추가</button>
-                        <ul class="add-img-container">
-                        </ul>
-                        <div class="tag-container" id="tag-container">
-                    </div>
+        <div class="header-wrapper">
+            <button onclick="goBack()">
+                <img src="/resources/img/ic-backward.png" />
+            </button>
+        </div>
+        <div class="upload"></div>
+        <form action="post" method="post" enctype="multipart/form-data">
+            <div class="image-view">
+                <div id="thumbnail-img"></div>
+                    <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
+                    <button type="button" id="addImgBtn">스타일 사진 추가</button>
+                    <ul class="add-img-container">
+                    </ul>
+                    <div class="tag-container" id="tag-container">
                 </div>
-                <div class="style-button-group">
-                    <p>스타일</p>
-                    <div id="style-tags"></div>
-                </div>
-                <div class="tpo-button-group">
-                    <p>상황</p>
-                    <div id="tpo-tags"></div>
-                </div>
-                <div class="season-button-group">
-                    <p>시즌</p>
-                    <div id="season-tags"></div>
-                </div>
-                <div class="content-group">
-                    <p>내용</p>
-                    <textarea id="content" name="content" rows="5" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="button" id="upload-button" class="jw-btn">작성 완료하기</button>
-                </div>
-            </form>
+            </div>
+            <div class="style-button-group">
+                <p>스타일</p>
+                <div id="style-tags"></div>
+            </div>
+            <div class="tpo-button-group">
+                <p>상황</p>
+                <div id="tpo-tags"></div>
+            </div>
+            <div class="season-button-group">
+                <p>시즌</p>
+                <div id="season-tags"></div>
+            </div>
+            <div class="content-group">
+                <p>내용</p>
+                <textarea id="content" name="content" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" id="upload-button" class="jw-btn">작성 완료하기</button>
+            </div>
+        </form>
     </div>
 
     <div class="search-container">
-            <div class="header">
-                <div class="header-wrapper">
-                    <button onclick="goBack()">
-                        <img src="/resources/img/ic-backward.png" />
+        <div class="header">
+            <div class="header-wrapper">
+                <button onclick="goBack()">
+                    <img src="/resources/img/ic-backward.png" />
+                </button>
+                <div class="search-box">
+                    <input type="search" class="search-text" id="search-input">
+                    <button class="searching" id="search-btn">
+                        <img src="/resources/img/ic-search.png" class="search-icon">
                     </button>
-                    <div class="search-box">
-                        <input type="search" class="search-text" id="search-input">
-                        <button class="searching" id="search-btn">
-                            <img src="/resources/img/ic-search.png" class="search-icon">
-                        </button>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="search-body">
-                <div id="product-search-modal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <div class="modal-wrap">
-                            <div class='color-wrap'>
-                                <p>색상</p>
-                                <ul class="select-product-color"></ul>
-                            </div>
-                            <div class='size-wrap'>
-                                <p>사이즈</p>
-                                <ul class="select-product-size"></ul>
-                            </div>
+        <div class="search-body">
+            <div id="product-search-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <div class="modal-wrap">
+                        <div class='color-wrap'>
+                            <p>색상</p>
+                            <ul class="select-product-color"></ul>
                         </div>
-                        <input type="button" class='jw-btn' id="search-results-button" value="확인">
+                        <div class='size-wrap'>
+                            <p>사이즈</p>
+                            <ul class="select-product-size"></ul>
+                        </div>
                     </div>
+                    <input type="button" class='jw-btn' id="search-results-button" value="확인">
                 </div>
-                <p class="search-value"></p>
-                <ul class="result-list">
-                </ul>
             </div>
+            <p class="search-value"></p>
+            <ul class="result-list">
+            </ul>
+        </div>
     </div>
 
     <div class="post-container">
@@ -124,11 +124,11 @@
             </div>
             <div class="content-text"></div>
             <div class="button-container">
-                <button id="next-button" class="jw-btn">계속하기</button>
+                <button id="next-button" class="jw-btn" onclick="moveHome()">계속하기</button>
             </div>
     </div>
 </body>
-<script src="/resources/js/posting.js"></script>
+<script src="/resources/js/posting/posting.js"></script>
 <script src="/resources/js/posting/modal.js"></script>
 <script src="/resources/js/posting/pin.js"></script>
 </html>
