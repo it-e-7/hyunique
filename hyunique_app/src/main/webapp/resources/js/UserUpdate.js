@@ -1,5 +1,6 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
+const isFollowing = document.getElementById('user-isFollowing').value;
 
 let userImg;
 let userBackimg;
@@ -20,20 +21,28 @@ $(document).ready(function() {
 	  $("#profile-file-input").change(function(e) {
 	      handleImageUpload(e, '#profile-preview', 280); 
 	  });
-
+	
 	  // 배경 사진 변경
 	  $("#back-file-input").change(function(e) {
 	      handleImageUpload(e, '#back-preview', 760); 
 	  });
-
+	
 	  
-	  var userSex = "${user.userSex}";
+	  const userSex = "${user.userSex}";
 	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
 	  $("#userUpdateForm").submit(function(event) {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	  
+	
+	  if (Number(isFollowing) === 1) {
+		  checkbox.checked = true;
+		  label.innerText = '팔로잉 -';
+	  } else {
+		  checkbox.checked = false;
+		  label.innerText = '팔로우 +';
+	  }
+
 	  userPostList(userId);
 	  
 });
@@ -80,19 +89,12 @@ function resizeImage(image, newHeight) {
     ctx.drawImage(image, 0, 0, newWidth, newHeight);
     return canvas.toDataURL('image/jpeg');
 }
-//팔로우 버튼 텍스트 변경
-checkbox.addEventListener('change', function() {
-	  if (this.checked) {
-	    label.innerText = '팔로잉 -';
-	  } else {
-	    label.innerText = '팔로우 +';
-	  }
-	  toggleFollow(this.getAttribute('data-userId'));
-	});
+
 
 function toggleFollow(userId) {
 	  const url = checkbox.checked ? '/user/follow' : '/user/unfollow';
 	  if (checkbox.checked)  {
+		 label.innerText = '팔로잉 -';
 	    ajax({
 	      url: `/user/follow`,
 	      type: 'POST',
@@ -104,6 +106,7 @@ function toggleFollow(userId) {
 	      },
 	    });
 	  } else {
+		  label.innerText = '팔로우 +';
 	    ajax({
 	      url: `/user/unfollow`,
 	      type: 'POST',

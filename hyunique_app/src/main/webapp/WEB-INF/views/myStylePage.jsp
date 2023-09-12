@@ -14,6 +14,7 @@
 	<div id="session-info">
 		<input type="hidden" id="session-id" value="${sessionId}">
 		<input type="hidden" id="user-id" value="${user.userId}">
+		<input type="hidden" id="user-isFollowing" value="${user.isFollowing}">
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
@@ -117,18 +118,9 @@
 				    </c:when>
 				    <c:otherwise>
 						<c:if test="${sessionId != user.userId}">
-							<c:choose>
-								<c:when test="${user.isFollowing == 0}">
-									<div class="follower-btn-wrapper">
-								  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
-									</div>
-								</c:when>								
-								<c:otherwise>
-									<div class="follower-btn-wrapper">
-								  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로잉 -</label>
-									</div>								
-								</c:otherwise>
-							</c:choose>
+							<div class="follower-btn-wrapper">
+						  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
+							</div>
 						</c:if>
 				    </c:otherwise>
 				</c:choose>
