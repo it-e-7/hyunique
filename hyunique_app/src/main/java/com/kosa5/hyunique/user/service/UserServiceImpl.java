@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.user.service;
 
+import java.sql.Types;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,15 +22,27 @@ public class UserServiceImpl implements UserService {
 	public UserServiceImpl(UserMapper userMapper) {
 		this.userMapper = userMapper;
 	}
-
+//
+//	@Override
+//	public String insertOrGetUser(String inputValue, String inputType) {
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("inputValue", inputValue);
+//		params.put("inputType", inputType);
+//		userMapper.insertOrGetUser(params); // UserMapper를 사용하여 쿼리 실행
+//		return (String) params.get("userId");
+//	}
 	@Override
-	public String insertOrGetUser(String inputValue, String inputType) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("inputValue", inputValue);
-		params.put("inputType", inputType);
-		userMapper.insertOrGetUser(params); // UserMapper를 사용하여 쿼리 실행
-		return (String) params.get("userId");
+	public Map<String, Object> insertOrGetUser(String inputValue, String inputType) {
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("inputValue", inputValue);
+	    params.put("inputType", inputType);
+	    params.put("userId", Types.INTEGER);
+	    params.put("isNew", Types.INTEGER);  // 새로운 필드 추가
+	    userMapper.insertOrGetUser(params);  // UserMapper를 사용하여 쿼리 실행
+
+	    return params;
 	}
+
 
 	@Override
 	public UserVO getUserInfoAndFollowerCount(int userId) {

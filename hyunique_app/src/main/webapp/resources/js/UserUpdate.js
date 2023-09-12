@@ -15,15 +15,16 @@ $(document).ready(function() {
 		  $("#back-file-input").click();
 	  });
 		
-	  // 프로필 사진 변경
+	// 프로필 사진 변경
 	  $("#profile-file-input").change(function(e) {
-		  handleImageUpload(e, '#profile-preview');
+	      handleImageUpload(e, '#profile-preview', 280); 
 	  });
-		
+
 	  // 배경 사진 변경
 	  $("#back-file-input").change(function(e) {
-		  handleImageUpload(e, '#back-preview');
+	      handleImageUpload(e, '#back-preview', 760); 
 	  });
+
 	  
 	  var userSex = "${user.userSex}";
 	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
@@ -35,8 +36,14 @@ $(document).ready(function() {
 	  userPostList(userId);
 	  
 });
+document.getElementById('updateLink').addEventListener('click', function(e) {
+    e.preventDefault(); // 기본 링크 동작을 취소
+    setTimeout(function() {
+        window.location.href = 'update'; // 1초 후에 페이지 이동
+    }, 500);
+});
 //이미지 업로드 및 미리보기 함수
-function handleImageUpload(e, previewElement) {
+function handleImageUpload(e, previewElement, newHeight) {
     const files = e.target.files;
     $.each(files, function(index, file) {
         if (!file.type.match("image/.*")) {
@@ -45,14 +52,31 @@ function handleImageUpload(e, previewElement) {
         }
         const reader = new FileReader();
         reader.onload = function(e) {
-            $(previewElement).attr("src", e.target.result);
-            const img = reader.result.split(',')[1];
-            imgList.push(img);
+            const img = new Image();
+            img.onload = function() {
+                const resizedDataURL = resizeImage(img, newHeight); // 세로 크기를 newHeight로 설정
+                $(previewElement).attr("src", resizedDataURL);
+                const imgData = resizedDataURL.split(',')[1];
+                imgList.push(imgData);
+            };
+            img.src = e.target.result;
         };
         reader.readAsDataURL(file);
     });
 }
 
+// 이미지 리사이징 함수
+function resizeImage(image, newHeight) {
+    const canvas = document.createElement('canvas');
+    const aspectRatio = image.width / image.height;
+    const newWidth = newHeight * aspectRatio;
+
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, newWidth, newHeight);
+    return canvas.toDataURL('image/jpeg');
+}
 //팔로우 버튼 텍스트 변경
 checkbox.addEventListener('change', function() {
   if (this.checked) {
@@ -101,7 +125,7 @@ function updateUser() {
         data: JSON.stringify(requestData),
         success: function (response) {
             alert('업데이트 성공!');
-            window.location.replace(`/user/${sessionId}`);
+            window.location.replace('/');
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
