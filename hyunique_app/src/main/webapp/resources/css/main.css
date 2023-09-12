@@ -1,4 +1,6 @@
 @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 
 * {padding: 0; margin: 0;}
@@ -52,6 +54,33 @@ button {
   scrollbar-width: none;
 }
 
+.jw-btn {
+	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	border-radius: 0.8rem;
+	color: #FFFFFF;
+	padding: 0.5rem 1rem;
+	height: fit-content;
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans';
+	font-weight: 500;
+}
+.jw-btn-radius {
+	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	border-radius: 0.8rem;
+	color: #FFFFFF;
+	padding: 0.5rem 1rem;
+	height: fit-content;
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans';
+	font-weight: 500;
+	border-radius: 100rem;
+}
 .jw-btn {
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
 	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);

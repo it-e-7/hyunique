@@ -87,7 +87,8 @@ public class UserController {
 	    boolean isBackImgChanged = user.getUserBackimg() != null && !user.getUserBackimg().isEmpty();
         boolean isProfileImgChanged = user.getUserImg() != null && !user.getUserImg().isEmpty();
 	    // S3에 이미지 업로드 및 URL 받기
-	    
+        
+        
         if (isBackImgChanged) {
             String backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
             user.setUserBackimg(backImgUrl.toString());
@@ -122,8 +123,12 @@ public class UserController {
 	@PostMapping("follow")
 	@ResponseBody
 	public String postFollowByUserId(int userId, @SessionAttribute int sessionId) {
-		userService.followByUserId(sessionId, userId);
-		return "ok";
+		if(sessionId == userId) {
+			return "fail";
+		} else {
+			userService.followByUserId(sessionId, userId);
+			return "ok";
+		}
 	}
 	
 	@Auth
@@ -134,4 +139,9 @@ public class UserController {
 		return "ok";
 	}
 
+//	@Auth
+	@GetMapping("onboarding")
+	public String onboarding() {
+	    return "useronboarding";
+	}
 }

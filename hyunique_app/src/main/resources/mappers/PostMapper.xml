@@ -129,7 +129,20 @@
             SELECT DISTINCT P.*
         </if>
         <if test='selectedType != null and selectedType.equals("recommend")'>
-            SELECT DISTINCT P.*
+			SELECT DISTINCT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL,
+			COUNT(SL.POST_ID) AS LIKE_COUNT,
+			(COUNT(SL.POST_ID)*5 +
+			SUM(
+			CASE
+			WHEN P.POST_DATE > TRUNC(SYSDATE) THEN 50
+			WHEN P.POST_DATE > TRUNC(SYSDATE) - 1 THEN 40
+			WHEN P.POST_DATE > TRUNC(SYSDATE) - 2 THEN 30
+			WHEN P.POST_DATE > TRUNC(SYSDATE) - 3 THEN 20
+			WHEN P.POST_DATE > TRUNC(SYSDATE) - 4 THEN 10
+			WHEN P.POST_DATE > TRUNC(SYSDATE) - 5 THEN 00
+			ELSE 0
+			END
+			)) AS total_score
         </if>
         <if test='selectedType != null and selectedType.equals("style-ranking")'>
             SELECT DISTINCT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL, COUNT(SL.POST_ID) AS LIKE_COUNT
@@ -195,7 +208,8 @@
             ORDER BY like_count DESC
         </if>
         <if test='selectedType != null and selectedType.equals("recommend")'>
-            ORDER BY P.POST_DATE DESC
+			GROUP BY P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
+            ORDER BY TOTAL_SCORE DESC
         </if>
         <if test="page != null">
             OFFSET  #{page}

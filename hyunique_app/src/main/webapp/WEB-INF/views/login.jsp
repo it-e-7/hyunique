@@ -9,10 +9,17 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/login.css" />
 </head>
-<body>
+<body style="background-color: rgb(252,252,254);">
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331"
+			    style="transform: rotateY(180deg);
+			">
+			</lord-icon>
 		</button>
 	</div>
 	
@@ -26,6 +33,9 @@
 			<p class="txt-instruct">
 				간편하게 가입하고<br>다양하게 찾아보세요!
 			</p>
+		</div>
+		<div class="intro-gif">
+			<img src="/resources/img/gif-intro.gif"/>
 		</div>
 		<div class="login-text-wrapper">
 			<p class="txt-login">

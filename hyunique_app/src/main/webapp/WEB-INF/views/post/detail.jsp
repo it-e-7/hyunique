@@ -13,7 +13,14 @@
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331"
+			    style="transform: rotateY(180deg);
+			">
+			</lord-icon>
 		</button>
 	</div>
 	<div class="content-wrapper">
@@ -25,14 +32,16 @@
 					<p>${postVO.userHeight}cm</p>
 				</div>
 			</div>
-			<c:choose>
-				<c:when test="${postVO.follow == 0}">
-					<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
-				</c:when>
-				<c:otherwise>
-					<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
-				</c:otherwise>
-			</c:choose>
+			<c:if test="${sessionId != postVO.userId}">
+				<c:choose>
+					<c:when test="${postVO.follow == 0}">
+						<button class="jw-btn-nonshadow" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로우</button>
+					</c:when>
+					<c:otherwise>
+						<button class="jw-btn-selected" id="follow-btn" onclick="toggleFollow(${postVO.userId})">팔로잉</button>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
 		</div>
 		<div class="img-slider-container">
 		<div class="img-slider-wrapper">
@@ -43,7 +52,7 @@
 				<img src="/resources/img/ic-posttag.png"/>
 			</button>
 			<c:forEach var="product" items="${postVO.productList}">
-				<div class="post-pin arrow-top" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
+				<div class="post-pin ${product.pinType}" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
 					<p class="pin-brand">${product.productBrand}</p>
 					<p class="pin-price">&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/></p>
 					<p class="pin-size">${product.productColor}  ${product.productSize}</p>
@@ -72,7 +81,14 @@
 				</c:choose>
 			</button>
 				<button onclick="sharePost('${postVO.userNickname}')">
-					<img src="/resources/img/ic-share.png"/>
+					<lord-icon
+					    src="https://cdn.lordicon.com/udwhdpod.json"
+					    colors="primary:#121331,secondary:#110a5c"
+					    trigger="loop"
+   						delay="1000"
+					    stroke="100"
+					    style="width:30px;height:30px">
+					</lord-icon>
 				</button>
 			</div>
 			<div class="post-content">

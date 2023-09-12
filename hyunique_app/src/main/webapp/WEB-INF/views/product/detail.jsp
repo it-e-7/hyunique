@@ -16,7 +16,14 @@
 <body>
 	<div class="header-wrapper">
 		<button onclick="backward()">
-			<img src="/resources/img/ic-backward.png" />
+			<lord-icon
+				id="backward-btn"
+			    src="https://cdn.lordicon.com/zmkotitn.json"
+			    trigger="click"
+			    colors="primary:#121331"
+			    style="transform: rotateY(180deg);
+			">
+			</lord-icon>
 		</button>
 	</div>
 	<div class="content-wrapper">

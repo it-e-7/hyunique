@@ -1,0 +1,172 @@
+/* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); */
+
+#form-usersex, #form-userheight, #form-userprefer, #form-finished{
+    display: none;
+}
+.header-wrapper{
+    margin-bottom:1rem;
+}
+#form-usersex{
+    width:100%;
+}
+
+label{
+  	font-family: "Montserrat", sans-serif;
+  	font-weight: 600;
+	font-size:3rem;
+    color:#363636;
+}
+
+input{
+    border-radius: 10rem;
+    width: calc(100% - 100px);
+    max-width: 700px;
+    border:none;
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+    height:48px;
+    font-size:1rem;
+    padding: 0 20px;
+    
+}
+.content-wrapper{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height: calc(100vh - 40x);
+    align-items: center;
+}
+.form-label{
+    text-align:left;
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    margin-left: 3rem;
+}
+.form-content{
+    width:100%;
+    height:100%;
+   align-items:center;
+    display:flex;
+    flex-direction:column;
+    margin-top:20rem;
+
+}
+
+.btn-next,.btn-submit{
+    width: calc(100% - 60px);
+    height:48px;
+    padding:0;
+    position: fixed;
+    z-index:1000;
+    bottom: calc(5vh);
+    max-width: 700px;
+    font-size: 1.2rem;
+    font-family: 'Spoqa Han Sans';
+}
+
+.skip-buttons{
+    bottom: calc(2vh);
+    position: fixed;
+    font-family: 'Montserrat';
+    font-size: 0.9rem;
+}
+input[type="radio"] {
+    display: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+input[type="radio"] + label {
+    display: inline-block;
+    width: 100px;
+    height: 3rem;
+    border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+    padding:0.1rem 1.3rem;
+    cursor: pointer;
+    line-height: 3rem;
+    /* margin-right:0.1rem; */
+    margin-top:1rem;
+    font-family:Spoqa Han Sans;
+    letter-spacing:0.05rem;
+    text-align:center;
+    color:var(--grey4);
+    font-size:1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+input[type="radio"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+
+}
+input[type="checkbox"] {
+    display: none;
+}
+
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+	border: 1px solid var(--grey4);
+    border-radius: 0.7rem;
+	padding:0.1rem 1.3rem;
+    cursor: pointer;
+	line-height:2rem;
+	margin-right:0.1rem;
+	margin-top:1rem;
+    font-family:Spoqa Han Sans;
+	letter-spacing:0.05rem;
+	text-align:center;
+	color:var(--grey4);
+	font-size:1rem;
+	margin-left:0.5rem;
+}
+
+input[type="checkbox"]:checked + label {
+	color:var(--jw-blue);
+    border: 1px solid var(--jw-blue);
+
+}
+
+#userSex{
+    display:flex;
+    align-content:center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#small-text-label{
+  	font-family: "Montserrat", sans-serif;
+    font-size:1.3rem;
+    font-weight:400;
+    margin-top:1rem;
+    color:var(--grey4);
+	margin-right:3rem;
+}
+#userPrefer{
+	display:flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	justify-content: flex-start;
+}
+.image-container{
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
+	align-content: center;
+	margin-top:10rem;
+}
+.image-container img{
+	width: 70%;;
+	height:auto;
+}

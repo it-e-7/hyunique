@@ -38,9 +38,13 @@ public class PostController {
     S3Service s3Service;
 
     @GetMapping("{postId}")
-    public String getPostDetailHandler(@PathVariable("postId") int postId, Model model) {
+    public String getPostDetailHandler(@SessionAttribute(value="sessionId", required=false) Integer sessionId, @PathVariable("postId") int postId, Model model) {
+    	
+    	if(sessionId == null) {
+    		sessionId = -1;
+    	}
 
-        PostDetailVO postDetailVO = postService.getPostDetailByPostIdUserId(postId, 22);
+        PostDetailVO postDetailVO = postService.getPostDetailByPostIdUserId(postId, sessionId);
 
         model.addAttribute("postVO", postDetailVO);
 

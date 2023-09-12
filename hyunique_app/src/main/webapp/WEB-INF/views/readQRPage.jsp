@@ -12,9 +12,16 @@
 <body>
 	<div id="test">
 		<div id="output">
-            <button onclick="backward()">
-            			<img src="/resources/img/ic-backward.png" />
-            		</button>
+           <button onclick="backward()">
+				<lord-icon
+					id="backward-btn"
+				    src="https://cdn.lordicon.com/zmkotitn.json"
+				    trigger="click"
+				    colors="primary:#121331"
+				    style="transform: rotateY(180deg);
+				">
+				</lord-icon>
+			</button>
 			<div id="outputMessage">
 			</div>
     		<div id="outputLayer" hidden>
