@@ -1,6 +1,9 @@
 package com.kosa5.hyunique.post.util;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -9,6 +12,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -79,17 +84,39 @@ public class S3Service {
         return UUID.randomUUID().toString() + ".jpg";
     }
 
-    // base64 디코딩 및 업로드
+    // 이미지 업로드
     public String uploadBase64Img(String base64Img, String fileName, String dir) {
         byte[] imgBytes = Base64.getDecoder().decode(base64Img);
 
         try (InputStream inputStream = new ByteArrayInputStream(imgBytes)) {
-            ObjectMetadata metadata = new ObjectMetadata();
-            metadata.setContentLength(imgBytes.length);
-            metadata.setContentType("image/jpeg");
-            amazonS3.putObject(new PutObjectRequest(bucketName, dir + fileName, inputStream, metadata));
+            BufferedImage originalImage = ImageIO.read(inputStream);
+            int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
 
-            return amazonS3Client.getUrl(bucketName, dir + fileName).toString();
+            // 원본 이미지의 가로세로 비율 계산
+            double aspectRatio = (double) originalImage.getWidth() / originalImage.getHeight();
+
+            int newHeight = 800;
+            int newWidth = (int) (newHeight * aspectRatio);
+
+            // 이미지 리사이징
+            Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+            BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, type);
+            resizedImage.getGraphics().drawImage(scaledImage, 0, 0, null);
+
+            // BufferedImage를 byte[]로 변환
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(resizedImage, "jpg", baos);
+            byte[] resizedBytes = baos.toByteArray();
+
+            // S3 업로드
+            try (InputStream resizedInputStream = new ByteArrayInputStream(resizedBytes)) {
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentLength(resizedBytes.length);
+                metadata.setContentType("image/jpeg");
+                amazonS3.putObject(new PutObjectRequest(bucketName, dir + fileName, resizedInputStream, metadata));
+
+                return amazonS3Client.getUrl(bucketName, dir + fileName).toString();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             log.info("e.printStackTrace(); = " + e.getStackTrace());
