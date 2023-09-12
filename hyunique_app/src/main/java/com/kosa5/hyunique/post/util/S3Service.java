@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,29 +51,24 @@ public class S3Service {
     }
 
     public List<String> getUploadImgURL(List<String> base64Images) {
-        Map<String, String> imgUploadState = new HashMap<>();
+        List<String> keys = new ArrayList<>();
+        List<String> urls = new ArrayList<>();
 
         for(String base64Img : base64Images) {
             String fileName = createImgFileName();
-
             String returnUrl = uploadBase64Img(base64Img, fileName, "post/");
 
+            keys.add("post/" + fileName);
             // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
-                List<String> deleteKeys = new ArrayList<>();
-                Iterator<String> keyIterator = imgUploadState.keySet().iterator();
-
-                while (keyIterator.hasNext()) {
-                    String key = keyIterator.next();
-                    deleteKeys.add("post/"+key);
-                }
-                deleteImgFile(deleteKeys);
+                deleteImgFile(keys);
                 return null;
             }
+
             // 업로드 성공한 경우
-            imgUploadState.put(fileName, returnUrl);
+            urls.add(returnUrl);
         }
-        return new ArrayList<>(imgUploadState.values());
+        return urls;
     }
 
     public String createImgFileName() {
@@ -107,13 +103,11 @@ public class S3Service {
                 .withRegion(Regions.AP_NORTHEAST_2)
                 .build();
         try {
-            DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(String.valueOf(files));
+            DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName).withKeys(files.toArray(new String[0]));
             DeleteObjectsResult deleteObjectsResult = s3.deleteObjects(dor);
             List<DeleteObjectsResult.DeletedObject> deletedObjects = deleteObjectsResult.getDeletedObjects();
-
-
+            log.info("Deleted objects: {}", deletedObjects.stream().map(DeleteObjectsResult.DeletedObject::getKey).collect(Collectors.joining(", ")));
         } catch (MultiObjectDeleteException e) {
-
             List<MultiObjectDeleteException.DeleteError> errors = e.getErrors();
             for (MultiObjectDeleteException.DeleteError error : errors) {
                 log.info("Error: " + error.getCode() + ", Key: " + error.getKey());
