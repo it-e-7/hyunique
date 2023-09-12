@@ -1,3 +1,5 @@
+let container;
+
 // 사용자가 클릭한 좌표 정보 저장
 let XOffset = 0;
 let YOffset = 0;
@@ -32,7 +34,7 @@ function attachTag(xOffset, yOffset, vo) {
         xOffset: 0,
         yOffset: 0,
         active: false,
-        pinType: null,
+        pinType: 'arrow-left',
         productId: vo['productId'],
         productBrand: vo['productBrand'],
         productName: vo['productName'],
@@ -75,9 +77,6 @@ function attachTag(xOffset, yOffset, vo) {
 // 핀 움직이는 이벤트
 function dragStart(event, id) {
     const item = items[id];
-
-    console.log('item ' + item);
-    console.log('id ' + id);
 
     if (event.type === "touchstart") {
         item.initialX = event.touches[0].clientX - item.xOffset;

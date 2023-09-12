@@ -14,9 +14,6 @@ $('.select-product-size').scroll((e) => {
    const nextDisplayId = Math.round($('.select-product-size').scrollTop() / sizeHeight) + 1;
    sizePresentDisplayId = nextDisplayId;
 
-
-    console.log('pin size', sizePresentDisplayId);
-
    setTimeout(() => {
    		sizeScrollLock = false;
    }, 100);
@@ -30,7 +27,6 @@ $('.select-product-color').scroll((e) => {
     const colorHeight = $('#select-product-color-0').height();
     const nextDisplayId = Math.round($('.select-product-color').scrollTop() / sizeHeight) + 1;
     colorPresentDisplayId = nextDisplayId;
-    console.log('pin color', colorPresentDisplayId);
     setTimeout(() => {
         colorScrollLock = false;
     }, 100);
@@ -38,7 +34,7 @@ $('.select-product-color').scroll((e) => {
 
 // 모달 닫기
 $(".close-button").click(function() {
-    closeModal();
+//    closeModal();
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
@@ -48,7 +44,7 @@ $(".close-button").click(function() {
 
 // 모달 띄우기
 function showProductModal(product) {
-    openModal();
+//    openModal();
     $("#product-info").text('사이즈 색상');
 
     colorPresentDisplayId = 1;
