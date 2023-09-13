@@ -11,6 +11,7 @@ public class PostDetailVO {
 	private int userId;
 	private String userImg;
 	private String userNickname;
+	private String userForm;
 	private int userHeight;
 	private int follow;
 	private List<String> imgList;

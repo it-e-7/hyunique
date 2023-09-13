@@ -22,7 +22,7 @@
 	<select id="getPostDetailByPostIdUserId" parameterType="map"
 		resultMap="PostDetailMap">
 		SELECT post_id, p.user_id, user_img,
-		user_nickname, user_height, post_date,
+		user_nickname, user_height, user_form, post_date,
 		post_content, season_name, tpo_name,
 		(SELECT user_id
 		FROM hy_stylelike

@@ -29,7 +29,7 @@
 				<img src="${postVO.userImg}">
 				<div>
 					<strong>${postVO.userNickname}</strong>
-					<p>${postVO.userHeight}cm</p>
+					<p>${postVO.userHeight}cm  ${postVO.userForm}</p>
 				</div>
 			</div>
 			<c:if test="${sessionId != postVO.userId}">
@@ -135,7 +135,7 @@
 		</div>
 		<div class="post-product-post-wrapper">
 			<span>
-				<strong>@${postVO.userNickname}</strong>
+				<strong onclick="location.href='/user/${postVO.userId}'">@${postVO.userNickname}</strong>
 				<p>님이 착용한 제품의 다른 스타일</p>
 			</span>
 			<div class="post-padding-wrapper">
