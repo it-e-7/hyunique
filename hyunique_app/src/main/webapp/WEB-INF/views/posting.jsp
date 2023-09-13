@@ -14,25 +14,27 @@
 </head>
 <body>
     <div class="pre-container">
-    	<div class="header-wrapper">
-    		<button onclick="backward()">
-    			<img src="/resources/img/ic-backward.png" />
-    		</button>
-    	</div>
-    	<div class="pre-wrapper">
-            <div class="header">
-                <p>스타일링을 공유해주세요</p>
+        <div class="pre-container-inner">
+            <div class="header-wrapper">
+                <button onclick="backward()">
+                    <img src="/resources/img/ic-backward.png" />
+                </button>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/heendy.png" alt="중앙 이미지" />
+            <div class="pre-wrapper">
+                <div class="header">
+                    <p>스타일링을 공유해주세요</p>
+                </div>
+                <div class="image-container">
+                    <img src="/resources/img/post-main.jpg" alt="중앙 이미지" style="width : 50px"/>
+                </div>
+                <div class="body">
+                    <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+                </div>
             </div>
-            <div class="body">
-                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            <div class="button-container">
+                <button id="img-load-button" class="jw-btn">사진 불러오기</button>
+                <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
             </div>
-        </div>
-        <div class="button-container">
-            <button id="img-load-button" class="jw-btn">사진 불러오기</button>
-            <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
         </div>
     </div>
 
@@ -47,10 +49,14 @@
             <div class='write-wrapper'>
             <div class="image-view">
                 <div id="thumbnail-img"></div>
-                    <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
-                    <button type="button" id="addImgBtn">스타일 사진 추가</button>
-                    <ul class="add-img-container">
-                    </ul>
+                    <div class="add-img-wrapper">
+                        <ul class="add-img-container">
+                            <li>
+                                <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
+                                                        <button type="button" id="add-img-btn">+</button>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="tag-container" id="tag-container">
                 </div>
             </div>

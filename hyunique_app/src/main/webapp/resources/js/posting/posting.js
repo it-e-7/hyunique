@@ -52,7 +52,7 @@ $('#upload-button').click(function() {
     compileAndSendPostData();
 });
 
-$('#addImgBtn').click(function() {
+$('#add-img-btn').click(function() {
     $('#addFileInput').click();
 });
 
