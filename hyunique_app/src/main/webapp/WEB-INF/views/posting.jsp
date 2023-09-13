@@ -19,16 +19,17 @@
     			<img src="/resources/img/ic-backward.png" />
     		</button>
     	</div>
-        <div class="header">
-            <p>스타일링을 공유해주세요</p>
+    	<div class="pre-wrapper">
+            <div class="header">
+                <p>스타일링을 공유해주세요</p>
+            </div>
+            <div class="image-container">
+                <img src="/resources/img/heendy.png" alt="중앙 이미지" />
+            </div>
+            <div class="body">
+                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            </div>
         </div>
-        <div class="image-container">
-            <img src="/resources/img/heendy.png" alt="중앙 이미지" />
-        </div>
-        <div class="body">
-            <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
-        </div>
-
         <div class="button-container">
             <button id="img-load-button" class="jw-btn">사진 불러오기</button>
             <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
@@ -42,7 +43,8 @@
             </button>
         </div>
         <div class="upload"></div>
-        <form action="post" method="post" enctype="multipart/form-data">
+        <div class='post-form'>
+            <div class='write-wrapper'>
             <div class="image-view">
                 <div id="thumbnail-img"></div>
                     <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
@@ -68,10 +70,12 @@
                 <p>내용</p>
                 <textarea id="content" name="content" rows="5" required></textarea>
             </div>
+            </div>
             <div class="form-group">
                 <button type="button" id="upload-button" class="jw-btn">작성 완료하기</button>
             </div>
-        </form>
+
+        </div>
     </div>
 
     <div class="search-container">
@@ -114,12 +118,14 @@
                 </div>
             </div>
             <p class="search-value"></p>
+            <p class="search-value-fixed"></p>
             <ul class="result-list">
             </ul>
         </div>
     </div>
 
     <div class="post-container">
+        <div class="post-wrapper">
             <div class="header">
                 <p>게시가 완료되었습니다!</p>
             </div>
@@ -133,6 +139,7 @@
             <div class="button-container">
                 <button id="next-button" class="jw-btn" onclick="moveHome()">계속하기</button>
             </div>
+        </div>
     </div>
 </body>
 <script src="/resources/js/posting/posting.js"></script>

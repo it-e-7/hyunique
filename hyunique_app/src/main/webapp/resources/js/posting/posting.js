@@ -250,7 +250,8 @@ function renderSearchProductResults(results, productName) {
 
     let resultList = $(".result-list");
     resultList.empty();
-    $('.search-value').text(`${productName} 검색 결과`);
+    $('.search-value').text(`${productName}`);
+    $('.search-value-fixed').text('상품 검색 결과입니다.');
 
     $.each(results, function(index, product) {
         let listItem = $("<li>").addClass("search-product-li");
