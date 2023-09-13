@@ -197,6 +197,27 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.12.539</version>
 		</dependency>
+		 <dependency>
+	        <groupId>com.squareup.okhttp3</groupId>
+	        <artifactId>okhttp</artifactId>
+	        <version>4.9.1</version>
+	    </dependency>
+	     <dependency>
+	        <groupId>org.json</groupId>
+	        <artifactId>json</artifactId>
+	        <version>20210307</version>
+	    </dependency>
+		<dependency>
+		    <groupId>com.theokanning.openai-gpt3-java</groupId>
+		    <artifactId>api</artifactId>
+		    <version>0.14.0</version>
+		</dependency>
+		<dependency>
+	    <groupId>com.theokanning.openai-gpt3-java</groupId>
+		    <artifactId>service</artifactId>
+		    <version>0.12.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
