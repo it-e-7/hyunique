@@ -64,7 +64,6 @@ function attachTag(xOffset, yOffset, vo) {
 let currentDraggable = null;
 
 const dragContainer = (e) => {
-
     if (e.type === 'touchstart') {
         e = e.originalEvent.touches[0];
     }
@@ -96,6 +95,8 @@ const dragContainer = (e) => {
     }
 
     function onMouseMove(event) {
+        isDragging = true;
+
         if (event.type === 'touchmove') {
             event = event.touches[0];
         }
@@ -114,11 +115,14 @@ const dragContainer = (e) => {
 
         item.xPos = currentX;
         item.yPos = currentY;
+
+        isDragging = false;
     });
 };
 
 // 터치 시작, 마우스 클릭 시
 imgContainer.on('mousedown touchstart', function(e) {
+    isDragging = false;
     dragContainer(e);
 });
 
@@ -134,23 +138,22 @@ document.addEventListener('touchmove', function(event) {
 
 
 /* 핀 방향 바꾸기 */
-/*
-let isMouseDown = false;  // 마우스를 누르고 있는지 판단하는 변수
+let isDragging = false; // 핀 움직임 여부 판별
+let isMouseDown = false; // 클릭 여부 판별
 
-// 마우스를 누르면 isMouseDown을 true로 설정
-$(".image-view").on("mousedown", ".post-pin", function() {
+$("#thumbnail-img").on("mousedown", ".post-pin", function() {
     isMouseDown = true;
 });
 
-$(".image-view").on("mouseup", ".post-pin", function(event) {
-    // 마우스를 뗄 때 동작
-    if (isMouseDown) {
+$("#thumbnail-img").on("mouseup", ".post-pin", function(event) {
+    if (isMouseDown && !isDragging) {   // 클릭 상태이고, 드래깅하지 않는 경우
         if ($(this).data("currentIndex") === undefined) {
             $(this).data("currentIndex", 0);
         }
 
         let currentIndex = $(this).data("currentIndex");
 
+        // 기존에 붙어있는 핀 방향 제거
         $(this).removeClass('arrow-left arrow-right arrow-bottom arrow-top');
 
         // 다음 클래스 인덱스 계산
@@ -163,8 +166,7 @@ $(".image-view").on("mouseup", ".post-pin", function(event) {
         // 새로운 인덱스 저장
         $(this).data("currentIndex", currentIndex);
     }
-
     isMouseDown = false;
-});*/
+});
 
 
