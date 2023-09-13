@@ -19,6 +19,7 @@
           <div class="button selected" id="recommend">추천</div>
           <div class="button" id="style-ranking">스타일랭킹</div>
           <div class="button" id="following">팔로우</div>
+          <div class="button" id="AI-recommend">AI추천</div>
     </div>
     <c:if test="${empty userId}">
         <div id="popular-style">

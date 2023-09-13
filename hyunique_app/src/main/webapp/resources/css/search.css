@@ -20,7 +20,13 @@
 }
 
 #hyunique-main-top-logo-image >img {
-    width: 115px;
+    width: 150px;
+}
+
+@media screen and (max-width: 700px) {
+    #hyunique-main-top-logo-image >img {
+        width: 115px;
+    }
 }
 
 #hyunique-main-top-buttons{

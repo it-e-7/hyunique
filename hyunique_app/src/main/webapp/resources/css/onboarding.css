@@ -100,7 +100,6 @@ input[type="radio"] + label {
 input[type="radio"]:checked + label {
 	color:var(--jw-blue);
     border: 1px solid var(--jw-blue);
-
 }
 input[type="checkbox"] {
     display: none;
