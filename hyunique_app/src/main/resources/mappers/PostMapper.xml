@@ -32,7 +32,10 @@
 		WHERE follower_id = #{userId} AND
 		following_id = (SELECT user_id
 		FROM hy_post
-		WHERE post_id = #{postId})) as follow
+		WHERE post_id = #{postId})) as follow ,
+		(SELECT count(*)
+		FROM hy_stylelike
+		WHERE post_id = #{postId}) as like_count
 		FROM hy_post p
 		JOIN hy_seasontag s ON p.season_id = s.season_id
 		JOIN hy_tpotag t ON p.tpo_id = t.tpo_id

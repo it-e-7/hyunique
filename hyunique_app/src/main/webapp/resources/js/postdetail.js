@@ -8,6 +8,11 @@ const likeToggle = {
 	selected: 'unselect',
 	unselect: 'selected',
 };
+const likeCountStrong = $('#like-count-strong');
+let likeCount = +likeCountStrong.text()[0];
+if(likeCount === 0) {
+	$('#like-count-p').hide();
+}
 
 function likeTogglePost(postId) {
 	let url = `/post/like`;
@@ -16,6 +21,15 @@ function likeTogglePost(postId) {
 	if($('.like-btn img').attr('src') !== likeBtnImgSrc[present]) {
 		url = `/post/unlike`;
 		present = 'selected';
+		likeCount--;
+		likeCountStrong.text(likeCount + '명');
+		if(likeCount === 0) {
+			$('#like-count-p').hide();
+		}
+	} else {
+		likeCount++;
+		likeCountStrong.text(likeCount + '명');
+		$('#like-count-p').show();
 	}
 	
 	$('.like-btn img').css("transform", "scale(0.8)");

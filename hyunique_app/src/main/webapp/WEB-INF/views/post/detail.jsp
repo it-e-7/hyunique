@@ -91,6 +91,7 @@
 					</lord-icon>
 				</button>
 			</div>
+			<p id="like-count-p"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
 			<div class="post-content">
 				<p class="post-content-date">
 					<fmt:parseDate var="dateParse" pattern="yyyy-MM-dd HH:mm:ss" value="${postVO.postDate}"/>

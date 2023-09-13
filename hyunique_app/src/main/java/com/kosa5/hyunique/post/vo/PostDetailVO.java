@@ -16,6 +16,7 @@ public class PostDetailVO {
 	private int follow;
 	private List<String> imgList;
 	private int styleLike;
+	private int likeCount;
 	private String postDate;
 	private String postContent;
 	private List<PostProductVO> productList;
