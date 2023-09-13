@@ -1,4 +1,5 @@
 let container;
+const imgContainer = $('#thumbnail-img');
 
 // 사용자가 클릭한 좌표 정보 저장
 let XOffset = 0;
@@ -18,22 +19,18 @@ $('#thumbnail-img').on('click', 'img', function(e){
 
 // 터치한 위치에 상품 정보 핀 찍기
 function attachTag(xOffset, yOffset, vo) {
-    let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_"+new Date().getTime()).css({
-        left: xOffset + "px",
-        top: yOffset + "px",
-        position: "absolute"
-    });
+    let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_" + new Date().getTime())
+                                .css({
+                                    left: xOffset + "px",
+                                    top: yOffset + "px",
+                                    position: "absolute"
+                                });
 
     let id = tagElement.attr('id');
 
     items[id] = {
-        initialX: 0,
-        initialY: 0,
-        currentX: 0,
-        currentY: 0,
-        xOffset: 0,
-        yOffset: 0,
-        active: false,
+        xPos: 0,
+        yPos: 0,
         pinType: 'arrow-left',
         productId: vo['productId'],
         productBrand: vo['productBrand'],
@@ -57,87 +54,87 @@ function attachTag(xOffset, yOffset, vo) {
     items[id].xOffset = xOffset;
     items[id].yOffset = yOffset;
 
-    let imgContainer = $('#thumbnail-img');
+    console.log('현재 좌표 ', xOffset, yOffset);
     imgContainer.append(tagElement);
 
-    // 새로 생성된 태그에 드래그 이벤트 바인딩
-    tagElement.on("mousedown touchstart", function(event) {
-        dragStart(event, id);
-    });
-
-    tagElement.on("mouseup touchend", function(event) {
-        dragEnd(event, id);
-    });
-
-    tagElement.on("mousemove touchmove", function(event) {
-        drag(event, tagElement, id);
-    });
 }
 
-// 핀 움직이는 이벤트
-function dragStart(event, id) {
-    const item = items[id];
+/* 핀 움직이는 이벤트 */
 
-    if (event.type === "touchstart") {
-        item.initialX = event.touches[0].clientX - item.xOffset;
-        item.initialY = event.touches[0].clientY - item.yOffset;
-    } else {
-        item.initialX = event.clientX - item.xOffset;
-        item.initialY = event.clientY - item.yOffset;
+let currentDraggable = null;
+
+const dragContainer = (e) => {
+
+    if (e.type === 'touchstart') {
+        e = e.originalEvent.touches[0];
     }
 
-    if ($(event.currentTarget).hasClass("post-pin")) {
-        item.active = true;
+    let id = $(e.target).closest('.post-pin').attr('id');
+    let item = items[id];
+
+    const target = $(e.target).closest('.post-pin');
+    if (target.length === 0) return;
+
+    let initialX = parseInt(target.css('left'));
+    let initialY = parseInt(target.css('top'));
+
+    let shiftX = e.clientX - initialX;
+    let shiftY = e.clientY - initialY;
+
+    target.css({
+        'position': 'absolute',
+        'z-index': 1000
+    });
+
+    imgContainer.append(target);
+
+    function moveAt(clientX, clientY) {
+        target.css({
+            left: clientX - shiftX + 'px',
+            top: clientY - shiftY + 'px'
+        });
     }
-}
 
-function dragEnd(event, id) {
-    const item = items[id];
-
-    item.initialX = item.currentX;
-    item.initialY = item.currentY;
-    item.active = false;
-}
-
-function drag(event, tagElement, id) {
-    const item = items[id];
-
-    if (item.active) {
-        event.preventDefault();
-
-        let newX, newY;
-
-        if (event.type === "touchmove") {
-            newX = event.touches[0].clientX - item.initialX;
-            newY = event.touches[0].clientY - item.initialY;
-        } else {
-            newX = event.clientX - item.initialX;
-            newY = event.clientY - item.initialY;
+    function onMouseMove(event) {
+        if (event.type === 'touchmove') {
+            event = event.touches[0];
         }
-
-        const imgWidth = container.width();
-        const imgHeight = container.height();
-        const imgOffset = container.offset();
-
-        if (newX >= imgOffset.left && newX <= imgOffset.left + imgWidth &&
-            newY >= imgOffset.top && newY <= imgOffset.top + imgHeight) {
-
-            item.xOffset = newX;
-            item.yOffset = newY;
-
-            setTranslate(newX, newY, tagElement);
-        }
+        moveAt(event.clientX, event.clientY);
     }
-}
 
-function setTranslate(xPos, yPos, el) {
-    el.css({
-        "left": xPos + "px",
-        "top": yPos + "px"
+    $(document).on('mousemove touchmove', onMouseMove);
+
+    $(document).one('mouseup touchend', function (event) {
+        $(document).off('mousemove touchmove', onMouseMove);
+        let currentX = parseInt(target.css('left'));
+        let currentY = parseInt(target.css('top'));
+
+        initialX = currentX;
+        initialY = currentY;
+
+        item.xPos = currentX;
+        item.yPos = currentY;
     });
-}
+};
+
+// 터치 시작, 마우스 클릭 시
+imgContainer.on('mousedown touchstart', function(e) {
+    dragContainer(e);
+});
+
+// 드래그
+imgContainer.on('dragstart', function () {
+    return false;
+});
+
+// touchmove 이벤트 발생시 스크롤이 움직이지 않도록 함
+document.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, { passive: false });
+
 
 /* 핀 방향 바꾸기 */
+/*
 let isMouseDown = false;  // 마우스를 누르고 있는지 판단하는 변수
 
 // 마우스를 누르면 isMouseDown을 true로 설정
@@ -168,4 +165,6 @@ $(".image-view").on("mouseup", ".post-pin", function(event) {
     }
 
     isMouseDown = false;
-});
+});*/
+
+

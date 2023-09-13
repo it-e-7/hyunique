@@ -10,8 +10,8 @@ let items = {};
 let imgWidth;
 let imgHeight;
 
-let classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
-let pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
+const classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
+const pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
 let currentPage;
 
 getTagInform();
@@ -36,7 +36,9 @@ function thumbnailUpload(e) {
     reader.onload = function(e) {
         const img = reader.result.split(',')[1];
         imgList.push(img);
-        const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+        const imageElement = $("<img>").attr("src", e.target.result)
+                                       .attr("data-file", file.name)
+                                       .attr("draggable", "false") ;
         $('#thumbnail-img').append(imageElement);
         container = imageElement;
     }
@@ -201,8 +203,8 @@ function compileAndSendPostData() {
     // 핀
     let product = Object.values(items).map(item => {
         return {
-            pinX: (item.xOffset / imgWidth) * 100,
-            pinY: (item.yOffset / imgHeight) * 100,
+            pinX: (item.xPos / imgWidth) * 100,
+            pinY: (item.yPos / imgHeight) * 100,
             pinType: item.pinType,
             productId: item.productId,
             productSize: item.productSize,
