@@ -9,7 +9,61 @@
 }
 
 /* pre-container 시작 */
+.pre-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.pre-container .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.3rem 0.6rem 1.3rem;
+    width: 90%;
+}
+
+.pre-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.pre-wrapper .header {
+    margin-bottom: 2.5rem;
+}
+
+.header p {
+    font-size: 2rem;
+    font-family: 'Spoqa Han Sans';
+    font-weight: 600;
+}
+
+.image-container {
+    width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 2rem;
+    margin: 1rem 0;
+}
+
+.body p {
+    margin-top: -14rem;
+    z-index: 200;
+    color: var(--grey6);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.button-container .jw-btn-fixed {
+    width: 80%;
+}
 
 /* pre-container 종료 */
 
@@ -106,14 +160,6 @@ p.search-product-name {
 
 .search-product-div {
     margin: 2px;
-}
-
-@media (max-width: 700px) {
-    .pre-container .header p, .post-container .header p {
-        text-align: center;
-        font-size: 25px;
-        font-weight: bold;
-    }
 }
 
 .write-container p {

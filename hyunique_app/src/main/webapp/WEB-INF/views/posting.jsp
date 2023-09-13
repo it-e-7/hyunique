@@ -14,27 +14,25 @@
 </head>
 <body>
     <div class="pre-container">
-        <div class="pre-container-inner">
-            <div class="header-wrapper">
-                <button onclick="backward()">
-                    <img src="/resources/img/ic-backward.png" />
-                </button>
+        <div class="header-wrapper">
+            <button onclick="backward()">
+                <img src="/resources/img/ic-backward.png" />
+            </button>
+        </div>
+        <div class="pre-wrapper">
+            <div class="header">
+                <p>스타일링을 공유해주세요</p>
             </div>
-            <div class="pre-wrapper">
-                <div class="header">
-                    <p>스타일링을 공유해주세요</p>
-                </div>
-                <div class="image-container">
-                    <img src="/resources/img/post-main.jpg" alt="중앙 이미지" style="width : 50px"/>
-                </div>
-                <div class="body">
-                    <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
-                </div>
+            <div class="image-container">
+                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
             </div>
-            <div class="button-container">
-                <button id="img-load-button" class="jw-btn">사진 불러오기</button>
-                <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
+            <div class="body">
+                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
             </div>
+        </div>
+        <div class="button-container">
+            <button id="img-load-button" class="jw-btn jw-btn-fixed">사진 불러오기</button>
+            <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
         </div>
     </div>
 
