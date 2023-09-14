@@ -5,6 +5,9 @@ const imgContainer = $('#thumbnail-img');
 let XOffset = 0;
 let YOffset = 0;
 
+let isDragging = false; // 핀 움직임 여부 판별
+let isMouseDown = false; // 클릭 여부 판별
+
 $('#thumbnail-img').on('click', 'img', function(e){
     imgWidth = $(this).width();
     imgHeight = $(this).height();
@@ -99,14 +102,15 @@ const dragContainer = (e) => {
 
         if (event.type === 'touchmove') {
             event = event.touches[0];
+
         }
         moveAt(event.clientX, event.clientY);
     }
 
     $(document).on('mousemove touchmove', onMouseMove);
-
     $(document).one('mouseup touchend', function (event) {
         $(document).off('mousemove touchmove', onMouseMove);
+
         let currentX = parseInt(target.css('left'));
         let currentY = parseInt(target.css('top'));
 
@@ -121,7 +125,8 @@ const dragContainer = (e) => {
 };
 
 // 터치 시작, 마우스 클릭 시
-imgContainer.on('mousedown touchstart', function(e) {
+imgContainer.on('mousedown touchstart', '.post-pin', function(e) {
+    e.stopPropagation();
     isDragging = false;
     dragContainer(e);
 });
@@ -131,16 +136,8 @@ imgContainer.on('dragstart', function () {
     return false;
 });
 
-// touchmove 이벤트 발생시 스크롤이 움직이지 않도록 함
-document.addEventListener('touchmove', function(event) {
-    event.preventDefault();
-}, { passive: false });
-
 
 /* 핀 방향 바꾸기 */
-let isDragging = false; // 핀 움직임 여부 판별
-let isMouseDown = false; // 클릭 여부 판별
-
 $("#thumbnail-img").on("mousedown", ".post-pin", function() {
     isMouseDown = true;
 });
@@ -169,4 +166,8 @@ $("#thumbnail-img").on("mouseup", ".post-pin", function(event) {
     isMouseDown = false;
 });
 
-
+window.addEventListener('touchmove', function(event) {
+    if(isDragging) {
+        event.preventDefault();
+    }
+}, { passive: false });
