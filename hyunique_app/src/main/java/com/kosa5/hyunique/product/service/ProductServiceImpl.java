@@ -1,22 +1,33 @@
 package com.kosa5.hyunique.product.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.mapper.ProductMapper;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 import com.kosa5.hyunique.product.vo.ProductInformVO;
+import com.kosa5.hyunique.product.vo.SearchResultVO;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	ProductMapper productMapper;
+	
+	@Autowired
+	SearchService searchService;
 	
 	@Override
 	public ProductDetailVO getProductDetailById(String productId) {
@@ -32,7 +43,6 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.getProductStyleById(productId, offset);
 	}
 
-
 	@Override
 	public List<PostProductVO> getSearchProductList(String productName) {
 		return productMapper.selectSearchProductList(productName);
@@ -40,8 +50,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<PostProductVO> getnSearchProductList(String keyword, int offset) {
-		return productMapper.selectnSearchProductList(keyword, offset);
-  }
+		List<PostProductVO> result = searchService.searchByKeyword(keyword);
+		return result;
+    }
 
 	@Override
 	public ProductInformVO getProductSizeAndColor(String productId) {
