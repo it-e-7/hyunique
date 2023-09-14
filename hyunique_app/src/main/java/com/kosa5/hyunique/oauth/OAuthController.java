@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.user.service.UserService;
+import com.kosa5.hyunique.user.vo.UserVO;
 
 @Controller
 @RequestMapping(value = "/")
@@ -53,6 +54,10 @@ public class OAuthController {
 	        int isNew = (int) result.get("isNew");  // 새로운 사용자인지 아닌지 확인
 
 	        session.setAttribute("sessionId", userId);
+	        UserVO userVO = new UserVO();
+	        userVO = service.getUserInfoAndFollowerCount(Integer.parseInt(userId),userId);
+	        log.info("userVO:" + userVO);
+	        session.setAttribute("signinUser", userVO);
 	        log.info("isNew: " + isNew);
 	        if(isNew == 1) {
 	            return "redirect:/user/onboarding";  // 새로운 사용자인 경우

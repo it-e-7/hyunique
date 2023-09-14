@@ -16,6 +16,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.kosa5.hyunique.user.vo.UserVO;
+
 import lombok.extern.java.Log;
 
 @Log
@@ -31,12 +33,15 @@ public class GPTServiceImpl implements GPTService{
     List<Map<String, String>> conversation = new ArrayList<>();
     
     
+    
+    
     @Override
-    public String chatGPT(String message) {
+    public String chatGPT(String message, UserVO signinUser) {
         String url = "https://api.openai.com/v1/chat/completions";
         String apiKey = API_GPT;
         String model = "gpt-3.5-turbo"; // current model of chatgpt api
-
+        API_PROMPT = API_PROMPT + (signinUser.getUserSex().equals("M")?"남자":"여자") + Integer.toString(signinUser.getUserHeight()) + "cm" + "체형:" + signinUser.getUserForm() + "선호스타일:" + signinUser.getUserPrefer();
+        
         try {
             //HTTP 요청 설정
             URL obj = new URL(url);
@@ -51,6 +56,8 @@ public class GPTServiceImpl implements GPTService{
             convhistroyUser.put("content", message);
             conversation.add(convhistroyUser);
             
+            
+            log.info("전송하기 전 API_PROMPT : "+API_PROMPT);
             // JSON 배열 생성
             JSONArray jsonArr = new JSONArray();
             jsonArr.put(new JSONObject().put("role", "system").put("content", API_PROMPT));
@@ -113,7 +120,6 @@ public class GPTServiceImpl implements GPTService{
     	        return contentJson.toString(4); // JSON 문자열을 보기 좋게 포맷팅
     	    } catch (Exception e) {
     	        // JSON 파싱에 실패한 경우
-    	    	log.info(response.toString());
     	        return "스타일링에 관련된 질문만 받을 수 있어요";
     	    }
     }

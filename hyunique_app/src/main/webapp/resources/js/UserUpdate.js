@@ -1,12 +1,16 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
-const isFollowing = document.getElementById('user-isFollowing').value;
+
 
 let userImg;
 let userBackimg;
 let imgList = []; // 이미지 리스트 초기화
 
 $(document).ready(function() {
+	if($('#user-isFollowing').length > 0){
+		const isFollowing = document.getElementById('user-isFollowing').value;
+	}
+
 	// 프로필 사진 업로드
 	  $("#profile-preview").click(function() {
 		  $("#profile-file-input").click();

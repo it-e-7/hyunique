@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.post.util.S3Service;
@@ -30,9 +32,15 @@ import com.kosa5.hyunique.user.vo.UserVO;
 
 @Controller
 @RequestMapping("user")
+@SessionAttributes(value = { "signinUser" })
 public class UserController {
 
 	private UserService userService;
+	
+	@ModelAttribute("signinUser")
+	public UserVO createSigninUser() {
+		return new UserVO();
+	}
 	
 	@Autowired
     S3Service s3Service;
@@ -60,6 +68,8 @@ public class UserController {
 	    } else {
 	        log.info("유저 정보가 존재하지 않음");
 	    }
+		model.addAttribute("signinUser", user);
+
 	    model.addAttribute("userId", userId); // 이 부분 추가
 	    return "myStylePage";
 	}
