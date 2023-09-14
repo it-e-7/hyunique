@@ -64,9 +64,16 @@ function addList(listItems) {
 
 $('.header-search-area').click(hideSearchModal);
 
+let timer;
 $('#search-input').keyup((e) => {
 	searchResultPage = 1;
-	getSearchResult(e.target.value, changeList);
+	
+	if(timer) {
+		clearTimeout(timer);
+	}
+	timer = setTimeout(() => {
+		getSearchResult(e.target.value, changeList);
+	}, 300);
 });
 
 $('.product-list').scroll((e) => {
