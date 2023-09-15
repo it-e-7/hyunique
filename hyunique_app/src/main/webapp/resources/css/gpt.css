@@ -48,6 +48,8 @@ button .btn-gpt-request {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 6rem;
+	margin-top: 7rem;
 }
 
 .speech-bubble-user {
