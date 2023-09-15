@@ -38,7 +38,8 @@ $(document).ready(function() {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	
+	  userPostList(userId);
+
 	  if (Number(isFollowing) === 1) {
 		  checkbox.checked = true;
 		  label.innerText = '팔로잉 -';
@@ -47,7 +48,6 @@ $(document).ready(function() {
 		  label.innerText = '팔로우 +';
 	  }
 
-	  userPostList(userId);
 	  
 });
 
