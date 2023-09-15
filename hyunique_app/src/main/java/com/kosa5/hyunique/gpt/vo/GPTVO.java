@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class GPTVO {
-	 private String bigCategory;
-	  private String item;
-	  private String color;
+	private String item;
+	private String color;
 }

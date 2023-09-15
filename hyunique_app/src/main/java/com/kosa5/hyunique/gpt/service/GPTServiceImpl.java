@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.kosa5.hyunique.gpt.vo.GPTVO;
 import com.kosa5.hyunique.user.vo.UserVO;
 
 import lombok.extern.java.Log;
