@@ -50,7 +50,7 @@ function showProductModal(product) {
     colorPresentDisplayId = 1;
     sizePresentDisplayId = 1;
 
-    requestProductSizeAndColor(product['productId']);
+    requestProductSizeAndColor(product);
 
     $(".select-product-size").empty();
     $(".select-product-color").empty();
@@ -58,8 +58,11 @@ function showProductModal(product) {
 }
 
 // 상품 사이즈, 색상 DB에서 조회 후 html 렌더링
-function requestProductSizeAndColor(productId) {
-    $.getJSON(`/product/inform?productId=${productId}`, function(data) {
+function requestProductSizeAndColor(product) {
+    $.getJSON(`/product/inform?productId=${product['productId']}`, function(data) {
+
+        $('.search-product-brand').text(product['productBrand']);
+        $('.search-product-name').text(product['productName']);
 
         let selectSize = $(".select-product-size");
         let selectColor = $(".select-product-color");
@@ -100,7 +103,11 @@ function requestProductSizeAndColor(productId) {
 function openModal() {
     $('.search-container').css({
         'overflow':'hidden'
-    })
+    });
+
+    $('.search-body').css({
+        'position': 'fixed'
+    });
 }
 
 // 모달 닫기
@@ -108,6 +115,12 @@ function closeModal() {
   $('.search-container').css({
     'overflow': 'auto'
   });
+
+  $('.search-body').css({
+      'position': 'initial'
+  });
+
   $(window).scrollTop(0);  // 저장한 스크롤 위치로 이동
+
 }
 
