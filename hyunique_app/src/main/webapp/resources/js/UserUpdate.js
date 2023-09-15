@@ -7,6 +7,7 @@ let userBackimg;
 let imgList = []; // 이미지 리스트 초기화
 
 $(document).ready(function() {
+
 	if($('#user-isFollowing').length > 0){
 		const isFollowing = document.getElementById('user-isFollowing').value;
 	}
@@ -182,11 +183,14 @@ function userPostList(userId) {
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
+	      thumbnailsDiv.attr('data-aos', 'fade-in');
+
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
-	    	    class: 'thumbnail-image'
-	    	  });
+	    	    class: 'thumbnail-image',
+	            'data-aos': 'zoom-in-up', 
+	            });
 
 	    	  var postLink = $('<a/>', {
 	    	    href: `/post/` + post.postId

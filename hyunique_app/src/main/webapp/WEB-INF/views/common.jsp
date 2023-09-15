@@ -16,4 +16,3 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/main.css" />
 <script src="/resources/js/common.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>

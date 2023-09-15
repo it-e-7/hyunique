@@ -8,8 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
 <title>마이페이지</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/userStyle.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	
 </head>
 <body>
 	<div id="session-info">
@@ -71,7 +72,7 @@
 			<div class="user-sns-btn-wrapper">
 			    <c:choose>
 			        <c:when test="${not empty user.facebookUrl}">
-			            <a href="${user.facebookUrl}"><img src="/resources/icon/facebook_logo.png" /></a>
+			            <a href="${user.facebookUrl}"><img src="/resources/icon/facebook_logo.png"/></a>
 			        </c:when>
 			        <c:otherwise>
 			            <img src="/resources/icon/facebook_logo_null.png" />
@@ -119,7 +120,7 @@
 				    </c:when>
 				    <c:otherwise>
 						<c:if test="${sessionId != user.userId}">
-							<div class="follower-btn-wrapper">
+							<div class="follower-btn-wrapper" data-aos="fade-right"  data-aos-delay="300">
 						  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
 							</div>
 						</c:if>
@@ -138,7 +139,7 @@
 	</ul>
 
 	<div id="tab1" class="tab-content"style="display: block;">
-		<div id="thumbnails" class="style-thumbnail-list-wrapper"></div>
+		<div id="thumbnails" class="style-thumbnail-list-wrapper" ></div>
 		<div id="postUrl"></div>
 	</div>
 
@@ -197,4 +198,8 @@
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
 <script src="/resources/js/tab.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>	
 </html>
