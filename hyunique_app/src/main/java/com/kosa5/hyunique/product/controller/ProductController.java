@@ -58,8 +58,8 @@ public class ProductController {
 	
 	@PostMapping("/nsearch")
 	@ResponseBody
-	public List<PostProductVO> getnSearchProduct(String keyword, int page) {
-		List<PostProductVO> value = productService.getnSearchProductList(keyword, page * 10);
+	public List<PostProductVO> getnSearchProduct(String keyword, int offset) {
+		List<PostProductVO> value = productService.getnSearchProductList(keyword, offset);
 		return value;
 	}
 	

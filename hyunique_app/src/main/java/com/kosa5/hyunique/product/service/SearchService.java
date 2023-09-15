@@ -31,7 +31,7 @@ public class SearchService {
 	@Value("${os.URL}")
 	String openSearchURL;
 
-	public List<PostProductVO> searchByKeyword(String keyword) {
+	public List<PostProductVO> searchByKeyword(String keyword, int offset) {
 		// API Gateway Endpoint 접근 추가
 
 		// 요청 URL
@@ -61,7 +61,33 @@ public class SearchService {
 			con.setDoOutput(true);
 			con.connect();
 
-			byte[] input = ("{\"query\": {\"match\": {\"productName\": \"" + keyword + "\"}}}").getBytes("utf-8");
+			byte[] input = ("{" + 
+					"  \"from\": " + offset*10 + "," + 
+					"  \"size\": 10, " + 
+					"  \"query\": {" + 
+					"    \"bool\": {" + 
+					"      \"must\": [" + 
+					"        {" + 
+					"          \"match\": {" + 
+					"            \"productName\": \"" + keyword + "\"" + 
+					"          }" + 
+					"        }" + 
+					"      ]," + 
+					"      \"should\": [" + 
+					"        {" + 
+					"          \"match\": {" + 
+					"            \"productBrand\": \"" + keyword + "\"" + 
+					"          }" + 
+					"        }," + 
+					"        {" + 
+					"          \"match\": {" + 
+					"            \"typeName\": \"" + keyword + "\"" + 
+					"          }" + 
+					"        }" + 
+					"      ]" + 
+					"    }" + 
+					"  }" + 
+					"}").getBytes("utf-8");
 
 			// 송신할 데이터 전송.
 			OutputStream dos = con.getOutputStream();

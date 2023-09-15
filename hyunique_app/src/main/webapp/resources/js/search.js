@@ -1,4 +1,4 @@
-let searchResultPage = 1;
+let searchResultPage = 0;
 
 function hideSearchModal(e) {
 	if(!e.target.closest('.search-area-wrapper')) {
@@ -22,7 +22,7 @@ function getSearchResult(keyword, callback) {
 	    type: 'POST',
 	    data: {
 	    	keyword,
-	    	page: searchResultPage,
+	    	offset: searchResultPage,
 	    },
 	    success: function (response) {
 	    	const listItems = response.map(product => 
@@ -66,7 +66,7 @@ $('.header-search-area').click(hideSearchModal);
 
 let timer;
 $('#search-input').keyup((e) => {
-	searchResultPage = 1;
+	searchResultPage = 0;
 	
 	if(timer) {
 		clearTimeout(timer);
