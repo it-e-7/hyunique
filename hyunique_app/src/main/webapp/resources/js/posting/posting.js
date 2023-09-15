@@ -103,9 +103,16 @@ $('.result-list').on('click', '.search-product-li', function() {
     showProductModal(product);
 
     // 확인 버튼을 누르면 핀이 표시됨
-    $('#search-results-button').off('click').on('click', function() {
-        product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
-        product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
+    $('.modal-check-btn').off('click').on('click', function() {
+
+        product['productSize'] = $('.select-product-size option:selected').text();
+        product['productColor'] = $('.select-product-color option:selected').text();
+
+        if (product['productSize'] === '사이즈' || product['productColor'] === '색상') {
+            alert('옵션을 선택하세요').
+            return;
+            return;
+        }
 
         attachTag(XOffset, YOffset, product);
         $('.result-list').empty();

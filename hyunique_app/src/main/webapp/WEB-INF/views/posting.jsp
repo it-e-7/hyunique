@@ -75,17 +75,14 @@
                 <textarea id="content" name="content" rows="5" required></textarea>
             </div>
             </div>
-            <div class="form-group">
-                <button type="button" id="upload-button" class="jw-btn">작성 완료하기</button>
-            </div>
-
+            <button type="button" id="upload-button" class="jw-btn jw-btn-fixed">작성 완료하기</button>
         </div>
     </div>
 
     <div class="search-container">
         <div class="header">
             <div class="header-wrapper">
-                <button onclick="goBack()">
+                <button class="back-icon" onclick="goBack()">
                     <lord-icon
                       id="backward-btn"
                         src="https://cdn.lordicon.com/zmkotitn.json"
@@ -107,24 +104,40 @@
         <div class="search-body">
             <div id="product-search-modal" class="modal">
                 <div class="modal-content">
-                    <span class="close-button">&times;</span>
                     <div class="modal-wrap">
                         <div class='color-wrap'>
-                            <p>색상</p>
-                            <ul class="select-product-color"></ul>
+                            <select class="select-product-color empty">
+                            </select>
+                            <span class="select-input__icon">
+                                <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                    <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                </svg>
+                            </span>
                         </div>
                         <div class='size-wrap'>
-                            <p>사이즈</p>
-                            <ul class="select-product-size"></ul>
+                            <select class="select-product-size empty">
+                            </select>
+                            <span class="select-input__icon">
+                                <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                    <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                </svg>
+                            </span>
                         </div>
                     </div>
-                    <input type="button" class='jw-btn' id="search-results-button" value="확인">
+                    <div class="modal-btn-wrap">
+                        <button class="modal-cancel-btn" type="button">취소</button>
+                        <button class="modal-check-btn" type="submit">확인</button>
+                    </div>
                 </div>
             </div>
-            <p class="search-value"></p>
-            <p class="search-value-fixed"></p>
-            <ul class="result-list">
-            </ul>
+
+            <div class="result-wrapper">
+                <div class="title-wrapper">
+                    <p class="search-value"></p>
+                    <p class="search-value-fixed"></p>
+                </div>
+                <ul class="result-list"></ul>
+            </div>
         </div>
     </div>
 
@@ -141,7 +154,7 @@
             </div>
             <div class="content-text"></div>
             <div class="button-container">
-                <button id="next-button" class="jw-btn" onclick="moveHome()">계속하기</button>
+                <button id="next-button" class="jw-btn jw-btn-fixed" onclick="moveHome()">계속하기</button>
             </div>
         </div>
     </div>
