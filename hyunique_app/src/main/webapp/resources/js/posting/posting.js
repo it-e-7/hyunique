@@ -262,7 +262,7 @@ function renderSearchProductResults(results, productName) {
         divItem.append($("<p>").text(product.productId).addClass("search-product-id").attr("hidden", true));
         divItem.append($("<p>").text(product.productBrand).addClass("search-product-brand"));
         divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
-        divItem.append($("<p>").text(product.productPrice.toLocaleString() + ' ₩').addClass("search-product-price"));
+        divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("search-product-price"));
         listItem.append(divItem);
         resultList.append(listItem);
     });
