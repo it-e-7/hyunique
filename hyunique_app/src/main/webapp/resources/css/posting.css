@@ -1,3 +1,21 @@
+/* 공통 */
+.image-container {
+    width: 60%;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 2rem;
+    margin: 2rem 0;
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+/* 공통 */
+
 .image-view img {
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -10,10 +28,12 @@
 
 /* pre-container 시작 */
 .pre-container {
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0px auto;
 }
 
 .pre-container .header-wrapper {
@@ -31,6 +51,7 @@
     height: 100%;
     align-items: center;
     margin-top: 15%;
+    margin-bottom: 20vh;
 }
 
 .pre-wrapper .header {
@@ -38,23 +59,13 @@
 }
 
 .header p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Spoqa Han Sans';
     font-weight: 600;
 }
 
-.image-container {
-    width: 100%;
-}
-
-.image-container img {
-    width: 100%;
-    border-radius: 2rem;
-    margin: 1rem 0;
-}
 
 .body p {
-    margin-top: -14rem;
     z-index: 200;
     color: var(--grey6);
     font-weight: 500;
@@ -68,6 +79,10 @@
 /* pre-container 종료 */
 
 /* write-container 시작 */
+
+.post-form {
+    overflow-y: auto;
+}
 
 .add-img-container {
     display: flex;
@@ -108,7 +123,196 @@ button#add-img-btn {
     min-width: 25%;
 }
 
+.content-group {
+    margin-bottom: 6rem;
+}
+
+.content-group textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    overflow: auto;
+    border: 1px solid var(--grey4);
+    border-radius: 9px;
+    margin-top: 12px;
+    font-size: 1.5rem;
+}
+
+.post-form button {
+    width: 85%;
+}
+
 /* write-container 종료*/
+
+/* search-container 시작 */
+.search-container .header {
+    width: 100%;
+    height: 10%;
+}
+
+.search-container .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.3rem 0.6rem 1.3rem;
+}
+
+
+.back-icon {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px 0 auto 0;
+}
+
+.search-box {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.search-text {
+    width: 100%;
+    border: 0px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    outline: none;
+    background: var(--grey1);
+    border-radius: 1rem;
+    padding-right: 40px;
+    padding-left: 20px;
+    font-family: 'Spoqa Han Sans';
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.searching {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.search-icon {
+    margin-right: 10px;
+}
+
+
+.searching img {
+    width: 20px;
+}
+
+.search-body {
+/*    padding: 20px;*/
+    width: 100%;
+}
+
+.result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-wrapper {
+    width: 90%;
+}
+
+p.search-value {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+p.search-value-fixed {
+    font-size: 1.1em;
+    margin-top: 0.3rem;
+    margin-bottom: 1.3rem;
+}
+
+
+ul.result-list {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.search-product-li {
+    display: flex;
+    border: 1px solid var(--grey2);
+    border-radius: 0.6rem;
+    margin-bottom: 0.3rem;
+    width: 100%;
+    flex-direction: row;
+}
+
+.search-product-img {
+max-width: 100px;
+    margin-right: 0.1rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    width: 6rem;
+    height: 6rem;
+}
+
+.search-product-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.2rem;
+    overflow: hidden;
+}
+
+p.search-product-brand {
+    font-weight: bold;
+    font-size: 1em;
+    margin: 0.2rem;
+}
+
+p.search-product-name {
+    color: var(--grey5);
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0.2rem;
+}
+
+p.search-product-price {
+    font-size: 0.9em;
+    margin: 0.2rem;
+}
+
+/* search-container 종료 */
+
+/* post-container 시작 */
+.post-container {
+    height: 100%;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.post-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.post-container .header {
+    margin-top: 4rem;
+}
+
+
+
+/* post-container 종료 */
 
 .write-container, .search-container {
     height: 100%;
@@ -116,71 +320,12 @@ button#add-img-btn {
     margin: 0px auto;
 }
 
-.search-product-li {
-    display: flex;
-    border: 2px solid var(--grey1);
-    border-radius: 10px;
-    margin-bottom: 6px;
-}
 
-.search-product-img {
-    flex: 1;
-    max-width: 100px;
-    margin-right: 20px;
-}
-
-.search-product-brand,
-.search-product-name,
-.search-product-price,
-.search-product-size {
-    flex: 1;
-    margin: 5px;
-}
-
-p.search-value {
-    font-size: 40px;
-    font-weight: bold;
-}
-
-p.search-value-fixed {
-    font-size: 25px;
-    margin-top: 10px;
-    margin-bottom: 25px;
-}
-
-p.search-product-brand {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-p.search-product-name {
-    color: var(--grey5);
-    font-size: 15px;
-}
-
-.search-product-div {
-    margin: 2px;
-}
 
 .write-container p {
     font-weight: bold;
     font-size: 16px;
 }
-
-
-#next-button {
-    display: flex;
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-    width: 90%;
-    max-width: 760px;
-    flex-direction: column;
-    text-align: center;
-}
-
 
 input[type="checkbox"], input[type="radio"] {
     display: none;
@@ -219,66 +364,7 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     flex-wrap: wrap;
 }
 
-.content-group textarea {
-    width: 100%;  /* 너비를 부모 요소에 맞춤 */
-    min-height: 100px;  /* 최소 높이 설정 */
-    resize: vertical;  /* 세로로만 크기 조절 가능하게 설정 */
-    overflow: auto;  /* 내용이 넘칠 경우 스크롤 표시 */
-}
 
-.form-group {
-    display: flex;
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-    width: 90%;
-    max-width: 760px;
-    flex-direction: column;
-}
-
-.search-box {
-    position: relative;
-    width: 100%;
-    height: 35px;
-    margin: 20px auto;
-    border-radius: 20px;
-}
-
-.search-text {
-    width: 100%;
-    height: 100%;
-    border: 0px;
-    font-size: 16px;
-    outline: none;
-    background: var(--grey1);
-    border-radius: 20px;
-    padding-right: 40px;
-    padding-left: 20px;
-}
-
-.search-icon {
-    margin-right: 10px; /* 필요에 따라 조정 */
-}
-
-.searching {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding-right: 5px;
-}
-
-.searching img {
-    width: 20px;
-}
-
-.search-body {
-    padding: 20px;
-}
 
 /* 모달 스타일 */
 .modal {
@@ -329,13 +415,15 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
 }
-
-
 
 
 .close-button {
     cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 1.5em;
 }
 
 /* 상품, 사이즈 선택 모달 css */
@@ -360,7 +448,6 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 ul {
 	list-style: none;
 }
-
 
 
 #thumbnail-img {
@@ -390,9 +477,7 @@ ul {
     color: #000000;
 }
 
-.post-container .header {
-    margin-top: 30%;
-}
+
 
 body{
 	display:flex;
