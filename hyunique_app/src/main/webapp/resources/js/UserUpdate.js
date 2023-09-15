@@ -183,7 +183,7 @@ function userPostList(userId) {
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
-	      thumbnailsDiv.attr('data-aos', 'fade-in');
+	      thumbnailsDiv.attr('data-aos', 'zoom-in-up');
 
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
