@@ -109,20 +109,35 @@ public class GPTServiceImpl implements GPTService{
     }
 
     public String extractContentFromResponse(String response) {
-    	 try {
-    	        JSONObject jsonResponse = new JSONObject(response);
-    	        JSONArray choices = jsonResponse.getJSONArray("choices");
-    	        JSONObject firstChoice = choices.getJSONObject(0);
-    	        JSONObject message = firstChoice.getJSONObject("message");
-    	        String content = message.getString("content");
+    	List<GPTVO> gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
 
-    	        // content가 또 다른 JSON 문자열이므로 한번 더 파싱
-    	        JSONObject contentJson = new JSONObject(content);
-    	        return contentJson.toString(4); // JSON 문자열을 보기 좋게 포맷팅
-    	    } catch (Exception e) {
-    	        // JSON 파싱에 실패한 경우
-    	        return "스타일링에 관련된 질문만 받을 수 있어요";
-    	    }
+    	try {
+			JSONObject jsonResponse = new JSONObject(response);
+			JSONArray choices = jsonResponse.getJSONArray("choices");
+			JSONObject firstChoice = choices.getJSONObject(0);
+			JSONObject message = firstChoice.getJSONObject("message");
+			String content = message.getString("content");
+			
+			// content가 또 다른 JSON 문자열이므로 한번 더 파싱
+			JSONObject contentJson = new JSONObject(content);
+			
+			for (String key : contentJson.keySet()) {
+	            JSONObject itemObject = contentJson.getJSONObject(key);
+	            GPTVO gptvo = new GPTVO();
+	            gptvo.setItem(itemObject.getString("item"));
+	            gptvo.setColor(itemObject.getString("color"));
+	            gptvoList.add(gptvo); // VO 객체를 리스트에 추가
+	        }
+	        // 로그 출력 부분
+	        log.info("GPTVO List: " + gptvoList.toString());
+	        
+			return contentJson.toString(4); // JSON 문자열을 보기 좋게 포맷팅
+    	} catch (Exception e) {
+	        // JSON 파싱에 실패한 경우
+			log.warning("JSON 파싱 에러: " + e.getMessage());
+			e.printStackTrace();
+			return "스타일링에 관련된 질문만 받을 수 있어요";	    
+		}
     }
 
 
