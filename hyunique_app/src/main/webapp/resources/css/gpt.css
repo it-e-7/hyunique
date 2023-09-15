@@ -1,3 +1,9 @@
+#main-wrapper-top{
+	position:fixed;
+	top:0;
+	
+	
+}
 .user-input-section {
 	display: flex;
 	flex-direction: row;
@@ -12,7 +18,7 @@
 }
 
 .chat-input-section {
-	width: 85%;
+	width: 75%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -117,8 +123,39 @@ button .btn-gpt-request {
 	border: none;
 	border-radius: 100rem;
 	padding-left: 1rem;
+	background: #dededeba;
 }
 
 .chat-section-wrapper{
 	width: 94%;
+}
+.chat-upload-btn-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    margin-left: 0.5rem;
+}
+
+div#main-wrapper-top {
+    position: fixed;
+    width: 100%;
+    background: white;
+    padding: 0;
+    z-index: 100;
+}
+
+div#hyunique-main-top-recommend {position: fixed;width: 100%;top: 66px;z-index: 10;margin-left: 0;background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);backdrop-filter: blur(5px);}
+
+div#hyunique-main-top-recommend {}
+
+div#recommend {
+    margin-left: 20px;
+}
+
+div#hyunique-main-top-logo {
+    padding-top: 18px;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
 }
