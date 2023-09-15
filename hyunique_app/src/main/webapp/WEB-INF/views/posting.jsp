@@ -51,7 +51,9 @@
                         <ul class="add-img-container">
                             <li>
                                 <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
-                                                        <button type="button" id="add-img-btn">+</button>
+                                <button type="button" id="add-img-btn">
+                                    <img src="/resources/img/add-img.png">
+                                </button>
                             </li>
                         </ul>
                     </div>

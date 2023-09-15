@@ -69,7 +69,7 @@ $("#addFileInput").change(function(e) {
 
     reader.onload = function(e) {
       const li = $("<li>");
-      const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
+      const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name).attr("draggable", 'false');
       const img = reader.result.split(',')[1];
       imgList.push(img);
       li.append(imageElement);
@@ -78,6 +78,12 @@ $("#addFileInput").change(function(e) {
     reader.readAsDataURL(file); // base64 인코딩
   });
 });
+
+$('.add-img-wrapper').on('mousedown touchdown', function(e) {
+    const slider = $('.add-img-container');
+    imageSlider(slider);
+})
+
 
 // 상품 검색
 $("#search-btn").off('click').click(function(){
@@ -350,3 +356,38 @@ function printSelectTagAndContent(vo) {
 function moveHome() {
     window.location.href = '/';
 }
+
+function imageSlider(slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+//    const slider = $('.add-img-container');
+
+    const end = () => {
+        isDown = false;
+        slider.removeClass('active');
+    };
+
+    const start = (e) => {
+        isDown = true;
+        slider.addClass('active');
+        startX = e.pageX || e.originalEvent.touches[0].pageX - slider.offset().left;
+        scrollLeft = slider.scrollLeft();
+    };
+
+    const move = (e) => {
+        if (!isDown) return;
+
+        e.preventDefault();
+        const x = e.pageX || e.originalEvent.touches[0].pageX - slider.offset().left;
+        const dist = (x - startX);
+        slider.scrollLeft(scrollLeft - dist);
+    };
+
+    slider.on('mousedown touchstart', 'li', start);
+    slider.on('mousemove touchmove', move);
+    slider.on('mouseleave mouseup touchend', end);
+}
+
+
+

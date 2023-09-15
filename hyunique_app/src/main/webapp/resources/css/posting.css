@@ -85,19 +85,26 @@
 }
 
 .add-img-container {
-    display: flex;
-    list-style-type: none;
-    overflow-x: scroll;
-    min-width: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
     white-space: nowrap;
+    font-size: 0;
+    cursor: pointer;
+    &.active {
+        cursor: grab;
+    }
 }
 
 .add-img-container li {
-    flex: 0 0 auto;
-    width: 25%;
     display: inline-block;
+    vertical-align: top;
+    user-select: none;
+
+    width: 25%;
+    font-size: 33px;
+    font-weight: bold;
+    line-height: 130px;
 }
 
 .add-img-container img {
@@ -106,21 +113,33 @@
 }
 
 .add-img-wrapper {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
+    position: relative;
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+
+        content: "";
+        display: block;
+        width: $margin;
+        height: 100%;
+    }
+
+    &:before {
+        left: 0;
+        background: linear-gradient(90deg, $bg-color, transparent);
+    }
+
+    &:after {
+        right: 0;
+        background: linear-gradient(-90deg, $bg-color, transparent);
+    }
 }
 
 button#add-img-btn {
-    background: var(--grey2);
-    color: #FFFFFF;
     height: auto;
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    text-align: center;
-    /* min-height: fit-content; */
-    min-width: 25%;
 }
 
 .content-group {
@@ -141,6 +160,7 @@ button#add-img-btn {
 .post-form button {
     width: 85%;
 }
+
 
 /* write-container 종료*/
 
