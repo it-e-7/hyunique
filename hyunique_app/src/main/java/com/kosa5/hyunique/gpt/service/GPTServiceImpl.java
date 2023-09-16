@@ -132,8 +132,14 @@ public class GPTServiceImpl implements GPTService{
 			String content = message.getString("content");
 			
 			// content가 또 다른 JSON 문자열이므로 한번 더 파싱
-			JSONObject contentJson = new JSONObject(content);
-			
+			 int jsonContentStartIndex = content.indexOf("{");
+		        if (jsonContentStartIndex == -1) {
+		            log.warning("content 내 JSON 시작 문자 '{'를 찾을 수 없습니다.");
+		            return "스타일링에 관련된 질문만 받을 수 있어요";
+		        }
+		        String jsonContentStr = content.substring(jsonContentStartIndex);
+		        JSONObject contentJson = new JSONObject(jsonContentStr);
+		        
 			for (String key : contentJson.keySet()) {
 	            JSONObject itemObject = contentJson.getJSONObject(key);
 	            GPTVO gptvo = new GPTVO();
