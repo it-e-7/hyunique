@@ -66,7 +66,7 @@ public class GPTServiceImpl implements GPTService{
             
             // JSON 배열 생성
             JSONArray jsonArr = new JSONArray();
-            if(conversationCount%4==1) {
+            if(conversationCount%3==1) {
                 jsonArr.put(new JSONObject().put("role", "system").put("content", API_PROMPT));
             }
             for (Map<String, String> conv : conversation) {
@@ -118,7 +118,14 @@ public class GPTServiceImpl implements GPTService{
     	List<GPTVO> gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
 
     	try {
-			JSONObject jsonResponse = new JSONObject(response);
+    		int jsonStartIndex = response.indexOf("{");
+            if (jsonStartIndex == -1) {
+                log.warning("JSON 시작 문자 '{'를 찾을 수 없습니다.");
+                return "스타일링에 관련된 질문만 받을 수 있어요";
+            }
+            String jsonStr = response.substring(jsonStartIndex);
+            
+			JSONObject jsonResponse = new JSONObject(jsonStr);
 			JSONArray choices = jsonResponse.getJSONArray("choices");
 			JSONObject firstChoice = choices.getJSONObject(0);
 			JSONObject message = firstChoice.getJSONObject("message");
@@ -137,9 +144,8 @@ public class GPTServiceImpl implements GPTService{
 	        // 로그 출력 부분
 	        log.info("GPTVO List: " + gptvoList.toString());
 	        
-			return contentJson.toString(4); // JSON 문자열을 보기 좋게 포맷팅
+			return contentJson.toString(4);
     	} catch (Exception e) {
-	        // JSON 파싱에 실패한 경우
 			log.warning("JSON 파싱 에러: " + e.getMessage());
 			e.printStackTrace();
 			return "스타일링에 관련된 질문만 받을 수 있어요";	    
