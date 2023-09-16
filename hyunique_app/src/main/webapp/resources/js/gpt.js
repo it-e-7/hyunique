@@ -3,7 +3,7 @@ let chatForm = document.querySelector('.main-gpt-wrapper');
 const speech = new webkitSpeechRecognition;
 
 var siriWave = new SiriWave({
-    container: document.getElementById('example'),
+    container: document.getElementById('voice-control'),
     width: 300,
     height: 150,
     style: "ios9",
@@ -17,9 +17,8 @@ var siriWave = new SiriWave({
     	]
   });
 
-$(document).ready(function() {
-  $(".btn-gpt-request").click(function() {
-    let user_input = $(".user-gpt-input").val();
+function gptRequest() {
+	let user_input = $(".user-gpt-input").val();
     prepareScroll()
     $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p>User: <span>'+ user_input + '</span></p></div></div>');
     
@@ -40,9 +39,9 @@ $(document).ready(function() {
         console.log(error);
       }
     });
-  });
+    document.getElementById("resultList").value = "";
 
-});
+};
 
 let isAmplified = false;
 // 준비 함수, 약간의 시간을 두어 scroll 함수를 호출하기
@@ -52,7 +51,6 @@ function prepareScroll() {
 
 // scroll 함수
 function scrollUl() {
-  // 채팅창 form 안의 ul 요소, (ul 요소 안에 채팅 내용들이 li 요소로 입력된다.)
   let chatUl = document.querySelector('.chat-section-wrapper');
   chatUl.scrollTop = chatUl.scrollHeight; // 스크롤의 위치를 최하단으로
 }
@@ -65,7 +63,7 @@ if(!("webkitSpeechRecognition") in window){
 
     let isAmplified = false; // 새로운 변수 추가
 
-    document.getElementById("example").addEventListener("click",()=>{
+    document.getElementById("voice-control").addEventListener("click",()=>{
         if (!isAmplified) {
             speech.start();
             siriWave.setAmplitude(1.8);
@@ -87,6 +85,9 @@ if(!("webkitSpeechRecognition") in window){
 
     function resultListView(transcript){
         document.getElementById("resultList").value = transcript;
+        gptRequest();
+        document.getElementById("resultList").value = "";
+
     }
 }
 

@@ -29,28 +29,27 @@
 	
 	    <div class="chat-section-wrapper" data-aos="zoom-in-up">
 	    </div>
-	    <div id="example"></div>
-
-	    
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">
-	   <!--   <button id="rcdStart" >Record</button>
-   		 <button id="rcdStop">Stop</button>
-   	  -->
-	    	<div class="chat-upload-btn-section">
-	    		<lord-icon
-				    src="https://cdn.lordicon.com/mecwbjnp.json"
-				    trigger="click"
-				    colors="primary:#121331,secondary:#1663c7"
-				    stroke="40"
-					style="width:34.3px;height:34.3px">
-				</lord-icon>
+	    	<div class="voice-control-wrapper">
+    		    <div id="voice-control"></div>
 	    	</div>
-	    	<div class="chat-input-section">
-	  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="입력">	        			
-	    	</div>
-	    	<div class="chat-send-btn-section">
-	    		<button class="btn-gpt-request" onclick="prepareScroll()">입력</button>
+	    	<div class="typing-control-wrapper">
+		    	<div class="chat-upload-btn-section">
+		    		<lord-icon
+					    src="https://cdn.lordicon.com/mecwbjnp.json"
+					    trigger="click"
+					    colors="primary:#121331,secondary:#1663c7"
+					    stroke="40"
+						style="width:34.3px;height:34.3px">
+					</lord-icon>
+		    	</div>
+		    	<div class="chat-input-section">
+		  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="입력">	        			
+		    	</div>
+		    	<div class="chat-send-btn-section">
+		    		<button class="btn-gpt-request" onclick="gptRequest()">입력</button>
+		    	</div>
 	    	</div>
 	    </div>
 	</div>
