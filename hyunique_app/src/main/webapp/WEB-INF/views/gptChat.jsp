@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>gpt chat</title>
+    <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>	
+    
 </head>
  
 
@@ -24,12 +26,17 @@
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">
 		<!-- gpt 채팅창 전체 -->
-		
+	
 	    <div class="chat-section-wrapper" data-aos="zoom-in-up">
 	    </div>
+	    <div id="example"></div>
+
 	    
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">
+	   <!--   <button id="rcdStart" >Record</button>
+   		 <button id="rcdStop">Stop</button>
+   	  -->
 	    	<div class="chat-upload-btn-section">
 	    		<lord-icon
 				    src="https://cdn.lordicon.com/mecwbjnp.json"
@@ -40,7 +47,7 @@
 				</lord-icon>
 	    	</div>
 	    	<div class="chat-input-section">
-	  				<input class="user-gpt-input" type="text" name="user-gpt-input" placeholder="입력">	        			
+	  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="입력">	        			
 	    	</div>
 	    	<div class="chat-send-btn-section">
 	    		<button class="btn-gpt-request" onclick="prepareScroll()">입력</button>
