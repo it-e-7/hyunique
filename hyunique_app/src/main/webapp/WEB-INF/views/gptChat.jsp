@@ -34,6 +34,18 @@
 	    	<div class="voice-control-wrapper">
     		    <div id="voice-control"></div>
 	    	</div>
+	    	<div class="loader-wrapper hidden">
+		    	<div class="loader">
+		  			<span class="loader__inner"></span>
+		  			<span class="loader__inner"></span>
+	  			</div>
+	  			<div class="loader-text-wrapper">
+	  				<p class="loader-text">
+	  					AI가 코디를 작성하고 있어요 :)
+	  				</p>
+	  			</div>
+	    	</div>
+	    	
 	    	<div class="typing-control-wrapper">
 		    	<div class="chat-upload-btn-section">
 		    		<lord-icon

@@ -4,8 +4,8 @@ const speech = new webkitSpeechRecognition;
 
 var siriWave = new SiriWave({
     container: document.getElementById('voice-control'),
-    width: 300,
-    height: 150,
+    width: 600,
+    height: 100,
     style: "ios9",
     autostart:true,
     amplitude:0.1,
@@ -21,6 +21,8 @@ function gptRequest() {
 	let user_input = $(".user-gpt-input").val();
     prepareScroll()
     $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p>User: <span>'+ user_input + '</span></p></div></div>');
+    $(".voice-control-wrapper").addClass("hidden");
+    $(".loader-wrapper").removeClass("hidden");
     
     $.ajax({
       url: "/gpt/chat",
@@ -31,7 +33,8 @@ function gptRequest() {
       success: function(data) {
 		  //gpt응답
 		  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p>Response: <span>' + data.response + '</span></p></div><div>');
-
+		  $(".loader-wrapper").addClass("hidden");
+		  $(".voice-control-wrapper").removeClass("hidden");
 		  //유저 응답
 		  $("#response-content").text(data.response);
       },
@@ -61,19 +64,19 @@ if(!("webkitSpeechRecognition") in window){
     alert("Connect in Chrome Browser");
 }else{
 
-    let isAmplified = false; // 새로운 변수 추가
+    let isAmplified = false;
 
     document.getElementById("voice-control").addEventListener("click",()=>{
         if (!isAmplified) {
             speech.start();
             siriWave.setAmplitude(1.8);
             siriWave.setSpeed(0.4);
-            isAmplified = true; // 상태 변경
+            isAmplified = true;
         } else {
             speech.stop();
             siriWave.setAmplitude(0.2);
             siriWave.setSpeed(0.2);
-            isAmplified = false; // 상태 변경
+            isAmplified = false;
         }
     });
     speech.addEventListener("result", (event)=>{

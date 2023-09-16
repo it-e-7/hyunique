@@ -31,6 +31,8 @@ public class GPTServiceImpl implements GPTService{
     @Value("${api.prompt}")
     private String API_PROMPT;
     
+    private int conversationCount = 0;  // 새로운 변수 추가
+
     List<Map<String, String>> conversation = new ArrayList<>();
     
     
@@ -41,8 +43,8 @@ public class GPTServiceImpl implements GPTService{
         String url = "https://api.openai.com/v1/chat/completions";
         String apiKey = API_GPT;
         String model = "gpt-3.5-turbo"; // current model of chatgpt api
-        API_PROMPT = API_PROMPT + (signinUser.getUserSex().equals("M")?"남자":"여자") + Integer.toString(signinUser.getUserHeight()) + "cm" + "체형:" + signinUser.getUserForm() + "선호스타일:" + signinUser.getUserPrefer();
-        
+        conversationCount++;
+       
         try {
             //HTTP 요청 설정
             URL obj = new URL(url);
@@ -50,19 +52,23 @@ public class GPTServiceImpl implements GPTService{
             con.setRequestMethod("POST");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
-
+            
+            message = message +(signinUser.getUserSex().equals("M")?"성별 : 남자, ":"성별 : 여자, ") + Integer.toString(signinUser.getUserHeight()) + "cm, " + "체형:" + signinUser.getUserForm() + ", 선호스타일:" + signinUser.getUserPrefer();
             // 요청 대화 저장
             Map<String, String> convhistroyUser = new HashMap<>();
             convhistroyUser.put("role", "user");
             convhistroyUser.put("content", message);
             conversation.add(convhistroyUser);
             
+            if (conversation.size() > 5) {
+                conversation.remove(0);
+            }
             
-            log.info("전송하기 전 API_PROMPT : "+API_PROMPT);
             // JSON 배열 생성
             JSONArray jsonArr = new JSONArray();
-            jsonArr.put(new JSONObject().put("role", "system").put("content", API_PROMPT));
-            
+            if(conversationCount%4==1) {
+                jsonArr.put(new JSONObject().put("role", "system").put("content", API_PROMPT));
+            }
             for (Map<String, String> conv : conversation) {
                 jsonArr.put(new JSONObject(conv));
             }
@@ -73,7 +79,7 @@ public class GPTServiceImpl implements GPTService{
             jsonObj.put("messages", jsonArr);
             
             String body = jsonObj.toString();
-            log.info("요청 본몬 : " + body);
+            log.info("요청 본몬 : \n" + body);
 
             con.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
@@ -92,7 +98,7 @@ public class GPTServiceImpl implements GPTService{
 
             // 응답 처리
 
-            log.info("응답 본몬 : " + response.toString());
+            log.info("응답 본몬 : \n" + response.toString());
             String responseGpt;
             responseGpt = extractContentFromResponse(response.toString());
             
