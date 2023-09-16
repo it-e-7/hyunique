@@ -45,10 +45,10 @@
 					</lord-icon>
 		    	</div>
 		    	<div class="chat-input-section">
-		  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="입력">	        			
+	  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="상황이나 장소를 알려주세요">	        			
 		    	</div>
 		    	<div class="chat-send-btn-section">
-		    		<button class="btn-gpt-request" onclick="gptRequest()">입력</button>
+		    		<button class="btn-gpt-request" onclick="gptRequest()">전송</button>
 		    	</div>
 	    	</div>
 	    </div>
