@@ -47,17 +47,6 @@ function gptRequest() {
 };
 
 let isAmplified = false;
-// 준비 함수, 약간의 시간을 두어 scroll 함수를 호출하기
-function prepareScroll() {
-  window.setTimeout(scrollUl, 50);
-}
-
-// scroll 함수
-function scrollUl() {
-  let chatUl = document.querySelector('.chat-section-wrapper');
-  chatUl.scrollTop = chatUl.scrollHeight; // 스크롤의 위치를 최하단으로
-}
-
 
 
 if(!("webkitSpeechRecognition") in window){
