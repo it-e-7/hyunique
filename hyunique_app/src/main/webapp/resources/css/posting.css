@@ -7,6 +7,8 @@
     width: 100%;
     border-radius: 2rem;
     margin: 2rem 0;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
     drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
     drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
@@ -84,6 +86,28 @@
     overflow-y: auto;
 }
 
+.add-img-wrapper {
+    position: relative;
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+
+        content: "";
+        display: block;
+        /*height: 100%;*/
+    }
+
+    &:before {
+        left: 0;
+    }
+
+    &:after {
+        right: 0;
+    }
+}
+
 .add-img-container {
     position: relative;
     width: 100%;
@@ -96,6 +120,11 @@
     }
 }
 
+ul.add-img-container {
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .add-img-container li {
     display: inline-block;
     vertical-align: top;
@@ -104,7 +133,6 @@
     width: 25%;
     font-size: 33px;
     font-weight: bold;
-    line-height: 130px;
 }
 
 .add-img-container img {
@@ -112,30 +140,7 @@
     height: auto;
 }
 
-.add-img-wrapper {
-    position: relative;
-    &:before,
-    &:after {
-        position: absolute;
-        top: 0;
-        z-index: 1;
 
-        content: "";
-        display: block;
-        width: $margin;
-        height: 100%;
-    }
-
-    &:before {
-        left: 0;
-        background: linear-gradient(90deg, $bg-color, transparent);
-    }
-
-    &:after {
-        right: 0;
-        background: linear-gradient(-90deg, $bg-color, transparent);
-    }
-}
 
 button#add-img-btn {
     height: auto;
@@ -144,21 +149,25 @@ button#add-img-btn {
 
 .content-group {
     margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-group textarea {
-    width: 100%;
+    width: 92%;
     min-height: 100px;
     resize: vertical;
     overflow: auto;
     border: 1px solid var(--grey4);
     border-radius: 9px;
-    margin-top: 12px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-family: 'Spoqa Han Sans';
+    padding: 1rem;
+    margin: auto;
 }
 
-.post-form button {
-    width: 85%;
+#upload-button {
+    width: 85%
 }
 
 
@@ -324,6 +333,7 @@ p.search-product-price {
     height: 100%;
     align-items: center;
     margin-top: 15%;
+    margin-bottom: 30%;
 }
 
 .post-container .header {
@@ -345,6 +355,7 @@ p.search-product-price {
 .write-container p {
     font-weight: bold;
     font-size: 16px;
+    margin-bottom: 1rem;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -355,17 +366,17 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     display: inline-block;
     width: auto;
     height: 2rem;
-	border: 1px solid var(--grey4);
+    border: 1px solid var(--grey4);
     border-radius: 0.7rem;
-	padding:0.1rem 1.3rem;
+    padding: 0.1rem 1.3rem;
     cursor: pointer;
-	line-height:2rem;
-	margin-right:0.1rem;
-	margin-top:1rem;
-    font-family:Spoqa Han Sans;
-	letter-spacing:0.05rem;
-	text-align:center;
-	color:var(--grey4);
+    line-height: 2rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.5rem;
+    font-family: Spoqa Han Sans;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    color: var(--grey4);
 }
 
 input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
@@ -374,7 +385,7 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 }
 
 .style-button-group, .tpo-button-group, .season-button-group, .content-group {
-    padding: 20px;
+    padding: 1.5rem;
 }
 
 .style-button-group div, .tpo-button-group div, .season-button-group div {
@@ -407,6 +418,8 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     -webkit-appearance: none;
     padding: 0 15px;
     height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
 }
 
 .select-product-size {
@@ -418,11 +431,18 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     -webkit-appearance: none;
     padding: 0 15px;
     height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
 }
 
 option {
     color: #424242;
     font-family: 'Spoqa Han Sans';
+    -webkit-appearance: none;
+}
+
+option:disabled {
+    color: #bdbdbd;
 }
 
 .color-wrap .select-input__icon {

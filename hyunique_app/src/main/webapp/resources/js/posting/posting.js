@@ -115,8 +115,7 @@ $('.result-list').on('click', '.search-product-li', function() {
         product['productColor'] = $('.select-product-color option:selected').text();
 
         if (product['productSize'] === '사이즈' || product['productColor'] === '색상') {
-            alert('옵션을 선택하세요').
-            return;
+            alert('옵션을 선택하세요');
             return;
         }
 
@@ -134,7 +133,7 @@ function showPage(page) {
     currentPage = page;
 }
 
-// 뒤로 가기 함수
+// 뒤로가기 함수
 function goBack() {
     const preIndex = pages.indexOf(currentPage);
     const targetPage = pages[preIndex - 1];
@@ -142,6 +141,7 @@ function goBack() {
     if (pages[preIndex] === pages[1]) {
         $('#thumbnail-img').empty();
         $('.add-img-container').empty();
+        imgList.length = 0;
         $("#style-tags input[type='checkbox']:checked").prop("checked", false);
         $("#tpo-tags input[type='radio']").prop("checked", false);
         $("#season-tags input[type='radio']").prop("checked", false);

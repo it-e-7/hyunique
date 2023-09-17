@@ -151,10 +151,12 @@
             <div class="image-container">
                 <img src="/resources/img/heendy.png"/>
             </div>
-            <div class="tag-container">
-                <ul class="tag-list"></ul>
+            <div class="post-content-wrap">
+                <div class="tag-container">
+                    <ul class="tag-list"></ul>
+                </div>
+                <div class="content-text"></div>
             </div>
-            <div class="content-text"></div>
             <div class="button-container">
                 <button id="next-button" class="jw-btn jw-btn-fixed" onclick="moveHome()">계속하기</button>
             </div>
