@@ -19,7 +19,6 @@ var siriWave = new SiriWave({
 
 function gptRequest() {
 	let user_input = $(".user-gpt-input").val();
-    prepareScroll()
     $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p><span>'+ user_input + '</span></p></div></div>');
     $(".voice-control-wrapper").addClass("hidden");
     $(".loader-wrapper").removeClass("hidden");

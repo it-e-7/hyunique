@@ -28,6 +28,7 @@
 		<!-- gpt 채팅창 전체 -->
 	
 	    <div class="chat-section-wrapper" data-aos="zoom-in-up">
+	    	<div class="gap-area"></div>
 	    </div>
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">
