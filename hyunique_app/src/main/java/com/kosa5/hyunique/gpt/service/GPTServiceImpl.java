@@ -107,7 +107,6 @@ public class GPTServiceImpl implements GPTService{
             convhistroyAssistant.put("role", "assistant");
             convhistroyAssistant.put("content", responseGpt);
             conversation.add(convhistroyAssistant);
-            
             return responseGpt;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -149,7 +148,6 @@ public class GPTServiceImpl implements GPTService{
 	        }
 	        // 로그 출력 부분
 	        log.info("GPTVO List: " + gptvoList.toString());
-	        
 			return contentJson.toString(4);
     	} catch (Exception e) {
 			log.warning("JSON 파싱 에러: " + e.getMessage());
@@ -158,5 +156,54 @@ public class GPTServiceImpl implements GPTService{
 		}
     }
 
+    @Override
+    public String generateImage(String message) {
+        String url = "https://api.openai.com/v1/images/generations"; // Image generation API URL
+        String apiKey = API_GPT;
+
+        try {
+            // HTTP 요청 설정
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Authorization", "Bearer " + apiKey);
+            con.setRequestProperty("Content-Type", "application/json");
+            // 요청 본문
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("prompt", message); 
+            jsonObj.put("n", 1); 
+            jsonObj.put("size", "256x256"); 
+            String body = jsonObj.toString();
+            
+            con.setDoOutput(true);
+            OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+            writer.write(body);
+            writer.flush();
+            writer.close();
+
+            // 응답 본문
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            // 응답 처리
+            System.out.println("이미지 url : \n" + response.toString());
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            JSONArray dataArr = jsonResponse.getJSONArray("data");
+            JSONObject firstData = dataArr.getJSONObject(0);
+            String imageUrl = firstData.getString("url");
+            if (imageUrl.endsWith("/")) {
+                imageUrl = imageUrl.substring(0, imageUrl.length() - 1);
+            }
+            
+            return imageUrl;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

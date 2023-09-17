@@ -20,7 +20,25 @@ function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
 	lastMessage.scrollIntoView();
 }
-
+function gptImgRequest(input){
+ $.ajax({
+      url: "/gpt/img",
+      type: "GET",
+      data: {
+        message: input
+      },
+      success: function(data) {
+		  //gpt응답
+		  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span><img src='+ data +'></span></p></div><div>');
+		  scrollToBottom();
+		  $(".loader-wrapper").addClass("hidden");
+		  $(".voice-control-wrapper").removeClass("hidden");
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+}
 function gptRequest() {
 	let user_input = $(".user-gpt-input").val();
     $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p><span>'+ user_input + '</span></p></div></div>');
@@ -42,6 +60,7 @@ function gptRequest() {
 		  $(".voice-control-wrapper").removeClass("hidden");
 		  //유저 응답
 		  $("#response-content").text(data.response);
+		  gptImgRequest("a wall-e sitting on the ground");
       },
       error: function(error) {
         console.log(error);
