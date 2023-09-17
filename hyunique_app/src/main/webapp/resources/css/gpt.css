@@ -118,14 +118,23 @@ button .btn-gpt-request {
 div#main-wrapper-top {
     position: fixed;
     width: 100%;
+    max-width: 760px;
     background: white;
     padding: 0;
     z-index: 100;
 }
 
-div#hyunique-main-top-recommend {position: fixed;width: 100%;top: 66px;z-index: 10;margin-left: 0;background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);backdrop-filter: blur(5px);}
+div#hyunique-main-top-recommend {
+	position: fixed;
+	width: 100%;
+	top: 66px;
+	z-index: 10;
+    max-width: 760px;
+	margin-left: 0;
+	background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);
+	backdrop-filter: blur(5px);
+}
 
-div#hyunique-main-top-recommend {}
 
 div#recommend {
     margin-left: 20px;
