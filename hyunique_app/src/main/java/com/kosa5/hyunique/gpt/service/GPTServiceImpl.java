@@ -120,7 +120,7 @@ public class GPTServiceImpl implements GPTService{
     		int jsonStartIndex = response.indexOf("{");
             if (jsonStartIndex == -1) {
                 log.warning("JSON 시작 문자 '{'를 찾을 수 없습니다.");
-                return "스타일링에 관련된 질문만 받을 수 있어요";
+    			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘<br><br>와 같이 상황이나 장소를 말해보세요";	    
             }
             String jsonStr = response.substring(jsonStartIndex);
             
@@ -134,7 +134,7 @@ public class GPTServiceImpl implements GPTService{
 			 int jsonContentStartIndex = content.indexOf("{");
 		        if (jsonContentStartIndex == -1) {
 		            log.warning("content 내 JSON 시작 문자 '{'를 찾을 수 없습니다.");
-		            return "스타일링에 관련된 질문만 받을 수 있어요";
+					return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘<br><br>와 같이 상황이나 장소를 말해보세요";	    
 		        }
 		        String jsonContentStr = content.substring(jsonContentStartIndex);
 		        JSONObject contentJson = new JSONObject(jsonContentStr);
@@ -152,7 +152,7 @@ public class GPTServiceImpl implements GPTService{
     	} catch (Exception e) {
 			log.warning("JSON 파싱 에러: " + e.getMessage());
 			e.printStackTrace();
-			return "스타일링에 관련된 질문만 받을 수 있어요";	    
+			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘<br><br>와 같이 상황이나 장소를 말해보세요";	    
 		}
     }
 
