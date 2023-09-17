@@ -23,6 +23,23 @@ $("#img-load-button").click(function() {
 
 $("#fileInput").change(thumbnailUpload);
 
+
+// 이미지 압축
+async function compressImage(inputFile) {
+    try {
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1200,
+        };
+
+        return await imageCompression(inputFile, options);
+
+    } catch (error) {
+        console.error("이미지 압축 오류", error);
+        return null;
+    }
+}
+
 // 썸네일 이미지 출력
 function thumbnailUpload(e) {
     const files = e.target.files;
@@ -33,19 +50,30 @@ function thumbnailUpload(e) {
     }
     const reader = new FileReader();
 
-    reader.onload = function(e) {
-        const img = reader.result.split(',')[1];
-        imgList.push(img);
-        const imageElement = $("<img>").attr("src", e.target.result)
-                                       .attr("data-file", file.name)
-                                       .attr("draggable", "false") ;
-        $('#thumbnail-img').append(imageElement);
-        container = imageElement;
-    }
+    reader.onload = async function(e) {
+        const img = new Image();
+        img.onload = async function() {
+            const compressedFile = await compressImage(file);
+            if (compressedFile) {
+                const compressedReader = new FileReader();
+                compressedReader.onload = function(event) {
+                    const thumbnail = $("<img>").attr("src", event.target.result)
+                                                .attr("data-file", file.name)
+                                                .attr("draggable", "false");
+                    $('#thumbnail-img').append(thumbnail);
+                    const imgData = event.target.result.split(',')[1];
+                    imgList.push(imgData);
+                    showPage('.write-container');
+                };
+                compressedReader.readAsDataURL(compressedFile);
+            }
+        };
+        img.src = e.target.result;
+    };
     reader.readAsDataURL(file); // base64 인코딩
-
-    showPage('.write-container');
 }
+
+
 
 // 작성 완료 버튼
 $('#upload-button').click(function() {
@@ -58,25 +86,25 @@ $('#add-img-btn').click(function() {
 
 // 추가 이미지
 $("#addFileInput").change(function(e) {
-  const files = e.target.files;
+    const files = e.target.files;
 
-  $.each(files, function(index, file) {
-    if (!file.type.match("image/.*")) {
-      alert("이미지 파일만 업로드할 수 있습니다.");
-      return;
-    }
-    const reader = new FileReader();
+    $.each(files, function(index, file) {
+        if (!file.type.match("image/.*")) {
+            alert("이미지 파일만 업로드할 수 있습니다.");
+            return;
+        }
+        const reader = new FileReader();
 
-    reader.onload = function(e) {
-      const li = $("<li>");
-      const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name).attr("draggable", 'false');
-      const img = reader.result.split(',')[1];
-      imgList.push(img);
-      li.append(imageElement);
-      $('.add-img-container').append(li);
-    }
-    reader.readAsDataURL(file); // base64 인코딩
-  });
+        reader.onload = function(e) {
+            const li = $("<li>");
+            const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name).attr("draggable", 'false');
+            const img = reader.result.split(',')[1];
+            imgList.push(img);
+            li.append(imageElement);
+            $('.add-img-container').append(li);
+        }
+        reader.readAsDataURL(file); // base64 인코딩
+    });
 });
 
 $('.add-img-wrapper').on('mousedown touchdown', function(e) {
@@ -150,6 +178,7 @@ function goBack() {
 
     if (pages[preIndex] === pages[2]) {
         $('.result-list').empty();
+        $('.search-text').val('');
     }
 
     showPage(targetPage);
@@ -388,6 +417,3 @@ function imageSlider(slider) {
     slider.on('mousemove touchmove', move);
     slider.on('mouseleave mouseup touchend', end);
 }
-
-
-
