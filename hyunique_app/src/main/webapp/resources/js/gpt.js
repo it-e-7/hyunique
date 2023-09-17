@@ -16,6 +16,10 @@ const siriWave = new SiriWave({
     	  { color: "255, 106, 222" },
     	]
 });
+
+$(document).ready(function () {
+  wordflick();
+});
 function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
 	lastMessage.scrollIntoView();
@@ -45,6 +49,7 @@ function gptRequest() {
     scrollToBottom();
     $(".voice-control-wrapper").addClass("hidden");
     $(".loader-wrapper").removeClass("hidden");
+    restartAnimation();
     
     $.ajax({
       url: "/gpt/chat",
@@ -112,8 +117,59 @@ if(!("webkitSpeechRecognition") in window){
     function resultListView(transcript){
         document.getElementById("resultList").value = transcript;
         gptRequest();
+        speech.stop();
+        isAmplified = false;
+        siriWave.setAmplitude(0.2);
+        siriWave.setSpeed(0.2);
         document.getElementById("resultList").value = "";
 
     }
 }
 
+let words = ['AI가 열심히 옷을 고르고 있어요', '잠시만 기다려 주세요 :)'];
+let i = 0, offset = 0, len = words.length;
+let forwards = true, skip_count = 0, skip_delay = 15, speed = 70;
+let animationInterval;
+
+let wordflick = function () {
+	animationInterval = setInterval(function () {
+		if (forwards) {
+			if (offset >= words[i].length) {
+				++skip_count;
+				if (skip_count == skip_delay) {
+					forwards = false;
+					skip_count = 0;
+			    }
+			  }
+			}
+		else {
+		  if (offset == 0) {
+		    forwards = true;
+		    i++;
+		    offset = 0;
+		    if (i >= len) {
+		      i = 0;
+		    }
+		  }
+		}
+		part = words[i].substr(0, offset);
+		if (skip_count == 0) {
+		  if (forwards) {
+		    offset++;
+		  }
+		  else {
+		    offset--;
+		  }
+		}
+		$('.loader-text').text(part);
+	},speed);
+};
+
+let restartAnimation = function() {
+	  clearInterval(animationInterval); 
+	  i = 0; 
+	  offset = 0;
+	  forwards = true;
+	  skip_count = 0;
+	  wordflick(); // 애니메이션 다시 시작
+};

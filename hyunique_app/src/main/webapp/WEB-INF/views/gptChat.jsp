@@ -41,9 +41,7 @@
 		  			<span class="loader__inner"></span>
 	  			</div>
 	  			<div class="loader-text-wrapper">
-	  				<p class="loader-text">
-	  					AI가 코디를 작성하고 있어요 :)
-	  				</p>
+	  				<div class="loader-text">ㅤ</div>
 	  			</div>
 	    	</div>
 	    	

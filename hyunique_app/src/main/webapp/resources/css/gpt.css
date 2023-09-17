@@ -51,6 +51,7 @@ button .btn-gpt-request {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 11rem;
+    padding-bottom: 2rem;
 }
 
 .speech-bubble-user {
@@ -238,6 +239,7 @@ canvas {
 	text-align:center;
 	padding-bottom: 4rem;
 	color: gray;
+	min-height:1.5rem;
 }
 .hidden {
     display: none;
