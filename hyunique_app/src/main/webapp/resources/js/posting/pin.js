@@ -17,8 +17,10 @@ $('#thumbnail-img').on('click', 'img', function(e){
 
     showPage('.search-container');
     $('.search-value').empty();
+    $('.search-value-fixed').empty();
     $('.result-list').empty();
 });
+
 
 // 터치한 위치에 상품 정보 핀 찍기
 function attachTag(xOffset, yOffset, vo) {
@@ -57,7 +59,6 @@ function attachTag(xOffset, yOffset, vo) {
     items[id].xOffset = xOffset;
     items[id].yOffset = yOffset;
 
-    console.log('현재 좌표 ', xOffset, yOffset);
     imgContainer.append(tagElement);
 
 }
