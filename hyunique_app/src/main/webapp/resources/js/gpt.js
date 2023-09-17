@@ -60,7 +60,8 @@ function gptRequest() {
 		  $(".voice-control-wrapper").removeClass("hidden");
 		  //유저 응답
 		  $("#response-content").text(data.response);
-		  gptImgRequest("a wall-e sitting on the ground");
+		  //하루 50번 요청 제한이 걸림
+		  //gptImgRequest("Show a full-length photograph of person wearing the following clothes."+ data.response +" Restrictions: The model must accurately represent the material, color, fit, etc. of the clothing.");
       },
       error: function(error) {
         console.log(error);
@@ -70,6 +71,15 @@ function gptRequest() {
 
 };
 
+//gpt 엔터 이벤트
+$(".user-gpt-input").on('keydown', function(e){
+    if(e.keyCode == 13) {
+        let inputtext = $(".user-gpt-input").val();
+        if(inputtext){
+        	gptRequest();
+        }
+    }
+});
 let isAmplified = false;
 
 

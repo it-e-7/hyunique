@@ -43,10 +43,8 @@ public class GPTController {
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> chat(@RequestParam String message, Model model, @SessionAttribute UserVO signinUser) {
 		String response = GPTService.chatGPT(message,signinUser);
-		String imgresponse = GPTService.generateImage(message);
 		Map<String, String> result = new HashMap<>();
 		result.put("response", response);
-		result.put("imgresponse", imgresponse);
 		return result; 
 	}
 	

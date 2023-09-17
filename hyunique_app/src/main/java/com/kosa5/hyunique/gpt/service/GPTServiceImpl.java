@@ -172,7 +172,7 @@ public class GPTServiceImpl implements GPTService{
             JSONObject jsonObj = new JSONObject();
             jsonObj.put("prompt", message); 
             jsonObj.put("n", 1); 
-            jsonObj.put("size", "256x256"); 
+            jsonObj.put("size", "360x640"); 
             String body = jsonObj.toString();
             
             con.setDoOutput(true);
