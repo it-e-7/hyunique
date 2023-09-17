@@ -27,7 +27,7 @@
 	<div class="main-gpt-wrapper">
 		<!-- gpt 채팅창 전체 -->
 	
-	    <div class="chat-section-wrapper" data-aos="zoom-in-up">
+	    <div class="chat-section-wrapper">
 	    	<div class="gap-area"></div>
 	    </div>
 	    <!-- 유저 입력 섹션 전체 -->
@@ -61,7 +61,7 @@
 	  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="상황이나 장소를 알려주세요">	        			
 		    	</div>
 		    	<div class="chat-send-btn-section">
-		    		<button class="btn-gpt-request" onclick="gptRequest()">전송</button>
+		    		<button class="btn-gpt-request" onclick="gptRequest(), scrollToBottom()">전송</button>
 		    	</div>
 	    	</div>
 	    </div>
