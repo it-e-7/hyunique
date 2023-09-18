@@ -148,8 +148,7 @@
             <div class="header">
                 <p>게시가 완료되었습니다!</p>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/heendy.png"/>
+            <div class="image-container" id="post-image-thumbnail">
             </div>
             <div class="post-content-wrap">
                 <div class="tag-container">

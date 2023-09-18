@@ -388,7 +388,14 @@ function printSelectTagAndContent(vo) {
     let seasonIdStr = '#' + vo['seasonId'][0];
     let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
 
-    $(".image-container img").attr("src", "data:image/png;base64," + vo['thumbnail']);
+    var blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
+    var objectURL = URL.createObjectURL(blob);
+
+    $("#post-image-thumbnail").html(
+        $('<img>', {
+           'src': objectURL
+        })
+    );
 
     const imageElement = $(`<p>${tpoIdStr} ${seasonIdStr} ${styleIdStr}</p>`);
     const li = $("<li>").append(imageElement);

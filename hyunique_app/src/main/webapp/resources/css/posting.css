@@ -3,7 +3,21 @@
     width: 60%;
 }
 
-.image-container img {
+
+.pre-container .image-container img {
+    width: 100%;
+    border-radius: 2rem;
+    margin: 2rem 0;
+    aspect-ratio: 3 / 4;
+
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
+            drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
+            drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
+            drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+            drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+.post-container .image-container img {
     width: 100%;
     border-radius: 2rem;
     margin: 2rem 0;
@@ -355,7 +369,6 @@ p.search-product-price {
 .write-container p {
     font-weight: bold;
     font-size: 16px;
-    margin-bottom: 1rem;
 }
 
 input[type="checkbox"], input[type="radio"] {
