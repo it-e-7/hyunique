@@ -45,6 +45,8 @@ public class GPTServiceImpl implements GPTService{
 
     List<Map<String, String>> conversation = new ArrayList<>();
     
+    private String engListString;
+    private String beforeParseString;
     
     
     
@@ -110,12 +112,12 @@ public class GPTServiceImpl implements GPTService{
 
             String responseGpt;
             responseGpt = extractContentFromResponse(response.toString());
-	        translate(responseGpt);
+            engListString = translate(responseGpt);
 
             // 응답 대화 기록 추가
             Map<String, String> convhistroyAssistant = new HashMap<>();
             convhistroyAssistant.put("role", "assistant");
-            convhistroyAssistant.put("content", responseGpt);
+            convhistroyAssistant.put("content", beforeParseString);
             conversation.add(convhistroyAssistant);
             return responseGpt;
         } catch (IOException e) {
@@ -139,7 +141,7 @@ public class GPTServiceImpl implements GPTService{
 			JSONObject firstChoice = choices.getJSONObject(0);
 			JSONObject message = firstChoice.getJSONObject("message");
 			String content = message.getString("content");
-			
+			beforeParseString = content;
 			// content가 또 다른 JSON 문자열이므로 한번 더 파싱
 			 int jsonContentStartIndex = content.indexOf("{");
 		        if (jsonContentStartIndex == -1) {
@@ -174,7 +176,7 @@ public class GPTServiceImpl implements GPTService{
     }
 
     @Override
-    public String generateImage(String message) {
+    public String generateImage(String messageFront, String messageBack) {
         String url = "https://api.openai.com/v1/images/generations";
         String apiKey = API_GPT;
 
@@ -184,9 +186,8 @@ public class GPTServiceImpl implements GPTService{
             con.setRequestMethod("POST");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
-
             JSONObject jsonObj = new JSONObject();
-            jsonObj.put("prompt", message);
+            jsonObj.put("prompt", messageFront + engListString + messageBack);
             jsonObj.put("n", 1);
             jsonObj.put("size", "256x256");
             String body = jsonObj.toString();

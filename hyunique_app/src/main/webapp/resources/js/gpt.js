@@ -8,7 +8,7 @@ const siriWave = new SiriWave({
     height: 100,
     style: "ios9",
     autostart:true,
-    amplitude:0.1,
+    amplitude:0.3,
     curveDefinition :[
     	  { color: "255,255,255", supportLine: true },
     	  { color: "106, 121, 255" },
@@ -24,15 +24,15 @@ function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
 	lastMessage.scrollIntoView();
 }
-function gptImgRequest(input){
+function gptImgRequest(messageFront, messageBack){
  $.ajax({
       url: "/gpt/img",
       type: "GET",
       data: {
-        message: input
+        message1: messageFront,
+        message2: messageBack
       },
       success: function(data) {
-		  //gpt응답
 		  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span><img src='+ data +'></span></p></div><div>');
 		  scrollToBottom();
 		  $(".loader-wrapper").addClass("hidden");
@@ -74,7 +74,7 @@ function gptRequest() {
 		  //유저 응답
 		  $("#response-content").text(data.response);
 		  //하루 50번 요청 제한이 걸림
-		  gptImgRequest("A full-body portrait of a man wearing a white dress shirt, indigo jeans, a camel trench coat, white sneakers, and a silver watch. The man is standing on a white background in soft studio lighting.shot on EOS 5d mark2. He is looking at the camera.");
+		  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
 		 // gptImgRequest("a cat, cutest in the world ");
       },
       error: function(error) {
@@ -107,11 +107,11 @@ if(!("webkitSpeechRecognition") in window){
         if (!isAmplified) {
             speech.start();
             siriWave.setAmplitude(1.9);
-            siriWave.setSpeed(0.2);
+            siriWave.setSpeed(0.1);
             isAmplified = true;
         } else {
             speech.stop();
-            siriWave.setAmplitude(0.2);
+            siriWave.setAmplitude(0.3);
             siriWave.setSpeed(0.1);
             isAmplified = false;
         }

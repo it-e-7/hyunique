@@ -51,8 +51,8 @@ public class GPTController {
 	@Auth
 	@RequestMapping(value = "/img", method = RequestMethod.GET)
 	@ResponseBody
-	public String imgUrl(@RequestParam String message, Model model, @SessionAttribute UserVO signinUser) {
-		String imgresponse = GPTService.generateImage(message);
+	public String imgUrl(@RequestParam String message1,@RequestParam String message2, Model model, @SessionAttribute UserVO signinUser) {
+		String imgresponse = GPTService.generateImage(message1, message2);
 		return imgresponse; 
 	}
 
