@@ -47,7 +47,8 @@ public class GPTServiceImpl implements GPTService{
     
     private String engListString;
     private String beforeParseString;
-    
+	private int checkParse = 0;
+
     
     
     @Override
@@ -56,7 +57,7 @@ public class GPTServiceImpl implements GPTService{
         String apiKey = API_GPT;
         String model = "gpt-3.5-turbo"; // current model of chatgpt api
         conversationCount++;
-       
+        checkParse=0;
         try {
             //HTTP 요청 설정
             URL obj = new URL(url);
@@ -65,7 +66,7 @@ public class GPTServiceImpl implements GPTService{
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
             
-            message = message +(signinUser.getUserSex().equals("M")?". 성별 : 남자, ":"성별 : 여자, ") + Integer.toString(signinUser.getUserHeight()) + "cm, " + "체형:" + signinUser.getUserForm() + ", 선호스타일:" + signinUser.getUserPrefer();
+//            message = message +(signinUser.getUserSex().equals("M")?". 성별 : 남자, ":"성별 : 여자, ") + Integer.toString(signinUser.getUserHeight()) + "cm, " + "체형:" + signinUser.getUserForm() + ", 선호스타일:" + signinUser.getUserPrefer();
             // 요청 대화 저장
             Map<String, String> convhistroyUser = new HashMap<>();
             convhistroyUser.put("role", "user");
@@ -113,12 +114,20 @@ public class GPTServiceImpl implements GPTService{
             String responseGpt;
             responseGpt = extractContentFromResponse(response.toString());
             engListString = translate(responseGpt);
+            if(checkParse==1) {
+            	responseGpt = "*" + responseGpt;
+            }
+            
+         
+            conversation.remove(conversation.size() -1 );
 
             // 응답 대화 기록 추가
             Map<String, String> convhistroyAssistant = new HashMap<>();
-            convhistroyAssistant.put("role", "assistant");
-            convhistroyAssistant.put("content", beforeParseString);
-            conversation.add(convhistroyAssistant);
+            if(responseGpt.charAt(0) != '*') {
+            	convhistroyAssistant.put("role", "assistant");
+	            convhistroyAssistant.put("content", beforeParseString);
+	            conversation.add(convhistroyAssistant);
+            }
             return responseGpt;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -127,11 +136,12 @@ public class GPTServiceImpl implements GPTService{
 
     public String extractContentFromResponse(String response) {
     	List<GPTVO> gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
-
+    	
     	try {
     		int jsonStartIndex = response.indexOf("{");
             if (jsonStartIndex == -1) {
-                log.warning("JSON 시작 문자 '{'를 찾을 수 없습니다.");
+                log.warning("1차 에러 처리");
+                checkParse = 1;
     			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요";	    
             }
             String jsonStr = response.substring(jsonStartIndex);
@@ -145,8 +155,9 @@ public class GPTServiceImpl implements GPTService{
 			// content가 또 다른 JSON 문자열이므로 한번 더 파싱
 			 int jsonContentStartIndex = content.indexOf("{");
 		        if (jsonContentStartIndex == -1) {
-		            log.warning("content 내 JSON 시작 문자 '{'를 찾을 수 없습니다.");
-					return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요";	    
+		            log.warning("2차 에러처리");
+		            checkParse = 1;
+					return content;	    
 		        }
 		        String jsonContentStr = content.substring(jsonContentStartIndex);
 		        JSONObject contentJson = new JSONObject(jsonContentStr);
@@ -169,9 +180,11 @@ public class GPTServiceImpl implements GPTService{
 			
 			return finalConvertList;
     	} catch (Exception e) {
-			log.warning("JSON 파싱 에러: " + e.getMessage());
+			log.warning("3차 에러 처리 " + e.getMessage());
+			checkParse = 1;
 			e.printStackTrace();
-			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요";	    
+            conversation.remove(conversation.size() -1 );
+			return beforeParseString;	    
 		}
     }
 
@@ -261,6 +274,7 @@ public class GPTServiceImpl implements GPTService{
             
             // 응답 코드 확인
             int responseCode = con.getResponseCode();
+            String responseMsg = con.getResponseMessage();
             
             // 서버 응답 내용 확인
             BufferedReader br;
@@ -274,7 +288,10 @@ public class GPTServiceImpl implements GPTService{
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
-            
+            System.out.print("번역 들어옴" + keyword);
+            System.out.print("번역 응답 코드" + responseCode);
+            System.out.print("번역 응답 내용" + responseMsg);
+
             
             // JSON 응답 파싱
             if (responseCode == 200) {
