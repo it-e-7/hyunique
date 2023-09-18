@@ -163,6 +163,10 @@
         </div>
     </div>
 </body>
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js">
+</script>
 <script src="/resources/js/posting/posting.js"></script>
 <script src="/resources/js/posting/modal.js"></script>
 <script src="/resources/js/posting/pin.js"></script>

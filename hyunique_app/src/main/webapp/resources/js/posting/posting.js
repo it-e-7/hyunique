@@ -1,4 +1,5 @@
-let imgList = [];
+const compressedFileList = [];
+
 let styleChecked;
 let tpoChecked;
 let seasonChecked;
@@ -31,7 +32,6 @@ async function compressImage(inputFile) {
             maxSizeMB: 1,
             maxWidthOrHeight: 1200,
         };
-
         return await imageCompression(inputFile, options);
 
     } catch (error) {
@@ -40,49 +40,34 @@ async function compressImage(inputFile) {
     }
 }
 
-// 썸네일 이미지 출력
+
+// 썸네일 처리
 function thumbnailUpload(e) {
-    const files = e.target.files;
-    const file = files[0];
+    const file = e.target.files[0];
     if (!file.type.match("image/.*")) {
         alert("이미지 파일만 업로드할 수 있습니다.");
         return;
     }
-    const reader = new FileReader();
+    // 파일 압축
+    compressImage(file).then(compressedFile => {
+        if (compressedFile) {
+            compressedFileList.push(compressedFile);
 
-    reader.onload = async function(e) {
-        const img = new Image();
-        img.onload = async function() {
-            const compressedFile = await compressImage(file);
-            if (compressedFile) {
-                const compressedReader = new FileReader();
-                compressedReader.onload = function(event) {
-                    const thumbnail = $("<img>").attr("src", event.target.result)
-                                                .attr("data-file", file.name)
-                                                .attr("draggable", "false");
-                    $('#thumbnail-img').append(thumbnail);
-                    const imgData = event.target.result.split(',')[1];
-                    imgList.push(imgData);
-                    showPage('.write-container');
-                };
-                compressedReader.readAsDataURL(compressedFile);
-            }
-        };
-        img.src = e.target.result;
-    };
-    reader.readAsDataURL(file); // base64 인코딩
+            // 썸네일 생성
+            const reader = new FileReader();
+            reader.onload = function(event) {
+            const thumbnail = $("<img>").attr("src", event.target.result)
+                                        .attr("data-file", file.name)
+                                        .attr("draggable", "false");
+            $('#thumbnail-img').append(thumbnail);
+            showPage('.write-container');
+            };
+            reader.readAsDataURL(compressedFile);
+        }
+    }).catch(error => {
+        console.error("An error occurred:", error);
+    });
 }
-
-
-
-// 작성 완료 버튼
-$('#upload-button').click(function() {
-    compileAndSendPostData();
-});
-
-$('#add-img-btn').click(function() {
-    $('#addFileInput').click();
-});
 
 // 추가 이미지
 $("#addFileInput").change(function(e) {
@@ -93,18 +78,38 @@ $("#addFileInput").change(function(e) {
             alert("이미지 파일만 업로드할 수 있습니다.");
             return;
         }
-        const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const li = $("<li>");
-            const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name).attr("draggable", 'false');
-            const img = reader.result.split(',')[1];
-            imgList.push(img);
-            li.append(imageElement);
-            $('.add-img-container').append(li);
-        }
-        reader.readAsDataURL(file); // base64 인코딩
+        // 파일 압축
+        compressImage(file).then(compressedFile => {
+            if (compressedFile) {
+                compressedFileList.push(compressedFile);
+
+                // 추가 이미지 처리
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const li = $("<li>");
+                    const imageElement = $("<img>").attr("src", e.target.result)
+                                                   .attr("data-file", file.name)
+                                                   .attr("draggable", 'false');
+                    li.append(imageElement);
+                    $('.add-img-container').append(li);
+                };
+                reader.readAsDataURL(compressedFile);
+            }
+        }).catch(error => {
+            console.error("파일 압축 중 오류 발생:", error);
+        });
     });
+});
+
+// 작성 완료 버튼
+$('#upload-button').click(function() {
+    console.log(compressedFileList);
+    compileAndSendPostData();
+});
+
+$('#add-img-btn').click(function() {
+    $('#addFileInput').click();
 });
 
 $('.add-img-wrapper').on('mousedown touchdown', function(e) {
@@ -169,7 +174,7 @@ function goBack() {
     if (pages[preIndex] === pages[1]) {
         $('#thumbnail-img').empty();
         $('.add-img-container').empty();
-        imgList.length = 0;
+        compressedFileList.length = 0;
         $("#style-tags input[type='checkbox']:checked").prop("checked", false);
         $("#tpo-tags input[type='radio']").prop("checked", false);
         $("#season-tags input[type='radio']").prop("checked", false);
@@ -201,6 +206,8 @@ function getSelectItem(obj) {
 
 // 게시글 내용 업로드
 function compileAndSendPostData() {
+    const formData = new FormData();
+
     let tagValues = getGroupCheckBoxState();
 
     let post = {
@@ -208,7 +215,6 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        imgList: imgList,
     };
 
     let nextPost = {
@@ -216,7 +222,7 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        thumbnail: imgList[0],
+        thumbnail: compressedFileList[0],
     };
 
     Object.keys(tagValues).forEach(groupName => {
@@ -256,26 +262,35 @@ function compileAndSendPostData() {
 
     let postingVO = {postVO: post, postProductVO: product};
 
-    sendPostToServer(postingVO);
-    printSelectTagAndContent(nextPost);
+    // JSON 데이터를 문자열로 변환하고 FormData 객체에 추가
+    formData.append("postingVO", JSON.stringify(postingVO));
+    compressedFileList.forEach((file, index) => {
+        formData.append("files", file, file.name);
+    });
 
+    sendPostToServer(formData);
+    printSelectTagAndContent(nextPost);
     showPage('.post-container');
+    compressedFileList.length = 0;
 }
 
 
-function sendPostToServer(postingVO) {
-    $.ajax({
-        url: `/post`,
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(postingVO),
-        success: function(response) {
-            
-        },
-        error: function(error) {
-            console.error('error', error);
+async function sendPostToServer(formData) {
+    try {
+        const response = await fetch('/post', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            console.log('Upload success');
+        } else {
+            console.log('Upload failed');
         }
-    });
+    } catch (error) {
+        console.error("파일 업로드 중 오류 발생:", error);
+    }
+
 }
 
 function getSearchProduct(productName) {
