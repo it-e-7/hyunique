@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.kosa5.hyunique.post.vo.FileVO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +29,7 @@ import com.amazonaws.services.s3.model.DeleteObjectsResult;
 import com.amazonaws.services.s3.model.MultiObjectDeleteException;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class S3Service {
@@ -91,6 +93,41 @@ public class S3Service {
             log.info("e.printStackTrace(); = " + e.getStackTrace());
             return null;
         }
+    }
+
+    // 이미지 파일 업로드
+    public String uploadImgFiles(MultipartFile file, String fileName, String dir) {
+        try {
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(file.getSize());
+            metadata.setContentType("image/jpeg");
+            amazonS3.putObject(new PutObjectRequest(bucketName, dir + fileName, file.getInputStream(), metadata));
+
+            return amazonS3Client.getUrl(bucketName, dir + fileName).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<String> getUploadImgFileURL(MultipartFile[] files) {
+        List<String> keys = new ArrayList<>();
+        List<String> urls = new ArrayList<>();
+
+        for(MultipartFile file : files) {
+            String fileName = createImgFileName();
+            String returnUrl = uploadImgFiles(file, fileName, "post/");
+
+            keys.add("post/" + fileName);
+            // s3에 이미지 업로드를 실패한 경우
+            if (returnUrl == null) {
+                deleteImgFile(keys);
+                return null;
+            }
+            // 업로드 성공한 경우
+            urls.add(returnUrl);
+        }
+        return urls;
     }
 
     // 이미지 삭제
