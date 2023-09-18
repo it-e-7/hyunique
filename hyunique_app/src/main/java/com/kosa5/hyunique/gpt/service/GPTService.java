@@ -7,4 +7,6 @@ public interface GPTService {
 
 	String generateImage(String message);
 
+	String translate(String keyword);
+
 }

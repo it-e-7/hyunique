@@ -39,7 +39,15 @@ function gptImgRequest(input){
 		  $(".voice-control-wrapper").removeClass("hidden");
       },
       error: function(error) {
-        console.log(error);
+    	  console.log(error);
+
+          if (error.response) {
+            console.log("Avatar error status: ", error.response.status);
+            console.log("Avatar error data: ", error.response.data);
+          } else {
+            console.log("Avatar error: response is undefined");
+          }
+
       }
     });
 }
@@ -66,7 +74,8 @@ function gptRequest() {
 		  //유저 응답
 		  $("#response-content").text(data.response);
 		  //하루 50번 요청 제한이 걸림
-		  //gptImgRequest("Show a full-length photograph of person wearing the following clothes."+ data.response +" Restrictions: The model must accurately represent the material, color, fit, etc. of the clothing.");
+		  gptImgRequest("A full-body portrait of a man wearing a white dress shirt, indigo jeans, a camel trench coat, white sneakers, and a silver watch. The man is standing on a white background in soft studio lighting.shot on EOS 5d mark2. He is looking at the camera.");
+		 // gptImgRequest("a cat, cutest in the world ");
       },
       error: function(error) {
         console.log(error);
@@ -97,13 +106,13 @@ if(!("webkitSpeechRecognition") in window){
     document.getElementById("voice-control").addEventListener("click",()=>{
         if (!isAmplified) {
             speech.start();
-            siriWave.setAmplitude(1.8);
-            siriWave.setSpeed(0.4);
+            siriWave.setAmplitude(1.9);
+            siriWave.setSpeed(0.2);
             isAmplified = true;
         } else {
             speech.stop();
             siriWave.setAmplitude(0.2);
-            siriWave.setSpeed(0.2);
+            siriWave.setSpeed(0.1);
             isAmplified = false;
         }
     });

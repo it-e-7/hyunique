@@ -4,6 +4,5 @@ import lombok.Data;
 
 @Data
 public class GPTVO {
-	private String item;
-	private String color;
+	private String itemWithColor;
 }
