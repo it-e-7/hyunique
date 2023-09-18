@@ -73,9 +73,11 @@ function gptRequest() {
 		  $(".voice-control-wrapper").removeClass("hidden");
 		  //유저 응답
 		  $("#response-content").text(data.response);
+		  console.log(data);
 		  //하루 50번 요청 제한이 걸림
-		  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
-		 // gptImgRequest("a cat, cutest in the world ");
+		  if(!data.response.equals("스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요")){
+			  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+		  }
       },
       error: function(error) {
         console.log(error);
