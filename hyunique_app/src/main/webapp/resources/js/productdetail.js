@@ -23,12 +23,22 @@ $('.select-depart').scroll((e) => {
 
 function sharePost(productName) {
 	if(isMobile()) {
-		navigator.share({
-			title: `${productName} | 더 hyunique하게`,
-			url: location.href,
-		}).then(() => {
-			
-		}).catch(console.log);
+		try {
+			navigator.share({
+				title: `${productName} | 더 hyunique하게`,
+				url: location.href,
+			}).then(() => {
+				
+			}).catch(console.log);
+		} catch(err) {
+			const t = document.createElement("textarea");
+			document.body.appendChild(t);
+			t.value = location.href;
+			t.select();
+			document.execCommand('copy');
+			document.body.removeChild(t);
+			alert('클립보드에 복사되었습니다 !');
+		}
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);

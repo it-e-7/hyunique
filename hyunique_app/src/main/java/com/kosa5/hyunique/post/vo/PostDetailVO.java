@@ -11,10 +11,12 @@ public class PostDetailVO {
 	private int userId;
 	private String userImg;
 	private String userNickname;
+	private String userForm;
 	private int userHeight;
 	private int follow;
 	private List<String> imgList;
 	private int styleLike;
+	private int likeCount;
 	private String postDate;
 	private String postContent;
 	private List<PostProductVO> productList;

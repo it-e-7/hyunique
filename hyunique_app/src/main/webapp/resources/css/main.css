@@ -12,6 +12,7 @@ html {
 
 body {
 	max-width: 760px;
+	min-width: 360px;
 	min-height: 100vh;
 	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0 auto;
@@ -144,9 +145,17 @@ button {
 .post-pin {
 	position: absolute;
 	display: block;
-	padding: 6px 12px;
-	background-color: rgba(255, 255, 255, 85%);
+	padding: 5px 9px;
+	background-color: rgba(255, 255, 255, 90%);
 	border-radius: 10px;
+	white-space: nowrap;
+	font-size: 11px;
+}
+
+@media (min-width: 700px) {
+	.post-pin {
+		font-size: 13px;
+	}
 }
 
 .pin-brand {
@@ -163,7 +172,7 @@ button {
 }
 
 .post-pin:after {
-	border: 10px solid transparent;
+	border: 6px solid transparent;
 	content: '';
 	position: absolute;
 	top: 0;
@@ -173,30 +182,30 @@ button {
 }
 
 .arrow-left:after {
-	left: -20px;
+	left: -11.5px;
 	top: 50%;
-	border-right-color: rgba(255, 255, 255, 85%);
+	border-right-color: rgba(255, 255, 255, 90%);
 	transform: translate(0, -50%);
 }
 
 .arrow-right:after {
-	left: 100%;
+	left: calc(100% - 0.5px);
 	top: 50%;
-	border-left-color: rgba(255, 255, 255, 85%);
+	border-left-color: rgba(255, 255, 255, 90%);
 	transform: translate(0, -50%);
 }
 
 .arrow-bottom:after {
 	left: 50%;
-	top: 100%;
-	border-top-color: rgba(255, 255, 255, 85%);
+	top: calc(100% - 0.5px);
+	border-top-color: rgba(255, 255, 255, 90%);
 	transform: translate(-50%, 0);
 }
 
 .arrow-top:after {
 	left: 50%;
-	top: -20px;
-	border-bottom-color: rgba(255, 255, 255, 85%);
+	top: -11.5px;
+	border-bottom-color: rgba(255, 255, 255, 90%);
 	transform: translate(-50%, 0);
 
 #backward-btn{
