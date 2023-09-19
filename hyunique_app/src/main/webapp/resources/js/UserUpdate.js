@@ -8,16 +8,20 @@ let userImgData = null;
 let userBackImgData = null;
 
 $(document).ready(function() {
-
 	if($('#user-isFollowing').length > 0){
         isFollowing = document.getElementById('user-isFollowing').value;
+    }
 
-        if (Number(isFollowing) === 1) {
-            checkbox.checked = true;
-            label.innerText = '팔로잉 -';
-        } else {
-            checkbox.checked = false;
-            label.innerText = '팔로우 +';
+    // 체크박스와 라벨이 실제로 존재할 때만 실행
+    if(checkbox && label) {
+        if(isFollowing !== null) {
+            if (Number(isFollowing) === 1) {
+                checkbox.checked = true;
+                label.innerText = '팔로잉 -';
+            } else {
+                checkbox.checked = false;
+                label.innerText = '팔로우 +';
+            }
         }
     }
 
