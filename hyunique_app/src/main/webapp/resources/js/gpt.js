@@ -8,8 +8,9 @@ const siriWave = new SiriWave({
     height: 100,
     style: "ios9",
     autostart:true,
-    amplitude:0.3,
-    curveDefinition :[
+    amplitude:0.5,
+	speed:0.1,
+	curveDefinition :[
     	  { color: "255,255,255", supportLine: true },
     	  { color: "106, 121, 255" },
     	  { color: "147, 216, 255" },
@@ -24,6 +25,7 @@ function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
 	lastMessage.scrollIntoView();
 }
+
 function gptImgRequest(messageFront, messageBack){
  $.ajax({
       url: "/gpt/img",
@@ -33,10 +35,18 @@ function gptImgRequest(messageFront, messageBack){
         message2: messageBack
       },
       success: function(data) {
-		  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span><img src='+ data +'></span></p></div><div>');
-		  scrollToBottom();
-		  $(".loader-wrapper").addClass("hidden");
-		  $(".voice-control-wrapper").removeClass("hidden");
+    	  let imgElement = $('<img>');
+          imgElement.attr('src', data);
+          imgElement.on('load', function() {
+            scrollToBottom();  // 이미지 로딩 후 스크롤
+          });
+          
+          let imgWrapper = $('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span></span></p></div></div>');
+          imgWrapper.find('span').append(imgElement);
+          
+          $(".chat-section-wrapper").append(imgWrapper);
+          $(".loader-wrapper").addClass("hidden");
+          $(".voice-control-wrapper").removeClass("hidden");
       },
       error: function(error) {
     	  console.log(error);
@@ -51,6 +61,7 @@ function gptImgRequest(messageFront, messageBack){
       }
     });
 }
+
 function gptRequest() {
    let inputtext = $(".user-gpt-input").val();
     if(inputtext){
@@ -68,24 +79,27 @@ function gptRequest() {
 		        message: user_input
 		      },
 		      success: function(data) {
-				  //gpt응답
-				  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + data.response + '</span></p></div><div>');
-				  scrollToBottom();
-				  $(".loader-wrapper").addClass("hidden");
-				  $(".voice-control-wrapper").removeClass("hidden");
-				  //유저 응답
-				  $("#response-content").text(data.response);
-				  console.log(data);
-				  //하루 50번 요청 제한이 걸림
-				  if(data.response.charAt(0) !== '*'){
-					  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
-				  }
-		      },
+		    	  let modifiedResponse = data.response;
+		    	  if (modifiedResponse.charAt(0) === '*') {
+		    	    modifiedResponse = modifiedResponse.substring(1);
+		    	  }
+
+		    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + modifiedResponse + '</span></p></div><div>');
+		    	  scrollToBottom();
+		    	  $(".loader-wrapper").addClass("hidden");
+		    	  $(".voice-control-wrapper").removeClass("hidden");
+		    	  $("#response-content").text(modifiedResponse);
+		    	  console.log(data);
+		    	  if(data.response.charAt(0) !== '*'){
+		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+		    	  }
+		    	},
 		      error: function(error) {
 		        console.log(error);
 		      }
 		    });
 		    document.getElementById("resultList").value = "";
+		    scrollToBottomDelayed();
     }
 };
 
@@ -108,14 +122,14 @@ if(!("webkitSpeechRecognition") in window){
     let isAmplified = false;
 
     document.getElementById("voice-control").addEventListener("click",()=>{
-        if (!isAmplified) {
+    	if (!isAmplified) {
             speech.start();
-            siriWave.setAmplitude(1.9);
+            siriWave.setAmplitude(2.5);
             siriWave.setSpeed(0.1);
             isAmplified = true;
         } else {
             speech.stop();
-            siriWave.setAmplitude(0.4);
+            siriWave.setAmplitude(0.5);
             siriWave.setSpeed(0.1);
             isAmplified = false;
         }

@@ -44,7 +44,8 @@ public class GPTServiceImpl implements GPTService{
     private int conversationCount = 0;  // 새로운 변수 추가
 
     List<Map<String, String>> conversation = new ArrayList<>();
-    
+	List<GPTVO> gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
+
     private String engListString;
     private String beforeParseString;
 	private int checkParse = 0;
@@ -108,7 +109,6 @@ public class GPTServiceImpl implements GPTService{
             in.close();
 
             // 응답 처리
-
             log.info("응답 본몬 : \n" + response.toString());
 
             String responseGpt;
@@ -117,8 +117,6 @@ public class GPTServiceImpl implements GPTService{
             if(checkParse==1) {
             	responseGpt = "*" + responseGpt;
             }
-            
-         
             conversation.remove(conversation.size() -1 );
 
             // 응답 대화 기록 추가
@@ -135,7 +133,7 @@ public class GPTServiceImpl implements GPTService{
     }
 
     public String extractContentFromResponse(String response) {
-    	List<GPTVO> gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
+    	gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
     	
     	try {
     		int jsonStartIndex = response.indexOf("{");
