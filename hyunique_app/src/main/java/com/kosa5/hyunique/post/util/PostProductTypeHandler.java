@@ -1,6 +1,10 @@
 package com.kosa5.hyunique.post.util;
 
-import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 
 import org.apache.ibatis.type.JdbcType;
