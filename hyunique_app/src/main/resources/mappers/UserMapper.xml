@@ -101,6 +101,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LEFT JOIN hy_post ON hy_user.user_id = hy_post.user_id
 		WHERE
 		hy_user.user_id = #{userId}
+		ORDER BY
+		hy_post.post_id DESC
 	</select>
 	
 	<insert id="insertFollower" parameterType="map">
