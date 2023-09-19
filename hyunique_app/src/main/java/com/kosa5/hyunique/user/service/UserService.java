@@ -10,7 +10,7 @@ public interface UserService {
 //	public String insertOrGetUser(String inputValue, String inputType);
 	public Map<String, Object> insertOrGetUser(String inputValue, String inputType);
 
-	UserVO getUserInfoAndFollowerCount(int userId);
+	UserVO getUserInfoAndFollowerCount(int userId, String sessionId);
 
 	public void updateUser(UserVO user);
 

@@ -16,7 +16,7 @@
 		<log4j2.version>2.17.1</log4j2.version>
 
 	</properties>
-	
+
 	<dependencyManagement>
 	   <dependencies>
 	        <dependency>
@@ -209,7 +209,16 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.12.539</version>
 		</dependency>
-		
+		 <dependency>
+	        <groupId>com.squareup.okhttp3</groupId>
+	        <artifactId>okhttp</artifactId>
+	        <version>4.9.1</version>
+	    </dependency>
+	     <dependency>
+	        <groupId>org.json</groupId>
+	        <artifactId>json</artifactId>
+	        <version>20210307</version>
+	    </dependency>
 	</dependencies>
 
 	<build>

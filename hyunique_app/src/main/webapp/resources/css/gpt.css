@@ -1,0 +1,247 @@
+#main-wrapper-top{
+	position:fixed;
+	top:0;
+	
+	
+}
+.user-input-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: linear-gradient(0deg, #f4f4f4 0%,#fafafae0 50%, #ffffff00 90%);
+    min-height: 21rem;
+    justify-content: flex-end;
+}
+
+.chat-input-section {
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+input .user-gpt-input {
+	width: 100%;
+}
+
+.chat-send-btn-section {
+	width: 15%;
+	display: flex;
+	justify-content: center;
+	margin-right: 1rem;
+}
+
+button .btn-gpt-request {
+	width: 100%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+.main-gpt-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 11rem;
+    padding-bottom: 6rem;
+}
+
+.speech-bubble-user {
+	padding-bottom: 0.7rem;
+	padding-top: 0.7rem;
+	padding-right: 1.5rem;
+	padding-left: 1rem;
+	max-width: 70%;
+	margin-top: 2rem;
+	position: relative;
+	background: rgb(80 194 247);
+	border-radius: 1.1em;
+	color:white;
+}
+.speech-bubble-gpt {
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
+    padding-right: 1rem;
+    padding-left: 1.5rem;
+    max-width: 70%;
+    margin-top: 1rem;
+    position: relative;
+    background: rgb(2 119 189);
+    border-radius: 1.1rem;
+    color: white;
+    width: fit-content;
+}
+
+.chat-user-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: flex-end;
+}
+.chat-gpt-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+}
+
+.user-gpt-input {
+    width: 90%;
+    height: 100%;
+    border: 1px solid #0277bd;
+    border-radius: 0.7rem;
+    padding-left: 1rem;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #404040;
+    text-align: center;
+}
+.chat-section-wrapper{
+	width: 94%;
+}
+.chat-upload-btn-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    margin-left: 0.5rem;
+}
+
+div#main-wrapper-top {
+    position: fixed;
+    width: 100%;
+    max-width: 760px;
+    background: white;
+    padding: 0;
+    z-index: 100;
+}
+
+div#hyunique-main-top-recommend {
+	position: fixed;
+	width: 100%;
+	top: 66px;
+	z-index: 10;
+    max-width: 760px;
+	margin-left: 0;
+	background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);
+	backdrop-filter: blur(5px);
+}
+
+
+div#recommend {
+    margin-left: 20px;
+}
+
+div#hyunique-main-top-logo {
+    padding-top: 18px;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+}
+
+.typing-control-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.voice-control-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div#voice-control {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+button.btn-gpt-request {
+	background: rgb(80 194 247);
+	min-width: 4rem;
+	text-align: center;
+	border-radius: 0.7rem;
+	color: white;
+	font-weight: 500;
+}
+
+
+canvas {
+    width: 100%;
+    height: 100px;
+}
+
+:root {
+  --size: 54px;
+  --speed:2s;
+}
+
+.loader {
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+.loader__inner {
+  position: absolute;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  box-shadow: 
+    0 -10px 0 0 rgba(106, 121, 255,.9),
+    -7.5px 5px 0 0 rgba(147, 216, 255,.6),
+    7.5px 5px 0 0 rgba(255, 106, 222,.9);
+  animation: rotate var(--speed) linear infinite;
+}
+.loader__inner:nth-child(2) {
+  box-shadow: 
+    7.5px -5px 0 0 rgb(144 153 237 / 60%),
+    -7.5px -5px 0 0 rgb(144 230 249 / 60%),
+    0 10px 0 0 rgb(255 75 215 / 60%);
+  animation: rotate__other var(--speed) linear infinite;
+}
+@keyframes rotate {
+  50% {
+    transform: scale(1.1) rotate(360deg);
+  }
+  100% {
+    transform: scale(1) rotate(720deg);
+  }
+}
+
+@keyframes rotate__other {
+  50% {
+    transform: scale(1.2) rotate(-360deg);
+  }
+  100% {
+    transform: scale(1) rotate(-720deg);
+  }
+}
+.loader-text{
+	font-size: 0.9rem;
+	text-align:center;
+	padding-bottom: 4rem;
+	color: gray;
+	min-height:1.5rem;
+}
+.hidden {
+    display: none;
+}
+.gap-area{
+	width:100%;
+	height:7rem;
+}

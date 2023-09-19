@@ -1,10 +1,17 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
+
+
 let userImg;
 let userBackimg;
 let imgList = []; // 이미지 리스트 초기화
 
 $(document).ready(function() {
+
+	if($('#user-isFollowing').length > 0){
+		const isFollowing = document.getElementById('user-isFollowing').value;
+	}
+
 	// 프로필 사진 업로드
 	  $("#profile-preview").click(function() {
 		  $("#profile-file-input").click();
@@ -19,29 +26,39 @@ $(document).ready(function() {
 	  $("#profile-file-input").change(function(e) {
 	      handleImageUpload(e, '#profile-preview', 280); 
 	  });
-
+	
 	  // 배경 사진 변경
 	  $("#back-file-input").change(function(e) {
 	      handleImageUpload(e, '#back-preview', 760); 
 	  });
-
+	
 	  
-	  var userSex = "${user.userSex}";
+	  const userSex = "${user.userSex}";
 	  $("input[name='userSex'][value='" + userSex + "']").prop("checked", true);
 	  $("#userUpdateForm").submit(function(event) {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	  
 	  userPostList(userId);
+
+	  if (Number(isFollowing) === 1) {
+		  checkbox.checked = true;
+		  label.innerText = '팔로잉 -';
+	  } else {
+		  checkbox.checked = false;
+		  label.innerText = '팔로우 +';
+	  }
+
 	  
 });
+
 document.getElementById('updateLink').addEventListener('click', function(e) {
     e.preventDefault(); // 기본 링크 동작을 취소
     setTimeout(function() {
         window.location.href = 'update'; // 1초 후에 페이지 이동
     }, 500);
 });
+
 //이미지 업로드 및 미리보기 함수
 function handleImageUpload(e, previewElement, newHeight) {
     const files = e.target.files;
@@ -77,14 +94,37 @@ function resizeImage(image, newHeight) {
     ctx.drawImage(image, 0, 0, newWidth, newHeight);
     return canvas.toDataURL('image/jpeg');
 }
-//팔로우 버튼 텍스트 변경
-checkbox.addEventListener('change', function() {
-  if (this.checked) {
-    label.innerText = '팔로잉 -';
-  } else {
-    label.innerText = '팔로우 +';
-  }
-});
+
+
+function toggleFollow(userId) {
+	  const url = checkbox.checked ? '/user/follow' : '/user/unfollow';
+	  if (checkbox.checked)  {
+		 label.innerText = '팔로잉 -';
+	    ajax({
+	      url: `/user/follow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	      },
+	      error: function(response) {
+	        console.error(response);
+	      },
+	    });
+	  } else {
+		  label.innerText = '팔로우 +';
+	    ajax({
+	      url: `/user/unfollow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	      },
+	      error: function(response) {
+	        console.error(response);
+	      },
+	    });
+	  }
+	}
+
 
 //유저 정보 업데이트
 function updateUser() {
@@ -143,11 +183,14 @@ function userPostList(userId) {
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
+	      thumbnailsDiv.attr('data-aos', 'zoom-in-up');
+
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
-	    	    class: 'thumbnail-image'
-	    	  });
+	    	    class: 'thumbnail-image',
+	            'data-aos': 'zoom-in-up', 
+	            });
 
 	    	  var postLink = $('<a/>', {
 	    	    href: `/post/` + post.postId

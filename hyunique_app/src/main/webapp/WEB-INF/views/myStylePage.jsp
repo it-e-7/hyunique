@@ -5,15 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
 <title>마이페이지</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/userStyle.css" />
+<link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	
 </head>
 <body>
 	<div id="session-info">
 		<input type="hidden" id="session-id" value="${sessionId}">
 		<input type="hidden" id="user-id" value="${user.userId}">
+		<input type="hidden" id="user-isFollowing" value="${user.isFollowing}">
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
@@ -69,7 +72,7 @@
 			<div class="user-sns-btn-wrapper">
 			    <c:choose>
 			        <c:when test="${not empty user.facebookUrl}">
-			            <a href="${user.facebookUrl}"><img src="/resources/icon/facebook_logo.png" /></a>
+			            <a href="${user.facebookUrl}"><img src="/resources/icon/facebook_logo.png"/></a>
 			        </c:when>
 			        <c:otherwise>
 			            <img src="/resources/icon/facebook_logo_null.png" />
@@ -113,16 +116,14 @@
 				<div class="user-introduce-wrapper">${user.userIntroduce}</div>
 				<c:choose>
 				    <c:when test="${isCurrentUser == true}">
-				        <div class="follower-btn-wrapper">
-					  		<input  type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
-					  		<label style="visibility: hidden;" for="follower-toggle" id="follower-label">팔로우</label>
-						</div>
+				       <div></div>
 				    </c:when>
 				    <c:otherwise>
-				        <div class="follower-btn-wrapper">
-					  		<input type="checkbox" name="btn-follower" value="follower-toggle" id="follower-toggle">
-					  		<label for="follower-toggle" id="follower-label">팔로우 +</label>
-						</div>
+						<c:if test="${sessionId != user.userId}">
+							<div class="follower-btn-wrapper" data-aos="fade-right"  data-aos-delay="300">
+						  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
+							</div>
+						</c:if>
 				    </c:otherwise>
 				</c:choose>
 				
@@ -138,7 +139,7 @@
 	</ul>
 
 	<div id="tab1" class="tab-content"style="display: block;">
-		<div id="thumbnails" class="style-thumbnail-list-wrapper"></div>
+		<div id="thumbnails" class="style-thumbnail-list-wrapper" ></div>
 		<div id="postUrl"></div>
 	</div>
 
@@ -197,5 +198,8 @@
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
 <script src="/resources/js/tab.js"></script>
-
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>	
 </html>
