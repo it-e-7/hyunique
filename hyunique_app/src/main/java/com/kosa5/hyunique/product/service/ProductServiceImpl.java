@@ -18,6 +18,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductMapper productMapper;
 	
+	@Autowired
+	SearchService searchService;
+	
 	@Override
 	public ProductDetailVO getProductDetailById(String productId) {
 		ProductDetailVO vo = productMapper.getProductDetailById(productId);
@@ -32,7 +35,6 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.getProductStyleById(productId, offset);
 	}
 
-
 	@Override
 	public List<PostProductVO> getSearchProductList(String productName) {
 		return productMapper.selectSearchProductList(productName);
@@ -40,8 +42,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<PostProductVO> getnSearchProductList(String keyword, int offset) {
-		return productMapper.selectnSearchProductList(keyword, offset);
-  }
+		List<PostProductVO> result = searchService.searchByKeyword(keyword, offset);
+		return result;
+    }
 
 	@Override
 	public ProductInformVO getProductSizeAndColor(String productId) {

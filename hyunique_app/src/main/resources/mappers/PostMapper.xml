@@ -22,7 +22,7 @@
 	<select id="getPostDetailByPostIdUserId" parameterType="map"
 		resultMap="PostDetailMap">
 		SELECT post_id, p.user_id, user_img,
-		user_nickname, user_height, post_date,
+		user_nickname, user_height, user_form, post_date,
 		post_content, season_name, tpo_name,
 		(SELECT user_id
 		FROM hy_stylelike
@@ -32,7 +32,10 @@
 		WHERE follower_id = #{userId} AND
 		following_id = (SELECT user_id
 		FROM hy_post
-		WHERE post_id = #{postId})) as follow
+		WHERE post_id = #{postId})) as follow ,
+		(SELECT count(*)
+		FROM hy_stylelike
+		WHERE post_id = #{postId}) as like_count
 		FROM hy_post p
 		JOIN hy_seasontag s ON p.season_id = s.season_id
 		JOIN hy_tpotag t ON p.tpo_id = t.tpo_id
