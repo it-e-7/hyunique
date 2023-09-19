@@ -62,6 +62,45 @@ function gptImgRequest(messageFront, messageBack){
     });
 }
 
+function gptProductRequest (){
+ $.ajax({
+      url: "/gpt/product",
+      type: "GET",
+      data: {
+        productList : "화이트 / 블루 스트라이프 티셔츠, 진청 청바지, 화이트 캔버스 스니커즈, 그레이 레트로 캡, "
+      },
+      success: function(data) {
+      console.log("******gptProductRequest******"+data);
+      data.forEach(function(product) {
+          console.log(product); // VO 객체 전체를 출력
+          console.log(product.productName);
+          console.log(product.productPrice);
+          console.log(product.productBrand);
+      });
+//    	  let imgElement = $('<img>');
+//          imgElement.attr('src', data);
+//          imgElement.on('load', function() {
+//            scrollToBottom();  // 이미지 로딩 후 스크롤
+//          });
+//
+            //결제 버튼 만들기
+          let paymentButton = $('<button class="payment-button">눌러서 결제하기</button>');
+           $(".chat-section-wrapper").append(paymentButton);
+      },
+      error: function(error) {
+    	  console.log(error);
+
+          if (error.response) {
+            console.log("Avatar error status: ", error.response.status);
+            console.log("Avatar error data: ", error.response.data);
+          } else {
+            console.log("Avatar error: response is undefined");
+          }
+
+      }
+    });
+}
+
 function gptRequest() {
    let inputtext = $(".user-gpt-input").val();
     if(inputtext){
@@ -92,6 +131,7 @@ function gptRequest() {
 		    	  console.log(data);
 		    	  if(data.response.charAt(0) !== '*'){
 		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+		    	    gptProductRequest();
 		    	  }
 		    	},
 		      error: function(error) {

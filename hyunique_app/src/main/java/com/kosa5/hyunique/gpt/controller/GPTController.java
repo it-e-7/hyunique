@@ -1,8 +1,12 @@
 package com.kosa5.hyunique.gpt.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.kosa5.hyunique.post.vo.PostProductVO;
+import com.kosa5.hyunique.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +33,9 @@ public class GPTController {
 	
 	@Autowired
 	private UserService userService; // 유저 서비스 주입
+
+	@Autowired
+	ProductService productService; // 제품 서비스 주입
 	
 	@Auth
 	@GetMapping("page")
@@ -54,6 +61,23 @@ public class GPTController {
 	public String imgUrl(@RequestParam String message1,@RequestParam String message2, Model model, @SessionAttribute UserVO signinUser) {
 		String imgresponse = GPTService.generateImage(message1, message2);
 		return imgresponse; 
+	}
+
+	@RequestMapping(value= "/product", method = RequestMethod.GET)
+	@ResponseBody
+	public List<PostProductVO> productGenerator(){
+
+		String productList = GPTService.getTranslateString();
+		List<PostProductVO> value = new ArrayList<>();
+		String[] splitStrings = productList.split(",");
+		for (String str : splitStrings) {
+			List<PostProductVO> productSearchList = productService.getnSearchProductList(str, 1);
+			if (!productSearchList.isEmpty()) {
+				value.add(productService.getnSearchProductList(str,1).get(0));
+			}
+		}
+		return value;
+
 	}
 
 }

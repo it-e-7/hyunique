@@ -48,6 +48,7 @@ public class GPTServiceImpl implements GPTService{
 
     private String engListString;
     private String beforeParseString;
+    private String translateString;
 	private int checkParse = 0;
 
     
@@ -286,6 +287,7 @@ public class GPTServiceImpl implements GPTService{
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
+            translateString = keyword;
             System.out.print("번역 들어옴" + keyword);
             System.out.print("번역 응답 코드" + responseCode);
             System.out.print("번역 응답 내용" + responseMsg);
@@ -309,5 +311,11 @@ public class GPTServiceImpl implements GPTService{
         }
         return result;
     }
+
+    @Override
+    public String getTranslateString() {
+        return translateString;
+    }
+
 
 }
