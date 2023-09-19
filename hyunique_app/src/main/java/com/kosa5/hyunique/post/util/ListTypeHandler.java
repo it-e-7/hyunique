@@ -1,17 +1,18 @@
 package com.kosa5.hyunique.post.util;
 
-import com.kosa5.hyunique.post.vo.PostVO;
-import oracle.sql.ARRAY;
-import oracle.sql.ArrayDescriptor;
-import oracle.sql.STRUCT;
-import oracle.sql.StructDescriptor;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 
-import java.sql.*;
-import java.util.List;
+import oracle.sql.ARRAY;
+import oracle.sql.ArrayDescriptor;
 
 @MappedTypes(java.util.ArrayList.class)
 @MappedJdbcTypes(JdbcType.ARRAY)
