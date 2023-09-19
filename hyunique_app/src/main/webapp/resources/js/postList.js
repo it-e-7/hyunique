@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         filterElement.show();
         popularStyle.hide();
       }
+
+     if(button.textContent.trim()==='AI추천'){
+       filterElement.hide();
+       document.getElementById("recommend").click();
+     }
+     else{
+       filterElement.show();
+     }
       document.getElementById("applyFilter").click();
     });
 
