@@ -82,14 +82,27 @@ function gptRequest() {
 		    	  let modifiedResponse = data.response;
 		    	  if (modifiedResponse.charAt(0) === '*') {
 		    	    modifiedResponse = modifiedResponse.substring(1);
-		    	  }
+		    	    modifiedResponse = modifiedResponse.substring(-1);
 
-		    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + modifiedResponse + '</span></p></div><div>');
+		    	  }
+		    	  if(data.response.charAt(0) !== '*'){
+			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음과 같은 상품으로 스타일링을 도와드릴게요</span></p></div><div>');
+		    	  }
 		    	  scrollToBottom();
+		    	  setTimeout(() => {
+			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + modifiedResponse + '</span></p></div><div>');
+			    	  scrollToBottom();
+		    	  }, 1000);
 		    	  $(".loader-wrapper").addClass("hidden");
 		    	  $(".voice-control-wrapper").removeClass("hidden");
 		    	  $("#response-content").text(modifiedResponse);
 		    	  console.log(data);
+		    	  if(data.response.charAt(0) !== '*'){
+			    	  setTimeout(() => {
+				    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>추천된 스타일링의 이미지를 그리고있어요 :)</span></p></div><div>');
+			    	  	}, 2000);
+					    scrollToBottom();
+		    	  }
 		    	  if(data.response.charAt(0) !== '*'){
 		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
 		    	  }
