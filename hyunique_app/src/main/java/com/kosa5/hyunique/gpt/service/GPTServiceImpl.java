@@ -66,7 +66,7 @@ public class GPTServiceImpl implements GPTService{
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
             
-//            message = message +(signinUser.getUserSex().equals("M")?". 성별 : 남자, ":"성별 : 여자, ") + Integer.toString(signinUser.getUserHeight()) + "cm, " + "체형:" + signinUser.getUserForm() + ", 선호스타일:" + signinUser.getUserPrefer();
+//          message = message +(signinUser.getUserSex().equals("M")?". 성별 : 남자, ":"성별 : 여자, ") + Integer.toString(signinUser.getUserHeight()) + "cm, " + "체형:" + signinUser.getUserForm() + ", 선호스타일:" + signinUser.getUserPrefer();
             // 요청 대화 저장
             Map<String, String> convhistroyUser = new HashMap<>();
             convhistroyUser.put("role", "user");

@@ -11,8 +11,8 @@
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	background: linear-gradient(0deg, #ecf8ff 0%,#ecf8ffe0 50%, #ffffff00 90%);
-	/* border-top: 1px solid #bbbbbb; */
+    background: linear-gradient(0deg, #f4f4f4 0%,#fafafae0 50%, #ffffff00 90%);
+   	/* border-top: 1px solid #bbbbbb; */
 	/* background: #ffffff4f; */
 	/* backdrop-filter: blur(-28px); */
 }

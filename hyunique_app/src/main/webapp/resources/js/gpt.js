@@ -52,39 +52,41 @@ function gptImgRequest(messageFront, messageBack){
     });
 }
 function gptRequest() {
-	let user_input = $(".user-gpt-input").val();
-    $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p><span>'+ user_input + '</span></p></div></div>');
-    scrollToBottom();
-    $(".voice-control-wrapper").addClass("hidden");
-    $(".loader-wrapper").removeClass("hidden");
-    restartAnimation();
-    
-    $.ajax({
-      url: "/gpt/chat",
-      type: "GET",
-      data: {
-        message: user_input
-      },
-      success: function(data) {
-		  //gpt응답
-		  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + data.response + '</span></p></div><div>');
-		  scrollToBottom();
-		  $(".loader-wrapper").addClass("hidden");
-		  $(".voice-control-wrapper").removeClass("hidden");
-		  //유저 응답
-		  $("#response-content").text(data.response);
-		  console.log(data);
-		  //하루 50번 요청 제한이 걸림
-		  if(data.response.charAt(0) !== '*'){
-			  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
-		  }
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
-    document.getElementById("resultList").value = "";
-
+   let inputtext = $(".user-gpt-input").val();
+    if(inputtext){
+		let user_input = $(".user-gpt-input").val();
+		    $(".chat-section-wrapper").append('<div class="chat-user-wrapper" data-aos="zoom-in-up"><div class="chat-by-user speech-bubble-user"><p><span>'+ user_input + '</span></p></div></div>');
+		    scrollToBottom();
+		    $(".voice-control-wrapper").addClass("hidden");
+		    $(".loader-wrapper").removeClass("hidden");
+		    restartAnimation();
+		    
+		    $.ajax({
+		      url: "/gpt/chat",
+		      type: "GET",
+		      data: {
+		        message: user_input
+		      },
+		      success: function(data) {
+				  //gpt응답
+				  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + data.response + '</span></p></div><div>');
+				  scrollToBottom();
+				  $(".loader-wrapper").addClass("hidden");
+				  $(".voice-control-wrapper").removeClass("hidden");
+				  //유저 응답
+				  $("#response-content").text(data.response);
+				  console.log(data);
+				  //하루 50번 요청 제한이 걸림
+				  if(data.response.charAt(0) !== '*'){
+					  gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+				  }
+		      },
+		      error: function(error) {
+		        console.log(error);
+		      }
+		    });
+		    document.getElementById("resultList").value = "";
+    }
 };
 
 //gpt 엔터 이벤트
@@ -113,7 +115,7 @@ if(!("webkitSpeechRecognition") in window){
             isAmplified = true;
         } else {
             speech.stop();
-            siriWave.setAmplitude(0.3);
+            siriWave.setAmplitude(0.4);
             siriWave.setSpeed(0.1);
             isAmplified = false;
         }
