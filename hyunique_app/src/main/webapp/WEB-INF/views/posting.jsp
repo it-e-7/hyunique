@@ -14,23 +14,24 @@
 </head>
 <body>
     <div class="pre-container">
-    	<div class="header-wrapper">
-    		<button onclick="backward()">
-    			<img src="/resources/img/ic-backward.png" />
-    		</button>
-    	</div>
-        <div class="header">
-            <p>스타일링을 공유해주세요</p>
+        <div class="header-wrapper">
+            <button onclick="backward()">
+                <img src="/resources/img/ic-backward.png" />
+            </button>
         </div>
-        <div class="image-container">
-            <img src="/resources/img/heendy.png" alt="중앙 이미지" />
+        <div class="pre-wrapper">
+            <div class="header">
+                <p>스타일링을 공유해주세요</p>
+            </div>
+            <div class="image-container">
+                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
+            </div>
+            <div class="body">
+                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            </div>
         </div>
-        <div class="body">
-            <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
-        </div>
-
         <div class="button-container">
-            <button id="img-load-button" class="jw-btn">사진 불러오기</button>
+            <button id="img-load-button" class="jw-btn jw-btn-fixed">사진 불러오기</button>
             <input type="file" id="fileInput" class="thumbnail-upload" style="display:none;" accept="image/*">
         </div>
     </div>
@@ -42,13 +43,20 @@
             </button>
         </div>
         <div class="upload"></div>
-        <form action="post" method="post" enctype="multipart/form-data">
+        <div class='post-form'>
+            <div class='write-wrapper'>
             <div class="image-view">
                 <div id="thumbnail-img"></div>
-                    <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
-                    <button type="button" id="addImgBtn">스타일 사진 추가</button>
-                    <ul class="add-img-container">
-                    </ul>
+                    <div class="add-img-wrapper">
+                        <ul class="add-img-container">
+                            <li>
+                                <input type="file" id="addFileInput" class="add-img-upload" style="display:none;" accept="image/*" required multiple>
+                                <button type="button" id="add-img-btn">
+                                    <img src="/resources/img/add-img.png">
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="tag-container" id="tag-container">
                 </div>
             </div>
@@ -68,16 +76,15 @@
                 <p>내용</p>
                 <textarea id="content" name="content" rows="5" required></textarea>
             </div>
-            <div class="form-group">
-                <button type="button" id="upload-button" class="jw-btn">작성 완료하기</button>
             </div>
-        </form>
+            <button type="button" id="upload-button" class="jw-btn jw-btn-fixed">작성 완료하기</button>
+        </div>
     </div>
 
     <div class="search-container">
         <div class="header">
             <div class="header-wrapper">
-                <button onclick="goBack()">
+                <button class="back-icon" onclick="goBack()">
                     <lord-icon
                       id="backward-btn"
                         src="https://cdn.lordicon.com/zmkotitn.json"
@@ -99,42 +106,66 @@
         <div class="search-body">
             <div id="product-search-modal" class="modal">
                 <div class="modal-content">
-                    <span class="close-button">&times;</span>
                     <div class="modal-wrap">
                         <div class='color-wrap'>
-                            <p>색상</p>
-                            <ul class="select-product-color"></ul>
+                            <select class="select-product-color empty">
+                            </select>
+                            <span class="select-input__icon">
+                                <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                    <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                </svg>
+                            </span>
                         </div>
                         <div class='size-wrap'>
-                            <p>사이즈</p>
-                            <ul class="select-product-size"></ul>
+                            <select class="select-product-size empty">
+                            </select>
+                            <span class="select-input__icon">
+                                <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                    <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                </svg>
+                            </span>
                         </div>
                     </div>
-                    <input type="button" class='jw-btn' id="search-results-button" value="확인">
+                    <div class="modal-btn-wrap">
+                        <button class="modal-cancel-btn" type="button">취소</button>
+                        <button class="modal-check-btn" type="submit">확인</button>
+                    </div>
                 </div>
             </div>
-            <p class="search-value"></p>
-            <ul class="result-list">
-            </ul>
+
+            <div class="result-wrapper">
+                <div class="title-wrapper">
+                    <p class="search-value"></p>
+                    <p class="search-value-fixed"></p>
+                </div>
+                <ul class="result-list"></ul>
+            </div>
         </div>
     </div>
 
     <div class="post-container">
+        <div class="post-wrapper">
             <div class="header">
                 <p>게시가 완료되었습니다!</p>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/heendy.png"/>
+            <div class="image-container" id="post-image-thumbnail">
             </div>
-            <div class="tag-container">
-                <ul class="tag-list"></ul>
+            <div class="post-content-wrap">
+                <div class="tag-container">
+                    <ul class="tag-list"></ul>
+                </div>
+                <div class="content-text"></div>
             </div>
-            <div class="content-text"></div>
             <div class="button-container">
-                <button id="next-button" class="jw-btn" onclick="moveHome()">계속하기</button>
+                <button id="next-button" class="jw-btn jw-btn-fixed" onclick="moveHome()">계속하기</button>
             </div>
+        </div>
     </div>
 </body>
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js">
+</script>
 <script src="/resources/js/posting/posting.js"></script>
 <script src="/resources/js/posting/modal.js"></script>
 <script src="/resources/js/posting/pin.js"></script>

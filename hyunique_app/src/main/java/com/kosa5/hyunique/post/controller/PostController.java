@@ -1,22 +1,17 @@
 package com.kosa5.hyunique.post.controller;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.post.service.PostService;
@@ -24,6 +19,7 @@ import com.kosa5.hyunique.post.util.S3Service;
 import com.kosa5.hyunique.post.vo.PostDetailVO;
 import com.kosa5.hyunique.post.vo.PostingVO;
 import com.kosa5.hyunique.post.vo.TagVO;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("post")
@@ -78,10 +74,18 @@ public class PostController {
 
     @PostMapping
     @ResponseBody
-    public String handlePostUpload(@RequestBody PostingVO posting, @SessionAttribute int sessionId) {
+    public String handlePostUpload(@RequestParam("files") MultipartFile[] files,
+                                   @RequestParam("postingVO") String postingVOJson,
+                                   @SessionAttribute int sessionId) throws JsonProcessingException {
+
+        // JSON 문자열을 PostingVO 객체로 변환
+        ObjectMapper objectMapper = new ObjectMapper();
+        PostingVO posting = objectMapper.readValue(postingVOJson, PostingVO.class);
+        posting.getPostVO().setImgFiles(files);
         posting.getPostVO().setUserId(sessionId);
         String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
         log.info("upload state : " + state);
+
         return "ok";
     }
     
@@ -90,5 +94,4 @@ public class PostController {
     public List<TagVO> getTagInfo() {
         return postService.getTagInform();
     }
-
 }

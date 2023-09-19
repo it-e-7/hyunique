@@ -1,4 +1,5 @@
-let imgList = [];
+const compressedFileList = [];
+
 let styleChecked;
 let tpoChecked;
 let seasonChecked;
@@ -10,8 +11,8 @@ let items = {};
 let imgWidth;
 let imgHeight;
 
-let classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
-let pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
+const classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
+const pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
 let currentPage;
 
 getTagInform();
@@ -23,59 +24,99 @@ $("#img-load-button").click(function() {
 
 $("#fileInput").change(thumbnailUpload);
 
-// 썸네일 이미지 출력
+
+// 이미지 압축
+async function compressImage(inputFile) {
+    try {
+        const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1200,
+        };
+        return await imageCompression(inputFile, options);
+
+    } catch (error) {
+        console.error("이미지 압축 오류", error);
+        return null;
+    }
+}
+
+
+// 썸네일 처리
 function thumbnailUpload(e) {
-    const files = e.target.files;
-    const file = files[0];
+    const file = e.target.files[0];
     if (!file.type.match("image/.*")) {
         alert("이미지 파일만 업로드할 수 있습니다.");
         return;
     }
-    const reader = new FileReader();
+    // 파일 압축
+    compressImage(file).then(compressedFile => {
+        if (compressedFile) {
+            compressedFileList.push(compressedFile);
 
-    reader.onload = function(e) {
-        const img = reader.result.split(',')[1];
-        imgList.push(img);
-        const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
-        $('#thumbnail-img').append(imageElement);
-        container = imageElement;
-    }
-    reader.readAsDataURL(file); // base64 인코딩
-
-    showPage('.write-container');
+            // 썸네일 생성
+            const reader = new FileReader();
+            reader.onload = function(event) {
+            const thumbnail = $("<img>").attr("src", event.target.result)
+                                        .attr("data-file", file.name)
+                                        .attr("draggable", "false");
+            $('#thumbnail-img').append(thumbnail);
+            showPage('.write-container');
+            };
+            reader.readAsDataURL(compressedFile);
+        }
+    }).catch(error => {
+        console.error("An error occurred:", error);
+    });
 }
-
-// 작성 완료 버튼
-$('#upload-button').click(function() {
-    compileAndSendPostData();
-});
-
-$('#addImgBtn').click(function() {
-    $('#addFileInput').click();
-});
 
 // 추가 이미지
 $("#addFileInput").change(function(e) {
-  const files = e.target.files;
+    const files = e.target.files;
 
-  $.each(files, function(index, file) {
-    if (!file.type.match("image/.*")) {
-      alert("이미지 파일만 업로드할 수 있습니다.");
-      return;
-    }
-    const reader = new FileReader();
+    $.each(files, function(index, file) {
+        if (!file.type.match("image/.*")) {
+            alert("이미지 파일만 업로드할 수 있습니다.");
+            return;
+        }
 
-    reader.onload = function(e) {
-      const li = $("<li>");
-      const imageElement = $("<img>").attr("src", e.target.result).attr("data-file", file.name);
-      const img = reader.result.split(',')[1];
-      imgList.push(img);
-      li.append(imageElement);
-      $('.add-img-container').append(li);
-    }
-    reader.readAsDataURL(file); // base64 인코딩
-  });
+        // 파일 압축
+        compressImage(file).then(compressedFile => {
+            if (compressedFile) {
+                compressedFileList.push(compressedFile);
+
+                // 추가 이미지 처리
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const li = $("<li>");
+                    const imageElement = $("<img>").attr("src", e.target.result)
+                                                   .attr("data-file", file.name)
+                                                   .attr("draggable", 'false');
+                    li.append(imageElement);
+                    $('.add-img-container').append(li);
+                };
+                reader.readAsDataURL(compressedFile);
+            }
+        }).catch(error => {
+            console.error("파일 압축 중 오류 발생:", error);
+        });
+    });
 });
+
+// 작성 완료 버튼
+$('#upload-button').click(function() {
+    console.log(compressedFileList);
+    compileAndSendPostData();
+});
+
+$('#add-img-btn').click(function() {
+    $('#addFileInput').click();
+});
+
+$('.add-img-wrapper').on('mousedown touchdown', function(e) {
+    const slider = $('.add-img-container');
+    imageSlider(slider);
+})
+
 
 // 상품 검색
 $("#search-btn").off('click').click(function(){
@@ -101,9 +142,15 @@ $('.result-list').on('click', '.search-product-li', function() {
     showProductModal(product);
 
     // 확인 버튼을 누르면 핀이 표시됨
-    $('#search-results-button').off('click').on('click', function() {
-        product['productSize'] = $(`#select-product-size-${sizePresentDisplayId}`).text();
-        product['productColor'] = $(`#select-product-color-${colorPresentDisplayId}`).text();
+    $('.modal-check-btn').off('click').on('click', function() {
+
+        product['productSize'] = $('.select-product-size option:selected').text();
+        product['productColor'] = $('.select-product-color option:selected').text();
+
+        if (product['productSize'] === '사이즈' || product['productColor'] === '색상') {
+            alert('옵션을 선택하세요');
+            return;
+        }
 
         attachTag(XOffset, YOffset, product);
         $('.result-list').empty();
@@ -119,7 +166,7 @@ function showPage(page) {
     currentPage = page;
 }
 
-// 뒤로 가기 함수
+// 뒤로가기 함수
 function goBack() {
     const preIndex = pages.indexOf(currentPage);
     const targetPage = pages[preIndex - 1];
@@ -127,6 +174,7 @@ function goBack() {
     if (pages[preIndex] === pages[1]) {
         $('#thumbnail-img').empty();
         $('.add-img-container').empty();
+        compressedFileList.length = 0;
         $("#style-tags input[type='checkbox']:checked").prop("checked", false);
         $("#tpo-tags input[type='radio']").prop("checked", false);
         $("#season-tags input[type='radio']").prop("checked", false);
@@ -135,6 +183,7 @@ function goBack() {
 
     if (pages[preIndex] === pages[2]) {
         $('.result-list').empty();
+        $('.search-text').val('');
     }
 
     showPage(targetPage);
@@ -157,6 +206,8 @@ function getSelectItem(obj) {
 
 // 게시글 내용 업로드
 function compileAndSendPostData() {
+    const formData = new FormData();
+
     let tagValues = getGroupCheckBoxState();
 
     let post = {
@@ -164,7 +215,6 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        imgList: imgList,
     };
 
     let nextPost = {
@@ -172,7 +222,7 @@ function compileAndSendPostData() {
         tpoId: -1,
         seasonId: -1,
         styleId: -1,
-        thumbnail: imgList[0],
+        thumbnail: compressedFileList[0],
     };
 
     Object.keys(tagValues).forEach(groupName => {
@@ -201,8 +251,8 @@ function compileAndSendPostData() {
     // 핀
     let product = Object.values(items).map(item => {
         return {
-            pinX: (item.xOffset / imgWidth) * 100,
-            pinY: (item.yOffset / imgHeight) * 100,
+            pinX: (item.xPos / imgWidth) * 100,
+            pinY: (item.yPos / imgHeight) * 100,
             pinType: item.pinType,
             productId: item.productId,
             productSize: item.productSize,
@@ -212,26 +262,35 @@ function compileAndSendPostData() {
 
     let postingVO = {postVO: post, postProductVO: product};
 
-    sendPostToServer(postingVO);
-    printSelectTagAndContent(nextPost);
+    // JSON 데이터를 문자열로 변환하고 FormData 객체에 추가
+    formData.append("postingVO", JSON.stringify(postingVO));
+    compressedFileList.forEach((file, index) => {
+        formData.append("files", file, file.name);
+    });
 
+    sendPostToServer(formData);
+    printSelectTagAndContent(nextPost);
     showPage('.post-container');
+    compressedFileList.length = 0;
 }
 
 
-function sendPostToServer(postingVO) {
-    $.ajax({
-        url: `/post`,
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(postingVO),
-        success: function(response) {
-            
-        },
-        error: function(error) {
-            console.error('error', error);
+async function sendPostToServer(formData) {
+    try {
+        const response = await fetch('/post', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            console.log('Upload success');
+        } else {
+            console.log('Upload failed');
         }
-    });
+    } catch (error) {
+        console.error("파일 업로드 중 오류 발생:", error);
+    }
+
 }
 
 function getSearchProduct(productName) {
@@ -250,7 +309,8 @@ function renderSearchProductResults(results, productName) {
 
     let resultList = $(".result-list");
     resultList.empty();
-    $('.search-value').text(`${productName} 검색 결과`);
+    $('.search-value').text(`${productName}`);
+    $('.search-value-fixed').text('상품 검색 결과입니다.');
 
     $.each(results, function(index, product) {
         let listItem = $("<li>").addClass("search-product-li");
@@ -259,7 +319,7 @@ function renderSearchProductResults(results, productName) {
         divItem.append($("<p>").text(product.productId).addClass("search-product-id").attr("hidden", true));
         divItem.append($("<p>").text(product.productBrand).addClass("search-product-brand"));
         divItem.append($("<p>").text(product.productName).addClass("search-product-name"));
-        divItem.append($("<p>").text(product.productPrice.toLocaleString() + ' ₩').addClass("search-product-price"));
+        divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("search-product-price"));
         listItem.append(divItem);
         resultList.append(listItem);
     });
@@ -328,7 +388,14 @@ function printSelectTagAndContent(vo) {
     let seasonIdStr = '#' + vo['seasonId'][0];
     let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
 
-    $(".image-container img").attr("src", "data:image/png;base64," + vo['thumbnail']);
+    var blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
+    var objectURL = URL.createObjectURL(blob);
+
+    $("#post-image-thumbnail").html(
+        $('<img>', {
+           'src': objectURL
+        })
+    );
 
     const imageElement = $(`<p>${tpoIdStr} ${seasonIdStr} ${styleIdStr}</p>`);
     const li = $("<li>").append(imageElement);
@@ -338,11 +405,37 @@ function printSelectTagAndContent(vo) {
 }
 
 function moveHome() {
-    $.ajax({
-        url: '/',
-        type: 'GET',
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-        success: function(response) {
-        }
-    });
+    window.location.href = '/';
+}
+
+function imageSlider(slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+//    const slider = $('.add-img-container');
+
+    const end = () => {
+        isDown = false;
+        slider.removeClass('active');
+    };
+
+    const start = (e) => {
+        isDown = true;
+        slider.addClass('active');
+        startX = e.pageX || e.originalEvent.touches[0].pageX - slider.offset().left;
+        scrollLeft = slider.scrollLeft();
+    };
+
+    const move = (e) => {
+        if (!isDown) return;
+
+        e.preventDefault();
+        const x = e.pageX || e.originalEvent.touches[0].pageX - slider.offset().left;
+        const dist = (x - startX);
+        slider.scrollLeft(scrollLeft - dist);
+    };
+
+    slider.on('mousedown touchstart', 'li', start);
+    slider.on('mousemove touchmove', move);
+    slider.on('mouseleave mouseup touchend', end);
 }

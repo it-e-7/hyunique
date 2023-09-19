@@ -20,6 +20,13 @@ const siriWave = new SiriWave({
 
 $(document).ready(function () {
   wordflick();
+  $("#12322").change(function() {
+	  if ($(this).prop("checked")) {
+      $("#bag-img").attr("src", "/resources/img/ic-bag-check.png");
+    } else {
+      $("#bag-img").attr("src", "/resources/img/ic-bag-noncheck.png");
+    }
+  });
 });
 function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
@@ -144,7 +151,38 @@ function gptRequest() {
 		    	  }
 		    	  if(data.response.charAt(0) !== '*'){
 		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+
 		    	    gptProductRequest();
+              
+		    	    $(".chat-section-wrapper").append(`
+			    			  <div class='gpt-product-list'>
+			    			  <li>
+			    			  <div id="product-only-wrapper" onclick='moveToProduct(12322)'>
+				    			  <img src='https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/user_basic_profile.jpg'/>
+				    			  <div>
+				    			  	<strong>브랜드영역</strong>
+				    			  	<p class='product-item-name'>설향딸기빵</p>
+				    			  	<p class='product-item-price'>3,000원}
+				    			  	</p>
+				    			  </div>
+			    			  </div>
+				    		  <div id="bag-check">
+				    			  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
+			    			  </div>
+			    			  </li>
+			    			  <div>
+	    			  `)
+  		    	    $(".chat-section-wrapper").append(
+  		    	    		`<div class='purchase-area-wrapper'>
+  		    	    			<div class="purchase-cancel-btn">
+  		    	    				다음에 구매할게요
+  		    	    			</div>
+	    	    				<div class="purchase-accept-btn">
+  		    	    				눌러서 구매 완료
+  		    	    			</div>
+  		    	    		</div>`
+  		    	    )
+
 		    	  }
 		    	},
 		      error: function(error) {
@@ -152,9 +190,21 @@ function gptRequest() {
 		      }
 		    });
 		    document.getElementById("resultList").value = "";
-		    scrollToBottomDelayed();
     }
 };
+//`
+//<div class='product-list">
+//<li onclick='moveToProduct('${product.productId}')'>
+//<img src='${product.productImg}'/>
+//<div>
+//	<strong>${product.productBrand}</strong>
+//	<p class='product-item-name'>${product.productName}</p>
+//	<p class='product-item-price'>${product.productPrice.toLocaleString('ko-KR')}
+//	</p>
+//</div>
+//</li>
+//<div>
+//`
 
 //gpt 엔터 이벤트
 $(".user-gpt-input").on('keydown', function(e){
