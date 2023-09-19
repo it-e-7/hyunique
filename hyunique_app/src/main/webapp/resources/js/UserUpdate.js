@@ -1,7 +1,7 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
 
-
+let isFollowing = null;
 let userImg;
 let userBackimg;
 let userImgData = null;
@@ -10,8 +10,16 @@ let userBackImgData = null;
 $(document).ready(function() {
 
 	if($('#user-isFollowing').length > 0){
-		const isFollowing = document.getElementById('user-isFollowing').value;
-	}
+        isFollowing = document.getElementById('user-isFollowing').value;
+
+        if (Number(isFollowing) === 1) {
+            checkbox.checked = true;
+            label.innerText = '팔로잉 -';
+        } else {
+            checkbox.checked = false;
+            label.innerText = '팔로우 +';
+        }
+    }
 
 	// 프로필 사진 업로드
 	  $("#profile-preview").click(function() {
@@ -41,16 +49,6 @@ $(document).ready(function() {
 	        updateUser();
 	    });
 	  userPostList(userId);
-
-	  if (Number(isFollowing) === 1) {
-		  checkbox.checked = true;
-		  label.innerText = '팔로잉 -';
-	  } else {
-		  checkbox.checked = false;
-		  label.innerText = '팔로우 +';
-	  }
-
-	  
 });
 
 document.getElementById('updateLink').addEventListener('click', function(e) {
