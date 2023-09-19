@@ -95,8 +95,8 @@ button .btn-gpt-request {
 .user-gpt-input {
     width: 90%;
     height: 100%;
-    border: none;
-    border-radius: 100rem;
+    border: 1px solid #0277bd;
+    border-radius: 0.7rem;
     padding-left: 1rem;
     background: none;
     font-size: 1rem;
