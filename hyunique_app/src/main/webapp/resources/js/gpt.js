@@ -67,7 +67,7 @@ function gptProductRequest (){
       url: "/gpt/product",
       type: "GET",
       data: {
-        productList : "화이트 / 블루 스트라이프 티셔츠, 진청 청바지, 화이트 캔버스 스니커즈, 그레이 레트로 캡, "
+      //데이터를 보내지 않습니다
       },
       success: function(data) {
       console.log("******gptProductRequest******"+data);
