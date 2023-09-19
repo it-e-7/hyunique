@@ -8,6 +8,11 @@ const likeToggle = {
 	selected: 'unselect',
 	unselect: 'selected',
 };
+const likeCountStrong = $('#like-count-strong');
+let likeCount = +likeCountStrong.text()[0];
+if(likeCount === 0) {
+	$('#like-count-p').hide();
+}
 
 function likeTogglePost(postId) {
 	let url = `/post/like`;
@@ -16,6 +21,15 @@ function likeTogglePost(postId) {
 	if($('.like-btn img').attr('src') !== likeBtnImgSrc[present]) {
 		url = `/post/unlike`;
 		present = 'selected';
+		likeCount--;
+		likeCountStrong.text(likeCount + '명');
+		if(likeCount === 0) {
+			$('#like-count-p').hide();
+		}
+	} else {
+		likeCount++;
+		likeCountStrong.text(likeCount + '명');
+		$('#like-count-p').show();
 	}
 	
 	$('.like-btn img').css("transform", "scale(0.8)");
@@ -38,12 +52,22 @@ function likeTogglePost(postId) {
 
 function sharePost(userNickname) {
 	if(isMobile()) {
-		navigator.share({
-			title: `@${userNickname}님의 스타일 | 더 hyunique하게`,
-			url: location.href,
-		}).then(() => {
-			console.log("공유 완료");
-		}).catch(console.log);
+		try {
+			navigator.share({
+				title: `@${userNickname}님의 스타일 | 더 hyunique하게`,
+				url: location.href,
+			}).then(() => {
+				console.log("공유 완료");
+			}).catch(console.log);
+		} catch(err) {
+			const t = document.createElement("textarea");
+			document.body.appendChild(t);
+			t.value = location.href;
+			t.select();
+			document.execCommand('copy');
+			document.body.removeChild(t);
+			alert('클립보드에 복사되었습니다 !');
+		}
 	} else {
 		const t = document.createElement("textarea");
 		document.body.appendChild(t);
@@ -106,7 +130,7 @@ function togglePin(e) {
 $('.img-slider-wrapper').click(togglePin);
 
 $('.img-slider-wrapper').scroll(() => {
-	const scrollLeft = Math.round($('.img-slider-wrapper').scrollLeft())
+	const scrollLeft = Math.round($('.img-slider-wrapper').scrollLeft());
 	if(scrollLeft % imgWidth === 0) {
 		const newIdx = scrollLeft / imgWidth;
 		changeIndexCircle(newIdx);
