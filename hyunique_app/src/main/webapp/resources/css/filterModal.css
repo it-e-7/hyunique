@@ -14,10 +14,15 @@
 }
 
 #modal_top {
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 56px;
+}
+
+#genderDiv, .rs-height, #tpoDiv, #seasonDiv, #seasonDiv  {
+  color: black;
 }
 
 #modal_bottom {

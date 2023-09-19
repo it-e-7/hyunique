@@ -19,6 +19,7 @@
           <div class="button selected" id="recommend">추천</div>
           <div class="button" id="style-ranking">스타일랭킹</div>
           <div class="button" id="following">팔로우</div>
+          <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
     </div>
     <c:if test="${empty userId}">
         <div id="popular-style">
@@ -110,7 +111,7 @@
                         <input type="checkbox" id="campusCheckbox" name="tpo" value="23">
                         </div>
                         <div id=select-type-button>
-                        <label for="travelCheckbox">카페 ☕</label>
+                        <label for="cafeCheckbox">카페 ☕</label>
                         <input type="checkbox" id="cafeCheckbox" name="tpo" value="24">
                         </div>
                         <div id=select-type-button>

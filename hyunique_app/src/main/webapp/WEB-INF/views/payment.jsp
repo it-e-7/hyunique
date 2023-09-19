@@ -14,7 +14,7 @@
     <!--  충전하기 버튼 만들기  -->
     <span>총 포인트 충전 금액 :</span>
     <span>58500원</span>
-    <button id="payment-button" onclick='paymentToss("test_ck_GePWvyJnrKbQvDkoy0RVgLzN97Eo", 101)'>58500원 충전하기</button>
+    <button id="payment-button" onclick='paymentToss("test_ck_GePWvyJnrKbQvDkoy0RVgLzN97Eo", 101, "${url}")'>58500원 충전하기</button>
 </section>
 </body>
 </html>

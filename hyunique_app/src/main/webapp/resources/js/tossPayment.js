@@ -1,13 +1,13 @@
 /**
  * 토스 페이먼츠 결제 함수
  */
-function paymentToss(tossPayKey, memberId){
+function paymentToss(tossPayKey, memberId, url){
 
     var tossPayments = TossPayments(tossPayKey) //테스트 클라이언트 키
     //data = createPaymentData()
     //입력받은 값에서 가져오게 변형
-    var successUrl = 'http://localhost:8080/payment/confirm'; // 결제 성공 시 이동할 페이지
-    var failUrl ='http://localhost:8080/payment/confirm'; // 결제 실패 시 이동할 페이지
+    var successUrl = url+'/payment/confirm'; // 결제 성공 시 이동할 페이지
+    var failUrl = url+'/payment/confirm';; // 결제 실패 시 이동할 페이지
     tossPayments.requestPayment('카드', {
 /*        amount: data.amount,
         orderId:  data.orderId,
