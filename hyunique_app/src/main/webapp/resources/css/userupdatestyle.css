@@ -89,6 +89,10 @@ input{
 	justify-content: center;
 }
 .btn-submit{
+	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	border-radius: 0.8rem;
+	color: #FFFFFF;
 	width: calc(100% - 60px);
 	height:48px;
 	padding:0;
@@ -96,6 +100,11 @@ input{
 	z-index:1000;
 	bottom:calc(3vh);
 	max-width: 700px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-align: center;
+	font-family: 'Spoqa Han Sans';
+	font-weight: 500;
 }
 
 
@@ -156,4 +165,7 @@ input[type="checkbox"]:checked + label {
 
 #facebookUrl{
 	margin-bottom: 4rem;
+}
+#txt-profile-header{
+	margin-left : 2rem;
 }

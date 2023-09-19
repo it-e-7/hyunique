@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.user.service.UserService;
+import com.kosa5.hyunique.user.vo.UserVO;
 
 @Controller
 @RequestMapping(value = "/")
@@ -42,19 +43,9 @@ public class OAuthController {
 	@Autowired
 	private UserService service;
 
-	// NaverLoginBO
 	@Autowired
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
-
-//	// 세션에 id저장
-//	private void setSessionId(HttpSession session, String id, String type) {
-//		try {
-//			session.setAttribute("sessionId", service.insertOrGetUser(id, type));
-//		} catch (NullPointerException e) {
-//			log.info("로그인 혹은 회원가입 실패");
-//		}
-//	}
 
 	private String setSessionId(HttpSession session, String id, String type) {
 	    try {
@@ -63,6 +54,10 @@ public class OAuthController {
 	        int isNew = (int) result.get("isNew");  // 새로운 사용자인지 아닌지 확인
 
 	        session.setAttribute("sessionId", userId);
+	        UserVO userVO = new UserVO();
+	        userVO = service.getUserInfoAndFollowerCount(Integer.parseInt(userId),userId);
+	        log.info("userVO:" + userVO);
+	        session.setAttribute("signinUser", userVO);
 	        log.info("isNew: " + isNew);
 	        if(isNew == 1) {
 	            return "redirect:/user/onboarding";  // 새로운 사용자인 경우
@@ -87,34 +82,6 @@ public class OAuthController {
 		return "login";
 	}
 
-//	// 카카오 API 호출
-//	@RequestMapping(value = "/KakaoLogin", method = RequestMethod.GET)
-//	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpSession session)
-//			throws Exception {
-//		String access_Token = ms.getAccessToken(code);
-//		HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
-//		setSessionId(session, (String) userInfo.get("id"), "kakao");
-//		return "redirect:userInfo";
-//	}
-//
-//	// 네이버 로그인 성공시 callback호출 메소드
-//	@RequestMapping(value = "/navercallback", method = { RequestMethod.GET, RequestMethod.POST })
-//	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-//			throws IOException, ParseException {
-//		OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
-//		apiResult = naverLoginBO.getUserProfile(oauthToken);
-//		JSONParser parser = new JSONParser();
-//		Object obj = parser.parse(apiResult);
-//		JSONObject jsonObj = (JSONObject) obj;
-//		JSONObject response_obj = (JSONObject) jsonObj.get("response");
-//		String nickname = (String) response_obj.get("nickname");
-//		String id = (String) response_obj.get("id");
-//		session.setAttribute("sessionId", nickname);
-//		model.addAttribute("result", apiResult);
-//		setSessionId(session, (String) response_obj.get("id"), "naver"); // 세션에 ID 저장
-//		return "redirect:userInfo";
-//	}
-
 	// 카카오 API 호출
 	@RequestMapping(value = "/KakaoLogin", method = RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpSession session)
@@ -138,19 +105,6 @@ public class OAuthController {
 	    return setSessionId(session, id, "naver");  // setSessionId의 반환값으로 리디렉션
 	}
 	
-//	// 로그인 성공 후 유저 정보 페이지(임시) 이동
-//	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-//	public String example(HttpSession session) {
-//		String sessionId = (String) session.getAttribute("sessionId");
-//		if (sessionId != null) {
-//			log.info("세션 ID: " + sessionId);
-//
-//		} else {
-//			log.info("로그인되지 않은 사용자");
-//			// 로그인되지 않은 사용자 처리
-//		}
-//		return "redirect:/";
-//	}
 	// 로그인 성공 후 유저 정보 페이지(임시) 이동
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public String example(HttpSession session) {
@@ -160,7 +114,6 @@ public class OAuthController {
 	        log.info("세션 ID: " + sessionId);
 	    } else {
 	        log.info("로그인되지 않은 사용자");
-	        // 로그인되지 않은 사용자 처리
 	    }
 	    return "redirect:/";
 	}
