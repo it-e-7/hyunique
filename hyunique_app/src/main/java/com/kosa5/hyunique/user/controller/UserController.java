@@ -101,6 +101,8 @@ public class UserController {
         boolean isProfileImgChanged = user.getUserImg() != null && !user.getUserImg().isEmpty();
 	    // S3에 이미지 업로드 및 URL 받기
         
+        log.info("배경이미지 : " + isBackImgChanged);
+        log.info("프로필이미지 : " + isProfileImgChanged);
         
         if (isBackImgChanged) {
             String backImgUrl = s3Service.uploadBase64Img(user.getUserBackimg(), "back_" + sessionId + ".jpg", "profile/");
