@@ -1,9 +1,6 @@
 package com.kosa5.hyunique.post.util;
 
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 import org.apache.ibatis.type.JdbcType;
@@ -23,11 +20,22 @@ import oracle.sql.StructDescriptor;
 public class PostProductTypeHandler implements TypeHandler {
     @Override
     public void setParameter(PreparedStatement ps, int i, Object param, JdbcType jdbcType) throws SQLException {
+
+        if (param == null || !(param instanceof List)) {
+            ps.setNull(i, Types.ARRAY, "POSTPRODUCTVOLIST");
+            return;
+        }
+
         List<PostProductVO> objects = (List<PostProductVO>) param;
+        if (objects.isEmpty()) {
+            ps.setNull(i, Types.ARRAY, "POSTPRODUCTVOLIST");
+            return;
+        }
 
         StructDescriptor structDescriptor = StructDescriptor.createDescriptor("POSTPRODUCTVO", ps.getConnection());
 
         STRUCT[] structs = new STRUCT[objects.size()];
+        System.out.println(structs);
         for (int idx=0; idx < objects.size(); idx++) {
             PostProductVO pack = objects.get(idx);
             Object[] params = new Object[6];
