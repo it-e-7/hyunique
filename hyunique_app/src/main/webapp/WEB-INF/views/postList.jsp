@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -37,11 +38,10 @@
         </c:if>
     </c:if>
 	<div id="banner">
-	    <img src="https://image.thehyundai.com/HM/HM039/20230904/172214/ban20230905142633.jpg">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hunique.png">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-luxury.png">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
 	</div>
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">
@@ -254,6 +254,10 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
         <script src="/resources/js/filterModal.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>	
     </div>
 </div>
 <div id="qr-button">

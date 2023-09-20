@@ -95,25 +95,29 @@
 
 #filterModalButton {
     font-size: 18px;
-    border: 3px solid #E9E9E9;
-    border-radius: 10px;
-    padding: 5px 10px;
-    background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+    border: 1px solid #E9E9E9;
+    border-radius: 6px;
+    padding: 15px;
+    background-color: transparent;
     cursor: pointer;
     white-space: nowrap;
-    margin-right: 15px;
+    margin-right: 8px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media screen and (max-width: 700px) {
      #filterModalButton {
-         font-size: 12px;
-         border: 3px solid #E9E9E9;
-         border-radius: 10px;
-         padding: 3px 10px;
-         background-color: transparent; /* 배경색을 투명하게 설정합니다. */
-         cursor: pointer;
-         white-space: nowrap;
-         margin-right: 6px;
+        font-size: 12px;
+	    border: 1px solid #E9E9E9;
+	    border-radius: 10px;
+	    padding: 3px 10px;
+	    background-color: transparent;
+	    cursor: pointer;
+	    white-space: nowrap;
+	    margin-right: 6px;
      }
 }
 
@@ -151,6 +155,7 @@
     justify-content: center;
     align-items: center;
     height: 100%; /* 부모 요소의 높이에 맞게 설정 */
+    font-size: 1rem;
 }
 
 #hyunique-main-top-filter{
@@ -159,23 +164,9 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding : 10px 10px 0 10px;
+    padding: 15px;
+    height: 32px;
 }
-
-#qr-button {
-    width: 150px;
-    height: 150px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-#qr-img{
-    width: 150px;
-    height: 150px;
-}
-
-@media screen and (max-width: 700px) {
 #qr-button {
     width: 100px;
     height: 100px;
@@ -187,7 +178,6 @@
 #qr-img{
     width: 100px;
     height: 100px;
-}
 }
 
 #popular-style {

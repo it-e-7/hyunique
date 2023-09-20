@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
+      
+      if (button.textContent.trim() === '스타일랭킹') {
+          banner.style.display = 'none'; // 배너 숨기기
+        } else {
+          banner.style.display = 'flex'; // 배너 보이기
+        }
+      
+      
       const filterElement = $('#hyunique-main-top-filter');
       const popularStyle = $('#popular-style');
       //팔로우가 아니라면 필터 보이게 처리
