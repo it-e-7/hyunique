@@ -43,6 +43,37 @@
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
 	</div>
+	<div id="ranking-wrapper">
+		<div class="ranking-description">
+			hyunique 최고의 패셔니스타를 확인해보세요
+		</div>
+		<div class="category-description" id="rank-category-desc">
+			*지난분기 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
+		</div>
+		<div class="ranking-section">
+			<div class="ranking-user-wrapper" id="rank-2nd">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="2nd-number">2</div>
+				</div>
+				<img class="ranking-user-img" id="rank-2nd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_107.jpg"/>
+				<div class="user-nickname">유니 </div>
+			</div>
+			<div class="ranking-user-wrapper" id="rank-1st">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="1st-number">1</div>
+				</div>
+				<img class="ranking-user-img" id="rank-1st-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/back_35.jpg"/>
+				<div class="user-nickname">우기</div>
+			</div>
+			<div class="ranking-user-wrapper" id="rank-3rd">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="3rd-number">3</div>
+				</div>
+				<img class="ranking-user-img" id="rank-3rd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_105.jpg"/>
+				<div class="user-nickname">지니</div>
+			</div>
+		</div>
+	</div>
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">
             <img src="/resources/img/filter.png" />

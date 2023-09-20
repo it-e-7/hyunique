@@ -32,10 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
       
+      //배너 처리
       if (button.textContent.trim() === '스타일랭킹') {
           banner.style.display = 'none'; // 배너 숨기기
+          document.getElementById("ranking-wrapper").style.display = 'flex';
         } else {
           banner.style.display = 'flex'; // 배너 보이기
+          document.getElementById("ranking-wrapper").style.display = 'none';
         }
       
       

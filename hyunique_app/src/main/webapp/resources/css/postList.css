@@ -258,5 +258,120 @@ div#banner {
     scroll-snap-type: x mandatory;
     cursor: pointer;
 }
+#ranking-wrapper{
+	display:flex;
+	flex-direction: column;
+	justify-content : center;
+}
+.ranking-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
 
+img.ranking-user-img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100rem;
+}
 
+.ranking-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div#rank-2nd {
+    margin-top: 5rem;
+}
+
+div#rank-3rd {
+    margin-top: 5rem;
+}
+
+img#rank-3rd {
+    width: 8rem;
+    height: 8rem;
+}
+
+img#rank-2nd {
+    width: 8rem;
+    height: 8rem;
+}
+
+.user-nickname {
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.ranking-number {
+    border: 1px solid;
+    border-radius: 100rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    text-align: center;
+    line-height: 2.2rem;
+}
+
+.ranking-wrapper {
+    margin-bottom: -2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 2;
+}
+
+div#\31 st-number {
+    background: rgb(255 133 111);
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+div#\32 nd-number {
+    background: rgb(151 228 238);
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+div#\33 rd-number {
+    background: rgb(25 140 253);
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+img#rank-1st-img {
+    width: 8rem;
+    height: 8rem;
+}
+.ranking-description {
+    font-family: 'Noto Sans KR';
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+}
+.category-description {
+    margin-left: 2rem;
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 0.5rem;
+}
+div#ranking-wrapper {
+    background: #f0f0f0;
+    padding-bottom: 1rem;
+}
