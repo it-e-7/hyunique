@@ -377,3 +377,14 @@ div#ranking-wrapper {
     background: #f0f0f0;
     padding-bottom: 1rem;
 }
+.recommend-description {
+    font-size: 1.4rem;
+    font-family: 'Noto Sans KR';
+    font-weight: 600;
+    letter-spacing: -1px;
+    padding-left: 1.6rem;
+    /* border-top: 5px solid lightgray; */
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #252525;
+}

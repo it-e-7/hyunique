@@ -260,6 +260,9 @@
             </div>
         </div>
     </div>
+   	 	<div class="recommend-description">
+			선택한 스타일링의 <br>다양한 사진을 찾아보세요 &#10024;
+		</div>
         <div id="infinite-scroll">
             <div id="photo-gallery">
                 <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
