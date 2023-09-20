@@ -2,10 +2,7 @@ package com.kosa5.hyunique.post.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -106,24 +103,23 @@ public class S3Service {
         }
     }
 
-    public List<String> getUploadImgFileURL(MultipartFile[] files) {
-        List<String> keys = new ArrayList<>();
-        List<String> urls = new ArrayList<>();
+    public Map<String, String> getUploadImgFileURL(MultipartFile[] files) {
+        Map <String, String> keys = new LinkedHashMap<>();
 
         for(MultipartFile file : files) {
             String fileName = createImgFileName();
             String returnUrl = uploadImgFiles(file, fileName, "post/");
 
-            keys.add("post/" + fileName);
             // s3에 이미지 업로드를 실패한 경우
             if (returnUrl == null) {
-                deleteImgFile(keys);
+                deleteImgFile(new ArrayList<>(keys.keySet()));
                 return null;
             }
+
             // 업로드 성공한 경우
-            urls.add(returnUrl);
+            keys.put("post/" + fileName, returnUrl);
         }
-        return urls;
+        return keys;
     }
 
     // 이미지 삭제
@@ -146,7 +142,6 @@ public class S3Service {
                 log.info("Error: " + error.getCode() + ", Key: " + error.getKey());
             }
         }
-
     }
 
 }

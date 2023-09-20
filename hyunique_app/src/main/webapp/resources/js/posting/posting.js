@@ -270,7 +270,6 @@ function compileAndSendPostData() {
 
     sendPostToServer(formData);
     printSelectTagAndContent(nextPost);
-    showPage('.post-container');
     compressedFileList.length = 0;
 }
 
@@ -282,15 +281,18 @@ async function sendPostToServer(formData) {
             body: formData
         });
 
-        if (response.ok) {
+        const responseBody = await response.text();
+
+        if (responseBody === 'success') {
             console.log('Upload success');
+            showPage('.post-container');
         } else {
             console.log('Upload failed');
+            alert("업로드가 실패하였습니다. 다시 시도해주세요.");
         }
     } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
     }
-
 }
 
 function getSearchProduct(productName) {
@@ -388,8 +390,8 @@ function printSelectTagAndContent(vo) {
     let seasonIdStr = '#' + vo['seasonId'][0];
     let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
 
-    var blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
-    var objectURL = URL.createObjectURL(blob);
+    let blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
+    let objectURL = URL.createObjectURL(blob);
 
     $("#post-image-thumbnail").html(
         $('<img>', {
@@ -412,7 +414,6 @@ function imageSlider(slider) {
     let isDown = false;
     let startX;
     let scrollLeft;
-//    const slider = $('.add-img-container');
 
     const end = () => {
         isDown = false;
