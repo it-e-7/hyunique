@@ -102,10 +102,10 @@ function gptProductRequest (){
             		    	    			<div class="purchase-cancel-btn">
             		    	    				다음에 구매할게요
             		    	    			</div>
-          	    	    				<div class="purchase-accept-btn">
+          	    	    				<button class="purchase-accept-btn" onclick="paymentToss()">
             		    	    				눌러서 구매 완료
             		    	    			</div>
-            		    	    		</div>`
+            		    	    		</button>`
             		    	    )
       },
       error: function(error) {
