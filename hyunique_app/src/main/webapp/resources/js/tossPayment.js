@@ -1,9 +1,9 @@
 /**
  * 토스 페이먼츠 결제 함수
  */
-function paymentToss(tossPayKey, memberId, url){
+function paymentToss(){
 
-    var tossPayments = TossPayments(tossPayKey) //테스트 클라이언트 키
+    var tossPayments = TossPayments(tossPayKey); //테스트 클라이언트 키
     //data = createPaymentData()
     //입력받은 값에서 가져오게 변형
     var successUrl = url+'/payment/confirm'; // 결제 성공 시 이동할 페이지

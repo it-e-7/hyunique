@@ -74,25 +74,39 @@ function gptProductRequest (){
       url: "/gpt/product",
       type: "GET",
       data: {
-        productList : "화이트 / 블루 스트라이프 티셔츠, 진청 청바지, 화이트 캔버스 스니커즈, 그레이 레트로 캡, "
+      //데이터를 보내지 않습니다
       },
       success: function(data) {
-      console.log("******gptProductRequest******"+data);
       data.forEach(function(product) {
-          console.log(product); // VO 객체 전체를 출력
-          console.log(product.productName);
-          console.log(product.productPrice);
-          console.log(product.productBrand);
+          $(".chat-section-wrapper").append(`
+              <div class='gpt-product-list'>
+              <li>
+              <div id="product-only-wrapper" onclick="moveToProduct('${product.productId}')">
+                  <img src=${product.productImg}>
+                  <div>
+                    <strong>${product.productBrand}</strong>
+                    <p class='product-item-name'>${product.productName}</p>
+                    <p class='product-item-price'>${product.productPrice}원</p>
+                  </div>
+              </div>
+              <div id="bag-check">
+                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
+              </div>
+              </li>
+              <div>
+      `)
       });
-//    	  let imgElement = $('<img>');
-//          imgElement.attr('src', data);
-//          imgElement.on('load', function() {
-//            scrollToBottom();  // 이미지 로딩 후 스크롤
-//          });
-//
             //결제 버튼 만들기
-          let paymentButton = $('<button class="payment-button">눌러서 결제하기</button>');
-           $(".chat-section-wrapper").append(paymentButton);
+            $(".chat-section-wrapper").append(
+            		    	    		`<div class='purchase-area-wrapper'>
+            		    	    			<div class="purchase-cancel-btn">
+            		    	    				다음에 구매할게요
+            		    	    			</div>
+          	    	    				<button class="purchase-accept-btn" onclick="paymentToss()">
+            		    	    				눌러서 구매 완료
+            		    	    			</div>
+            		    	    		</button>`
+            		    	    )
       },
       error: function(error) {
     	  console.log(error);
@@ -153,36 +167,6 @@ function gptRequest() {
 		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
 
 		    	    gptProductRequest();
-              
-		    	    $(".chat-section-wrapper").append(`
-			    			  <div class='gpt-product-list'>
-			    			  <li>
-			    			  <div id="product-only-wrapper" onclick='moveToProduct(12322)'>
-				    			  <img src='https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/user_basic_profile.jpg'/>
-				    			  <div>
-				    			  	<strong>브랜드영역</strong>
-				    			  	<p class='product-item-name'>설향딸기빵</p>
-				    			  	<p class='product-item-price'>3,000원}
-				    			  	</p>
-				    			  </div>
-			    			  </div>
-				    		  <div id="bag-check">
-				    			  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
-			    			  </div>
-			    			  </li>
-			    			  <div>
-	    			  `)
-  		    	    $(".chat-section-wrapper").append(
-  		    	    		`<div class='purchase-area-wrapper'>
-  		    	    			<div class="purchase-cancel-btn">
-  		    	    				다음에 구매할게요
-  		    	    			</div>
-	    	    				<div class="purchase-accept-btn">
-  		    	    				눌러서 구매 완료
-  		    	    			</div>
-  		    	    		</div>`
-  		    	    )
-
 		    	  }
 		    	},
 		      error: function(error) {
