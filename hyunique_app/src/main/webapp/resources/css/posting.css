@@ -162,7 +162,7 @@ button#add-img-btn {
 }
 
 .content-group {
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -184,6 +184,17 @@ button#add-img-btn {
     width: 85%
 }
 
+.write-container .jw-btn-fixed {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    max-width: 700px;
+    transform: translate(-50%);
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    z-index: 1001;
+}
 
 /* write-container 종료*/
 
@@ -363,8 +374,6 @@ p.search-product-price {
     width: 100%;
     margin: 0px auto;
 }
-
-
 
 .write-container p {
     font-weight: bold;

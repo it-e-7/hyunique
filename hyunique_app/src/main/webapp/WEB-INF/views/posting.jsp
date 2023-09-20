@@ -109,6 +109,7 @@
                     <div class="modal-wrap">
                         <div class='color-wrap'>
                             <select class="select-product-color empty">
+                                <option value="" disabled selected>색상</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
@@ -118,6 +119,7 @@
                         </div>
                         <div class='size-wrap'>
                             <select class="select-product-size empty">
+                                <option value="" disabled selected>사이즈</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
