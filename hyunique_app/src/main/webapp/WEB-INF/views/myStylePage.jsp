@@ -185,10 +185,19 @@
 			<div id="accessoryList"class="product-list-wrapper"></div>
 		</div>
 	</div>
+	<c:choose>
+	    <c:when test="${isCurrentUser == false}">
+	       <div></div>
+	    </c:when>
+	    <c:otherwise>
+			<c:if test="${sessionId == user.userId}">
+				<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
+					<img src="/resources/img/posting-btn.png"/>
+				</button>
+			</c:if>
+	    </c:otherwise>
+	</c:choose>
 	
-	<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
-		<img src="/resources/img/posting-btn.png"/>
-	</button>
 
 </body>
 <script src="/resources/js/closet.js"></script>
