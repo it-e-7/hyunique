@@ -67,7 +67,7 @@ button .btn-gpt-request {
     padding-bottom: 0.7rem;
     padding-top: 0.7rem;
     padding-right: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
     max-width: 70%;
     margin-top: 1rem;
     position: relative;
@@ -344,4 +344,8 @@ label {width: 24px;height: 24px;}
     width: 180px;
     height: 40px;
     line-height: 2.6;
+}
+
+#dall-e-img img{
+	width:100%;
 }
