@@ -65,7 +65,8 @@
 	    </div>
 	</div>
 	<script src="/resources/js/gpt.js"></script>
-		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/resources/js/tossPayment.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 	<script>
 		AOS.init();
 	</script>	
