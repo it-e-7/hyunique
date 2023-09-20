@@ -1,5 +1,23 @@
-//추천, 스타일링 버튼을 클릭했을 때 작동
+$(document).ready(function() {
+  let currentIndex = 0;
+  const banner = document.getElementById("banner");
+  const images = banner.querySelectorAll("img");
+  const imageCount = images.length;
 
+  const scrollInterval = setInterval(function() {
+    currentIndex++;
+    if (currentIndex >= imageCount) {
+      currentIndex = 0;
+    }
+    const newScrollPosition = images[currentIndex].offsetLeft;
+    banner.scroll({
+      left: newScrollPosition,
+      behavior: 'smooth'
+    });
+  }, 3000);
+});
+
+//추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
   const buttonContainer = document.getElementById('hyunique-main-top-recommend');
   const buttons = buttonContainer.querySelectorAll('.button');

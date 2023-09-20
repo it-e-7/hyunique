@@ -255,3 +255,18 @@ width: 30%;
     background: linear-gradient(90deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
     animation: 2s ease 0s infinite alternate none running kcinZC;
 }
+
+div#banner img {
+    width: 100%;
+    scroll-snap-align: start;
+}
+
+div#banner {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    cursor: pointer;
+}
+
+

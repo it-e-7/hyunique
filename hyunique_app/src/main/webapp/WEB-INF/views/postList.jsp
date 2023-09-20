@@ -15,7 +15,10 @@
 
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
-    <div id= "hyunique-main-top-recommend">
+    
+    </div>
+<div id= "main-wrapper-bottom">
+<div id= "hyunique-main-top-recommend">
           <div class="button selected" id="recommend">추천</div>
           <div class="button" id="style-ranking">스타일랭킹</div>
           <div class="button" id="following">팔로우</div>
@@ -33,7 +36,13 @@
             </div>
         </c:if>
     </c:if>
-
+	<div id="banner">
+	    <img src="https://image.thehyundai.com/HM/HM039/20230904/172214/ban20230905142633.jpg">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hunique.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-luxury.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
+	</div>
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">
             <img src="/resources/img/filter.png" />
@@ -220,8 +229,6 @@
             </div>
         </div>
     </div>
-    </div>
-    <div id= "main-wrapper-bottom">
         <div id="infinite-scroll">
             <div id="photo-gallery">
                 <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
