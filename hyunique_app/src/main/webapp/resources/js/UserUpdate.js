@@ -1,16 +1,29 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
 
-
+let isFollowing = null;
 let userImg;
 let userBackimg;
-let imgList = []; // 이미지 리스트 초기화
+let userImgData = null;
+let userBackImgData = null;
 
 $(document).ready(function() {
-
 	if($('#user-isFollowing').length > 0){
-		const isFollowing = document.getElementById('user-isFollowing').value;
-	}
+        isFollowing = document.getElementById('user-isFollowing').value;
+    }
+
+    // 체크박스와 라벨이 실제로 존재할 때만 실행
+    if(checkbox && label) {
+        if(isFollowing !== null) {
+            if (Number(isFollowing) === 1) {
+                checkbox.checked = true;
+                label.innerText = '팔로잉 -';
+            } else {
+                checkbox.checked = false;
+                label.innerText = '팔로우 +';
+            }
+        }
+    }
 
 	// 프로필 사진 업로드
 	  $("#profile-preview").click(function() {
@@ -24,12 +37,12 @@ $(document).ready(function() {
 		
 	// 프로필 사진 변경
 	  $("#profile-file-input").change(function(e) {
-	      handleImageUpload(e, '#profile-preview', 280); 
+		  handleImageUpload(e, '#profile-preview', 280, 'profile'); 
 	  });
 	
 	  // 배경 사진 변경
 	  $("#back-file-input").change(function(e) {
-	      handleImageUpload(e, '#back-preview', 760); 
+		  handleImageUpload(e, '#back-preview', 760, 'back'); 
 	  });
 	
 	  
@@ -40,16 +53,6 @@ $(document).ready(function() {
 	        updateUser();
 	    });
 	  userPostList(userId);
-
-	  if (Number(isFollowing) === 1) {
-		  checkbox.checked = true;
-		  label.innerText = '팔로잉 -';
-	  } else {
-		  checkbox.checked = false;
-		  label.innerText = '팔로우 +';
-	  }
-
-	  
 });
 
 document.getElementById('updateLink').addEventListener('click', function(e) {
@@ -60,7 +63,7 @@ document.getElementById('updateLink').addEventListener('click', function(e) {
 });
 
 //이미지 업로드 및 미리보기 함수
-function handleImageUpload(e, previewElement, newHeight) {
+function handleImageUpload(e, previewElement, newHeight, type) {
     const files = e.target.files;
     $.each(files, function(index, file) {
         if (!file.type.match("image/.*")) {
@@ -74,7 +77,11 @@ function handleImageUpload(e, previewElement, newHeight) {
                 const resizedDataURL = resizeImage(img, newHeight); // 세로 크기를 newHeight로 설정
                 $(previewElement).attr("src", resizedDataURL);
                 const imgData = resizedDataURL.split(',')[1];
-                imgList.push(imgData);
+                if (type === 'profile') {
+                  userImgData = imgData;
+                } else if (type === 'back') {
+                  userBackImgData = imgData;
+                }
             };
             img.src = e.target.result;
         };
@@ -140,8 +147,6 @@ function updateUser() {
     const instagramUrl = $('input[name="instagramUrl"]').val();
     const twitterUrl = $('input[name="twitterUrl"]').val();
     const facebookUrl = $('input[name="facebookUrl"]').val();
-    const userImgData = imgList[0];
-    const userBackImgData = imgList[1];
 
     const requestData = {
         sessionId,
@@ -157,6 +162,7 @@ function updateUser() {
         userImg: userImgData,
         userBackimg: userBackImgData
     };
+    console.log(requestData);
 
     $.ajax({
         url: `/user/updateUser`,
