@@ -246,17 +246,3 @@ function fetchClosetInfo(userId) {
 	  });
 	}
 
-//게시글 작성 이동
-function movePostPage() {
-	$.ajax({
-        type: "GET",
-        url: '/post',
-        success: function(response) {
-        	window.location.href = '/post';
-        },
-        error: function(error) {
-            console.error("Error sending GET request:", error);
-        }
-    });
-	
-}
