@@ -191,10 +191,6 @@
 	</button>
 
 </body>
- <script>
-	let userIdFromModel = ${userId}; // 서버에서 넘겨준 userId
-	userPostList(userIdFromModel);
-</script>
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
 <script src="/resources/js/tab.js"></script>

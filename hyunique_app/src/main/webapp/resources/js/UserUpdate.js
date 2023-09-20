@@ -1,5 +1,6 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
+const userIdFromModel = document.getElementById('user-id').value;
 
 let isFollowing = null;
 let userImg;
@@ -52,7 +53,7 @@ $(document).ready(function() {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	  userPostList(userId);
+	  userPostList(userIdFromModel);
 });
 
 document.getElementById('updateLink').addEventListener('click', function(e) {
