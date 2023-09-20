@@ -212,7 +212,7 @@ if(!("webkitSpeechRecognition") in window){
     	if (!isAmplified) {
             speech.start();
             siriWave.setAmplitude(2.5);
-            siriWave.setSpeed(0.1);
+            siriWave.setSpeed(0.2);
             isAmplified = true;
         } else {
             speech.stop();
