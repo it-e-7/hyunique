@@ -40,11 +40,13 @@
 }
 
 .photo img{
-    max-width: 100%;
+   max-width: 100%;
     min-width: 100%;
-    display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
-    margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
-    aspect-ratio: 3 / 4;
+    display: block;
+    margin: 0 auto;
+    aspect-ratio: 0.84/1;
+    object-fit: cover;
+    object-position: center;
 }
 
 #hyunique-main-top-recommend {
