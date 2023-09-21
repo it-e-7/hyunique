@@ -333,7 +333,8 @@
     delay="1500"
     colors="primary:#ffffff"
     state="hover-2"
-    style="width:40px;height:40px">
+    style="width:40px;height:40px"
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));>
 </lord-icon>
 </div>
 </body>
