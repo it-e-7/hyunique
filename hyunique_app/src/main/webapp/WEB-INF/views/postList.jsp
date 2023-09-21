@@ -289,7 +289,7 @@
 			    style="width:5.5rem;height:5.5rem">
 			</lord-icon>
 			<div class="p-tag-wrapper">
-				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹📊</p>
+				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
 				<p class="txt-rec-des-sub">지금 가장 인기있는 스타일을 확인해보세요</p>
 			</div>
 		</div>
