@@ -47,4 +47,11 @@ public class PaymentController {
         return map;
     }
 
+    @GetMapping(value="success")
+    public String paymentSuccess(){
+
+        return "paymentSuccess";
+
+    }
+
 }

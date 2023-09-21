@@ -4,18 +4,17 @@
 function paymentToss(apiKey,totalPrice,userId,url){
 
     var tossPayments = TossPayments(apiKey); //테스트 클라이언트 키
-    var successUrl = url+'/payment/confirm'; // 결제 성공 시 이동할 페이지
-    var failUrl = url+'/payment/confirm';; // 결제 실패 시 이동할 페이지
+    var successUrl = url+'/payment/success'; // 결제 성공 시 이동할 페이지
+    var failUrl = url+'/payment/fail'; // 결제 실패 시 이동할 페이지
     tossPayments.requestPayment('카드', {
-/*        amount: data.amount,
-        orderId:  data.orderId,
-        orderName: data.orderName,
-        customerName: data.customerName,*/
         amount: totalPrice,
         orderId: 1010101,
         orderName: "원터치결제",
         customerName : 1212121,
+        successUrl: successUrl, // ${결제 성공 후 redirect할 url}
+        failUrl:failUrl, //  ${결제 실패한 경우 redirect할 url}
     }).then((res) =>{
+        //여기서 원래
         paymentSuccess(memberId);
 
 
@@ -34,11 +33,9 @@ function paymentInformation () {
 
 // 그리고 결제에 필요한 정보값을 다 담아서 리턴하는걸로
 
-// 모든 gpt product list 요소를 선택합니다.
 const productListElements = document.querySelectorAll('.gpt-product-list');
 
 let orderList = [];
-// 각 요소를 순회하면서 이미지 소스가 일치하는 요소를 찾습니다.
 productListElements.forEach(productElement => {
    //현재는 테스트를 위하여 체크되지 않은 이미지를 전송합니다. 이후에는 수정해주세요
   const imageSource = productElement.querySelector('img[src="/resources/img/ic-bag-non-check.png"]').getAttribute('src');
@@ -58,7 +55,6 @@ $.ajax({
         contentType : 'application/json',
         data: JSON.stringify(orderList),
         success: function (response) {
-            //이제 토스 결제 열면된다!
             paymentToss(response.apiKey,response.totalPrice,response.userId,response.url);
             console.log("apiKey : "+response.apiKey);
             console.log("totalPrice : "+response.totalPrice);
