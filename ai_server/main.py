@@ -21,7 +21,6 @@ def extract_features(img):
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     features = base_model.predict(x)
-    print(features)
     return features
 
 def predict_idx(feature):
@@ -44,7 +43,6 @@ def aiSearch(file: Annotated[bytes, File()]):
   img = preprocessing(file)
   feature = extract_features(img)
   predict = predict_idx(feature)
-  print(predict)
   return predict
 
 uvicorn.run(app, host="0.0.0.0", port=8000)
