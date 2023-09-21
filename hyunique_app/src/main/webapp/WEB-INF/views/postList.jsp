@@ -16,15 +16,16 @@
 
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
-    
-    </div>
+    <div id= "hyunique-main-top-recommend">
+      <div class="button selected" id="recommend">추천</div>
+      <div class="button" id="style-ranking">스타일랭킹</div>
+      <div class="button" id="following">팔로우</div>
+      <div class="tab-deco">🤖</div>
+      <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
+</div>
+</div>
 <div id= "main-wrapper-bottom">
-<div id= "hyunique-main-top-recommend">
-          <div class="button selected" id="recommend">추천</div>
-          <div class="button" id="style-ranking">스타일랭킹</div>
-          <div class="button" id="following">팔로우</div>
-          <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
-    </div>
+
     <c:if test="${empty userId}">
 	    	<div id="popular-style">
 	            실시간 인기 스타일🔥
