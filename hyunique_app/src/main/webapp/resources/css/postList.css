@@ -149,16 +149,16 @@
     height: 32px;
 }
 #qr-button {
-    width: 100px;
-    height: 100px;
+    width: 78px;
+    height: 78px;
     position: fixed;
-    bottom: 50px;
-    right: 20px;
+    bottom: 90px;
+    right: 30px;
 }
 
 #qr-img{
-    width: 100px;
-    height: 100px;
+    width: 78px;
+    height: 78px;
 }
 
 #popular-style {
@@ -357,7 +357,6 @@ p.txt-rec-des {
      font-size: 1.4rem;
     font-family: 'Tossface';
     font-weight: bold;
-    padding-left: 1.6rem;
     margin-bottom: 1rem;
     color: #26354b;
 }
@@ -442,7 +441,7 @@ p#popular-style-desc {
 	    font-size:1.6rem;
 	}
 img#banner-text {
-    width: 80%;
+    width: 75%;
 }
 
 .popular-desc-wrapper {
@@ -450,4 +449,7 @@ img#banner-text {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+}
+p#txt-ranking-des {
+    margin-left: 1.6rem;
 }

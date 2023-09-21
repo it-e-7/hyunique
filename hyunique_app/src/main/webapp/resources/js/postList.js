@@ -15,6 +15,9 @@ $(document).ready(function() {
       behavior: 'smooth'
     });
   }, 3000);
+  $('.btn-grad').on('click', function() {
+	    window.location.href = "/login";
+	  });
 });
 
 //추천, 스타일링 버튼을 클릭했을 때 작동

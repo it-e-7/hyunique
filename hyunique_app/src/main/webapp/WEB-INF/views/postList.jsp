@@ -56,7 +56,7 @@
 			hyunique 최고의 패셔니스타를 확인해보세요 🎉
 		</div>
 		<div class="category-description" id="rank-category-desc">
-			*지난분기 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
+			* 지난 한 주 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
 		</div>
 		<div class="ranking-section">
 			<div class="ranking-user-wrapper" id="rank-2nd">
@@ -269,15 +269,15 @@
         </div>
     </div>
    	 	<div class="recommend-description" data-aos="fade-left" id="recommend-description">
-			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요</p>
 			<lord-icon
 				class="lord-star"
 			    src="https://cdn.lordicon.com/gbtkzxxm.json"
 			    trigger="loop"
 			    delay="1000"
 			    colors="primary:#ffc738"
-			    style="width:4.3rem;height:4.3rem">
+			    style="width:4rem;height:4rem">
 			</lord-icon>
+			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요🔎</p>
 		</div>
    	 	<div class="ranking-description" id="ranking-description">
 			<lord-icon
