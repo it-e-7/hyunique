@@ -57,7 +57,7 @@
 		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
 		WHERE t.product_id = #{productId}
 		ORDER BY post_id
-		OFFSET #{offset} ROWS FETCH FIRST 3 ROWS ONLY
+		OFFSET #{offset} ROWS FETCH NEXT 12 ROWS ONLY
 	</select>
 
 	<select id="selectSearchProductList" parameterType="String" resultType="PostProductVO">

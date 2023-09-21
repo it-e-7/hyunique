@@ -64,3 +64,27 @@
 	width: 100%;
 	cursor: pointer;
 }
+
+.description-wrapper {
+	padding: 0 1.5rem;
+	margin: 0 0 0.5rem 0;
+}
+
+.brand {
+	font-size: 1.3rem;
+	font-weight: 550;
+	color: var(--jw-blue);
+}
+
+.brand-title {
+	font-size: 1.3rem;
+	font-weight: 550;
+}
+
+.description {
+	color: var(--grey5);
+}
+
+#hyunique-main-top-logo {
+	margin-bottom: 0px;
+}

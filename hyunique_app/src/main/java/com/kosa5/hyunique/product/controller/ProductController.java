@@ -46,7 +46,7 @@ public class ProductController {
 	@GetMapping("style/post")
 	@ResponseBody
 	public List<PostThumbnailVO> getProductPost(@RequestParam("productId") String productId, @RequestParam("page") int page) {
-		return productService.getProductStyleById(productId, (page - 1) * 3);
+		return productService.getProductStyleById(productId, (page - 1) * 12);
 	}
 
 	@GetMapping("/search/{productName}")
