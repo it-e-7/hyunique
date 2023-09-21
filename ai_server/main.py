@@ -9,6 +9,11 @@ from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_i
 import numpy as np
 from PIL import Image
 import io
+import base64
+from pydantic import BaseModel
+
+class base64Image(BaseModel):
+    image: str
 
 app = FastAPI()
 
@@ -24,7 +29,7 @@ def extract_features(img):
     return features
 
 def predict_idx(feature):
-    knn = NearestNeighbors(n_neighbors=10)
+    knn = NearestNeighbors(n_neighbors=6)
     knn.fit(feature_list)
 
     predict = knn.kneighbors(feature.reshape(1, -1), return_distance=False)
@@ -39,7 +44,8 @@ def preprocessing(bin):
     return image
 
 @app.post("/img-search")
-def aiSearch(file: Annotated[bytes, File()]):
+def aiSearch(base64img: base64Image):
+  file = base64.b64decode(base64img.image)
   img = preprocessing(file)
   feature = extract_features(img)
   predict = predict_idx(feature)

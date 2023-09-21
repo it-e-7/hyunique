@@ -83,5 +83,14 @@
 	<select id="selectProductColor" parameterType="String" resultType="String">
 		SELECT PRODUCT_COLOR FROM PRODUCT_COLOR WHERE PRODUCT_ID = #{productId}
 	</select>
+	
+	<select id="selectProductByIdList" parameterType="list" resultType="PostProductVO">
+		SELECT *
+		FROM HY_PRODUCT
+		WHERE PRODUCT_ID IN 
+		<foreach collection="list" item="code" index="index" separator="," open="(" close=")">
+        #{code}
+     	</foreach>
+	</select>
 
 </mapper>  
