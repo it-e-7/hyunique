@@ -1,6 +1,8 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
-const userIdFromModel = document.getElementById('user-id').value;
+if($('#user-id').length>0){
+	const userIdFromModel = document.getElementById('user-id').value;
+}
 
 let isFollowing = null;
 let userImg;
@@ -53,7 +55,9 @@ $(document).ready(function() {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	  userPostList(userIdFromModel);
+	  if($('#user-id').length>0){
+		  	userPostList(userIdFromModel);
+		}
 });
 
 document.getElementById('updateLink').addEventListener('click', function(e) {
@@ -171,8 +175,11 @@ function updateUser() {
         contentType: 'application/json',
         data: JSON.stringify(requestData),
         success: function (response) {
-            alert('업데이트 성공!');
-            window.location.replace('/');
+            //alert('업데이트 성공');
+        	toastr.success('성공적으로 회원 정보 수정을 완료했습니다.');
+        	setTimeout(function(){
+            	window.location.replace('/');
+        	}, 1000);
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
