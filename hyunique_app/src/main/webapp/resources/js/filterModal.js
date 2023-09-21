@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     $("#photo-gallery").append(data);
                     //추가적으로 순위를 넣기
                     var element = $(".selected").attr("id");
-                    console.log(element);
                     if (element == "style-ranking"){
                         var photoElements = $("#photo-gallery .photo:lt(20)");
                                             photoElements.each(function(index) {

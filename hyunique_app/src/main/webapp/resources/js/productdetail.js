@@ -14,7 +14,7 @@ $('.select-depart').scroll((e) => {
 	$(`#card-list-${nextDisplayId}`).css('display', 'flex');
 	
 	presentDisplayId = nextDisplayId;
-	console.log(presentDisplayId);
+	console.error(presentDisplayId);
 	
 	setTimeout(() => {
 		scrollLock = false;

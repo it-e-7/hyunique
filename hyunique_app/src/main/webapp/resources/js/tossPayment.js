@@ -39,7 +39,6 @@ let orderList = [];
 productListElements.forEach(productElement => {
    //현재는 테스트를 위하여 체크되지 않은 이미지를 전송합니다. 이후에는 수정해주세요
   const imageSource = productElement.querySelector('img[src="/resources/img/ic-bag-non-check.png"]').getAttribute('src');
-  console.log(imageSource);
   if (imageSource == '/resources/img/ic-bag-non-check.png') {
     const productWrapper = productElement.querySelector('#product-only-wrapper');
     productWrapper.getAttribute("onclick");
@@ -56,10 +55,6 @@ $.ajax({
         data: JSON.stringify(orderList),
         success: function (response) {
             paymentToss(response.apiKey,response.totalPrice,response.userId,response.url);
-            console.log("apiKey : "+response.apiKey);
-            console.log("totalPrice : "+response.totalPrice);
-            console.log("userId : "+response.userId);
-            console.log("url : "+response.url);
         },
         error: function (response) {
             console.log('결제 실패. 다시 시도해주세요');

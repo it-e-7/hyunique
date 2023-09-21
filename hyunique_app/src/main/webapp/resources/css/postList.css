@@ -65,15 +65,15 @@
 }
 
 .ranking1{
-    background-color: rgb(239, 139, 117);
+    background-color: rgb(253,204,63);
 }
 
 .ranking2{
-    background-color: rgb(168, 226, 236);
+    background-color: rgb(204,204,204);
 }
 
 .ranking3{
-    background-color: rgb(66, 138, 245);
+    background-color: rgb(184,95,63);
 }
 
 .photo img{
@@ -230,7 +230,7 @@
 #popular-style {
     display: flex;
     margin-left: 5%;
-    font-size: 30px;
+    font-size: 20px;
     height: 60px;
     font-weight: bold;
     align-items: center;
