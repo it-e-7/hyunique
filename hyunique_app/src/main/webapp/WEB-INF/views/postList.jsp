@@ -332,7 +332,7 @@
     delay="1500"
     colors="primary:#ffffff"
     state="hover-2"
-    style="width:52px;height:52px">
+    style="width:40px;height:40px">
 </lord-icon>
 </div>
 </body>

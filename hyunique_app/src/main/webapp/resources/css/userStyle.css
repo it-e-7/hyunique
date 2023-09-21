@@ -305,8 +305,7 @@ body{
     position: fixed;
     width: 78px;
     height: 78px;
-    background: rgb(212 233 255 / 38%);
-    border: 1px rgb(255 255 255 / 19%) solid;
+	background: #111111;
     backdrop-filter: blur(10px);
     border-radius: 5rem;
     align-items: center;
