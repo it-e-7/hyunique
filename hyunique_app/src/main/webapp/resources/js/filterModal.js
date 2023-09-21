@@ -85,6 +85,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 data: formData,
                 success: function(data) {
                     $("#photo-gallery").append(data);
+                    //추가적으로 순위를 넣기
+                    var element = $(".selected").attr("id");
+                    console.log(element);
+                    if (element == "style-ranking"){
+                        var photoElements = $("#photo-gallery .photo:lt(20)");
+                                            photoElements.each(function(index) {
+                                                var newDiv = `
+                                                    <div class="ranking-box">
+                                                        <div class="ranking">${index + 1}</div>
+                                                    </div>
+                                                `;
+                                                $(this).append(newDiv);
+                                            });
+                    }
                     currentPage++;
                     isLoading = false;
                 }
