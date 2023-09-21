@@ -16,7 +16,14 @@ label{
 	font-size:3rem;
     color:#363636;
 }
-
+.button-wrapper {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 input{
     border-radius: 10rem;
     width: calc(100% - 100px);
@@ -29,6 +36,8 @@ input{
     
 }
 .content-wrapper{
+	position: relative;
+	right: 0;
     display:flex;
     flex-direction:column;
     width:100%;
@@ -56,19 +65,15 @@ input{
     width: calc(100% - 60px);
     height:48px;
     padding:0;
-    position: fixed;
     z-index:1000;
-    bottom: calc(5vh);
     max-width: 700px;
     font-size: 1.2rem;
     font-family: 'Spoqa Han Sans';
 }
-
 .skip-buttons{
-    bottom: calc(2vh);
-    position: fixed;
     font-family: 'Montserrat';
     font-size: 0.9rem;
+    margin-top: 1rem;
 }
 input[type="radio"] {
     display: none;

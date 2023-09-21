@@ -38,8 +38,10 @@
 					<input id="userNickname" type="text" name="userNickname"
 						value="${user.userNickname}" placeholder="다른 사람에게 보여질 이름이에요" required>
 				</div>
-	   			<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+					<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
+					<div class="skip-buttons">나중에 입력할게요</div>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-usersex">
@@ -56,8 +58,10 @@
 				        <input type="radio" name="userSex" value="N" id="preferNotToSay"><label for="preferNotToSay">알리지 않음</label>
 				    </div>
 				</div>
-	     		<button class="btn-next jw-btn-radius" id="finish-usersex">키 입력하러 가기</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		     		<button class="btn-next jw-btn-radius" id="finish-usersex">키 입력하러 가기</button>
+					<div class="skip-buttons">나중에 입력할게요</div>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-userheight">
@@ -71,8 +75,10 @@
 					<input id="userHeight" type="number" name=userHeight
 						value="${user.userHeight}" placeholder="키(신장)를 입력해주세요">
 				</div>
-	     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
+					<div class="skip-buttons">나중에 입력할게요</div>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-userprefer">
@@ -98,8 +104,10 @@
 				        <input type="checkbox" name="userPrefer" value="모던캐주얼" id="32"><label for="32">모던캐주얼</label>
 				    </div>
 				</div>
-	      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
-				<div class="skip-buttons" type="submit">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
+					<div class="skip-buttons" type="submit">나중에 입력할게요</div>
+				</div>
 			</div>
 			<div class="content-wrapper" id="form-finished">
 				<div class="form-label">
