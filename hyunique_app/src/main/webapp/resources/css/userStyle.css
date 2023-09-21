@@ -192,12 +192,12 @@ input[type="checkbox"]:checked + label {
 }
 
 .tab-bar {
-  margin-bottom:0.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  -webkit-padding-start: 0;
+	margin-bottom: 0.35rem;
+  	display: -webkit-box;
+  	display: -ms-flexbox;
+  	display: flex;
+  	list-style-type: none;
+  	-webkit-padding-start: 0;
 }
 .horizontal-bar{
   background-color: var(--grey1);
@@ -408,4 +408,15 @@ body{
 	text-align: center;
     font-family: 'Spoqa Han Sans';
     font-size: 1rem;
+}
+li#tab-2 {
+    width: 302px;
+    font-weight: normal;
+    background-color: rgb(242, 242, 242);
+}
+
+li#tab-1 {
+    width: 302px;
+    font-weight: bold;
+    background-color: transparent;
 }

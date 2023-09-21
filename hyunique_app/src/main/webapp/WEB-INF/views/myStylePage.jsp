@@ -133,8 +133,8 @@
 	
 	<div class="horizontal-bar"> </div>
 	<ul class="tab-bar">
-	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
-	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" onclick="filterProducts('allList')">옷장</li>
+	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1" id="tab-1">스타일링</li>
+	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" id="tab-2" onclick="filterProducts('allList')">옷장</li>
 	    <div class="indicator"></div>
 	</ul>
 
