@@ -471,6 +471,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // 다른 체크박스 id들을 여기에 추가
       ];
 
+      //라벨과 체크박스 사이를 클릭해도 체크박스가 클릭됨.
+        var labelDivs = document.querySelectorAll('#select-type-button');
+        labelDivs.forEach(function(div) {
+            div.addEventListener('click', function(event) {
+                var checkbox = div.querySelector('input[type="checkbox"]');
+                var label = div.querySelector('label');
+                if (checkbox && (event.target !== checkbox && event.target !== label)) {
+                           checkbox.click();
+                       }
+            });
+        });
+
       checkboxIds.forEach(function (checkboxId) {
         const checkbox = document.getElementById(checkboxId);
         const label = document.querySelector('label[for="' + checkboxId + '"]');
