@@ -187,11 +187,14 @@
 
 #popular-style {
     display: flex;
-    margin-left: 5%;
     font-size: 30px;
     height: 60px;
     font-weight: bold;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+    text-indent: 1.6rem;
+    margin-bottom: 6rem;
+    margin-top: 1rem;
 }
 
 @media screen and (max-width: 700px) {
@@ -366,8 +369,8 @@ img#rank-1st-img {
     font-family: 'Noto Sans KR';
     font-size: 1.2rem;
     font-weight: 600;
-    padding-top: 1.5rem;
-    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
 }
 .category-description {
     margin-left: 2rem;
@@ -406,4 +409,59 @@ div#up-button {
     drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
     drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
     drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+p#txt-ranking-des {
+    font-size: 2rem;
+}
+
+p.txt-rec-des-sub {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: gray;
+    margin-left: 1.6rem;
+    margin-top: -1rem;
+}
+lord-icon#rank-icon {
+    margin-left: 0.5rem;
+    margin-top: -0.7rem;
+    margin-right: -1.5rem;
+}
+div#ranking-header-txt {
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    padding-top: 1.5rem;
+}
+         
+.btn-grad {
+   background-image: linear-gradient(to right, #FEAC5E 0%, #C779D0  51%, #FEAC5E  100%);
+   text-align: start;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;
+   box-shadow: 0 0 20px #eee;
+   display: flex;
+   width: 100%;
+   font-size: 1.4rem;
+   font-weight: 500;
+   font-family: 'Noto Sans KR';
+   padding: 1rem 0;
+   text-indent: 1.6rem;
+   margin-top: 1rem;
+}
+
+.btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+}
+p#popular-style-desc-sub {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+img#popular-app-icon {
+    width: 4rem;
+    margin-left: 1.6rem;
 }

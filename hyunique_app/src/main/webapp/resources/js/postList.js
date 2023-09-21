@@ -36,12 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (button.textContent.trim() === '스타일랭킹') {
           banner.style.display = 'none'; // 배너 숨기기
           document.getElementById("ranking-wrapper").style.display = 'flex';
+          document.getElementById("ranking-description").style.display = 'flex';
           document.getElementById("recommend-description").style.display = 'none';
         } else {
           banner.style.display = 'flex'; // 배너 보이기
           document.getElementById("ranking-wrapper").style.display = 'none';
+          document.getElementById("ranking-description").style.display = 'none';
           document.getElementById("recommend-description").style.display = 'flex';
         }
+      if (button.textContent.trim() === '팔로우') {
+    	  banner.style.display = 'none'; // 배너 숨기기
+    	  document.getElementById("ranking-wrapper").style.display = 'none';
+    	  document.getElementById("ranking-description").style.display = 'none';
+    	  document.getElementById("recommend-description").style.display = 'none';
+      }
       
       
       const filterElement = $('#hyunique-main-top-filter');

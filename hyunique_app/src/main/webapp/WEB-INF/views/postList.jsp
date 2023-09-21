@@ -26,9 +26,16 @@
           <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
     </div>
     <c:if test="${empty userId}">
-        <div id="popular-style">
-            인기있는 스타일
-        </div>
+	    	<div id="popular-style">
+	            인기있는 스타일
+	            <div class="btn-grad">
+	            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
+	            	<div class="popular-desc-wrapper">
+		            	<p id="popular-style-desc">팔로우 한 번으로 당신이 원하는 스타일을 마음껏 누려보세요!</p>
+						<p id="popular-style-desc-sub">5초만에 가입해서 팔로우 하러 가기</p>
+	            	</div>
+	            </div>
+	        </div>
     </c:if>
     <c:if test="${not empty userId}">
         <c:if test="${followerCount eq 0}">
@@ -44,7 +51,7 @@
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
 	</div>
 	<div id="ranking-wrapper">
-		<div class="ranking-description">
+		<div class="ranking-description" id="ranking-header-txt">
 			hyunique 최고의 패셔니스타를 확인해보세요
 		</div>
 		<div class="category-description" id="rank-category-desc">
@@ -260,7 +267,7 @@
             </div>
         </div>
     </div>
-   	 	<div class="recommend-description" id="recommend-description">
+   	 	<div class="recommend-description" data-aos="fade-left" id="recommend-description">
 			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요</p>
 			<lord-icon
 				class="lord-star"
@@ -270,6 +277,20 @@
 			    colors="primary:#ffc738"
 			    style="width:4.3rem;height:4.3rem">
 			</lord-icon>
+		</div>
+   	 	<div class="ranking-description" id="ranking-description">
+			<lord-icon
+				id="rank-icon"
+			    src="https://cdn.lordicon.com/oegrrprk.json"
+			    trigger="loop"
+			    delay="1500"
+			    colors="primary:#3080e8,secondary:#a866ee,tertiary:#848484,quaternary:#121331"
+			    style="width:6rem;height:6rem">
+			</lord-icon>
+			<div class="p-tag-wrapper">
+				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
+				<p class="txt-rec-des-sub">지금 가장 인기있는 스타일을 확인해보세요</p>
+			</div>
 		</div>
         <div id="infinite-scroll">
             <div id="photo-gallery">
