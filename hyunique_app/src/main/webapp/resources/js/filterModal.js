@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             photoElements.each(function(index) {
                                                 var newDiv = `
                                                     <div class="ranking-box">
-                                                        <div class="ranking">${index + 1}</div>
+                                                        <div class="ranking ranking${index + 1}">${index + 1}</div>
                                                     </div>
                                                 `;
                                                 $(this).append(newDiv);

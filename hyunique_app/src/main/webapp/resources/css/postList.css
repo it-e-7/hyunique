@@ -65,6 +65,18 @@
     border-radius: 4px;
 }
 
+.ranking1{
+    background-color: rgb(239, 139, 117);
+}
+
+.ranking2{
+    background-color: rgb(168, 226, 236);
+}
+
+.ranking3{
+    background-color: rgb(66, 138, 245);
+}
+
 .photo img{
     max-width: 100%;
     min-width: 100%;
