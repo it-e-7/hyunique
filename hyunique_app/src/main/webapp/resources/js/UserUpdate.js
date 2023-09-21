@@ -191,12 +191,11 @@ function userPostList(userId) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
 	      thumbnailsDiv.attr('data-aos', 'zoom-in-up');
-
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
 	    	    class: 'thumbnail-image',
-	            'data-aos': 'zoom-in-up', 
+	            'data-aos': 'zoom-in-up',
 	            });
 
 	    	  var postLink = $('<a/>', {

@@ -260,16 +260,19 @@
             </div>
         </div>
     </div>
-   	 	<div class="recommend-description">
-			선택한 스타일링의 <br>다양한 사진을 찾아보세요 &#10024;
+   	 	<div class="recommend-description" id="recommend-description">
+			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요</p>
+			<lord-icon
+				class="lord-star"
+			    src="https://cdn.lordicon.com/gbtkzxxm.json"
+			    trigger="loop"
+			    delay="1000"
+			    colors="primary:#ffc738"
+			    style="width:4.3rem;height:4.3rem">
+			</lord-icon>
 		</div>
         <div id="infinite-scroll">
             <div id="photo-gallery">
-                <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
-                     <div class="photo" onclick="moveToPost('${post.postId}')">
-                         <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
-                     </div>
-                     </c:forEach> --%>
             </div>
         </div>
             <c:if test="${empty userId}">
@@ -288,7 +291,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
         <script src="/resources/js/filterModal.js"></script>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<script>
 			AOS.init();
 		</script>	

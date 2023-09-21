@@ -1,3 +1,6 @@
+@import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 #main-wrapper {
     margin : 0 auto;
 }
@@ -378,13 +381,18 @@ div#ranking-wrapper {
     padding-bottom: 1rem;
 }
 .recommend-description {
+	display:flex;
+	flex-direction:row;
+	width:100%;
+}
+p.txt-rec-des {
     font-size: 1.4rem;
-    font-family: 'Noto Sans KR';
+    font-family: 'Spoqa Han Sans';
     font-weight: 600;
-    letter-spacing: -1px;
     padding-left: 1.6rem;
-    /* border-top: 5px solid lightgray; */
     margin-bottom: 1rem;
-    margin-top: 1rem;
     color: #252525;
+}
+lord-icon.lord-star {
+    margin-left: 1rem;
 }

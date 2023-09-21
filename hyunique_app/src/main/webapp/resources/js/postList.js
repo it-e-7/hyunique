@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (button.textContent.trim() === '스타일랭킹') {
           banner.style.display = 'none'; // 배너 숨기기
           document.getElementById("ranking-wrapper").style.display = 'flex';
+          document.getElementById("recommend-description").style.display = 'none';
         } else {
           banner.style.display = 'flex'; // 배너 보이기
           document.getElementById("ranking-wrapper").style.display = 'none';
+          document.getElementById("recommend-description").style.display = 'flex';
         }
       
       
@@ -131,3 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToTop() {
       window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
   }
+  

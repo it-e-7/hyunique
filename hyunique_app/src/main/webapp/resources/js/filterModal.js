@@ -84,7 +84,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 type: "GET",
                 data: formData,
                 success: function(data) {
-                    $("#photo-gallery").append(data);
+                    //$("#photo-gallery").append(data);
+                	   var $data = $(data);
+                       $data.attr('data-aos', 'zoom-in-up');
+
+                       // DOM에 추가
+                       $("#photo-gallery").append($data);
                     currentPage++;
                     isLoading = false;
                 }
