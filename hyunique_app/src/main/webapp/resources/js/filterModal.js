@@ -430,6 +430,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('retroCheckbox').checked = false;
                     document.getElementById('lovelyCheckbox').checked = false;
                     document.getElementById('moderncasualCheckbox').checked = false;
+
+                    //글씨 색 초기화
+                    var selectButtons = document.querySelectorAll("#select-type-button");
+                    selectButtons.forEach(function(button) {
+                    let label = button.querySelector('label')
+                        label.style.color = 'rgb(165, 165, 165)';
+                    });
+
                 }
 
 
