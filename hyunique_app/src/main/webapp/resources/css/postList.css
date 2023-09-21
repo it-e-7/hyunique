@@ -227,27 +227,26 @@ width: 30%;
     height: auto;
 }
 
+
 #bottom-login-message {
     text-align: center;
+    font-weight: 500;
+    color: gray;
 }
 
 #login-block {
     display: flex;
-    min-height: 48px;
-    max-height: 52px;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
     color: rgb(255, 255, 255);
-    animation-timeline: auto;
-    animation-range-start: normal;
-    animation-range-end: normal;
+    height: 2rem;
     font-size: 15px;
     font-weight: 700;
     padding: 12px 24px;
     border-radius: var(--border-radius-8,8px);
-    background: linear-gradient(90deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    background: linear-gradient(135deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
     animation: 2s ease 0s infinite alternate none running kcinZC;
 }
 
@@ -395,4 +394,16 @@ p.txt-rec-des {
 }
 lord-icon.lord-star {
     margin-left: 1rem;
+}
+
+div#up-button {
+	display: none;
+    position: fixed;
+    bottom: 180px;
+    right: 40px;
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
 }

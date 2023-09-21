@@ -1,9 +1,9 @@
+
 $(document).ready(function() {
   let currentIndex = 0;
   const banner = document.getElementById("banner");
   const images = banner.querySelectorAll("img");
   const imageCount = images.length;
-
   const scrollInterval = setInterval(function() {
     currentIndex++;
     if (currentIndex >= imageCount) {
@@ -133,4 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToTop() {
       window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
   }
-  
+
+  window.onscroll = function() {
+	  scrollFunction();
+	};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		  document.getElementById("up-button").style.display = "flex";
+	  } else {
+		  document.getElementById("up-button").style.display = "none";
+	  }
+	}

@@ -300,8 +300,18 @@
 </div>
 <div id="qr-button">
     <a href="/post/getQRPage">
-        <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
+        <img src="/resources/img/qr.png"  data-aos="fade-up-left" id="qr-img" alt="QR 코드">
     </a>
+</div>
+<div id="up-button" onclick="scrollToTop()">
+  <lord-icon
+    src="https://cdn.lordicon.com/xdakhdsq.json"
+    trigger="loop"
+    delay="1500"
+    colors="primary:#ffffff"
+    state="hover-2"
+    style="width:52px;height:52px">
+</lord-icon>
 </div>
 </body>
 </html>
