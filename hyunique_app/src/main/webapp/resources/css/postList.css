@@ -1,5 +1,3 @@
-@import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 #main-wrapper {
     margin : 0 auto;
@@ -53,36 +51,15 @@
 }
 
 #hyunique-main-top-recommend {
-  display: flex;
-  margin-left: 22px;
-  font-size: 26px;
-  font-weight: bold;
-  color : #BBBBBB;
-  border-bottom: 1px solid rgb(244, 244, 244);
+   display: flex;
+   margin-left: 22px;
+   font-size: 18px;
+   font-weight: bold;
+   color : #BBBBBB;
 }
 
 #hyunique-main-top-recommend .button {
   cursor: pointer;
-  margin-right: 30px;
-  text-decoration: none;
-  padding-bottom: 13px;
-  border-bottom: 4px solid transparent; /* 밑줄 추가 */
-  color: #BBBBBB;
-  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
-}
-
-@media screen and (max-width: 700px) {
-  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
-  #hyunique-main-top-recommend {
-    display: flex;
-    margin-left: 5%;
-    font-size: 18px;
-    font-weight: bold;
-    color : #BBBBBB;
-  }
-
-  #hyunique-main-top-recommend .button {
-    cursor: pointer;
     margin-right: 15px;
     text-decoration: none;
     text-decoration: none;
@@ -90,7 +67,6 @@
     border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
     color: #BBBBBB;
     transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
-    }
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -187,25 +163,15 @@
 
 #popular-style {
     display: flex;
-    font-size: 30px;
+    font-size: 2rem;
     height: 60px;
     font-weight: bold;
     align-items: flex-start;
     flex-direction: column;
     text-indent: 1.6rem;
-    margin-bottom: 6rem;
+    margin-bottom: 11%;
     margin-top: 1rem;
-}
-
-@media screen and (max-width: 700px) {
-    #popular-style {
-        display: flex;
-        margin-left: 5%;
-        font-size: 21px;
-        height: 40px;
-        font-weight: bold;
-        align-items: center;
-}
+    font-family: 'Tossface'
 }
 
 #bottom-for-login {
@@ -366,7 +332,7 @@ img#rank-1st-img {
     height: 8rem;
 }
 .ranking-description {
-    font-family: 'Noto Sans KR';
+   font-family: 'Tossface';
     font-size: 1.2rem;
     font-weight: 600;
     display: flex;
@@ -388,12 +354,12 @@ div#ranking-wrapper {
 	width:100%;
 }
 p.txt-rec-des {
-    font-size: 1.4rem;
-    font-family: 'Spoqa Han Sans';
-    font-weight: 600;
+     font-size: 1.4rem;
+    font-family: 'Tossface';
+    font-weight: bold;
     padding-left: 1.6rem;
     margin-bottom: 1rem;
-    color: #252525;
+    color: #26354b;
 }
 lord-icon.lord-star {
     margin-left: 1rem;
@@ -429,8 +395,9 @@ lord-icon#rank-icon {
 }
 div#ranking-header-txt {
     margin-left: 2rem;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     padding-top: 1.5rem;
+    font-weight: bold;
 }
          
 .btn-grad {
@@ -445,9 +412,10 @@ div#ranking-header-txt {
    font-size: 1.4rem;
    font-weight: 500;
    font-family: 'Noto Sans KR';
-   padding: 1rem 0;
+   padding: 0.6rem 0;
    text-indent: 1.6rem;
    margin-top: 1rem;
+   align-items: center;
 }
 
 .btn-grad:hover {
@@ -462,6 +430,24 @@ p#popular-style-desc-sub {
 
 
 img#popular-app-icon {
-    width: 4rem;
+    width: 6.5%;
+    height: auto;
     margin-left: 1.6rem;
+}
+p#popular-style-desc {
+	    min-width: 518px;
+	    overflow: hiddlen;
+	    white-space: nowrap;
+	    display: inline;
+	    font-size:1.6rem;
+	}
+img#banner-text {
+    width: 80%;
+}
+
+.popular-desc-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }

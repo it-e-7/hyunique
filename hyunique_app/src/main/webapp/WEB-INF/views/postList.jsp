@@ -27,13 +27,14 @@
     </div>
     <c:if test="${empty userId}">
 	    	<div id="popular-style">
-	            인기있는 스타일
+	            실시간 인기 스타일🔥
 	            <div class="btn-grad">
 	            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
 	            	<div class="popular-desc-wrapper">
-		            	<p id="popular-style-desc">팔로우 한 번으로 당신이 원하는 스타일을 마음껏 누려보세요!</p>
-						<p id="popular-style-desc-sub">5초만에 가입해서 팔로우 하러 가기</p>
-	            	</div>
+						<!-- <p id="popular-style-desc">팔로우 한 번으로 당신이 원하는 스타일을 마음껏 누려보세요!</p>
+						<p id="popular-style-desc-sub">5초만에 가입해서 팔로우 하러 가기</p> -->
+		            	<img id="banner-text" src="/resources/img/banner-text.png" />
+					</div>
 	            </div>
 	        </div>
     </c:if>
@@ -52,7 +53,7 @@
 	</div>
 	<div id="ranking-wrapper">
 		<div class="ranking-description" id="ranking-header-txt">
-			hyunique 최고의 패셔니스타를 확인해보세요
+			hyunique 최고의 패셔니스타를 확인해보세요 🎉
 		</div>
 		<div class="category-description" id="rank-category-desc">
 			*지난분기 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
@@ -285,10 +286,10 @@
 			    trigger="loop"
 			    delay="1500"
 			    colors="primary:#3080e8,secondary:#a866ee,tertiary:#848484,quaternary:#121331"
-			    style="width:6rem;height:6rem">
+			    style="width:5.5rem;height:5.5rem">
 			</lord-icon>
 			<div class="p-tag-wrapper">
-				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
+				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹📊</p>
 				<p class="txt-rec-des-sub">지금 가장 인기있는 스타일을 확인해보세요</p>
 			</div>
 		</div>

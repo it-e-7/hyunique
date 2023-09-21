@@ -79,6 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
      buttons[0].click();
+     
+     const btnGrad = document.querySelector('.btn-grad');
+     let isHover = false;
+
+     function applyHoverState() {
+       btnGrad.style.backgroundPosition = 'right center';
+       btnGrad.style.color = '#fff';
+     }
+
+     function removeHoverState() {
+       btnGrad.style.backgroundPosition = 'left center';
+       btnGrad.style.color = 'white';
+     }
+
+     setInterval(function() {
+       if (isHover) {
+         removeHoverState();
+       } else {
+         applyHoverState();
+       }
+       isHover = !isHover;
+     }, 2000);
 });
 
   function handleButtonClick(tag) {
