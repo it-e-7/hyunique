@@ -332,7 +332,7 @@ img#rank-1st-img {
     height: 8rem;
 }
 .ranking-description {
-   font-family: 'Tossface';
+    font-family: 'Noto Sans KR';
     font-size: 1.2rem;
     font-weight: 600;
     display: flex;
@@ -354,8 +354,8 @@ div#ranking-wrapper {
 	width:100%;
 }
 p.txt-rec-des {
-     font-size: 1.4rem;
-    font-family: 'Tossface';
+    font-size: 1.4rem;
+    font-family: 'Noto Sans KR';
     font-weight: bold;
     margin-bottom: 1rem;
     color: #26354b;
