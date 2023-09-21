@@ -347,6 +347,7 @@ img#rank-1st-img {
 div#ranking-wrapper {
     background: #f0f0f0;
     padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 .recommend-description {
 	display:flex;

@@ -10,6 +10,7 @@
 <script src="/resources/js/onboarding.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/onboarding.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 	<div class="header-wrapper">
@@ -110,6 +111,9 @@
 			</div>
 		</div>
 	</div>
-
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 </body>
 </html>

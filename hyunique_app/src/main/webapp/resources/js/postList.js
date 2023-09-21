@@ -41,12 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
           document.getElementById("recommend-description").style.display = 'none';
-        } else {
+          const filterElement = $('#hyunique-main-top-filter');
+          filterElement.hide();
+          } 
+      else {
           banner.style.display = 'flex'; // 배너 보이기
           document.getElementById("ranking-wrapper").style.display = 'none';
           document.getElementById("ranking-description").style.display = 'none';
           document.getElementById("recommend-description").style.display = 'flex';
-        }
+          const filterElement = $('#hyunique-main-top-filter');
+          filterElement.show();
+          }
       if (button.textContent.trim() === '팔로우') {
     	  banner.style.display = 'none'; // 배너 숨기기
     	  document.getElementById("ranking-wrapper").style.display = 'none';
@@ -59,20 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const popularStyle = $('#popular-style');
       //팔로우가 아니라면 필터 보이게 처리
       if(button.textContent.trim()==='팔로우'){
-        filterElement.hide();
         popularStyle.show();
       }
       else{
-        filterElement.show();
         popularStyle.hide();
       }
 
      if(button.textContent.trim()==='AI추천'){
-       filterElement.hide();
        document.getElementById("recommend").click();
-     }
-     else{
-       filterElement.show();
      }
       document.getElementById("applyFilter").click();
     });

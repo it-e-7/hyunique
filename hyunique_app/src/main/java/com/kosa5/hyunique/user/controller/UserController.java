@@ -159,4 +159,9 @@ public class UserController {
 	public String onboarding() {
 	    return "useronboarding";
 	}
+//	@Auth
+	@PostMapping("onboarding1")
+	public String onboarding1() {
+		return "useronboarding";
+	}
 }
