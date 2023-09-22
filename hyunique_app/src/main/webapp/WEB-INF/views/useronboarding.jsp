@@ -40,7 +40,6 @@
 				</div>
 				<div class="button-wrapper">
 					<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
-					<div class="skip-buttons">나중에 입력할게요</div>
 				</div>
 			</div>
 			
@@ -60,7 +59,7 @@
 				</div>
 				<div class="button-wrapper">
 		     		<button class="btn-next jw-btn-radius" id="finish-usersex">키 입력하러 가기</button>
-					<div class="skip-buttons">나중에 입력할게요</div>
+					<div class="skip-buttons" id="usersex-skip">나중에 입력할게요</div>
 				</div>
 			</div>
 			
@@ -77,7 +76,7 @@
 				</div>
 				<div class="button-wrapper">
 		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
-					<div class="skip-buttons">나중에 입력할게요</div>
+					<div class="skip-buttons" id="userheight-skip">나중에 입력할게요</div>
 				</div>
 			</div>
 			
@@ -106,7 +105,7 @@
 				</div>
 				<div class="button-wrapper">
 		      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
-					<div class="skip-buttons" type="submit">나중에 입력할게요</div>
+					<div class="skip-buttons" type="submit" id="userprefer-skip">나중에 입력할게요</div>
 				</div>
 			</div>
 			<div class="content-wrapper" id="form-finished">

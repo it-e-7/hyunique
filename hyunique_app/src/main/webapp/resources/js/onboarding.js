@@ -1,17 +1,22 @@
 $(document).ready(function() {
-	$("#finish-nickname, #skip-usersex").click(function() {
+	$("#finish-nickname").click(function() {
+		let nickname = $("#userNickname").val();
+	    if (nickname === '') {
+	    	toastr.warning('닉네임을 입력해주세요');
+	    	return;
+	    }
 		$("#form-nickname").hide();
 		$("#form-usersex").css('display', 'flex');
 	});
-	$("#finish-usersex, #skip-usersex").click(function() {
+	$("#finish-usersex, .usersex-skip").click(function() {
 		$("#form-usersex").hide();
 		$("#form-userheight").css('display', 'flex');
 	});
-	$("#finish-userheight, #skip-usersex").click(function() {
+	$("#finish-userheight, #userheight-skip").click(function() {
 		$("#form-userheight").hide();
 		$("#form-userprefer").css('display', 'flex');
 	});
-	$("#finish-userprefer, #skip-usersex").click(function() {
+	$("#finish-userprefer, #userprefer-skip").click(function() {
 		$("#form-userprefer").hide();
 		$("#form-finished").css('display', 'flex');
 	});
