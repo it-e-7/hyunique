@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
@@ -53,5 +54,11 @@ public class ProductServiceImpl implements ProductService {
 		vo.setProductColor(productMapper.selectProductColor(productId));
 
 		return vo;
+	}
+	
+	@Override
+	public List<PostProductVO> getImageSearchProduct(MultipartFile image) {
+		List<PostProductVO> result = searchService.searchByImage(image);
+		return result;
 	}
 }

@@ -57,7 +57,7 @@
 		FROM hy_post p JOIN post_pin t ON p.post_id = t.post_id
 		WHERE t.product_id = #{productId}
 		ORDER BY post_id
-		OFFSET #{offset} ROWS FETCH FIRST 3 ROWS ONLY
+		OFFSET #{offset} ROWS FETCH NEXT 12 ROWS ONLY
 	</select>
 
 	<select id="selectSearchProductList" parameterType="String" resultType="PostProductVO">
@@ -82,6 +82,15 @@
 
 	<select id="selectProductColor" parameterType="String" resultType="String">
 		SELECT PRODUCT_COLOR FROM PRODUCT_COLOR WHERE PRODUCT_ID = #{productId}
+	</select>
+	
+	<select id="selectProductByIdList" parameterType="list" resultType="PostProductVO">
+		SELECT *
+		FROM HY_PRODUCT
+		WHERE PRODUCT_ID IN 
+		<foreach collection="list" item="code" index="index" separator="," open="(" close=")">
+        #{code}
+     	</foreach>
 	</select>
 
 </mapper>  

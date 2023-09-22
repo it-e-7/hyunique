@@ -9,30 +9,37 @@
 <meta charset="UTF-8">
 <title>${product.productName}</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/productstyle.css" />
 
 </head>
 <body>
 	<div id="main-wrapper">
 	<%@ include file="/WEB-INF/views/header.jsp"%>
-		<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
-			<img src="${product.productImg}" />
-			<div>
-				<strong>${product.productBrand}</strong>
-				<p class="product-item-name">${product.productName}</p>
-				<p class="product-item-price">
-					&#8361;
-					<fmt:formatNumber value="${product.productPrice}" pattern="#,###" />
-				</p>
-			</div>
+	</div>
+	
+	<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
+		<img src="${product.productImg}" />
+		<div>
+			<strong>${product.productBrand}</strong>
+			<p class="product-item-name">${product.productName}</p>
+			<p class="product-item-price">
+				&#8361;
+				<fmt:formatNumber value="${product.productPrice}" pattern="#,###" />
+			</p>
 		</div>
 	</div>
+	
+	<div class="description-wrapper">
+		<p class="brand">${product.productBrand}</p>
+		<p class="brand-title"> 어떻게 입을지 고민된다면?</p>
+		<p class="description">hyunique 피플의 스타일 확인하기</p>
+	</div>
+	
 	<div class="content-wrapper">
-		<p>이 아이템을 활용한 다양한 스타일</p>
 		<div class="post-thumbnail-list-wrapper"></div>
 	</div>
 
 </body>
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/productstyle.css" />
 <script src="/resources/js/productstyle.js"></script>
 </html>

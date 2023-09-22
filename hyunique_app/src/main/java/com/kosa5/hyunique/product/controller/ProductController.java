@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
@@ -50,7 +51,7 @@ public class ProductController {
 	@GetMapping("style/post")
 	@ResponseBody
 	public List<PostThumbnailVO> getProductPost(@RequestParam("productId") String productId, @RequestParam("page") int page) {
-		return productService.getProductStyleById(productId, (page - 1) * 3);
+		return productService.getProductStyleById(productId, (page - 1) * 12);
 	}
 
 	@GetMapping("/search/{productName}")
@@ -65,6 +66,12 @@ public class ProductController {
 	public List<PostProductVO> getnSearchProduct(String keyword, int offset) {
 		List<PostProductVO> value = productService.getnSearchProductList(keyword, offset);
 		return value;
+	}
+	
+	@PostMapping("img-search")
+	@ResponseBody
+	public List<PostProductVO> postImageSearchProduct(MultipartFile image) {
+		return productService.getImageSearchProduct(image);
 	}
 	
 	@GetMapping("/inform")
