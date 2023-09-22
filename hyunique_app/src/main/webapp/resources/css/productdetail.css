@@ -80,7 +80,7 @@ ul {
 	flex-direction: row;
 	gap: 0.5rem;
 	overflow: scroll;
-	margin-top: 0.2rem;
+	margin: 0.2rem 1.5rem 0 0;
 }
 
 .stock-card {
@@ -126,7 +126,7 @@ ul {
 }
 
 .product-post-wrapper {
-	margin-bottom: 8rem;
+	margin-bottom: 6rem;
 }
 
 .product-post-wrapper p {
@@ -161,6 +161,7 @@ ul {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 80%;
 }
 
 .buy-btn img {
