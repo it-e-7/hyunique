@@ -30,4 +30,6 @@ public interface PostMapper {
 
     List<TagVO> getTagInform();
 
+    void deleteOnePost(Map<String, Object> post);
+
 }

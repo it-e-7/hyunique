@@ -72,26 +72,34 @@ public class PostController {
         return "posting";
     }
 
+    @Auth
     @PostMapping
     @ResponseBody
     public String handlePostUpload(@RequestParam("files") MultipartFile[] files,
                                    @RequestParam("postingVO") String postingVOJson,
                                    @SessionAttribute int sessionId) throws JsonProcessingException {
 
-        // JSON 문자열을 PostingVO 객체로 변환
         ObjectMapper objectMapper = new ObjectMapper();
         PostingVO posting = objectMapper.readValue(postingVOJson, PostingVO.class);
         posting.getPostVO().setImgFiles(files);
         posting.getPostVO().setUserId(sessionId);
         String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-        log.info("upload state : " + state);
+        log.info("upload {}", state);
 
-        return "ok";
+        return state;
     }
     
     @GetMapping("/tag")
     @ResponseBody
     public List<TagVO> getTagInfo() {
         return postService.getTagInform();
+    }
+
+    @DeleteMapping("/{postId}")
+    @ResponseBody
+    public String handlePostDelete(@PathVariable("postId") int postId) {
+        log.info("delete");
+        String state = postService.deleteOnePost(postId);
+        return state;
     }
 }

@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
+    const viewportHeight = document.documentElement.clientHeight - 50;
+    const viewportWidth = $('body').width();
+    const maxWidth = 760;
+    
 
     function drawLine(begin, end, color) {
         canvas.beginPath();
@@ -16,12 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         canvas.lineWidth = 4;
         canvas.strokeStyle = color;
         canvas.stroke();
-    }
-
-    function drawBorder() {
-        canvas.strokeStyle = "#32517F";
-        canvas.lineWidth = 5;
-        canvas.strokeRect(0, 0, canvasElement.width, canvasElement.height);
     }
 
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function (stream) {
@@ -36,13 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
             loadingMessage.hidden = true;
             canvasElement.hidden = false;
             outputContainer.hidden = false;
-            const minDimension = Math.min(video.videoWidth, video.videoHeight);
+            let minDimension = Math.min(maxWidth, viewportWidth);
+            minDimension = minDimension < viewportHeight ? viewportHeight : minDimension;
             canvasElement.height = minDimension;
             canvasElement.width = minDimension;
             canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-
-            // 테두리 그리기 함수 호출
-            drawBorder();
 
             var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
             var code = jsQR(imageData.data, imageData.width, imageData.height, {

@@ -102,16 +102,23 @@ public class PostServiceImpl implements PostService {
     @Override
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
-        List<String> urls = s3Service.getUploadImgFileURL(postVO.getImgFiles());
-        postVO.setThumbnailUrl(urls.get(0));
+        Map<String, String> keys = s3Service.getUploadImgFileURL(postVO.getImgFiles());
+
+        String thumbnail = keys.keySet().iterator().next();
+        postVO.setThumbnailUrl(keys.get(thumbnail));
 
         Map<String, Object> params = new HashMap<>();
         params.put("postProduct", postProductVO);
         params.put("post", postVO);
-        params.put("imgUrl", urls);
+        params.put("imgUrl", new ArrayList<>(keys.values()));
         params.put("styleId", postVO.getStyleId());
         params.put("state", null);
+
         postMapper.insertOnePost(params);
+
+        if (!params.get("state").toString().equals("success")) {
+            s3Service.deleteImgFile(new ArrayList<>(keys.keySet()));
+        }
 
         return params.get("state").toString();
     }
@@ -120,6 +127,19 @@ public class PostServiceImpl implements PostService {
     public List<TagVO> getTagInform() {
         // TagVO(type, tagId, tagName) 형태
         return postMapper.getTagInform();
+    }
+
+    @Override
+    public String deleteOnePost(int postId) {
+        Map<String, Object> post = new HashMap<>();
+        post.put("postId", postId);
+        post.put("state", "");
+
+        log.info("delete service {}", post);
+
+        postMapper.deleteOnePost(post);
+
+        return post.get("state").toString();
     }
 
 }
