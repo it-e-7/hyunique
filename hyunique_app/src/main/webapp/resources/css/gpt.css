@@ -1,8 +1,6 @@
 #main-wrapper-top{
 	position:fixed;
 	top:0;
-	
-	
 }
 .user-input-section {
     display: flex;
@@ -54,7 +52,7 @@ button .btn-gpt-request {
 .speech-bubble-user {
 	padding-bottom: 0.7rem;
 	padding-top: 0.7rem;
-	padding-right: 1.5rem;
+	padding-right: 1rem;
 	padding-left: 1rem;
 	max-width: 70%;
 	margin-top: 2rem;
@@ -71,9 +69,9 @@ button .btn-gpt-request {
     max-width: 70%;
     margin-top: 1rem;
     position: relative;
-    background: rgb(2 119 189);
+    background-color: rgb(237 240 243);
     border-radius: 1.1rem;
-    color: white;
+    color: black;
     width: fit-content;
 }
 
@@ -98,7 +96,7 @@ button .btn-gpt-request {
     background: none;
     font-size: 1rem;
     font-weight: 500;
-    color: #404040;
+    color: rgb(48 48 48);
     text-align: center;
 }
 .chat-section-wrapper{
@@ -186,14 +184,12 @@ canvas {
 }
 
 .loader {
-  width: var(--size);
   height: var(--size);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 4rem;
 }
 .loader__inner {
   position: absolute;
@@ -234,7 +230,7 @@ canvas {
 .loader-text{
 	font-size: 0.9rem;
 	text-align:center;
-	padding-bottom: 4rem;
+	/* padding-bottom: 4rem; */
 	color: gray;
 	min-height:1.5rem;
 }
@@ -282,7 +278,6 @@ canvas {
 div#bag-check {
     width: 10%;
     height: 10%;
-    z-index:100;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -317,11 +312,12 @@ div#product-only-wrapper {
     display: flex;
     flex-direction: row;
     width: 90%;
+    border-radius: 1rem;
 }
 
 label {width: 24px;height: 24px;}
 
-.purchase-cancel-btn {border: 1px solid;border-radius: 0.7rem;/* max-width: 40%; */width: 180px;text-align: center;background: white;height: 40px;line-height: 2.6;}
+.purchase-cancel-btn {border: 1px solid;border-radius: 0.9rem;/* max-width: 40%; */width: 180px;text-align: center;background: white;height: 40px;line-height: 2.6;}
 
 .purchase-area-wrapper {
     display: flex;
@@ -330,13 +326,13 @@ label {width: 24px;height: 24px;}
     height: 3rem;
     margin-top: 1rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .purchase-accept-btn {
     border: 1px solid;
     /* padding: 0.8rem 3.5rem; */
-    border-radius: 0.7rem;
+    border-radius: 0.9rem;
     /* max-width: 40%; */
     text-align: center;
     background: #3375B8;
@@ -347,5 +343,18 @@ label {width: 24px;height: 24px;}
 }
 
 #dall-e-img img{
-	width:100%;
+	width: 284px;
+	border-radius: 1.1rem;
+	margin-top: 0.3rem;
 }
+.loader-text-wrapper {
+    height: var(--size);
+    margin-top: 2rem;
+}
+
+.loader-wrapper {
+    /* display: flex; */
+    flex-direction: column;
+    height: 9rem;
+}
+

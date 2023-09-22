@@ -18,11 +18,13 @@
 
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
-	<div id= "hyunique-main-top-recommend">
-          <div class="button selected" id="recommend">추천</div>
-          <div class="button" id="style-ranking">스타일랭킹</div>
-          <div class="button" id="following">팔로우</div>
-    </div>
+	 <div id= "hyunique-main-top-recommend">
+	    <div class="button" id="recommend">추천</div>
+	    <div class="button" id="style-ranking">스타일랭킹</div>
+	    <div class="button" id="following">팔로우</div>
+	    <div class="tab-deco">🤖</div>
+	    <div class="button selected" id="AI-recommend">AI추천</div>
+	</div>
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">
 		<!-- gpt 채팅창 전체 -->

@@ -150,10 +150,20 @@ function updateUser() {
     const userPrefer = $('input[name="userPrefer"]:checked').map(function() {
         return $(this).val();
     }).get().join(',');
-    const instagramUrl = $('input[name="instagramUrl"]').val();
-    const twitterUrl = $('input[name="twitterUrl"]').val();
-    const facebookUrl = $('input[name="facebookUrl"]').val();
-
+    let instagramUrl = $('input[name="instagramUrl"]').val();
+    if (instagramUrl && !instagramUrl.startsWith('https://www.instagram.com/')) {
+        instagramUrl = 'https://www.instagram.com/' + instagramUrl;
+    }
+    
+    let twitterUrl = $('input[name="twitterUrl"]').val();
+    if (twitterUrl && !twitterUrl.startsWith('https://www.x.com/')) {
+    	twitterUrl = 'https://www.x.com/' + twitterUrl;
+    }
+    
+    let facebookUrl = $('input[name="facebookUrl"]').val();
+    if (facebookUrl && !facebookUrl.startsWith('https://www.facebook.com/')) {
+    	facebookUrl = 'https://www.facebook.com/' + facebookUrl;
+    }
     const requestData = {
         sessionId,
         userNickname,

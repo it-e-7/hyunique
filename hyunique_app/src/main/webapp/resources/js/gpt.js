@@ -48,7 +48,7 @@ function gptImgRequest(messageFront, messageBack){
             scrollToBottom();  // 이미지 로딩 후 스크롤
           });
           
-          let imgWrapper = $('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span id="dall-e-img"></span></p></div></div>');
+          let imgWrapper = $('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><p><span id="dall-e-img"></span></p></div>');
           imgWrapper.find('span').append(imgElement);
           
           $(".chat-section-wrapper").append(imgWrapper);
@@ -212,7 +212,7 @@ if(!("webkitSpeechRecognition") in window){
     	if (!isAmplified) {
             speech.start();
             siriWave.setAmplitude(2.5);
-            siriWave.setSpeed(0.2);
+            siriWave.setSpeed(0.1);
             isAmplified = true;
         } else {
             speech.stop();
