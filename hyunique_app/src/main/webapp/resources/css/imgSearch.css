@@ -25,3 +25,16 @@
     border: 2px solid red;
     box-shadow: 0 0 0 10000px rgba(0,0,0,0.5);
 }
+
+.handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  cursor: pointer;
+}
+
+#top-left { top: 0; left: 0; }
+#top-right { top: 0; right: 0; }
+#bottom-left { bottom: 0; left: 0; }
+#bottom-right { bottom: 0; right: 0; }

@@ -14,8 +14,7 @@
     <body>
         <div class="show-search-img-result">
           <div class="header"></div>
-          <div class="img-section" id="container">
-          </div>
+          <div class="img-section" id="container"></div>
           <ul class="img-search-list"></ul>
         </div>
     </body>
