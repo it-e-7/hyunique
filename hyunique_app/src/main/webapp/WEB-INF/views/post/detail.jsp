@@ -77,39 +77,41 @@
 			</c:if>
 		</div>
 		<div class="post-content-wrapper">
-			<div class="post-low-btn">
-			<button onclick="likeTogglePost(${postVO.postId})" class="like-btn">
-				<c:choose>
-					<c:when test="${postVO.styleLike == 0}">
-						<img src="/resources/img/ic-like.png"/>
-					</c:when>
-					<c:otherwise>
-						<img src="/resources/img/ic-like-selected.png"/>
-					</c:otherwise>
-				</c:choose>
-			</button>
-				<button onclick="sharePost('${postVO.userNickname}')">
-					<lord-icon
-					    src="https://cdn.lordicon.com/udwhdpod.json"
-					    colors="primary:#121331,secondary:#110a5c"
-					    trigger="loop"
-   						delay="1000"
-					    stroke="100"
-					    style="width:30px;height:30px">
-					</lord-icon>
+			<div>
+				<div class="post-low-btn">
+				<button onclick="likeTogglePost(${postVO.postId})" class="like-btn">
+					<c:choose>
+						<c:when test="${postVO.styleLike == 0}">
+							<img src="/resources/img/ic-like.png"/>
+						</c:when>
+						<c:otherwise>
+							<img src="/resources/img/ic-like-selected.png"/>
+						</c:otherwise>
+					</c:choose>
 				</button>
+					<button onclick="sharePost('${postVO.userNickname}')">
+						<lord-icon
+						    src="https://cdn.lordicon.com/udwhdpod.json"
+						    colors="primary:#121331,secondary:#110a5c"
+						    trigger="loop"
+	   						delay="1000"
+						    stroke="100"
+						    style="width:30px;height:30px">
+						</lord-icon>
+					</button>
+				</div>
+				<p id="like-count-p"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
 			</div>
-			<p id="like-count-p"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
 			<div class="post-content">
 				<p class="post-content-date">
 					<fmt:parseDate var="dateParse" pattern="yyyy-MM-dd HH:mm:ss" value="${postVO.postDate}"/>
 					<fmt:formatDate var="date" pattern="yyyy-MM-dd" value="${dateParse}"/>
 					<c:out value="${date}"/>
 				</p>
-				<span>
+				<p class="post-content-text">
 					<strong>${postVO.userNickname}</strong>
-					<p>${postVO.postContent}</p>
-				</span>
+					${postVO.postContent}
+				</p>
 			</div>
 			<div class="post-product">
 				<p class="post-product-title">착용 제품</p>
