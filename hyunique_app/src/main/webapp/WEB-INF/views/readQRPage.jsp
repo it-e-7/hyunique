@@ -48,8 +48,8 @@
 				</div>
 			</div>
 			<div id="QRScanText">
-                옷 가격표에 있는 <br>
-                QR코드를 스캔해 주세요
+                <strong>스타일피플의 착장 보러가기</strong>
+                <p>옷에 있는 QR코드를 스캔하세요</p>
 			</div>
 		</div>
 	</div>

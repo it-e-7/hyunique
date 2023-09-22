@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
+    const viewportHeight = document.documentElement.clientHeight - 50;
     const viewportWidth = $('body').width();
     const maxWidth = 760;
+    
 
     function drawLine(begin, end, color) {
         canvas.beginPath();
@@ -32,7 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
             loadingMessage.hidden = true;
             canvasElement.hidden = false;
             outputContainer.hidden = false;
-            const minDimension = Math.min(maxWidth, viewportWidth);
+            let minDimension = Math.min(maxWidth, viewportWidth);
+            minDimension = minDimension < viewportHeight ? viewportHeight : minDimension;
             canvasElement.height = minDimension;
             canvasElement.width = minDimension;
             canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
