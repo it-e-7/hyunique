@@ -2,6 +2,8 @@ package com.kosa5.hyunique.product.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +19,13 @@ import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 import com.kosa5.hyunique.product.vo.ProductInformVO;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("product")
 public class ProductController {
 
+	Logger log = LogManager.getLogger("case3");
 	@Autowired
 	ProductService productService;
 	
@@ -71,4 +75,10 @@ public class ProductController {
 
         return vo;
     }
+
+	@GetMapping("/img-search")
+	public String showImageSearchView() {
+		return "imgSearch";
+	}
+
 }
