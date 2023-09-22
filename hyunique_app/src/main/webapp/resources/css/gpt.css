@@ -165,6 +165,7 @@ div#voice-control {
     align-items: center;
 }
 button.btn-gpt-request {
+    width: 100%;
 	background: rgb(80 194 247);
 	min-width: 4rem;
 	text-align: center;
