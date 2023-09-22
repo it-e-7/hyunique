@@ -16,15 +16,10 @@
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 	</div>
 	
-	<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
-		<img src="${product.productImg}" />
-		<div>
-			<strong>${product.productBrand}</strong>
-			<p class="product-item-name">${product.productName}</p>
-			<p class="product-item-price">
-				&#8361;
-				<fmt:formatNumber value="${product.productPrice}" pattern="#,###" />
-			</p>
+	<div class="product-container">
+		<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
+			<img src="${product.productImg}" />
+			<p class="product-item-name-s">${product.productName}</p>
 		</div>
 	</div>
 	
