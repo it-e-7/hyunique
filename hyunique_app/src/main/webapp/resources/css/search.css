@@ -3,7 +3,7 @@
     top: 0; /* 고정시킬 위치를 조절합니다. */
     z-index: 100; /* 다른 내용 위에 표시되도록 z-index를 설정합니다. */
     background-color: white; /* 원하는 배경색을 설정합니다. */
-    padding: 18px 0 10px 0;
+    padding: 0 0 10px 0;
 }
 
 
@@ -17,6 +17,7 @@
     display : flex;
     justify-content: space-between;
     margin-bottom: 14px;
+    padding-top: 18px;
 }
 
 #hyunique-main-top-logo-image >img {
@@ -35,7 +36,7 @@
 }
 
 #hyunique-main-top-buttons >#search-button > img{
-   width: 26px;
+   width: 32px;
 }
 
 #hyunique-main-top-buttons >#my-page-button > img{
@@ -100,7 +101,7 @@
 	position: absolute;
 	right: 16px;
 	top: 50%;
-	width: 26px;
+	width: 32px;
 	transform: translate(0, -50%);
 }
 
