@@ -2,21 +2,17 @@
  * 토스 페이먼츠 결제 함수
  */
 function paymentToss(apiKey,totalPrice,userId,url){
-
     var tossPayments = TossPayments(apiKey); //테스트 클라이언트 키
     var successUrl = url+'/payment/success'; // 결제 성공 시 이동할 페이지
     var failUrl = url+'/payment/fail'; // 결제 실패 시 이동할 페이지
     tossPayments.requestPayment('카드', {
         amount: totalPrice,
-        orderId: 1010101,
+        orderId: 2785164821,
         orderName: "원터치결제",
         customerName : 1212121,
         successUrl: successUrl, // ${결제 성공 후 redirect할 url}
         failUrl:failUrl, //  ${결제 실패한 경우 redirect할 url}
     }).then((res) =>{
-        //여기서 원래
-        paymentSuccess(memberId);
-
 
     }).catch(function (error) {
             if (error.code === 'USER_CANCEL') {
@@ -54,6 +50,9 @@ $.ajax({
         contentType : 'application/json',
         data: JSON.stringify(orderList),
         success: function (response) {
+            //원래는 여기서 결제 내역을 우리 DB에 저장해야 하나, 세션에 저장해서 넘기도록 하겠습니다
+            sessionStorage.setItem('orderList', JSON.stringify(response.productList));
+            console.log("JSON.stringify(response.productList)"+JSON.stringify(response.productList));
             paymentToss(response.apiKey,response.totalPrice,response.userId,response.url);
         },
         error: function (response) {
