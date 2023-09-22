@@ -1,6 +1,8 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
 
+let userIdFromModel =""
+
 let isFollowing = null;
 let userImg;
 let userBackimg;
@@ -11,7 +13,9 @@ $(document).ready(function() {
 	if($('#user-isFollowing').length > 0){
         isFollowing = document.getElementById('user-isFollowing').value;
     }
-
+	if($('#user-id').length>0){
+		userIdFromModel = document.getElementById('user-id').value;
+	}
     // 체크박스와 라벨이 실제로 존재할 때만 실행
     if(checkbox && label) {
         if(isFollowing !== null) {
@@ -52,7 +56,9 @@ $(document).ready(function() {
 	        event.preventDefault(); 
 	        updateUser();
 	    });
-	  userPostList(userId);
+	  if($('#user-id').length>0){
+		  	userPostList(userIdFromModel);
+		}
 });
 
 document.getElementById('updateLink').addEventListener('click', function(e) {
@@ -144,10 +150,20 @@ function updateUser() {
     const userPrefer = $('input[name="userPrefer"]:checked').map(function() {
         return $(this).val();
     }).get().join(',');
-    const instagramUrl = $('input[name="instagramUrl"]').val();
-    const twitterUrl = $('input[name="twitterUrl"]').val();
-    const facebookUrl = $('input[name="facebookUrl"]').val();
-
+    let instagramUrl = $('input[name="instagramUrl"]').val();
+    if (instagramUrl && !instagramUrl.startsWith('https://www.instagram.com/')) {
+        instagramUrl = 'https://www.instagram.com/' + instagramUrl;
+    }
+    
+    let twitterUrl = $('input[name="twitterUrl"]').val();
+    if (twitterUrl && !twitterUrl.startsWith('https://www.x.com/')) {
+    	twitterUrl = 'https://www.x.com/' + twitterUrl;
+    }
+    
+    let facebookUrl = $('input[name="facebookUrl"]').val();
+    if (facebookUrl && !facebookUrl.startsWith('https://www.facebook.com/')) {
+    	facebookUrl = 'https://www.facebook.com/' + facebookUrl;
+    }
     const requestData = {
         sessionId,
         userNickname,
@@ -162,7 +178,6 @@ function updateUser() {
         userImg: userImgData,
         userBackimg: userBackImgData
     };
-    console.log(requestData);
 
     $.ajax({
         url: `/user/updateUser`,
@@ -170,8 +185,10 @@ function updateUser() {
         contentType: 'application/json',
         data: JSON.stringify(requestData),
         success: function (response) {
-            alert('업데이트 성공!');
-            window.location.replace('/');
+        	toastr.success('성공적으로 회원 정보 수정을 완료했습니다.');
+        	setTimeout(function(){
+            	window.location.replace('/');
+        	}, 1000);
         },
         error: function (response) {
             alert('업데이트 실패: 다시 시도해주세요.');
@@ -190,12 +207,11 @@ function userPostList(userId) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
 	      thumbnailsDiv.attr('data-aos', 'zoom-in-up');
-
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
 	    	    class: 'thumbnail-image',
-	            'data-aos': 'zoom-in-up', 
+	            'data-aos': 'zoom-in-up',
 	            });
 
 	    	  var postLink = $('<a/>', {

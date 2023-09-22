@@ -144,12 +144,13 @@ function addCategoryPreviewToAllList(category, productList) {
     
 }
 
-//상품 영역 생성 함수
 function generateProductCard(product) {
-    return `<div class="product-card" onclick="moveToProduct(${product.productId})">
+    const productId = typeof product.productId === 'string' ? `'${product.productId}'` : product.productId;
+
+    return `<div class="product-card" onclick="moveToProduct(${productId})">
                 <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
-                <p id="product-brand">${product.productBrand}</p>
-                <p id="product-name">${product.productName}</p>
-                <p id="product-price">₩${product.productPrice}</p>
+                <p class="product-brand">${product.productBrand}</p>
+                <p class="product-name">${product.productName}</p>
+                <p class="product-price">₩${product.productPrice}</p>
             </div>`;
 }

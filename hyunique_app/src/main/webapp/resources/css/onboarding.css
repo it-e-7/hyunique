@@ -16,7 +16,14 @@ label{
 	font-size:3rem;
     color:#363636;
 }
-
+.button-wrapper {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 input{
     border-radius: 10rem;
     width: calc(100% - 100px);
@@ -24,11 +31,13 @@ input{
     border:none;
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
     height:48px;
-    font-size:1rem;
+    font-size:1.2rem;
     padding: 0 20px;
     
 }
 .content-wrapper{
+	position: relative;
+	right: 0;
     display:flex;
     flex-direction:column;
     width:100%;
@@ -56,19 +65,15 @@ input{
     width: calc(100% - 60px);
     height:48px;
     padding:0;
-    position: fixed;
     z-index:1000;
-    bottom: calc(5vh);
     max-width: 700px;
     font-size: 1.2rem;
     font-family: 'Spoqa Han Sans';
 }
-
 .skip-buttons{
-    bottom: calc(2vh);
-    position: fixed;
     font-family: 'Montserrat';
     font-size: 0.9rem;
+    margin-top: 1rem;
 }
 input[type="radio"] {
     display: none;
@@ -93,8 +98,8 @@ input[type="radio"] + label {
     text-align:center;
     color:var(--grey4);
     font-size:1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
 }
 
 input[type="radio"]:checked + label {

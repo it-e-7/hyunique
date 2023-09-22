@@ -11,11 +11,12 @@
 	<script src="/resources/js/UserUpdate.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/userupdatestyle.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 	<div id="session-info">
 		<input type="hidden" id="session-id" value="${sessionId}">
+		<input type="hidden" id="user-id" value="${user.userId}">
 	</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
@@ -146,6 +147,7 @@
 				</div>
 		</form>
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 	<script>
 		AOS.init();

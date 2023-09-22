@@ -15,4 +15,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/main.css" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css" rel="stylesheet" type="text/css" />
 <script src="/resources/js/common.js"></script>

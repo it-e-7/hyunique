@@ -1,3 +1,4 @@
+
 #main-wrapper {
     margin : 0 auto;
 }
@@ -77,44 +78,25 @@
 }
 
 .photo img{
-    max-width: 100%;
+   max-width: 100%;
     min-width: 100%;
-    display: block; /* 이미지를 가운데 정렬하기 위해 블록 요소로 설정 */
-    margin: 0 auto; /* 이미지를 수평 가운데 정렬 */
-    aspect-ratio: 3 / 4;
+    display: block;
+    margin: 0 auto;
+    aspect-ratio: 0.84/1;
+    object-fit: cover;
+    object-position: center;
 }
 
 #hyunique-main-top-recommend {
-  display: flex;
-  margin-left: 22px;
-  font-size: 26px;
-  font-weight: bold;
-  color : #BBBBBB;
-  border-bottom: 1px solid rgb(244, 244, 244);
+   display: flex;
+   margin-left: 22px;
+   font-size: 1.14rem;
+   font-weight: bold;
+   color : #BBBBBB;
 }
 
 #hyunique-main-top-recommend .button {
   cursor: pointer;
-  margin-right: 30px;
-  text-decoration: none;
-  padding-bottom: 13px;
-  border-bottom: 4px solid transparent; /* 밑줄 추가 */
-  color: #BBBBBB;
-  transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
-}
-
-@media screen and (max-width: 700px) {
-  /* 화면 너비가 768px 이하인 경우에 적용될 스타일 */
-  #hyunique-main-top-recommend {
-    display: flex;
-    margin-left: 5%;
-    font-size: 18px;
-    font-weight: bold;
-    color : #BBBBBB;
-  }
-
-  #hyunique-main-top-recommend .button {
-    cursor: pointer;
     margin-right: 15px;
     text-decoration: none;
     text-decoration: none;
@@ -122,7 +104,6 @@
     border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
     color: #BBBBBB;
     transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
-    }
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -132,25 +113,29 @@
 
 #filterModalButton {
     font-size: 18px;
-    border: 3px solid #E9E9E9;
-    border-radius: 10px;
-    padding: 5px 10px;
-    background-color: transparent; /* 배경색을 투명하게 설정합니다. */
+    border: 1px solid #E9E9E9;
+    border-radius: 6px;
+    padding: 15px;
+    background-color: transparent;
     cursor: pointer;
     white-space: nowrap;
-    margin-right: 15px;
+    margin-right: 8px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 @media screen and (max-width: 700px) {
      #filterModalButton {
-         font-size: 12px;
-         border: 3px solid #E9E9E9;
-         border-radius: 10px;
-         padding: 3px 10px;
-         background-color: transparent; /* 배경색을 투명하게 설정합니다. */
-         cursor: pointer;
-         white-space: nowrap;
-         margin-right: 6px;
+        font-size: 12px;
+	    border: 1px solid #E9E9E9;
+	    border-radius: 10px;
+	    padding: 3px 10px;
+	    background-color: transparent;
+	    cursor: pointer;
+	    white-space: nowrap;
+	    margin-right: 6px;
      }
 }
 
@@ -188,6 +173,7 @@
     justify-content: center;
     align-items: center;
     height: 100%; /* 부모 요소의 높이에 맞게 설정 */
+    font-size: 1rem;
 }
 
 #hyunique-main-top-filter{
@@ -196,55 +182,33 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding : 10px 10px 0 10px;
+    padding: 1rem 1.6rem;
+    height: 32px;
 }
-
 #qr-button {
-    width: 150px;
-    height: 150px;
+    width: 78px;
+    height: 78px;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
 }
 
 #qr-img{
-    width: 150px;
-    height: 150px;
-}
-
-@media screen and (max-width: 700px) {
-#qr-button {
-    width: 100px;
-    height: 100px;
-    position: fixed;
-    bottom: 50px;
-    right: 20px;
-}
-
-#qr-img{
-    width: 100px;
-    height: 100px;
-}
+    width: 78px;
+    height: 78px;
 }
 
 #popular-style {
     display: flex;
-    margin-left: 5%;
-    font-size: 20px;
+    font-size: 2rem;
     height: 60px;
     font-weight: bold;
-    align-items: center;
-}
-
-@media screen and (max-width: 700px) {
-    #popular-style {
-        display: flex;
-        margin-left: 5%;
-        font-size: 21px;
-        height: 40px;
-        font-weight: bold;
-        align-items: center;
-}
+    align-items: flex-start;
+    flex-direction: column;
+    text-indent: 1.6rem;
+    margin-bottom: 11%;
+    margin-top: 1rem;
+    font-family: 'Tossface'
 }
 
 #bottom-for-login {
@@ -269,26 +233,267 @@ width: 30%;
     height: auto;
 }
 
+
 #bottom-login-message {
     text-align: center;
+    font-weight: 500;
+    color: gray;
 }
 
 #login-block {
     display: flex;
-    min-height: 48px;
-    max-height: 52px;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
     color: rgb(255, 255, 255);
-    animation-timeline: auto;
-    animation-range-start: normal;
-    animation-range-end: normal;
+    height: 2rem;
     font-size: 15px;
     font-weight: 700;
     padding: 12px 24px;
     border-radius: var(--border-radius-8,8px);
-    background: linear-gradient(90deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    background: linear-gradient(135deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
     animation: 2s ease 0s infinite alternate none running kcinZC;
+}
+
+div#banner img {
+    width: 100%;
+    scroll-snap-align: start;
+}
+
+div#banner {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    cursor: pointer;
+}
+#ranking-wrapper{
+	display:flex;
+	flex-direction: column;
+	justify-content : center;
+}
+.ranking-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+img.ranking-user-img {
+    width: 5.5rem;
+    height: 5.5rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100rem;
+}
+
+.ranking-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div#rank-2nd {
+    margin-top: 4rem;
+}
+
+div#rank-3rd {
+    margin-top: 4rem;
+}
+
+img#rank-3rd {
+    width: 8rem;
+    height: 8rem;
+}
+
+img#rank-2nd {
+    width: 8rem;
+    height: 8rem;
+}
+
+.user-nickname {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 0.4rem;
+}
+
+.ranking-number {
+    border: 1px solid;
+    border-radius: 100rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    text-align: center;
+    line-height: 1.6rem;
+}
+
+.ranking-wrapper {
+    margin-bottom: -1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 2;
+}
+
+div#\31 st-number {
+    background: rgb(255 133 111);
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+div#\32 nd-number {
+    background: rgb(151 228 238);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+div#\33 rd-number {
+    background: rgb(25 140 253);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+img#rank-1st-img {
+    width: 6rem;
+    height: 6rem;
+}
+.ranking-description {
+    font-family: 'Noto Sans KR';
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+}
+.category-description {
+    margin-left: 1.57rem;
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 0.3rem;
+}
+div#ranking-wrapper {
+    background: #f0f0f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.recommend-description {
+	display:flex;
+	flex-direction:row;
+	width:100%;
+}
+p.txt-rec-des {
+    font-size: 1.3rem;
+    font-family: 'Noto Sans KR';
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #26354b;
+}
+lord-icon.lord-star {
+    margin-left: 1rem;
+}
+
+div#up-button {
+	display: none;
+    position: fixed;
+    bottom: 130px;
+    right: 48px;
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+p#txt-ranking-des {
+    font-size: 1.3rem;
+}
+
+p.txt-rec-des-sub {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: gray;
+    margin-left: 1.6rem;
+    margin-top: -1rem;
+}
+lord-icon#rank-icon {
+    margin-left: 0.5rem;
+    margin-top: -0.7rem;
+    margin-right: -1.5rem;
+}
+div#ranking-header-txt {
+    margin-left: 1.57rem;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    font-weight: bold;
+    word-break: keep-all;
+}
+         
+.btn-grad {
+   background-image: linear-gradient(to right, #FEAC5E 0%, #C779D0  51%, #FEAC5E  100%);
+   text-align: start;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;
+   box-shadow: 0 0 20px #eee;
+   display: flex;
+   width: 100%;
+   font-size: 1.4rem;
+   font-weight: 500;
+   font-family: 'Noto Sans KR';
+   padding: 0.6rem 0;
+   text-indent: 1.6rem;
+   margin-top: 1rem;
+   align-items: center;
+}
+
+.btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+}
+p#popular-style-desc-sub {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+img#popular-app-icon {
+    width: 6.5%;
+    height: auto;
+    margin-left: 1.6rem;
+}
+p#popular-style-desc {
+	    min-width: 518px;
+	    overflow: hiddlen;
+	    white-space: nowrap;
+	    display: inline;
+	    font-size:1.6rem;
+	}
+img#banner-text {
+    width: 75%;
+}
+
+.popular-desc-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+p#txt-ranking-des {
+    margin-left: 1.6rem;
+}
+
+.tab-deco{
+	font-family: 'Tossface';
+    line-height: 2.1rem;
+    margin-right: 3px;
 }

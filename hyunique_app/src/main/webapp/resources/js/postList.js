@@ -1,5 +1,28 @@
-//추천, 스타일링 버튼을 클릭했을 때 작동
+const followerCount = document.getElementById("followerCount").value || 0;
+const userId = document.getElementById("userId").value || 0;
 
+$(document).ready(function() {
+  let currentIndex = 0;
+  const banner = document.getElementById("banner");
+  const images = banner.querySelectorAll("img");
+  const imageCount = images.length;
+  const scrollInterval = setInterval(function() {
+    currentIndex++;
+    if (currentIndex >= imageCount) {
+      currentIndex = 0;
+    }
+    const newScrollPosition = images[currentIndex].offsetLeft;
+    banner.scroll({
+      left: newScrollPosition,
+      behavior: 'smooth'
+    });
+  }, 3000);
+  $('.btn-grad').on('click', function() {
+	    window.location.href = "/login";
+	  });
+});
+
+//추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
   const buttonContainer = document.getElementById('hyunique-main-top-recommend');
   const buttons = buttonContainer.querySelectorAll('.button');
@@ -13,6 +36,36 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       button.classList.add('selected');
       localStorage.setItem('selectedButtonIndex', index.toString());
+      
+      //배너 처리
+      if (button.textContent.trim() === '스타일랭킹') {
+          banner.style.display = 'none';
+          document.getElementById("ranking-wrapper").style.display = 'flex';
+          document.getElementById("ranking-description").style.display = 'flex';
+          document.getElementById("recommend-description").style.display = 'none';
+          const filterElement = $('#hyunique-main-top-filter');
+          filterElement.hide();
+          } 
+      else {
+          banner.style.display = 'flex';
+          document.getElementById("ranking-wrapper").style.display = 'none';
+          document.getElementById("ranking-description").style.display = 'none';
+          document.getElementById("recommend-description").style.display = 'flex';
+          const filterElement = $('#hyunique-main-top-filter');
+          filterElement.show();
+          }
+      if (button.textContent.trim() === '팔로우') {
+    	  banner.style.display = 'none';
+    	  document.getElementById("ranking-wrapper").style.display = 'none';
+    	  document.getElementById("ranking-description").style.display = 'none';
+    	  document.getElementById("recommend-description").style.display = 'none';
+    	  const filterElement = $('#hyunique-main-top-filter');
+    	  if (userId == 0 || followerCount == 0) {
+    	        console.log("숨김 시도함");
+    	        filterElement.hide();
+    	    }
+      }
+      
       const filterElement = $('#hyunique-main-top-filter');
       const popularStyle = $('#popular-style');
       //팔로우가 아니라면 필터 보이게 처리
@@ -21,19 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
         filterElement.hide();
       }
       else{
-        filterElement.show();
         popularStyle.hide();
       }
-
      if(button.textContent.trim()==='AI추천'){
-       filterElement.hide();
        document.getElementById("recommend").click();
-     }
-     else{
-       filterElement.show();
-     }
-      document.getElementById("applyFilter").click();
-    });
+       }
+     document.getElementById("applyFilter").click();
+     });
 
     if (index === parseInt(selectedIndex)) {
       button.click();
@@ -102,3 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToTop() {
       window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
   }
+
+  window.onscroll = function() {
+	  scrollFunction();
+	};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		  document.getElementById("up-button").style.display = "flex";
+	  } else {
+		  document.getElementById("up-button").style.display = "none";
+	  }
+	}

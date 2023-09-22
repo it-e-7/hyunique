@@ -10,6 +10,8 @@
 <script src="/resources/js/onboarding.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/onboarding.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 	<div class="header-wrapper">
@@ -36,8 +38,9 @@
 					<input id="userNickname" type="text" name="userNickname"
 						value="${user.userNickname}" placeholder="다른 사람에게 보여질 이름이에요" required>
 				</div>
-	   			<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+					<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-usersex">
@@ -54,8 +57,10 @@
 				        <input type="radio" name="userSex" value="N" id="preferNotToSay"><label for="preferNotToSay">알리지 않음</label>
 				    </div>
 				</div>
-	     		<button class="btn-next jw-btn-radius" id="finish-usersex">키 입력하러 가기</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		     		<button class="btn-next jw-btn-radius" id="finish-usersex">키 입력하러 가기</button>
+					<div class="skip-buttons" id="usersex-skip">나중에 입력할게요</div>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-userheight">
@@ -69,8 +74,10 @@
 					<input id="userHeight" type="number" name=userHeight
 						value="${user.userHeight}" placeholder="키(신장)를 입력해주세요">
 				</div>
-	     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
-				<div class="skip-buttons">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
+					<div class="skip-buttons" id="userheight-skip">나중에 입력할게요</div>
+				</div>
 			</div>
 			
 			<div class="content-wrapper" id="form-userprefer">
@@ -96,8 +103,10 @@
 				        <input type="checkbox" name="userPrefer" value="모던캐주얼" id="32"><label for="32">모던캐주얼</label>
 				    </div>
 				</div>
-	      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
-				<div class="skip-buttons" type="submit">나중에 입력할게요</div>
+				<div class="button-wrapper">
+		      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
+					<div class="skip-buttons" type="submit" id="userprefer-skip">나중에 입력할게요</div>
+				</div>
 			</div>
 			<div class="content-wrapper" id="form-finished">
 				<div class="form-label">
@@ -110,6 +119,10 @@
 			</div>
 		</div>
 	</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 </body>
 </html>
