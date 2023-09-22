@@ -13,16 +13,15 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
-      <div class="button selected" id="recommend">추천</div>
-      <div class="button" id="style-ranking">스타일랭킹</div>
-      <div class="button" id="following">팔로우</div>
-      <div class="tab-deco">🤖</div>
-      <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
-</div>
+	    <div class="button selected" id="recommend">추천</div>
+	    <div class="button" id="style-ranking">스타일랭킹</div>
+	    <div class="button" id="following">팔로우</div>
+	    <div class="tab-deco">🤖</div>
+	    <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
+	</div>
 </div>
 <div id= "main-wrapper-bottom">
 
@@ -287,7 +286,7 @@
 			    trigger="loop"
 			    delay="1500"
 			    colors="primary:#3080e8,secondary:#a866ee,tertiary:#848484,quaternary:#121331"
-			    style="width:5.5rem;height:5.5rem">
+			    style="width:4.5rem;height:4.5rem">
 			</lord-icon>
 			<div class="p-tag-wrapper">
 				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
@@ -323,7 +322,7 @@
 </div>
 <div id="qr-button">
     <a href="/post/getQRPage">
-        <img src="/resources/img/qr.png"  data-aos="fade-up-left" id="qr-img" alt="QR 코드">
+        <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
     </a>
 </div>
 <div id="up-button" onclick="scrollToTop()">

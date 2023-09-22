@@ -175,7 +175,6 @@ function updateUser() {
         contentType: 'application/json',
         data: JSON.stringify(requestData),
         success: function (response) {
-            //alert('업데이트 성공');
         	toastr.success('성공적으로 회원 정보 수정을 완료했습니다.');
         	setTimeout(function(){
             	window.location.replace('/');
