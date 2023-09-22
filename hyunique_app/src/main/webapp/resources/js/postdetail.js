@@ -147,3 +147,22 @@ $(document).ready(() => {
 	$('.img-slider-wrapper').scrollLeft(0);
 	changeIndexCircle(imgIdx);
 });
+
+function deleteOnePost(postId) {
+    ajax({
+        url: `/post/${postId}`,
+        type: 'DELETE',
+        success: function(response) {
+            console.log(response);
+            if (response === "success") {
+                window.location.href = '/';
+            }
+            else {
+                alert("게시글 삭제 실패");
+            }
+        },
+        error: function(response) {
+            console.error(response);
+        },
+    });
+}

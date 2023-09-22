@@ -1,0 +1,39 @@
+.show-search-img-result {
+    /*z-index: 100;*/
+    width: 100%;
+    height: 100%;
+}
+
+.img-section img {
+    position: absolute;
+    width: 100%;
+    margin: 2rem 0;
+    aspect-ratio: 3 / 4;
+}
+
+/* CSS */
+#container {
+    position: relative;
+}
+
+#rectangle {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,0.5);
+}
+
+.handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  cursor: pointer;
+}
+
+#top-left { top: 0; left: 0; }
+#top-right { top: 0; right: 0; }
+#bottom-left { bottom: 0; left: 0; }
+#bottom-right { bottom: 0; right: 0; }

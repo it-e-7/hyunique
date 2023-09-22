@@ -101,11 +101,11 @@
 
 	<insert id="insertOnePost" statementType="CALLABLE" parameterType="map">
 		call insert_one_post(
-		#{postProduct, typeHandler=com.kosa5.hyunique.post.util.PostProductTypeHandler},
-		#{post, typeHandler=com.kosa5.hyunique.post.util.PostTypeHandler},
-		#{imgUrl, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler},
-        #{styleId, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler},
-		#{state, mode=OUT, jdbcType=VARCHAR, javaType=String}
+			#{postProduct, typeHandler=com.kosa5.hyunique.post.util.PostProductTypeHandler},
+			#{post, typeHandler=com.kosa5.hyunique.post.util.PostTypeHandler},
+			#{imgUrl, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler},
+			#{styleId, typeHandler=com.kosa5.hyunique.post.util.ListTypeHandler},
+			#{state, mode=OUT, jdbcType=VARCHAR, javaType=String}
 		)
 	</insert>
 	
@@ -226,4 +226,12 @@
         JOIN HY_POST P ON F.FOLLOWING_ID = P.USER_ID
         WHERE F.FOLLOWER_ID = #{userId}
     </select>
+
+	<delete id="deleteOnePost" parameterType="map">
+		call DELETE_POST(
+			#{postId, mode=IN, jdbcType=INTEGER, javaType=Integer},
+			#{state, mode=OUT, jdbcType=VARCHAR, javaType=String}
+		)
+	</delete>
+
 </mapper>
