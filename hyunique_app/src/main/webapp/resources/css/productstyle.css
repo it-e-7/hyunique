@@ -39,6 +39,7 @@
 .product-container {
 	padding: 12px 0;
 	background: var(--grey1);
+	overflow: hidden;
 }
 
 .product-wrapper {

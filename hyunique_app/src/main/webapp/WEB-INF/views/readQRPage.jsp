@@ -22,6 +22,7 @@
 				">
 				</lord-icon>
 			</button>
+			<p>QR 스캔</p>
 			<div id="outputMessage">
 			</div>
     		<div id="outputLayer" hidden>
@@ -33,10 +34,19 @@
 		<div id="frame">
 			<div id="loadingMessage">
 			</div>
-			<div id="QRTagimg">
-			    <img src="/resources/img/QRTag.png" />
+			<div class="camera-wrapper">
+				<canvas id="canvas"></canvas>
+				<div class="qr-modal-section">
+					<div class="qr-modal">
+						<div class="qr-border-modal-wrapper">
+							<div class="border-modal left-top-border"></div>
+							<div class="border-modal right-top-border"></div>
+							<div class="border-modal left-bottom-border"></div>
+							<div class="border-modal right-bottom-border"></div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<canvas id="canvas"></canvas>
 			<div id="QRScanText">
                 옷 가격표에 있는 <br>
                 QR코드를 스캔해 주세요
