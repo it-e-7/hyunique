@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const popularStyle = $('#popular-style');
       //팔로우가 아니라면 필터 보이게 처리
       if(button.textContent.trim()==='팔로우'){
-        filterElement.hide();
         popularStyle.show();
+        filterElement.hide();
       }
       else{
         filterElement.show();

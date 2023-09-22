@@ -37,6 +37,43 @@
 
 .photo {
     box-sizing: border-box;
+    position: relative;
+}
+
+.ranking-box{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.ranking{
+    position: absolute;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    top: 6px;
+    left: 6px;
+    border-radius: 4px;
+}
+
+.ranking1{
+    background-color: rgb(253,204,63);
+}
+
+.ranking2{
+    background-color: rgb(204,204,204);
+}
+
+.ranking3{
+    background-color: rgb(184,95,63);
 }
 
 .photo img{
@@ -193,7 +230,7 @@
 #popular-style {
     display: flex;
     margin-left: 5%;
-    font-size: 30px;
+    font-size: 20px;
     height: 60px;
     font-weight: bold;
     align-items: center;

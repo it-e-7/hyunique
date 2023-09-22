@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Post List</title>
-   <%@ include file="/WEB-INF/views/common.jsp"%>
+    <%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
@@ -127,7 +127,7 @@
                         <input type="checkbox" id="officeCheckbox" name="tpo" value="27">
                         </div>
                         <div id=select-type-button>
-                        <label for="travelCheckbox">데일리 🍴</label>
+                        <label for="dailyCheckbox">데일리 🍴</label>
                         <input type="checkbox" id="dailyCheckbox" name="tpo" value="28">
                         </div>
                     </div>
