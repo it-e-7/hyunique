@@ -106,7 +106,7 @@ button {
 
 .jw-btn-fixed {
 	position: fixed;
-	bottom: 3rem;
+	bottom: 20px;
 	left: 50%;
 	width: 90%;
 	max-width: 700px;
@@ -120,7 +120,7 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1rem 1.3rem 0.6rem 1.3rem;
+	padding: 0.6rem 1rem 0.3rem 1.3rem;
 }
 
 .qr-btn {

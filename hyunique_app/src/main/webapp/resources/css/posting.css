@@ -7,7 +7,6 @@
 .pre-container .image-container img {
     width: 100%;
     border-radius: 2rem;
-    margin: 2rem 0;
     aspect-ratio: 3 / 4;
 
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
@@ -20,7 +19,6 @@
 .post-container .image-container img {
     width: 100%;
     border-radius: 2rem;
-    margin: 2rem 0;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
@@ -44,7 +42,7 @@
 
 /* pre-container 시작 */
 .pre-container {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -55,7 +53,6 @@
 .pre-container .header-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 1rem 1.3rem 0.6rem 1.3rem;
     width: 90%;
 }
@@ -63,15 +60,21 @@
 .pre-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
     align-items: center;
-    margin-top: 15%;
-    margin-bottom: 20vh;
+    justify-content: center;
+    gap: 20px;
+    flex: 1;
+    width: 100%;
+    margin-bottom: 6.5rem;
 }
 
+.image-description-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+}
 .pre-wrapper .header {
-    margin-bottom: 2.5rem;
 }
 
 .header p {
@@ -162,7 +165,7 @@ button#add-img-btn {
 }
 
 .content-group {
-    margin-bottom: 5rem;
+    margin-bottom: 6.5rem;
     display: flex;
     flex-direction: column;
 }
@@ -174,10 +177,15 @@ button#add-img-btn {
     overflow: auto;
     border: 1px solid var(--grey4);
     border-radius: 9px;
-    font-size: 1.3rem;
-    font-family: 'Spoqa Han Sans';
-    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Noto Sans KR';
+    padding: 0.8rem;
     margin: auto;
+}
+
+.content-group textarea:focus {
+	outline: none;
+	border: 1px solid var(--jw-light-blue);
 }
 
 #upload-button {
@@ -346,7 +354,6 @@ p.search-product-price {
 
 /* post-container 시작 */
 .post-container {
-    height: 100%;
     width: 100%;
     margin: 0px auto;
 }
@@ -355,14 +362,15 @@ p.search-product-price {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     align-items: center;
-    margin-top: 15%;
-    margin-bottom: 30%;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 6.5rem;
 }
 
 .post-container .header {
-    margin-top: 4rem;
+	margin-bottom: 8px;
 }
 
 
@@ -398,16 +406,23 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     font-family: Spoqa Han Sans;
     letter-spacing: 0.05rem;
     text-align: center;
+    font-family: 'Noto Sans KR';
     color: var(--grey4);
 }
 
 input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
-	color:var(--jw-blue);
-    border: 1px solid var(--jw-blue);
+	background: var(--jw-light-blue2);
+    color: #0277BD;
+    border: 1px solid var(--jw-light-blue2);
+    font-weight: 550;
 }
 
 .style-button-group, .tpo-button-group, .season-button-group, .content-group {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.style-button-group p, .tpo-button-group p, .season-button-group p, .content-group p {
+	margin-bottom: 4px;
 }
 
 .style-button-group div, .tpo-button-group div, .season-button-group div {
@@ -600,7 +615,9 @@ button.modal-check-btn {
     color: #000000;
 }
 
-
+.tag-list {
+	list-style: none;
+}
 
 body{
 	display:flex;

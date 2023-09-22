@@ -27,4 +27,6 @@ public interface PostService {
 
     List<TagVO> getTagInform();
 
+    String deleteOnePost(int postId);
+
 }

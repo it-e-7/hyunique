@@ -87,9 +87,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     //$("#photo-gallery").append(data);
                 	   var $data = $(data);
                        $data.attr('data-aos', 'zoom-in-up');
-
-                       // DOM에 추가
-                       $("#photo-gallery").append($data);
+                    $("#photo-gallery").append(data);
+                    //추가적으로 순위를 넣기
+                    var element = $(".selected").attr("id");
+                    if (element == "style-ranking"){
+                        var photoElements = $("#photo-gallery .photo:lt(20)");
+                                            photoElements.each(function(index) {
+                                                var newDiv = `
+                                                    <div class="ranking-box">
+                                                        <div class="ranking ranking${index + 1}">${index + 1}</div>
+                                                    </div>
+                                                `;
+                                                $(this).append(newDiv);
+                                            });
+                    }
                     currentPage++;
                     isLoading = false;
                 }
@@ -435,6 +446,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('retroCheckbox').checked = false;
                     document.getElementById('lovelyCheckbox').checked = false;
                     document.getElementById('moderncasualCheckbox').checked = false;
+
+                    //글씨 색 초기화
+                    var selectButtons = document.querySelectorAll("#select-type-button");
+                    selectButtons.forEach(function(button) {
+                    let label = button.querySelector('label')
+                        label.style.color = 'rgb(165, 165, 165)';
+                    });
+
                 }
 
 
@@ -467,6 +486,18 @@ document.addEventListener("DOMContentLoaded", function() {
         'moderncasualCheckbox',
         // 다른 체크박스 id들을 여기에 추가
       ];
+
+      //라벨과 체크박스 사이를 클릭해도 체크박스가 클릭됨.
+        var labelDivs = document.querySelectorAll('#select-type-button');
+        labelDivs.forEach(function(div) {
+            div.addEventListener('click', function(event) {
+                var checkbox = div.querySelector('input[type="checkbox"]');
+                var label = div.querySelector('label');
+                if (checkbox && (event.target !== checkbox && event.target !== label)) {
+                           checkbox.click();
+                       }
+            });
+        });
 
       checkboxIds.forEach(function (checkboxId) {
         const checkbox = document.getElementById(checkboxId);

@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //팔로우가 아니라면 필터 보이게 처리
       if(button.textContent.trim()==='팔로우'){
         popularStyle.show();
+        filterElement.hide();
       }
       else{
         popularStyle.hide();
