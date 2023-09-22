@@ -1,8 +1,7 @@
 const checkbox = document.getElementById('follower-toggle');
 const label = document.getElementById('follower-label');
-if($('#user-id').length>0){
-	const userIdFromModel = document.getElementById('user-id').value;
-}
+
+let userIdFromModel =""
 
 let isFollowing = null;
 let userImg;
@@ -14,7 +13,9 @@ $(document).ready(function() {
 	if($('#user-isFollowing').length > 0){
         isFollowing = document.getElementById('user-isFollowing').value;
     }
-
+	if($('#user-id').length>0){
+		userIdFromModel = document.getElementById('user-id').value;
+	}
     // 체크박스와 라벨이 실제로 존재할 때만 실행
     if(checkbox && label) {
         if(isFollowing !== null) {
@@ -167,7 +168,6 @@ function updateUser() {
         userImg: userImgData,
         userBackimg: userBackImgData
     };
-    console.log(requestData);
 
     $.ajax({
         url: `/user/updateUser`,
