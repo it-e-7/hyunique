@@ -8,6 +8,7 @@
 html {
     -webkit-text-size-adjust: none;
     font-size: 14px;
+    scroll-behavior: smooth;
 }
 
 body {
