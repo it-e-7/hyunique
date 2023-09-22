@@ -7,7 +7,10 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.5rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+    position: relative;
+    border-top: 1px solid var(--grey1);
+    border-bottom: 1px solid var(--grey1);
 }
 
 .left-user-info {
@@ -243,4 +246,21 @@ ul {
 	width: 100%;
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
+}
+
+.post-delete-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.post-delete-icon svg {
+    height: 30%;
+    width: auto;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    padding: 1rem 1rem 1rem 1rem;
 }
