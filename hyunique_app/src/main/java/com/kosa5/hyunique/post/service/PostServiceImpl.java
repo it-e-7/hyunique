@@ -129,4 +129,17 @@ public class PostServiceImpl implements PostService {
         return postMapper.getTagInform();
     }
 
+    @Override
+    public String deleteOnePost(int postId) {
+        Map<String, Object> post = new HashMap<>();
+        post.put("postId", postId);
+        post.put("state", "");
+
+        log.info("delete service {}", post);
+
+        postMapper.deleteOnePost(post);
+
+        return post.get("state").toString();
+    }
+
 }

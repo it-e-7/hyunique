@@ -94,4 +94,12 @@ public class PostController {
     public List<TagVO> getTagInfo() {
         return postService.getTagInform();
     }
+
+    @DeleteMapping("/{postId}")
+    @ResponseBody
+    public String handlePostDelete(@PathVariable("postId") int postId) {
+        log.info("delete");
+        String state = postService.deleteOnePost(postId);
+        return state;
+    }
 }
