@@ -40,6 +40,7 @@ hr {
 
 #bottom-wrapper {
     margin-top : 70px;
+    width: 65%;
 }
 
 .name-content-box{
@@ -81,6 +82,8 @@ div#product-only-wrapper {
 
 .jw-btn-100{
     width:100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .button-container{
