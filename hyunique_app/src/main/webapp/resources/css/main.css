@@ -105,7 +105,7 @@ button {
 
 .jw-btn-fixed {
 	position: fixed;
-	bottom: 3rem;
+	bottom: 20px;
 	left: 50%;
 	width: 90%;
 	max-width: 700px;

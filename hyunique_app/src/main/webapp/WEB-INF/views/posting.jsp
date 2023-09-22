@@ -23,11 +23,13 @@
             <div class="header">
                 <p>스타일링을 공유해주세요</p>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
-            </div>
-            <div class="body">
-                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            <div class="image-description-container">
+	            <div class="image-container">
+	                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
+	            </div>
+	            <div class="body">
+	                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+	            </div>
             </div>
         </div>
         <div class="button-container">

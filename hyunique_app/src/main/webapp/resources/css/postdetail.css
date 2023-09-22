@@ -46,7 +46,8 @@
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	overflow: scroll;
+	overflow-x: scroll;
+	overflow-y: hidden;
 	width: 100%;
 	scroll-snap-type: x mandatory;
 	cursor: pointer;
