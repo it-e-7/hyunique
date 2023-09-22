@@ -1,3 +1,5 @@
+const followerCount = document.getElementById("followerCount").value || 0;
+const userId = document.getElementById("userId").value || 0;
 
 $(document).ready(function() {
   let currentIndex = 0;
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       //배너 처리
       if (button.textContent.trim() === '스타일랭킹') {
-          banner.style.display = 'none'; // 배너 숨기기
+          banner.style.display = 'none';
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
           document.getElementById("recommend-description").style.display = 'none';
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           filterElement.hide();
           } 
       else {
-          banner.style.display = 'flex'; // 배너 보이기
+          banner.style.display = 'flex';
           document.getElementById("ranking-wrapper").style.display = 'none';
           document.getElementById("ranking-description").style.display = 'none';
           document.getElementById("recommend-description").style.display = 'flex';
@@ -53,12 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
           filterElement.show();
           }
       if (button.textContent.trim() === '팔로우') {
-    	  banner.style.display = 'none'; // 배너 숨기기
+    	  banner.style.display = 'none';
     	  document.getElementById("ranking-wrapper").style.display = 'none';
     	  document.getElementById("ranking-description").style.display = 'none';
     	  document.getElementById("recommend-description").style.display = 'none';
+    	  const filterElement = $('#hyunique-main-top-filter');
+    	  if (userId == 0 || followerCount == 0) {
+    	        console.log("숨김 시도함");
+    	        filterElement.hide();
+    	    }
       }
-      
       
       const filterElement = $('#hyunique-main-top-filter');
       const popularStyle = $('#popular-style');
@@ -69,40 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         popularStyle.hide();
       }
-
      if(button.textContent.trim()==='AI추천'){
        document.getElementById("recommend").click();
-     }
-      document.getElementById("applyFilter").click();
-    });
+       }
+     document.getElementById("applyFilter").click();
+     });
 
     if (index === parseInt(selectedIndex)) {
       button.click();
     }
   });
      buttons[0].click();
-     
-     const btnGrad = document.querySelector('.btn-grad');
-     let isHover = false;
-
-     function applyHoverState() {
-       btnGrad.style.backgroundPosition = 'right center';
-       btnGrad.style.color = '#fff';
-     }
-
-     function removeHoverState() {
-       btnGrad.style.backgroundPosition = 'left center';
-       btnGrad.style.color = 'white';
-     }
-
-     setInterval(function() {
-       if (isHover) {
-         removeHoverState();
-       } else {
-         applyHoverState();
-       }
-       isHover = !isHover;
-     }, 2000);
 });
 
   function handleButtonClick(tag) {

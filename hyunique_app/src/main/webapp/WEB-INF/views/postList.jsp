@@ -13,6 +13,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+<div id="session-info">
+	<input type="hidden" id="followerCount" value="${followerCount}">
+	<input type="hidden" id="userId" value="${userId}">
+</div>
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
