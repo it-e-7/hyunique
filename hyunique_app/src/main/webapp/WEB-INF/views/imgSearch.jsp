@@ -13,9 +13,19 @@
     </head>
     <body>
         <div class="show-search-img-result">
-          <div class="header"></div>
-          <div class="img-section" id="container"></div>
-          <ul class="img-search-list"></ul>
+            <div class="header"></div>
+            <div class="img-section" id="container"></div>
+            <button id="openBottomSheet">Open Bottom Sheet</button>
+            <div id="bottomSheet" class="hidden">
+                <div class="sheet-header">
+                    <button id="closeBottomSheet">Close</button>
+                </div>
+                <div class="img-search-value">
+                    <p>상품 검색 결과 입니다.</p>
+                    <ul class="img-search-list"></ul>
+                </div>
+            </div>
+
         </div>
     </body>
     <script

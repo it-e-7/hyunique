@@ -107,7 +107,7 @@ function imgSearchStart(e) {
     const reader = new FileReader();
     reader.onload = function(event) {
         localStorage.setItem('image', event.target.result);
-        window.location.href = 'imgSearch.jsp';
+        window.location.href = '/product/img-search';
     };
     reader.readAsDataURL(file);
 

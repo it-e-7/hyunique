@@ -6,7 +6,7 @@ if (imageData) {
     $('#container').append(imageElement);
 }
 
-// 사각형 및 핸들 생성
+// 크롭 영역 및 핸들 생성
 const $rectangle = $('<div>').attr('id', 'rectangle');
 const $topLeft = $('<div>').addClass('handle').attr('id', 'top-left');
 const $topRight = $('<div>').addClass('handle').attr('id', 'top-right');
@@ -170,4 +170,109 @@ $(document).on('mousemove touchmove', function(e) {
 $(document).on('mouseup touchend', function() {
     resizing = false;
     currentHandle = null;
+});
+
+
+/* 이미지 크롭 */
+
+// 캔버스 초기화 함수
+function initCanvas(img, canvas) {
+    canvas.width = img.clientWidth;
+    canvas.height = img.clientHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, img.clientWidth, img.clientHeight);
+}
+
+const img = $('.image')[0];
+const canvas = $('<canvas>')[0];
+
+// 이미지가 로드되면 캔버스에 그림
+$(img).on('load', function() {
+    initCanvas(img, canvas);
+});
+
+let timer = null;
+let isMoved = false;
+
+$('#rectangle').on('mousemove touchmove', function() {
+    isMoved = true;
+    if (timer) {
+        clearTimeout(timer);
+    }
+
+    const rectangle = $('#rectangle');
+    const canvasOffset = $(canvas).offset();
+    const x = rectangle.offset().left - canvasOffset.left;
+    const y = rectangle.offset().top - canvasOffset.top;
+    const width = rectangle.width();
+    const height = rectangle.height();
+
+    const newCanvas = $('<canvas>')[0];
+    newCanvas.width = width;
+    newCanvas.height = height;
+    const newCtx = newCanvas.getContext('2d');
+    newCtx.drawImage(canvas, x, y, width, height, 0, 0, width, height);
+
+    $('#croppedImage').remove();
+    const croppedImageData = newCanvas.toDataURL();
+    const newImage = $("<img>").attr("src", croppedImageData).attr("id", "croppedImage");
+    $(".img-section").append(newImage);
+
+    timer = setTimeout(() => {
+        if (!isMoved) return;
+        sendToServerImg(newCanvas);
+    }, 3000);
+
+});
+
+
+function sendToServerImg(newCanvas) {
+  newCanvas.toBlob(function(blob) {
+    const formData = new FormData();
+    formData.append('image', blob, 'imgSearch.jpg');
+
+    $.ajax({
+      url: '/product/img-search',
+      type: 'POST',
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function(data) {
+        console.log('Image sent successfully:', data);
+        if (data) {
+            renderImgSearchResults(data);
+            $('#bottomSheet').removeClass('hidden').addClass('shown');
+        }
+      },
+      error: function(error) {
+        console.error('Error:', error);
+      }
+    });
+  }, 'image/jpeg', 0.95);
+}
+
+// 상품 검색 결과 출력
+function renderImgSearchResults(results) {
+    let resultList = $(".img-search-list");
+    resultList.empty();
+
+    $.each(results, function(index, product) {
+        let listItem = $("<li>").addClass("search-result-li");
+        let divItem = $("<div>").addClass("product-div");
+        listItem.append($("<img>").attr("src", product.productImg).addClass("product-img"));
+        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
+        divItem.append($("<p>").text(product.productBrand).addClass("product-brand"));
+        divItem.append($("<p>").text(product.productName).addClass("product-name"));
+        divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("product-price"));
+        listItem.append(divItem);
+        resultList.append(listItem);
+    });
+}
+
+
+
+
+// Bottom Sheet 닫기
+$('#closeBottomSheet').click(function() {
+    $('#bottomSheet').removeClass('shown').addClass('hidden');
 });
