@@ -19,6 +19,7 @@ const siriWave = new SiriWave({
 });
 
 $(document).ready(function () {
+	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>안녕하세요!!<br><br>스타일링부터 구매까지 도와드릴 🤖AI예요.<br><br><b>하단의 버튼을 눌러 상황이나 장소를 말씀해보세요!</b></span></p></div><div>');
   wordflick();
   $("#12322").change(function() {
 	  if ($(this).prop("checked")) {

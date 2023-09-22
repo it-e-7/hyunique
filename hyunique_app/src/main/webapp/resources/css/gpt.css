@@ -9,7 +9,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
-    background: linear-gradient(0deg, #f4f4f4 0%,#fafafae0 50%, #ffffff00 90%);
+    background: linear-gradient(0deg, #ffffff 0%,#ffffffe0 50%, #ffffff00 90%);
     min-height: 21rem;
     justify-content: flex-end;
 }
@@ -101,6 +101,7 @@ button .btn-gpt-request {
 }
 .chat-section-wrapper{
 	width: 94%;
+   	font-family: 'Tossface';
 }
 .chat-upload-btn-section {
     display: flex;
@@ -357,4 +358,6 @@ label {width: 24px;height: 24px;}
     flex-direction: column;
     height: 9rem;
 }
-
+#toss{
+	font-family: 'Tossface';
+}
