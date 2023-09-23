@@ -299,6 +299,7 @@ div#bag-check {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	font-family: Inter;
 }
 
 #bag-img{
@@ -361,4 +362,12 @@ label {width: 24px;height: 24px;}
 }
 #toss{
 	font-family: 'Tossface';
+}
+p.product-item-price {
+    font-family: Inter;
+}
+div#product-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }

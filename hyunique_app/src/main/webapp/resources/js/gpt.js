@@ -84,7 +84,7 @@ function gptProductRequest (){
               <li>
               <div id="product-only-wrapper" onclick="moveToProduct('${product.productId}')">
                   <img src=${product.productImg}>
-                  <div>
+                  <div id="product-info-wrapper">
                     <strong>${product.productBrand}</strong>
                     <p class='product-item-name'>${product.productName}</p>
                     <p class='product-item-price'>${product.productPrice}원</p>
@@ -124,6 +124,10 @@ function gptProductRequest (){
 }
 
 function gptRequest() {
+	speech.stop();
+	siriWave.setAmplitude(0.5);
+	siriWave.setSpeed(0.1);
+	isAmplified = false;
    let inputtext = $(".user-gpt-input").val();
     if(inputtext){
 		let user_input = $(".user-gpt-input").val();
