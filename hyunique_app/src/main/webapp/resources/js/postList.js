@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
     	  document.getElementById("recommend-description").style.display = 'none';
     	  const filterElement = $('#hyunique-main-top-filter');
     	  if (userId == 0 || followerCount == 0) {
-    	        console.log("숨김 시도함");
     	        filterElement.hide();
     	    }
       }

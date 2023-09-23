@@ -151,10 +151,6 @@
                     </div>
                     <div id="tpo-options">
                         <div id=select-type-button>
-                        <label for="kosaCheckbox">코사 🏄</label>
-                        <input type="checkbox" id="kosaCheckbox" name="tpo" value="21">
-                        </div>
-                        <div id=select-type-button>
                         <label for="travelCheckbox">여행 🏖</label>
                         <input type="checkbox" id="travelCheckbox" name="tpo" value="22">
                         </div>
@@ -266,7 +262,7 @@
                 </div>
 
                 <div id="fixed-button-div">
-                    <button id="applyFilter" class="jw-btn" type="submit" id="applyFilter">스타일 보기</button>
+                    <button id="applyFilter" class="jw-btn jw-btn-fixed" type="submit" id="applyFilter">스타일 보기</button>
                 </div>
                 </div>
             </div>

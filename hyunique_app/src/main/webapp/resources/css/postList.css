@@ -25,15 +25,15 @@
 }
 
 @media screen and (max-width: 700px) {
-#photo-gallery {
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
-}
+	#photo-gallery {
+	    width: 100%;
+	    margin: 0 auto;
+	    box-sizing: border-box;
+	    display: grid;
+	    grid-template-columns: repeat(2, minmax(0px, 1fr));
+	    grid-column-gap: 4px;
+	    grid-row-gap: 4px;
+	}
 }
 
 .photo {
@@ -182,7 +182,7 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding: 1rem 1.6rem;
+    padding: 1rem 0.8rem;
     height: 32px;
 }
 #qr-button {
@@ -208,7 +208,7 @@
     text-indent: 1.6rem;
     margin-bottom: 11%;
     margin-top: 1rem;
-    font-family: 'Tossface'
+    font-family: 'Inter';
 }
 
 #bottom-for-login {
@@ -368,7 +368,7 @@ img#rank-1st-img {
     height: 6rem;
 }
 .ranking-description {
-    font-family: 'Noto Sans KR';
+    font-family: 'Inter';
     font-size: 1.2rem;
     font-weight: 600;
     display: flex;
@@ -392,7 +392,7 @@ div#ranking-wrapper {
 }
 p.txt-rec-des {
     font-size: 1.3rem;
-    font-family: 'Noto Sans KR';
+    font-family: 'Inter';
     font-weight: bold;
     margin-bottom: 1rem;
     color: #26354b;
@@ -448,7 +448,7 @@ div#ranking-header-txt {
    width: 100%;
    font-size: 1.4rem;
    font-weight: 500;
-   font-family: 'Noto Sans KR';
+   font-family: 'Inter';
    padding: 0.6rem 0;
    text-indent: 1.6rem;
    margin-top: 1rem;
@@ -493,7 +493,7 @@ p#txt-ranking-des {
 }
 
 .tab-deco{
-	font-family: 'Tossface';
+	font-family: 'Inter';
     line-height: 2.1rem;
     margin-right: 3px;
 }

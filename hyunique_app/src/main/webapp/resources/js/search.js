@@ -14,6 +14,8 @@ function displaySearch() {
 function hideSearch() {
 	$('.header-search-area').css('display', 'none');
 	$('body').css('overflow-y', 'scroll');
+	$('#search-input').val('');
+	$('.product-list').html('');
 }
 
 function getSearchResult(keyword, callback) {
@@ -74,14 +76,7 @@ $('#search-input').keyup((e) => {
 	timer = setTimeout(() => {
 		getSearchResult(e.target.value, changeList);
 	}, 300);
-
-	$('.search-area-wrapper').css('height', '70%');
 });
-
-$('#search-input').click(function() {
-    $('.product-list').show();
-    $('.search-area-wrapper').css('height', '70%');
-})
 
 $('.product-list').scroll((e) => {
 	if(isSearchScrollbarAtBottom()) {
@@ -96,6 +91,14 @@ $("#img-search-btn").click(function() {
 });
 
 $("#imgInput").change(imgSearchStart);
+
+$('#search-input').focus(() => {
+	$('.search-input-wrapper').addClass('focused');
+});
+
+$('#search-input').focusout(() => {
+	$('.search-input-wrapper').removeClass('focused');
+});
 
 function imgSearchStart(e) {
     const file = e.target.files[0];

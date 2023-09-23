@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
         applyFilterButton.addEventListener("click", function() {
             currentPage =1;
             modal.style.display = "none";
+            qr.style.display = "block";
             $("#photo-gallery").empty();
             //$("#photo-gallery").append(data);
             changeFilterColor();
