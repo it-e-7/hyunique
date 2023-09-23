@@ -36,7 +36,7 @@
 				</div>
 				<div class="form-content">
 					<input id="userNickname" type="text" name="userNickname"
-						value="${user.userNickname}" placeholder="다른 사람에게 보여질 이름이에요" required>
+						value="${user.userNickname}" placeholder="예)hyUni" required>
 				</div>
 				<div class="button-wrapper">
 					<button class="btn-next jw-btn-radius" id="finish-nickname">성별 입력하러 가기</button>
@@ -65,14 +65,15 @@
 			
 			<div class="content-wrapper" id="form-userheight">
 				<div class="form-label">
-					<label for="userHeight">키(신장)를</label>
+					<label for="userHeight">키를</label>
 					<label for="userHeight">입력해 주세요</label>
 					<label for="userHeight" id="small-text-label">스타일링 검색과 공유에 사용돼요</label>
 					
 				</div>
-				<div class="form-content">
+				<div class="form-content" id="user-height-wrapper">
 					<input id="userHeight" type="number" name=userHeight
-						value="${user.userHeight}" placeholder="키(신장)를 입력해주세요">
+						value="${user.userHeight}" placeholder="165">
+					<p id="user-height-cm">CM</p>
 				</div>
 				<div class="button-wrapper">
 		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
@@ -105,7 +106,7 @@
 				</div>
 				<div class="button-wrapper">
 		      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
-					<div class="skip-buttons" type="submit" id="userprefer-skip">나중에 입력할게요</div>
+					<div class="skip-buttons" id="userprefer-skip">나중에 입력할게요</div>
 				</div>
 			</div>
 			<div class="content-wrapper" id="form-finished">
