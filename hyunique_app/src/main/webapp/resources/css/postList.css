@@ -491,9 +491,9 @@ img#banner-text {
 p#txt-ranking-des {
     margin-left: 1.6rem;
 }
-
 .tab-deco{
 	font-family: 'Tossface';
-    line-height: 2.1rem;
-    margin-right: 3px;
+	line-height: 2.1rem;
+	margin-right: 3px;
+	margin-left: 1.6rem;
 }
