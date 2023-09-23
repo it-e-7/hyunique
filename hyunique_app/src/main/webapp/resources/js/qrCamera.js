@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
-    const viewportHeight = document.documentElement.clientHeight - $('#test').height();
+    const viewportHeight = window.innerHeight - $('#test').height();
     const viewportWidth = $('body').width();
     const maxWidth = 760;
     
