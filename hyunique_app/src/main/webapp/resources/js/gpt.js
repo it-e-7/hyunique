@@ -90,7 +90,7 @@ function gptProductRequest (){
                   </div>
               </div>
               <div id="bag-check">
-                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
+                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" onclick="clickPurchase(this)" id="bag-img"/></label>
               </div>
               </li>
               <div>
@@ -287,3 +287,11 @@ let restartAnimation = function() {
 	  skip_count = 0;
 	  wordflick(); // 애니메이션 다시 시작
 };
+
+//장바구니 클릭했을 시 이미지를 클릭하면 구매 이미지로 바뀌게 합니다
+function clickPurchase(element) {
+    console.log(element.src);
+    if(element.src.includes("/resources/img/ic-bag-check.png"))
+    element.src = "/resources/img/ic-bag-non-check.png"
+    else element.src = "/resources/img/ic-bag-check.png"
+}
