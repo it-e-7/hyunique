@@ -290,7 +290,6 @@ let restartAnimation = function() {
 
 //장바구니 클릭했을 시 이미지를 클릭하면 구매 이미지로 바뀌게 합니다
 function clickPurchase(element) {
-    console.log(element.src);
     if(element.src.includes("/resources/img/ic-bag-check.png"))
     element.src = "/resources/img/ic-bag-non-check.png"
     else element.src = "/resources/img/ic-bag-check.png"
