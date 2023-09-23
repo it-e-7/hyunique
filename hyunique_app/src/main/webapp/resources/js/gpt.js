@@ -28,6 +28,19 @@ $(document).ready(function () {
       $("#bag-img").attr("src", "/resources/img/ic-bag-noncheck.png");
     }
   });
+setTimeout(function() {
+	var element = document.getElementById('pop-up-img-inst');
+	if (element) {
+	  element.classList.add('fade-out');
+	  }
+	}, 4000);
+
+setTimeout(function() {
+	var element = document.getElementById('pop-up-img-inst');
+	if (element) {
+		element.style.display = 'none';
+	  }
+	}, 4400);
 });
 function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');

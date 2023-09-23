@@ -37,6 +37,11 @@
 	    	<div class="voice-control-wrapper">
     		    <div id="voice-control"></div>
 	    	</div>
+	    	<div id="pop-up-img-inst">
+		    	<p id="img-search-inst">
+		    		버튼을 눌러 옷 이미지 검색을 할 수 있어요!<br>다음 버전을 기대해주세요.
+		    	</p>
+		    </div>
 	    	<div class="loader-wrapper hidden">
 		    	<div class="loader">
 		  			<span class="loader__inner"></span>
