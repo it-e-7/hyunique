@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,15 +12,21 @@
     </head>
     <body>
         <div class="show-search-img-result">
-            <div class="header"></div>
-            <div class="img-section" id="container"></div>
-            <button id="openBottomSheet">Open Bottom Sheet</button>
+            <div class="header-wrapper">
+                <button onclick="back()">
+                    <img src="/resources/img/ic-backward.png" />
+                </button>
+            </div>
+            <div class="img-section" id="container">
+                <div class="img-section-area"></div>
+            </div>
+
             <div id="bottomSheet" class="hidden">
-                <div class="sheet-header">
-                    <button id="closeBottomSheet">Close</button>
+                <div class="handlebar">
+                    <span class="handlebar-icon"></span>
                 </div>
                 <div class="img-search-value">
-                    <p>상품 검색 결과 입니다.</p>
+                    <p class="search-value-title">상품 검색 결과 입니다.</p>
                     <ul class="img-search-list"></ul>
                 </div>
             </div>
