@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
           document.getElementById("recommend-description").style.display = 'none';
+          document.getElementById("follow-banner").style.display = 'none';
           const filterElement = $('#hyunique-main-top-filter');
           filterElement.hide();
           } 
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("ranking-description").style.display = 'none';
           document.getElementById("recommend-description").style.display = 'flex';
           const filterElement = $('#hyunique-main-top-filter');
+          document.getElementById("follow-banner").style.display = 'none';
           filterElement.show();
           }
       if (button.textContent.trim() === '팔로우') {
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     	  document.getElementById("ranking-wrapper").style.display = 'none';
     	  document.getElementById("ranking-description").style.display = 'none';
     	  document.getElementById("recommend-description").style.display = 'none';
+          document.getElementById("follow-banner").style.display = 'flex';
     	  const filterElement = $('#hyunique-main-top-filter');
     	  if (userId == 0 || followerCount == 0) {
     	        console.log("숨김 시도함");

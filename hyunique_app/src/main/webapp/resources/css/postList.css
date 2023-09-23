@@ -495,5 +495,11 @@ p#txt-ranking-des {
 	font-family: 'Tossface';
 	line-height: 2.1rem;
 	margin-right: 3px;
-	margin-left: 1.6rem;
+}
+div#follow-banner {
+    width: 100%;
+}
+
+img#follow-banner-img {
+    width: 100%;
 }
