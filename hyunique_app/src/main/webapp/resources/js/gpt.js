@@ -204,7 +204,7 @@ let isAmplified = false;
 
 
 if(!("webkitSpeechRecognition") in window){
-    alert("Connect in Chrome Browser");
+    toastr.error('크롬 브라우저로 접속해주세요.');
 }else{
 
     let isAmplified = false;

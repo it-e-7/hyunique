@@ -100,7 +100,8 @@ $("#imgInput").change(imgSearchStart);
 function imgSearchStart(e) {
     const file = e.target.files[0];
     if (!file.type.match("image/.*")) {
-        alert("이미지 파일만 업로드할 수 있습니다.");
+        toastr.warning('이미지 파일만 업로드할 수 있습니다.');
+
         return;
     }
 
