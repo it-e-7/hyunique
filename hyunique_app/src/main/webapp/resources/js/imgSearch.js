@@ -294,7 +294,7 @@ function renderImgSearchResults(results) {
         let listItem = $("<li>").addClass("search-result-li");
         let divItem = $("<div>").addClass("product-div");
         let divImg = $("<div>").addClass("img-wrapper");
-        divImg.append($("<img>").attr("src", product.productImg).addClass("product-img"));
+        divImg.append($("<img>").attr("src", product.productImg).addClass("product-img").attr('draggable', 'false'));
         listItem.append(divImg);
         divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
         divItem.append($("<p>").text(product.productBrand).addClass("product-brand"));
@@ -305,28 +305,50 @@ function renderImgSearchResults(results) {
     });
 }
 
-let startY;
-let currentY;
+
+/* 모달 슬라이드 */
 let isDraggingModal = false;
+let startY = 0;
+let modalIsUp = false;
 
-
-$('#bottomSheet')
-    .on('touchstart mousedown', function(e) {
-        isDraggingModal = true;
-        startY = e.type === 'touchstart' ? e.originalEvent.touches[0].clientY : e.clientY;
-        initialBottom = parseFloat($(this).css('bottom')) / window.innerHeight * 100;
-    })
-    .on('touchmove mousemove', function(e) {
-        if (!isDraggingModal) return;
-        const currentY = e.type === 'touchmove' ? e.originalEvent.touches[0].clientY : e.clientY;
-        let movedY = startY - currentY; // 방향을 반대로 하려면 이 부분을 수정
-        this.style.bottom = Math.min(Math.max(-40, initialBottom + movedY / window.innerHeight * 100), 0) + '%';
-    })
-    .on('touchend mouseup', function() {
-        isDraggingModal = false;
-    });
-
-
-$('#closeBottomSheet').click(function() {
-    $('#bottomSheet').removeClass('shown').addClass('hidden');
+// Modal 드래그 시작
+$("#bottomSheet").on("mousedown touchstart", function(e) {
+    isDraggingModal = true;
+    startY = e.type === "mousedown" ? e.clientY : e.originalEvent.touches[0].clientY;
 });
+
+// Modal 드래그
+$(document).on("mousemove touchmove", function(e) {
+    if (!isDraggingModal) return;
+});
+
+// Modal 드래그 종료
+$(document).on("mouseup touchend", slideModal);
+
+
+function slideModal(e) {
+    if (!isDraggingModal) return;
+
+    let clientY = e.clientY || e.originalEvent.changedTouches[0].clientY;
+
+    const deltaY = startY - clientY;
+    if (deltaY > 0) { // 위로 드래그
+        console.log("up!");
+        $("#bottomSheet").css({
+            'bottom': '0%',
+            'height': '80%',
+            'transition': 'bottom 0.2s ease-in-out, height 0.2s ease-in-out'
+        });
+        modalIsUp = true;
+    } else { // 아래로 드래그
+        console.log("down!");
+        $("#bottomSheet").css({
+            'bottom': '-20%',
+            'height': '60%',
+            'transition': 'bottom 0.2s ease-in-out, height 0.2s ease-in-out'
+        });
+        modalIsUp = false;
+    }
+    isDraggingModal = false;
+}
+
