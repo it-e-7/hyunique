@@ -4,8 +4,6 @@ let sizeScrollLock = false;
 let colorPresentDisplayId = 1;
 let sizePresentDisplayId = 1;
 
-
-
 // 모달 닫기
 $(".modal-cancel-btn").click(function() {
     closeModal();

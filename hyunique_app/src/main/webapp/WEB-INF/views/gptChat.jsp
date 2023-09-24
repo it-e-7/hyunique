@@ -25,6 +25,36 @@
     </div>
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">
+	<!-- 컬러와 사이즈 모달 -->
+        <div id="product-search-modal" class="modal">
+          <div class="modal-content">
+              <div class="modal-wrap">
+                  <div class='color-wrap'>
+                      <select class="select-product-color empty">
+                      </select>
+                      <span class="select-input__icon">
+                          <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                              <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                          </svg>
+                      </span>
+                  </div>
+                  <div class='size-wrap'>
+                      <select class="select-product-size empty">
+                      </select>
+                      <span class="select-input__icon">
+                          <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                              <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                          </svg>
+                      </span>
+                  </div>
+              </div>
+              <div class="modal-btn-wrap">
+                  <button class="modal-cancel-btn" type="button">취소</button>
+                  <button class="modal-check-btn" type="submit">확인</button>
+              </div>
+          </div>
+        </div>
+
 		<!-- gpt 채팅창 전체 -->
 	
 	    <div class="chat-section-wrapper">
@@ -68,6 +98,8 @@
 	<script src="/resources/js/gpt.js"></script>
     <script src="/resources/js/tossPayment.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="/resources/js/posting/modal.js"></script>
+    <script src="/resources/js/gptModal.js"></script>
 	<script>
 		AOS.init();
 	</script>	
