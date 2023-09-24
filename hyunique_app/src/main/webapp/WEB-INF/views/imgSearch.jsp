@@ -20,17 +20,45 @@
             <div class="img-section" id="container">
                 <div class="img-section-area"></div>
             </div>
-
-            <div id="bottomSheet" class="hidden">
+            <div class="explain-seciton">
+                <p>찾고자 하는 의상을 지정해주세요</p>
+                <img class="drag-event-ic" src="/resources/img/ic-drag-event.gif"/>
+            </div>
+            </div>
+            <div id="bottomSheet" class="modal">
                 <div class="handlebar">
                     <span class="handlebar-icon"></span>
                 </div>
                 <div class="img-search-value">
-                    <p class="search-value-title">상품 검색 결과 입니다.</p>
-                    <ul class="img-search-list"></ul>
+                    <p class="search-value-title" draggable="false">상품 검색 결과 입니다.</p>
+                    <ul class="img-search-list">
+                        <div class="skeleton-loading-wrapper">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-text-wrapper">
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                            </div>
+                        </div>
+                        <div class="skeleton-loading-wrapper">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-text-wrapper">
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                            </div>
+                        </div>
+                        <div class="skeleton-loading-wrapper">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-text-wrapper">
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-text"></div>
+                            </div>
+                        </div>
+                    </ul>
                 </div>
             </div>
-
         </div>
     </body>
     <script

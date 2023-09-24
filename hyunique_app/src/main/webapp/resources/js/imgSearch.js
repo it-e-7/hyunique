@@ -255,8 +255,8 @@ $('#rectangle').on('mousemove touchmove', function() {
     timer = setTimeout(() => {
         if (!isMoved) return;
         sendToServerImg(newCanvas);
+        $('.modal').show();
     }, 3000);
-
 });
 
 
@@ -274,6 +274,7 @@ function sendToServerImg(newCanvas) {
       success: function(data) {
         console.log('Image sent successfully:', data);
         if (data) {
+            setTimeout(hideSkeleton, 2000);
             renderImgSearchResults(data);
             $('#bottomSheet').removeClass('hidden').addClass('shown');
         }
@@ -284,6 +285,15 @@ function sendToServerImg(newCanvas) {
     });
   }, 'image/jpeg', 0.95);
 }
+
+/* 스켈레톤 로딩 */
+const skeletonItems = $('.skeleton-loading');
+const hideSkeleton = () => {
+    skeletonItems.each(function() {
+        $(this).fadeOut();
+    });
+};
+
 
 // 상품 검색 결과 출력
 function renderImgSearchResults(results) {

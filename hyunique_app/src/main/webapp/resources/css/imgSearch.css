@@ -37,11 +37,13 @@ img#croppedImage {
 
 
 #rectangle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50px;
+    left: 50px;
     width: 20%;
     height: 20%;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,0.5);
+    z-index: 10;
 }
 
 .handle {
@@ -92,9 +94,22 @@ img#croppedImage {
     display: none;
 }
 
+.explain-seciton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+}
+
+img.drag-event-ic {
+    width: 20%;
+    margin-top: 1rem;
+}
+
 
 /* 모달 */
-.hidden {
+.modal {
+    display: none;
     bottom: -40%;
 }
 
@@ -143,8 +158,8 @@ img#croppedImage {
     font-weight: 500;
     margin-left: 1.5rem;
     margin-top: 1.5rem;
+    width: fit-content;
 }
-
 
 ul.img-search-list {
     display: grid;
@@ -202,4 +217,58 @@ p.product-brand {
 
 p.product-price {
     font-weight: bold;
+}
+
+/* 스켈레톤 로딩 적용 */
+.skeleton-loading-wrapper {
+
+}
+
+.skeleton-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 1rem;
+}
+
+.skeleton-text {
+    margin-bottom: 0.3rem;
+    height: 1rem;
+    width: 100%;
+}
+
+.skeleton-text-wrapper .skeleton-text:nth-child(1) {
+    width: 50%;
+    height: 1rem;
+}
+
+.skeleton-text-wrapper .skeleton-text:nth-child(2) {
+    width: 100%;
+    height: 1rem;
+}
+
+.skeleton-text-wrapper .skeleton-text:last-child {
+    width: 70%;
+    height: 1rem;
+}
+
+.skeleton-img,
+.skeleton-text-wrapper * {
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 1s infinite;
+}
+
+.skeleton-text-wrapper {
+    margin-top: 0.5rem;
+}
+
+.skeleton-text-wrapper * {
+    border-radius: 0.3rem;
+}
+
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
 }
