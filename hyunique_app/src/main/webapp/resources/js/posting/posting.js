@@ -173,7 +173,15 @@ function goBack() {
 
     if (pages[preIndex] === pages[1]) {
         $('#thumbnail-img').empty();
-        $('.add-img-container').empty();
+
+        const container = $('.add-img-container');
+        const firstItem = container.find('li').first().detach();
+
+        if (firstItem.length) {
+          container.empty();
+          container.append(firstItem);
+        }
+
         compressedFileList.length = 0;
         $("#style-tags input[type='checkbox']:checked").prop("checked", false);
         $("#tpo-tags input[type='radio']").prop("checked", false);
@@ -188,7 +196,6 @@ function goBack() {
 
     showPage(targetPage);
 }
-
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
 function getSelectItem(obj) {
