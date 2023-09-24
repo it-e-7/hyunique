@@ -68,5 +68,6 @@
         type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js">
     </script>
-    <script src="/resources/js/imgSearch.js"></script>
+    <script src="/resources/js/imgSearch/imgSearch.js"></script>
+    <script src="/resources/js/imgSearch/modal.js"></script>
 </html>
