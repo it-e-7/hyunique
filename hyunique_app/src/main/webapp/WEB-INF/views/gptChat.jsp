@@ -12,10 +12,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>gpt chat</title>
     <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>	
-    
 </head>
- 
-
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 	 <div id= "hyunique-main-top-recommend">
