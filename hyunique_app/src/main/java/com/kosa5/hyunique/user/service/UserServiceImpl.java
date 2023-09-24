@@ -60,5 +60,15 @@ public class UserServiceImpl implements UserService {
 	public int unfollowByUserId(int follower, int following) {
 		return userMapper.deleteFollower(follower, following);
 	}
+	
+	@Override
+	public List<UserVO> getFollowerByUserId(int userId) {
+		return userMapper.getFollowerByUserId(userId);
+	}
+
+	@Override
+	public List<UserVO> getFollowingByUserId(int userId) {
+		return userMapper.getFollowingByUserId(userId);
+	}
 
 }

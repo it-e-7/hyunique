@@ -20,4 +20,7 @@ public interface UserService {
 	
 	public int unfollowByUserId(int follower, int following);
 	
+	List<UserVO> getFollowerByUserId(int userId);
+
+	List<UserVO> getFollowingByUserId(int userId);
 }

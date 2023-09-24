@@ -154,14 +154,30 @@ public class UserController {
 		return "ok";
 	}
 
-//	@Auth
+	@Auth
 	@GetMapping("onboarding")
 	public String onboarding() {
 	    return "useronboarding";
 	}
-//	@Auth
-	@PostMapping("onboarding1")
-	public String onboarding1() {
-		return "useronboarding";
+
+	@GetMapping("followlist")
+	public String followPage(Model model, @RequestParam Integer userId) {
+        model.addAttribute("userId", userId);
+	    return "followList";
 	}
+	
+	//내 팔로워 목록
+	@GetMapping("follower")
+	@ResponseBody
+	public List<UserVO> followerListByUserId(HttpServletRequest request, @RequestParam Integer userId){
+	    return userService.getFollowerByUserId(userId);
+	}
+	
+	//내가 팔로우한 목록
+	@GetMapping("following")
+	@ResponseBody
+	public List<UserVO> followingListByUserId(HttpServletRequest request, @RequestParam Integer userId){
+		return userService.getFollowingByUserId(userId);
+	}
+	
 }

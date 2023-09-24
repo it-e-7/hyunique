@@ -23,4 +23,8 @@ public interface UserMapper {
 
 	int deleteFollower(@Param("follower") int follower, @Param("following") int following);
 	
+	List<UserVO> getFollowerByUserId(@Param("userId") int userId);
+	
+	List<UserVO> getFollowingByUserId(@Param("userId") int userId);
+	
 }
