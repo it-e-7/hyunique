@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
           document.getElementById("recommend-description").style.display = 'none';
+          const followBanner = document.getElementById("follow-banner");
+    	  if (followBanner) {
+    	    followBanner.style.display = 'none';
+    	  }
           const filterElement = $('#hyunique-main-top-filter');
           filterElement.hide();
           } 
@@ -50,18 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
           banner.style.display = 'flex';
           document.getElementById("ranking-wrapper").style.display = 'none';
           document.getElementById("ranking-description").style.display = 'none';
-          document.getElementById("recommend-description").style.display = 'flex';
+          const followBanner = document.getElementById("follow-banner");
+    	  if (followBanner) {
+    	    followBanner.style.display = 'none';
+    	  }         
+    	  document.getElementById("recommend-description").style.display = 'flex';
           const filterElement = $('#hyunique-main-top-filter');
           filterElement.show();
           }
+      
       if (button.textContent.trim() === '팔로우') {
     	  banner.style.display = 'none';
     	  document.getElementById("ranking-wrapper").style.display = 'none';
     	  document.getElementById("ranking-description").style.display = 'none';
     	  document.getElementById("recommend-description").style.display = 'none';
     	  const filterElement = $('#hyunique-main-top-filter');
+    	  const followBanner = document.getElementById("follow-banner");
+    	  if (followBanner) {
+    	    followBanner.style.display = 'flex';
+    	  }
     	  if (userId == 0 || followerCount == 0) {
-    	        console.log("숨김 시도함");
     	        filterElement.hide();
     	    }
       }

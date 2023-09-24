@@ -17,7 +17,7 @@ label{
     color:#363636;
 }
 .button-wrapper {
-    position: fixed;
+    /* position: fixed; */
     bottom: 30px;
     width: 100%;
     display: flex;
@@ -25,24 +25,25 @@ label{
     align-items: center;
 }
 input{
-    border-radius: 10rem;
-    width: calc(100% - 100px);
+    /* border-radius: 10rem; */
+    width: calc(50vw);
     max-width: 700px;
-    border:none;
-    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-    height:48px;
-    font-size:1.2rem;
-    padding: 0 20px;
-    
+    /* filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1)); */
+    height: 59px;
+    font-size: 36px;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
 }
 .content-wrapper{
 	position: relative;
 	right: 0;
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    height: calc(100vh - 40x);
-    align-items: center;
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height: 100%;
+	align-items: center;
+	justify-content: space-between;
 }
 .form-label{
     text-align:left;
@@ -53,12 +54,10 @@ input{
 }
 .form-content{
     width:100%;
-    height:100%;
-   align-items:center;
+    align-items:center;
     display:flex;
     flex-direction:column;
-    margin-top:20rem;
-
+    /* margin-top:20rem; */
 }
 
 .btn-next,.btn-submit{
@@ -173,4 +172,27 @@ input[type="checkbox"]:checked + label {
 .image-container img{
 	width: 70%;;
 	height:auto;
+}
+.form-wrapper {
+    height: 100%;
+}
+
+div#userUpdateForm {
+    height: calc(90vh - 50px);
+}
+div#user-height-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+p#user-height-cm {
+    font-size: 36px;
+    /* line-height: 9px; */
+    height: 60px;
+}
+
+input#userHeight {
+    width: 30vw;
 }
