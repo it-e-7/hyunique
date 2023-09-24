@@ -143,7 +143,6 @@ $('.result-list').on('click', '.search-product-li', function() {
 
     // 확인 버튼을 누르면 핀이 표시됨
     $('.modal-check-btn').off('click').on('click', function() {
-
         product['productSize'] = $('.select-product-size option:selected').text();
         product['productColor'] = $('.select-product-color option:selected').text();
 
@@ -154,6 +153,7 @@ $('.result-list').on('click', '.search-product-li', function() {
 
         attachTag(XOffset, YOffset, product);
         $('.result-list').empty();
+        closeModal();
         showPage('.write-container');
     });
 });
@@ -250,6 +250,8 @@ function compileAndSendPostData() {
 
     // 핀
     let product = Object.values(items).map(item => {
+        console.log('핀 좌표 ', item.xPos, item.yPos);
+        console.log('핀 좌표 백분율 ', (item.xPos / imgWidth) * 100, (item.yPos / imgHeight) * 100);
         return {
             pinX: (item.xPos / imgWidth) * 100,
             pinY: (item.yPos / imgHeight) * 100,
@@ -268,13 +270,15 @@ function compileAndSendPostData() {
         formData.append("files", file, file.name);
     });
 
-    sendPostToServer(formData);
-    printSelectTagAndContent(nextPost);
-    compressedFileList.length = 0;
+    try {
+        sendPostToServer(formData, nextPost);
+    } catch (error) {
+        console.error("재업로드 필요: ", error);
+    }
 }
 
 
-async function sendPostToServer(formData) {
+async function sendPostToServer(formData, nextPost) {
     try {
         const response = await fetch('/post', {
             method: 'POST',
@@ -285,13 +289,17 @@ async function sendPostToServer(formData) {
 
         if (responseBody === 'success') {
             console.log('Upload success');
+            printSelectTagAndContent(nextPost);
             showPage('.post-container');
+            compressedFileList.length = 0;
         } else {
             console.log('Upload failed');
             alert("업로드가 실패하였습니다. 다시 시도해주세요.");
+            throw new Error("Server responded with failure");
         }
     } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
+        throw error;
     }
 }
 
