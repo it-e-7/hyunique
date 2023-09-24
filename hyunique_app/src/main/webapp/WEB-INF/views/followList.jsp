@@ -28,7 +28,7 @@
 			</lord-icon>
 		</button>
 		<div class="txt-user-profile">
-			<p>${userId}</p>
+			<p>${userNickname}</p>
 		</div>
 		<div style="visibility: hidden;">
 		<lord-icon

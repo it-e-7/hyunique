@@ -162,7 +162,10 @@ public class UserController {
 
 	@GetMapping("followlist")
 	public String followPage(Model model, @RequestParam Integer userId) {
+		String userIdString = Integer.toString(userId);
+	    UserVO user = userService.getUserInfoAndFollowerCount(userId,userIdString); // 여기에서 변경
         model.addAttribute("userId", userId);
+        model.addAttribute("userNickname", user.getUserNickname());
 	    return "followList";
 	}
 	
