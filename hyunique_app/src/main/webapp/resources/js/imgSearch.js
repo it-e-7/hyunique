@@ -217,7 +217,8 @@ $(img).on('load', function() {
         'top': 0,
         'bottom': 0,
         'left': 0,
-        'right': 0
+        'right': 0,
+        'z-index': -1
     });
 
     $('.img-section-area').append(canvas); // 새로운 코드
@@ -255,6 +256,7 @@ $('#rectangle').on('mousemove touchmove', function() {
     timer = setTimeout(() => {
         if (!isMoved) return;
         sendToServerImg(newCanvas);
+        switchLayers();
         $('.modal').show();
     }, 3000);
 });
@@ -274,9 +276,9 @@ function sendToServerImg(newCanvas) {
       success: function(data) {
         console.log('Image sent successfully:', data);
         if (data) {
-            setTimeout(hideSkeleton, 2000);
             renderImgSearchResults(data);
-            $('#bottomSheet').removeClass('hidden').addClass('shown');
+            switchLayers();
+//            $('#bottomSheet').removeClass('hidden').addClass('shown');
         }
       },
       error: function(error) {
@@ -287,18 +289,26 @@ function sendToServerImg(newCanvas) {
 }
 
 /* 스켈레톤 로딩 */
-const skeletonItems = $('.skeleton-loading');
-const hideSkeleton = () => {
-    skeletonItems.each(function() {
-        $(this).fadeOut();
-    });
-};
+
+function showSkeleton() {
+    $('.skeleton-loading-wrapper').addClass('active');
+}
+
+function hideSkeleton() {
+    $('.skeleton-loading-wrapper').removeClass('active');
+}
+
+
+function switchLayers() {
+    $('.data-layer').toggle();
+    $('.skeleton-layer').toggle();
+}
 
 
 // 상품 검색 결과 출력
 function renderImgSearchResults(results) {
-    let resultList = $(".img-search-list");
-    resultList.empty();
+    let resultList = $('.data-layer');
+    $('.data-layer').empty();
 
     $.each(results, function(index, product) {
         let listItem = $("<li>").addClass("search-result-li");

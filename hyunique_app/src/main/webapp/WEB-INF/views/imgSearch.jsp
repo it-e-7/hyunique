@@ -32,28 +32,31 @@
                 <div class="img-search-value">
                     <p class="search-value-title" draggable="false">상품 검색 결과 입니다.</p>
                     <ul class="img-search-list">
-                        <div class="skeleton-loading-wrapper">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text-wrapper">
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
+                        <div class="data-layer"></div>
+                        <div class="skeleton-layer">
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="skeleton-loading-wrapper">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text-wrapper">
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="skeleton-loading-wrapper">
-                            <div class="skeleton-img"></div>
-                            <div class="skeleton-text-wrapper">
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-text"></div>
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
                             </div>
                         </div>
                     </ul>
