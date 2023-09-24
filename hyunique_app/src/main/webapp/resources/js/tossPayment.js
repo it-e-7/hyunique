@@ -34,8 +34,14 @@ const productListElements = document.querySelectorAll('.gpt-product-list');
 let orderList = [];
 productListElements.forEach(productElement => {
    //현재는 테스트를 위하여 체크되지 않은 이미지를 전송합니다. 이후에는 수정해주세요
-  const imageSource = productElement.querySelector('img[src="/resources/img/ic-bag-check.png"]').getAttribute('src');
-  if (imageSource == '/resources/img/ic-bag-non-check.png') {
+  let imageSource = productElement.querySelector('img[src="/resources/img/ic-bag-check.png"]')
+  if (imageSource != null){
+  imageSource = imageSource.getAttribute('src');
+  }
+  else {
+  return ;
+  }
+  if (imageSource == '/resources/img/ic-bag-check.png') {
     const productWrapper = productElement.querySelector('#product-only-wrapper');
     productWrapper.getAttribute("onclick");
     var regex = /'([^']+)'/;
