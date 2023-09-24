@@ -44,9 +44,18 @@ function slideModal(e) {
 
 /* 스켈레톤 로딩 */
 function switchLayers() {
-    $('.data-layer').toggle();
-    $('.skeleton-layer').toggle();
+    const dataLayer = $('.data-layer');
+    const skeletonLayer = $('.skeleton-layer');
+
+    if (dataLayer.css('display') === 'grid') {
+        dataLayer.css('display', 'none');
+        skeletonLayer.css('display', 'grid');
+    } else {
+        dataLayer.css('display', 'grid');
+        skeletonLayer.css('display', 'none');
+    }
 }
+
 
 
 // 상품 검색 결과 출력
@@ -60,7 +69,19 @@ function renderImgSearchResults(results) {
         let divImg = $("<div>").addClass("img-wrapper");
         divImg.append($("<img>").attr("src", product.productImg).addClass("product-img").attr('draggable', 'false'));
         listItem.append(divImg);
-        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
+
+        let productIdElement = $("<p>")
+            .text(product.productId)
+            .addClass("product-id")
+            .attr("hidden", true)
+            .on('click', function() {
+                moveToProduct(product.productId)
+                });
+        divItem.append(productIdElement);
+
+//        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
+
+
         divItem.append($("<p>").text(product.productBrand).addClass("product-brand"));
         divItem.append($("<p>").text(product.productName).addClass("product-name"));
         divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("product-price"));
