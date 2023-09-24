@@ -48,11 +48,6 @@
                 인기있는 스타일
             </div>
         </c:if>
-        <c:if test="${followerCount ne 0}">
-        <div id="follow-banner">
-            <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-follow.jpg" id="follow-banner-img"/>
-        </div>
-    </c:if>
     </c:if>
 	<div id="banner">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
