@@ -345,3 +345,134 @@ label {width: 24px;height: 24px;}
     height: 40px;
     line-height: 2.6;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index : 9999;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 9px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    width: 50%;
+    position: relative;
+    width: 318px;
+    height: 179px;
+    left: 0;
+    top: 35vh;
+}
+
+.modal-wrap {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.color-wrap, .size-wrap {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.select-product-color {
+    border-color: var(--jw-blue);
+    color: #424242;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    -webkit-appearance: none;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
+}
+
+option:disabled {
+    color: #bdbdbd;
+}
+
+option {
+    color: #424242;
+    font-family: 'Spoqa Han Sans';
+    -webkit-appearance: none;
+}
+
+
+.color-wrap .select-input__icon {
+    color: var(--jw-blue);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.color-wrap, .size-wrap {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.select-product-size {
+    border-color: var(--jw-blue4);
+    color: #424242;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    -webkit-appearance: none;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
+}
+
+.size-wrap .select-input__icon {
+    color: var(--jw-blue4);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.modal-btn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button.modal-cancel-btn {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    background-color: var(--jw-blue5);
+    color: #757575;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+button.modal-check-btn {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    flex: 1;
+    text-align: center;
+    background: var(--jw-blue);
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+

@@ -93,7 +93,35 @@ function gptProductRequest (){
                   <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" onclick="clickPurchase(this)" id="bag-img"/></label>
               </div>
               </li>
-              <div>
+              <div id="product-search-modal" class="modal">
+                  <div class="modal-content">
+                      <div class="modal-wrap">
+                          <div class='color-wrap'>
+                              <select class="select-product-color empty">
+                              </select>
+                              <span class="select-input__icon">
+                                  <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                      <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                  </svg>
+                              </span>
+                          </div>
+                          <div class='size-wrap'>
+                              <select class="select-product-size empty">
+                              </select>
+                              <span class="select-input__icon">
+                                  <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                                      <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                                  </svg>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="modal-btn-wrap">
+                          <button class="modal-cancel-btn" type="button">취소</button>
+                          <button class="modal-check-btn" type="submit">확인</button>
+                      </div>
+                  </div>
+              </div>
+    <div>
       `)
       });
             //결제 버튼 만들기
