@@ -35,19 +35,30 @@
 	            <div class="btn-grad">
 	            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
 	            	<div class="popular-desc-wrapper">
-						<!-- <p id="popular-style-desc">팔로우 한 번으로 당신이 원하는 스타일을 마음껏 누려보세요!</p>
-						<p id="popular-style-desc-sub">5초만에 가입해서 팔로우 하러 가기</p> -->
 		            	<img id="banner-text" src="/resources/img/banner-text.png" />
 					</div>
 	            </div>
 	        </div>
     </c:if>
     <c:if test="${not empty userId}">
-        <c:if test="${followerCount eq 0}">
-            <div id="popular-style">
-                인기있는 스타일
-            </div>
-        </c:if>
+	   <c:choose>
+	        <c:when test="${followerCount eq 0}">
+	            <div id="popular-style">
+		            실시간 인기 스타일🔥
+		            <div class="btn-grad">
+		            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
+		            	<div class="popular-desc-wrapper">
+			            	<img id="banner-text" src="/resources/img/banner-text.png" />
+						</div>
+		            </div>
+		        </div>
+	        </c:when>
+	        <c:otherwise>
+	            <div id="follow-banner" style="display:none;">
+	                <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-follow.jpg"/>
+	            </div>
+	        </c:otherwise>
+	    </c:choose>
     </c:if>
 	<div id="banner">
 	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
