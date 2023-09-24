@@ -73,7 +73,7 @@ function handleImageUpload(e, previewElement, newHeight, type) {
     const files = e.target.files;
     $.each(files, function(index, file) {
         if (!file.type.match("image/.*")) {
-            alert("이미지 파일만 업로드할 수 있습니다.");
+        	toastr.warning('이미지 파일만 업로드할 수 있습니다.');
             return;
         }
         const reader = new FileReader();
@@ -187,11 +187,11 @@ function updateUser() {
         success: function (response) {
         	toastr.success('성공적으로 회원 정보 수정을 완료했습니다.');
         	setTimeout(function(){
-            	window.location.replace('/');
+            	window.location.replace('/user/'+sessionId);
         	}, 1000);
         },
         error: function (response) {
-            alert('업데이트 실패: 다시 시도해주세요.');
+        	toastr.error('회원 정보 수정에 실패했어요. 관리자에게 문의해주세요');
         }
     });
 }

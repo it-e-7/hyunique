@@ -39,7 +39,7 @@ function sharePost(productName) {
 			t.select();
 			document.execCommand('copy');
 			document.body.removeChild(t);
-			alert('클립보드에 복사되었습니다 !');
+	        toastr.info('클립보드에 복사되었습니다!');
 		}
 	} else {
 		const t = document.createElement("textarea");
@@ -48,6 +48,6 @@ function sharePost(productName) {
 		t.select();
 		document.execCommand('copy');
 		document.body.removeChild(t);
-		alert('클립보드에 복사되었습니다 !');
+        toastr.info('클립보드에 복사되었습니다!');
 	}
 }

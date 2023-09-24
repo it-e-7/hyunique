@@ -66,7 +66,7 @@ function sharePost(userNickname) {
 			t.select();
 			document.execCommand('copy');
 			document.body.removeChild(t);
-			alert('클립보드에 복사되었습니다 !');
+			toastr.info('클립보드에 복사되었습니다!');
 		}
 	} else {
 		const t = document.createElement("textarea");
@@ -75,7 +75,7 @@ function sharePost(userNickname) {
 		t.select();
 		document.execCommand('copy');
 		document.body.removeChild(t);
-		alert('클립보드에 복사되었습니다 !');
+		toastr.info('클립보드에 복사되었습니다!');
 	}
 }
 
@@ -158,7 +158,7 @@ function deleteOnePost(postId) {
                 window.location.href = '/';
             }
             else {
-                alert("게시글 삭제 실패");
+                toastr.error('게시글을 삭제하지 못했어요. 관리자에게 연락해주세요');
             }
         },
         error: function(response) {

@@ -8,7 +8,7 @@ $(document).ready(function() {
 		$("#form-nickname").hide();
 		$("#form-usersex").css('display', 'flex');
 	});
-	$("#finish-usersex, .usersex-skip").click(function() {
+	$("#finish-usersex, #usersex-skip").click(function() {
 		$("#form-usersex").hide();
 		$("#form-userheight").css('display', 'flex');
 	});
