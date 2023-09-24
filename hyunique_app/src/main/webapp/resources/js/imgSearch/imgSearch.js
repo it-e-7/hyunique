@@ -263,26 +263,26 @@ $('#rectangle').on('mousemove touchmove', function() {
 
 
 function sendToServerImg(newCanvas) {
-  newCanvas.toBlob(function(blob) {
-    const formData = new FormData();
-    formData.append('image', blob, 'imgSearch.jpg');
+    newCanvas.toBlob(function(blob) {
+        const formData = new FormData();
+        formData.append('image', blob, 'imgSearch.jpg');
 
-    $.ajax({
-      url: '/product/img-search',
-      type: 'POST',
-      processData: false,
-      contentType: false,
-      data: formData,
-      success: function(data) {
-        console.log('Image sent successfully:', data);
-        if (data) {
-            renderImgSearchResults(data);
-            switchLayers();
-        }
-      },
-      error: function(error) {
-        console.error('Error:', error);
-      }
-    });
-  }, 'image/jpeg', 0.95);
+        $.ajax({
+            url: '/product/img-search',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(data) {
+            console.log('Image sent successfully:', data);
+                if (data) {
+                    renderImgSearchResults(data);
+                    switchLayers();
+                }
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }, 'image/jpeg', 0.95);
 }

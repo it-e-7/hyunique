@@ -216,7 +216,6 @@ p.product-price {
 /* 스켈레톤 로딩 적용 */
 
 .data-layer {
-    display: block;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 1rem;
@@ -227,13 +226,13 @@ p.product-price {
 
 .skeleton-layer {
     display: none;
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 1rem;
     column-gap: 1rem;
     padding: 1.5rem;
     box-sizing: border-box;
 }
+
 
 
 
