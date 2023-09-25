@@ -1,40 +1,48 @@
 let colorScrollLock = false;
 let sizeScrollLock = false;
 
+let colorPresentDisplayId = 1;
+let sizePresentDisplayId = 1;
+
+
+
 // 모달 닫기
 $(".modal-cancel-btn").click(function() {
     closeModal();
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
-
-    $(".select-product-size option:not(:first)").remove();
-    $(".select-product-color option:not(:first)").remove();
+    $('.select-product-color').empty();
+    $('.select-product-size').empty();
 });
 
 // 모달 띄우기
 function showProductModal(product) {
     openModal();
+    colorPresentDisplayId = 1;
+    sizePresentDisplayId = 1;
 
     requestProductSizeAndColor(product);
 
+    $(".select-product-size").empty();
+    $(".select-product-color").empty();
     $("#product-search-modal").show();
 }
 
 // 상품 사이즈, 색상 DB에서 조회 후 html 렌더링
 function requestProductSizeAndColor(product) {
-    let selectSize = $(".select-product-size");
-    let selectColor = $(".select-product-color");
-
-    // 첫 번째 option을 선택되게 하고, 다른 것들은 선택 해제
-    $(".select-product-size option:first").prop('selected', true);
-    $(".select-product-color option:first").prop('selected', true);
-
     $.getJSON(`/product/inform?productId=${product['productId']}`, function(data) {
+
         $('.search-product-brand').text(product['productBrand']);
         $('.search-product-name').text(product['productName']);
 
-       // size 처리
+        let selectSize = $(".select-product-size");
+        let selectColor = $(".select-product-color");
+
+        selectSize.append($("<option>").attr("value", '').attr("disabled", 'disabled').attr('selected', 'selected').text('사이즈'));
+        selectColor.append($("<option>").attr("value", '').attr("disabled", 'disabled').attr('selected', 'selected').text('색상'));
+
+        // size 처리
         if (data.productSize.length > 0) {
            $.each(data.productSize, function(index, size) {
                let slideItem = $("<option>").attr("value", `${index}`).text(size);
@@ -74,13 +82,16 @@ function openModal() {
     });
 }
 
-// 모달 닫기
+// 모달 닫기y
 function closeModal() {
     $('.search-container').css({
         'overflow': 'auto'
     });
+
     $('.search-container').off('scroll touchmove mousewheel');
 
+
   $(window).scrollTop(0);  // 저장한 스크롤 위치로 이동
+
 }
 
