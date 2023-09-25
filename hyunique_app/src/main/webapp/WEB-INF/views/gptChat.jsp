@@ -59,14 +59,23 @@
 	    	<div class="gap-area"></div>
 	    </div>
         <input type="button" id="sample3_search" value="우편번호 찾기" onclick='<c:if test="${not empty user.userAddress}">paymentInformation(${user.userAddress});</c:if> <c:if test="${empty user.userAddress}">sample3_execDaumPostcode(${user.userId}); </c:if>'><br>
-        <input type="text" id="sample3_address" placeholder="주소"><br>
-        <input type="text" id="sample3_detailAddress" placeholder="상세주소">
-        <input type="text" id="sample3_extraAddress" placeholder="참고항목">
 
         <div id="modal-wrap">
             <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
             <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
             </div>
+            <div id="address-modal">
+                <div id="address-wrap">
+                    <input type="text" id="sample3_address" class="d_form large" placeholder="주소">
+                    <input type="text" id="sample3_detailAddress" class="d_form" placeholder="상세주소">
+                    <input type="text" id="sample3_extraAddress" class="d_form" placeholder="참고항목">
+                    <div id="address-button-list">
+                        <button id="address-cancel-button" class="jw-btn-nonshadow">다시찾기</button>
+                        <button id="address-apply-button" class="jw-btn-nonshadow">주소저장</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">

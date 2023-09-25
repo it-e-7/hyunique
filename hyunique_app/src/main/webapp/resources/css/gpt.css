@@ -523,16 +523,39 @@ button.modal-check-btn {
     color: #FFFFFF;
 }
 
-#sample3_postcode, #sample3_address, #sample3_detailAddress, #sample3_extraAddress, #sample3_search{
+#sample3_search{
 display: none;
 }
 
-#wrap{
+#address-modal{
+    display: none;
+    border: 1px solid;
+    width: 500px;
+    height: 300px;
+    margin: 5px 0;
+    background: white;
+}
+
+#address-wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    height: 100%;
+
+}
+
+#wrap, #address-modal{
     z-index: 999;
     position: fixed !important;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 465px) {
+    #wrap, #address-modal {
+        width: 95% !important;
+    }
 }
 
 #modal-wrap{
@@ -548,8 +571,26 @@ display: none;
     z-index: 999; /* 모달을 다른 요소 위에 표시 */
 }
 
-@media screen and (max-width: 465px) {
-    #wrap {
-        width: 100% !important;
-    }
+.d_form.large {
+    margin-top: 2em;
+    width: 80%;
+}
+.d_form {
+    margin: 0.2em 0;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-color: #dbdbdb #d2d2d2 #d0d0d0 #d2d2d3;
+    box-shadow: inset 0.1em 0.1em 0.15em rgba(0,0,0,.1);
+    vertical-align: middle;
+    line-height: 1.25em;
+    outline: 0;
+    width: 60%;
+}
+
+#address-button-list{
+    margin-top: 6em;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
 }

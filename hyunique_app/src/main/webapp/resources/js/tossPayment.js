@@ -26,11 +26,16 @@ function paymentToss(apiKey,totalPrice,userId,url,orderList){
 function paymentAddressCheck () {
     let orderList = checkProductList();
     if (orderList.length != 0){
-    $("#sample3_search").click();
+        if(localStorage.getItem('address')!=null){
+            paymentInformation (localStorage.getItem('address'));
+        }
+        else{
+        $("#sample3_search").click();
+        }
     }
-else {
+    else {
     alert("상품을 선택해주세요");
-}
+    }
 }
 
 //토스 결제를 하기 전에, 상품에 해당하는 정보를 가져옵시다
