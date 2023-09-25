@@ -2,7 +2,6 @@ const followerCount = document.getElementById("followerCount").value || 0;
 const userId = document.getElementById("userId").value || 0;
 
 $(document).ready(function() {
-  // 배너 정보를 가져옵니다.
   $.ajax({
     url: '/banners',
     type: 'GET',
@@ -15,7 +14,6 @@ $(document).ready(function() {
         $('#banner').append(bannerDiv);
       });
 
-      // 배너 이미지가 추가된 이후에 스크롤 로직을 설정합니다.
       setupBannerScroll();
     },
     error: function() {
@@ -23,14 +21,12 @@ $(document).ready(function() {
     }
   });
 
-  // 배너 스크롤 로직
   function setupBannerScroll() {
     let currentIndex = 0;
     const banner = document.getElementById("banner");
     const images = banner.querySelectorAll("img");
     const imageCount = images.length;
 
-    // 이미지가 없다면, setInterval을 설정하지 않습니다.
     if (imageCount === 0) {
       console.log("No images found. Skipping banner scroll.");
       return;
@@ -42,7 +38,6 @@ $(document).ready(function() {
         currentIndex = 0;
       }
 
-      // images[currentIndex]가 undefined가 아닌 경우에만 실행
       if (images[currentIndex]) {
         const newScrollPosition = images[currentIndex].offsetLeft;
         banner.scroll({
