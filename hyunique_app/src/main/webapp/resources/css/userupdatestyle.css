@@ -1,4 +1,4 @@
-/* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 .txt-profile-title{
     font-family:Spoqa Han Sans;
     font-size:2rem;
@@ -98,7 +98,7 @@ input{
 	padding:0;
 	position: fixed;
 	z-index:1000;
-	bottom:calc(3vh);
+	bottom: 20px;
 	max-width: 700px;
 	font-weight: 600;
 	font-size: 0.95rem;

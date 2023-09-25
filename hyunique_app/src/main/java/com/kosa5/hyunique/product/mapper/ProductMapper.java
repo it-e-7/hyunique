@@ -18,5 +18,6 @@ public interface ProductMapper {
 	List<PostProductVO> selectSearchProductList(String productName);
 	List<String> selectProductSize(String productName);
 	List<String> selectProductColor(String productName);
+	List<PostProductVO> selectProductByIdList(List<String> productIdList);
 
 }

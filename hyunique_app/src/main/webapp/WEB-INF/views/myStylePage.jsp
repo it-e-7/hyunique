@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Cache-Control" content="no-cache" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
 <title>마이페이지</title>
@@ -133,8 +134,8 @@
 	
 	<div class="horizontal-bar"> </div>
 	<ul class="tab-bar">
-	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1">스타일링</li>
-	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" onclick="filterProducts('allList')">옷장</li>
+	    <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1" id="tab-1">스타일링</li>
+	    <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" id="tab-2" onclick="filterProducts('allList')">옷장</li>
 	    <div class="indicator"></div>
 	</ul>
 
@@ -185,18 +186,23 @@
 			<div id="accessoryList"class="product-list-wrapper"></div>
 		</div>
 	</div>
+	<c:choose>
+	    <c:when test="${isCurrentUser == false}">
+	       <div></div>
+	    </c:when>
+	    <c:otherwise>
+			<c:if test="${sessionId == user.userId}">
+				<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
+					<img src="/resources/img/posting-btn.png"/>
+				</button>
+			</c:if>
+	    </c:otherwise>
+	</c:choose>
 	
-	<button id="movePostPage" class="posting-btn" onclick="movePostPage()">
-		<img src="/resources/img/posting-btn.png"/>
-	</button>
 
 </body>
- <script>
-	let userIdFromModel = ${userId}; // 서버에서 넘겨준 userId
-	userPostList(userIdFromModel);
-</script>
-<script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/closet.js"></script>
+<script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/tab.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>

@@ -23,11 +23,13 @@
             <div class="header">
                 <p>스타일링을 공유해주세요</p>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
-            </div>
-            <div class="body">
-                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            <div class="image-description-container">
+	            <div class="image-container">
+	                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
+	            </div>
+	            <div class="body">
+	                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+	            </div>
             </div>
         </div>
         <div class="button-container">
@@ -109,6 +111,7 @@
                     <div class="modal-wrap">
                         <div class='color-wrap'>
                             <select class="select-product-color empty">
+                                <option value="" disabled selected>색상</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
@@ -118,6 +121,7 @@
                         </div>
                         <div class='size-wrap'>
                             <select class="select-product-size empty">
+                                <option value="" disabled selected>사이즈</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">

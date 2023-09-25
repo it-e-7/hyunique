@@ -249,3 +249,6 @@ Servers/Tomcat v9.0 Server at localhost-config/server.xml
 Servers/Tomcat v9.0 Server at localhost-config/tomcat-users.xml
 Servers/Tomcat v9.0 Server at localhost-config/web.xml
 *.policy
+
+ai_server/model
+ai_server/__pycache__

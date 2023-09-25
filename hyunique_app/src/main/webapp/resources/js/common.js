@@ -6,7 +6,7 @@ function ajax(config) {
 		try {
 			response = JSON.parse(response);
 			if(response.redirect) {
-				alert(response.msg);
+		    	toastr.success(response.msg);
 				window.location.href = response.redirect;
 				return;
 			}

@@ -10,30 +10,93 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-
+<div id="session-info">
+	<input type="hidden" id="followerCount" value="${followerCount}">
+	<input type="hidden" id="userId" value="${userId}">
+</div>
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
-          <div class="button selected" id="recommend">추천</div>
-          <div class="button" id="style-ranking">스타일랭킹</div>
-          <div class="button" id="following">팔로우</div>
-          <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
-    </div>
+	    <div class="button selected" id="recommend">추천</div>
+	    <div class="button" id="style-ranking">스타일랭킹</div>
+	    <div class="button" id="following">팔로우</div>
+	    <div class="tab-deco">🤖</div>
+	    <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
+	</div>
+</div>
+<div id= "main-wrapper-bottom">
+
     <c:if test="${empty userId}">
-        <div id="popular-style">
-            인기있는 스타일
-        </div>
+	    	<div id="popular-style">
+	            실시간 인기 스타일🔥
+	            <div class="btn-grad">
+	            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
+	            	<div class="popular-desc-wrapper">
+		            	<img id="banner-text" src="/resources/img/banner-text.png" />
+					</div>
+	            </div>
+	        </div>
     </c:if>
     <c:if test="${not empty userId}">
-        <c:if test="${followerCount eq 0}">
-            <div id="popular-style">
-                인기있는 스타일
-            </div>
-        </c:if>
+	   <c:choose>
+	        <c:when test="${followerCount eq 0}">
+	            <div id="popular-style">
+		            실시간 인기 스타일🔥
+		            <div class="btn-grad">
+		            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
+		            	<div class="popular-desc-wrapper">
+			            	<img id="banner-text" src="/resources/img/banner-text.png" />
+						</div>
+		            </div>
+		        </div>
+	        </c:when>
+	        <c:otherwise>
+	            <div id="follow-banner" style="display:none;">
+	                <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-follow.jpg"/>
+	            </div>
+	        </c:otherwise>
+	    </c:choose>
     </c:if>
-
+	<div id="banner">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-luxury.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
+	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
+	</div>
+	<div id="ranking-wrapper">
+		<div class="ranking-description" id="ranking-header-txt">
+			hyunique 최고의 패셔니스타를 확인해보세요 🎉
+		</div>
+		<div class="category-description" id="rank-category-desc">
+			* 지난 한 주 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
+		</div>
+		<div class="ranking-section">
+			<div class="ranking-user-wrapper" id="rank-2nd">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="2nd-number">2</div>
+				</div>
+				<img class="ranking-user-img" id="rank-2nd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_107.jpg"/>
+				<div class="user-nickname">유니 </div>
+			</div>
+			<div class="ranking-user-wrapper" id="rank-1st">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="1st-number">1</div>
+				</div>
+				<img class="ranking-user-img" id="rank-1st-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/back_35.jpg"/>
+				<div class="user-nickname">우기</div>
+			</div>
+			<div class="ranking-user-wrapper" id="rank-3rd">
+				<div class="ranking-wrapper">
+					<div class="ranking-number" id="3rd-number">3</div>
+				</div>
+				<img class="ranking-user-img" id="rank-3rd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_105.jpg"/>
+				<div class="user-nickname">지니</div>
+			</div>
+		</div>
+	</div>
     <div id= "hyunique-main-top-filter">
         <button id="filterModalButton" class="filter-img-div">
             <img src="/resources/img/filter.png" />
@@ -220,15 +283,33 @@
             </div>
         </div>
     </div>
-    </div>
-    <div id= "main-wrapper-bottom">
+   	 	<div class="recommend-description" data-aos="fade-left" id="recommend-description">
+			<lord-icon
+				class="lord-star"
+			    src="https://cdn.lordicon.com/gbtkzxxm.json"
+			    trigger="loop"
+			    delay="1000"
+			    colors="primary:#ffc738"
+			    style="width:4rem;height:4rem">
+			</lord-icon>
+			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요🔎</p>
+		</div>
+   	 	<div class="ranking-description" id="ranking-description">
+			<lord-icon
+				id="rank-icon"
+			    src="https://cdn.lordicon.com/oegrrprk.json"
+			    trigger="loop"
+			    delay="1500"
+			    colors="primary:#3080e8,secondary:#a866ee,tertiary:#848484,quaternary:#121331"
+			    style="width:4.5rem;height:4.5rem">
+			</lord-icon>
+			<div class="p-tag-wrapper">
+				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
+				<p class="txt-rec-des-sub">지금 가장 인기있는 스타일을 확인해보세요</p>
+			</div>
+		</div>
         <div id="infinite-scroll">
             <div id="photo-gallery">
-                <%-- <c:forEach items="${postVOList}" var="post" varStatus="loop">
-                     <div class="photo" onclick="moveToPost('${post.postId}')">
-                         <img src="${post.thumbnailUrl}" alt="사진 ${loop.index}">
-                     </div>
-                     </c:forEach> --%>
             </div>
         </div>
             <c:if test="${empty userId}">
@@ -247,12 +328,28 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
         <script src="/resources/js/filterModal.js"></script>
+        <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>	
     </div>
 </div>
 <div id="qr-button">
     <a href="/post/getQRPage">
         <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
     </a>
+</div>
+<div id="up-button" onclick="scrollToTop()">
+  <lord-icon
+    src="https://cdn.lordicon.com/xdakhdsq.json"
+    trigger="loop"
+    delay="1500"
+    colors="primary:#ffffff"
+    state="hover-2"
+    style="width:40px;height:40px"
+    filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));>
+</lord-icon>
 </div>
 </body>
 </html>

@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 type: "GET",
                 data: formData,
                 success: function(data) {
+                    //$("#photo-gallery").append(data);
+                	   var $data = $(data);
+                       $data.attr('data-aos', 'zoom-in-up');
                     $("#photo-gallery").append(data);
                     //추가적으로 순위를 넣기
                     var element = $(".selected").attr("id");

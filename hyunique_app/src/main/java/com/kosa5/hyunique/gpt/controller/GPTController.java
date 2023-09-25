@@ -24,7 +24,7 @@ import com.kosa5.hyunique.user.vo.UserVO;
 
 import lombok.extern.java.Log;
 
-@Log
+@Log	
 @Controller
 @RequestMapping("gpt")
 public class GPTController {

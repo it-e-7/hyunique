@@ -40,6 +40,7 @@
 			<strong style="font-size: 1.2rem;"> &#8361; <fmt:formatNumber
 					value="${product.productPrice}" pattern="#,###" />
 			</strong>
+			
 			<div class="product-stock-wrapper">
 				<p class="stock-title">현대백화점 재고 확인</p>
 				<div class="select-depart-wrapper">
@@ -90,6 +91,7 @@
 					</c:if>
 				</c:forEach>
 			</div>
+			
 			<div class="product-post-wrapper">
 				<p>이 아이템을 활용한 다양한 스타일</p>
 				<div class="post-padding-wrapper">
