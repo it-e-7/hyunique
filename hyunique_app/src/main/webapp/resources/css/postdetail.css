@@ -25,6 +25,8 @@
 	width: 2.4rem;
 	height: 2.4rem;
 	border-radius: 70%;
+	aspect-ratio: 1 / 1;
+    object-fit: cover
 }
 
 .left-user-info p {
