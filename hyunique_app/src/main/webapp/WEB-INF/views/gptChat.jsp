@@ -58,6 +58,16 @@
 	    <div class="chat-section-wrapper">
 	    	<div class="gap-area"></div>
 	    </div>
+        <input type="button" onclick="sample3_execDaumPostcode()" id="sample3_search" value="우편번호 찾기"><br>
+        <input type="text" id="sample3_address" placeholder="주소"><br>
+        <input type="text" id="sample3_detailAddress" placeholder="상세주소">
+        <input type="text" id="sample3_extraAddress" placeholder="참고항목">
+
+        <div id="modal-wrap">
+            <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+            <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+            </div>
+        </div>
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">
 	    	<div class="voice-control-wrapper">
@@ -103,6 +113,8 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 	<script src="/resources/js/posting/modal.js"></script>
     <script src="/resources/js/gptModal.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/resources/js/daumAddress.js"></script>
 	<script>
 		AOS.init();
 	</script>	

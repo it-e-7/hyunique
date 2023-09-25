@@ -46,7 +46,6 @@ let wordflick = function () {
 };
 
 if (!isSafari) {
-	console.log("크롬 로그인")
 	  speech = new webkitSpeechRecognition;
 			siriWave = new SiriWave({
 		    container: document.getElementById('voice-control'),
@@ -230,7 +229,6 @@ function gptRequest() {
 		        	  $(".voice-control-wrapper").removeClass("hidden");
 		          }
 		    	  $("#response-content").text(modifiedResponse);
-		    	  console.log(data);
 		    	  if(data.response.charAt(0) !== '*'){
 			    	  setTimeout(() => {
 				    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음 버전에서는 이미지 생성도 만나볼 수 있어요 :)</span></p></div><div>');

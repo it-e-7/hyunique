@@ -60,6 +60,18 @@ public class PaymentController {
         return map;
     }
 
+    @PostMapping(value="purchaseLog")
+    public String purchaseLogService(@SessionAttribute int sessionId, Model model, @RequestBody String[] orderList){
+        //처음 결제내역 하나 생성하는 서비스
+
+        // 결제 내역에 따른 상품데이터 로그 하나하나 삽입
+        for (String s : orderList) {
+            //서비스를 통해서
+            System.out.println(s);
+        }
+        return "paymentSuccess" ;
+    }
+
     @GetMapping(value="success")
     public String paymentSuccess(@SessionAttribute int sessionId, Model model){
         //결제를 위해 시도합니다. 우선적으로 일회용 사용을 위해 데이터를 저장하지 않습니다.
@@ -73,6 +85,9 @@ public class PaymentController {
         model.addAttribute("confirmTime",formattedDateTime);
         model.addAttribute("url",API_URL);
         //주문번호, 결제금액, 결제상품에 대한 정보는 Ajax요청으로 받아옵니다
+
+        //데이터베이스에 저장
+
         return "paymentSuccess";
     }
 

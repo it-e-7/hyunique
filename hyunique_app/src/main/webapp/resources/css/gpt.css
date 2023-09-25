@@ -519,3 +519,33 @@ button.modal-check-btn {
     color: #FFFFFF;
 }
 
+#sample3_postcode, #sample3_address, #sample3_detailAddress, #sample3_extraAddress, #sample3_search{
+display: none;
+}
+
+#wrap{
+    z-index: 999;
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#modal-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* 반투명한 배경색 */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* 모달을 다른 요소 위에 표시 */
+}
+
+@media screen and (max-width: 465px) {
+    #wrap {
+        width: 100% !important;
+    }
+}
