@@ -6,7 +6,6 @@ $(document).ready(function() {
     url: '/banners',
     type: 'GET',
     success: function(banners) {  
-      console.log(banners);
       banners.forEach(function(banner) {
         const bannerDiv = `
           <img src="${banner.bannerUrl}" alt="${banner.bannerName}"/>

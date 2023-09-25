@@ -388,3 +388,7 @@ div#pop-up-img-inst {
 div#pop-up-img-inst.fade-out {
     opacity: 0;  /* 투명도를 0으로 설정 */
 }
+div#gpt-page-tab-deco {
+    margin-left: 1.6rem;
+    font-family: Tossface;
+}
