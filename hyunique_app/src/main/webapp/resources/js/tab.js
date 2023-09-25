@@ -4,17 +4,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     tabButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const target = document.querySelector(button.dataset.tabTarget);
-
+            // 기존 탭 내용을 숨깁니다.
             tabContents.forEach(tab => {
                 tab.style.display = "none";
             });
 
+            // 선택한 탭의 내용을 표시합니다.
+            const target = document.querySelector(button.dataset.tabTarget);
             target.style.display = "block";
+
+            // 모든 탭 버튼 스타일 초기화
+            tabButtons.forEach(tab => {
+                tab.style.fontWeight = "normal";
+                tab.style.backgroundColor = "transparent";
+            });
+
+            // 선택한 탭 버튼 스타일 변경
+            button.style.fontWeight = "bold";
+            
+            // 다른 탭 버튼의 배경 색상 변경
+            const otherTab = Array.from(tabButtons).find(tab => tab !== button);
+            if (otherTab) {
+                otherTab.style.backgroundColor = "#f2f2f2";
+            }
         });
     });
 });
-
 
 var waveBtn = (function () {
     'use strict';

@@ -2,6 +2,8 @@ package com.kosa5.hyunique.product.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.kosa5.hyunique.post.vo.PostProductVO;
 import com.kosa5.hyunique.post.vo.PostThumbnailVO;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
@@ -17,5 +19,7 @@ public interface ProductService {
 	List<PostProductVO> getnSearchProductList(String keyword, int offset);
 
 	ProductInformVO getProductSizeAndColor(String productId);
+	
+	List<PostProductVO> getImageSearchProduct(MultipartFile image);
 
 }

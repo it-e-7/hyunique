@@ -1,6 +1,6 @@
 @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
-
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
 .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 
 * {padding: 0; margin: 0;}
@@ -8,13 +8,18 @@
 html {
     -webkit-text-size-adjust: none;
     font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
 }
 
 body {
 	max-width: 760px;
 	min-width: 360px;
 	min-height: 100vh;
-	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0 auto;
 }
 
@@ -65,7 +70,7 @@ button {
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Spoqa Han Sans';
+	font-family: 'Inter';
 	font-weight: 500;
 }
 .jw-btn-radius {
@@ -78,7 +83,7 @@ button {
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Spoqa Han Sans';
+	font-family: 'Inter';
 	font-weight: 500;
 	border-radius: 100rem;
 }
@@ -105,7 +110,7 @@ button {
 
 .jw-btn-fixed {
 	position: fixed;
-	bottom: 3rem;
+	bottom: 20px;
 	left: 50%;
 	width: 90%;
 	max-width: 700px;
@@ -119,7 +124,7 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1rem 1.3rem 0.6rem 1.3rem;
+	padding: 0.6rem 1rem 0.3rem 1.3rem;
 }
 
 .qr-btn {

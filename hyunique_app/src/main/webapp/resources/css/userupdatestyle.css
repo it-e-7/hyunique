@@ -1,6 +1,6 @@
-/* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 .txt-profile-title{
-    font-family:Spoqa Han Sans;
+    font-family: 'Inter';
     font-size:2rem;
     font-weight:bold;
     margin-top:1rem;
@@ -31,7 +31,7 @@
 
 .form-label{
 	width:90%;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	font-weight:400;
 	font-size:0.9rem;
 	color: #5A5959;
@@ -53,7 +53,7 @@
 	border-radius:10rem;
 }
 .txt-user-img-change{
-	font-family:Spoqa Han sans;
+	font-family: 'Inter';
 	font-size:0.5rem;
 	color: #3F86F0;
 	text-align:center;
@@ -78,7 +78,7 @@ input{
 	outline: none;
 	padding: 0.7rem 0 0.5rem 0;
 	width:100%;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	font-size:1.3rem;
 	font-weight:400;
 	color: #111111;
@@ -98,12 +98,12 @@ input{
 	padding:0;
 	position: fixed;
 	z-index:1000;
-	bottom:calc(3vh);
+	bottom: 20px;
 	max-width: 700px;
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Spoqa Han Sans';
+	font-family: 'Inter';
 	font-weight: 500;
 }
 
@@ -124,7 +124,7 @@ input[type="radio"] + label {
 	line-height:2rem;
 	margin-right:0.1rem;
 	margin-top:1rem;
-    font-family:Spoqa Han Sans;
+    font-family: 'Inter';
 	letter-spacing:0.05rem;
 	text-align:center;
 	color:var(--grey4);
@@ -151,7 +151,7 @@ input[type="checkbox"] + label {
 	line-height:2rem;
 	margin-right:0.1rem;
 	margin-top:1rem;
-    font-family:Spoqa Han Sans;
+    font-family: 'Inter';
 	letter-spacing:0.05rem;
 	text-align:center;
 	color:var(--grey4);

@@ -14,6 +14,8 @@ function displaySearch() {
 function hideSearch() {
 	$('.header-search-area').css('display', 'none');
 	$('body').css('overflow-y', 'scroll');
+	$('#search-input').val('');
+	$('.product-list').html('');
 }
 
 function getSearchResult(keyword, callback) {
@@ -82,3 +84,44 @@ $('.product-list').scroll((e) => {
 		getSearchResult($('#search-input').val(), addList);
 	}
 });
+
+$("#img-search-btn").click(function() {
+    $("#imgInput").val("");
+    $("#imgInput").click();
+});
+
+$("#imgInput").change(imgSearchStart);
+
+$('#search-input').focus(() => {
+	$('.search-input-wrapper').addClass('focused');
+});
+
+$('#search-input').focusout(() => {
+	$('.search-input-wrapper').removeClass('focused');
+});
+
+function imgSearchStart(e) {
+    const file = e.target.files[0];
+    if (!file.type.match("image/.*")) {
+        toastr.warning('이미지 파일만 업로드할 수 있습니다.');
+
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        localStorage.setItem('image', event.target.result);
+        window.location.href = '/product/img-search';
+    };
+    reader.readAsDataURL(file);
+
+    $.ajax({
+        url: `/product/img-search`,
+        type: 'GET',
+        success: function (response) {
+            window.location.href = "/product/img-search";
+        },
+        error: function (response) {
+        }
+    });
+}

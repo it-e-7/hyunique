@@ -1,9 +1,9 @@
 #main-wrapper {
     position: sticky;
-    top: 0; /* 고정시킬 위치를 조절합니다. */
-    z-index: 100; /* 다른 내용 위에 표시되도록 z-index를 설정합니다. */
-    background-color: white; /* 원하는 배경색을 설정합니다. */
-    padding: 18px 0 10px 0;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    background: linear-gradient( 180deg, #ffffff 0%,#ffffff 50%, #ffffffbd 100%);
 }
 
 
@@ -17,25 +17,19 @@
     display : flex;
     justify-content: space-between;
     margin-bottom: 14px;
+    padding-top: 18px;
 }
 
 #hyunique-main-top-logo-image >img {
-    width: 150px;
+    width: 120px;
 }
-
-@media screen and (max-width: 700px) {
-    #hyunique-main-top-logo-image >img {
-        width: 115px;
-    }
-}
-
 #hyunique-main-top-buttons{
     display : flex;
-    gap: 12px;
+    gap: 8px;
 }
 
 #hyunique-main-top-buttons >#search-button > img{
-   width: 26px;
+   width: 32px;
 }
 
 #hyunique-main-top-buttons >#my-page-button > img{
@@ -58,7 +52,7 @@
 	flex-direction: column;
 	gap: 16px;
 	width: 100%;
-	height: 70%;
+	height: 100%;
 	padding-top: 16px;
 	background-color: white;
 }
@@ -72,7 +66,7 @@
 }
 
 .search-top-wrapper button img {
-	width: 20px;
+	width: 25px;
 }
 
 .search-input-wrapper {
@@ -81,10 +75,14 @@
 	align-items: center;
 	width: 100%;
 	height: 36px;
-	margin: 0 auto;
-	padding: 6px 24px;
+	margin: 1px auto;
+	padding: 0 24px;
 	border: 1px solid var(--grey5);
 	border-radius: 40px;
+}
+
+.focused {
+	border: 1px solid var(--jw-light-blue);
 }
 
 .search-input-wrapper input {
@@ -100,7 +98,7 @@
 	position: absolute;
 	right: 16px;
 	top: 50%;
-	width: 26px;
+	width: 32px;
 	transform: translate(0, -50%);
 }
 
@@ -108,7 +106,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
-	flex: 1;
+	height: 100%;
+	margin-bottom: 34px;
 	padding: 8px 1.5rem;
 	background-color: var(--grey1);
 	list-style: none;
@@ -152,4 +151,15 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.img-search-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5rem;
+}
+
+.img-search-wrapper img {
+    width: 25px;
 }

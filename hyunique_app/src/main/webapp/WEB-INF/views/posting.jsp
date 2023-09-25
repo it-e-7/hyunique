@@ -14,20 +14,31 @@
 </head>
 <body>
     <div class="pre-container">
-        <div class="header-wrapper">
-            <button onclick="backward()">
-                <img src="/resources/img/ic-backward.png" />
-            </button>
+    	<div style="width: 100%;">
+	        <div class="header-wrapper">
+	            <button onclick="backward()">
+	                <lord-icon
+						id="backward-btn"
+					    src="https://cdn.lordicon.com/zmkotitn.json"
+					    trigger="click"
+					    colors="primary:#121331"
+					    style="transform: rotateY(180deg);
+					">
+					</lord-icon>
+	           	</button>
+	        </div>
         </div>
         <div class="pre-wrapper">
             <div class="header">
                 <p>스타일링을 공유해주세요</p>
             </div>
-            <div class="image-container">
-                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
-            </div>
-            <div class="body">
-                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+            <div class="image-description-container">
+	            <div class="image-container">
+	                <img src="/resources/img/pre-main.png" alt="중앙 이미지"/>
+	            </div>
+	            <div class="body">
+	                <p>옷이 잘 보이는 선명한 사진이 좋아요!</p>
+	            </div>
             </div>
         </div>
         <div class="button-container">
@@ -39,10 +50,25 @@
     <div class="write-container">
         <div class="header-wrapper">
             <button onclick="goBack()">
-                <img src="/resources/img/ic-backward.png" />
+                <lord-icon
+					id="backward-btn"
+				    src="https://cdn.lordicon.com/zmkotitn.json"
+				    trigger="click"
+				    colors="primary:#121331"
+				    style="transform: rotateY(180deg);
+					">
+				</lord-icon>
             </button>
         </div>
         <div class="upload"></div>
+        <div class="write-description-wrapper">
+	        <p class="write-description">
+	        	사진을 클릭하여 착용 제품을 태그해보세요
+	        </p>
+	        <p class="write-description-sub">
+	        	다른 사용자에게 노출될 확률이 올라갑니다
+	        </p>
+        </div>
         <div class='post-form'>
             <div class='write-wrapper'>
             <div class="image-view">
@@ -61,15 +87,15 @@
                 </div>
             </div>
             <div class="style-button-group">
-                <p>스타일</p>
+                <p style="font-size: 16px; font-weight: 550;">스타일</p>
                 <div id="style-tags"></div>
             </div>
             <div class="tpo-button-group">
-                <p>상황</p>
+                <p style="font-size: 16px; font-weight: 550;">상황</p>
                 <div id="tpo-tags"></div>
             </div>
             <div class="season-button-group">
-                <p>시즌</p>
+                <p style="font-size: 16px; font-weight: 550;">시즌</p>
                 <div id="season-tags"></div>
             </div>
             <div class="content-group">
@@ -109,6 +135,7 @@
                     <div class="modal-wrap">
                         <div class='color-wrap'>
                             <select class="select-product-color empty">
+                                <option value="" disabled selected>색상</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
@@ -118,6 +145,7 @@
                         </div>
                         <div class='size-wrap'>
                             <select class="select-product-size empty">
+                                <option value="" disabled selected>사이즈</option>
                             </select>
                             <span class="select-input__icon">
                                 <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">

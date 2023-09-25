@@ -12,17 +12,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>gpt chat</title>
     <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>	
-    
 </head>
- 
-
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
-	<div id= "hyunique-main-top-recommend">
-          <div class="button selected" id="recommend">추천</div>
-          <div class="button" id="style-ranking">스타일랭킹</div>
-          <div class="button" id="following">팔로우</div>
-    </div>
+	 <div id= "hyunique-main-top-recommend">
+	    <div class="tab-deco">🤖</div>
+	    <div class="button selected" id="AI-recommend">AI추천</div>
+	</div>
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">
 	<!-- 컬러와 사이즈 모달 -->
@@ -65,6 +61,11 @@
 	    	<div class="voice-control-wrapper">
     		    <div id="voice-control"></div>
 	    	</div>
+	    	<div id="pop-up-img-inst">
+		    	<p id="img-search-inst">
+		    		버튼을 눌러 옷 이미지 검색을 할 수 있어요!<br>다음 버전을 기대해주세요.
+		    	</p>
+		    </div>
 	    	<div class="loader-wrapper hidden">
 		    	<div class="loader">
 		  			<span class="loader__inner"></span>

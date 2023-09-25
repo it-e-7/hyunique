@@ -143,7 +143,6 @@ $('.result-list').on('click', '.search-product-li', function() {
 
     // 확인 버튼을 누르면 핀이 표시됨
     $('.modal-check-btn').off('click').on('click', function() {
-
         product['productSize'] = $('.select-product-size option:selected').text();
         product['productColor'] = $('.select-product-color option:selected').text();
 
@@ -154,6 +153,7 @@ $('.result-list').on('click', '.search-product-li', function() {
 
         attachTag(XOffset, YOffset, product);
         $('.result-list').empty();
+        closeModal();
         showPage('.write-container');
     });
 });
@@ -173,7 +173,15 @@ function goBack() {
 
     if (pages[preIndex] === pages[1]) {
         $('#thumbnail-img').empty();
-        $('.add-img-container').empty();
+
+        const container = $('.add-img-container');
+        const firstItem = container.find('li').first().detach();
+
+        if (firstItem.length) {
+          container.empty();
+          container.append(firstItem);
+        }
+
         compressedFileList.length = 0;
         $("#style-tags input[type='checkbox']:checked").prop("checked", false);
         $("#tpo-tags input[type='radio']").prop("checked", false);
@@ -188,7 +196,6 @@ function goBack() {
 
     showPage(targetPage);
 }
-
 
 // 검색 결과 리스트에서 선택한 아이템 정보 저장해서 객체로 반환
 function getSelectItem(obj) {
@@ -250,6 +257,8 @@ function compileAndSendPostData() {
 
     // 핀
     let product = Object.values(items).map(item => {
+        console.log('핀 좌표 ', item.xPos, item.yPos);
+        console.log('핀 좌표 백분율 ', (item.xPos / imgWidth) * 100, (item.yPos / imgHeight) * 100);
         return {
             pinX: (item.xPos / imgWidth) * 100,
             pinY: (item.yPos / imgHeight) * 100,
@@ -268,29 +277,37 @@ function compileAndSendPostData() {
         formData.append("files", file, file.name);
     });
 
-    sendPostToServer(formData);
-    printSelectTagAndContent(nextPost);
-    showPage('.post-container');
-    compressedFileList.length = 0;
+    try {
+        sendPostToServer(formData, nextPost);
+    } catch (error) {
+        console.error("재업로드 필요: ", error);
+    }
 }
 
 
-async function sendPostToServer(formData) {
+async function sendPostToServer(formData, nextPost) {
     try {
         const response = await fetch('/post', {
             method: 'POST',
             body: formData
         });
 
-        if (response.ok) {
+        const responseBody = await response.text();
+
+        if (responseBody === 'success') {
             console.log('Upload success');
+            printSelectTagAndContent(nextPost);
+            showPage('.post-container');
+            compressedFileList.length = 0;
         } else {
             console.log('Upload failed');
+            alert("업로드가 실패하였습니다. 다시 시도해주세요.");
+            throw new Error("Server responded with failure");
         }
     } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
+        throw error;
     }
-
 }
 
 function getSearchProduct(productName) {
@@ -388,8 +405,8 @@ function printSelectTagAndContent(vo) {
     let seasonIdStr = '#' + vo['seasonId'][0];
     let styleIdStr = vo['styleId'].map(str => "#" + str.trim()).join(" ");
 
-    var blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
-    var objectURL = URL.createObjectURL(blob);
+    let blob = new Blob([vo['thumbnail']], {type: 'image/jpeg'});
+    let objectURL = URL.createObjectURL(blob);
 
     $("#post-image-thumbnail").html(
         $('<img>', {
@@ -412,7 +429,6 @@ function imageSlider(slider) {
     let isDown = false;
     let startX;
     let scrollLeft;
-//    const slider = $('.add-img-container');
 
     const end = () => {
         isDown = false;

@@ -84,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 type: "GET",
                 data: formData,
                 success: function(data) {
+                    //$("#photo-gallery").append(data);
+                	   var $data = $(data);
+                       $data.attr('data-aos', 'zoom-in-up');
                     $("#photo-gallery").append(data);
                     //추가적으로 순위를 넣기
                     var element = $(".selected").attr("id");
@@ -196,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
         applyFilterButton.addEventListener("click", function() {
             currentPage =1;
             modal.style.display = "none";
+            qr.style.display = "block";
             $("#photo-gallery").empty();
             //$("#photo-gallery").append(data);
             changeFilterColor();

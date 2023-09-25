@@ -3,37 +3,48 @@
 }
 
 .product-wrapper img {
-	width: 5rem;
-	height: 5rem;
+	width: 100%;
 	aspect-ratio: 1 / 1;
 	object-fit: cover;
-	border-bottom-left-radius: 0.4rem;
-	border-top-left-radius: 0.4rem;
+	border-radius: 24px;
+	filter: drop-shadow(0px 30px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 25px 16px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 16px rgba(0, 0, 0, 0.09)) drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+.product-container {
+	padding: 12px 0;
+	overflow: hidden;
+}
+
+.product-img-container {
+	position: relative;
+	margin: 0 0.5rem;
+}
+
+.product-price {
+	position: absolute;
+	bottom: 12px;
+	left: 50%;
+	font-weight: 700;
+	font-size: 13px;
+	transform: translate(-50%, 0);
 }
 
 .product-wrapper {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
+	gap: 12px;
 	margin: 0 1.5rem;
-	border: 1.5px solid var(--grey2);
-	border-radius: 0.3rem;
 	cursor: pointer;
 }
 
-.product-wrapper div {
-	display: flex;
-	flex-direction: column;
-	gap: 0.1rem;
-	padding: 0.3rem 1rem 0.3rem 1.5rem;
-	overflow: hidden;
-}
-
-.product-item-name {
-	color: var(--grey4);
+.product-item-name-s {
+	font-size: 12px;
+	font-weight: 550;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	padding: 0 2rem;
 }
 
 .post-thumbnail-list-wrapper {
@@ -55,12 +66,35 @@
 	}
 }
 
-.content-wrapper p {
-	font-size: 0.95rem;
-	color: var(--grey3);
-}
-
 .post-thumbnail-list-wrapper img {
 	width: 100%;
 	cursor: pointer;
+}
+
+.description-wrapper {
+	padding: 0 1.5rem;
+	margin: 0.8rem 0 0.5rem 0;
+}
+
+.brand {
+	font-size: 16px;
+	font-weight: 550;
+	color: var(--jw-blue);
+	padding: 0 2rem;
+	margin-top: 5px;
+}
+
+.brand-title {
+	font-size: 22px;
+	font-weight: 550;
+	margin-bottom: 2px;
+}
+
+.description {
+	color: #BBBBBB;
+	font-size: 13px;
+}
+
+#hyunique-main-top-logo {
+	margin-bottom: 0px;
 }
