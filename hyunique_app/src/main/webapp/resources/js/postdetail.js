@@ -131,10 +131,10 @@ $('.img-slider-wrapper').click(togglePin);
 
 $('.img-slider-wrapper').scroll(() => {
 	const scrollLeft = Math.round($('.img-slider-wrapper').scrollLeft());
-	if(scrollLeft % imgWidth === 0) {
-		const newIdx = scrollLeft / imgWidth;
-		changeIndexCircle(newIdx);
-	}
+	
+	const newIdx = Math.round(scrollLeft / imgWidth);
+	changeIndexCircle(newIdx);
+	
 });
 
 function changeIndexCircle(newIdx) {
