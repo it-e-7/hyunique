@@ -39,7 +39,7 @@
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-backimg-wrapper:hover img {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 .img-userimg-wrapper{
 	width: 10rem;
@@ -61,7 +61,7 @@
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-userimg-wrapper:hover img {
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 #settings {
 	width:24px;
