@@ -46,14 +46,12 @@ function slideModal(e) {
 
     const deltaY = startY - clientY;
     if (deltaY > 0) { // 위로 드래그
-        console.log("up!");
         $(".modal").css({
             'bottom': '0%',
             'transition': 'bottom 0.2s ease-in-out'
         });
         modalIsUp = true;
     } else { // 아래로 드래그
-        console.log("down!", value + 'px');
         $(".modal").css({
             'bottom': value + 'px',
             'transition': 'bottom 0.2s ease-in-out'
@@ -91,23 +89,16 @@ function renderImgSearchResults(results) {
     $('.data-layer').empty();
 
     $.each(results, function(index, product) {
-        let listItem = $("<li>").addClass("search-result-li");
+        let listItem = $("<li>")
+            .addClass("search-result-li")
+            .attr('onclick', "moveToProduct('" + product.productId + "')");
+
         let divItem = $("<div>").addClass("product-div");
         let divImg = $("<div>").addClass("img-wrapper");
         divImg.append($("<img>").attr("src", product.productImg).addClass("product-img").attr('draggable', 'false'));
         listItem.append(divImg);
 
-        let productIdElement = $("<p>")
-            .text(product.productId)
-            .addClass("product-id")
-            .attr("hidden", true)
-            .on('click', function() {
-                moveToProduct(product.productId)
-                });
-        divItem.append(productIdElement);
-
-//        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
-
+        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
         divItem.append($("<p>").text(product.productBrand).addClass("product-brand"));
         divItem.append($("<p>").text(product.productName).addClass("product-name"));
         divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("product-price"));
