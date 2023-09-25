@@ -25,8 +25,6 @@ for (var i = 0; i < parsedValue.length; i++) {
     productIds.push(productId);
 }
 
-// 결과 출력
-console.log(productIds);
 $.ajax({
         url: `/payment/purchaseLog`,
         type: 'POST',

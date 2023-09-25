@@ -54,7 +54,6 @@ public class PaymentController {
             productList.add(currentProduct);
         }
         productTotalPrice = totalPrice;
-
         //세션아이디와, 가격, 그리고 url , 시크릿 키, URL, productList를 리턴받는다
         map.put("userId",sessionId);
         map.put("totalPrice",totalPrice);
@@ -72,7 +71,6 @@ public class PaymentController {
         // 결제 내역에 따른 상품 데이터 로그 삽입
         for (String s : orderList) {
             tossPaymentService.insertPurchaseProduct(orderId,s);
-            System.out.println(s);
         }
         return "paymentSuccess" ;
     }

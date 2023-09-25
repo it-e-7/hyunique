@@ -6,12 +6,12 @@
 <mapper namespace="com.kosa5.hyunique.payment.mapper.PaymentMapper">
 
     <insert id="insertPurchaseHistory" parameterType="map">
-        INSERT INTO purchase_history (order_id, user_id, total_price)
+        INSERT INTO hy_purchase_history (order_id, user_id, total_price)
         VALUES (#{orderId}, #{userId}, #{totalPrice})
     </insert>
 
     <insert id="insertPurchaseProduct" parameterType="map">
-        INSERT INTO purchase_product (order_id, product_id, quantity)
+        INSERT INTO hy_purchase_product (order_id, product_id, quantity)
         VALUES (#{orderId}, #{productId}, 1)
     </insert>
 </mapper>
