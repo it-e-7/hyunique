@@ -299,6 +299,7 @@ div#bag-check {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	font-family: Inter;
 }
 
 #bag-img{
@@ -361,4 +362,29 @@ label {width: 24px;height: 24px;}
 }
 #toss{
 	font-family: 'Inter';
+}
+p.product-item-price {
+    font-family: Inter;
+}
+div#product-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+div#pop-up-img-inst {
+    background: rgb(238 240 243);
+    color: #2f2f2f;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 1rem;
+    width: 14rem;
+    font-family: Inter;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 100ms, opacity 300ms;
+    opacity: 1;  
+}
+div#pop-up-img-inst.fade-out {
+    opacity: 0;  /* 투명도를 0으로 설정 */
 }

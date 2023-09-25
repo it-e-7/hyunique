@@ -491,9 +491,13 @@ img#banner-text {
 p#txt-ranking-des {
     margin-left: 1.6rem;
 }
-
 .tab-deco{
 	font-family: 'Inter';
     line-height: 2.1rem;
     margin-right: 3px;
 }
+
+#follow-banner img{
+	width: 100%;
+}
+div#follow-banner {width: 100%;}
