@@ -267,3 +267,68 @@ ul {
     align-items: center;
     padding: 1rem 1rem 1rem 1rem;
 }
+
+/* 삭제 모달 */
+div#delete-box {
+    position: fixed;
+    width: 70%;
+    height: 30%;
+    background-color: rgba(38, 38, 38, 0.97);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+div#title-wrap {
+    display: inline-block;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p#delete-title {
+    display: flex;
+    color: white;
+    font-family: 'Inter var alt';
+    font-size: 1.1em;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+p#delete-subtitle {
+    display: flex;
+    width: 100%;
+    color: #909090;
+    font-family: 'Inter var alt';
+    margin: 0.5rem;
+}
+
+div#border-line {
+    border-top: 0.1rem solid #2E2E2E;
+}
+
+button#delete-btn {
+    font-family: 'Inter var';
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button#cancel-btn {
+    font-family: 'Inter var';
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

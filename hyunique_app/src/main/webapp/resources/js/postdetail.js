@@ -148,6 +148,19 @@ $(document).ready(() => {
 	changeIndexCircle(imgIdx);
 });
 
+/* 게시글 삭제 */
+
+$("#delete-box").hide();
+
+$(".post-delete-icon").click(function(){
+    $("#delete-box").show();
+});
+
+$("#cancel-btn").click(function(){
+    $("#delete-box").hide();
+});
+
+
 function deleteOnePost(postId) {
     ajax({
         url: `/post/${postId}`,
@@ -166,3 +179,4 @@ function deleteOnePost(postId) {
         },
     });
 }
+
