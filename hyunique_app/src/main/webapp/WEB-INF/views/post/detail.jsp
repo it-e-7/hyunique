@@ -63,7 +63,7 @@
 				<div class="post-pin ${product.pinType}" style="top:${product.pinY}%; left:${product.pinX}%;" onclick="moveToProduct('${product.productId}')">
 					<p class="pin-brand">${product.productBrand}</p>
 					<p class="pin-price">&#8361;<fmt:formatNumber value="${product.productPrice}" pattern="#,###"/></p>
-					<p class="pin-size">${product.productColor}  ${product.productSize}</p>
+					<p class="pin-size-color">${product.productColor}  ${product.productSize}</p>
 				</div>
 			</c:forEach>
 		</div>

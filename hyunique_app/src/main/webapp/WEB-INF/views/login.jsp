@@ -26,7 +26,7 @@
 	
 	<div class="content-wrapper">
 		<div class="logo-wrapper">
-			<a href = "post/getPostList">
+			<a href = "/">
 				<img src="/resources/icon/hyuniquelogo.png" class="img-logo"/>
 			</a>
 		</div>

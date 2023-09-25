@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,24 +12,62 @@
     </head>
     <body>
         <div class="show-search-img-result">
-            <div class="header"></div>
-            <div class="img-section" id="container"></div>
-            <button id="openBottomSheet">Open Bottom Sheet</button>
-            <div id="bottomSheet" class="hidden">
-                <div class="sheet-header">
-                    <button id="closeBottomSheet">Close</button>
+            <div class="header-wrapper">
+                <button onclick="back()">
+                    <img src="/resources/img/ic-backward.png" />
+                </button>
+            </div>
+            <div class="img-section" id="container">
+                <div class="img-section-area"></div>
+            </div>
+            <div class="explain-seciton">
+                <p>찾고자 하는 의상을 지정해주세요</p>
+                <img class="drag-event-ic" src="/resources/img/ic-drag-event.gif"/>
+            </div>
+            </div>
+            <div id="bottomSheet" class="modal">
+                <div class="handlebar">
+                    <span class="handlebar-icon"></span>
                 </div>
                 <div class="img-search-value">
-                    <p>상품 검색 결과 입니다.</p>
-                    <ul class="img-search-list"></ul>
+                    <p class="search-value-title" draggable="false">상품 검색 결과 입니다.</p>
+                    <ul class="img-search-list">
+                        <div class="data-layer"></div>
+                        <div class="skeleton-layer">
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-loading-wrapper">
+                                <div class="skeleton-img"></div>
+                                <div class="skeleton-text-wrapper">
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
                 </div>
             </div>
-
         </div>
     </body>
     <script
         type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js">
     </script>
-    <script src="/resources/js/imgSearch.js"></script>
+    <script src="/resources/js/imgSearch/imgSearch.js"></script>
+    <script src="/resources/js/imgSearch/modal.js"></script>
 </html>

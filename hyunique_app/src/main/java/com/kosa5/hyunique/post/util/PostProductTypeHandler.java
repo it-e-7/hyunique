@@ -1,10 +1,6 @@
 package com.kosa5.hyunique.post.util;
 
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.List;
 
 import org.apache.ibatis.type.JdbcType;
@@ -24,6 +20,7 @@ import oracle.sql.StructDescriptor;
 public class PostProductTypeHandler implements TypeHandler {
     @Override
     public void setParameter(PreparedStatement ps, int i, Object param, JdbcType jdbcType) throws SQLException {
+        Connection conn = ps.getConnection();
 
         if (param == null || !(param instanceof List)) {
             ps.setNull(i, Types.ARRAY, "POSTPRODUCTVOLIST");
@@ -36,10 +33,11 @@ public class PostProductTypeHandler implements TypeHandler {
             return;
         }
 
-        StructDescriptor structDescriptor = StructDescriptor.createDescriptor("POSTPRODUCTVO", ps.getConnection());
-
+        StructDescriptor structDescriptor = StructDescriptor.createDescriptor("POSTPRODUCTVO", conn);
         STRUCT[] structs = new STRUCT[objects.size()];
-        System.out.println(structs);
+
+        ArrayDescriptor desc = ArrayDescriptor.createDescriptor("POSTPRODUCTVOLIST", conn);
+
         for (int idx=0; idx < objects.size(); idx++) {
             PostProductVO pack = objects.get(idx);
             Object[] params = new Object[6];
@@ -50,10 +48,9 @@ public class PostProductTypeHandler implements TypeHandler {
             params[4] = pack.getProductSize();
             params[5] = pack.getProductColor();
 
-            STRUCT struct = new STRUCT(structDescriptor, ps.getConnection(), params);
+            STRUCT struct = new STRUCT(structDescriptor, conn, params);
             structs[idx] = struct;
 
-            ArrayDescriptor desc = ArrayDescriptor.createDescriptor("POSTPRODUCTVOLIST", ps.getConnection());
             ARRAY oracleArray = new ARRAY(desc, ps.getConnection(), structs);
             ps.setArray(i, oracleArray);
         }

@@ -1,9 +1,10 @@
 const imageData = localStorage.getItem('image');
+
 if (imageData) {
     const imageElement = $("<img>").attr("src", imageData)
                                    .attr("draggable", 'false')
                                    .attr("class", "image");
-    $('#container').append(imageElement);
+    $('.img-section-area').append(imageElement);
 }
 
 // 크롭 영역 및 핸들 생성
@@ -14,13 +15,13 @@ const $bottomLeft = $('<div>').addClass('handle').attr('id', 'bottom-left');
 const $bottomRight = $('<div>').addClass('handle').attr('id', 'bottom-right');
 
 $rectangle.append($topLeft, $topRight, $bottomLeft, $bottomRight);
-$('#container').append($rectangle);
+$('.img-section-area').append($rectangle);
 
 let isDragging = false;
 let resizing = false;
 let currentHandle = null;
 
-const imgContainer = $('#container');
+const imgContainer = $('.img-section-area');
 
 const dragContainer = (e) => {
     if (resizing) return;
@@ -47,7 +48,18 @@ const dragContainer = (e) => {
 
     imgContainer.append(target);
 
+    const imgLeft = imgContainer.offset().left;
+    const imgTop = imgContainer.offset().top;
+    const imgWidth = imgContainer.width();
+    const imgHeight = imgContainer.height();
+
     function moveAt(clientX, clientY) {
+        let newLeft = clientX - shiftX;
+        let newTop = clientY - shiftY;
+
+        newLeft = Math.max(imgLeft, Math.min(newLeft, imgLeft + imgWidth - target.width()));
+        newTop = Math.max(imgTop, Math.min(newTop, imgTop + imgHeight - target.height()));
+
         target.css({
             left: clientX - shiftX + 'px',
             top: clientY - shiftY + 'px'
@@ -96,7 +108,7 @@ imgContainer.on('dragstart', function () {
 
 let prevX, prevY;
 
-$('#container').on('mousedown touchstart', '.handle', function(e) {
+$('.img-section-area').on('mousedown touchstart', '.handle', function(e) {
     resizing = true;
     currentHandle = $(this).attr('id');
 
@@ -180,6 +192,7 @@ function initCanvas(img, canvas) {
     canvas.width = img.clientWidth;
     canvas.height = img.clientHeight;
     const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
     ctx.drawImage(img, 0, 0, img.clientWidth, img.clientHeight);
 }
 
@@ -188,6 +201,28 @@ const canvas = $('<canvas>')[0];
 
 // 이미지가 로드되면 캔버스에 그림
 $(img).on('load', function() {
+    const imgWidth = parseFloat($(this).css('width').replace('px', ''));
+    const imgHeight = parseFloat($(this).css('height').replace('px', ''));
+
+    // 캔버스 크기 설정
+    canvas.width = imgWidth;
+    canvas.height = imgHeight;
+
+    // 캔버스를 중앙에 배치
+    $(canvas).css({
+        'max-width': '100%',
+        'max-height': '100%',
+        'margin': 'auto',
+        'position': 'absolute',
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0,
+        'z-index': -1
+    });
+
+    $('.img-section-area').append(canvas); // 새로운 코드
+
     initCanvas(img, canvas);
 });
 
@@ -216,63 +251,38 @@ $('#rectangle').on('mousemove touchmove', function() {
     $('#croppedImage').remove();
     const croppedImageData = newCanvas.toDataURL();
     const newImage = $("<img>").attr("src", croppedImageData).attr("id", "croppedImage");
-    $(".img-section").append(newImage);
+    $(".img-section-area").append(newImage);
 
     timer = setTimeout(() => {
         if (!isMoved) return;
         sendToServerImg(newCanvas);
+        switchLayers();
+        $('.modal').show();
     }, 3000);
-
 });
 
 
 function sendToServerImg(newCanvas) {
-  newCanvas.toBlob(function(blob) {
-    const formData = new FormData();
-    formData.append('image', blob, 'imgSearch.jpg');
+    newCanvas.toBlob(function(blob) {
+        const formData = new FormData();
+        formData.append('image', blob, 'imgSearch.jpg');
 
-    $.ajax({
-      url: '/product/img-search',
-      type: 'POST',
-      processData: false,
-      contentType: false,
-      data: formData,
-      success: function(data) {
-        console.log('Image sent successfully:', data);
-        if (data) {
-            renderImgSearchResults(data);
-            $('#bottomSheet').removeClass('hidden').addClass('shown');
-        }
-      },
-      error: function(error) {
-        console.error('Error:', error);
-      }
-    });
-  }, 'image/jpeg', 0.95);
+        $.ajax({
+            url: '/product/img-search',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(data) {
+            console.log('Image sent successfully:', data);
+                if (data) {
+                    renderImgSearchResults(data);
+                    switchLayers();
+                }
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }, 'image/jpeg', 0.95);
 }
-
-// 상품 검색 결과 출력
-function renderImgSearchResults(results) {
-    let resultList = $(".img-search-list");
-    resultList.empty();
-
-    $.each(results, function(index, product) {
-        let listItem = $("<li>").addClass("search-result-li");
-        let divItem = $("<div>").addClass("product-div");
-        listItem.append($("<img>").attr("src", product.productImg).addClass("product-img"));
-        divItem.append($("<p>").text(product.productId).addClass("product-id").attr("hidden", true));
-        divItem.append($("<p>").text(product.productBrand).addClass("product-brand"));
-        divItem.append($("<p>").text(product.productName).addClass("product-name"));
-        divItem.append($("<p>").text('₩ ' + product.productPrice.toLocaleString()).addClass("product-price"));
-        listItem.append(divItem);
-        resultList.append(listItem);
-    });
-}
-
-
-
-
-// Bottom Sheet 닫기
-$('#closeBottomSheet').click(function() {
-    $('#bottomSheet').removeClass('shown').addClass('hidden');
-});

@@ -20,12 +20,19 @@
 	    <div class="header-search-area">
 	    	<div class="search-area-wrapper">
 	    		<div class="search-top-wrapper">
-              <button onclick="hideSearch()">
-                  <img src="/resources/img/ic-backward.png" />
-              </button>
+	            	<button onclick="hideSearch()">
+		                <lord-icon
+							id="backward-btn"
+					    	src="https://cdn.lordicon.com/zmkotitn.json"
+					    	trigger="click"
+					    	colors="primary:#121331"
+					    	style="transform: rotateY(180deg);
+							">
+						</lord-icon>
+					</button>
 	    			<div class="search-input-wrapper">
 	    				<input type="text" id="search-input" placeholder="검색어를 입력하세요" />
-	    				<img src="/resources/img/ic-search.png" />
+	    				<img src="/resources/img/ic-search-n.png" />
 	    			</div>
               <button id="img-search-btn">
                   <img src="/resources/img/ic-search-camera.png" />

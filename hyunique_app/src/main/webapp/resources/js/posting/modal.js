@@ -7,9 +7,6 @@ $(".modal-cancel-btn").click(function() {
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
-
-    $(".select-product-size option:not(:first)").remove();
-    $(".select-product-color option:not(:first)").remove();
 });
 
 // 모달 띄우기
@@ -81,6 +78,9 @@ function closeModal() {
     });
     $('.search-container').off('scroll touchmove mousewheel');
 
-  $(window).scrollTop(0);  // 저장한 스크롤 위치로 이동
+    $(".select-product-size option:not(:first)").remove();
+    $(".select-product-color option:not(:first)").remove();
+
+    $(window).scrollTop(0);  // 저장한 스크롤 위치로 이동
 }
 
