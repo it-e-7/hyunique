@@ -13,7 +13,7 @@
     <body>
         <div class="show-search-img-result">
             <div class="header-wrapper">
-                <button onclick="back()">
+                <button onclick="backward()">
                     <img src="/resources/img/ic-backward.png" />
                 </button>
             </div>
@@ -21,7 +21,7 @@
                 <div class="img-section-area"></div>
             </div>
             <div class="explain-seciton">
-                <p>찾고자 하는 의상을 지정해주세요</p>
+                <p>찾고자 하는 의상의 영역을 지정해주세요</p>
                 <img class="drag-event-ic" src="/resources/img/ic-drag-event.gif"/>
             </div>
             </div>
@@ -34,30 +34,6 @@
                     <ul class="img-search-list">
                         <div class="data-layer"></div>
                         <div class="skeleton-layer">
-                            <div class="skeleton-loading-wrapper">
-                                <div class="skeleton-img"></div>
-                                <div class="skeleton-text-wrapper">
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                </div>
-                            </div>
-                            <div class="skeleton-loading-wrapper">
-                                <div class="skeleton-img"></div>
-                                <div class="skeleton-text-wrapper">
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                </div>
-                            </div>
-                            <div class="skeleton-loading-wrapper">
-                                <div class="skeleton-img"></div>
-                                <div class="skeleton-text-wrapper">
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                    <div class="skeleton-text"></div>
-                                </div>
-                            </div>
                         </div>
                     </ul>
                 </div>
