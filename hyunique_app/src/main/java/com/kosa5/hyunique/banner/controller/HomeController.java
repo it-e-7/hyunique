@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kosa5.hyunique.banner.service.BannerService;
+import com.kosa5.hyunique.banner.vo.BannerVO;
 import com.kosa5.hyunique.post.service.PostService;
-import com.kosa5.hyunique.post.vo.BannerVO;
 
 @Controller
 public class HomeController {

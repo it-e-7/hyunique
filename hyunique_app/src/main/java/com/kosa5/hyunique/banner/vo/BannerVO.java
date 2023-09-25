@@ -1,4 +1,4 @@
-package com.kosa5.hyunique.post.vo;
+package com.kosa5.hyunique.banner.vo;
 
 import lombok.Data;
 

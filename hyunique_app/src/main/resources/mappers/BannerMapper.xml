@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kosa5.hyunique.Banner.mapper.BannerMapper">
+<mapper namespace="com.kosa5.hyunique.banner.mapper.BannerMapper">
      <select id="selectAllBanners" resultType="BannerVO">
         SELECT * FROM HY_BANNER
     </select>
