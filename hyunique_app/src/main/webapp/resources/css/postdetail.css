@@ -267,3 +267,61 @@ ul {
     align-items: center;
     padding: 1rem 1rem 1rem 1rem;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); /* 반투명 검은색 */
+}
+
+/* 모달 내용 */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 320px;
+  height: 60%;
+  border-radius: 1.2rem;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+    height: 100%;
+}
+
+div#likeListContent {
+    width: 100%;
+    height: 100%;
+}
+div#close-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-family: 'Inter';
+    font-weight: 600;
+    align-items: center;
+    margin: 1rem;
+}
+
+
+span.close {
+    font-size: 2.2rem;
+    font-weight: 200;
+    line-height: 1;
+    text-align: center;
+}
+
+span#none-display-btn {visibility: hidden;}
+
+p#like-desc {
+    height: 2.2rem;
+    line-height: 2.2;
+}

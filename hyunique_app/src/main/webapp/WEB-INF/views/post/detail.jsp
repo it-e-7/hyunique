@@ -164,6 +164,17 @@
 			</div>
 		</div>
 	</div>
+	<div id="likeListModal" class="modal">
+		<div class="modal-content">
+		    <div id="close-wrapper">
+		    	<span class="close" id="none-display-btn">&times;</span>
+		    	<p id="like-desc">좋아요를 누른 사람</p>
+		    	<span class="close">&times;</span>
+		    </div>
+		    <div id="likeListContent"></div>
+	    </div>
+	</div>
 </body>
 <script src="/resources/js/postdetail.js"></script>
+<script src="/resources/js/posting/like.js"></script>
 </html>
