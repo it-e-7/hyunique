@@ -109,7 +109,7 @@
 					<c:out value="${date}"/>
 				</p>
 				<p class="post-content-text">
-					<strong onclick="location.href='/user/${postVO.userId}">${postVO.userNickname}</strong>
+					<strong onclick="location.href='/user/${postVO.userId}'">${postVO.userNickname}</strong>
 					${postVO.postContent}
 				</p>
 			</div>
