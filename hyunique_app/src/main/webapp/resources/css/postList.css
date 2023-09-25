@@ -20,19 +20,13 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, minmax(0px, 1fr));
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
 }
 
 @media screen and (max-width: 700px) {
 	#photo-gallery {
-	    width: 100%;
-	    margin: 0 auto;
-	    box-sizing: border-box;
-	    display: grid;
 	    grid-template-columns: repeat(2, minmax(0px, 1fr));
-	    grid-column-gap: 4px;
-	    grid-row-gap: 4px;
 	}
 }
 
@@ -112,31 +106,18 @@
 }
 
 #filterModalButton {
-    font-size: 18px;
-    border: 1px solid #E9E9E9;
-    border-radius: 6px;
-    padding: 15px;
-    background-color: transparent;
-    cursor: pointer;
-    white-space: nowrap;
-    margin-right: 8px;
-    justify-content: center;
+	justify-content: center;
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-@media screen and (max-width: 700px) {
-     #filterModalButton {
-        font-size: 12px;
-	    border: 1px solid #E9E9E9;
-	    border-radius: 10px;
-	    padding: 3px 10px;
-	    background-color: transparent;
-	    cursor: pointer;
-	    white-space: nowrap;
-	    margin-right: 6px;
-     }
+	font-size: 12px;
+	border: 1px solid #E9E9E9;
+	border-radius: 10px;
+	padding: 3px 10px;
+	background-color: transparent;
+	cursor: pointer;
+	white-space: nowrap;
+	margin-right: 6px;
 }
 
 #filterModalButton >img{
