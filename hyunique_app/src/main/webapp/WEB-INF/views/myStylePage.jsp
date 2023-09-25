@@ -97,7 +97,7 @@
 			        </c:otherwise>
 			    </c:choose>
 			</div>
-			<div class="user-detail-bar-wrapper">
+			<div class="user-detail-bar-wrapper" onclick= "moveToFollow(${user.userId})">
 				<p id="user-detail-title">팔로워</p>
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.followerCount}명</p>

@@ -48,12 +48,12 @@
 </ul>
 
 <div id="tab1" class="tab-content"style="display: block;">
-	<p class="follow-title-sub">나를 팔로우하는 유저</p>
+	<p class="follow-title-sub">모든 팔로워</p>
     <ul id="followerList"></ul>
 </div>
 
 <div id="tab2" class="tab-content"style="display: none;">
-	<p class="follow-title-sub">내가 팔로우하는 유저</p>
+	<p class="follow-title-sub">모든 팔로잉</p>
     <ul id="followingList"></ul>
 </div>
 
