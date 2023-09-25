@@ -18,13 +18,20 @@
 	
 	<div class="product-container">
 		<div class="product-wrapper" onclick="moveToProduct('${product.productId}')">
-			<img src="${product.productImg}" />
-			<p class="product-item-name-s">${product.productName}</p>
+			<div class="product-img-container">
+				<img src="${product.productImg}" />
+				<p class="product-price">
+					&#8361; <fmt:formatNumber value="${product.productPrice}" pattern="#,###" />
+				</p>
+			</div>
+			<div style="width: 100%;">
+				<p class="brand">${product.productBrand}</p>
+				<p class="product-item-name-s">${product.productName}</p>
+			</div>
 		</div>
 	</div>
 	
 	<div class="description-wrapper">
-		<p class="brand">${product.productBrand}</p>
 		<p class="brand-title"> 어떻게 입을지 고민된다면?</p>
 		<p class="description">hyunique 피플의 스타일 확인하기</p>
 	</div>
