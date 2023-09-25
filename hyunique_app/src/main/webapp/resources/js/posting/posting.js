@@ -102,6 +102,11 @@ $("#addFileInput").change(function(e) {
     });
 });
 
+// 추가 이미지 삭제
+$('.add-img-container').on('click', 'li:not(:first)',  function() {
+    $(this).remove();
+});
+
 // 작성 완료 버튼
 $('#upload-button').click(function() {
     console.log(compressedFileList);
