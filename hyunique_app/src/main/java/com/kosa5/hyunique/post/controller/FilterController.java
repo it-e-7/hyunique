@@ -31,12 +31,6 @@ public class FilterController {
 			filterPostVO.setUserId(sessionId);
 		}
 		postVOList = postService.getfilterPostList(filterPostVO);
-		System.out.println(filterPostVO);
-		List<Integer> postIdList = new ArrayList<Integer>();
-		for(int i = 0; i < postVOList.size(); i++) {
-			postIdList.add((Integer) postVOList.get(i).getPostId());
-		}
-		System.out.println(postIdList);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";
 	}
