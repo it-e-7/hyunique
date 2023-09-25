@@ -50,13 +50,6 @@
     margin: 0px auto;
 }
 
-.pre-container .header-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 1rem 1.3rem 0.6rem 1.3rem;
-    width: 90%;
-}
-
 .pre-wrapper {
     display: flex;
     flex-direction: column;
@@ -79,7 +72,7 @@
 
 .header p {
     font-size: 1.5rem;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
     font-weight: 600;
 }
 
@@ -150,11 +143,13 @@ ul.add-img-container {
     width: 25%;
     font-size: 33px;
     font-weight: bold;
+    margin-left: 3px;
 }
 
 .add-img-container img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
 }
 
 
@@ -178,7 +173,7 @@ button#add-img-btn {
     border: 1px solid var(--grey4);
     border-radius: 9px;
     font-size: 1rem;
-    font-family: 'Noto Sans KR';
+    font-family: 'Inter';
     padding: 0.8rem;
     margin: auto;
 }
@@ -225,7 +220,6 @@ button#add-img-btn {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin: 20px 0 auto 0;
 }
 
 .search-box {
@@ -248,7 +242,7 @@ button#add-img-btn {
     border-radius: 1rem;
     padding-right: 40px;
     padding-left: 20px;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -366,7 +360,6 @@ p.search-product-price {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 6.5rem;
 }
 
 .post-container .header {
@@ -383,11 +376,6 @@ p.search-product-price {
     margin: 0px auto;
 }
 
-.write-container p {
-    font-weight: bold;
-    font-size: 16px;
-}
-
 input[type="checkbox"], input[type="radio"] {
     display: none;
 }
@@ -396,18 +384,19 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     display: inline-block;
     width: auto;
     height: 2rem;
-    border: 1px solid var(--grey4);
+    border: 1px solid var(--grey1);
     border-radius: 0.7rem;
     padding: 0.1rem 1.3rem;
     cursor: pointer;
     line-height: 2rem;
     margin-right: 0.1rem;
     margin-bottom: 0.5rem;
-    font-family: Spoqa Han Sans;
+    font-family: 'Inter';
     letter-spacing: 0.05rem;
     text-align: center;
     font-family: 'Noto Sans KR';
     color: var(--grey4);
+    background-color: var(--grey1);
 }
 
 input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
@@ -418,7 +407,7 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
 }
 
 .style-button-group, .tpo-button-group, .season-button-group, .content-group {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1rem 1.5rem 0 1.5rem;
 }
 
 .style-button-group p, .tpo-button-group p, .season-button-group p, .content-group p {
@@ -456,7 +445,7 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
 }
 
 .select-product-size {
@@ -469,12 +458,12 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
 }
 
 option {
     color: #424242;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
     -webkit-appearance: none;
 }
 
@@ -594,10 +583,10 @@ button.modal-check-btn {
 }
 
 .tag-container, .content-text {
-    font-family: 'Montserrat';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     display: flex;
     align-items: center;
@@ -625,4 +614,22 @@ body{
 
 .post-pin p {
     user-select: none;
+}
+
+.write-description-wrapper {
+	padding: 0 1rem 0.4rem 1rem;
+}
+
+.write-description {
+	font-size: 18px;
+	font-weight: 550;
+}
+
+.write-description-sub {
+	font-size: 12px;
+	color: var(--grey3)
+}
+
+.post-content-wrap {
+	margin-bottom: 2.5rem;
 }

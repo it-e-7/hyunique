@@ -89,7 +89,7 @@
 	margin-bottom:1.5rem;
 }
 .user-details p{
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	font-size:1rem;
 }
 #user-detail-title{
@@ -113,7 +113,6 @@
 	margin-left: 1rem;
 	margin-bottom:0.5rem;
 	display:flex;
-	width:100%;
 	justify-content: flex-start;
 }
 .user-detail-bar-wrapper p{
@@ -122,7 +121,7 @@
 .txt-user-profile{
 	margin-top:-0.5rem;
 	font-size:1.15rem;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	font-weight:600;
 }
 #vertical-bar{
@@ -130,7 +129,7 @@
 	color:var(--grey4);
 }
 .user-introduce-wrapper{
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	margin-left: 1rem;
 	font-size:1.1rem;
 	font-weight:;
@@ -160,7 +159,7 @@ input[type="checkbox"] + label {
 	border-color:var(--jw-blue2);
 	border-radius: 0.4rem;
 	padding: 0.2rem 0.7rem;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	color:var(--jw-blue2);
 }
 
@@ -175,7 +174,7 @@ input[type="checkbox"]:checked + label {
 	border-color:var(--jw-blue3);
 	border-radius: 0.4rem;
 	padding: 0.2rem 0.7rem;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	color:var(--jw-blue3);
 }
 
@@ -357,7 +356,7 @@ body{
 
 #product-brand, #product-price {
 	padding-left:1rem;
-	font-family:Spoqa Han Sans;
+	font-family: 'Inter';
 	font-weight:bold;
 }
 #product-name{
@@ -401,7 +400,7 @@ body{
 .category-name {
     grid-column: span 2;
     text-align: center;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
     font-size: 1rem;
     margin-top: 0.5rem;
 }
@@ -417,7 +416,7 @@ body{
 
 #txt-more-style{
 	text-align: center;
-    font-family: 'Spoqa Han Sans';
+    font-family: 'Inter';
     font-size: 1rem;
 }
 li#tab-2 {

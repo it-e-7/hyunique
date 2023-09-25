@@ -101,7 +101,7 @@ button .btn-gpt-request {
 }
 .chat-section-wrapper{
 	width: 94%;
-   	font-family: 'Tossface';
+   	font-family: 'Inter';
 }
 .chat-upload-btn-section {
     display: flex;
@@ -361,7 +361,7 @@ label {width: 24px;height: 24px;}
     height: 9rem;
 }
 #toss{
-	font-family: 'Tossface';
+	font-family: 'Inter';
 }
 p.product-item-price {
     font-family: Inter;
