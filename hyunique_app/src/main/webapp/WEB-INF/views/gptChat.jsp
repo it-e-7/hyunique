@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/gpt.css" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>gpt chat</title>
     <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>	
