@@ -87,7 +87,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{userId},
 		#{userPrefer},
 		#{userImg},
-    	#{userBackimg} 
+    	#{userBackimg}, 
+    	#{userAddress}
 		)}
 	</update>
 
@@ -115,5 +116,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE follower_id = #{follower} AND 
 			  following_id = #{following}
 	</delete>
-
+	
+	<select id="getFollowerByUserId" resultType="com.kosa5.hyunique.user.vo.UserVO">
+	    select fu.*
+	    from hy_user u 
+	    join hy_follow f on u.user_id = f.following_id
+	    join hy_user fu on f.follower_id = fu.user_id
+	    where u.user_id = #{userId}
+	</select>
+	
+	<select id="getFollowingByUserId" resultType="com.kosa5.hyunique.user.vo.UserVO">
+	    select fu.*
+	    from hy_user u 
+		join hy_follow f on u.user_id = f.follower_id
+		join hy_user fu on f.following_id = fu.user_id
+	    where u.user_id = #{userId}
+	</select>
+	
+    <select id="getLikeByPostId" resultType="com.kosa5.hyunique.user.vo.UserVO">
+		SELECT HY_USER.*
+		FROM HY_POST
+	    INNER JOIN HY_STYLELIKE ON HY_POST.POST_ID = HY_STYLELIKE.POST_ID
+	    INNER JOIN HY_USER ON HY_STYLELIKE.USER_ID = HY_USER.USER_ID
+		WHERE HY_POST.POST_ID = #{postId}
+    </select>
 </mapper>

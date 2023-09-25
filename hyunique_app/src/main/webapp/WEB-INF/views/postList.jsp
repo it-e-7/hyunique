@@ -61,14 +61,10 @@
 	    </c:choose>
     </c:if>
 	<div id="banner">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-luxury.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
 	</div>
 	<div id="ranking-wrapper">
 		<div class="ranking-description" id="ranking-header-txt">
-			hyunique 최고의 패셔니스타를 확인해보세요 🎉
+			hyunique 최고의 패셔니스타를<br>확인해보세요 🎉
 		</div>
 		<div class="category-description" id="rank-category-desc">
 			* 지난 한 주 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
@@ -286,7 +282,7 @@
 			    trigger="loop"
 			    delay="1000"
 			    colors="primary:#ffc738"
-			    style="width:4rem;height:4rem">
+			    style="width:3.6rem;height:3.6rem">
 			</lord-icon>
 			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요🔎</p>
 		</div>
@@ -305,7 +301,7 @@
 			</div>
 		</div>
         <div id="infinite-scroll">
-            <div id="photo-gallery">
+            <div id="photo-gallery" data-aos="fade-right">
             </div>
         </div>
             <c:if test="${empty userId}">
@@ -314,7 +310,7 @@
                         <img src="/resources/img/hyunique.png" class="login-logo-img">
                     </div>
                     <div id="bottom-login-message">
-                    더 많은 스타일을 보고 싶다면<br>로그인을 해보세요!
+                    간편하게 가입 후<br>더욱 많은 스타일링을 찾아보세요!
                     </div>
                     <button id="login-block" onclick="location.href='/login'">
                     로그인 하기
@@ -325,7 +321,7 @@
         <script src="/resources/js/postList.js"></script>
         <script src="/resources/js/filterModal.js"></script>
         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script>
 			AOS.init();
 		</script>	

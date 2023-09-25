@@ -28,6 +28,7 @@
 		<typeAlias alias="FilterPostVO" type="com.kosa5.hyunique.post.vo.FilterPostVO" />
 		<typeAlias alias="TagVO" type="com.kosa5.hyunique.post.vo.TagVO" />
 		<typeAlias alias="ProductInformVO" type="com.kosa5.hyunique.product.vo.ProductInformVO" />
+		<typeAlias alias="BannerVO" type="com.kosa5.hyunique.banner.vo.BannerVO" />
 	</typeAliases>
 
 	<typeHandlers>

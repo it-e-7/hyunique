@@ -138,6 +138,21 @@
 						<input id="facebookUrl" type="text" name=facebookUrl
 							value="${user.facebookUrl}" placeholder="아이디 혹은 주소를 입력해주세요">
 					</div>
+					
+					<div class="form-label"data-aos="zoom-in-up">
+						<label for="userAddress">배송지 주소</label>
+					</div>
+					<input type="button" onclick="sample3_execDaumPostcode()" id="sample3_search" value="우편번호 찾기"><br>
+					<div id="modal-wrap">
+			            <div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
+			           		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+			            </div>
+		        	</div>
+					<div class="form-content" id="address-content-wrapper" data-aos="zoom-in-up" >
+					    <input type="text" id="sample3_address" placeholder="주소">
+					    <input type="text" id="sample3_detailAddress" placeholder="상세주소">
+					    <input type="text" id="sample3_extraAddress" placeholder="참고항목">
+					</div>
 				</div>
 			</div>
 				<div class="form-content" >
@@ -149,6 +164,8 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/resources/js/daumAddress.js"></script>
 	<script>
 		AOS.init();
 	</script>	

@@ -164,8 +164,32 @@ input[type="checkbox"]:checked + label {
 }
 
 #facebookUrl{
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 }
 #txt-profile-header{
 	margin-left : 2rem;
+}
+input#sample3_search {
+    width: calc(100% - 60px);
+    border-radius: 0.6rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+div#address-content-wrapper {
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#wrap{
+	display: block;
+    border: 1px solid;
+    max-width: 100%;
+    height: 444px;
+    margin: 5px 0px;
+    position: relative;
+    width: 100%;
+}
+div#modal-wrap {
+    width: calc(100% - 60px);
 }
