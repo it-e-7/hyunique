@@ -164,8 +164,19 @@ input[type="checkbox"]:checked + label {
 }
 
 #facebookUrl{
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 }
 #txt-profile-header{
 	margin-left : 2rem;
+}
+input#sample3_search {
+    width: calc(100% - 60px);
+    border-radius: 0.6rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+div#address-content-wrapper {
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
 }
