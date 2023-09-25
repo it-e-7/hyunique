@@ -61,10 +61,6 @@
 	    </c:choose>
     </c:if>
 	<div id="banner">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-hyunique2-2.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-luxury.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-polo.png">
-	    <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-guess.jpeg">
 	</div>
 	<div id="ranking-wrapper">
 		<div class="ranking-description" id="ranking-header-txt">
