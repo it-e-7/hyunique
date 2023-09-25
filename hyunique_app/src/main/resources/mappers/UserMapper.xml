@@ -87,7 +87,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{userId},
 		#{userPrefer},
 		#{userImg},
-    	#{userBackimg} 
+    	#{userBackimg}, 
+    	#{userAddress}
 		)}
 	</update>
 

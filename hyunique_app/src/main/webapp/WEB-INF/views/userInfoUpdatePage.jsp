@@ -144,7 +144,7 @@
 					</div>
 					<input type="button" onclick="sample3_execDaumPostcode()" id="sample3_search" value="우편번호 찾기"><br>
 					<div id="modal-wrap">
-			            <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+			            <div id="wrap" style="display:none;border:1px solid;width:100%;height:300px;margin:5px 0;position:relative">
 			           		<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 			            </div>
 		        	</div>

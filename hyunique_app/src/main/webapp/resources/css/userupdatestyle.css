@@ -180,3 +180,16 @@ div#address-content-wrapper {
     display: flex;
     flex-direction: column;
 }
+
+#wrap{
+	display: block;
+    border: 1px solid;
+    max-width: 100%;
+    height: 444px;
+    margin: 5px 0px;
+    position: relative;
+    width: 100%;
+}
+div#modal-wrap {
+    width: calc(100% - 60px);
+}
