@@ -3,33 +3,18 @@
  */
 function paymentToss(apiKey,totalPrice,userId,url,orderList){
     var tossPayments = TossPayments(apiKey); //테스트 클라이언트 키
-    //var successUrl = url+'/payment/success'; // 결제 성공 시 이동할 페이지
-    //var failUrl = url+'/payment/fail'; // 결제 실패 시 이동할 페이지
+    var successUrl = url+'/payment/success'; // 결제 성공 시 이동할 페이지
+    var failUrl = url+'/payment/fail'; // 결제 실패 시 이동할 페이지
     tossPayments.requestPayment('카드', {
         amount: totalPrice,
         orderId: 2785164821,
         orderName: "원터치결제",
         customerName : 1212121,
-        //successUrl: successUrl, // ${결제 성공 후 redirect할 url}
-        //failUrl:failUrl, //  ${결제 실패한 경우 redirect할 url}
+        successUrl: successUrl, // ${결제 성공 후 redirect할 url}
+        failUrl:failUrl, //  ${결제 실패한 경우 redirect할 url}
     })
-    .then((res) =>{
-        //결제에 성공시 결제 정보를 저장한다
-        $.ajax({
-                url: `/payment/purchaseLog`,
-                type: 'POST',
-                contentType : 'application/json',
-                data: orderList,
-                success: function (response) {
-                    //우리 DB애 저장완료 되었습니다 !
-                },
-                error: function (response) {
-                    console.error('데이터가 성공적으로 저장되지 않았습니다.');
-                }
-            });
-            //성공시 성공화면으로 이동
-            window.location.href = url+'/payment/success';
-    }).catch(function (error) {
+    .catch(function (error) {
+            console.error('오류가 발생했습니다:', error); // 오류 메시지를 콘솔에 출력합니다.
             if (error.code === 'USER_CANCEL') {
                 console.log("3");
             } else if (error.code === 'INVALID_CARD_COMPANY') {

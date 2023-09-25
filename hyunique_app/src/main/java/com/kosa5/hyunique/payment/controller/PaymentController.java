@@ -1,5 +1,6 @@
 package com.kosa5.hyunique.payment.controller;
 
+import com.kosa5.hyunique.payment.service.TossPaymentImpl;
 import com.kosa5.hyunique.payment.service.TossPaymentService;
 import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
@@ -34,6 +35,8 @@ public class PaymentController {
     @Value("${test_client_api_key}")
     private  String API_KEY;
 
+    private int productTotalPrice;
+
     //결제 승인
     @PostMapping(value="confirm")
     @ResponseBody
@@ -50,6 +53,7 @@ public class PaymentController {
             //결제완료 페이지를 위해 구매하는 상품들에 대한 데이터를 같이 전송합니다.
             productList.add(currentProduct);
         }
+        productTotalPrice = totalPrice;
 
         //세션아이디와, 가격, 그리고 url , 시크릿 키, URL, productList를 리턴받는다
         map.put("userId",sessionId);
@@ -64,10 +68,10 @@ public class PaymentController {
     @PostMapping(value="purchaseLog")
     public String purchaseLogService(@SessionAttribute int sessionId, Model model, @RequestBody String[] orderList){
         //유저의 결제내역 생성
-        String orderId = tossPaymentService.TossPurchaseService();
-        // 결제 내역에 따른 상품데이터 로그 하나하나 삽입
+        String orderId = tossPaymentService.TossPurchaseService(sessionId,productTotalPrice);
+        // 결제 내역에 따른 상품 데이터 로그 삽입
         for (String s : orderList) {
-            //서비스를 통해서
+            tossPaymentService.insertPurchaseProduct(orderId,s);
             System.out.println(s);
         }
         return "paymentSuccess" ;
