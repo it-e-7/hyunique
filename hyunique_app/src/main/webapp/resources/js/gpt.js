@@ -306,8 +306,3 @@ let restartAnimation = function() {
 	  skip_count = 0;
 	  wordflick(); // 애니메이션 다시 시작
 };
-
-//장바구니 클릭했을 시 이미지를 클릭하면 구매 이미지로 바뀌게 합니다
-function clickPurchase(element) {
-    //여기서 확인 버튼을 눌러야지만 이미지가 바뀌게 해야 한다.
-}

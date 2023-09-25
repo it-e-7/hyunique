@@ -26,12 +26,17 @@ $('.chat-section-wrapper').on('click', '#bag-img', function() {
 $(".modal-check-btn").click(function() {
     //세션에 사이즈와 컬러를 저장한다
     // 확인 버튼을 눌렀을 때 아이템을 변경한다.
-    var bagImg = $(this).closest('.gpt-product-list').find('#bag-img');
+    console.log(gptProductBox);
+    var bagImg = gptProductBox.closest('.gpt-product-list').find('#bag-img');
     if (bagImg.attr("src").includes("/resources/img/ic-bag-check.png")) {
         bagImg.attr("src", "/resources/img/ic-bag-non-check.png");
     } else {
         bagImg.attr("src", "/resources/img/ic-bag-check.png");
     }
+
+    // 첫 번째 option을 선택되게 하고, 다른 것들은 선택 해제
+    $(".select-product-size option:first").prop('selected', true);
+    $(".select-product-color option:first").prop('selected', true);
 
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
