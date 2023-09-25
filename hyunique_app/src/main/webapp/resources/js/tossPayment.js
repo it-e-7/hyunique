@@ -16,7 +16,6 @@ function paymentToss(apiKey,totalPrice,userId,url,orderList){
     .catch(function (error) {
             console.error('오류가 발생했습니다:', error); // 오류 메시지를 콘솔에 출력합니다.
             if (error.code === 'USER_CANCEL') {
-                console.log("3");
             } else if (error.code === 'INVALID_CARD_COMPANY') {
                 // 유효하지 않은 카드 코드에 대한 에러 처리
             }

@@ -9,8 +9,10 @@
         //
     }
 
-    function sample3_execDaumPostcode() {
+    function sample3_execDaumPostcode(String userAddress, int userId) {
         // 현재 scroll 위치를 저장해놓는다.
+        console.log(userAddress);
+                console.log(userId);
         var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
         new daum.Postcode({
             oncomplete: function(data) {
