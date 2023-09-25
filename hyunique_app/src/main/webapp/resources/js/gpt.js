@@ -165,7 +165,7 @@ function gptProductRequest (){
     	    			<div class="purchase-cancel-btn">
     	    				다음에 구매할게요
     	    			</div>
-    				<button class="purchase-accept-btn" onclick="paymentInformation()">
+    				<button class="purchase-accept-btn" onclick="paymentAddressCheck()">
     	    				눌러서 구매 완료
     	    			</div>
     	    		</button>`

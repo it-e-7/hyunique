@@ -23,16 +23,43 @@ function paymentToss(apiKey,totalPrice,userId,url,orderList){
 
 }
 
+function paymentAddressCheck () {
+    let orderList = checkProductList();
+    if (orderList.length != 0){
+    $("#sample3_search").click();
+    }
+else {
+    alert("상품을 선택해주세요");
+}
+}
+
 //토스 결제를 하기 전에, 상품에 해당하는 정보를 가져옵시다
-function paymentInformation () {
+function paymentInformation (userAddress) {
+    localStorage.setItem('address', userAddress);
+    let orderList = checkProductList();
 
-// 그리고 결제에 필요한 정보값을 다 담아서 리턴하는걸로
+    //구매리스트 컨트롤러로 전송
+    const addressData = localStorage.getItem('address');
+    $.ajax({
+            url: `/payment/confirm`,
+            type: 'POST',
+            contentType : 'application/json',
+            data: JSON.stringify(orderList),
+            success: function (response) {
+                //토스를 위해 세션에도 저장해줍니다.
+                sessionStorage.setItem('orderList', JSON.stringify(response.productList));
+                paymentToss(response.apiKey,response.totalPrice,response.userId,response.url,JSON.stringify(orderList));
+            },
+            error: function (response) {
+                console.error('결제 실패. 다시 시도해주세요');
+            }
+    });
+}
 
-const productListElements = document.querySelectorAll('.gpt-product-list');
-
+function checkProductList () {
 let orderList = [];
+const productListElements = document.querySelectorAll('.gpt-product-list');
 productListElements.forEach(productElement => {
-   //현재는 테스트를 위하여 체크되지 않은 이미지를 전송합니다. 이후에는 수정해주세요
   let imageSource = productElement.querySelector('img[src="/resources/img/ic-bag-check.png"]')
   if (imageSource != null){
   imageSource = imageSource.getAttribute('src');
@@ -47,36 +74,5 @@ productListElements.forEach(productElement => {
     orderList.push(productWrapper.getAttribute("onclick").match(regex)[1]);
   }
 });
-
-//구매리스트 컨트롤러로 전송
-    if (orderList.length != 0){
-        //주소를 입력하지 않았으면 주소를 입력하라고 알려준다.
-        //현재는 주문 테이블이 존재하지 않음으로 세션에서 값을 가져옵니다.
-        const addressData = localStorage.getItem('address');
-        if (addressData == null){
-            //도로명 주소를 입력하지 않았습니다.
-            //도로명 주소를 입력해주세요 모달 띠우기
-            alert ("도로명 주소를 입력해주세요!");
-            $("#sample3_search").click();
-        }
-        else{
-            $.ajax({
-                    url: `/payment/confirm`,
-                    type: 'POST',
-                    contentType : 'application/json',
-                    data: JSON.stringify(orderList),
-                    success: function (response) {
-                        //원래는 여기서 결제 내역을 우리 DB에 저장해야 하나, 세션에 저장해서 넘기도록 하겠습니다
-                        sessionStorage.setItem('orderList', JSON.stringify(response.productList));
-                        paymentToss(response.apiKey,response.totalPrice,response.userId,response.url,JSON.stringify(orderList));
-                    },
-                    error: function (response) {
-                        console.error('결제 실패. 다시 시도해주세요');
-                    }
-            });
-        }
-    }
-    else {
-    alert("상품을 선택해주세요");
-    }
+return orderList
 }

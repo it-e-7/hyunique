@@ -58,7 +58,7 @@
 	    <div class="chat-section-wrapper">
 	    	<div class="gap-area"></div>
 	    </div>
-        <input type="button" onclick="sample3_execDaumPostcode(${user.userAddress},${user.userId})" id="sample3_search" value="우편번호 찾기"><br>
+        <input type="button" id="sample3_search" value="우편번호 찾기" onclick='<c:if test="${not empty user.userAddress}">paymentInformation(${user.userAddress});</c:if> <c:if test="${empty user.userAddress}">sample3_execDaumPostcode(${user.userId}); </c:if>'><br>
         <input type="text" id="sample3_address" placeholder="주소"><br>
         <input type="text" id="sample3_detailAddress" placeholder="상세주소">
         <input type="text" id="sample3_extraAddress" placeholder="참고항목">

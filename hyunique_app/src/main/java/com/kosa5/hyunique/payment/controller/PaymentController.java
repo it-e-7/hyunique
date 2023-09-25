@@ -6,8 +6,12 @@ import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 import com.kosa5.hyunique.user.service.UserService;
 import com.kosa5.hyunique.user.vo.UserVO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +40,8 @@ public class PaymentController {
     private  String API_KEY;
 
     private int productTotalPrice;
+
+    Logger log = LogManager.getLogger("case3");
 
     //결제 승인
     @PostMapping(value="confirm")
@@ -92,6 +98,36 @@ public class PaymentController {
         //데이터베이스에 저장
 
         return "paymentSuccess";
+    }
+
+    @PostMapping(value="address")
+    @ResponseBody
+    public  Map<String, Object> userAddressService(@SessionAttribute int sessionId, Model model){
+        Map<String, Object> map = new HashMap<String, Object>();
+        String sesisonString = Integer.toString(sessionId);
+        UserVO user = userService.getUserInfoAndFollowerCount(sessionId,sesisonString);
+        //세션아이디와, 가격, 그리고 url , 시크릿 키, URL, productList를 리턴받는다
+        map.put("userId",sessionId);
+        map.put("userAddress",user.getUserAddress());
+
+        return map;
+    }
+
+    @PostMapping(value="addressUpdate")
+    @ResponseBody
+    public ResponseEntity<String> userAddressUpdateService(@SessionAttribute int sessionId, Model model, @RequestBody String address){
+
+        System.out.println(address);
+        UserVO userVO = new UserVO();
+        userVO.setUserId(sessionId);
+        userVO.setUserAddress(address);
+        try {
+            userService.updateUser(userVO);  // 기존의 updateUser 메서드를 그대로 사용
+            return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
+        } catch (Exception e) {
+            log.info(e);
+            return new ResponseEntity<>("업데이트 실패", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

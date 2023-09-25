@@ -8,11 +8,8 @@
         element_modal_wrap.style.display = 'none';
         //
     }
-
-    function sample3_execDaumPostcode(String userAddress, int userId) {
+    function sample3_execDaumPostcode(userId) {
         // 현재 scroll 위치를 저장해놓는다.
-        console.log(userAddress);
-                console.log(userId);
         var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
         new daum.Postcode({
             oncomplete: function(data) {
@@ -52,14 +49,29 @@
                     document.getElementById("sample3_extraAddress").value = '';
                 }
 
-                //주소를 세션에 추가한다
-
-
                 // 주소 정보를 해당 필드에 넣는다.
                 document.getElementById("sample3_address").value = addr;
 
-                //확인하고 넣을 때 주소를 로컬 스토리지에 저장한다
-                localStorage.setItem('address', addr);
+                //유저 주소의 조합
+                const userAddress = $('#sample3_address').val() + $('#sample3_detailAddress').val() + $('#sample3_extraAddress').val();
+
+                //확인하고 넣을 때 주소를 로컬 스토리지에 저장한다 -> 근데 전체 주소로 저장해서 넣어야 함! 조합으로!
+                localStorage.setItem('address', userAddress);
+
+                //유저의 주소 업데이트도 해줍니다!
+                $.ajax({
+                        url: `/payment/addressUpdate`,
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(userAddress),
+                        success: function (response) {
+                            //업데이트가 성공하면 paymentInformation(주소)
+                        },
+                        error: function (response) {
+                            console.error("유저 주소 정보 업데이트 실패");
+                        }
+                    });
+
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("sample3_detailAddress").focus();
 
