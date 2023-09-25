@@ -17,8 +17,6 @@
 			select="getPostThumbnailListByProduct" />
 	</resultMap>
 
-
-
 	<select id="getPostDetailByPostIdUserId" parameterType="map"
 		resultMap="PostDetailMap">
 		SELECT post_id, p.user_id, user_img,
@@ -227,11 +225,10 @@
         WHERE F.FOLLOWER_ID = #{userId}
     </select>
 
-	<delete id="deleteOnePost" parameterType="map">
+	<delete id="deleteOnePost" statementType="CALLABLE" parameterType="map">
 		call DELETE_POST(
 			#{postId, mode=IN, jdbcType=INTEGER, javaType=Integer},
 			#{state, mode=OUT, jdbcType=VARCHAR, javaType=String}
 		)
 	</delete>
-
 </mapper>
