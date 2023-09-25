@@ -14,7 +14,17 @@ function getSelectItemFromImage(imgElement) {
 
 // <img> 요소에서 상품 정보를 추출하는 함수 호출
 $('.chat-section-wrapper').on('click', '#bag-img', function() {
-    console.log("1");
     let product = getSelectItemFromImage(this);
     showProductModal(product);
+});
+
+//확인 버튼을 눌렀을 때
+$(".modal-check-btn").click(function() {
+    //세션에 사이즈와 컬러를 저장한다
+    // 확인 버튼을 눌렀을 때 아이템을 변경한다.
+    $("#product-search-modal").hide();
+    $("#sizeContent").empty();
+    $("#colorContent").empty();
+    $('.select-product-color').empty();
+    $('.select-product-size').empty();
 });
