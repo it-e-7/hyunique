@@ -1,6 +1,3 @@
-//처음 클릭한 변수를 저장한다
-let gptProductBox;
-
 // 이미지를 통해 선택한 상품 정보를 추출하는 함수
 function getSelectItemFromImage(imgElement) {
     let product = {};
@@ -19,7 +16,13 @@ function getSelectItemFromImage(imgElement) {
 // <img> 요소에서 상품 정보를 추출하는 함수 호출
 $('.chat-section-wrapper').on('click', '#bag-img', function() {
     let product = getSelectItemFromImage(this);
-    showProductModal(product);
+    let bagImg = $(this);
+    if (bagImg.attr("src").includes("/resources/img/ic-bag-check.png")) {
+            bagImg.attr("src", "/resources/img/ic-bag-non-check.png");
+    }
+    else {
+        showProductModal(product);
+    }
 });
 
 //확인 버튼을 눌렀을 때

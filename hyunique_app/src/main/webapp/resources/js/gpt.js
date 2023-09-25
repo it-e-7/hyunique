@@ -154,7 +154,7 @@ function gptProductRequest (){
                   </div>
               </div>
               <div id="bag-check">
-                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" onclick="clickPurchase(this)" id="bag-img"/></label>
+                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
               </div>
               </li>
     <div>
