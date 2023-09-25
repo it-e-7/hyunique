@@ -2,63 +2,23 @@
 let chatForm = document.querySelector('.main-gpt-wrapper');
 const speech = new webkitSpeechRecognition;
 
-let wordflick = function () {
-	animationInterval = setInterval(function () {
-		if (forwards) {
-			if (offset >= words[i].length) {
-				++skip_count;
-				if (skip_count == skip_delay) {
-					forwards = false;
-					skip_count = 0;
-			    }
-			  }
-			}
-		else {
-		  if (offset == 0) {
-		    forwards = true;
-		    i++;
-		    offset = 0;
-		    if (i >= len) {
-		      i = 0;
-		    }
-		  }
-		}
-		part = words[i].substr(0, offset);
-		if (skip_count == 0) {
-		  if (forwards) {
-		    offset++;
-		  }
-		  else {
-		    offset--;
-		  }
-		}
-		$('.loader-text').text(part);
-	},speed);
-};
-
-if (!isSafari) {
-	console.log("크롬 로그인")
-	  speech = new webkitSpeechRecognition;
-			siriWave = new SiriWave({
-		    container: document.getElementById('voice-control'),
-		    width: 600,
-		    height: 100,
-		    style: "ios9",
-		    autostart:true,
-		    amplitude:0.5,
-			speed:0.1,
-			curveDefinition :[
-		    	  { color: "255,255,255", supportLine: true },
-		    	  { color: "106, 121, 255" },
-		    	  { color: "147, 216, 255" },
-		    	  { color: "255, 106, 222" },
-		    	]
-		});
-}else{console.log("사파리 로그인")}
-
+const siriWave = new SiriWave({
+    container: document.getElementById('voice-control'),
+    width: 600,
+    height: 100,
+    style: "ios9",
+    autostart:true,
+    amplitude:0.5,
+	speed:0.1,
+	curveDefinition :[
+    	  { color: "255,255,255", supportLine: true },
+    	  { color: "106, 121, 255" },
+    	  { color: "147, 216, 255" },
+    	  { color: "255, 106, 222" },
+    	]
+});
 
 $(document).ready(function () {
-	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>안녕하세요!!<br><br>스타일링부터 구매까지 도와드릴 🤖AI예요.<br><br><b>하단의 버튼을 눌러 상황이나 장소를 말씀해보세요!</b></span></p></div><div>');
   wordflick();
   $("#12322").change(function() {
 	  if ($(this).prop("checked")) {
@@ -67,19 +27,6 @@ $(document).ready(function () {
       $("#bag-img").attr("src", "/resources/img/ic-bag-noncheck.png");
     }
   });
-setTimeout(function() {
-	var element = document.getElementById('pop-up-img-inst');
-	if (element) {
-	  element.classList.add('fade-out');
-	  }
-	}, 4000);
-
-setTimeout(function() {
-	var element = document.getElementById('pop-up-img-inst');
-	if (element) {
-		element.style.display = 'none';
-	  }
-	}, 4400);
 });
 function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
@@ -101,14 +48,12 @@ function gptImgRequest(messageFront, messageBack){
             scrollToBottom();  // 이미지 로딩 후 스크롤
           });
           
-          let imgWrapper = $('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><p><span id="dall-e-img"></span></p></div>');
+          let imgWrapper = $('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span></span></p></div></div>');
           imgWrapper.find('span').append(imgElement);
           
           $(".chat-section-wrapper").append(imgWrapper);
           $(".loader-wrapper").addClass("hidden");
-          if (!isSafari) {
-        	  $(".voice-control-wrapper").removeClass("hidden");
-          }
+          $(".voice-control-wrapper").removeClass("hidden");
       },
       error: function(error) {
     	  console.log(error);
@@ -145,10 +90,10 @@ function gptProductRequest (){
                   </div>
               </div>
               <div id="bag-check">
-                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
+                  <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" onclick="clickPurchase(this)" id="bag-img"/></label>
               </div>
               </li>
-              <div>
+    <div>
       `)
       });
             //결제 버튼 만들기
@@ -186,7 +131,7 @@ function gptRequest() {
 		    $(".voice-control-wrapper").addClass("hidden");
 		    $(".loader-wrapper").removeClass("hidden");
 		    restartAnimation();
-
+		    
 		    $.ajax({
 		      url: "/gpt/chat",
 		      type: "GET",
@@ -342,3 +287,10 @@ let restartAnimation = function() {
 	  skip_count = 0;
 	  wordflick(); // 애니메이션 다시 시작
 };
+
+//장바구니 클릭했을 시 이미지를 클릭하면 구매 이미지로 바뀌게 합니다
+function clickPurchase(element) {
+    if(element.src.includes("/resources/img/ic-bag-check.png"))
+    element.src = "/resources/img/ic-bag-non-check.png"
+    else element.src = "/resources/img/ic-bag-check.png"
+}
