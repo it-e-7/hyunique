@@ -1,4 +1,6 @@
-package com.kosa5.hyunique;
+package com.kosa5.hyunique.banner.controller;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.kosa5.hyunique.banner.service.BannerService;
 import com.kosa5.hyunique.post.service.PostService;
+import com.kosa5.hyunique.post.vo.BannerVO;
 
 @Controller
 public class HomeController {
@@ -18,7 +22,10 @@ public class HomeController {
 
 	@Autowired
 	PostService postService;
-	
+
+    @Autowired
+    private BannerService bannerService;
+
 	@GetMapping(value = "/")
     public String getPostingListHandler(HttpSession session,Model model) {
         model.addAttribute("userId",session.getAttribute("sessionId"));
@@ -28,4 +35,10 @@ public class HomeController {
         }
         return "postList";
     }
+
+    @GetMapping("/banners")
+    public List<BannerVO> getAllBanners() {
+        return bannerService.getAllBanners();
+    }
+    
 }

@@ -20,6 +20,23 @@ $(document).ready(function() {
   $('.btn-grad').on('click', function() {
 	    window.location.href = "/login";
 	  });
+  
+  $.ajax({
+	    url: '/banners',
+	    type: 'GET',
+	    success: function(banners) {
+	        banners.forEach(function(banner) {
+	            const bannerDiv = `
+            	    <img src=${banner.bannerUrl}>
+	            `;
+	            $('#banner').append(bannerDiv);
+	        });
+	    },
+	    error: function() {
+	        console.error('Failed to load banners');
+	    }
+	});
+  
 });
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
