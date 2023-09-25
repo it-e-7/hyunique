@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,9 @@
 	
 </head>
 <body>
+<div id="session-info">
+	<input type="hidden" id="postId" value="${postVO.postId}">
+</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
 			<lord-icon
@@ -100,7 +104,7 @@
 						</lord-icon>
 					</button>
 				</div>
-				<p id="like-count-p"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
+				<p id="like-count-p" onclick= "moveToLike(${postVO.postId})"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
 			</div>
 			<div class="post-content">
 				<p class="post-content-date">

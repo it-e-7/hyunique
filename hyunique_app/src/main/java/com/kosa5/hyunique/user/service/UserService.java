@@ -23,4 +23,6 @@ public interface UserService {
 	List<UserVO> getFollowerByUserId(int userId);
 
 	List<UserVO> getFollowingByUserId(int userId);
+
+	List<UserVO> getLikeByPostId(int postId);
 }

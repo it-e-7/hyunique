@@ -70,5 +70,9 @@ public class UserServiceImpl implements UserService {
 	public List<UserVO> getFollowingByUserId(int userId) {
 		return userMapper.getFollowingByUserId(userId);
 	}
+	@Override
+	public List<UserVO> getLikeByPostId(int postId) {
+		return userMapper.getLikeByPostId(postId);
+	}
 
 }

@@ -131,4 +131,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join hy_user fu on f.following_id = fu.user_id
 	    where u.user_id = #{userId}
 	</select>
+	
+    <select id="getLikeByPostId" resultType="com.kosa5.hyunique.user.vo.UserVO">
+		SELECT HY_USER.*
+		FROM HY_POST
+	    INNER JOIN HY_STYLELIKE ON HY_POST.POST_ID = HY_STYLELIKE.POST_ID
+	    INNER JOIN HY_USER ON HY_STYLELIKE.USER_ID = HY_USER.USER_ID
+		WHERE HY_POST.POST_ID = #{postId}
+    </select>
 </mapper>

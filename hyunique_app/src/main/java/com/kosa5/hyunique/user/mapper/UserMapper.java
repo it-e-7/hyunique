@@ -27,4 +27,6 @@ public interface UserMapper {
 	
 	List<UserVO> getFollowingByUserId(@Param("userId") int userId);
 	
+	List<UserVO> getLikeByPostId(@Param("postId") int postId);
+	
 }

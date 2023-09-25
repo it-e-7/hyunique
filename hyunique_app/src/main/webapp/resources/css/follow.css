@@ -36,4 +36,5 @@ span {
 img {
     width: 3.5rem;
     border-radius: 10rem;
+    aspect-ratio: 1/1
 }

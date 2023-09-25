@@ -160,6 +160,7 @@ public class UserController {
 	    return "useronboarding";
 	}
 
+	//팔로우 페이지 이동
 	@GetMapping("followlist")
 	public String followPage(Model model, @RequestParam Integer userId) {
 		String userIdString = Integer.toString(userId);
@@ -182,5 +183,19 @@ public class UserController {
 	public List<UserVO> followingListByUserId(HttpServletRequest request, @RequestParam Integer userId){
 		return userService.getFollowingByUserId(userId);
 	}
+		
+	//좋아요 페이지 이동
+	@GetMapping("likelist")
+	public String likePage(Model model, @RequestParam Integer postId) {
+		model.addAttribute("postId", postId);
+		return "likeList";
+	}
 	
+	//내 팔로워 목록
+	@GetMapping("likeuser")
+	@ResponseBody
+	public List<UserVO> likeListByPostId(@RequestParam Integer postId){
+	    return userService.getLikeByPostId(postId);
+	}
+
 }
