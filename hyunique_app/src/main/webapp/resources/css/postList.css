@@ -402,14 +402,14 @@ lord-icon.lord-star {
 div#up-button {
 	display: none;
 	position: fixed;
-	bottom: 108px;
-	right: 48px;
+	bottom: 92px;
+	right: 32px;
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
     drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
     drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
     drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))
     drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-    transition: 0.5s;
+	transition: 0.5s;
 }
 
 p#txt-ranking-des {
