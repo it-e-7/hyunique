@@ -23,7 +23,6 @@
 	    <div class="button selected" id="recommend">추천</div>
 	    <div class="button" id="style-ranking">스타일랭킹</div>
 	    <div class="button" id="following">팔로우</div>
-	    <div class="tab-deco">🤖</div>
 	    <div class="button" id="AI-recommend" onclick="location.href='${url}gpt/page'">AI추천</div>
 	</div>
 </div>
@@ -60,7 +59,14 @@
 	        </c:otherwise>
 	    </c:choose>
     </c:if>
-	<div id="banner">
+    <div id="tab-desc-wrapper">
+    	<p id="tab-desc-txt">
+    		RECOMMEND
+    	</p>
+    </div>
+    <div id="banner-wrapper">
+		<div id="banner">
+		</div>
 	</div>
 	<div id="ranking-wrapper">
 		<div class="ranking-description" id="ranking-header-txt">
@@ -275,17 +281,6 @@
             </div>
         </div>
     </div>
-   	 	<div class="recommend-description" data-aos="fade-left" id="recommend-description">
-			<lord-icon
-				class="lord-star"
-			    src="https://cdn.lordicon.com/gbtkzxxm.json"
-			    trigger="loop"
-			    delay="1000"
-			    colors="primary:#ffc738"
-			    style="width:3.6rem;height:3.6rem">
-			</lord-icon>
-			<p class="txt-rec-des">선택한 스타일링의 <br>다양한 사진을 찾아보세요🔎</p>
-		</div>
    	 	<div class="ranking-description" id="ranking-description">
 			<lord-icon
 				id="rank-icon"

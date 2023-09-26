@@ -67,8 +67,8 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, minmax(0px, 1fr));
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
+    grid-column-gap: 0.4rem;
+    grid-row-gap: 0.4rem;
 }
 
 @media screen and (max-width: 700px) {
@@ -86,6 +86,7 @@
 .photo {
     box-sizing: border-box;
     position: relative;
+    /* border-radius: 1rem; */
 }
 
 .ranking-box{
@@ -126,29 +127,32 @@
 
 .photo img{
    max-width: 100%;
-    min-width: 100%;
-    display: block;
-    margin: 0 auto;
-    aspect-ratio: 0.84/1;
-    object-fit: cover;
-    object-position: center;
+   min-width: 100%;
+   display: block;
+   margin: 0 auto;
+   aspect-ratio: 0.84/1;
+   object-fit: cover;
+   object-position: center;
+   border-radius: 0.6rem;
 }
 
 #hyunique-main-top-recommend {
    display: flex;
-   margin-left: 22px;
-   font-size: 1.07rem;
+   font-size: 1.1rem;
    font-weight: 600;
    color : #BBBBBB;
+   margin-bottom: 1rem;
+   border-bottom: 1px solid lightgray;
+   flex-direction: row;
+   justify-content: space-evenly;
 }
 
 #hyunique-main-top-recommend .button {
   cursor: pointer;
-  margin-right: 1rem;
   text-decoration: none;
   text-decoration: none;
-  padding-bottom: 8px;
-  border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid transparent; /* 밑줄 추가 */
   color: #BBBBBB;
   transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
 }
@@ -161,8 +165,8 @@
 #filterModalButton {
     font-size: 1rem;
     border: 1px solid #E9E9E9;
-    border-radius: 6px;
-    padding: 0.6rem;
+    border-radius: 10rem;
+    /* padding: 0.6rem; */
     background-color: transparent;
     cursor: pointer;
     white-space: nowrap;
@@ -172,20 +176,10 @@
     flex-direction: row;
     align-items: center;
     font-weight: 400;
+    background: #fafafb;
+    padding: 1rem 1rem;
 }
 
-@media screen and (max-width: 700px) {
-     #filterModalButton {
-        font-size: 12px;
-        border: 1px solid #E9E9E9;
-        border-radius: 10px;
-        padding: 3px 10px;
-        background-color: transparent;
-        cursor: pointer;
-        white-space: nowrap;
-        margin-right: 4px;
-     }
-}
 
 #filterModalButton >img{
     display: flex;
@@ -193,13 +187,6 @@
     height: 1.1rem;
 }
 
-@media screen and (max-width: 700px) {
-    #filterModalButton >img {
-        display: flex;
-        align-items: center;
-        height: 18px;
-    }
-}
 
 
 .filter-img-div{
@@ -230,7 +217,7 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding: 1rem 0.8rem;
+    padding: 1rem 1.6rem;
     height: 32px;
 }
 #qr-button {
@@ -297,13 +284,15 @@
     font-weight: 700;
     padding: 6px 20px;
     border-radius: 0.8rem;
-    background: linear-gradient(135deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    background: black;
     animation: 2s ease 0s infinite alternate none running kcinZC;
 }
 
 div#banner img {
     width: 100%;
+    border-radius: 0.6rem;
     scroll-snap-align: start;
+    height: auto;
 }
 
 div#banner {
@@ -312,6 +301,9 @@ div#banner {
     overflow: scroll;
     scroll-snap-type: x mandatory;
     cursor: pointer;
+    /* max-width: 700px; */
+    width: calc(100% - 3.2rem);
+    margin-bottom: 1.2rem;
 }
 #ranking-wrapper{
 	display:flex;
@@ -547,9 +539,34 @@ p#txt-ranking-des {
 }
 div#follow-banner {width: 100%;}
 div#infinite-scroll {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
 }
-.footer-home-wrapper {
-    background: var(--jw-light-blue2);
+
+
+div#tab-desc-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
 }
+
+p#tab-desc-txt {
+    font-family: Jost;
+    font-size: 32px;
+    font-weight: 600;
+    margin-left: 1.6rem;
+}
+
+div#banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#footer-home-img {
+      content: url("/resources/img/ico-nav-home-selected.png");
+    }

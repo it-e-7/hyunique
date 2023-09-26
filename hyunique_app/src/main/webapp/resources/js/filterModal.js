@@ -399,9 +399,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             if (button!=null) {
-                button.style.backgroundColor = "var(--jw-light-blue2)";
-                button.style.fontWeight = "bold";
-                button.style.color = "var(--jw-blue3)";
+                button.style.backgroundColor = "#20242a";
+                button.style.color = "#ffffff";
             }
         }
     }

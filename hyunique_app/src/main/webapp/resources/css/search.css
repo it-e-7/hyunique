@@ -3,7 +3,7 @@
     top: 0;
     z-index: 100;
     backdrop-filter: blur(5px);
-    background: linear-gradient( 180deg, #ffffff 0%,#ffffff 50%, #ffffffbd 100%);
+    background: white;
 }
 
 
@@ -16,12 +16,12 @@
 #hyunique-main-top-logo{
     display : flex;
     justify-content: space-between;
-    margin-bottom: 14px;
+    margin-bottom: 1.6rem;
     padding-top: 18px;
 }
 
 #hyunique-main-top-logo-image >img {
-    width: 11rem;
+    width: 8rem;
 }
 #hyunique-main-top-buttons{
     display : flex;

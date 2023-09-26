@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
           banner.style.display = 'none';
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
-          document.getElementById("recommend-description").style.display = 'none';
           const followBanner = document.getElementById("follow-banner");
     	  if (followBanner) {
     	    followBanner.style.display = 'none';
@@ -89,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     	  if (followBanner) {
     	    followBanner.style.display = 'none';
     	  }         
-    	  document.getElementById("recommend-description").style.display = 'flex';
           const filterElement = $('#hyunique-main-top-filter');
           filterElement.show();
           }
@@ -100,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             banner.style.display = 'none';
             document.getElementById("ranking-wrapper").style.display = 'none';
             document.getElementById("ranking-description").style.display = 'none';
-            document.getElementById("recommend-description").style.display = 'none';
             const filterElement = $('#hyunique-main-top-filter');
             const followBanner = document.getElementById("follow-banner");
 
