@@ -61,12 +61,6 @@ function slideModal(e) {
     isDraggingModal = false;
 }
 
-/*bottom = 3
-modal = 5
-
-bottom 에 3만큼 들어가야함
--> 근데 bottom은 밑에서 올라오니까 3만 올라오려 하면 2만큼 들어가야하니까 -2가 됨*/
-
 
 /* 스켈레톤 로딩 */
 function switchLayers() {

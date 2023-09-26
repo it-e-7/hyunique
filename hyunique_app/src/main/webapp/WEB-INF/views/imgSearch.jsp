@@ -33,8 +33,7 @@
                     <p class="search-value-title" draggable="false">상품 검색 결과 입니다.</p>
                     <ul class="img-search-list">
                         <div class="data-layer"></div>
-                        <div class="skeleton-layer">
-                        </div>
+                        <div class="skeleton-layer"></div>
                     </ul>
                 </div>
             </div>
