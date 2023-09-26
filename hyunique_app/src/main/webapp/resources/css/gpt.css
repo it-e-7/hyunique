@@ -575,6 +575,7 @@ display: none;
 }
 
 #wrap{
+    max-height: 35em;
     z-index: 999;
     position: fixed !important;
     top: 50%;
@@ -600,7 +601,7 @@ display: none;
     justify-content: center;
 }
 
-button.modal-cancel-btn {
+button.modal-cancel-btn-gpt {
     margin: 0 3.5px;
     padding: 11px 10px;
     line-height: 20px;

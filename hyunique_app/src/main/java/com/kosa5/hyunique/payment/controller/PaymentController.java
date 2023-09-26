@@ -119,12 +119,12 @@ public class PaymentController {
     @ResponseBody
     public ResponseEntity<String> userAddressUpdateService(@SessionAttribute int sessionId, Model model, @RequestBody String address){
 
-        System.out.println(address);
         UserVO userVO = new UserVO();
-        userVO.setUserId(sessionId);
+        userVO = userService.getUserInfoAndFollowerCount(sessionId,Integer.toString(sessionId));
         userVO.setUserAddress(address);
+
         try {
-            userService.updateUser(userVO);  // 기존의 updateUser 메서드를 그대로 사용
+            userService.updateUser(userVO);
             return new ResponseEntity<>("업데이트 성공", HttpStatus.OK);
         } catch (Exception e) {
             log.info(e);

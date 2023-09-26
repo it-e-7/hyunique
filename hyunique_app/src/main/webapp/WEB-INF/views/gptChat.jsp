@@ -47,7 +47,7 @@
                   </div>
               </div>
               <div class="modal-btn-wrap">
-                  <button class="modal-cancel-btn" type="button">취소</button>
+                  <button class="modal-cancel-btn-gpt" type="button">취소</button>
                   <button class="modal-check-btn" type="submit">확인</button>
               </div>
           </div>
@@ -58,7 +58,7 @@
 	    <div class="chat-section-wrapper">
 	    	<div class="gap-area"></div>
 	    </div>
-        <input type="button" id="sample3_search" value="우편번호 찾기" onclick='<c:if test="${not empty user.userAddress}">paymentInformation(${user.userAddress});</c:if> <c:if test="${empty user.userAddress}">sample3_execDaumPostcode(${user.userId}); </c:if>'><br>
+        <input type="button" id="sample3_search" value="우편번호 찾기" onclick='<c:if test="${not empty user.userAddress}">paymentInformation("${user.userAddress}");</c:if> <c:if test="${empty user.userAddress}">sample3_execDaumPostcode(${user.userId}); </c:if>'><br>
 
         <div id="modal-wrap">
             <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">

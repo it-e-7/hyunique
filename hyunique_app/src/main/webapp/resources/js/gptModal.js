@@ -33,7 +33,6 @@ $('.chat-section-wrapper').on('click', '#bag-img', function() {
 $(".modal-check-btn").click(function() {
     //세션에 사이즈와 컬러를 저장한다
     // 확인 버튼을 눌렀을 때 아이템을 변경한다.
-    console.log(gptProductBox);
     var bagImg = gptProductBox.closest('.gpt-product-list').find('#bag-img');
     if (bagImg.attr("src").includes("/resources/img/ic-bag-check.png")) {
         bagImg.attr("src", "/resources/img/ic-bag-non-check.png");
@@ -47,13 +46,18 @@ $(".modal-check-btn").click(function() {
     currentProduct['productSize'] = $('.select-product-size option:selected').text();
     currentProduct['productColor'] = $('.select-product-color option:selected').text();
 
+    if (currentProduct['productSize'] === '사이즈' || currentProduct['productColor'] === '색상') {
+        alert('옵션을 선택하세요');
+        return;
+    }
+
     addOrUpdateProduct(currentProduct);
     sessionStorage.setItem("productListSizeColor", JSON.stringify(productList));
 
     $("#product-search-modal").hide();
     $("#sizeContent").empty();
     $("#colorContent").empty();
-    closeModal();
+    closeModalGPT();
 
 });
 
@@ -67,3 +71,22 @@ function addOrUpdateProduct(product) {
     productList.push(product);
   }
 }
+
+// 모달 닫기
+function closeModalGPT() {
+    $('.search-container').css({
+        'overflow': 'auto'
+    });
+    $('.search-container').off('scroll touchmove mousewheel');
+
+    $(".select-product-size option:not(:first)").remove();
+    $(".select-product-color option:not(:first)").remove();
+}
+
+// 모달 닫기
+$(".modal-cancel-btn-gpt").click(function() {
+    closeModalGPT();
+    $("#product-search-modal").hide();
+    $("#sizeContent").empty();
+    $("#colorContent").empty();
+});
