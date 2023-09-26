@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.page = currentPage;
 
         isLoading = true;
+        
         $.ajax({
             url: `/filter/getFilterPost`,
             type: "GET",
@@ -136,8 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 모달을 표시
     filterModalButton.addEventListener("click", function() {
         initialModalState = captureModalState();
-        modal.style.display = "block";
-        qr.style.display = "none";
+        modal.style.display = "flex";
         updateRangeBackgroundColor();
     });
 
@@ -147,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
             restoreModalState(initialModalState);
           }
         modal.style.display = "none";
-        qr.style.display = "block";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
@@ -157,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 restoreModalState(initialModalState);
               }
             modal.style.display = "none";
-            qr.style.display = "block";
         }
     });
 
@@ -201,7 +199,6 @@ document.addEventListener("DOMContentLoaded", function() {
         applyFilterButton.addEventListener("click", function() {
             currentPage =1;
             modal.style.display = "none";
-            qr.style.display = "block";
             $("#photo-gallery").empty();
             //$("#photo-gallery").append(data);
             changeFilterColor();

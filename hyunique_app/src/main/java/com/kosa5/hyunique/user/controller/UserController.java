@@ -56,10 +56,9 @@ public class UserController {
 	    String sessionId = (String) session.getAttribute("sessionId");
 	    UserVO user = userService.getUserInfoAndFollowerCount(userId, sessionId);
 	   
-	    log.info("팔로우 여부" + user.getIsFollowing());
 	    log.info("다른유저 아이디" + user.getUserId());
 	    log.info("세션 아이디" + sessionId);
-
+	    
 	    if (user != null) {
 	        model.addAttribute("user", user);
 	        if (sessionId != null && Integer.parseInt(sessionId) == userId) {
@@ -154,14 +153,48 @@ public class UserController {
 		return "ok";
 	}
 
-//	@Auth
+	@Auth
 	@GetMapping("onboarding")
 	public String onboarding() {
 	    return "useronboarding";
 	}
-//	@Auth
-	@PostMapping("onboarding1")
-	public String onboarding1() {
-		return "useronboarding";
+
+	//팔로우 페이지 이동
+	@GetMapping("followlist")
+	public String followPage(Model model, @RequestParam Integer userId) {
+		String userIdString = Integer.toString(userId);
+	    UserVO user = userService.getUserInfoAndFollowerCount(userId,userIdString); // 여기에서 변경
+        model.addAttribute("userId", userId);
+        model.addAttribute("userNickname", user.getUserNickname());
+	    return "followList";
 	}
+	
+	//내 팔로워 목록
+	@GetMapping("follower")
+	@ResponseBody
+	public List<UserVO> followerListByUserId(HttpServletRequest request, @RequestParam Integer userId){
+	    return userService.getFollowerByUserId(userId);
+	}
+	
+	//내가 팔로우한 목록
+	@GetMapping("following")
+	@ResponseBody
+	public List<UserVO> followingListByUserId(HttpServletRequest request, @RequestParam Integer userId){
+		return userService.getFollowingByUserId(userId);
+	}
+		
+	//좋아요 페이지 이동
+	@GetMapping("likelist")
+	public String likePage(Model model, @RequestParam Integer postId) {
+		model.addAttribute("postId", postId);
+		return "likeList";
+	}
+	
+	//내 팔로워 목록
+	@GetMapping("likeuser")
+	@ResponseBody
+	public List<UserVO> likeListByPostId(@RequestParam Integer postId){
+	    return userService.getLikeByPostId(postId);
+	}
+
 }

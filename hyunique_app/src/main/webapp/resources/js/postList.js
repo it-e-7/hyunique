@@ -2,27 +2,52 @@ const followerCount = document.getElementById("followerCount").value || 0;
 const userId = document.getElementById("userId").value || 0;
 
 $(document).ready(function() {
+  $.ajax({
+    url: '/banners',
+    type: 'GET',
+    success: function(banners) {  
+      banners.forEach(function(banner) {
+        const bannerDiv = `
+          <img src="${banner.bannerUrl}" alt="${banner.bannerName}"/>
+        `;
+        $('#banner').append(bannerDiv);
+      });
+
+      setupBannerScroll();
+    },
+    error: function() {
+      console.error('Failed to load banners');
+    }
+  }, 3000);
+  skeletonRendering();
+});
+
+function setupBannerScroll() {
   let currentIndex = 0;
   const banner = document.getElementById("banner");
   const images = banner.querySelectorAll("img");
   const imageCount = images.length;
+
+  if (imageCount === 0) {
+    console.log("No images found. Skipping banner scroll.");
+    return;
+  }
+
   const scrollInterval = setInterval(function() {
     currentIndex++;
     if (currentIndex >= imageCount) {
       currentIndex = 0;
     }
-    const newScrollPosition = images[currentIndex].offsetLeft;
-    banner.scroll({
-      left: newScrollPosition,
-      behavior: 'smooth'
-    });
-  }, 3000);
-  $('.btn-grad').on('click', function() {
-	    window.location.href = "/login";
-	  });
 
-   skeletonRendering();
-});
+    if (images[currentIndex]) {
+      const newScrollPosition = images[currentIndex].offsetLeft;
+      banner.scroll({
+        left: newScrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, 3000);
+}
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
