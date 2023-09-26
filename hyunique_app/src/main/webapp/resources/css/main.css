@@ -3,10 +3,13 @@
 @import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
 .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 
+
+
 * {padding: 0; margin: 0;}
 
 html {
     -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
     font-size: 14px;
     scroll-behavior: smooth;
 }
@@ -19,6 +22,7 @@ body {
 	min-height: 100vh;
 	margin: 0 auto;
 	font-family: 'Inter', sans-serif;
+  margin-bottom: 60px;
 }
 
 @media (min-width: 700px) {
@@ -108,7 +112,7 @@ button {
 
 .jw-btn-fixed {
 	position: fixed;
-	bottom: 20px;
+	bottom: 80px;
 	left: 50%;
 	width: 90%;
 	max-width: 700px;

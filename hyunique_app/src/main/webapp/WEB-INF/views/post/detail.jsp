@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,9 @@
 	
 </head>
 <body>
+<div id="session-info">
+	<input type="hidden" id="postId" value="${postVO.postId}">
+</div>
 	<div class="header-wrapper">
 		<button onclick="backward()">
 			<lord-icon
@@ -33,7 +37,7 @@
 				</div>
 			</div>
 			<c:if test="${postVO.userId == sessionId}">
-                <div class="post-delete-icon" onclick="deleteOnePost(${postVO.postId})">
+                <div class="post-delete-icon">
                     <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z">
                     </path>
@@ -74,7 +78,24 @@
 						</div>
 					</c:forEach>
 				</div>
-			</c:if>
+        </c:if>
+        <div class="delete-wrap">
+            <div id="delete-box">
+                <div id="title-wrap">
+                    <p id="delete-title">
+                        게시물을 삭제하시겠어요?
+                    </p>
+                    <p id="delete-subtitle">
+                        삭제 버튼을 누르면 바로 삭제됩니다.
+                        게시물을 삭제하면 복원할 수 없습니다.
+                    </p>
+                </div>
+                <div id="border-line"></div>
+                <button id="delete-btn" onclick="deleteOnePost(${postVO.postId})">삭제</button>
+                <div id="border-line"></div>
+                <button id="cancel-btn">취소</button>
+            </div>
+        </div>
 		</div>
 		<div class="post-content-wrapper">
 			<div>
@@ -100,7 +121,7 @@
 						</lord-icon>
 					</button>
 				</div>
-				<p id="like-count-p"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
+				<p id="like-count-p" onclick= "moveToLike(${postVO.postId})"><strong id="like-count-strong">${postVO.likeCount}명</strong>이 좋아합니다</p>
 			</div>
 			<div class="post-content">
 				<p class="post-content-date">
@@ -160,6 +181,17 @@
 			</div>
 		</div>
 	</div>
+	<div id="likeListModal" class="modal">
+		<div class="modal-content">
+		    <div id="close-wrapper">
+		    	<span class="close" id="none-display-btn">&times;</span>
+		    	<p id="like-desc">좋아요를 누른 사람</p>
+		    	<span class="close">&times;</span>
+		    </div>
+		    <div id="likeListContent"></div>
+	    </div>
+	</div>
 </body>
 <script src="/resources/js/postdetail.js"></script>
+<script src="/resources/js/posting/like.js"></script>
 </html>

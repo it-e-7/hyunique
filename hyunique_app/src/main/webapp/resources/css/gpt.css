@@ -8,9 +8,8 @@
     max-width: 760px;
     width: 100%;
     position: fixed;
-    bottom: 0;
-    background: linear-gradient(0deg, #ffffff 0%,#ffffffe0 50%, #ffffff00 90%);
-    min-height: 21rem;
+    bottom: 60px;
+    /* min-height: 21rem; */
     justify-content: flex-end;
 }
 
@@ -45,8 +44,8 @@ button .btn-gpt-request {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 11rem;
-    padding-bottom: 6rem;
+    padding-bottom: 14rem;
+    margin-top: 8rem;
 }
 
 .speech-bubble-user {
@@ -122,14 +121,15 @@ div#main-wrapper-top {
 }
 
 div#hyunique-main-top-recommend {
-	position: fixed;
-	width: 100%;
-	top: 66px;
-	z-index: 10;
+    position: fixed;
+    width: 100%;
+    top: 75px;
+    z-index: 10;
     max-width: 760px;
-	margin-left: 0;
-	background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);
-	backdrop-filter: blur(5px);
+    margin-left: 0;
+    padding-left: 1.6rem;
+    background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);
+    backdrop-filter: blur(5px);
 }
 
 
@@ -146,7 +146,9 @@ div#hyunique-main-top-logo {
 .typing-control-wrapper {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background: white;
 }
 
 .voice-control-wrapper {
@@ -241,7 +243,7 @@ canvas {
 }
 .gap-area{
 	width:100%;
-	height:7rem;
+	/* height:7rem; */
 }
 .bag-check-hidden-btn{
 	display: none;
@@ -351,14 +353,12 @@ label {width: 24px;height: 24px;}
 	margin-top: 0.3rem;
 }
 .loader-text-wrapper {
-    height: var(--size);
-    margin-top: 2rem;
+    /* height: var(--size); */
+    margin-top: 1.5rem;
 }
 
 .loader-wrapper {
-    /* display: flex; */
     flex-direction: column;
-    height: 9rem;
 }
 #toss{
 	font-family: 'Inter';
@@ -387,4 +387,238 @@ div#pop-up-img-inst {
 }
 div#pop-up-img-inst.fade-out {
     opacity: 0;  /* 투명도를 0으로 설정 */
+}
+div#gpt-page-tab-deco {
+    margin-left: 1.6rem;
+    font-family: Tossface;
+}
+.footer-ai-wrapper {
+    background: var(--jw-light-blue2);
+}
+.footer-home-wrapper {
+    background: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index : 9999;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 9px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    width: 50%;
+    position: relative;
+    width: 318px;
+    height: 179px;
+    left: 0;
+    top: 35vh;
+}
+
+.modal-wrap {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.color-wrap, .size-wrap {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.select-product-color {
+    border-color: var(--jw-blue);
+    color: #424242;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    -webkit-appearance: none;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
+}
+
+option:disabled {
+    color: #bdbdbd;
+}
+
+option {
+    color: #424242;
+    font-family: 'Spoqa Han Sans';
+    -webkit-appearance: none;
+}
+
+
+.color-wrap .select-input__icon {
+    color: var(--jw-blue);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.color-wrap, .size-wrap {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.select-product-size {
+    border-color: var(--jw-blue4);
+    color: #424242;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    -webkit-appearance: none;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+    font-family: 'Spoqa Han Sans';
+}
+
+.size-wrap .select-input__icon {
+    color: var(--jw-blue4);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.modal-btn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button.modal-cancel-btn {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    background-color: var(--jw-blue5);
+    color: #757575;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+button.modal-check-btn {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    flex: 1;
+    text-align: center;
+    background: var(--jw-blue);
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
+#sample3_search{
+display: none;
+}
+
+#address-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 9px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    width: 50%;
+    position: relative;
+    width: 318px;
+    height: 179px;
+    left: 0;
+    top: 35vh;
+}
+
+#address-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media screen and (max-width: 465px) {
+    #wrap{
+        width: 95% !important;
+    }
+}
+
+#modal-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* 반투명한 배경색 */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* 모달을 다른 요소 위에 표시 */
+}
+
+#wrap{
+    max-height: 35em;
+    z-index: 999;
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.d_form {
+    border-width: 1px;
+    margin-bottom: 10px;
+    color: #424242;
+    font-size: 1rem;
+    border-radius: 4px;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+    font-family: 'Inter';
+}
+
+#address-button-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button.modal-cancel-btn-gpt {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    background-color: var(--jw-blue5);
+    color: #757575;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+button.modal-check-btn {
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    flex: 1;
+    text-align: center;
+    background: var(--jw-blue);
+    border-radius: 4px;
+    color: #FFFFFF;
 }

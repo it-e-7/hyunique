@@ -12,9 +12,7 @@ $(".modal-cancel-btn").click(function() {
 // 모달 띄우기
 function showProductModal(product) {
     openModal();
-
     requestProductSizeAndColor(product);
-
     $("#product-search-modal").show();
 }
 
@@ -56,7 +54,7 @@ function requestProductSizeAndColor(product) {
     });
 }
 
-// 모달 띄웠을 때, 스크롤 되는거 막기
+/* 모달 띄웠을 때, 스크롤 되는거 막기 */
 
 // 모달 열기
 function openModal() {

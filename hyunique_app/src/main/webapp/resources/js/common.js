@@ -36,3 +36,9 @@ function moveToProduct(productId) {
 
 const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+function moveToFollow(userId) {
+	location.href=`/user/followlist?userId=${userId}`;
+}
+function moveToLike(postId) {
+	location.href=`/user/likelist?postId=${postId}`;
+}

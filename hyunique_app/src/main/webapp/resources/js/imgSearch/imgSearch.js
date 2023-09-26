@@ -7,6 +7,8 @@ if (imageData) {
     $('.img-section-area').append(imageElement);
 }
 
+
+
 // 크롭 영역 및 핸들 생성
 const $rectangle = $('<div>').attr('id', 'rectangle');
 const $topLeft = $('<div>').addClass('handle').attr('id', 'top-left');
@@ -258,6 +260,20 @@ $('#rectangle').on('mousemove touchmove', function() {
         sendToServerImg(newCanvas);
         switchLayers();
         $('.modal').show();
+
+        const headerHeight = +$('.header-wrapper').outerHeight(true);
+        const imgSectionHeight = +$('.img-section').outerHeight(true);
+        const totalHeight = headerHeight + imgSectionHeight;
+
+        const windowHeight = window.innerHeight;
+        const bottomValue = windowHeight - totalHeight;
+
+        const modalHeight = +$('.modal').outerHeight(true);
+        console.log(modalHeight);
+        value = (bottomValue - modalHeight) + 10;
+
+        $('.modal').css('bottom', value + 'px');
+
     }, 3000);
 });
 

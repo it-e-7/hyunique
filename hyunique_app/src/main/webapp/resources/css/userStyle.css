@@ -35,7 +35,7 @@
 	height: auto;
 	aspect-ratio: 360 / 150;
 	object-fit:cover;
-	object-position: top;
+	object-position: center;
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-backimg-wrapper:hover img {
@@ -259,7 +259,7 @@ input[type="checkbox"]:checked + label {
 }
 
 @-webkit-keyframes touch {
-  100% { 
+  100% {
     width: 600px;
     height: 600px;
     border-radius: 600px;
@@ -270,7 +270,7 @@ input[type="checkbox"]:checked + label {
 }
 
 @keyframes touch {
-  100% { 
+  100% {
     width: 600px;
     height: 600px;
     border-radius: 600px;
@@ -315,15 +315,15 @@ body{
     position: fixed;
     width: 78px;
     height: 78px;
-	background: #111111;
+    background: #111111;
     backdrop-filter: blur(10px);
     border-radius: 5rem;
     align-items: center;
     display: flex;
     justify-content: center;
     z-index: 1000;
-	right:30px;
-	bottom: calc(5vh);
+    right: 20px;
+    bottom: 80px;
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
             drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
             drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
@@ -338,7 +338,7 @@ body{
 .posting-btn img{
 	width: 35px;
 	height: 35px;
-	
+
 }
 
 .posting-btn:active {
@@ -374,11 +374,11 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 2rem;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .image-container {
-    margin: 0.5px; 
+    margin: 0.5px;
 }
 .category-preview {
    margin:1.5rem;
@@ -429,4 +429,8 @@ li#tab-1 {
     width: 302px;
     font-weight: bold;
     background-color: transparent;
+}
+.footer-my-wrapper {
+    background: var(--jw-light-blue2);
+
 }

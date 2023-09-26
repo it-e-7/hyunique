@@ -72,6 +72,7 @@ public class PostController {
     }
 
     // 게시글 작성 페이지
+    @Auth
     @GetMapping
     public String requestPosting() {
         return "posting";
@@ -89,7 +90,6 @@ public class PostController {
         posting.getPostVO().setImgFiles(files);
         posting.getPostVO().setUserId(sessionId);
         String state = postService.uploadOnePost(posting.getPostVO(), posting.getPostProductVO());
-        log.info("upload {}", state);
 
         return state;
     }
@@ -103,7 +103,6 @@ public class PostController {
     @DeleteMapping("/{postId}")
     @ResponseBody
     public String handlePostDelete(@PathVariable("postId") int postId) {
-        log.info("delete");
         String state = postService.deleteOnePost(postId);
         return state;
     }

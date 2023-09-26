@@ -63,7 +63,7 @@ public class PostServiceImpl implements PostService {
         if (filterPostVO.getSelectedType().equals("following")){
                 //팔로워를 선택한 경우
             FilterPostVO followFilterPostVO = new FilterPostVO();
-            followFilterPostVO.setTpo(Arrays.asList(21));
+            followFilterPostVO.setTpo(Arrays.asList(25));
             followFilterPostVO.setUserId(filterPostVO.getUserId());
             followFilterPostVO.setPage(filterPostVO.getPage());
             if (filterPostVO.getUserId() == null){
@@ -133,10 +133,7 @@ public class PostServiceImpl implements PostService {
     public String deleteOnePost(int postId) {
         Map<String, Object> post = new HashMap<>();
         post.put("postId", postId);
-        post.put("state", "");
-
-        log.info("delete service {}", post);
-
+        post.put("state", "success");
         postMapper.deleteOnePost(post);
 
         return post.get("state").toString();

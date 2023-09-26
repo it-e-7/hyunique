@@ -2,43 +2,74 @@ const followerCount = document.getElementById("followerCount").value || 0;
 const userId = document.getElementById("userId").value || 0;
 
 $(document).ready(function() {
+  $.ajax({
+    url: '/banners',
+    type: 'GET',
+    success: function(banners) {  
+      banners.forEach(function(banner) {
+        const bannerDiv = `
+          <img src="${banner.bannerUrl}" alt="${banner.bannerName}"/>
+        `;
+        $('#banner').append(bannerDiv);
+      });
+
+      setupBannerScroll();
+    },
+    error: function() {
+      console.error('Failed to load banners');
+    }
+  }, 3000);
+  skeletonRendering();
+});
+
+function setupBannerScroll() {
   let currentIndex = 0;
   const banner = document.getElementById("banner");
   const images = banner.querySelectorAll("img");
   const imageCount = images.length;
+
+  if (imageCount === 0) {
+    console.log("No images found. Skipping banner scroll.");
+    return;
+  }
+
   const scrollInterval = setInterval(function() {
     currentIndex++;
     if (currentIndex >= imageCount) {
       currentIndex = 0;
     }
-    const newScrollPosition = images[currentIndex].offsetLeft;
-    banner.scroll({
-      left: newScrollPosition,
-      behavior: 'smooth'
-    });
+
+    if (images[currentIndex]) {
+      const newScrollPosition = images[currentIndex].offsetLeft;
+      banner.scroll({
+        left: newScrollPosition,
+        behavior: 'smooth'
+      });
+    }
   }, 3000);
-  $('.btn-grad').on('click', function() {
-	    window.location.href = "/login";
-	  });
-});
+}
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
-  const buttonContainer = document.getElementById('hyunique-main-top-recommend');
-  const buttons = buttonContainer.querySelectorAll('.button');
+    switchLayers();
+    const buttonContainer = document.getElementById('hyunique-main-top-recommend');
+    const buttons = buttonContainer.querySelectorAll('.button');
 
-  const selectedIndex = localStorage.getItem('selectedButtonIndex');
-  buttons.forEach((button, index) => {
+    const selectedIndex = localStorage.getItem('selectedButtonIndex');
+    buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      buttons.forEach((btn) => {
-        btn.classList.remove('selected');
-        scrollToTop()
-      });
-      button.classList.add('selected');
-      localStorage.setItem('selectedButtonIndex', index.toString());
+        buttons.forEach((btn) => {
+            switchLayers();
+            btn.classList.remove('selected');
+            scrollToTop();
+        });
+
+        button.classList.add('selected');
+        localStorage.setItem('selectedButtonIndex', index.toString());
       
       //배너 처리
       if (button.textContent.trim() === '스타일랭킹') {
+        switchLayers();
           banner.style.display = 'none';
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
@@ -63,20 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
           filterElement.show();
           }
       
-      if (button.textContent.trim() === '팔로우') {
-    	  banner.style.display = 'none';
-    	  document.getElementById("ranking-wrapper").style.display = 'none';
-    	  document.getElementById("ranking-description").style.display = 'none';
-    	  document.getElementById("recommend-description").style.display = 'none';
-    	  const filterElement = $('#hyunique-main-top-filter');
-    	  const followBanner = document.getElementById("follow-banner");
-    	  if (followBanner) {
-    	    followBanner.style.display = 'flex';
-    	  }
-    	  if (userId == 0 || followerCount == 0) {
-    	        filterElement.hide();
-    	    }
-      }
+        if (button.textContent.trim() === '팔로우') {
+            if (userId != 0) switchLayers();
+
+            banner.style.display = 'none';
+            document.getElementById("ranking-wrapper").style.display = 'none';
+            document.getElementById("ranking-description").style.display = 'none';
+            document.getElementById("recommend-description").style.display = 'none';
+            const filterElement = $('#hyunique-main-top-filter');
+            const followBanner = document.getElementById("follow-banner");
+
+            if (followBanner) {
+                followBanner.style.display = 'flex';
+            }
+            if (userId == 0 || followerCount == 0) {
+                filterElement.hide();
+            }
+
+        }
       
       const filterElement = $('#hyunique-main-top-filter');
       const popularStyle = $('#popular-style');
@@ -157,19 +192,38 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("applyFilter").click();
   }
 
-  // 버튼을 클릭하면 페이지 상단으로 스크롤하는 함수
-  function scrollToTop() {
-      window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
-  }
+// 버튼을 클릭하면 페이지 상단으로 스크롤하는 함수
+function scrollToTop() {
+    window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
+}
 
-  window.onscroll = function() {
-	  scrollFunction();
-	};
+window.onscroll = function() {
+    scrollFunction();
+};
 
-	function scrollFunction() {
-	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		  document.getElementById("up-button").style.display = "flex";
-	  } else {
-		  document.getElementById("up-button").style.display = "none";
-	  }
-	}
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("up-button").style.display = "flex";
+    } else {
+        document.getElementById("up-button").style.display = "none";
+    }
+}
+
+/* 스켈레톤 로딩 */
+
+// 레이어 전환
+function switchLayers() {
+    $('#skeleton-layer').show();
+}
+
+
+// 스켈레톤 레이어 렌더링
+function skeletonRendering() {
+    for (let i = 0; i < 9; i++) {
+        const imgDiv = $('<div>').addClass('skeleton-div');
+        const img = $('<div>').addClass('skeleton-img');
+        imgDiv.append(img);
+        $('#skeleton-layer').append(imgDiv);
+    }
+}
+

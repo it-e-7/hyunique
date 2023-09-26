@@ -227,7 +227,7 @@
         JOIN HY_POST P ON F.FOLLOWING_ID = P.USER_ID
         WHERE F.FOLLOWER_ID = #{userId}
     </select>
-
+    
 	<delete id="deleteOnePost" statementType="CALLABLE" parameterType="map">
 		call DELETE_POST(
 			#{postId, mode=IN, jdbcType=INTEGER, javaType=Integer},
