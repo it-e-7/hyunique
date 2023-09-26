@@ -20,6 +20,7 @@
 	</div>
 	<div class="header-wrapper">
 		<lord-icon
+			onclick="backward()"
 	         id="backward-btn"
 	         src="https://cdn.lordicon.com/zmkotitn.json"
 	         trigger="click"
