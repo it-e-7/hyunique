@@ -14,10 +14,17 @@ body {
 .dashboard-header-wrapper {
 	position: fixed;
 	top: 0; left: 0;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
 	width: 100%;
 	height: 90px;
 	background: black;
 	color: white;
+}
+
+.dashboard-header-wrapper img {
+	width: 240px;
 }
 
 .dashboard-navbar-wrapper {
@@ -28,4 +35,27 @@ body {
 	height: calc(100vh - 90px);
 	background: black;
 	color: white;
+}
+
+.dashboard-navbar {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+
+.dashboard-navbar li {
+	padding: 8px 12px;
+	font-size: 16px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+}
+
+.dashboard-navbar li:hover {
+	background-color: white;
+	color: black;
+}
+
+.backoffice-content-wrapper {
+	margin: 90px 0 0 200px;
 }

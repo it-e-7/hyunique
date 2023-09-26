@@ -10,7 +10,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/backoffice/layout.jsp" %>
 	<div class="backoffice-content-wrapper">
-		<p>홈 화면
+		<p>QR 관리
 	</div>
 </body>
 </html>

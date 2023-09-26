@@ -1,16 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>대시보드</title>
-<%@ include file="/WEB-INF/views/common.jsp" %>
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/backoffice/template.css" />
-	
-</head>
-<body>
+
 	<div class="dashboard-wrapper">
 		<div class="dashboard-header-wrapper">
 			<a href="">
@@ -21,15 +11,12 @@
 		</div>
 		<div class="dashboard-navbar-wrapper">
 			<ul class="dashboard-navbar">
-				<li>
-					<a href="">홈</a>
-					<a href="">QR 관리</a>
-					<a href="">HOT 상품</a>
-					<a href="">HOT 브랜드</a>
-					<a href="">배너 관리</a>
-				</li>
+				<li onclick="location.href = '/backoffice'" id="backoffice">홈</li>
+				<li onclick="location.href = '/backoffice/qr'" id="qr">QR 관리</li>
+				<li onclick="location.href = '/backoffice/product'" id="product">HOT 상품</li>
+				<li onclick="location.href = '/backoffice/brand'" id="brand">HOT 브랜드</li>
+				<li onclick="location.href = '/backoffice/banner'" id="banner">배너 관리</li>
 			</ul>
 		</div>
 	</div>
-</body>
-</html>
+	<script src="/resources/js/backoffice/common.js"></script>

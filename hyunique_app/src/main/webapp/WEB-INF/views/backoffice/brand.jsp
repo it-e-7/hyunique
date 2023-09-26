@@ -10,7 +10,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/backoffice/layout.jsp" %>
 	<div class="backoffice-content-wrapper">
-		<p>홈 화면
+		<p>HOT 브랜드
 	</div>
 </body>
 </html>

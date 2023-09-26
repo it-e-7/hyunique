@@ -4,5 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosa5.hyunique.bo.mapper.BackOfficeMapper">
-    
+    <select id="selectAdmin" resultType="int">
+    	SELECT COUNT(*)
+    	FROM HY_ADMIN
+    	WHERE ADMIN_ID = #{adminId} AND ADMIN_PW = #{adminPw}
+    </select>
 </mapper>
