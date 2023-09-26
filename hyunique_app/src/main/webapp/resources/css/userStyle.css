@@ -35,7 +35,7 @@
 	height: auto;
 	aspect-ratio: 360 / 150;
 	object-fit:cover;
-	object-position: center;
+	object-position: top;
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-backimg-wrapper:hover img {
@@ -432,4 +432,5 @@ li#tab-1 {
 }
 .footer-my-wrapper {
     background: var(--jw-light-blue2);
+
 }

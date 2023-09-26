@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <title>posting</title>
     <%@ include file="/WEB-INF/views/common.jsp"%>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
     <link rel="stylesheet" type="text/css"
         href="/resources/css/posting.css"/>
 </head>
@@ -48,6 +50,7 @@
     </div>
 
     <div class="write-container">
+        <div class="write-loading-wrapper"></div>
         <div class="header-wrapper">
             <button onclick="goBack()">
                 <lord-icon
@@ -61,18 +64,13 @@
             </button>
         </div>
         <div class="upload"></div>
-        <div class="write-description-wrapper">
-	        <p class="write-description">
-	        	사진을 클릭하여 착용 제품을 태그해보세요
-	        </p>
-	        <p class="write-description-sub">
-	        	다른 사용자에게 노출될 확률이 올라갑니다
-	        </p>
-        </div>
+
         <div class='post-form'>
             <div class='write-wrapper'>
             <div class="image-view">
-                <div id="thumbnail-img"></div>
+                <div id="thumbnail-img">
+                    <div class="thumbnail-img-wrap"></div>
+                </div>
                     <div class="add-img-wrapper">
                         <ul class="add-img-container">
                             <li>
@@ -104,6 +102,13 @@
             </div>
             </div>
             <button type="button" id="upload-button" class="jw-btn jw-btn-fixed">작성 완료하기</button>
+            <lord-icon
+                id="loading-icon"
+                src="https://cdn.lordicon.com/xjovhxra.json"
+                trigger="loop"
+                colors="primary:#d9d8d8,secondary:#08a88a"
+                style="width:200px;height:100vh">
+            </lord-icon>
         </div>
     </div>
 

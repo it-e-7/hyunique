@@ -39,4 +39,5 @@
 	  </nav>
 	</footer>
 </body>
+<script src="/resources/js/mypage.js"></script>
 </html>
