@@ -5,8 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
 <title>팔로워/팔로잉</title>
-<%@ include file="/WEB-INF/views/common.jsp"%>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/follow.css" />
@@ -58,6 +62,7 @@
 </div>
 
 <script src="/resources/js/tab.js"></script>
+<script src="/resources/js/common.js"></script>
 <script src="/resources/js/follow.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

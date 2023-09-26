@@ -301,7 +301,7 @@
 			</div>
 		</div>
         <div id="infinite-scroll">
-            <div id="photo-gallery" data-aos="fade-right">
+            <div id="photo-gallery" data-aos="zoom-in-up">
             </div>
         </div>
             <c:if test="${empty userId}">
@@ -327,11 +327,11 @@
 		</script>	
     </div>
 </div>
-<div id="qr-button">
+<!-- <div id="qr-button">
     <a href="/post/getQRPage">
         <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
     </a>
-</div>
+</div> -->
 <div id="up-button" onclick="scrollToTop()">
   <lord-icon
     src="https://cdn.lordicon.com/xdakhdsq.json"
@@ -339,7 +339,7 @@
     delay="1500"
     colors="primary:#ffffff"
     state="hover-2"
-    style="width:40px;height:40px"
+    style="width:60px;height:60px"
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));>
 </lord-icon>
 </div>
