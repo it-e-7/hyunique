@@ -58,6 +58,7 @@ hr {
 }
 
 .purchase-product-list li {
+    margin-top: 1em;
     display: flex;
     flex-direction: row;
     align-items: center;

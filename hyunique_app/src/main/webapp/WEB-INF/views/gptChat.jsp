@@ -66,12 +66,12 @@
             </div>
             <div id="address-modal">
                 <div id="address-wrap">
-                    <input type="text" id="sample3_address" class="d_form large" placeholder="주소">
+                    <input type="text" id="sample3_address" class="d_form" placeholder="주소">
                     <input type="text" id="sample3_detailAddress" class="d_form" placeholder="상세주소">
                     <input type="text" id="sample3_extraAddress" class="d_form" placeholder="참고항목">
                     <div id="address-button-list">
-                        <button id="address-cancel-button" class="jw-btn-nonshadow">다시찾기</button>
-                        <button id="address-apply-button" class="jw-btn-nonshadow">주소저장</button>
+                        <button id="address-cancel-button" class="modal-cancel-btn">다시찾기</button>
+                        <button id="address-apply-button" class="modal-check-btn">주소저장</button>
                     </div>
                 </div>
             </div>
