@@ -8,7 +8,7 @@ $(document).ready(function() {
 		dataType: "json",
 		success: function(data) {
 			data.forEach(function(user) {
-				const li = $("<li></li>");
+                const li = $("<li></li>").attr("onclick", `location.href='/user/${userId}'`);
 				const img = $("<img>").attr("src", user.userImg).attr("alt", "User Image").attr("width", 50);
 				const nickname = $("<span></span>").text(user.userNickname);
 				li.append(img);
@@ -29,7 +29,7 @@ $(document).ready(function() {
 		dataType: "json",
 		success: function(data) {
 			data.forEach(function(user) {
-				const li = $("<li></li>");
+                const li = $("<li></li>").attr("onclick", `location.href='/user/${userId}'`);
 				const img = $("<img>").attr("src", user.userImg).attr("alt", "User Image").attr("width", 50);
 				const nickname = $("<span></span>").text(user.userNickname);
 				li.append(img);
