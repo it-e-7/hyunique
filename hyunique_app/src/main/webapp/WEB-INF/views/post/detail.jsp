@@ -75,20 +75,22 @@
 					</c:forEach>
 				</div>
         </c:if>
-        <div id="delete-box">
-            <div id="title-wrap">
-                <p id="delete-title">
-                    게시물을 삭제하시겠어요?
-                </p>
-                <p id="delete-subtitle">
-                    삭제 버튼을 누르면 바로 삭제됩니다.
-                    게시물을 삭제하면 복원할 수 없습니다.
-                </p>
+        <div class="delete-wrap">
+            <div id="delete-box">
+                <div id="title-wrap">
+                    <p id="delete-title">
+                        게시물을 삭제하시겠어요?
+                    </p>
+                    <p id="delete-subtitle">
+                        삭제 버튼을 누르면 바로 삭제됩니다.
+                        게시물을 삭제하면 복원할 수 없습니다.
+                    </p>
+                </div>
+                <div id="border-line"></div>
+                <button id="delete-btn" onclick="deleteOnePost(${postVO.postId})">삭제</button>
+                <div id="border-line"></div>
+                <button id="cancel-btn">취소</button>
             </div>
-            <div id="border-line"></div>
-            <button id="delete-btn" onclick="deleteOnePost(${postVO.postId})">삭제</button>
-            <div id="border-line"></div>
-            <button id="cancel-btn">취소</button>
         </div>
 		</div>
 		<div class="post-content-wrapper">

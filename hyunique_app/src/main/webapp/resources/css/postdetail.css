@@ -269,12 +269,23 @@ ul {
 }
 
 /* 삭제 모달 */
-div#delete-box {
+
+
+.delete-wrap {
+    display: none;
     position: fixed;
-    width: 70%;
-    height: 30%;
-    background-color: rgba(38, 38, 38, 0.97);
-    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#delete-box {
+    position: absolute;
+    width: 20rem;
+    height: 15rem;
     top: 0;
     left: 0;
     bottom: 0;
@@ -284,36 +295,45 @@ div#delete-box {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    z-index: 1001;
+    overflow: auto;
+    background-color: white;
 }
 
 div#title-wrap {
-    display: inline-block;
-    padding: 1rem;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    text-align: center;
+    word-break: keep-all;
+}
+
+#delete-box p {
+    font-weight: 400;
 }
 
 p#delete-title {
     display: flex;
-    color: white;
+    color: black;
     font-family: 'Inter var alt';
-    font-size: 1.1em;
     justify-content: center;
     align-items: center;
     margin: 0.5rem;
+    font-weight: 600;
 }
 
 p#delete-subtitle {
     display: flex;
-    width: 100%;
-    color: #909090;
+    color: gray;
     font-family: 'Inter var alt';
     margin: 0.5rem;
+    font-size: 0.9em;
 }
 
 div#border-line {
-    border-top: 0.1rem solid #2E2E2E;
+    border-top: 0.1rem solid #e4e8ee;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
 }
 
 button#delete-btn {
@@ -321,14 +341,18 @@ button#delete-btn {
     color: red;
     display: flex;
     align-items: center;
+    padding: 0.7rem;
     justify-content: center;
+    font-weight: 600;
 }
 
 button#cancel-btn {
     font-family: 'Inter var';
-    color: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.7rem;
+    font-weight: 500;
 }
 

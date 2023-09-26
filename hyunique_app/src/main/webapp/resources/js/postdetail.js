@@ -153,11 +153,11 @@ $(document).ready(() => {
 $("#delete-box").hide();
 
 $(".post-delete-icon").click(function(){
-    $("#delete-box").show();
+    openModal();
 });
 
 $("#cancel-btn").click(function(){
-    $("#delete-box").hide();
+    closeModal();
 });
 
 
@@ -179,4 +179,38 @@ function deleteOnePost(postId) {
         },
     });
 }
+
+
+// 모달 열기
+function openModal() {
+    $("#delete-box").show();
+    $('.delete-wrap').show();
+
+    $('.delete-wrap').css({
+        'overflow':'hidden'
+    });
+
+    $('.delete-wrap').on('scroll touchmove mousewheel click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    });
+
+    $(".delete-wrap").show().on('click', function(e) {
+      e.stopPropagation();
+    });
+}
+
+
+// 모달 닫기
+function closeModal() {
+    $("#delete-box").hide();
+    $('.delete-wrap').hide();
+
+    $('.delete-wrap').css({
+        'overflow': 'auto'
+    });
+    $('.delete-wrap').off('scroll touchmove mousewheel click');
+}
+
 
