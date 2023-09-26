@@ -1,6 +1,7 @@
 var orderIdFromSession = sessionStorage.getItem('orderList');
 var parsedValue = JSON.parse(orderIdFromSession);
 var purchaseProductList = document.querySelector('.purchase-product-list');
+var filteredData;
 
 for (var i = 0; i < parsedValue.length; i++) {
     var productItem = parsedValue[i];
@@ -25,15 +26,36 @@ for (var i = 0; i < parsedValue.length; i++) {
     productIds.push(productId);
 }
 
+var sessionData = JSON.parse(sessionStorage.getItem("productListSizeColor"))
+console.log(sessionData);
+console.log(productIds);
+
+for(let i=0 ; i<sessionData.length ; i++){
+    //console.log(sessionData[i].productId);
+    let check = 0;
+    for(let j=0 ; j<productIds.length ; j++){
+        //console.log(productIds[i]);
+        if (productIds[i] == sessionData[i].productId){
+        check = 1;
+        }
+    }
+    if (check == 0){
+    let deleteId = sessionData[i].productId;
+    filteredData = sessionData.filter(item => item.productId !== deleteId);
+    }
+}
+console.log(JSON.stringify(filteredData));
+
 $.ajax({
         url: `/payment/purchaseLog`,
         type: 'POST',
-        contentType : 'application/json',
-        data: JSON.stringify(productIds),
+        data: JSON.stringify(filteredData),
+        contentType: 'application/json',
         success: function (response) {
             //우리 DB애 저장완료 되었습니다 !
         },
         error: function (response) {
             console.error('데이터가 성공적으로 저장되지 않았습니다.');
+            console.error(response);
         }
     });

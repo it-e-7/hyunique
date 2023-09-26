@@ -48,8 +48,7 @@ $(".modal-check-btn").click(function() {
     currentProduct['productColor'] = $('.select-product-color option:selected').text();
 
     addOrUpdateProduct(currentProduct);
-    sessionStorage.setItem("productListSizeColor", productList);
-
+    sessionStorage.setItem("productListSizeColor", JSON.stringify(productList));
 
     $("#product-search-modal").hide();
     $("#sizeContent").empty();

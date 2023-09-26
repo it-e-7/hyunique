@@ -1,7 +1,6 @@
 package com.kosa5.hyunique.payment.controller;
-
-import com.kosa5.hyunique.payment.service.TossPaymentImpl;
 import com.kosa5.hyunique.payment.service.TossPaymentService;
+import com.kosa5.hyunique.payment.vo.ProductInfoVO;
 import com.kosa5.hyunique.product.service.ProductService;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 import com.kosa5.hyunique.user.service.UserService;
@@ -71,12 +70,15 @@ public class PaymentController {
     }
 
     @PostMapping(value="purchaseLog")
-    public String purchaseLogService(@SessionAttribute int sessionId, Model model, @RequestBody String[] orderList){
+    public String purchaseLogService(@SessionAttribute int sessionId, Model model, @RequestBody List<ProductInfoVO> filteredData){
         //유저의 결제내역 생성
         String orderId = tossPaymentService.TossPurchaseService(sessionId,productTotalPrice);
         // 결제 내역에 따른 상품 데이터 로그 삽입
-        for (String s : orderList) {
-            tossPaymentService.insertPurchaseProduct(orderId,s);
+
+        for (ProductInfoVO productInfoVO : filteredData) {
+            productInfoVO.setOrderId(orderId);
+            tossPaymentService.insertPurchaseProduct(productInfoVO);
+            System.out.println("productInfoVO"+productInfoVO);
         }
         return "paymentSuccess" ;
     }

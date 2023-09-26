@@ -1,6 +1,7 @@
 package com.kosa5.hyunique.payment.service;
 
 import com.kosa5.hyunique.payment.mapper.PaymentMapper;
+import com.kosa5.hyunique.payment.vo.ProductInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,8 @@ public class TossPaymentImpl implements TossPaymentService {
     }
 
     @Override
-    public int insertPurchaseProduct(String orderId,String productId){
-        //상품에 따른
-        int insertCheck = paymentMapper.insertPurchaseProduct(orderId,productId);
+    public int insertPurchaseProduct(ProductInfoVO productInfoVO){
+        int insertCheck = paymentMapper.insertPurchaseProduct(productInfoVO);
         if (insertCheck!=1){
             System.out.println("insertPurchaseProduct Error");
             return 0;

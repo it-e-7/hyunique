@@ -10,8 +10,8 @@
         VALUES (#{orderId}, #{userId}, #{totalPrice})
     </insert>
 
-    <insert id="insertPurchaseProduct" parameterType="map">
-        INSERT INTO hy_purchase_product (order_id, product_id, quantity)
-        VALUES (#{orderId}, #{productId}, 1)
+    <insert id="insertPurchaseProduct" parameterType="com.kosa5.hyunique.payment.vo.ProductInfoVO">
+        INSERT INTO hy_purchase_product (order_id, product_id, product_size, product_color, quantity)
+        VALUES (#{orderId}, #{productId}, #{productSize}, #{productColor}, 1)
     </insert>
 </mapper>
