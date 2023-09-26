@@ -6,7 +6,7 @@
 			<a href="">
 				<img src="/resources/icon/hyuniquelogo.png"/>
 			</a>
-			<div style="display: flex; gap: 8px; align-items: center;">
+			<div style="display: flex; gap: 8px; align-items: center; margin-right: 40px;">
 				<button class="logout-btn" onclick="signoutAdmin()">로그아웃</button>
 				<p> ADMIN님 환영합니다
 			</div>
