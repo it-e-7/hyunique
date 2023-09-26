@@ -301,8 +301,8 @@
 			</div>
 		</div>
         <div id="infinite-scroll">
-            <div id="photo-gallery" data-aos="zoom-in-up">
-            </div>
+            <div id="photo-gallery"></div>
+            <div id="skeleton-layer"></div>
         </div>
             <c:if test="${empty userId}">
                 <div id="bottom-for-login">
