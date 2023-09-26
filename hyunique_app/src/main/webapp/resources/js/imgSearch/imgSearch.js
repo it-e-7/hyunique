@@ -45,7 +45,7 @@ const dragContainer = (e) => {
 
     target.css({
         'position': 'absolute',
-        'z-index': 1000
+        'z-index': 100
     });
 
     imgContainer.append(target);
@@ -223,7 +223,7 @@ $(img).on('load', function() {
         'z-index': -1
     });
 
-    $('.img-section-area').append(canvas); // 새로운 코드
+    $('.img-section-area').append(canvas);
 
     initCanvas(img, canvas);
 });
@@ -276,7 +276,6 @@ $('#rectangle').on('mousemove touchmove', function() {
 
     }, 3000);
 });
-
 
 function sendToServerImg(newCanvas) {
     newCanvas.toBlob(function(blob) {
