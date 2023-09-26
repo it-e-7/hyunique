@@ -47,7 +47,7 @@
                   </div>
               </div>
               <div class="modal-btn-wrap">
-                  <button class="modal-cancel-btn" type="button">취소</button>
+                  <button class="modal-cancel-btn-gpt" type="button">취소</button>
                   <button class="modal-check-btn" type="submit">확인</button>
               </div>
           </div>

@@ -594,7 +594,7 @@ display: none;
     justify-content: center;
 }
 
-button.modal-cancel-btn {
+button.modal-cancel-btn-gpt {
     margin: 0 3.5px;
     padding: 11px 10px;
     line-height: 20px;
