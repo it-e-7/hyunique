@@ -35,7 +35,7 @@
 	height: auto;
 	aspect-ratio: 360 / 150;
 	object-fit:cover;
-	object-position: top;
+	object-position: center;
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-backimg-wrapper:hover img {
