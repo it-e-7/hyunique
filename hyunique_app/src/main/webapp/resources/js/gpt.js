@@ -46,7 +46,6 @@ let wordflick = function () {
 };
 
 if (!isSafari) {
-	console.log("크롬 로그인")
 	  speech = new webkitSpeechRecognition;
 			siriWave = new SiriWave({
 		    container: document.getElementById('voice-control'),
@@ -157,7 +156,7 @@ function gptProductRequest (){
                   <input type="checkbox" class="bag-check-hidden-btn"name="bag-check" value="12322" id="12322"><label for="12322"><img src="/resources/img/ic-bag-non-check.png" id="bag-img"/></label>
               </div>
               </li>
-              <div>
+    <div>
       `)
       });
             //결제 버튼 만들기
@@ -166,7 +165,7 @@ function gptProductRequest (){
     	    			<div class="purchase-cancel-btn">
     	    				다음에 구매할게요
     	    			</div>
-    				<button class="purchase-accept-btn" onclick="paymentInformation()">
+    				<button class="purchase-accept-btn" onclick="paymentAddressCheck()">
     	    				눌러서 구매 완료
     	    			</div>
     	    		</button>`
@@ -192,7 +191,7 @@ function gptRequest() {
 		siriWave.setSpeed(0.1);
 		isAmplified = false;
     }
-	
+
    let inputtext = $(".user-gpt-input").val();
     if(inputtext){
 		let user_input = $(".user-gpt-input").val();
@@ -201,7 +200,7 @@ function gptRequest() {
 	        if (!isSafari) {
 	        	$(".voice-control-wrapper").addClass("hidden");
 			    $(".loader-wrapper").removeClass("hidden");
-	        }    		    
+	        }
 	        restartAnimation();
 
 		    $.ajax({
@@ -230,7 +229,6 @@ function gptRequest() {
 		        	  $(".voice-control-wrapper").removeClass("hidden");
 		          }
 		    	  $("#response-content").text(modifiedResponse);
-		    	  console.log(data);
 		    	  if(data.response.charAt(0) !== '*'){
 			    	  setTimeout(() => {
 				    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음 버전에서는 이미지 생성도 만나볼 수 있어요 :)</span></p></div><div>');
@@ -265,7 +263,7 @@ if (!isSafari) {
 	    toastr.error('크롬 브라우저로 접속해주세요.');
 	}else{
 	    let isAmplified = false;
-	
+
 	    document.getElementById("voice-control").addEventListener("click",()=>{
 	    	if (!isAmplified) {
 	            speech.start();
@@ -285,7 +283,7 @@ if (!isSafari) {
 	        console.log(transcript);
 	        resultListView(transcript);
 	    });
-	
+
 	    function resultListView(transcript){
 	        document.getElementById("resultList").value = transcript;
 	        gptRequest();
