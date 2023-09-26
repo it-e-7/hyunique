@@ -2,123 +2,124 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-        var currentPage = 1;
-        var isLoading = false; //로딩중이다 아니다를 판단하기 위함
+    var currentPage = 1;
+    var isLoading = false; //로딩중이다 아니다를 판단하기 위함
 
-        $(window).scroll(function() {
-            if (isScrollbarAtBottom()) {
-                            if (isLoading) {
-                                return;
-                            }
-                            if ($('#bottom-for-login').length == 1){
-                                isLoading = false;
-                                return;
-                            }
-                            loadMoreImages();
+    $(window).scroll(function() {
+        if (isScrollbarAtBottom()) {
+            if (isLoading) {
+                return;
             }
-        });
-
-        function loadMoreImages() {
-
-        //현재 모달에 적혀있는 값 가져와서 다시 전달~!
-            const formData = {
-                        minHeight: 140, // 초기 값 설정
-                        maxHeight: 190, // 초기 값 설정
-            };
-
-            const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
-            const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
-            const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
-            const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
-            const rsHeightElement = document.querySelector('.rs-height');
-            const rsHeightValue = rsHeightElement.textContent;
-            const regex = /(\d+)cm - (\d+)cm/;
-            const match = rsHeightValue.match(regex);
-            const minHeight = match[1];
-            const maxHeight = match[2];
-            const selectedButton = document.querySelector(".selected").id;
-
-            let selectedTpoValues = [];
-            let selectedSeasonValues = [];
-            let selectedStyleValues = [];
-            let selectedGenderValues = [];
-
-            formData.minHeight = minHeight;
-            formData.maxHeight = maxHeight;
-
-            formData.selectedType = selectedButton;
-
-            if (selectedGenderCheckboxes.length > 0) {
-                selectedGenderValues = Array.from(selectedGenderCheckboxes).map(checkbox => checkbox.value);
-                formData.gender = selectedGenderValues;
-            } else {
-                formData.gender  = [];
+            if ($('#bottom-for-login').length == 1){
+                isLoading = false;
+                return;
             }
+            loadMoreImages();
+        }
+    });
 
-            if (selectedTpoCheckboxes.length > 0) {
-                selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
-                formData.tpo = selectedTpoValues;
-            } else {
-                formData.tpo  = [];
-            }
+    function loadMoreImages() {
 
-            if (selectedSeasonCheckboxes.length > 0) {
-                selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
-                formData.season = selectedSeasonValues;
-            } else {
-                formData.season  = [];
-            }
+    //현재 모달에 적혀있는 값 가져와서 다시 전달~!
+        const formData = {
+                    minHeight: 140, // 초기 값 설정
+                    maxHeight: 190, // 초기 값 설정
+        };
 
-            if (selectedStyleCheckboxes.length > 0) {
-                selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
-                formData.style = selectedStyleValues;
-            } else {
-                formData.style  = [];
-            }
+        const selectedGenderCheckboxes = document.querySelectorAll('input[name="gender"]:checked');
+        const selectedTpoCheckboxes = document.querySelectorAll('input[name="tpo"]:checked');
+        const selectedSeasonCheckboxes = document.querySelectorAll('input[name="season"]:checked');
+        const selectedStyleCheckboxes = document.querySelectorAll('input[name="style"]:checked');
+        const rsHeightElement = document.querySelector('.rs-height');
+        const rsHeightValue = rsHeightElement.textContent;
+        const regex = /(\d+)cm - (\d+)cm/;
+        const match = rsHeightValue.match(regex);
+        const minHeight = match[1];
+        const maxHeight = match[2];
+        const selectedButton = document.querySelector(".selected").id;
 
-            formData.page = currentPage;
+        let selectedTpoValues = [];
+        let selectedSeasonValues = [];
+        let selectedStyleValues = [];
+        let selectedGenderValues = [];
+
+        formData.minHeight = minHeight;
+        formData.maxHeight = maxHeight;
+
+        formData.selectedType = selectedButton;
+
+        if (selectedGenderCheckboxes.length > 0) {
+            selectedGenderValues = Array.from(selectedGenderCheckboxes).map(checkbox => checkbox.value);
+            formData.gender = selectedGenderValues;
+        } else {
+            formData.gender  = [];
+        }
+
+        if (selectedTpoCheckboxes.length > 0) {
+            selectedTpoValues = Array.from(selectedTpoCheckboxes).map(checkbox => checkbox.value);
+            formData.tpo = selectedTpoValues;
+        } else {
+            formData.tpo  = [];
+        }
+
+        if (selectedSeasonCheckboxes.length > 0) {
+            selectedSeasonValues = Array.from(selectedSeasonCheckboxes).map(checkbox => checkbox.value);
+            formData.season = selectedSeasonValues;
+        } else {
+            formData.season  = [];
+        }
+
+        if (selectedStyleCheckboxes.length > 0) {
+            selectedStyleValues = Array.from(selectedStyleCheckboxes).map(checkbox => checkbox.value);
+            formData.style = selectedStyleValues;
+        } else {
+            formData.style  = [];
+        }
+
+        formData.page = currentPage;
 
         isLoading = true;
-            $.ajax({
-                url: `/filter/getFilterPost`,
-                type: "GET",
-                data: formData,
-                success: function(data) {
+        $.ajax({
+            url: `/filter/getFilterPost`,
+            type: "GET",
+            data: formData,
+            success: function(data) {
+                switchLayers();
+               var $data = $(data);
+               $data.attr('data-aos', 'zoom-in-up');
+                $("#photo-gallery").append(data);
+                //추가적으로 순위를 넣기
+                var element = $(".selected").attr("id");
+                if (element == "style-ranking"){
 
-                   var $data = $(data);
-                   $data.attr('data-aos', 'zoom-in-up');
-                    $("#photo-gallery").append(data);
-                    //추가적으로 순위를 넣기
-                    var element = $(".selected").attr("id");
-                    if (element == "style-ranking"){
-                        var photoElements = $("#photo-gallery .photo:lt(20)");
-                        photoElements.each(function(index) {
-                            var newDiv = `
-                                <div class="ranking-box">
-                                    <div class="ranking ranking${index + 1}">${index + 1}</div>
-                                </div>
-                            `;
-                            $(this).append(newDiv);
-                        });
-                    }
-                    currentPage++;
-                    isLoading = false;
+                    var photoElements = $("#photo-gallery .photo:lt(20)");
+                    photoElements.each(function(index) {
+                        var newDiv = `
+                            <div class="ranking-box">
+                                <div class="ranking ranking${index + 1}">${index + 1}</div>
+                            </div>
+                        `;
+                        $(this).append(newDiv);
+                    });
                 }
-            });
-            switchLayers();
-        }
+                currentPage++;
+                isLoading = false;
+                $('#skeleton-layer').hide();
+            }
+        });
+    }
 
-        function isScrollbarAtBottom() {
-            var element = document.documentElement;
-            var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (element.scrollTop || 0);
-            var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
-            var windowHeight = element.clientHeight || window.innerHeight;
+    function isScrollbarAtBottom() {
+        var element = document.documentElement;
+        var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (element.scrollTop || 0);
+        var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
+        var windowHeight = element.clientHeight || window.innerHeight;
 
-            return scrollTop + windowHeight+10 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
-        }
+        return scrollTop + windowHeight+10 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
+    }
 
-        loadMoreImages();
-        //이건 첫 로딩을 위한 로드 모어 이미지입니다!
+    loadMoreImages();
+    //이건 첫 로딩을 위한 로드 모어 이미지입니다!
 
     const filterModalButton = document.getElementById("filterModalButton");
     const modal = document.querySelector(".modal");

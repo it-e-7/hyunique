@@ -22,26 +22,28 @@ $(document).ready(function() {
 	  });
 
    skeletonRendering();
-   switchLayers();
 });
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
-  const buttonContainer = document.getElementById('hyunique-main-top-recommend');
-  const buttons = buttonContainer.querySelectorAll('.button');
+    switchLayers();
+    const buttonContainer = document.getElementById('hyunique-main-top-recommend');
+    const buttons = buttonContainer.querySelectorAll('.button');
 
-  const selectedIndex = localStorage.getItem('selectedButtonIndex');
-  buttons.forEach((button, index) => {
+    const selectedIndex = localStorage.getItem('selectedButtonIndex');
+    buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      buttons.forEach((btn) => {
-        btn.classList.remove('selected');
-        scrollToTop()
-      });
-      button.classList.add('selected');
-      localStorage.setItem('selectedButtonIndex', index.toString());
+        buttons.forEach((btn) => {
+            btn.classList.remove('selected');
+            scrollToTop();
+        });
+
+        button.classList.add('selected');
+        localStorage.setItem('selectedButtonIndex', index.toString());
       
       //배너 처리
       if (button.textContent.trim() === '스타일랭킹') {
+        switchLayers();
           banner.style.display = 'none';
           document.getElementById("ranking-wrapper").style.display = 'flex';
           document.getElementById("ranking-description").style.display = 'flex';
@@ -66,20 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
           filterElement.show();
           }
       
-      if (button.textContent.trim() === '팔로우') {
-    	  banner.style.display = 'none';
-    	  document.getElementById("ranking-wrapper").style.display = 'none';
-    	  document.getElementById("ranking-description").style.display = 'none';
-    	  document.getElementById("recommend-description").style.display = 'none';
-    	  const filterElement = $('#hyunique-main-top-filter');
-    	  const followBanner = document.getElementById("follow-banner");
-    	  if (followBanner) {
-    	    followBanner.style.display = 'flex';
-    	  }
-    	  if (userId == 0 || followerCount == 0) {
-    	        filterElement.hide();
-    	    }
-      }
+        if (button.textContent.trim() === '팔로우') {
+            if (userId != 0) switchLayers();
+
+            banner.style.display = 'none';
+            document.getElementById("ranking-wrapper").style.display = 'none';
+            document.getElementById("ranking-description").style.display = 'none';
+            document.getElementById("recommend-description").style.display = 'none';
+            const filterElement = $('#hyunique-main-top-filter');
+            const followBanner = document.getElementById("follow-banner");
+
+            if (followBanner) {
+                followBanner.style.display = 'flex';
+            }
+            if (userId == 0 || followerCount == 0) {
+                filterElement.hide();
+            }
+
+        }
       
       const filterElement = $('#hyunique-main-top-filter');
       const popularStyle = $('#popular-style');
@@ -181,10 +187,9 @@ function scrollFunction() {
 
 // 레이어 전환
 function switchLayers() {
-    console.log('전환');
-    $('#photo-gallery').toggle();
-    $('#skeleton-layer').toggle();
+    $('#skeleton-layer').show();
 }
+
 
 // 스켈레톤 레이어 렌더링
 function skeletonRendering() {
