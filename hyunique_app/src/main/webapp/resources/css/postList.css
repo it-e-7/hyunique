@@ -13,6 +13,55 @@
     }
 }
 
+/* 스켈레톤 레이어 */
+
+#skeleton-layer {
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+}
+
+@media screen and (max-width: 700px) {
+    #skeleton-layer {
+        display: none;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0px, 1fr));
+        grid-column-gap: 4px;
+        grid-row-gap: 4px;
+    }
+}
+
+.skeleton-div {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.skeleton-img {
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 100s infinite;
+    max-width: 100%;
+    min-width: 100%;
+    display: block;
+    margin: 0 auto;
+    aspect-ratio: 0.84/1;
+}
+
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
+}
+
 /* main-wrapper 안에 있는 photo 클래스에 스타일 적용 */
 #photo-gallery {
     width: 100%;

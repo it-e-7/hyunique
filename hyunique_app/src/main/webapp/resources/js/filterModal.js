@@ -84,27 +84,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 type: "GET",
                 data: formData,
                 success: function(data) {
-                    //$("#photo-gallery").append(data);
-                	   var $data = $(data);
-                       $data.attr('data-aos', 'zoom-in-up');
+
+                   var $data = $(data);
+                   $data.attr('data-aos', 'zoom-in-up');
                     $("#photo-gallery").append(data);
                     //추가적으로 순위를 넣기
                     var element = $(".selected").attr("id");
                     if (element == "style-ranking"){
                         var photoElements = $("#photo-gallery .photo:lt(20)");
-                                            photoElements.each(function(index) {
-                                                var newDiv = `
-                                                    <div class="ranking-box">
-                                                        <div class="ranking ranking${index + 1}">${index + 1}</div>
-                                                    </div>
-                                                `;
-                                                $(this).append(newDiv);
-                                            });
+                        photoElements.each(function(index) {
+                            var newDiv = `
+                                <div class="ranking-box">
+                                    <div class="ranking ranking${index + 1}">${index + 1}</div>
+                                </div>
+                            `;
+                            $(this).append(newDiv);
+                        });
                     }
                     currentPage++;
                     isLoading = false;
                 }
             });
+            switchLayers();
         }
 
         function isScrollbarAtBottom() {

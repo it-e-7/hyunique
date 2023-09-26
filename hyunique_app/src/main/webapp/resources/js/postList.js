@@ -20,6 +20,9 @@ $(document).ready(function() {
   $('.btn-grad').on('click', function() {
 	    window.location.href = "/login";
 	  });
+
+   skeletonRendering();
+   switchLayers();
 });
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
@@ -157,19 +160,39 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("applyFilter").click();
   }
 
-  // 버튼을 클릭하면 페이지 상단으로 스크롤하는 함수
-  function scrollToTop() {
-      window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
-  }
+// 버튼을 클릭하면 페이지 상단으로 스크롤하는 함수
+function scrollToTop() {
+    window.scrollTo(0, 0); // 화면을 즉시 상단으로 스크롤합니다.
+}
 
-  window.onscroll = function() {
-	  scrollFunction();
-	};
+window.onscroll = function() {
+    scrollFunction();
+};
 
-	function scrollFunction() {
-	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		  document.getElementById("up-button").style.display = "flex";
-	  } else {
-		  document.getElementById("up-button").style.display = "none";
-	  }
-	}
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("up-button").style.display = "flex";
+    } else {
+        document.getElementById("up-button").style.display = "none";
+    }
+}
+
+/* 스켈레톤 로딩 */
+
+// 레이어 전환
+function switchLayers() {
+    console.log('전환');
+    $('#photo-gallery').toggle();
+    $('#skeleton-layer').toggle();
+}
+
+// 스켈레톤 레이어 렌더링
+function skeletonRendering() {
+    for (let i = 0; i < 9; i++) {
+        const imgDiv = $('<div>').addClass('skeleton-div');
+        const img = $('<div>').addClass('skeleton-img');
+        imgDiv.append(img);
+        $('#skeleton-layer').append(imgDiv);
+    }
+}
+
