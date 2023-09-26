@@ -36,6 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hy_sns_url.twitter_url as twitterUrl,
 		hy_sns_url.instagram_url as
 		instagramUrl,
+		hy_user.user_address as 
+		userAddress,
 		COUNT(DISTINCT hy_follow.follower_id) AS followerCount,
 		LISTAGG(DISTINCT hy_styletag.style_name, ', ') WITHIN GROUP (ORDER BY
 		hy_styletag.style_name) AS styleNames,
@@ -70,7 +72,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hy_user.user_preference,
 		hy_sns_url.facebook_url,
 		hy_sns_url.twitter_url,
-		hy_sns_url.instagram_url
+		hy_sns_url.instagram_url,
+		hy_user.user_address
 	</select>
 
 	<update id="updateUser"
