@@ -208,18 +208,16 @@ function userPostList(userId) {
 	    success: function(posts) {
 	      var thumbnailsDiv = $('#thumbnails');
 	      thumbnailsDiv.empty();
-	      thumbnailsDiv.attr('data-aos', 'zoom-in-up');
 	      posts.forEach(function(post) {
 	    	  var thumbnailImage = $('<img/>', {
 	    	    src: post.thumbnailUrl,
 	    	    class: 'thumbnail-image',
-	            'data-aos': 'zoom-in-up',
 	            });
 
 	    	  var postLink = $('<a/>', {
 	    	    href: `/post/` + post.postId
 	    	  });
-
+	    	  postLink.attr('data-aos', 'zoom-in-up');
 	    	  postLink.append(thumbnailImage);
 	    	  thumbnailsDiv.append(postLink);
 	    	});

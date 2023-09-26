@@ -54,4 +54,5 @@
 	display: block;
 	object-fit: cover;
 	overflow: hidden;
+	max-width: 270px;
 }

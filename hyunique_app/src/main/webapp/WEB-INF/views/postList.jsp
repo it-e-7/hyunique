@@ -301,7 +301,7 @@
 			</div>
 		</div>
         <div id="infinite-scroll">
-            <div id="photo-gallery" data-aos="fade-right">
+            <div id="photo-gallery" data-aos="zoom-in-up">
             </div>
         </div>
             <c:if test="${empty userId}">

@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 모달을 표시
     filterModalButton.addEventListener("click", function() {
         initialModalState = captureModalState();
-        modal.style.display = "block";
+        modal.style.display = "flex";
         qr.style.display = "none";
         updateRangeBackgroundColor();
     });
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
             restoreModalState(initialModalState);
           }
         modal.style.display = "none";
-        qr.style.display = "block";
+        qr.style.display = "flex";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 restoreModalState(initialModalState);
               }
             modal.style.display = "none";
-            qr.style.display = "block";
+            qr.style.display = "flex";
         }
     });
 
