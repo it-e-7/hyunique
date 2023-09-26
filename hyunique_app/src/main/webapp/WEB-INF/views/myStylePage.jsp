@@ -11,7 +11,6 @@
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	
 </head>
 <body>
 	<div id="session-info">
@@ -98,7 +97,7 @@
 			        </c:otherwise>
 			    </c:choose>
 			</div>
-			<div class="user-detail-bar-wrapper">
+			<div class="user-detail-bar-wrapper" onclick= "moveToFollow(${user.userId})">
 				<p id="user-detail-title">팔로워</p>
 				<p id="vertical-bar">|</p>
 				<p id="user-follower">${user.followerCount}명</p>

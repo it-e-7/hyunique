@@ -87,7 +87,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     //$("#photo-gallery").append(data);
                 	   var $data = $(data);
                        $data.attr('data-aos', 'zoom-in-up');
-                    $("#photo-gallery").append(data);
+                       $("#photo-gallery").append(data);
+                       AOS.refresh();
+
                     //추가적으로 순위를 넣기
                     var element = $(".selected").attr("id");
                     if (element == "style-ranking"){
@@ -102,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             });
                     }
                     currentPage++;
+
                     isLoading = false;
                 }
             });

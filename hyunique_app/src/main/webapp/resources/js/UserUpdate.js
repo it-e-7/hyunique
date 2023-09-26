@@ -164,6 +164,7 @@ function updateUser() {
     if (facebookUrl && !facebookUrl.startsWith('https://www.facebook.com/')) {
     	facebookUrl = 'https://www.facebook.com/' + facebookUrl;
     }
+    const userAddress = $('#sample3_address').val() + $('#sample3_detailAddress').val() + $('#sample3_extraAddress').val();
     const requestData = {
         sessionId,
         userNickname,
@@ -176,9 +177,10 @@ function updateUser() {
         twitterUrl,
         facebookUrl,
         userImg: userImgData,
-        userBackimg: userBackImgData
+        userBackimg: userBackImgData,
+        userAddress
     };
-
+    console.log(requestData);
     $.ajax({
         url: `/user/updateUser`,
         type: 'POST',

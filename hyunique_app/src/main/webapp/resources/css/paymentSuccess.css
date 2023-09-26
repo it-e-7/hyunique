@@ -44,6 +44,8 @@ hr {
 }
 
 .name-content-box{
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
 }
@@ -56,6 +58,7 @@ hr {
 }
 
 .purchase-product-list li {
+    margin-top: 1em;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -21,11 +21,62 @@
 	</div>
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">
+	<!-- 컬러와 사이즈 모달 -->
+        <div id="product-search-modal" class="modal">
+          <div class="modal-content">
+              <div class="modal-wrap">
+                  <div class='color-wrap'>
+                      <select class="select-product-color empty">
+                      <option value="" disabled selected>컬러</option>
+                      </select>
+                      <span class="select-input__icon">
+                          <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                              <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                          </svg>
+                      </span>
+                  </div>
+                  <div class='size-wrap'>
+                      <select class="select-product-size empty">
+                      <option value="" disabled selected>사이즈</option>
+                      </select>
+                      <span class="select-input__icon">
+                          <svg class="icon" width="10" height="10" preserveAspectRatio="xMidYMid meet" style="fill: currentcolor;">
+                              <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
+                          </svg>
+                      </span>
+                  </div>
+              </div>
+              <div class="modal-btn-wrap">
+                  <button class="modal-cancel-btn" type="button">취소</button>
+                  <button class="modal-check-btn" type="submit">확인</button>
+              </div>
+          </div>
+        </div>
+
 		<!-- gpt 채팅창 전체 -->
 	
 	    <div class="chat-section-wrapper">
 	    	<div class="gap-area"></div>
 	    </div>
+        <input type="button" id="sample3_search" value="우편번호 찾기" onclick='<c:if test="${not empty user.userAddress}">paymentInformation(${user.userAddress});</c:if> <c:if test="${empty user.userAddress}">sample3_execDaumPostcode(${user.userId}); </c:if>'><br>
+
+        <div id="modal-wrap">
+            <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+            <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+            </div>
+            <div id="address-modal">
+                <div id="address-wrap">
+                    <input type="text" id="sample3_address" class="d_form" placeholder="주소">
+                    <input type="text" id="sample3_detailAddress" class="d_form" placeholder="상세주소">
+                    <input type="text" id="sample3_extraAddress" class="d_form" placeholder="참고항목">
+                    <div id="address-button-list">
+                        <button id="address-cancel-button" class="modal-cancel-btn">다시찾기</button>
+                        <button id="address-apply-button" class="modal-check-btn">주소저장</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 	    <!-- 유저 입력 섹션 전체 -->
 	    <div class="user-input-section">
 	    	<div class="voice-control-wrapper">
@@ -69,6 +120,10 @@
 	<script src="/resources/js/gpt.js"></script>
     <script src="/resources/js/tossPayment.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="/resources/js/posting/modal.js"></script>
+    <script src="/resources/js/gptModal.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/resources/js/daumAddress.js"></script>
 	<script>
 		AOS.init();
 	</script>	

@@ -63,7 +63,7 @@ public class PostServiceImpl implements PostService {
         if (filterPostVO.getSelectedType().equals("following")){
                 //팔로워를 선택한 경우
             FilterPostVO followFilterPostVO = new FilterPostVO();
-            followFilterPostVO.setTpo(Arrays.asList(21));
+            followFilterPostVO.setTpo(Arrays.asList(25));
             followFilterPostVO.setUserId(filterPostVO.getUserId());
             followFilterPostVO.setPage(filterPostVO.getPage());
             if (filterPostVO.getUserId() == null){

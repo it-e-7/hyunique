@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa5.hyunique.payment.mapper.PaymentMapper">
+
+    <insert id="insertPurchaseHistory" parameterType="map">
+        INSERT INTO hy_purchase_history (order_id, user_id, total_price)
+        VALUES (#{orderId}, #{userId}, #{totalPrice})
+    </insert>
+
+    <insert id="insertPurchaseProduct" parameterType="com.kosa5.hyunique.payment.vo.ProductInfoVO">
+        INSERT INTO hy_purchase_product (order_id, product_id, product_size, product_color, quantity)
+        VALUES (#{orderId}, #{productId}, #{productSize}, #{productColor}, 1)
+    </insert>
+</mapper>
