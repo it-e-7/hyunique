@@ -42,7 +42,7 @@ public class GPTController {
 	public String chatgpt(@SessionAttribute int sessionId, Model model) {
 		String sesisonString = Integer.toString(sessionId);
 		UserVO user = userService.getUserInfoAndFollowerCount(sessionId,sesisonString);
-		model.addAttribute(user);
+		model.addAttribute("user",user);
 		return "gptChat";
 	}
 	

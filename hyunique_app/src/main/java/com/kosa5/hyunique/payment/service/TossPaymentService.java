@@ -1,10 +1,8 @@
 package com.kosa5.hyunique.payment.service;
 
-public class TossPaymentService implements TossPayment{
+import com.kosa5.hyunique.payment.vo.ProductInfoVO;
 
-
-    @Override
-    public String TossConfirmService() {
-        return null;
-    }
+public interface TossPaymentService {
+    String TossPurchaseService (int sessionId,int productTotalPrice);
+    int insertPurchaseProduct(ProductInfoVO productInfoVO);
 }
