@@ -575,6 +575,7 @@ display: none;
 }
 
 #wrap{
+    max-height: 35em;
     z-index: 999;
     position: fixed !important;
     top: 50%;
