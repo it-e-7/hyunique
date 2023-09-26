@@ -56,10 +56,9 @@ public class UserController {
 	    String sessionId = (String) session.getAttribute("sessionId");
 	    UserVO user = userService.getUserInfoAndFollowerCount(userId, sessionId);
 	   
-	    log.info("팔로우 여부" + user.getIsFollowing());
 	    log.info("다른유저 아이디" + user.getUserId());
 	    log.info("세션 아이디" + sessionId);
-
+	    
 	    if (user != null) {
 	        model.addAttribute("user", user);
 	        if (sessionId != null && Integer.parseInt(sessionId) == userId) {

@@ -98,7 +98,7 @@ input{
 	padding:0;
 	position: fixed;
 	z-index:1000;
-	bottom: 20px;
+	bottom: 80px;
 	max-width: 700px;
 	font-weight: 600;
 	font-size: 0.95rem;
@@ -117,7 +117,6 @@ input[type="radio"] + label {
     display: inline-block;
     width: auto;
     height: 2rem;
-	border: 1px solid var(--grey4);
     border-radius: 0.7rem;
 	padding:0.1rem 1.3rem;
     cursor: pointer;
@@ -127,12 +126,12 @@ input[type="radio"] + label {
     font-family: 'Inter';
 	letter-spacing:0.05rem;
 	text-align:center;
-	color:var(--grey4);
-}
+	color: var(--grey4);
+    background-color: var(--grey1);}
 
 input[type="radio"]:checked + label {
-	color:var(--jw-blue);
-    border: 1px solid var(--jw-blue);
+	background: var(--jw-light-blue2);
+    color: var(--jw-blue2);
 
 }
 input[type="checkbox"] {
@@ -144,7 +143,6 @@ input[type="checkbox"] + label {
     display: inline-block;
     width: auto;
     height: 2rem;
-	border: 1px solid var(--grey4);
     border-radius: 0.7rem;
 	padding:0.1rem 1.3rem;
     cursor: pointer;
@@ -154,12 +152,12 @@ input[type="checkbox"] + label {
     font-family: 'Inter';
 	letter-spacing:0.05rem;
 	text-align:center;
-	color:var(--grey4);
-}
+	color: var(--grey4);
+    background-color: var(--grey1);}
 
 input[type="checkbox"]:checked + label {
-	color:var(--jw-blue);
-    border: 1px solid var(--jw-blue);
+	background: var(--jw-light-blue2);
+    color: var(--jw-blue2);
 
 }
 
@@ -192,4 +190,19 @@ div#address-content-wrapper {
 }
 div#modal-wrap {
     width: calc(100% - 60px);
+}
+input#sample3_address {
+    background: #efefef;
+    text-indent: 1rem;
+}
+
+input#sample3_detailAddress {
+    text-indent: 1rem;
+}
+
+input#sample3_extraAddress {
+    text-indent: 1rem;
+}
+.footer-my-wrapper {
+    background: var(--jw-light-blue2);
 }
