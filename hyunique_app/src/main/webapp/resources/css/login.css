@@ -15,10 +15,11 @@
 }
 .instruct-text-wrapper{
 	display:flex;
-	justify-content:center;
-	text-align:center;
+	justify-content: left;
+	text-align: initial;
 	margin-top: 3rem;
 	/* margin-bottom: 2rem; */
+	margin-left: 1.6rem;
 }
 .login-text-wrapper{
 	display:flex;
@@ -43,12 +44,14 @@
 }
 .intro-gif {
 	margin: 0.5rem 0;
-	overflow: hidden; /* body 밖으로 넘어가는 부분을 숨김 */
-	text-align: center; /* img를 가운데 정렬 */
+	overflow: hidden;
+	text-align: center;
 }
 .intro-gif img {
-	width:100%;
-	aspect-ratio:20/12;
-    margin: auto; /* 좌우 중간에 위치 */
-    display: block; /* img를 블록 레벨 요소로 설정 */
+	width: 50%;
+	aspect-ratio: 1/1.5;
+	margin: auto;
+	display: block;
+	object-fit: cover;
+	overflow: hidden;
 }
