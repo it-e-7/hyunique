@@ -430,3 +430,7 @@ li#tab-1 {
     font-weight: bold;
     background-color: transparent;
 }
+.footer-my-wrapper {
+    background: var(--jw-light-blue2);
+
+}
