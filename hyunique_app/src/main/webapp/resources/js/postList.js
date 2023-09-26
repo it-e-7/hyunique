@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
         buttons.forEach((btn) => {
+            switchLayers();
             btn.classList.remove('selected');
             scrollToTop();
         });
