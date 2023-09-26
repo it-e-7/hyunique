@@ -4,7 +4,7 @@
 function paymentToss(apiKey,totalPrice,userId,url,orderList){
     var tossPayments = TossPayments(apiKey); //테스트 클라이언트 키
     var successUrl = url+'/payment/success'; // 결제 성공 시 이동할 페이지
-    var failUrl = url+'/payment/fail'; // 결제 실패 시 이동할 페이지
+    var failUrl = url+'/gpt/page'; // 결제 실패 시 이동할 페이지
     tossPayments.requestPayment('카드', {
         amount: totalPrice,
         orderId: 2785164821,
@@ -57,6 +57,7 @@ function paymentInformation (userAddress) {
             },
             error: function (response) {
                 console.error('결제 실패. 다시 시도해주세요');
+                console.error(response);
             }
     });
 }
