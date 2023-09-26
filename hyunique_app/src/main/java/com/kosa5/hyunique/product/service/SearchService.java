@@ -69,13 +69,45 @@ public class SearchService {
 			con.setDoOutput(true);
 			con.connect();
 
-			byte[] input = ("{" + "  \"from\": " + offset * 10 + "," + "  \"size\": 10, " + "  \"query\": {"
-					+ "    \"bool\": {" + "      \"must\": [" + "        {" + "          \"match\": {"
-					+ "            \"productName\": \"" + keyword + "\"" + "          }" + "        }" + "      ],"
-					+ "      \"should\": [" + "        {" + "          \"match\": {"
-					+ "            \"productBrand\": \"" + keyword + "\"" + "          }" + "        }," + "        {"
-					+ "          \"match\": {" + "            \"typeName\": \"" + keyword + "\"" + "          }"
-					+ "        }" + "      ]" + "    }" + "  }" + "}").getBytes("utf-8");
+			byte[] input = ("{\n" + 
+					"  \"from\": " + offset * 10 + ",\n" + 
+					"  \"size\": 10,\n" + 
+					"  \"query\": {\n" + 
+					"    \"bool\": {\n" + 
+					"      \"must\": [\n" + 
+					"        {\n" + 
+					"          \"match\": {\n" + 
+					"            \"productName\": \""+keyword+"\"\n" + 
+					"          }\n" + 
+					"        }\n" + 
+					"      ],\n" + 
+					"      \"should\": [\n" + 
+					"        {\n" + 
+					"          \"bool\": {\n" + 
+					"            \"must\": [\n" + 
+					"              {\n" + 
+					"                \"match\": {\n" + 
+					"                  \"productBrand\": \""+keyword+"\"\n" + 
+					"                }\n" + 
+					"              },\n" + 
+					"              {\n" + 
+					"                \"match\": {\n" + 
+					"                  \"typeName\": \""+keyword+"\"\n" + 
+					"                }\n" + 
+					"              }\n" + 
+					"            ]\n" + 
+					"          }\n" + 
+					"        },\n" + 
+					"        {\n" + 
+					"          \"match\": {\n" + 
+					"            \"productBrand\": \""+keyword+"\"\n" + 
+					"          }\n" + 
+					"        }\n" + 
+					"      ]\n" + 
+					"    }\n" + 
+					"  },\n" + 
+					"  \"min_score\": 15\n" + 
+					"}").getBytes("utf-8");
 
 			// 송신할 데이터 전송.
 			OutputStream dos = con.getOutputStream();
