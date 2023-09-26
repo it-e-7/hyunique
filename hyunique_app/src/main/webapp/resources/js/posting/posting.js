@@ -59,7 +59,7 @@ function thumbnailUpload(e) {
             const thumbnail = $("<img>").attr("src", event.target.result)
                                         .attr("data-file", file.name)
                                         .attr("draggable", "false");
-            $('#thumbnail-img').append(thumbnail);
+            $('.thumbnail-img-wrap').append(thumbnail);
             showPage('.write-container');
             };
             reader.readAsDataURL(compressedFile);
@@ -110,8 +110,37 @@ $('.add-img-container').on('click', 'li:not(:first)',  function() {
 // 작성 완료 버튼
 $('#upload-button').click(function() {
     console.log(compressedFileList);
+    loadingStart();
     compileAndSendPostData();
 });
+
+
+function loadingStart() {
+    $('.write-loading-wrapper').css({
+        'overflow':'hidden'
+    });
+
+    $('.write-loading-wrapper').on('scroll touchmove mousewheel', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+
+    $('.write-loading-wrapper').show();
+    $("#loading-icon").show();
+}
+
+
+function loadingEnd() {
+    $('.write-loading-wrapper').css({
+        'overflow': 'auto'
+    });
+
+    $('.write-loading-wrapper').off('scroll touchmove mousewheel');
+    $('.write-loading-wrapper').hide();
+    $("#loading-icon").hide();
+}
+
 
 $('#add-img-btn').click(function() {
     $('#addFileInput').click();
@@ -312,6 +341,8 @@ async function sendPostToServer(formData, nextPost) {
     } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
         throw error;
+    } finally {
+        loadingEnd();
     }
 }
 
