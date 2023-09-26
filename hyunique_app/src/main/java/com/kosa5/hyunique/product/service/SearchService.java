@@ -105,8 +105,7 @@ public class SearchService {
 					"        }\n" + 
 					"      ]\n" + 
 					"    }\n" + 
-					"  },\n" + 
-					"  \"min_score\": 15\n" + 
+					"  }\n" +
 					"}").getBytes("utf-8");
 
 			// 송신할 데이터 전송.
