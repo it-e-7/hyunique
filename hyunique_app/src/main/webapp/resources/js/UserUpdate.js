@@ -275,3 +275,7 @@ function movePostPage() {
     });
 	
 }
+function showFallbackImage() {
+    document.getElementById('fallback-img').style.display = 'block';
+    document.getElementById('backward-btn').style.display = 'none';
+}

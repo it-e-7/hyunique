@@ -19,16 +19,15 @@
 		<input type="hidden" id="user-isFollowing" value="${user.isFollowing}">
 	</div>
 	<div class="header-wrapper">
-		<button onclick="backward()">
-			<lord-icon
-				id="backward-btn"
-			    src="https://cdn.lordicon.com/zmkotitn.json"
-			    trigger="click"
-			    colors="primary:#121331"
-			    style="transform: rotateY(180deg);
-			">
-			</lord-icon>
-		</button>
+		<lord-icon
+	         id="backward-btn"
+	         src="https://cdn.lordicon.com/zmkotitn.json"
+	         trigger="click"
+	         colors="primary:#121331"
+	         style="transform: rotateY(180deg);"
+	         onerror="showFallbackImage()">
+	    </lord-icon>
+   		<img id="fallback-img" src="/resources/img/ic-backward.png" style="display:none;">
 		<div class="txt-user-profile">
 			<p>${user.userNickname}</p>
 		</div>

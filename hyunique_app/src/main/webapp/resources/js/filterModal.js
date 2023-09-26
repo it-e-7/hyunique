@@ -138,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function() {
     filterModalButton.addEventListener("click", function() {
         initialModalState = captureModalState();
         modal.style.display = "flex";
-        qr.style.display = "none";
         updateRangeBackgroundColor();
     });
 
@@ -148,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
             restoreModalState(initialModalState);
           }
         modal.style.display = "none";
-        qr.style.display = "flex";
     });
 
     // 모달 외부를 클릭하면 모달을 닫습니다.
@@ -158,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 restoreModalState(initialModalState);
               }
             modal.style.display = "none";
-            qr.style.display = "flex";
         }
     });
 
@@ -202,7 +199,6 @@ document.addEventListener("DOMContentLoaded", function() {
         applyFilterButton.addEventListener("click", function() {
             currentPage =1;
             modal.style.display = "none";
-            qr.style.display = "block";
             $("#photo-gallery").empty();
             //$("#photo-gallery").append(data);
             changeFilterColor();

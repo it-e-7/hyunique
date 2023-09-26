@@ -440,3 +440,8 @@ div#thumbnails {
     aspect-ratio: 1/1;
     overflow: hidden;
 }
+
+#fallback-img {
+    display: none;
+    width : 32px;
+}
