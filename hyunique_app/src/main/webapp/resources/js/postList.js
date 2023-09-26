@@ -140,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //선택된 태그 값이 전달된다.
     //모달에서 원하는 값을 설정해서 처리해야 된다.
 
+    switchLayers();
+
     var checkboxes = {
         '남': 'maleCheckbox',
         '여': 'femaleCheckbox',
