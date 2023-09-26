@@ -6,9 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>좋아요 리스트</title>
-<%@ include file="/WEB-INF/views/common.jsp"%>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+	crossorigin="anonymous"></script>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/main.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/follow.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>

@@ -35,11 +35,13 @@
 #modal_name {
   flex: 1;
   text-align: center;
+  /* font-size: 1.3rem; */
 }
 
 .modal_body {
     background-color: #fff;
     padding: 20px;
+    padding-bottom: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     min-width: 320px;
     max-width: 720px;
@@ -91,11 +93,7 @@
     text-align: center;
 }
 
-#type {
-display: flex;
-flex-direction: column;
-gap: 16px;
-}
+#type {display: flex;flex-direction: column;gap: 16px;font-size: 1rem;}
 
 /* 슬라이더 스타일 및 레이아웃 CSS */
 .rs-container {
@@ -145,4 +143,12 @@ gap: 16px;
     height: 4px;
     background-color: var(--jw-blue); /* 배경색을 파란색으로 설정합니다 */
     transform: translateY(-50%);
+}
+label {
+    font-size: 1rem;
+}
+
+div#select-type-button label{
+    font-size: 1.3rem;
+    font-family:Inter
 }
