@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 public @interface Auth {
 
 	public enum Role {
-		AUTH, UNAUTH
+		AUTH, UNAUTH, ADMIN
 	}
 	
 	public Role role() default Role.AUTH;

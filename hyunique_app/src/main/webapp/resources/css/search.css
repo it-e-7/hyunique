@@ -53,7 +53,6 @@
 	gap: 16px;
 	width: 100%;
 	height: 100%;
-	padding-top: 16px;
 	background-color: white;
 }
 
@@ -63,6 +62,7 @@
 	width: 90%;
 	gap: 18px;
 	margin: 0 auto;
+	padding-top: 16px;
 }
 
 .search-top-wrapper button img {
@@ -107,8 +107,7 @@
 	flex-direction: column;
 	gap: 0.8rem;
 	height: 100%;
-	margin-bottom: 34px;
-	padding: 8px 1.5rem;
+	padding: 8px 1.5rem 34px 1.5rem;
 	background-color: var(--grey1);
 	list-style: none;
 	overflow: scroll;

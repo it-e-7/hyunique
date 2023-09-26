@@ -19,5 +19,6 @@ public interface ProductMapper {
 	List<String> selectProductSize(String productName);
 	List<String> selectProductColor(String productName);
 	List<PostProductVO> selectProductByIdList(List<String> productIdList);
+	void increaseTagCount(String productId);
 
 }

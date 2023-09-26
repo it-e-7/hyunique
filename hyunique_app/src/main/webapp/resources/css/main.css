@@ -15,16 +15,14 @@ html {
 }
 
 :root { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  :root { font-family: 'Inter var', sans-serif; }
-}
 
 body {
 	max-width: 760px;
 	min-width: 360px;
 	min-height: 100vh;
 	margin: 0 auto;
-    margin-bottom: 60px;
+	font-family: 'Inter', sans-serif;
+  margin-bottom: 60px;
 }
 
 @media (min-width: 700px) {

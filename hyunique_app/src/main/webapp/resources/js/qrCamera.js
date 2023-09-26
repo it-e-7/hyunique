@@ -54,8 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 outputData.parentElement.hidden = false;
 
                 if (passOneQR == 0 && inValidURL(code.data)) {
+                	let productId = code.data.split('=')[1];
+                	$.ajax({
+                	    url: `/product/qrtag`,
+                	    type: 'POST',
+                	    data: {
+                	    	productId
+                	    }
+                	});
                     location.href = code.data;
-                    console.log(code.data);
                     passOneQR = 1;
                 }
             } else {

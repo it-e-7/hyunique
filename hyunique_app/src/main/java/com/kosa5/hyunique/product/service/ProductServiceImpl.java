@@ -61,4 +61,10 @@ public class ProductServiceImpl implements ProductService {
 		List<PostProductVO> result = searchService.searchByImage(image);
 		return result;
 	}
+	
+	@Override
+	public void postQRTag(String productId) {
+		productMapper.increaseTagCount(productId);
+		
+	}
 }

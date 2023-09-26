@@ -89,5 +89,11 @@ public class ProductController {
 	public String showImageSearchView() {
 		return "imgSearch";
 	}
+	
+	@PostMapping("qrtag")
+	public String postQRTag(String productId) {
+		productService.postQRTag(productId);
+		return null;
+	}
 
 }
