@@ -6,8 +6,10 @@
 			<a href="">
 				<img src="/resources/icon/hyuniquelogo.png"/>
 			</a>
-			<p> 로그아웃
-			<p> admin님 환영합니다
+			<div style="display: flex; gap: 8px; align-items: center;">
+				<button class="logout-btn" onclick="signoutAdmin()">로그아웃</button>
+				<p> ADMIN님 환영합니다
+			</div>
 		</div>
 		<div class="dashboard-navbar-wrapper">
 			<ul class="dashboard-navbar">

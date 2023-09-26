@@ -59,3 +59,11 @@ body {
 .backoffice-content-wrapper {
 	margin: 90px 0 0 200px;
 }
+
+.logout-btn {
+	padding: 8px 8px;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    font-weight: 550;
+}
