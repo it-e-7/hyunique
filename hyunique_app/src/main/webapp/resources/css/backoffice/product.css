@@ -66,3 +66,23 @@
 .hover-wrapper:hover {
 	background-color: var(--grey1);
 }
+
+.product-dashboard-button-wrapper {
+	display: flex;
+	gap: 8px;
+	justify-content: end;
+	margin-bottom: 12px;
+}
+
+.filter-btn {
+	background-color: var(--grey2);
+	color: white;
+	font-weight: 550;
+	padding: 6px 14px;
+	border-radius: 6px;
+}
+
+.filter-btn-selected {
+	background-color: black;
+	color: white;
+}

@@ -11,6 +11,6 @@ public interface BackOfficeService {
 	
 	List<ProductDetailVO> getQRCount(int day);
 
-	List<BackOfficeProductVO> getHotProduct();
+	List<BackOfficeProductVO> getHotProduct(int day);
 
 }

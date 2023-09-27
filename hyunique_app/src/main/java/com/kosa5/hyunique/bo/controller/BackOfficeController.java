@@ -49,10 +49,19 @@ public class BackOfficeController {
 	@Auth(role = Role.ADMIN)
 	@GetMapping("product")
 	public String getBackOfficeProduct(Model model) {
-		List<BackOfficeProductVO> result = boService.getHotProduct();
+		List<BackOfficeProductVO> result = boService.getHotProduct(7);
 		model.addAttribute("productList", result);
 		
 		return "backoffice/product";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("product")
+	@ResponseBody
+	public List<BackOfficeProductVO> getBackOfficeProduct(int day) {
+		List<BackOfficeProductVO> result = boService.getHotProduct(day);
+		
+		return result;
 	}
 	
 	@Auth(role = Role.ADMIN)

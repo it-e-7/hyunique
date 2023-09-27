@@ -15,6 +15,6 @@ public interface BackOfficeMapper {
 	
 	List<ProductDetailVO> selectQRCount(int day);
 	
-	List<BackOfficeProductVO> selectHotProduct();
+	List<BackOfficeProductVO> selectHotProduct(int day);
 
 }

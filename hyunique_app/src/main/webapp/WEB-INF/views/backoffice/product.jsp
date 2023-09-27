@@ -20,6 +20,12 @@
 				마케팅, 판매 전략 등에 이용할 수 있습니다 
 			</p>
 			<div class="backoffice-product-container">
+				<div class="product-dashboard-button-wrapper">
+						<button id="1d-btn" class="filter-btn" onclick="getProductData(1)">1일</button>
+						<button id="7d-btn" class="filter-btn filter-btn-selected" onclick="getProductData(7)">1주</button>
+						<button id="30d-btn" class="filter-btn" onclick="getProductData(30)">1달</button>
+						<button id="90d-btn" class="filter-btn" onclick="getProductData(90)">3달</button>
+				</div>
 				<ul class="backoffice-product-list">
 					<li>
 						<div class="simple-wrapper">

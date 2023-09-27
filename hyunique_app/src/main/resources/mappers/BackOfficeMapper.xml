@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			        COUNT(L.USER_ID) AS LIKE_COUNT
 			    FROM HY_POST P
 			    LEFT JOIN HY_STYLELIKE L ON P.POST_ID = L.POST_ID
-			    WHERE P.POST_DATE > SYSDATE - 7
+			    WHERE P.POST_DATE > SYSDATE - #{day}
 			    GROUP BY P.USER_ID, P.POST_ID
 			),
 			FollowersCount AS (

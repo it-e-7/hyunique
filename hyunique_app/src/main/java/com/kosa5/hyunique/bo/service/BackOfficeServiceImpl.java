@@ -26,7 +26,7 @@ public class BackOfficeServiceImpl implements BackOfficeService{
 	}
 	
 	@Override
-	public List<BackOfficeProductVO> getHotProduct() {
-		return boMapper.selectHotProduct();
+	public List<BackOfficeProductVO> getHotProduct(int day) {
+		return boMapper.selectHotProduct(day);
 	}
 }
