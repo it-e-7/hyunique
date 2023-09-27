@@ -40,7 +40,12 @@ function moveToFollow(userId) {
     $('#loading-icon').show();
     location.href=`/user/followlist?userId=${userId}`;
 }
+
 function moveToLike(postId) {
-    $('#loading-icon').show();
-    location.href=`/user/likelist?postId=${postId}`;
+	location.href=`/user/likelist?postId=${postId}`;
+  $('#loading-icon').show();
+}
+
+function moveToUser(userId){
+	location.href = `/user/${userId}`;
 }
