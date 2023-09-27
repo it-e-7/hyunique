@@ -18,4 +18,5 @@ public class ProductDetailVO {
 	private String typeName;
 	private List<DepartStockVO> storeList;
 	private List<PostThumbnailVO> postThumbnailList;
+	private int qrCount;
 }

@@ -4,9 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosa5.hyunique.bo.mapper.BackOfficeMapper">
+
     <select id="selectAdmin" resultType="int">
     	SELECT COUNT(*)
     	FROM HY_ADMIN
     	WHERE ADMIN_ID = #{adminId} AND ADMIN_PW = #{adminPw}
     </select>
+    
+    <select id="selectQRCount" resultType="ProductDetailVO">
+    	<![CDATA[
+			SELECT *
+			FROM(SELECT *
+			    FROM (SELECT PRODUCT_ID, COUNT(*) AS QR_COUNT
+			            FROM HY_QRTAG
+			            WHERE EXTRACT( DAY FROM SYSTIMESTAMP - HY_QRTAG.TAG_DATE ) <= 1
+			            GROUP BY PRODUCT_ID) Q JOIN
+			            HY_PRODUCT P ON Q.PRODUCT_ID = P.PRODUCT_ID
+			    ORDER BY QR_COUNT DESC)
+			WHERE ROWNUM <= 30
+        ]]>
+    </select>
+    
 </mapper>

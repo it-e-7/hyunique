@@ -1,5 +1,7 @@
 package com.kosa5.hyunique.bo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.kosa5.hyunique.bo.service.BackOfficeService;
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.interceptor.annotation.Auth.Role;
+import com.kosa5.hyunique.product.vo.ProductDetailVO;
 
 @Controller
 @RequestMapping("backoffice")
@@ -32,6 +35,14 @@ public class BackOfficeController {
 	@GetMapping("qr")
 	public String getBackOfficeQR() {
 		return "backoffice/qr";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("qr")
+	@ResponseBody
+	public List<ProductDetailVO> getQRCount(int filter) {
+		List<ProductDetailVO> result = boService.getQRCount(filter);
+		return result;
 	}
 	
 	@Auth(role = Role.ADMIN)

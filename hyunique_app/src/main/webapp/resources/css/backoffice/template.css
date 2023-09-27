@@ -21,6 +21,7 @@ body {
 	height: 90px;
 	background: black;
 	color: white;
+	z-index: 101;
 }
 
 .dashboard-header-wrapper img {
@@ -36,6 +37,7 @@ body {
 	height: calc(100vh - 90px);
 	background: black;
 	color: white;
+    z-index: 100;
 }
 
 .dashboard-navbar {
@@ -72,4 +74,19 @@ body {
 .dashboard-title {
 	font-size: 24px;
 	font-weight: 550;
+}
+
+.margin-title {
+	padding: 20px 32px;
+}
+
+.dashboard-content-wrapper {
+	display: flex;
+	align-items: center;
+	height: 650px;
+	margin: 20px 32px 40px 32px;
+	background: white;
+    border-radius: 22px;
+    padding: 50px;
+	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
 }
