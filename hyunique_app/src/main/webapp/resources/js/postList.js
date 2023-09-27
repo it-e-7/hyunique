@@ -51,7 +51,6 @@ function setupBannerScroll() {
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
-    switchLayers();
     const buttonContainer = document.getElementById('hyunique-main-top-recommend');
     const buttons = buttonContainer.querySelectorAll('.button');
 
