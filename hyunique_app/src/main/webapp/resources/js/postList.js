@@ -51,7 +51,6 @@ function setupBannerScroll() {
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
-    switchLayers();
     const buttonContainer = document.getElementById('hyunique-main-top-recommend');
     const buttons = buttonContainer.querySelectorAll('.button');
 
@@ -139,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleButtonClick(tag) {
     //선택된 태그 값이 전달된다.
     //모달에서 원하는 값을 설정해서 처리해야 된다.
+
+    switchLayers();
 
     var checkboxes = {
         '남': 'maleCheckbox',

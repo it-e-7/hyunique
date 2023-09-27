@@ -26,8 +26,6 @@ function requestProductSizeAndColor(product) {
     $(".select-product-color option:first").prop('selected', true);
 
     $.getJSON(`/product/inform?productId=${product['productId']}`, function(data) {
-        $('.search-product-brand').text(product['productBrand']);
-        $('.search-product-name').text(product['productName']);
 
        // size 처리
         if (data.productSize.length > 0) {
