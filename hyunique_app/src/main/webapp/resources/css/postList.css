@@ -640,7 +640,7 @@ div#random-user-wrapper {
     max-width: 100px;
     margin-right: 0.6rem;
     min-width: 90px;
-    padding: 1rem 1rem;
+    padding: 1.5rem 2rem;
     border: 1px solid #c0bebe;
     border-radius: 0.4rem;
 }
@@ -657,7 +657,7 @@ div#random-user-wrapper {
     font-family: 'Jost';
 }
 p#random-userNickname {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
     font-size: 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -671,4 +671,41 @@ p#random-userNickname {
 div#random-users-wrapper {
     overflow-x: scroll;
     margin-bottom: 1rem;
+}
+
+
+.follower-btn-wrapper{
+	min-width:6rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.follow-btn-class {
+    display: none;
+    width: 100%;
+}
+
+.follow-btn-class + label {
+    border: 1px solid;
+    border-color: var(--jw-blue2);
+    border-radius: 0.4rem;
+    color: rgb(255 255 255);
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    line-height: 2rem;
+    background: var(--jw-blue);
+}
+
+.follow-btn-class :checked + label {
+	color:var(--grey4);
+    border: 1px solid var(--grey4);
+
+}
+.following-label {
+    color: #747171 !important;
+    border: 1px solid lightgray !important;
+    background: #f2f2f2 !important;
 }

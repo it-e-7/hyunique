@@ -38,7 +38,7 @@ $(document).ready(function() {
 					  </p>
 					 
 					  <div class="follower-btn-wrapper">
-				  		<input type="checkbox" name="btn-follower" value="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-toggle"><label for="follower-toggle" id="follower-label">팔로우 +</label>
+				  		<input type="checkbox" name="btn-follower" class="follow-btn-class" value="follower-toggle" id="follower-toggle-${user.userId}"><label for="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-label-${user.userId}">팔로우</label>
 					  </div>
 					  </div>
 					  `;
@@ -52,33 +52,50 @@ $(document).ready(function() {
 
 });
 function toggleFollow(userId) {
-	  const url = checkbox.checked ? '/user/follow' : '/user/unfollow';
-	  if (checkbox.checked)  {
-		 label.innerText = '팔로잉 -';
-	    ajax({
-	      url: `/user/follow`,
-	      type: 'POST',
-	      data: { userId },
-	      success: function(response) {
-	      },
-	      error: function(response) {
-	        console.error(response);
-	      },
-	    });
-	  } else {
-		  label.innerText = '팔로우 +';
-	    ajax({
+	const checkboxId = `follower-toggle-${userId}`;
+	  const checkbox = document.getElementById(checkboxId);
+	  const labelId = `follower-label-${userId}`;
+	  const label = document.getElementById(labelId);
+
+	  // 체크박스가 실제로 존재하는지 확인
+	  if (!checkbox) {
+	    console.error(`Checkbox with ID ${checkboxId} not found`);
+	    return;
+	  }
+
+
+	  if (checkbox.checked) {
+		label.classList.remove("following-label");
+	    label.textContent = "팔로우";
+	    $.ajax({
 	      url: `/user/unfollow`,
 	      type: 'POST',
 	      data: { userId },
 	      success: function(response) {
+	        console.log('팔로우 성공', response);
 	      },
 	      error: function(response) {
-	        console.error(response);
+	        console.error('팔로우 실패', response);
 	      },
 	    });
+	  } else {
+	    label.classList.add("following-label");
+	    label.textContent = "팔로잉";
+	    $.ajax({
+	      url: `/user/follow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	        console.log('팔로우 성공', response);
+	      },
+	      error: function(response) {
+	        console.error('팔로우 실패', response);
+	      },
+	    });
+
 	  }
 	}
+
 
 function setupBannerScroll() {
   let currentIndex = 0;

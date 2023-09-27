@@ -316,8 +316,8 @@
             </c:if>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
-        <script src="/resources/js/postdetail.js"></script>
-        <script src="/resources/js/filterModal.js"></script>
+<!--         <script src="/resources/js/postdetail.js"></script>
+ -->        <script src="/resources/js/filterModal.js"></script>
         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script>
