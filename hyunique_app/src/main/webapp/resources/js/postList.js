@@ -28,7 +28,8 @@ $(document).ready(function() {
 		  data : {userId: userId},
 		  success: function(randomusers) { 
 			  randomusers.forEach(function(user) { 
-				  const userDiv = `   <!-- 변수명을 userDiv로 변경 -->
+			      if (user.userId != userId) {
+					  const userDiv = `
 				  	<div id="random-user-wrapper">
 				  		<div id="random-user-img-wrapper" onclick="moveToUser('${user.userId}')">
 					  <img src="${user.userImg}" id="random-user-img"/>
@@ -43,6 +44,8 @@ $(document).ready(function() {
 					  </div>
 					  `;
 				  $('#random-users').append(userDiv);
+				  }
+				  
 			  });
 		  },
 		  error: function() {
@@ -67,7 +70,7 @@ function toggleFollow(userId) {
 	  if (checkbox.checked) {
 		label.classList.remove("following-label");
 	    label.textContent = "팔로우";
-	    $.ajax({
+	    ajax({
 	      url: `/user/unfollow`,
 	      type: 'POST',
 	      data: { userId },
@@ -81,7 +84,7 @@ function toggleFollow(userId) {
 	  } else {
 	    label.classList.add("following-label");
 	    label.textContent = "팔로잉";
-	    $.ajax({
+	    ajax({
 	      url: `/user/follow`,
 	      type: 'POST',
 	      data: { userId },
