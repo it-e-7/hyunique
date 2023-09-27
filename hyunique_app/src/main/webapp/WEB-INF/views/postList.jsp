@@ -27,53 +27,63 @@
 	</div>
 </div>
 <div id= "main-wrapper-bottom">
-
-    <c:if test="${empty userId}">
-	    	<div id="popular-style">
-	            실시간 인기 스타일🔥
-	            <div class="btn-grad">
-	            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
-	            	<div class="popular-desc-wrapper">
-		            	<img id="banner-text" src="/resources/img/banner-text.png" />
-					</div>
-	            </div>
-	        </div>
-    </c:if>
-    <c:if test="${not empty userId}">
-	   <c:choose>
-	        <c:when test="${followerCount eq 0}">
-	            <div id="popular-style">
-		            실시간 인기 스타일🔥
-		            <div class="btn-grad">
-		            <img src="/resources/icon/logo-hyunique-app.png" id="popular-app-icon"/>
-		            	<div class="popular-desc-wrapper">
-			            	<img id="banner-text" src="/resources/img/banner-text.png" />
-						</div>
-		            </div>
-		        </div>
-	        </c:when>
-	        <c:otherwise>
-	            <div id="follow-banner" style="display:none;">
-	                <img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/banner-follow.jpg"/>
-	            </div>
-	        </c:otherwise>
-	    </c:choose>
-    </c:if>
-    <div id="tab-desc-wrapper">
-    	<p id="tab-desc-txt">
+    <div class="tab-desc-wrapper" id="tab-recommend-txt">
+    	<p class="tab-desc-txt" >
     		RECOMMEND
     	</p>
+    </div>
+    <div class="tab-desc-wrapper" id="tab-ranking-txt">
+    	<p class="tab-desc-txt">
+    		STYLE
+    	</p>
+    	<span class="bar"></span>
+    	<p class="tab-desc-txt">
+    		RANKING
+    	</p>
+    </div>
+    <div class="tab-desc-wrapper" id="tab-follow-txt">
+    	<p class="tab-desc-txt">
+    		FOLLOW
+    	</p>
+    </div>
+   	<div class="tab-img-desc-wrapper" id="tab-img-follow-txt">
+  	  	<p class="tab-img-desc-txt" >
+    		추천 팔로우 유저
+    	</p>
+    	<hr>
+    </div>
+    <div id="random-users-wrapper">
+		<div id="random-users">
+		</div>
+	</div>
+	<div class="tab-img-desc-wrapper" id="tab-img-popular-txt">
+  	  	<p class="tab-img-desc-txt" >
+    		실시간 인기 스타일링
+    	</p>
+    	<hr>
+    </div>
+	<div class="tab-img-desc-wrapper" id="tab-img-my-follow-txt">
+  	  	<p class="tab-img-desc-txt" >
+    		내 팔로잉 스타일링
+    	</p>
+    	<hr>
     </div>
     <div id="banner-wrapper">
 		<div id="banner">
 		</div>
 	</div>
+	<div class="tab-img-desc-wrapper" id="tab-img-recommend-txt">
+  	  	<p class="tab-img-desc-txt" >
+    		인기 스타일링
+    	</p>
+    	<hr>
+    </div>
 	<div id="ranking-wrapper">
 		<div class="ranking-description" id="ranking-header-txt">
-			hyunique 최고의 패셔니스타를<br>확인해보세요 🎉
+			지난 주 최고의 HYUNIQER
 		</div>
 		<div class="category-description" id="rank-category-desc">
-			* 지난 한 주 동안, 가장 많은 인기를 얻은 유저들이 표시됩니다.
+			* 지난 한 주 동안, 해당 유저가 받은 좋아요 개수로 집계됩니다.
 		</div>
 		<div class="ranking-section">
 			<div class="ranking-user-wrapper" id="rank-2nd">
@@ -281,20 +291,12 @@
             </div>
         </div>
     </div>
-   	 	<div class="ranking-description" id="ranking-description">
-			<lord-icon
-				id="rank-icon"
-			    src="https://cdn.lordicon.com/oegrrprk.json"
-			    trigger="loop"
-			    delay="1500"
-			    colors="primary:#3080e8,secondary:#a866ee,tertiary:#848484,quaternary:#121331"
-			    style="width:4.5rem;height:4.5rem">
-			</lord-icon>
-			<div class="p-tag-wrapper">
-				<p class="txt-rec-des" id="txt-ranking-des">실시간 랭킹</p>
-				<p class="txt-rec-des-sub">지금 가장 인기있는 스타일을 확인해보세요</p>
-			</div>
-		</div>
+  	<div class="tab-img-desc-wrapper" id="ranking-description">
+  	  	<p class="tab-img-desc-txt" >
+    		실시간 랭킹
+    	</p>
+    	<hr>
+    </div>
         <div id="infinite-scroll">
             <div id="photo-gallery"></div>
             <div id="skeleton-layer"></div>
@@ -314,6 +316,7 @@
             </c:if>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="/resources/js/postList.js"></script>
+        <script src="/resources/js/postdetail.js"></script>
         <script src="/resources/js/filterModal.js"></script>
         <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -322,11 +325,6 @@
 		</script>	
     </div>
 </div>
-<!-- <div id="qr-button">
-    <a href="/post/getQRPage">
-        <img src="/resources/img/qr.png" id="qr-img" alt="QR 코드">
-    </a>
-</div> -->
 <div id="up-button" onclick="scrollToTop()">
   <lord-icon
     src="https://cdn.lordicon.com/xdakhdsq.json"
@@ -334,7 +332,7 @@
     delay="1500"
     colors="primary:#ffffff"
     state="hover-2"
-    style="width:60px;height:60px"
+    style="width:40px;height:40px"
     filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));>
 </lord-icon>
 </div>

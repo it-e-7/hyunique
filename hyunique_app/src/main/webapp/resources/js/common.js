@@ -42,3 +42,7 @@ function moveToFollow(userId) {
 function moveToLike(postId) {
 	location.href=`/user/likelist?postId=${postId}`;
 }
+
+function moveToUser(userId){
+	location.href = `/user/${userId}`;
+}

@@ -18,22 +18,25 @@
     justify-content: space-between;
     margin-bottom: 1.6rem;
     padding-top: 18px;
+    align-items: center;
 }
 
 #hyunique-main-top-logo-image >img {
-    width: 8rem;
+    width: 9rem;
 }
 #hyunique-main-top-buttons{
     display : flex;
-    gap: 8px;
+    gap: 12px;
+    height: 100%;
 }
 
 #hyunique-main-top-buttons >#search-button > img{
-   width: 32px;
+   width: 24px;
+   margin-top: -1px;
 }
 
 #hyunique-main-top-buttons >#my-page-button > img{
-   width: 26px;
+   height: 23px;
 }
 
 .header-search-area {

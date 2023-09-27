@@ -3,8 +3,24 @@
 @import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
 .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 
-
-
+@font-face {
+    font-family: 'Cafe24Ohsquareair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/Cafe24Ohsquareair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Happiness-Sans-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
 * {padding: 0; margin: 0;}
 
 html {
@@ -14,9 +30,9 @@ html {
     scroll-behavior: smooth;
 }
 
-:root { font-family: 'Inter', sans-serif; }
+:root { font-family: 'SUITE-Regular'; }
 @supports (font-variation-settings: normal) {
-  :root { font-family: 'Inter var', sans-serif; }
+  :root { font-family: 'SUITE-Regular'; }
 }
 
 body {
@@ -34,8 +50,8 @@ body {
 }
 
 :root {
-	--jw-blue: #032962;
-	--jw-blue2: #32517F;
+	--jw-blue: rgb(32, 36, 41);
+	--jw-blue2: rgb(32, 36, 41);
 	--jw-blue3: #678CC5;
 	--jw-blue4: #C9D1DD;
 	--jw-blue5: #E4E8EE;
@@ -66,7 +82,7 @@ button {
 
 .jw-btn {
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	background: rgb(32, 36, 41);
 	border-radius: 0.8rem;
 	color: #FFFFFF;
 	padding: 0.5rem 1rem;
@@ -79,7 +95,7 @@ button {
 }
 .jw-btn-radius {
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	background: rgb(32, 36, 41);
 	border-radius: 0.8rem;
 	color: #FFFFFF;
 	padding: 0.5rem 1rem;
@@ -95,7 +111,7 @@ button {
 .jw-btn-nonshadow {
 	height: fit-content;
 	padding: 0.5rem 1rem;
-	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	background: rgb(32, 36, 41);
 	color: #FFFFFF;
 	border-radius: 0.8rem;
 	font-weight: 600;
