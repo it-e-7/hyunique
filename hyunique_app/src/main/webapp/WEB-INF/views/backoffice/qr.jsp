@@ -14,6 +14,12 @@
 	<div class="backoffice-content-wrapper">
 		<div class="backoffice-qr-container">
 			<p class="dashboard-title margin-title">QR 관리</p>
+			<p class="backoffice-description">
+				QR코드를 스캔한 횟수를 나타냅니다
+			</p>
+			<p class="backoffice-description">
+				오프라인 매장의 위치와 상품의 인기도 등을 판단해 판매 전략에 이용할 수 있습니다   
+			</p>
 			<div class="dashboard-content-wrapper">
 				<div class="canvas-wrapper">
 					<canvas id="qr-chart"></canvas>

@@ -1,0 +1,68 @@
+.backoffice-product-container {
+	margin: 20px 32px 40px 32px;
+}
+
+.backoffice-product-list {
+	list-style: none;
+}
+
+.backoffice-product-list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 0;
+    border-bottom: 1px solid var(--grey1);
+  	cursor: default;
+}
+
+.backoffice-product-list img {
+	width: 80px;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+}
+
+.product-inform-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	width: 500px;
+}
+
+.product-rank {
+	padding: 12px;
+	font-weight: 550;
+}
+
+.user-nickname {
+	width: 150px;
+}
+
+.simple-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.bold-p {
+	font-weight: 550;
+}
+
+.like-p {
+	width: 50px;
+    text-align: center;
+}
+
+.tag-p {
+	width: 60px;
+    text-align: center;
+}
+
+.hover-wrapper {
+	transition: background-color;
+	transition-duration: 0.3s;
+	cursor: pointer;
+}
+
+.hover-wrapper:hover {
+	background-color: var(--grey1);
+}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.kosa5.hyunique.bo.service.BackOfficeService;
+import com.kosa5.hyunique.bo.vo.BackOfficeProductVO;
 import com.kosa5.hyunique.interceptor.annotation.Auth;
 import com.kosa5.hyunique.interceptor.annotation.Auth.Role;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
@@ -47,7 +48,10 @@ public class BackOfficeController {
 	
 	@Auth(role = Role.ADMIN)
 	@GetMapping("product")
-	public String getBackOfficeProduct() {
+	public String getBackOfficeProduct(Model model) {
+		List<BackOfficeProductVO> result = boService.getHotProduct();
+		model.addAttribute("productList", result);
+		
 		return "backoffice/product";
 	}
 	
