@@ -109,8 +109,6 @@ $('.add-img-container').on('click', 'li:not(:first)',  function() {
 
 // 작성 완료 버튼
 $('#upload-button').click(function() {
-    console.log(compressedFileList);
-    loadingStart();
     compileAndSendPostData();
 });
 
@@ -194,7 +192,6 @@ $('.result-list').on('click', '.search-product-li', function() {
 
 // 화면 전환 함수
 function showPage(page) {
-    console.log(page + ' 전환');
     $(pages.join(', ')).hide();
     $(page).show();
     currentPage = page;
@@ -291,8 +288,6 @@ function compileAndSendPostData() {
 
     // 핀
     let product = Object.values(items).map(item => {
-        console.log('핀 좌표 ', item.xPos, item.yPos);
-        console.log('핀 좌표 백분율 ', (item.xPos / imgWidth) * 100, (item.yPos / imgHeight) * 100);
         return {
             pinX: (item.xPos / imgWidth) * 100,
             pinY: (item.yPos / imgHeight) * 100,
@@ -312,6 +307,7 @@ function compileAndSendPostData() {
     });
 
     try {
+        loadingStart();
         sendPostToServer(formData, nextPost);
     } catch (error) {
         console.error("재업로드 필요: ", error);
@@ -359,7 +355,6 @@ function getSearchProduct(productName) {
 
 // 상품 검색 결과 출력
 function renderSearchProductResults(results, productName) {
-
     let resultList = $(".result-list");
     resultList.empty();
     $('.search-value').text(`${productName}`);
