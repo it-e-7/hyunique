@@ -92,5 +92,9 @@
         #{code}
      	</foreach>
 	</select>
+	
+	<select id="increaseTagCount" statementType="CALLABLE" parameterType="String">
+		call increase_tag_product(#{productId, mode=IN, jdbcType=VARCHAR, javaType=String})
+	</select>
 
 </mapper>  

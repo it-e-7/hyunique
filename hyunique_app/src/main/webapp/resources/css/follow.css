@@ -38,3 +38,10 @@ img {
     border-radius: 10rem;
     aspect-ratio: 1/1
 }
+
+lord-icon#loading-icon {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}

@@ -7,8 +7,6 @@ if (imageData) {
     $('.img-section-area').append(imageElement);
 }
 
-
-
 // 크롭 영역 및 핸들 생성
 const $rectangle = $('<div>').attr('id', 'rectangle');
 const $topLeft = $('<div>').addClass('handle').attr('id', 'top-left');
@@ -45,7 +43,7 @@ const dragContainer = (e) => {
 
     target.css({
         'position': 'absolute',
-        'z-index': 1000
+        'z-index': 100
     });
 
     imgContainer.append(target);
@@ -56,11 +54,11 @@ const dragContainer = (e) => {
     const imgHeight = imgContainer.height();
 
     function moveAt(clientX, clientY) {
-        let newLeft = clientX - shiftX;
-        let newTop = clientY - shiftY;
-
-        newLeft = Math.max(imgLeft, Math.min(newLeft, imgLeft + imgWidth - target.width()));
-        newTop = Math.max(imgTop, Math.min(newTop, imgTop + imgHeight - target.height()));
+//        let newLeft = clientX - shiftX;
+//        let newTop = clientY - shiftY;
+//
+//        newLeft = Math.max(imgLeft, Math.min(newLeft, imgLeft + imgWidth - target.width()));
+//        newTop = Math.max(imgTop, Math.min(newTop, imgTop + imgHeight - target.height()));
 
         target.css({
             left: clientX - shiftX + 'px',
@@ -223,7 +221,7 @@ $(img).on('load', function() {
         'z-index': -1
     });
 
-    $('.img-section-area').append(canvas); // 새로운 코드
+    $('.img-section-area').append(canvas);
 
     initCanvas(img, canvas);
 });
@@ -277,7 +275,6 @@ $('#rectangle').on('mousemove touchmove', function() {
     }, 3000);
 });
 
-
 function sendToServerImg(newCanvas) {
     newCanvas.toBlob(function(blob) {
         const formData = new FormData();
@@ -302,3 +299,9 @@ function sendToServerImg(newCanvas) {
         });
     }, 'image/jpeg', 0.95);
 }
+
+window.addEventListener('touchmove', function(event) {
+    if(isDragging) {
+        event.preventDefault();
+    }
+}, { passive: false });

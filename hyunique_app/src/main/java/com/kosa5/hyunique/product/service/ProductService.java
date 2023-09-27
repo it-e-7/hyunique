@@ -21,5 +21,7 @@ public interface ProductService {
 	ProductInformVO getProductSizeAndColor(String productId);
 	
 	List<PostProductVO> getImageSearchProduct(MultipartFile image);
+	
+	void postQRTag(String productId);
 
 }

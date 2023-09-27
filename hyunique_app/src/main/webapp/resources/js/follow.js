@@ -7,6 +7,7 @@ $(document).ready(function() {
 		type: "GET",
 		dataType: "json",
 		success: function(data) {
+            loading();
 			data.forEach(function(user) {
                 const li = $("<li></li>").attr("onclick", `location.href='/user/${user.userId}'`);
 				const img = $("<img>").attr("src", user.userImg).attr("alt", "User Image").attr("width", 50);
@@ -28,6 +29,7 @@ $(document).ready(function() {
 		type: "GET",
 		dataType: "json",
 		success: function(data) {
+		    loading();
 			data.forEach(function(user) {
                 const li = $("<li></li>").attr("onclick", `location.href='/user/${user.userId}'`);
 				const img = $("<img>").attr("src", user.userImg).attr("alt", "User Image").attr("width", 50);
@@ -43,3 +45,9 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+
+function loading() {
+    $('#loading-icon').hide();
+}

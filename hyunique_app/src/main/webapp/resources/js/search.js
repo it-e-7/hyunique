@@ -7,13 +7,21 @@ function hideSearchModal(e) {
 }
 
 function displaySearch() {
+	$('body').children().each((idx,element) => {
+	    if(element.id !== 'main-wrapper') {
+	    	$(element).hide();
+	    }
+	});
 	$('.header-search-area').css('display', 'block');
-	$('body').css('overflow-y', 'hidden');
 }
 
 function hideSearch() {
 	$('.header-search-area').css('display', 'none');
-	$('body').css('overflow-y', 'scroll');
+	$('body').children().each((idx,element) => {
+	    if(element.id !== 'main-wrapper') {
+	    	$(element).show();
+	    }
+	});
 	$('#search-input').val('');
 	$('.product-list').html('');
 }

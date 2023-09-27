@@ -155,6 +155,8 @@ ul {
 .post-thumbnail-list-wrapper img {
 	width: 100%;
 	cursor: pointer;
+	aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .buy-btn {

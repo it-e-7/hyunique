@@ -126,6 +126,8 @@
 
 
     <select id="loadFilterPost" parameterType="FilterPostVO" resultType="PostVO">
+    	SELECT *
+    	FROM(
         <if test='selectedType != null and selectedType.equals("following")'>
             SELECT DISTINCT P.*
         </if>
@@ -212,6 +214,7 @@
 			GROUP BY P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
             ORDER BY TOTAL_SCORE DESC
         </if>
+        )
         <if test="page != null">
             OFFSET  #{page}
             ROWS FETCH NEXT #{pageSize} ROWS ONLY
