@@ -46,7 +46,32 @@ $(document).ready(function() {
 	});
 });
 
+function followerFilterList() {
+    const query = document.getElementById('searchInput1').value.toLowerCase();
+    const listItems = document.querySelectorAll('#followerList li');
 
+    listItems.forEach(item => {
+        const username = item.innerText.toLowerCase();
+        if (username.includes(query)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+function followingFilterList() {
+	const query = document.getElementById('searchInput2').value.toLowerCase();
+	const listItems = document.querySelectorAll('#followingList li');
+	
+	listItems.forEach(item => {
+		const username = item.innerText.toLowerCase();
+		if (username.includes(query)) {
+			item.style.display = '';
+		} else {
+			item.style.display = 'none';
+		}
+	});
+}
 
 function loading() {
     $('#loading-icon').hide();

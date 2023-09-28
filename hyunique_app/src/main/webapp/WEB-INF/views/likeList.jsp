@@ -48,8 +48,11 @@
 		</lord-icon>		        
 	</div>
 </div>
-<div id="tab1" class="tab-content"style="display: flex; flex-direction: column;">
+<div id="tab1" class="tab-content" style="display: flex; flex-direction: column;">
 	<p class="follow-title-sub">좋아요를 누른 사람들</p>
+	<div id="search-bar-wrapper">
+	    <input type="text" id="searchInput" placeholder="사용자 검색" oninput="filterList()">
+	</div>
     <ul id="followerList"></ul>
 </div>
 <script src="/resources/js/posting/like.js"></script>

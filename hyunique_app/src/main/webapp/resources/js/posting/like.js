@@ -25,5 +25,16 @@ $(document).ready(function() {
 	
 });
 
+function filterList() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const listItems = document.querySelectorAll('#followerList li');
 
-
+    listItems.forEach(item => {
+        const username = item.innerText.toLowerCase();
+        if (username.includes(query)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}

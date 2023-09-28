@@ -61,11 +61,17 @@
 
 <div id="tab1" class="tab-content"style="display: block;">
 	<p class="follow-title-sub">모든 팔로워</p>
+	<div id="search-bar-wrapper">
+	    <input type="text" id="searchInput1" placeholder="사용자 검색" oninput="followerFilterList()">
+	</div>
     <ul id="followerList"></ul>
 </div>
 
 <div id="tab2" class="tab-content"style="display: none;">
 	<p class="follow-title-sub">모든 팔로잉</p>
+	<div id="search-bar-wrapper">
+	    <input type="text" id="searchInput2" placeholder="사용자 검색" oninput="followingFilterList()">
+	</div>
     <ul id="followingList"></ul>
 </div>
 
