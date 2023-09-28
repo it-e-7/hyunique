@@ -22,7 +22,6 @@
             </div>
             <div class="explain-seciton">
                 <p>찾고자 하는 의상의 영역을 지정해주세요</p>
-                <img class="drag-event-ic" src="/resources/img/ic-drag-event.gif"/>
             </div>
             </div>
             <div id="bottomSheet" class="modal">
