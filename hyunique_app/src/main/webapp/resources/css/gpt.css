@@ -14,11 +14,12 @@
 }
 
 .chat-input-section {
-	width: 75%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 }
 
 input .user-gpt-input {
@@ -30,6 +31,7 @@ input .user-gpt-input {
 	display: flex;
 	justify-content: center;
 	margin-right: 1rem;
+	height: 100%;
 }
 
 button .btn-gpt-request {
@@ -56,7 +58,7 @@ button .btn-gpt-request {
 	max-width: 70%;
 	margin-top: 2rem;
 	position: relative;
-	background: rgb(80 194 247);
+	background: var(--grey6);
 	border-radius: 1.1em;
 	color:white;
 }
@@ -89,7 +91,7 @@ button .btn-gpt-request {
 .user-gpt-input {
     width: 90%;
     height: 100%;
-    border: 1px solid #0277bd;
+    border: 1px solid var(--jw-blue);
     border-radius: 0.7rem;
     padding-left: 1rem;
     background: none;
@@ -100,7 +102,6 @@ button .btn-gpt-request {
 }
 .chat-section-wrapper{
 	width: 94%;
-   	font-family: 'Inter';
 }
 .chat-upload-btn-section {
     display: flex;
@@ -123,11 +124,11 @@ div#main-wrapper-top {
 div#hyunique-main-top-recommend {
     position: fixed;
     width: 100%;
-    top: 75px;
+    top: 80px;
     z-index: 10;
     max-width: 760px;
     margin-left: 0;
-    padding-left: 1.6rem;
+    /* padding-left: 1.6rem; */
     background: linear-gradient(180deg, #ffffff 20%, #ffffff75 100%);
     backdrop-filter: blur(5px);
 }
@@ -149,6 +150,8 @@ div#hyunique-main-top-logo {
     padding-bottom: 1rem;
     padding-top: 1rem;
     background: white;
+    height: 3rem;
+    width: 100%;
 }
 
 .voice-control-wrapper {
@@ -168,12 +171,12 @@ div#voice-control {
 }
 button.btn-gpt-request {
     width: 100%;
-	background: rgb(80 194 247);
-	min-width: 4rem;
-	text-align: center;
-	border-radius: 0.7rem;
-	color: white;
-	font-weight: 500;
+    background: var(--jw-blue2);
+    min-width: 4rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    color: white;
+    font-weight: 500;
 }
 
 
@@ -301,7 +304,6 @@ div#bag-check {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-family: Inter;
 }
 
 #bag-img{
@@ -322,7 +324,7 @@ div#product-only-wrapper {
 
 label {width: 24px;height: 24px;}
 
-.purchase-cancel-btn {border: 1px solid;border-radius: 0.9rem;/* max-width: 40%; */width: 180px;text-align: center;background: white;height: 40px;line-height: 2.6;}
+.purchase-cancel-btn {border: 1px solid;border-radius: 0.9rem;/* max-width: 40%; */width: 180px;text-align: center;background: white;height: 40px;line-height: 2.8;}
 
 .purchase-area-wrapper {
     display: flex;
@@ -340,7 +342,7 @@ label {width: 24px;height: 24px;}
     border-radius: 0.9rem;
     /* max-width: 40%; */
     text-align: center;
-    background: #3375B8;
+    background: rgb(18,120,255);
     color: white;
     width: 180px;
     height: 40px;
@@ -360,12 +362,7 @@ label {width: 24px;height: 24px;}
 .loader-wrapper {
     flex-direction: column;
 }
-#toss{
-	font-family: 'Inter';
-}
-p.product-item-price {
-    font-family: Inter;
-}
+
 div#product-info-wrapper {
     display: flex;
     flex-direction: column;
@@ -379,7 +376,6 @@ div#pop-up-img-inst {
     font-size: 0.8rem;
     border-radius: 1rem;
     width: 14rem;
-    font-family: Inter;
     margin-left: 1rem;
     margin-bottom: 1rem;
     transition: transform 100ms, opacity 300ms;
@@ -393,7 +389,6 @@ div#gpt-page-tab-deco {
     font-family: Tossface;
 }
 .footer-ai-wrapper {
-    background: var(--jw-light-blue2);
 }
 .footer-home-wrapper {
     background: none;
@@ -592,7 +587,6 @@ display: none;
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Inter';
 }
 
 #address-button-list{
@@ -621,4 +615,11 @@ button.modal-check-btn {
     background: var(--jw-blue);
     border-radius: 4px;
     color: #FFFFFF;
+}
+
+#footer-ai-img {
+    content: url("/resources/img/ico-nav-ai-selected.png");
+}
+#footer-home-img {
+    content: url("/resources/img/ico-nav-home.png") !important;
 }
