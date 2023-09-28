@@ -28,15 +28,15 @@ p.follow-title-sub {
 
 span {
     margin-left: 1rem;
-    font-size: 1.1rem;
-    font-family: Inter;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
 img {
-    width: 3.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: cover;
     border-radius: 10rem;
-    aspect-ratio: 1/1
 }
 
 lord-icon#loading-icon {
