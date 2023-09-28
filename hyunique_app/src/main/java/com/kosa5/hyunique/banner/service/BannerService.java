@@ -8,5 +8,6 @@ import com.kosa5.hyunique.user.vo.UserVO;
 public interface BannerService {
     List<BannerVO> getAllBanners();
 	List<UserVO> getRandomUsers(int userId);
+	List<UserVO> getUserRanking();
 
 }

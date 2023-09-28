@@ -51,8 +51,21 @@ $(document).ready(function() {
 		  error: function() {
 			  console.error('Failed to load random users'); 
 		  }
-	}, 3000);
-
+	});
+	
+	 $.get("/userranking", function(users) {
+		    if (users && Array.isArray(users)) { // users가 배열인지 확인
+		      users.forEach((user, index) => {
+		        if (index < 3) { // 상위 3명만 처리
+		          const rank = ["1st", "2nd", "3rd"][index];
+		          $(`#rank-${rank}-img`).attr("src", user.userImg);
+		          $(`#rank-${rank}`).find(".user-nickname").text(user.userNickname);
+		        }
+		      });
+		    } else {
+		      console.log("users is undefined or not an array");
+		    }
+		  });
 });
 function toggleFollow(userId) {
 	const checkboxId = `follower-toggle-${userId}`;

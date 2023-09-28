@@ -1,5 +1,6 @@
 .content-wrapper {
 	width: 100%;
+	height: calc(100vh - 108px);
 }
 .login-btn-wrapper {
 	display: flex;
@@ -10,15 +11,15 @@
 .logo-wrapper{
 	display:flex;
 	flex-direction:row;
-	margin-left:1.3rem;
+	margin-left: 1.6rem;
 	margin-top:1rem;
 }
 .instruct-text-wrapper{
 	display:flex;
 	justify-content: left;
 	text-align: initial;
-	margin-top: 3rem;
-	/* margin-bottom: 2rem; */
+	margin-top: 1rem;
+	margin-bottom: 2rem;
 	margin-left: 1.6rem;
 }
 .login-text-wrapper{
@@ -32,7 +33,7 @@
 	height : 4rem;
 }
 .img-logo{
-	height : 2rem;
+	height: 3rem;
 }
 .txt-instruct{
 	font-size:1.7rem;
@@ -48,11 +49,11 @@
 	text-align: center;
 }
 .intro-gif img {
-	width: 50%;
+	width: 40%;
 	aspect-ratio: 1/1.5;
 	margin: auto;
 	display: block;
 	object-fit: cover;
 	overflow: hidden;
-	max-width: 270px;
+	max-width: 180px;
 }
