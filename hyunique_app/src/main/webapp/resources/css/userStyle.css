@@ -202,12 +202,12 @@ input[type="checkbox"]:checked + label {
 }
 
 .tab-bar {
-	margin-bottom: 0.35rem;
-  	display: -webkit-box;
-  	display: -ms-flexbox;
-  	display: flex;
-  	list-style-type: none;
-  	-webkit-padding-start: 0;
+	margin-bottom: 0.25rem;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	list-style-type: none;
+	-webkit-padding-start: 0;
 }
 .horizontal-bar{
   background-color: var(--grey1);
@@ -215,9 +215,11 @@ input[type="checkbox"]:checked + label {
   height: 10px;
  }
 .tab {
+  font-weight: bold;
+  font-family: Cafe24Ohsquareair;
   padding: 0.8rem 0;
   background: white;
-  color: #607D8B;
+  color: var(--jw-blue);
   overflow: hidden;
   text-align: center;
   -webkit-box-flex: 1;
@@ -236,7 +238,7 @@ input[type="checkbox"]:checked + label {
   height: 3px;
   background: var(--jw-blue2);
   position: absolute;
-  margin-top: 46px;
+  margin-top: 41px;
   margin-left:0;
   -webkit-transition: margin 0.5s ease;
   transition: margin 0.5s ease;
@@ -432,4 +434,7 @@ li#tab-1 {
 }
 #footer-my-img {
     content: url("/resources/img/ico-nav-my-selected.png");
+}
+div#tab2 {
+    overflow: scroll;
 }
