@@ -189,7 +189,7 @@ function updateUser() {
         success: function (response) {
         	toastr.success('성공적으로 회원 정보 수정을 완료했습니다.');
         	setTimeout(function(){
-            	window.location.replace('/user/'+sessionId);
+            	window.location.replace('/login');
         	}, 1000);
         },
         error: function (response) {
