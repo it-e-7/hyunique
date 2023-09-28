@@ -58,7 +58,7 @@ input#searchInput,input#searchInput1,input#searchInput2 {
     width: calc(100% - 4.2rem);
     height: 2.5rem;
     border-radius: 0.8rem;
-    border: 1px solid var(--grey2);
-    background: var(--grey2);
+    border: 1px solid var(--grey1);
+    background: var(--grey1);
     padding-left: 1rem;
 }

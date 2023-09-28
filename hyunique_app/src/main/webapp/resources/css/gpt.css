@@ -331,7 +331,7 @@ div#product-only-wrapper {
 
 label {width: 24px;height: 24px;}
 
-.purchase-cancel-btn {border: 1px solid;border-radius: 0.9rem;/* max-width: 40%; */width: 180px;text-align: center;background: white;height: 40px;line-height: 2.8;}
+.purchase-cancel-btn {border: 1px solid var(--grey4);border-radius: 0.9rem;width: 180px;text-align: center;background: white;height: 40px;line-height: 2.8;}
 
 .purchase-area-wrapper {
     display: flex;

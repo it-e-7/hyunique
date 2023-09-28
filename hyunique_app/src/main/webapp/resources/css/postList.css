@@ -111,24 +111,27 @@
     content: url("/resources/img/ic-medal-1st.png") !important;
     width: 32px;
     height: auto !important;
-    top:0px;
+    top: -10px;
     background: none;
+    left: -10px;
 }
 
 .ranking2{
     content: url("/resources/img/ic-medal-2nd.png") !important;
     width: 32px;
     height: auto !important;
-    top:0px;
+    top: -10px;
     background: none;
+    left: -10px;
 }
 
 .ranking3{
     content: url("/resources/img/ic-medal-3rd.png") !important;
     width: 32px;
     height: auto !important;
-    top:0px;
+    top: -10px;
     background: none;
+    left: -10px;
 }
 
 .photo img{
@@ -320,6 +323,7 @@ div#banner {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 3.5rem;
 }
 
 img.ranking-user-img {
@@ -328,6 +332,7 @@ img.ranking-user-img {
     object-fit: cover;
     object-position: center;
     border-radius: 100rem;
+    margin-bottom: 3rem;
 }
 
 .ranking-user-wrapper {
@@ -355,10 +360,12 @@ img#rank-2nd {
 }
 
 .user-nickname {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     margin-top: 0.4rem;
+    font-family: 'SUITE-Regular';
+    color: whitesmoke;
 }
 
 .ranking-number {
@@ -418,12 +425,16 @@ img#rank-1st-img {
 .category-description {
     margin-left: 1.57rem;
     font-size: 0.8rem;
-    color: gray;
+    color: navajowhite;
     margin-top: 0.5rem;
 }
 div#ranking-wrapper {
     padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    background: darkred;
+    background-image: url(https://images.freeimages.com/vhq/images/previews/fea/realistic-red-curtain-background-416837.jpg);
+    background-size: cover;
 }
 .recommend-description {
 	display:flex;
@@ -472,9 +483,13 @@ lord-icon#rank-icon {
 }
 div#ranking-header-txt {
     margin-left: 1.57rem;
-    font-size: 1.4rem;
+    font-size: 3rem;
     font-weight: 600;
     word-break: keep-all;
+    margin-top: 1rem;
+    color: white;
+    text-shadow: 7px 11px 11px black;
+    font-family: 'SUITE-Regular';
 }
          
 .btn-grad {
@@ -704,4 +719,53 @@ div#random-users-wrapper {
 }
 div#tab-img-my-follow-txt {
     margin-top: 2rem;
+}
+
+.ranking-back-img {
+    z-index: 1;
+    width: 9rem;
+}
+.ranking-user-img {
+	z-index: 2;
+	margin-top: -90px;
+    margin-left: 21px;
+}
+.ranking-crown-img{
+	z-index: 3;
+	width: 6rem;
+	margin-top: -167px;
+	margin-left: 21px;
+	position: absolute;
+}
+img#rank-3rd-img {
+    margin-top: -78px;
+    margin-left: 18px;
+}
+
+img#rank-2nd-img {
+    margin-top: -78px;
+    margin-left: 18px;
+}
+img#ic-crown-3rd-img {
+    width: 4.5rem;
+    margin-top: -155px;
+    margin-left: 25px;
+}
+
+img#ic-crown-2nd-img {
+    width: 4.5rem;
+    margin-top: -155px;
+    margin-left: 25px;
+}
+
+img#ic-back-3rd-img {
+    width: 8rem;
+}
+
+img#ic-back-2nd-img {
+    width: 8rem;
+}
+
+img#tie-banner {
+    width: 100%;
 }

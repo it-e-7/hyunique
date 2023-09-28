@@ -17,6 +17,7 @@
 	<input type="hidden" id="followerCount" value="${followerCount}">
 	<input type="hidden" id="userId" value="${userId}">
 </div>
+<img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7+2023-09-28+%EC%98%A4%ED%9B%84+11.56.35.png" id="tie-banner"/>
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
@@ -88,22 +89,25 @@
 		<div class="ranking-section">
 			<div class="ranking-user-wrapper" id="rank-2nd">
 				<div class="ranking-wrapper">
-					<div class="ranking-number" id="2nd-number">2</div>
+					<img class="ranking-back-img" id="ic-back-2nd-img" src="resources/img/ic-back-2nd.png"/>
 				</div>
+				<img class="ranking-crown-img" id="ic-crown-2nd-img" src="resources/img/ic-crown-2nd.png"/>
 				<img class="ranking-user-img" id="rank-2nd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_107.jpg"/>
 				<div class="user-nickname">유니 </div>
 			</div>
 			<div class="ranking-user-wrapper" id="rank-1st">
 				<div class="ranking-wrapper">
-					<div class="ranking-number" id="1st-number">1</div>
+					<img class="ranking-back-img" id="ic-back-1st-img" src="resources/img/ic-back-1st.png"/>
 				</div>
+				<img class="ranking-crown-img" id="ic-crown-1st-img" src="resources/img/ic-crown-1st.png"/>
 				<img class="ranking-user-img" id="rank-1st-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/back_35.jpg"/>
 				<div class="user-nickname">우기</div>
 			</div>
 			<div class="ranking-user-wrapper" id="rank-3rd">
 				<div class="ranking-wrapper">
-					<div class="ranking-number" id="3rd-number">3</div>
+					<img class="ranking-back-img" id="ic-back-3rd-img" src="resources/img/ic-back-3rd.png"/>
 				</div>
+				<img class="ranking-crown-img" id="ic-crown-3rd-img" src="resources/img/ic-crown-3rd.png"/>
 				<img class="ranking-user-img" id="rank-3rd-img" src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/profile/profile_105.jpg"/>
 				<div class="user-nickname">지니</div>
 			</div>
