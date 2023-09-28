@@ -52,6 +52,7 @@
     display: block;
     margin: 0 auto;
     aspect-ratio: 0.84/1;
+    border-radius: 0.6rem;
 }
 
 @keyframes load {

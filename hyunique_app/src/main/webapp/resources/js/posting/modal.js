@@ -76,7 +76,5 @@ function closeModal() {
 
     $(".select-product-size option:not(:first)").remove();
     $(".select-product-color option:not(:first)").remove();
-
-    $(window).scrollTop(0);  // 저장한 스크롤 위치로 이동
 }
 
