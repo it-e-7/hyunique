@@ -32,7 +32,7 @@
 					</button>
 	    			<div class="search-input-wrapper">
 	    				<input type="text" id="search-input" placeholder="검색어를 입력하세요" />
-	    				<img src="/resources/img/ic-search-n.png" />
+	    				<img src="/resources/img/ic-search.png" />
 	    			</div>
               <button id="img-search-btn">
                   <img src="/resources/img/ic-search-camera.png" />

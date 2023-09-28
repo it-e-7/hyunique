@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (button!=null) {
                 button.style.backgroundColor = "#20242a";
                 button.style.color = "#ffffff";
-                button.style.border ="rgb(32, 36, 42)";
+                button.style.border ="1px solid #E9E9E9";
             }
         }
     }

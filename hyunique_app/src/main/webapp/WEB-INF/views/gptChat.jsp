@@ -15,7 +15,6 @@
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 	 <div id= "hyunique-main-top-recommend">
-	    <div class="tab-deco">🤖</div>
 	    <div class="button selected" id="AI-recommend">AI추천</div>
 	</div>
 	<!-- 헤더 제외 gpt화면 전체 -->
@@ -81,11 +80,6 @@
 	    	<div class="voice-control-wrapper">
     		    <div id="voice-control"></div>
 	    	</div>
-	    	<div id="pop-up-img-inst">
-		    	<p id="img-search-inst">
-		    		버튼을 눌러 옷 이미지 검색을 할 수 있어요!<br>다음 버전을 기대해주세요.
-		    	</p>
-		    </div>
 	    	<div class="loader-wrapper hidden">
 		    	<div class="loader">
 		  			<span class="loader__inner"></span>
@@ -97,15 +91,6 @@
 	    	</div>
 	    	
 	    	<div class="typing-control-wrapper">
-		    	<div class="chat-upload-btn-section">
-		    		<lord-icon
-					    src="https://cdn.lordicon.com/mecwbjnp.json"
-					    trigger="click"
-					    colors="primary:#121331,secondary:#1663c7"
-					    stroke="40"
-						style="width:34.3px;height:34.3px">
-					</lord-icon>
-		    	</div>
 		    	<div class="chat-input-section">
 	  				<input class="user-gpt-input" id=resultList type="text" name="user-gpt-input" placeholder="상황이나 장소를 알려주세요">	        			
 		    	</div>

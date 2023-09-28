@@ -430,7 +430,6 @@ li#tab-1 {
     font-weight: bold;
     background-color: transparent;
 }
-.footer-my-wrapper {
-    background: var(--jw-light-blue2);
-
+#footer-my-img {
+    content: url("/resources/img/ico-nav-my-selected.png");
 }

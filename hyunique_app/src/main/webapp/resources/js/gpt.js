@@ -66,7 +66,7 @@ if (!isSafari) {
 
 
 $(document).ready(function () {
-	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>안녕하세요!!<br><br>스타일링부터 구매까지 도와드릴 🤖AI예요.<br><br><b>하단의 버튼을 눌러 상황이나 장소를 말씀해보세요!</b></span></p></div><div>');
+	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="gpt-profile-wrapper"><div id="gpt-profile-img-wrapper"><img id="gpt-profile-img" src="/resources/img/ic-ai-chatbot.jpg"/></div><div id="gpt-name">AI휴니</div></div><div class="chat-by-gpt speech-bubble-gpt"><p><span>안녕하세요!!<br><br>스타일링부터 구매까지 도와드릴 AI휴니예요.<br><br><b>하단의 버튼을 눌러 코디가 필요한 상황이나 장소를 알려주세요!</b></span></p></div><div>');
   wordflick();
   $("#12322").change(function() {
 	  if ($(this).prop("checked")) {
@@ -75,19 +75,6 @@ $(document).ready(function () {
       $("#bag-img").attr("src", "/resources/img/ic-bag-noncheck.png");
     }
   });
-setTimeout(function() {
-	var element = document.getElementById('pop-up-img-inst');
-	if (element) {
-	  element.classList.add('fade-out');
-	  }
-	}, 4000);
-
-setTimeout(function() {
-	var element = document.getElementById('pop-up-img-inst');
-	if (element) {
-		element.style.display = 'none';
-	  }
-	}, 4400);
 });
 function scrollToBottom() {
 	const lastMessage = document.querySelector('.chat-section-wrapper > :last-child');
@@ -217,11 +204,11 @@ function gptRequest() {
 
 		    	  }
 		    	  if(data.response.charAt(0) !== '*'){
-			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음과 같은 상품으로 스타일링을 도와드릴게요</span></p></div><div>');
+			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="gpt-profile-wrapper"><div id="gpt-profile-img-wrapper"><img id="gpt-profile-img" src="/resources/img/ic-ai-chatbot.jpg"/></div><div id="gpt-name">AI휴니</div></div><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음과 같은 상품으로 스타일링을 도와드릴게요</span></p></div><div>');
 		    	  }
 		    	  scrollToBottom();
 		    	  setTimeout(() => {
-			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + modifiedResponse + '</span></p></div><div>');
+			    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="gpt-profile-wrapper"><div id="gpt-profile-img-wrapper"><img id="gpt-profile-img" src="/resources/img/ic-ai-chatbot.jpg"/></div><div id="gpt-name">AI휴니</div></div><div class="chat-by-gpt speech-bubble-gpt"><p><span>' + modifiedResponse + '</span></p></div><div>');
 			    	  scrollToBottom();
 		    	  }, 1000);
 		    	  $(".loader-wrapper").addClass("hidden");
@@ -231,13 +218,15 @@ function gptRequest() {
 		    	  $("#response-content").text(modifiedResponse);
 		    	  if(data.response.charAt(0) !== '*'){
 			    	  setTimeout(() => {
-				    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="chat-by-gpt speech-bubble-gpt"><p><span>다음 버전에서는 이미지 생성도 만나볼 수 있어요 :)</span></p></div><div>');
-			    	  	}, 2000);
+				    	  $(".chat-section-wrapper").append('<div class="chat-gpt-wrapper" data-aos="zoom-in-up"><div class="gpt-profile-wrapper"><div id="gpt-profile-img-wrapper"><img id="gpt-profile-img" src="/resources/img/ic-ai-chatbot.jpg"/></div><div id="gpt-name">AI휴니</div></div><div class="chat-by-gpt speech-bubble-gpt"><p><span>휴니가 스타일링 예시를 그리고 있어요...</span></p></div><div>');
+						  scrollToBottom();
+			    	  }, 2000);
 					    scrollToBottom();
 		    	  }
 		    	  if(data.response.charAt(0) !== '*'){
-		    	    //gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
+		    	    gptImgRequest("A full-body portrait of a people wearing"," The people is standing on a white background in soft studio lighting.shot on EOS 5d mark2. person is looking at the camera.");
 		    	    gptProductRequest();
+				    scrollToBottom();
 		    	  }
 		    	},
 		      error: function(error) {

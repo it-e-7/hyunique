@@ -90,7 +90,7 @@ input{
 }
 .btn-submit{
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	background: var(--jw-blue);
 	border-radius: 0.8rem;
 	color: #FFFFFF;
 	width: calc(100% - 60px);
@@ -205,4 +205,7 @@ input#sample3_extraAddress {
 }
 .footer-my-wrapper {
     background: var(--jw-light-blue2);
+}
+#footer-my-img {
+    content: url("/resources/img/ico-nav-my-selected.png");
 }

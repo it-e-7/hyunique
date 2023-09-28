@@ -28,15 +28,15 @@ p.follow-title-sub {
 
 span {
     margin-left: 1rem;
-    font-size: 1.1rem;
-    font-family: Inter;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
 img {
-    width: 3.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: cover;
     border-radius: 10rem;
-    aspect-ratio: 1/1
 }
 
 lord-icon#loading-icon {
@@ -44,4 +44,21 @@ lord-icon#loading-icon {
     left: 0;
     right: 0;
     margin: 0 auto;
+}
+
+div#search-bar-wrapper {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 2rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+}
+
+input#searchInput,input#searchInput1,input#searchInput2 {
+    width: calc(100% - 4.2rem);
+    height: 2.5rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--grey1);
+    background: var(--grey1);
+    padding-left: 1rem;
 }
