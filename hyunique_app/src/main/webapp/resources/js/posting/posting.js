@@ -497,7 +497,7 @@ function showTutorial() {
 
         setTimeout(function() {
             $('.tutorial-wrap').hide();
-        }, 4000);
+        }, 5000);
 
         document.cookie = "tutorialSeen=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     }
