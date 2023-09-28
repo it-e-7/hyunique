@@ -702,3 +702,6 @@ div#random-users-wrapper {
     border: 1px solid lightgray !important;
     background: #f2f2f2 !important;
 }
+div#tab-img-my-follow-txt {
+    margin-top: 2rem;
+}

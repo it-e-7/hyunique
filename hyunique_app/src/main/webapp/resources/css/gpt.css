@@ -46,9 +46,9 @@ button .btn-gpt-request {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 14rem;
-    margin-top: 5rem;
-    padding-top: 3rem;
+    /* padding-bottom: 14rem; */
+    /* margin-top: 5rem; */
+    /* padding-top: 3rem; */
 }
 
 .speech-bubble-user {
@@ -69,12 +69,14 @@ button .btn-gpt-request {
     padding-right: 1rem;
     padding-left: 1rem;
     max-width: 70%;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     position: relative;
     background-color: rgb(237 240 243);
     border-radius: 1.1rem;
     color: black;
     width: fit-content;
+    margin-left: 2.6rem;
+    margin-bottom: 0.5rem;
 }
 
 .chat-user-wrapper{
@@ -103,6 +105,8 @@ button .btn-gpt-request {
 }
 .chat-section-wrapper{
 	width: 94%;
+	margin-top: 9rem;
+	margin-bottom: 9rem;
 }
 .chat-upload-btn-section {
     display: flex;
@@ -257,6 +261,8 @@ canvas {
     flex-direction: column;
     padding-top: 1rem;
     list-style: none;
+    margin-left: 2.6rem;
+    margin-right: 2.6rem;
 }
 
 .post-product-title {
@@ -623,4 +629,38 @@ button.modal-check-btn {
 }
 #footer-home-img {
     content: url("/resources/img/ico-nav-home.png") !important;
+}
+div#gpt-profile-img-wrapper {
+    width: 2.7rem;
+    border: 1px solid var(--grey3);
+    border-radius: 10rem;
+    object-fit: cover;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    object-position: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+img#gpt-profile-img {
+    height: 100%;
+}
+
+.gpt-profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+div#gpt-name {
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+}
+span {font-family: SUITE-Regular;}
+span#dall-e-img {
+    margin-left: 2.6rem;
 }

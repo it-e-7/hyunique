@@ -38,10 +38,10 @@ html {
 body {
 	max-width: 760px;
 	min-width: 360px;
-	min-height: 100vh;
+	min-height: calc(100vh - 60px);
 	margin: 0 auto;
 	font-family: 'Inter', sans-serif;
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 }
 
 @media (min-width: 700px) {
