@@ -45,6 +45,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	padding: 0 2rem;
+	font-family: 'Happiness-Sans-Bold';
 }
 
 .post-thumbnail-list-wrapper {
@@ -82,17 +83,20 @@
 	color: var(--jw-blue);
 	padding: 0 2rem;
 	margin-top: 5px;
+	font-family: 'Happiness-Sans-Bold';
 }
 
 .brand-title {
 	font-size: 22px;
 	font-weight: 550;
 	margin-bottom: 2px;
+	font-family: 'Happiness-Sans-Bold';
 }
 
 .description {
 	color: #BBBBBB;
 	font-size: 13px;
+	font-family: 'SUITE-Regular';
 }
 
 #hyunique-main-top-logo {

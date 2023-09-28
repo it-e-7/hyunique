@@ -664,3 +664,6 @@ span {font-family: SUITE-Regular;}
 span#dall-e-img {
     margin-left: 2.6rem;
 }
+button#search-button {
+    display: none;
+}

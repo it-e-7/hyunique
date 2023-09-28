@@ -98,7 +98,7 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    width: 24px;
+    width: 28px;
     height: 24px;
     color: white;
     font-size: 13px;
@@ -106,6 +106,7 @@
     top: 6px;
     left: 6px;
     border-radius: 4px;
+    font-family: 'SUITE-Regular';
 }
 
 .ranking1{
@@ -166,6 +167,7 @@
   color: #BBBBBB;
   transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
   font-weight: 600;
+  font-family: Cafe24Ohsquareair;
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -484,13 +486,13 @@ lord-icon#rank-icon {
 }
 div#ranking-header-txt {
     margin-left: 1.57rem;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
     word-break: keep-all;
     margin-top: 1rem;
     color: white;
     text-shadow: 7px 11px 11px black;
-    font-family: 'SUITE-Regular';
+    font-family: Cafe24Ohsquareair;
 }
          
 .btn-grad {
@@ -607,7 +609,7 @@ div.tab-img-desc-wrapper {
 }
 
 p.tab-img-desc-txt {
-    font-family: 'SUITE-Regular';
+    font-family: Cafe24Ohsquareair;
     font-weight: 900;
     font-size: 1.28rem;
     white-space: nowrap;
@@ -628,28 +630,27 @@ div#random-users {
     width: 100%;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
+    margin-bottom: 1rem;
 }
 img#random-user-img {
     width: 100%;
 }
 
 div#random-user-img-wrapper {
-    width: 6rem;
+    width: 4rem;
     overflow: hidden;
     border-radius: 10rem;
     margin-bottom: 1.4rem;
-    height: 6rem;
+    height: 4rem;
 }
 
 div#random-user-wrapper {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 100px;
+    max-width: 80px;
     margin-right: 0.6rem;
-    min-width: 90px;
-    padding: 1.5rem 2rem;
+    padding: 0.8rem 1.5rem;
     border: 1px solid #c0bebe;
     border-radius: 0.4rem;
 }
@@ -733,9 +734,9 @@ div#tab-img-my-follow-txt {
 }
 .ranking-crown-img{
 	z-index: 3;
-	width: 6rem;
-	margin-top: -167px;
-	margin-left: 21px;
+	width: 5rem;
+	margin-top: -164px;
+	margin-left: 27px;
 	position: absolute;
 }
 img#rank-3rd-img {

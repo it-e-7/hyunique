@@ -54,4 +54,10 @@ public class HomeController {
 		return bannerService.getRandomUsers(userId);
 	}
     
+	@ResponseBody
+	@GetMapping("/userranking")
+	public List<UserVO> getUserRanking() {
+		return bannerService.getUserRanking();
+	}
+	
 }

@@ -22,6 +22,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    WHERE ROWNUM <= 10
 	  ]]>
 	</select>
-
+	<select id="selectUserRanking" resultType="com.kosa5.hyunique.user.vo.UserVO">
+		SELECT U.*
+		FROM hy_rank R JOIN hy_user U
+		ON R.user_id =  U.user_id
+		ORDER BY R.RANK
+	</select>
 
 </mapper>

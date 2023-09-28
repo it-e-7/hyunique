@@ -24,4 +24,9 @@ public class BannerServiceImpl implements BannerService{
 	public List<UserVO> getRandomUsers(int userId) {
 		return bannerMapper.selectRandomUsers(userId);
 	}
+
+	@Override
+	public List<UserVO> getUserRanking() {
+		return bannerMapper.selectUserRanking();
+	}
 }

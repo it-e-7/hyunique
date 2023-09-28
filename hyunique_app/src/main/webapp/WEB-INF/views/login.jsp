@@ -27,7 +27,7 @@
 	<div class="content-wrapper">
 		<div class="logo-wrapper">
 			<a href = "/">
-				<img src="/resources/icon/hyuniquelogo.png" class="img-logo"/>
+				<img src="/resources/img/hyunique.png" class="img-logo"/>
 			</a>
 		</div>
 		<div class="instruct-text-wrapper">
