@@ -26,7 +26,7 @@ function getProductData(day) {
 			productList.html(response.forEach((product,idx) => {
 				list += `<li>
 							<div class="simple-wrapper hover-wrapper" onclick="location.href = '/product/${product.productId}'">
-								<p class="product-rank">${status.index + 1}</p>
+								<p class="product-rank">${idx + 1}</p>
 								<img src="${product.productImg}">
 								<div class="product-inform-wrapper">
 									<p>${product.productBrand }</p>
@@ -38,8 +38,8 @@ function getProductData(day) {
 								<p class="user-nickname">${product.userNickname }</p>
 							</div>
 							<div class="simple-wrapper">
-								<p class="bold-p like-p">${product.totalLike }</p>
-								<p class="bold-p tag-p">${product.totalTag }</p>
+								<p class="bold-p like-p">${product.totalLike }개</p>
+								<p class="bold-p tag-p">${product.totalTag }회</p>
 							</div>
 						</li>`;
 			}));

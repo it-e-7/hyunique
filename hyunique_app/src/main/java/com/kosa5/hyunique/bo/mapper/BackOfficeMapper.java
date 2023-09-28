@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.kosa5.hyunique.bo.vo.BackOfficeBrandVO;
 import com.kosa5.hyunique.bo.vo.BackOfficeProductVO;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 
@@ -16,5 +17,7 @@ public interface BackOfficeMapper {
 	List<ProductDetailVO> selectQRCount(int day);
 	
 	List<BackOfficeProductVO> selectHotProduct(int day);
+
+	List<BackOfficeBrandVO> selectHotBrand(int day);
 
 }

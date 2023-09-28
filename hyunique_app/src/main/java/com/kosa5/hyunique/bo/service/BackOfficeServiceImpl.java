@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa5.hyunique.bo.mapper.BackOfficeMapper;
+import com.kosa5.hyunique.bo.vo.BackOfficeBrandVO;
 import com.kosa5.hyunique.bo.vo.BackOfficeProductVO;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 
@@ -28,5 +29,10 @@ public class BackOfficeServiceImpl implements BackOfficeService{
 	@Override
 	public List<BackOfficeProductVO> getHotProduct(int day) {
 		return boMapper.selectHotProduct(day);
+	}
+	
+	@Override
+	public List<BackOfficeBrandVO> getHotBrand(int day) {
+		return boMapper.selectHotBrand(day);
 	}
 }

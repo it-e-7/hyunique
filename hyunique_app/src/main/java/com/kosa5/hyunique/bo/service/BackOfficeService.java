@@ -2,6 +2,7 @@ package com.kosa5.hyunique.bo.service;
 
 import java.util.List;
 
+import com.kosa5.hyunique.bo.vo.BackOfficeBrandVO;
 import com.kosa5.hyunique.bo.vo.BackOfficeProductVO;
 import com.kosa5.hyunique.product.vo.ProductDetailVO;
 
@@ -12,5 +13,7 @@ public interface BackOfficeService {
 	List<ProductDetailVO> getQRCount(int day);
 
 	List<BackOfficeProductVO> getHotProduct(int day);
+
+	List<BackOfficeBrandVO> getHotBrand(int day);
 
 }

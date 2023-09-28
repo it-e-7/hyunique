@@ -96,3 +96,7 @@ body {
 	color: var(--grey5);
 	padding-left: 32px;
 }
+
+.canvas-wrapper {
+	width: 55%;
+}
