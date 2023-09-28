@@ -105,7 +105,7 @@
 				</div>
 				<div class="button-wrapper">
 		      		<button class="btn-submit jw-btn-radius" id="finish-userprefer" onclick="updateUser()">시작하기</button>
-					<div class="skip-buttons" id="userprefer-skip">나중에 입력할게요</div>
+					<div class="skip-buttons" id="userprefer-skip"  onclick="updateUser()" >나중에 입력할게요</div>
 				</div>
 			</div>
 			<div class="content-wrapper" id="form-finished">
