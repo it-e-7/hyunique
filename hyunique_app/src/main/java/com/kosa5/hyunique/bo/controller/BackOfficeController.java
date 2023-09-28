@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosa5.hyunique.bo.service.BackOfficeService;
+import com.kosa5.hyunique.bo.vo.BackOfficeBannerVO;
 import com.kosa5.hyunique.bo.vo.BackOfficeBrandVO;
 import com.kosa5.hyunique.bo.vo.BackOfficeProductVO;
 import com.kosa5.hyunique.interceptor.annotation.Auth;
@@ -82,8 +85,45 @@ public class BackOfficeController {
 	
 	@Auth(role = Role.ADMIN)
 	@GetMapping("banner")
-	public String getBackOfficeBanner() {
+	public String getBackOfficeBanner(Model model) {
+		List<BackOfficeBannerVO> result = boService.getAllBanner();
+		model.addAttribute("bannerList", result);
+		
 		return "backoffice/banner";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("banner")
+	public String postBackOfficeBanner(@RequestParam("banner") MultipartFile banner,
+										@RequestParam("bannerName") String bannerName) {
+		
+		boService.uploadBanner(banner, bannerName);
+		
+		return "ok";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("banner/delete")
+	public String deleteBackOfficeBanner(int displayOrder) {
+		int result = boService.deleteBanner(displayOrder);
+		
+		return "redirect:backoffice/banner";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("banner/up")
+	public String upBackOfficeBanner(int displayOrder) {
+		int result = boService.upBanner(displayOrder);
+		
+		return "redirect:backoffice/banner";
+	}
+	
+	@Auth(role = Role.ADMIN)
+	@PostMapping("banner/down")
+	public String downBackOfficeBanner(int displayOrder) {
+		int result = boService.downBanner(displayOrder);
+		
+		return "redirect:backoffice/banner";
 	}
 	
 	@GetMapping("login")

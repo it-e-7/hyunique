@@ -119,7 +119,6 @@ function getBrandData(day) {
 			});
 			
 			response.sort(sortByPrice);
-			console.log(response);
 			response.filter(brand => brand.totalPrice > 0).slice(0, 15).forEach((brand, idx) => {
 				brandPriceData.datasets[0].data.push(brand.totalPrice);
 				brandPriceData.datasets[0].backgroundColor.push(makeRandomColor());

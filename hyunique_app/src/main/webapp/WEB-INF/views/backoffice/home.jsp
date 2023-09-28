@@ -10,7 +10,12 @@
 <body>
 	<%@ include file="/WEB-INF/views/backoffice/layout.jsp" %>
 	<div class="backoffice-content-wrapper">
-		<p>홈 화면
+		<div class="backoffice-qr-container">
+			<p class="dashboard-title margin-title">환영합니다</p>
+			<p class="backoffice-description">
+				hyunique 서비스의 통계를 확인하고 지표를 관리해보세요
+			</p>
+		</div>
 	</div>
 </body>
 </html>

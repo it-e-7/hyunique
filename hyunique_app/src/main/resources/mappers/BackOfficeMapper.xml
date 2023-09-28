@@ -149,4 +149,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	]]>
     </select>
     
+    <select id="selectAllBanner" resultType="BackOfficeBannerVO">
+    	SELECT * FROM HY_BANNER
+        ORDER BY DISPLAY_ORDER
+    </select>
+    
+    <delete id="deleteBanner" statementType="CALLABLE">
+    	call delete_banner(#{displayOrder})
+    </delete>
+    
+    <update id="upBanner" statementType="CALLABLE">
+    	call up_banner(#{displayOrder})
+    </update>
+    
+    <update id="downBanner" statementType="CALLABLE">
+    	call down_banner(#{displayOrder})
+    </update>
+    
+    <insert id="insertBanner" statementType="CALLABLE">
+    	call insert_banner(#{bannerUrl}, #{bannerName})
+    </insert>
+    
 </mapper>
