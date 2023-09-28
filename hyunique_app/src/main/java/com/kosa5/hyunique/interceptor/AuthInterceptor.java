@@ -84,9 +84,9 @@ public class AuthInterceptor implements HandlerInterceptor{
 		else if(auth.role().toString().equals("ADMIN")) {
 			if(session == null) {
 				if(post != null) {
-					response.getWriter().write(mapper.writeValueAsString("{\"redirect\":\"/admin/login\", \"msg\":\"운영자 로그인을 해주세요\"}"));
+					response.getWriter().write(mapper.writeValueAsString("{\"redirect\":\"/backoffice/login\", \"msg\":\"운영자 로그인을 해주세요\"}"));
 				} if(get != null) {
-					response.sendRedirect("/admin/login");
+					response.sendRedirect("/backoffice/login");
 				}
 				return false;
 			}
@@ -94,9 +94,9 @@ public class AuthInterceptor implements HandlerInterceptor{
 			// 세션은 있으나 로그인이 안된 경우
 			if(adminLog == null) {
 				if(post != null) {
-					response.getWriter().write(mapper.writeValueAsString("{\"redirect\":\"/admin/login\", \"msg\":\"운영자 로그인을 해주세요\"}"));
+					response.getWriter().write(mapper.writeValueAsString("{\"redirect\":\"/backoffice/login\", \"msg\":\"운영자 로그인을 해주세요\"}"));
 				} if(get != null) {
-					response.sendRedirect("/admin/login");
+					response.sendRedirect("/backoffice/login");
 				}
 				return false;
 			}
