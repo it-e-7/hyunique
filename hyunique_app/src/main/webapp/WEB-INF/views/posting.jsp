@@ -110,6 +110,14 @@
                 style="width:200px;height:100vh">
             </lord-icon>
         </div>
+
+        <div class="tutorial-wrap">
+            <div class="speech-bubble">
+                <p class="tutorial-txt">
+                    의상을 눌러서 착용한 제품에 태그를 달아보세요. 다른 사용자에게 노출될 확률이 올라갑니다.
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="search-container">
