@@ -34,8 +34,8 @@ function attachTag(xOffset, yOffset, vo) {
     let id = tagElement.attr('id');
 
     items[id] = {
-        xPos: 0,
-        yPos: 0,
+        xPos: xOffset,
+        yPos: yOffset,
         pinType: 'arrow-left',
         productId: vo['productId'],
         productBrand: vo['productBrand'],
@@ -55,9 +55,6 @@ function attachTag(xOffset, yOffset, vo) {
     $(".search-container").hide();
     $(".write-container").show();
     $("#search-input").val("");
-
-    items[id].xOffset = xOffset;
-    items[id].yOffset = yOffset;
 
     imgContainer.append(tagElement);
 
