@@ -1,8 +1,12 @@
 /* 공통 */
+
+body {
+    margin-bottom: 0;
+}
+
 .image-container {
     width: 60%;
 }
-
 
 .pre-container .image-container img {
     width: 100%;
@@ -196,7 +200,7 @@ button#add-img-btn {
 }
 
 .content-group {
-    margin-bottom: 6.5rem;
+    margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
 }
