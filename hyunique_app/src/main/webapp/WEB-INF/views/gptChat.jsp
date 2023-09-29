@@ -15,7 +15,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 	 <div id= "hyunique-main-top-recommend">
-	    <div class="button selected" id="AI-recommend">AI추천</div>
+	    <div class="button selected" id="AI-recommend">AI휴니</div>
 	</div>
 	<!-- 헤더 제외 gpt화면 전체 -->
 	<div class="main-gpt-wrapper">

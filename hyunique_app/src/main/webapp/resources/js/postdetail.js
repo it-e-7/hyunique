@@ -9,7 +9,7 @@ const likeToggle = {
 	unselect: 'selected',
 };
 const likeCountStrong = $('#like-count-strong');
-let likeCount = +likeCountStrong.text()[0];
+let likeCount = +likeCountStrong.text().replace('명', '');
 if(likeCount === 0) {
 	$('#like-count-p').hide();
 }
