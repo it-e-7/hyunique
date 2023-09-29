@@ -136,7 +136,7 @@ function gptProductRequest (){
                   <div id="product-info-wrapper">
                     <strong>${product.productBrand}</strong>
                     <p class='product-item-name'>${product.productName}</p>
-                    <p class='product-item-price'>${product.productPrice}원</p>
+                    <p class='product-item-price'>${product.productPrice.toLocaleString('ko-KR')}원</p>
                   </div>
               </div>
               <div id="bag-check">

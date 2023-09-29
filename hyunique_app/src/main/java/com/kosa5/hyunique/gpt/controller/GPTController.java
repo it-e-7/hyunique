@@ -71,9 +71,9 @@ public class GPTController {
 		List<PostProductVO> value = new ArrayList<>();
 		String[] splitStrings = productList.split(",");
 		for (String str : splitStrings) {
-			List<PostProductVO> productSearchList = productService.getnSearchProductList(str, 1);
+			List<PostProductVO> productSearchList = productService.getnSearchProductList(str, 0);
 			if (!productSearchList.isEmpty()) {
-				value.add(productService.getnSearchProductList(str,1).get(0));
+				value.add(productSearchList.get(0));
 			}
 		}
 		return value;

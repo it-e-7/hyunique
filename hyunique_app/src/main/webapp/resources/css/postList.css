@@ -610,7 +610,7 @@ div.tab-img-desc-wrapper {
 
 p.tab-img-desc-txt {
     /*font-family: Cafe24Ohsquareair;*/
-    font-weight: 900;
+    font-weight: 600;
     font-size: 1.28rem;
     white-space: nowrap;
     text-overflow: ellipsis;
