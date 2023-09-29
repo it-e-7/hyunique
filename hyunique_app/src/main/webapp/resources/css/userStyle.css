@@ -89,7 +89,7 @@
 	margin-bottom:1.5rem;
 }
 .user-details p{
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-size:1rem;
 }
 #user-detail-title{
@@ -121,7 +121,7 @@
 .txt-user-profile{
 	margin-top:-0.5rem;
 	font-size:1.15rem;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight:600;
 }
 #vertical-bar{
@@ -129,7 +129,7 @@
 	color:var(--grey4);
 }
 .user-introduce-wrapper{
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	margin-left: 1rem;
 	font-size:1.1rem;
 	font-weight:;
@@ -159,7 +159,7 @@ input[type="checkbox"] + label {
 	border-color:var(--jw-blue2);
 	border-radius: 0.4rem;
 	padding: 0.2rem 0.7rem;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	color:var(--jw-blue2);
 }
 
@@ -174,7 +174,7 @@ input[type="checkbox"]:checked + label {
 	border-color:var(--jw-blue3);
 	border-radius: 0.4rem;
 	padding: 0.2rem 0.7rem;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	color:var(--jw-blue3);
 }
 
@@ -216,7 +216,7 @@ input[type="checkbox"]:checked + label {
  }
 .tab {
   font-weight: bold;
-  font-family: Cafe24Ohsquareair;
+  /*font-family: Cafe24Ohsquareair;*/
   padding: 0.8rem 0;
   background: white;
   color: var(--jw-blue);
@@ -358,7 +358,7 @@ body{
 
 #product-brand, #product-price {
 	padding-left:1rem;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight:bold;
 }
 #product-name{
@@ -402,7 +402,7 @@ body{
 .category-name {
     grid-column: span 2;
     text-align: center;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-size: 1rem;
     margin-top: 0.5rem;
 }
@@ -418,7 +418,7 @@ body{
 
 #txt-more-style{
 	text-align: center;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-size: 1rem;
 }
 li#tab-2 {

@@ -327,7 +327,7 @@ div#title-wrap {
 p#delete-title {
     display: flex;
     color: black;
-    font-family: 'Inter var alt';
+    /*font-family: 'Inter var alt';*/
     justify-content: center;
     align-items: center;
     margin: 0.5rem;
@@ -337,7 +337,7 @@ p#delete-title {
 p#delete-subtitle {
     display: flex;
     color: gray;
-    font-family: 'Inter var alt';
+    /*font-family: 'Inter var alt';*/
     margin: 0.5rem;
     font-size: 0.9em;
 }
@@ -348,7 +348,7 @@ div#border-line {
 }
 
 button#delete-btn {
-    font-family: 'Inter var';
+    /*font-family: 'Inter var';*/
     color: red;
     display: flex;
     align-items: center;
@@ -358,7 +358,7 @@ button#delete-btn {
 }
 
 button#cancel-btn {
-    font-family: 'Inter var';
+    /*font-family: 'Inter var';*/
     color: black;
     display: flex;
     justify-content: center;
@@ -407,7 +407,7 @@ div#close-wrapper {
     flex-direction: row;
     justify-content: space-between;
     font-size: 1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-weight: 400;
     align-items: center;
     margin: 1rem;

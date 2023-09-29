@@ -1,8 +1,9 @@
 @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
-.spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+.spoka * { /*font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';*/ }
 
+/*
 @font-face {
     font-family: 'Cafe24Ohsquareair';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/Cafe24Ohsquareair.woff') format('woff');
@@ -27,6 +28,8 @@
     font-weight: normal;
     font-style: normal;
 }
+*/
+
 * {padding: 0; margin: 0;}
 
 html {
@@ -34,19 +37,16 @@ html {
     -webkit-tap-highlight-color: transparent;
     font-size: 14px;
     scroll-behavior: smooth;
+    font-family: Montserrat, Pretendard, sans-serif;
 }
 
-:root { font-family: 'SUITE-Regular'; }
-@supports (font-variation-settings: normal) {
-  :root { font-family: 'SUITE-Regular'; }
-}
+
 
 body {
 	max-width: 760px;
 	min-width: 360px;
 	min-height: calc(100vh - 60px);
 	margin: 0 auto;
-	font-family: 'Inter', sans-serif;
 	margin-bottom: 60px;
 }
 
@@ -97,7 +97,7 @@ button {
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight: 500;
 }
 .jw-btn-radius {
@@ -110,7 +110,7 @@ button {
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight: 500;
 	border-radius: 100rem;
 }
@@ -164,9 +164,9 @@ button {
 .post-pin {
 	position: absolute;
 	display: block;
-	padding: 5px 9px;
-	background-color: rgba(255, 255, 255, 90%);
-	border-radius: 10px;
+	padding: 6px 8px;
+	background-color: rgba(238, 238, 238, 0.85);
+	border-radius: 6px;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 	white-space: nowrap;
@@ -180,16 +180,23 @@ button {
 }
 
 .pin-brand {
-	font-weight: 700;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 15px;
 }
 
 .pin-price {
-	color: var(--grey5);
+	font-size: 11px;
+	font-weight: 400;
+	color: rgb(153, 153, 153);
+    line-height: 15px;
 }
 
 .pin-size-color {
-	font-weight: 550;
-	color: var(--jw-blue);
+	font-size: 10px;
+	font-weight: 400;
+	color: rgb(34, 149, 255);
+    line-height: 15px;
 }
 
 .post-pin:after {
@@ -205,28 +212,28 @@ button {
 .arrow-left:after {
 	left: -11.5px;
 	top: 50%;
-	border-right-color: rgba(255, 255, 255, 90%);
+	border-right-color: rgba(238, 238, 238, 0.85);
 	transform: translate(0, -50%);
 }
 
 .arrow-right:after {
 	left: calc(100% - 0.5px);
 	top: 50%;
-	border-left-color: rgba(255, 255, 255, 90%);
+	border-left-color: rgba(238, 238, 238, 0.85);
 	transform: translate(0, -50%);
 }
 
 .arrow-bottom:after {
 	left: 50%;
 	top: calc(100% - 0.5px);
-	border-top-color: rgba(255, 255, 255, 90%);
+	border-top-color: rgba(238, 238, 238, 0.85);
 	transform: translate(-50%, 0);
 }
 
 .arrow-top:after {
 	left: 50%;
 	top: -11.5px;
-	border-bottom-color: rgba(255, 255, 255, 90%);
+	border-bottom-color: rgba(238, 238, 238, 0.85);
 	transform: translate(-50%, 0);
 
 #backward-btn{

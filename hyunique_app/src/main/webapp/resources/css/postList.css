@@ -106,7 +106,7 @@
     top: 6px;
     left: 6px;
     border-radius: 4px;
-    font-family: 'SUITE-Regular';
+    /*font-family: 'SUITE-Regular';*/
 }
 
 .ranking1{
@@ -167,7 +167,7 @@
   color: #BBBBBB;
   transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
   font-weight: 600;
-  font-family: Cafe24Ohsquareair;
+  /*font-family: Cafe24Ohsquareair;*/
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -254,7 +254,7 @@
     text-indent: 1.6rem;
     margin-bottom: 11%;
     margin-top: 1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 }
 
 #bottom-for-login {
@@ -367,7 +367,7 @@ img#rank-2nd {
     text-align: center;
     font-weight: 600;
     margin-top: 0.4rem;
-    font-family: 'SUITE-Regular';
+    /*font-family: 'SUITE-Regular';*/
     color: whitesmoke;
 }
 
@@ -446,7 +446,7 @@ div#ranking-wrapper {
 }
 p.txt-rec-des {
     font-size: 1.1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-weight: 600;
     margin-bottom: 1rem;
     color: #26354b;
@@ -492,7 +492,7 @@ div#ranking-header-txt {
     margin-top: 1rem;
     color: white;
     text-shadow: 7px 11px 11px black;
-    font-family: Cafe24Ohsquareair;
+    /*font-family: Cafe24Ohsquareair;*/
 }
          
 .btn-grad {
@@ -506,7 +506,7 @@ div#ranking-header-txt {
    width: 100%;
    font-size: 1.4rem;
    font-weight: 500;
-   font-family: 'Inter';
+   /*font-family: 'Inter';*/
    padding: 0.6rem 0;
    text-indent: 1.6rem;
    margin-top: 1rem;
@@ -550,7 +550,7 @@ p#txt-ranking-des {
     margin-left: 1.6rem;
 }
 .tab-deco{
-	font-family: 'Tossface';
+	/*font-family: 'Tossface';*/
     margin-right: 3px;
 }
 
@@ -576,7 +576,7 @@ div.tab-desc-wrapper {
 }
 
 p.tab-desc-txt {
-    font-family: Jost;
+    /*font-family: Jost;*/
     font-size: 32px;
     font-weight: 600;
 }
@@ -609,7 +609,7 @@ div.tab-img-desc-wrapper {
 }
 
 p.tab-img-desc-txt {
-    font-family: Cafe24Ohsquareair;
+    /*font-family: Cafe24Ohsquareair;*/
     font-weight: 900;
     font-size: 1.28rem;
     white-space: nowrap;
@@ -664,7 +664,7 @@ div#random-user-wrapper {
     color: white;
     text-align: center;
     font-size: 0.6rem;
-    font-family: 'Jost';
+    /*font-family: 'Jost';*/
 }
 p#random-userNickname {
     margin-bottom: 0.8rem;
