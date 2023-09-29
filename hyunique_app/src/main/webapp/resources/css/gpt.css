@@ -262,7 +262,6 @@ canvas {
     padding-top: 1rem;
     list-style: none;
     margin-left: 2.6rem;
-    margin-right: 2.6rem;
 }
 
 .post-product-title {
@@ -283,11 +282,13 @@ canvas {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 2px solid var(--grey2);
+    gap: 8px;
+    border: 1px solid var(--grey2);
     border-radius: 0.6rem;
     background-color: white;
     cursor: pointer;
     /* padding: 0 1rem; */
+    overflow: hidden;
 }
 div#bag-check {
     width: 10%;
@@ -296,6 +297,7 @@ div#bag-check {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding-right: 12px;
 }
 .gpt-product-list li div {
 	display: flex;
@@ -326,7 +328,7 @@ div#product-only-wrapper {
     display: flex;
     flex-direction: row;
     width: 90%;
-    border-radius: 1rem;
+    gap: 8px;
 }
 
 label {width: 24px;height: 24px;}
