@@ -17,7 +17,7 @@
 	<input type="hidden" id="followerCount" value="${followerCount}">
 	<input type="hidden" id="userId" value="${userId}">
 </div>
-<img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7+2023-09-28+%EC%98%A4%ED%9B%84+11.56.35.png" id="tie-banner"/>
+<img src="https://oreo-hyunique.s3.ap-northeast-2.amazonaws.com/banner/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7+2023-09-29+%EC%98%A4%ED%9B%84+10.03.30.png" id="tie-banner"/>
 <div id="main-wrapper">
     <%@ include file="/WEB-INF/views/header.jsp"%>
     <div id= "hyunique-main-top-recommend">
