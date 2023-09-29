@@ -76,7 +76,7 @@ body {
 
 .header p {
     font-size: 1.5rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-weight: 600;
 }
 
@@ -213,7 +213,7 @@ button#add-img-btn {
     border: 1px solid var(--grey4);
     border-radius: 9px;
     font-size: 1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     padding: 0.8rem;
     margin: auto;
 }
@@ -282,7 +282,7 @@ button#add-img-btn {
     border-radius: 1rem;
     padding-right: 40px;
     padding-left: 20px;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
 }
@@ -457,10 +457,10 @@ input[type="checkbox"] + label, input[type="radio"] + label {
     line-height: 2rem;
     margin-right: 0.1rem;
     margin-bottom: 0.5rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     letter-spacing: 0.05rem;
     text-align: center;
-    font-family: 'Noto Sans KR';
+    /*font-family: 'Noto Sans KR';*/
     color: var(--grey4);
     background-color: var(--grey1);
 }
@@ -511,7 +511,7 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 }
 
 .select-product-size {
@@ -524,12 +524,12 @@ input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 }
 
 option {
     color: #424242;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     -webkit-appearance: none;
 }
 
@@ -640,7 +640,7 @@ button.modal-check-btn {
 }
 
 .tag-container, .content-text {
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

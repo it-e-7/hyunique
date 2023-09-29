@@ -37,7 +37,7 @@
 }
 .txt-instruct{
 	font-size:1.7rem;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight:bold;
 }
 .txt-login{

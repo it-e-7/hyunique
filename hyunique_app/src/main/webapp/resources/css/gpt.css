@@ -393,7 +393,7 @@ div#pop-up-img-inst.fade-out {
 }
 div#gpt-page-tab-deco {
     margin-left: 1.6rem;
-    font-family: Tossface;
+    /*font-family: Tossface;*/
 }
 .footer-ai-wrapper {
 }
@@ -449,7 +449,7 @@ div#gpt-page-tab-deco {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Spoqa Han Sans';
+    /*font-family: 'Spoqa Han Sans';*/
 }
 
 option:disabled {
@@ -458,7 +458,7 @@ option:disabled {
 
 option {
     color: #424242;
-    font-family: 'Spoqa Han Sans';
+    /*font-family: 'Spoqa Han Sans';*/
     -webkit-appearance: none;
 }
 
@@ -489,7 +489,7 @@ option {
     padding: 0 15px;
     height: 40px;
     background-color: white;
-    font-family: 'Spoqa Han Sans';
+    /*font-family: 'Spoqa Han Sans';*/
 }
 
 .size-wrap .select-input__icon {
@@ -660,7 +660,7 @@ div#gpt-name {
     font-size: 1.1rem;
     margin-left: 0.5rem;
 }
-span {font-family: SUITE-Regular;}
+span {/*font-family: SUITE-Regular;*/}
 span#dall-e-img {
     margin-left: 2.6rem;
 }
