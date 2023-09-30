@@ -41,14 +41,13 @@ function requestProductSizeAndColor(product) {
         // color 처리
         if (data.productColor.length > 0) {
            $.each(data.productColor, function(index, color) {
-               slideItem = $("<option>").attr("value", `${index}`).text(color);  // id도 올바르게 수정
+               slideItem = $("<option>").attr("value", `${index}`).text(color);
                selectColor.append(slideItem);
            });
         } else {
-           slideItem = $("<option>").attr("value", "0").text("one");  // id도 올바르게 수정
+           slideItem = $("<option>").attr("value", "0").text("one");
            selectColor.append(slideItem);
         }
-
     });
 }
 
