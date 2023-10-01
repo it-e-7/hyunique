@@ -103,7 +103,6 @@ public class PostServiceImpl implements PostService {
     public String uploadOnePost(PostVO postVO, List<PostProductVO> postProductVO) {
 
         Map<String, String> keys = s3Service.getUploadImgFileURL(postVO.getImgFiles());
-
         String thumbnail = keys.keySet().iterator().next();
         postVO.setThumbnailUrl(keys.get(thumbnail));
 
@@ -119,7 +118,6 @@ public class PostServiceImpl implements PostService {
         if (!params.get("state").toString().equals("success")) {
             s3Service.deleteImgFile(new ArrayList<>(keys.keySet()));
         }
-
         return params.get("state").toString();
     }
 
@@ -133,8 +131,12 @@ public class PostServiceImpl implements PostService {
     public String deleteOnePost(int postId) {
         Map<String, Object> post = new HashMap<>();
         post.put("postId", postId);
+        post.put("imgUrl", null);
         post.put("state", "success");
         postMapper.deleteOnePost(post);
+
+        List<String> files = (List<String>) post.get("imgUrl");
+        s3Service.deleteImgFile(files);
 
         return post.get("state").toString();
     }

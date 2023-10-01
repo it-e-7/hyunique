@@ -127,7 +127,6 @@ function loadingStart() {
     $("#loading-icon").show();
 }
 
-
 function loadingEnd() {
     $('.write-loading-wrapper').css({
         'overflow': 'auto'
@@ -137,7 +136,6 @@ function loadingEnd() {
     $('.write-loading-wrapper').hide();
     $("#loading-icon").hide();
 }
-
 
 $('#add-img-btn').click(function() {
     $('#addFileInput').click();

@@ -79,6 +79,14 @@
 					</c:forEach>
 				</div>
         </c:if>
+        <div class="delete-loading-wrapper"></div>
+        <lord-icon
+            id="loading-icon"
+            src="https://cdn.lordicon.com/xjovhxra.json"
+            trigger="loop"
+            colors="primary:#d9d8d8,secondary:#08a88a"
+            style="width:200px;height:100vh">
+        </lord-icon>
         <div class="delete-wrap">
             <div id="delete-box">
                 <div id="title-wrap">
