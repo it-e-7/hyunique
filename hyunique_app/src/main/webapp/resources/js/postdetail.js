@@ -170,9 +170,8 @@ function deleteOnePost(postId) {
         url: `/post/${postId}`,
         type: 'DELETE',
         success: function(response) {
-            console.log(response);
+            loadingEnd();
             if (response === "success") {
-                loadingEnd();
                 window.location.href = '/';
             }
             else {
