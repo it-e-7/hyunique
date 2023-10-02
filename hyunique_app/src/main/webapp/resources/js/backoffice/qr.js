@@ -17,8 +17,13 @@ let data = {
     labels: [],
 };
 
+let myDoughnutChart = '';
+
 function drawChart() {
-	const myDoughnutChart = new Chart(ctx, {
+	if(myDoughnutChart !== '') {
+		myDoughnutChart.destroy();
+	}
+	myDoughnutChart = new Chart(ctx, {
 	    type: 'doughnut',
 	    data: data,
 	    options: options

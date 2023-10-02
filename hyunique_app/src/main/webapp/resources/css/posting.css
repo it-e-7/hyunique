@@ -337,6 +337,7 @@ ul.result-list {
     display: flex;
     flex-direction: column;
     width: 90%;
+    margin-bottom: 75px;
 }
 
 .search-product-li {
