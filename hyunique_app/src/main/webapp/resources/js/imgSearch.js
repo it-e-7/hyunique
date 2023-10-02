@@ -1,11 +1,11 @@
 const imageData = localStorage.getItem('image');
+localStorage.removeItem('image');
 
 if (imageData) {
     const imageElement = $("<img>").attr("src", imageData)
                                    .attr("draggable", 'false')
                                    .attr("class", "image");
     $('#container').append(imageElement);
-    localStorage.removeItem('image');
 }
 
 // 크롭 영역 및 핸들 생성
