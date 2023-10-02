@@ -15,6 +15,8 @@ const classes = ['arrow-left', 'arrow-top', 'arrow-right', 'arrow-bottom'];
 const pages = ['.pre-container', '.write-container', '.search-container', '.post-container']
 let currentPage;
 
+let searchResultPage = 0;
+
 getTagInform();
 
 $("#img-load-button").click(function() {
@@ -157,6 +159,7 @@ $("#search-btn").off('click').click(function(){
 
 // 상품 검색 엔터 이벤트
 $("#search-input").on('keydown', function(e){
+	searchResultPage = 0;
     if(e.keyCode == 13) {
         let productName = $("#search-input").val();
         if(productName){
@@ -345,9 +348,12 @@ async function sendPostToServer(formData, nextPost) {
 
 function getSearchProduct(productName) {
     $.ajax({
-        url: '/product/search/' + productName,
-        type: 'GET',
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    	url: `/product/nsearch`,
+	    type: 'POST',
+	    data: {
+	    	keyword: productName,
+	    	offset: searchResultPage,
+	    },
         success: function(response) {
             renderSearchProductResults(response, productName);
         }
