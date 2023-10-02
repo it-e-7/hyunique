@@ -355,7 +355,12 @@ function getSearchProduct(productName) {
 	    	offset: searchResultPage,
 	    },
         success: function(response) {
-            renderSearchProductResults(response, productName);
+        	if(searchResultPage === 0) {
+        		renderSearchProductResults(response, productName);
+        	} else {
+        		addProductList(response);
+        	}
+            
         }
     });
 }
@@ -366,6 +371,12 @@ function renderSearchProductResults(results, productName) {
     resultList.empty();
     $('.search-value').text(`${productName}`);
     $('.search-value-fixed').text('상품 검색 결과입니다.');
+    
+    addProductList(results);
+}
+
+function addProductList(results) {
+	let resultList = $(".result-list");
 
     $.each(results, function(index, product) {
         let listItem = $("<li>").addClass("search-product-li");
@@ -505,5 +516,22 @@ function showTutorial() {
 
         document.cookie = "tutorialSeen=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
     }
+}
+
+$(window).scroll((e) => {
+	if(isSearchScrollbarAtBottom()) {
+		searchResultPage++;
+		getSearchProduct($('#search-input').val());
+	}
+});
+
+function isSearchScrollbarAtBottom() {
+	if($('#search-input').val() === '') return false;
+	const element = document.documentElement;
+    const scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (element.scrollTop || 0);
+    const scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
+    const windowHeight = element.clientHeight || window.innerHeight;
+
+    return scrollTop + windowHeight+10 >= scrollHeight;
 }
 
