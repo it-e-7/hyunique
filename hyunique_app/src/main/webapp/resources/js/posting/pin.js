@@ -24,6 +24,13 @@ $('#thumbnail-img').on('click', 'img', function(e){
 
 // 터치한 위치에 상품 정보 핀 찍기
 function attachTag(xOffset, yOffset, vo) {
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+
     let tagElement = $("<span>").addClass("post-pin arrow-left").attr("id","tag_" + new Date().getTime())
                                 .css({
                                     left: xOffset + "px",
@@ -34,8 +41,8 @@ function attachTag(xOffset, yOffset, vo) {
     let id = tagElement.attr('id');
 
     items[id] = {
-        xPos: 0,
-        yPos: 0,
+        xPos: xOffset,
+        yPos: yOffset,
         pinType: 'arrow-left',
         productId: vo['productId'],
         productBrand: vo['productBrand'],
@@ -56,11 +63,7 @@ function attachTag(xOffset, yOffset, vo) {
     $(".write-container").show();
     $("#search-input").val("");
 
-    items[id].xOffset = xOffset;
-    items[id].yOffset = yOffset;
-
     imgContainer.append(tagElement);
-
 }
 
 /* 핀 움직이는 이벤트 */

@@ -11,7 +11,7 @@
 }
 
 label{
-  	font-family: 'Inter';
+  	/*font-family: 'Inter';*/
   	font-weight: 600;
 	font-size:3rem;
     color:#363636;
@@ -67,10 +67,10 @@ input{
     z-index:1000;
     max-width: 700px;
     font-size: 1.2rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 }
 .skip-buttons{
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-size: 0.9rem;
     margin-top: 1rem;
 }
@@ -92,7 +92,7 @@ input[type="radio"] + label {
     line-height: 3rem;
     /* margin-right:0.1rem; */
     margin-top:1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     letter-spacing:0.05rem;
     text-align:center;
     color:var(--grey4);
@@ -121,7 +121,7 @@ input[type="checkbox"] + label {
 	line-height:2rem;
 	margin-right:0.1rem;
 	margin-top:1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 	letter-spacing:0.05rem;
 	text-align:center;
 	color:var(--grey4);
@@ -144,7 +144,7 @@ input[type="checkbox"]:checked + label {
 }
 
 #small-text-label{
-  	font-family: 'Inter';
+  	/*font-family: 'Inter';*/
     font-size:1.3rem;
     font-weight:400;
     margin-top:1rem;

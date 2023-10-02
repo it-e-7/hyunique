@@ -3,7 +3,7 @@
     top: 0;
     z-index: 100;
     backdrop-filter: blur(5px);
-    background: linear-gradient( 180deg, #ffffff 0%,#ffffff 50%, #ffffffbd 100%);
+    background: white;
 }
 
 
@@ -16,24 +16,27 @@
 #hyunique-main-top-logo{
     display : flex;
     justify-content: space-between;
-    margin-bottom: 14px;
+    margin-bottom: 1.6rem;
     padding-top: 18px;
+    align-items: center;
 }
 
 #hyunique-main-top-logo-image >img {
-    width: 11rem;
+    width: 9rem;
 }
 #hyunique-main-top-buttons{
     display : flex;
-    gap: 8px;
+    gap: 1.2rem;
+    height: 100%;
 }
 
 #hyunique-main-top-buttons >#search-button > img{
-   width: 32px;
+   width: 24px;
+   margin-top: -1px;
 }
 
 #hyunique-main-top-buttons >#my-page-button > img{
-   width: 26px;
+   height: 23px;
 }
 
 .header-search-area {
@@ -98,7 +101,7 @@
 	position: absolute;
 	right: 16px;
 	top: 50%;
-	width: 32px;
+	width: 20px;
 	transform: translate(0, -50%);
 }
 

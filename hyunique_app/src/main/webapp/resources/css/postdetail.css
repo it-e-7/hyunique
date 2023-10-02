@@ -110,6 +110,7 @@
 .post-low-btn {
 	display: flex;
 	gap: 1rem;
+	margin-bottom: 0.8rem;
 }
 
 .post-low-btn button {
@@ -129,6 +130,7 @@
 
 .post-content-date {
 	color: var(--grey3);
+	margin-bottom: 0.6rem;
 }
 
 .post-content-text strong {
@@ -325,7 +327,7 @@ div#title-wrap {
 p#delete-title {
     display: flex;
     color: black;
-    font-family: 'Inter var alt';
+    /*font-family: 'Inter var alt';*/
     justify-content: center;
     align-items: center;
     margin: 0.5rem;
@@ -335,7 +337,7 @@ p#delete-title {
 p#delete-subtitle {
     display: flex;
     color: gray;
-    font-family: 'Inter var alt';
+    /*font-family: 'Inter var alt';*/
     margin: 0.5rem;
     font-size: 0.9em;
 }
@@ -346,7 +348,7 @@ div#border-line {
 }
 
 button#delete-btn {
-    font-family: 'Inter var';
+    /*font-family: 'Inter var';*/
     color: red;
     display: flex;
     align-items: center;
@@ -356,7 +358,7 @@ button#delete-btn {
 }
 
 button#cancel-btn {
-    font-family: 'Inter var';
+    /*font-family: 'Inter var';*/
     color: black;
     display: flex;
     justify-content: center;
@@ -405,7 +407,7 @@ div#close-wrapper {
     flex-direction: row;
     justify-content: space-between;
     font-size: 1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-weight: 400;
     align-items: center;
     margin: 1rem;
@@ -424,4 +426,28 @@ span#none-display-btn {visibility: hidden;}
 p#like-desc {
     height: 1.2rem;
     line-height: 1.2;
+}
+
+
+.delete-loading-wrapper {
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(100, 100, 100, 0.4);
+    z-index: 1002;
+}
+
+#loading-icon {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1003;
+    margin: 0 auto;
 }

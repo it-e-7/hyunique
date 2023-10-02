@@ -52,6 +52,7 @@
     display: block;
     margin: 0 auto;
     aspect-ratio: 0.84/1;
+    border-radius: 0.6rem;
 }
 
 @keyframes load {
@@ -67,8 +68,8 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, minmax(0px, 1fr));
-    grid-column-gap: 1px;
-    grid-row-gap: 1px;
+    grid-column-gap: 0.4rem;
+    grid-row-gap: 0.4rem;
 }
 
 @media screen and (max-width: 700px) {
@@ -80,6 +81,7 @@
 .photo {
     box-sizing: border-box;
     position: relative;
+    /* border-radius: 1rem; */
 }
 
 .ranking-box{
@@ -96,7 +98,7 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    width: 24px;
+    width: 28px;
     height: 24px;
     color: white;
     font-size: 13px;
@@ -104,47 +106,68 @@
     top: 6px;
     left: 6px;
     border-radius: 4px;
+    /*font-family: 'SUITE-Regular';*/
 }
 
 .ranking1{
-    background-color: rgb(253,204,63);
+    content: url("/resources/img/ic-medal-1st.png") !important;
+    width: 32px;
+    height: auto !important;
+    top: -10px;
+    background: none;
+    left: -10px;
 }
 
 .ranking2{
-    background-color: rgb(204,204,204);
+    content: url("/resources/img/ic-medal-2nd.png") !important;
+    width: 32px;
+    height: auto !important;
+    top: -10px;
+    background: none;
+    left: -10px;
 }
 
 .ranking3{
-    background-color: rgb(184,95,63);
+    content: url("/resources/img/ic-medal-3rd.png") !important;
+    width: 32px;
+    height: auto !important;
+    top: -10px;
+    background: none;
+    left: -10px;
 }
 
 .photo img{
    max-width: 100%;
-    min-width: 100%;
-    display: block;
-    margin: 0 auto;
-    aspect-ratio: 0.84/1;
-    object-fit: cover;
-    object-position: center;
+   min-width: 100%;
+   display: block;
+   margin: 0 auto;
+   aspect-ratio: 0.84/1;
+   object-fit: cover;
+   object-position: center;
+   border-radius: 0.6rem;
 }
 
 #hyunique-main-top-recommend {
    display: flex;
-   margin-left: 22px;
-   font-size: 1.07rem;
+   font-size: 1.1rem;
    font-weight: 600;
    color : #BBBBBB;
+   margin-bottom: 1rem;
+   border-bottom: 1px solid lightgray;
+   flex-direction: row;
+   justify-content: space-evenly;
 }
 
 #hyunique-main-top-recommend .button {
   cursor: pointer;
-  margin-right: 1rem;
   text-decoration: none;
   text-decoration: none;
-  padding-bottom: 8px;
-  border-bottom: 3.5px solid transparent; /* 밑줄 추가 */
+  padding-bottom: 1rem;
+  border-bottom: 2.5px solid transparent; /* 밑줄 추가 */
   color: #BBBBBB;
   transition: border-color 0.3s ease; /* 밑줄 변화에 트랜지션 효과 추가 */
+  font-weight: 600;
+  /*font-family: Cafe24Ohsquareair;*/
 }
 
 #hyunique-main-top-recommend .button.selected {
@@ -155,8 +178,7 @@
 #filterModalButton {
     font-size: 1rem;
     border: 1px solid #E9E9E9;
-    border-radius: 6px;
-    padding: 0.6rem;
+    border-radius: 10rem;
     background-color: transparent;
     cursor: pointer;
     white-space: nowrap;
@@ -166,20 +188,11 @@
     flex-direction: row;
     align-items: center;
     font-weight: 400;
+    background: #fafafb;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
-@media screen and (max-width: 700px) {
-     #filterModalButton {
-        font-size: 12px;
-        border: 1px solid #E9E9E9;
-        border-radius: 10px;
-        padding: 3px 10px;
-        background-color: transparent;
-        cursor: pointer;
-        white-space: nowrap;
-        margin-right: 4px;
-     }
-}
 
 #filterModalButton >img{
     display: flex;
@@ -187,22 +200,13 @@
     height: 1.1rem;
 }
 
-@media screen and (max-width: 700px) {
-    #filterModalButton >img {
-        display: flex;
-        align-items: center;
-        height: 18px;
-    }
-}
 
 
 .filter-img-div{
-   padding: 10px 10px !important;
 }
 
 @media screen and (max-width: 700px) {
 .filter-img-div{
-   padding: 5px 5px !important;
 }
 }
 
@@ -224,8 +228,8 @@
     white-space: nowrap;
     overflow : hidden;
     overflow-x: auto;
-    padding: 1rem 0.8rem;
-    height: 32px;
+    padding: 0rem 1.6rem 1rem 1.6rem;
+    height: 30px;
 }
 #qr-button {
     width: 78px;
@@ -250,7 +254,7 @@
     text-indent: 1.6rem;
     margin-bottom: 11%;
     margin-top: 1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 }
 
 #bottom-for-login {
@@ -291,13 +295,15 @@
     font-weight: 700;
     padding: 6px 20px;
     border-radius: 0.8rem;
-    background: linear-gradient(135deg, rgb(103, 140, 2196) 0.04%, rgb(4, 41, 98) 72.91%) 0% 0% / 200%;
+    background: black;
     animation: 2s ease 0s infinite alternate none running kcinZC;
 }
 
 div#banner img {
     width: 100%;
+    border-radius: 0.6rem;
     scroll-snap-align: start;
+    height: auto;
 }
 
 div#banner {
@@ -306,6 +312,9 @@ div#banner {
     overflow: scroll;
     scroll-snap-type: x mandatory;
     cursor: pointer;
+    /* max-width: 700px; */
+    width: calc(100% - 3.2rem);
+    margin-bottom: 1.2rem;
 }
 #ranking-wrapper{
 	display:flex;
@@ -317,6 +326,7 @@ div#banner {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 3.5rem;
 }
 
 img.ranking-user-img {
@@ -325,6 +335,7 @@ img.ranking-user-img {
     object-fit: cover;
     object-position: center;
     border-radius: 100rem;
+    margin-bottom: 3rem;
 }
 
 .ranking-user-wrapper {
@@ -352,10 +363,12 @@ img#rank-2nd {
 }
 
 .user-nickname {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     margin-top: 0.4rem;
+    /*font-family: 'SUITE-Regular';*/
+    color: whitesmoke;
 }
 
 .ranking-number {
@@ -407,7 +420,6 @@ img#rank-1st-img {
     height: 6rem;
 }
 .ranking-description {
-    font-family: 'Inter';
     font-size: 1.2rem;
     font-weight: 600;
     display: flex;
@@ -416,13 +428,16 @@ img#rank-1st-img {
 .category-description {
     margin-left: 1.57rem;
     font-size: 0.8rem;
-    color: gray;
-    margin-top: 1rem;
+    color: navajowhite;
+    margin-top: 0.5rem;
 }
 div#ranking-wrapper {
-    background: #f0f0f0;
     padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    background: darkred;
+    background-image: url(https://images.freeimages.com/vhq/images/previews/fea/realistic-red-curtain-background-416837.jpg);
+    background-size: cover;
 }
 .recommend-description {
 	display:flex;
@@ -431,7 +446,7 @@ div#ranking-wrapper {
 }
 p.txt-rec-des {
     font-size: 1.1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-weight: 600;
     margin-bottom: 1rem;
     color: #26354b;
@@ -443,8 +458,8 @@ lord-icon.lord-star {
 div#up-button {
 	display: none;
 	position: fixed;
-	bottom: 92px;
-	right: 32px;
+	bottom: 84px;
+	right: 24px;
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01))
     drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05))
     drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09))
@@ -471,10 +486,13 @@ lord-icon#rank-icon {
 }
 div#ranking-header-txt {
     margin-left: 1.57rem;
-    font-size: 1.4rem;
-    padding-top: 1rem;
+    font-size: 2rem;
     font-weight: 600;
     word-break: keep-all;
+    margin-top: 1rem;
+    color: white;
+    text-shadow: 7px 11px 11px black;
+    /*font-family: Cafe24Ohsquareair;*/
 }
          
 .btn-grad {
@@ -488,7 +506,7 @@ div#ranking-header-txt {
    width: 100%;
    font-size: 1.4rem;
    font-weight: 500;
-   font-family: 'Inter';
+   /*font-family: 'Inter';*/
    padding: 0.6rem 0;
    text-indent: 1.6rem;
    margin-top: 1rem;
@@ -532,7 +550,7 @@ p#txt-ranking-des {
     margin-left: 1.6rem;
 }
 .tab-deco{
-	font-family: 'Tossface';
+	/*font-family: 'Tossface';*/
     margin-right: 3px;
 }
 
@@ -541,9 +559,215 @@ p#txt-ranking-des {
 }
 div#follow-banner {width: 100%;}
 div#infinite-scroll {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
 }
-.footer-home-wrapper {
-    background: var(--jw-light-blue2);
+
+
+div.tab-desc-wrapper {
+    width: calc(100% - 3.2rem);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1.6rem;
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+}
+
+p.tab-desc-txt {
+    /*font-family: Jost;*/
+    font-size: 32px;
+    font-weight: 600;
+}
+
+div#banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#footer-home-img {
+    content: url("/resources/img/ico-nav-home-selected.png");
+}
+
+.bar{
+	width: 100%;
+	height: 5px;
+	background: #FC2B2D;
+	margin-left: 1rem;
+	margin-right: 1rem;
+} 
+    
+div.tab-img-desc-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 3.2rem);
+    margin: 1rem 1.6rem;
+}
+
+p.tab-img-desc-txt {
+    /*font-family: Cafe24Ohsquareair;*/
+    font-weight: 600;
+    font-size: 1.28rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+hr {
+    width: 100%;
+    background: #c0bebe45;
+    height: 2px;
+    border:0;
+    margin-top: 0.5rem;
+}
+
+div#random-users {
+    display: flex;
+    width: 100%;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    margin-bottom: 1rem;
+}
+img#random-user-img {
+    width: 100%;
+}
+
+div#random-user-img-wrapper {
+    width: 4rem;
+    overflow: hidden;
+    border-radius: 10rem;
+    margin-bottom: 1.4rem;
+    height: 4rem;
+}
+
+div#random-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80px;
+    margin-right: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #c0bebe;
+    border-radius: 0.4rem;
+}
+
+.follow-btn {
+    width: 100%;
+    height: 1.8rem;
+    background: var(--jw-blue);
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 0.6rem;
+    /*font-family: 'Jost';*/
+}
+p#random-userNickname {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+div#random-users-wrapper {
+    overflow-x: scroll;
+    margin-bottom: 1rem;
+}
+
+
+.follower-btn-wrapper{
+	min-width:6rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.follow-btn-class {
+    display: none;
+    width: 100%;
+}
+
+.follow-btn-class + label {
+    border: 1px solid;
+    border-color: var(--jw-blue2);
+    border-radius: 0.4rem;
+    color: rgb(255 255 255);
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    line-height: 2rem;
+    background: var(--jw-blue);
+}
+
+.follow-btn-class :checked + label {
+	color:var(--grey4);
+    border: 1px solid var(--grey4);
+
+}
+.following-label {
+    color: #747171 !important;
+    border: 1px solid lightgray !important;
+    background: #f2f2f2 !important;
+}
+div#tab-img-my-follow-txt {
+    margin-top: 2rem;
+}
+
+.ranking-back-img {
+    z-index: 1;
+    width: 9rem;
+}
+.ranking-user-img {
+	z-index: 2;
+	margin-top: -90px;
+    margin-left: 21px;
+}
+.ranking-crown-img{
+	z-index: 3;
+	width: 5rem;
+	margin-top: -164px;
+	margin-left: 27px;
+	position: absolute;
+}
+img#rank-3rd-img {
+    margin-top: -78px;
+    margin-left: 18px;
+}
+
+img#rank-2nd-img {
+    margin-top: -78px;
+    margin-left: 18px;
+}
+img#ic-crown-3rd-img {
+    width: 4.5rem;
+    margin-top: -155px;
+    margin-left: 25px;
+}
+
+img#ic-crown-2nd-img {
+    width: 4.5rem;
+    margin-top: -155px;
+    margin-left: 25px;
+}
+
+img#ic-back-3rd-img {
+    width: 8rem;
+}
+
+img#ic-back-2nd-img {
+    width: 8rem;
+}
+
+img#tie-banner {
+    width: 100%;
 }

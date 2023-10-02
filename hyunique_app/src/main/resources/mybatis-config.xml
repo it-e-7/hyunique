@@ -29,6 +29,9 @@
 		<typeAlias alias="TagVO" type="com.kosa5.hyunique.post.vo.TagVO" />
 		<typeAlias alias="ProductInformVO" type="com.kosa5.hyunique.product.vo.ProductInformVO" />
 		<typeAlias alias="BannerVO" type="com.kosa5.hyunique.banner.vo.BannerVO" />
+		<typeAlias alias="BackOfficeProductVO" type="com.kosa5.hyunique.bo.vo.BackOfficeProductVO" />
+		<typeAlias alias="BackOfficeBrandVO" type="com.kosa5.hyunique.bo.vo.BackOfficeBrandVO" />
+		<typeAlias alias="BackOfficeBannerVO" type="com.kosa5.hyunique.bo.vo.BackOfficeBannerVO" />
 	</typeAliases>
 
 	<typeHandlers>

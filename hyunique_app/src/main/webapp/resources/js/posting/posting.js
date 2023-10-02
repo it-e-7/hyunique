@@ -24,7 +24,6 @@ $("#img-load-button").click(function() {
 
 $("#fileInput").change(thumbnailUpload);
 
-
 // 이미지 압축
 async function compressImage(inputFile) {
     try {
@@ -109,8 +108,6 @@ $('.add-img-container').on('click', 'li:not(:first)',  function() {
 
 // 작성 완료 버튼
 $('#upload-button').click(function() {
-    console.log(compressedFileList);
-    loadingStart();
     compileAndSendPostData();
 });
 
@@ -130,7 +127,6 @@ function loadingStart() {
     $("#loading-icon").show();
 }
 
-
 function loadingEnd() {
     $('.write-loading-wrapper').css({
         'overflow': 'auto'
@@ -140,7 +136,6 @@ function loadingEnd() {
     $('.write-loading-wrapper').hide();
     $("#loading-icon").hide();
 }
-
 
 $('#add-img-btn').click(function() {
     $('#addFileInput').click();
@@ -194,10 +189,13 @@ $('.result-list').on('click', '.search-product-li', function() {
 
 // 화면 전환 함수
 function showPage(page) {
-    console.log(page + ' 전환');
     $(pages.join(', ')).hide();
     $(page).show();
     currentPage = page;
+
+    if (page==='.write-container') {
+        showTutorial();
+    }
 }
 
 // 뒤로가기 함수
@@ -206,7 +204,7 @@ function goBack() {
     const targetPage = pages[preIndex - 1];
 
     if (pages[preIndex] === pages[1]) {
-        $('#thumbnail-img').empty();
+        $('.thumbnail-img-wrap').empty();
 
         const container = $('.add-img-container');
         const firstItem = container.find('li').first().detach();
@@ -291,8 +289,6 @@ function compileAndSendPostData() {
 
     // 핀
     let product = Object.values(items).map(item => {
-        console.log('핀 좌표 ', item.xPos, item.yPos);
-        console.log('핀 좌표 백분율 ', (item.xPos / imgWidth) * 100, (item.yPos / imgHeight) * 100);
         return {
             pinX: (item.xPos / imgWidth) * 100,
             pinY: (item.yPos / imgHeight) * 100,
@@ -312,6 +308,7 @@ function compileAndSendPostData() {
     });
 
     try {
+        loadingStart();
         sendPostToServer(formData, nextPost);
     } catch (error) {
         console.error("재업로드 필요: ", error);
@@ -359,7 +356,6 @@ function getSearchProduct(productName) {
 
 // 상품 검색 결과 출력
 function renderSearchProductResults(results, productName) {
-
     let resultList = $(".result-list");
     resultList.empty();
     $('.search-value').text(`${productName}`);
@@ -491,3 +487,17 @@ function imageSlider(slider) {
     slider.on('mousemove touchmove', move);
     slider.on('mouseleave mouseup touchend', end);
 }
+
+function showTutorial() {
+
+    if (document.cookie.indexOf("tutorialSeen=true") === -1) {
+        $('.tutorial-wrap').show();
+
+        setTimeout(function() {
+            $('.tutorial-wrap').hide();
+        }, 5000);
+
+        document.cookie = "tutorialSeen=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+}
+

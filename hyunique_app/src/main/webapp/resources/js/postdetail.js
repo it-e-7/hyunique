@@ -9,7 +9,7 @@ const likeToggle = {
 	unselect: 'selected',
 };
 const likeCountStrong = $('#like-count-strong');
-let likeCount = +likeCountStrong.text()[0];
+let likeCount = +likeCountStrong.text().replace('명', '');
 if(likeCount === 0) {
 	$('#like-count-p').hide();
 }
@@ -162,11 +162,15 @@ $("#cancel-btn").click(function(){
 
 
 function deleteOnePost(postId) {
+    loadingStart();
+    $("#delete-box").hide();
+    $('.delete-wrap').hide();
+
     ajax({
         url: `/post/${postId}`,
         type: 'DELETE',
         success: function(response) {
-            console.log(response);
+            loadingEnd();
             if (response === "success") {
                 window.location.href = '/';
             }
@@ -213,4 +217,27 @@ function closeModal() {
     $('.delete-wrap').off('scroll touchmove mousewheel click');
 }
 
+function loadingStart() {
+    $('.delete-loading-wrapper').css({
+        'overflow':'hidden'
+    });
 
+    $('.delete-loading-wrapper').on('scroll touchmove mousewheel', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
+
+    $('.delete-loading-wrapper').show();
+    $("#loading-icon").show();
+}
+
+function loadingEnd() {
+    $('.delete-loading-wrapper').css({
+        'overflow': 'auto'
+    });
+
+    $('.delete-loading-wrapper').off('scroll touchmove mousewheel');
+    $('.delete-loading-wrapper').hide();
+    $("#loading-icon").hide();
+}

@@ -2,6 +2,7 @@ const followerCount = document.getElementById("followerCount").value || 0;
 const userId = document.getElementById("userId").value || 0;
 
 $(document).ready(function() {
+	
   $.ajax({
     url: '/banners',
     type: 'GET',
@@ -20,7 +21,97 @@ $(document).ready(function() {
     }
   }, 3000);
   skeletonRendering();
+  
+	$.ajax({
+		  url: '/randomusers',
+		  type: 'GET',
+		  data : {userId: userId},
+		  success: function(randomusers) { 
+			  randomusers.forEach(function(user) { 
+			      if (user.userId != userId) {
+					  const userDiv = `
+				  	<div id="random-user-wrapper">
+				  		<div id="random-user-img-wrapper" onclick="moveToUser('${user.userId}')">
+					  <img src="${user.userImg}" id="random-user-img"/>
+					  </div>
+					  <p id="random-userNickname" onclick="moveToUser('${user.userId}')">
+					  ${user.userNickname}
+					  </p>
+					 
+					  <div class="follower-btn-wrapper">
+				  		<input type="checkbox" name="btn-follower" class="follow-btn-class" value="follower-toggle" id="follower-toggle-${user.userId}"><label for="follower-toggle" onclick="toggleFollow(${user.userId})" id="follower-label-${user.userId}">팔로우</label>
+					  </div>
+					  </div>
+					  `;
+				  $('#random-users').append(userDiv);
+				  }
+				  
+			  });
+		  },
+		  error: function() {
+			  console.error('Failed to load random users'); 
+		  }
+	});
+	
+	 $.get("/userranking", function(users) {
+		    if (users && Array.isArray(users)) { // users가 배열인지 확인
+		      users.forEach((user, index) => {
+		        if (index < 3) { // 상위 3명만 처리
+		          const rank = ["1st", "2nd", "3rd"][index];
+		          $(`#rank-${rank}-img`).attr("src", user.userImg);
+		          $(`#rank-${rank}`).find(".user-nickname").text(user.userNickname);
+		        }
+		      });
+		    } else {
+		      console.log("users is undefined or not an array");
+		    }
+		  });
 });
+function toggleFollow(userId) {
+	const checkboxId = `follower-toggle-${userId}`;
+	  const checkbox = document.getElementById(checkboxId);
+	  const labelId = `follower-label-${userId}`;
+	  const label = document.getElementById(labelId);
+
+	  // 체크박스가 실제로 존재하는지 확인
+	  if (!checkbox) {
+	    console.error(`Checkbox with ID ${checkboxId} not found`);
+	    return;
+	  }
+
+
+	  if (checkbox.checked) {
+		label.classList.remove("following-label");
+	    label.textContent = "팔로우";
+	    ajax({
+	      url: `/user/unfollow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	        console.log('팔로우 성공', response);
+	      },
+	      error: function(response) {
+	        console.error('팔로우 실패', response);
+	      },
+	    });
+	  } else {
+	    label.classList.add("following-label");
+	    label.textContent = "팔로잉";
+	    ajax({
+	      url: `/user/follow`,
+	      type: 'POST',
+	      data: { userId },
+	      success: function(response) {
+	        console.log('팔로우 성공', response);
+	      },
+	      error: function(response) {
+	        console.error('팔로우 실패', response);
+	      },
+	    });
+
+	  }
+	}
+
 
 function setupBannerScroll() {
   let currentIndex = 0;
@@ -51,10 +142,11 @@ function setupBannerScroll() {
 
 //추천, 스타일링 버튼을 클릭했을 때 작동
 document.addEventListener('DOMContentLoaded', () => {
-    switchLayers();
     const buttonContainer = document.getElementById('hyunique-main-top-recommend');
     const buttons = buttonContainer.querySelectorAll('.button');
-
+    const followText = $('#tab-img-popular-txt');
+    const myFollowText = $('#tab-img-my-follow-txt');
+    const recFollowText = $('#tab-img-follow-txt');
     const selectedIndex = localStorage.getItem('selectedButtonIndex');
     buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -68,49 +160,63 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('selectedButtonIndex', index.toString());
       
       //배너 처리
-      if (button.textContent.trim() === '스타일랭킹') {
-        switchLayers();
-          banner.style.display = 'none';
-          document.getElementById("ranking-wrapper").style.display = 'flex';
-          document.getElementById("ranking-description").style.display = 'flex';
-          document.getElementById("recommend-description").style.display = 'none';
-          const followBanner = document.getElementById("follow-banner");
-    	  if (followBanner) {
-    	    followBanner.style.display = 'none';
-    	  }
-          const filterElement = $('#hyunique-main-top-filter');
-          filterElement.hide();
-          } 
-      else {
-          banner.style.display = 'flex';
-          document.getElementById("ranking-wrapper").style.display = 'none';
-          document.getElementById("ranking-description").style.display = 'none';
-          const followBanner = document.getElementById("follow-banner");
-    	  if (followBanner) {
-    	    followBanner.style.display = 'none';
-    	  }         
-    	  document.getElementById("recommend-description").style.display = 'flex';
-          const filterElement = $('#hyunique-main-top-filter');
-          filterElement.show();
-          }
+        if (button.textContent.trim() === '추천') {
+            banner.style.display = 'flex';
+            document.getElementById("ranking-wrapper").style.display = 'none';
+            document.getElementById("tab-recommend-txt").style.display = 'flex';
+            document.getElementById("tab-img-recommend-txt").style.display = 'flex';
+            document.getElementById("tab-ranking-txt").style.display = 'none';
+            document.getElementById("tab-follow-txt").style.display = 'none';
+            document.getElementById("ranking-wrapper").style.display = 'none';
+            document.getElementById("ranking-description").style.display = 'none';
+            document.getElementById("random-users-wrapper").style.display = 'none';
+            myFollowText.hide();
+            recFollowText.hide();
+            followText.hide();
+	        const filterElement = $('#hyunique-main-top-filter');
+	        filterElement.show();
+        }
+        
+	    if (button.textContent.trim() === '스타일랭킹') {
+	        switchLayers();
+	        banner.style.display = 'none';
+	        document.getElementById("ranking-wrapper").style.display = 'flex';
+	        document.getElementById("ranking-description").style.display = 'flex';
+	        document.getElementById("tab-recommend-txt").style.display = 'none';
+	        document.getElementById("tab-img-recommend-txt").style.display = 'none';
+            document.getElementById("tab-ranking-txt").style.display = 'flex';
+            document.getElementById("tab-follow-txt").style.display = 'none';
+            document.getElementById("random-users-wrapper").style.display = 'none';
+            followText.hide();
+            recFollowText.hide();
+            myFollowText.hide();
+	        const filterElement = $('#hyunique-main-top-filter');
+	        filterElement.hide();
+        } 
       
         if (button.textContent.trim() === '팔로우') {
+        	document.getElementById("tab-recommend-txt").style.display = 'none';
+        	document.getElementById("tab-img-recommend-txt").style.display = 'none';
+            document.getElementById("tab-ranking-txt").style.display = 'none';
+            document.getElementById("tab-follow-txt").style.display = 'flex';
             if (userId != 0) switchLayers();
-
             banner.style.display = 'none';
             document.getElementById("ranking-wrapper").style.display = 'none';
             document.getElementById("ranking-description").style.display = 'none';
-            document.getElementById("recommend-description").style.display = 'none';
+            document.getElementById("random-users-wrapper").style.display = 'flex';
             const filterElement = $('#hyunique-main-top-filter');
-            const followBanner = document.getElementById("follow-banner");
-
-            if (followBanner) {
-                followBanner.style.display = 'flex';
-            }
             if (userId == 0 || followerCount == 0) {
                 filterElement.hide();
             }
-
+            if (!userId || followerCount == 0) {
+            	followText.show();
+            	myFollowText.hide();
+            	recFollowText.show();
+              } else {
+                myFollowText.show();
+                followText.hide();
+              	recFollowText.show();
+              }
         }
       
       const filterElement = $('#hyunique-main-top-filter');
@@ -139,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleButtonClick(tag) {
     //선택된 태그 값이 전달된다.
     //모달에서 원하는 값을 설정해서 처리해야 된다.
+
+    switchLayers();
 
     var checkboxes = {
         '남': 'maleCheckbox',

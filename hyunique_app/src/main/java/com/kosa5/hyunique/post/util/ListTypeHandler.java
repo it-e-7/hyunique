@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.type.JdbcType;
@@ -38,17 +39,20 @@ public class ListTypeHandler implements TypeHandler {
     }
 
     @Override
-    public List getResult(ResultSet resultSet, String s) throws SQLException {
-        return null;
+    public List<String> getResult(ResultSet resultSet, String s) throws SQLException {
+        ARRAY array = (ARRAY) resultSet.getArray(s);
+        return array != null ? (List<String>) array.getArray() : new ArrayList<>();
     }
 
     @Override
-    public List getResult(ResultSet resultSet, int i) throws SQLException {
-        return null;
+    public List<String> getResult(ResultSet resultSet, int i) throws SQLException {
+        ARRAY array = (ARRAY) resultSet.getArray(i);
+        return array != null ? (List<String>) array.getArray() : new ArrayList<>();
     }
 
     @Override
-    public List getResult(CallableStatement callableStatement, int i) throws SQLException {
-        return null;
+    public List<String> getResult(CallableStatement callableStatement, int i) throws SQLException {
+        ARRAY array = (ARRAY) callableStatement.getArray(i);
+        return array != null ? (List<String>) array.getArray() : new ArrayList<>();
     }
 }

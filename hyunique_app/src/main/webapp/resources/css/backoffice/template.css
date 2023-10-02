@@ -14,10 +14,19 @@ body {
 .dashboard-header-wrapper {
 	position: fixed;
 	top: 0; left: 0;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
 	width: 100%;
 	height: 90px;
 	background: black;
 	color: white;
+	z-index: 101;
+}
+
+.dashboard-header-wrapper img {
+	width: 240px;
+	margin-left: 24px;
 }
 
 .dashboard-navbar-wrapper {
@@ -28,4 +37,66 @@ body {
 	height: calc(100vh - 90px);
 	background: black;
 	color: white;
+    z-index: 100;
+}
+
+.dashboard-navbar {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+}
+
+.dashboard-navbar li {
+	padding: 8px 12px;
+	font-size: 16px;
+	font-weight: 550;
+	color: white;
+	cursor: pointer;
+}
+
+.dashboard-navbar li:hover {
+	background-color: white;
+	color: black;
+}
+
+.backoffice-content-wrapper {
+	margin: 90px 0 0 200px;
+}
+
+.logout-btn {
+	padding: 8px 8px;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    font-weight: 550;
+}
+
+.dashboard-title {
+	font-size: 24px;
+	font-weight: 550;
+}
+
+.margin-title {
+	padding: 20px 32px;
+}
+
+.dashboard-content-wrapper {
+	display: flex;
+	align-items: center;
+	height: 650px;
+	margin: 20px 32px 40px 32px;
+	background: white;
+    border-radius: 22px;
+    padding: 50px;
+	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
+}
+
+.backoffice-description {
+	font-size: 16px;
+	color: var(--grey5);
+	padding-left: 32px;
+}
+
+.canvas-wrapper {
+	width: 55%;
 }

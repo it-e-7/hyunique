@@ -17,6 +17,10 @@
 			select="getPostThumbnailListByProduct" />
 	</resultMap>
 
+	<resultMap id="imgUrlResultMap" type="String">
+		<result column="IMG_URL" jdbcType="VARCHAR" property="imgUrl"/>
+	</resultMap>
+
 	<select id="getPostDetailByPostIdUserId" parameterType="map"
 		resultMap="PostDetailMap">
 		SELECT post_id, p.user_id, user_img,
@@ -231,6 +235,7 @@
 	<delete id="deleteOnePost" statementType="CALLABLE" parameterType="map">
 		call DELETE_POST(
 			#{postId, mode=IN, jdbcType=INTEGER, javaType=Integer},
+			#{imgUrl, mode=OUT, jdbcType=CURSOR, resultMap=imgUrlResultMap},
 			#{state, mode=OUT, jdbcType=VARCHAR, javaType=String}
 		)
 	</delete>

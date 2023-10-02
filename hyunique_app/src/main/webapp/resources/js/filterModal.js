@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     photoElements.each(function(index) {
                         var newDiv = `
                             <div class="ranking-box">
-                                <div class="ranking ranking${index + 1}">${index + 1}</div>
+                                <div class="ranking ranking${index + 1}">${index + 1}위</div>
                             </div>
                         `;
                         $(this).append(newDiv);
@@ -399,9 +399,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             if (button!=null) {
-                button.style.backgroundColor = "var(--jw-light-blue2)";
-                button.style.fontWeight = "bold";
-                button.style.color = "var(--jw-blue3)";
+                button.style.backgroundColor = "#20242a";
+                button.style.color = "#ffffff";
+                button.style.border ="1px solid #E9E9E9";
             }
         }
     }

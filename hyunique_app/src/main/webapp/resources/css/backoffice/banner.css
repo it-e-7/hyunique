@@ -1,0 +1,132 @@
+.banner-content-wrapper {
+	margin: 24px 80px;
+}
+
+.table-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 6px;
+	margin: 0 32px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid var(--grey2);
+}
+
+.title-img {
+	width: 500px;
+	text-align: center;
+}
+
+.simple-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 6px;
+}
+
+.table-title p {
+	font-weight: 550;
+}
+
+.banner-list {
+	list-style: none;
+	margin: 0 32px 32px 32px;
+}
+
+.banner-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 0;
+	border-bottom: 1px solid var(--grey2);
+}
+
+.banner-list li p {
+	font-weight: 550;
+}
+
+.banner-list li img {
+	width: 400px;
+	aspect-ratio: 1.25/1;
+	object-fit: cover;
+}
+
+.banner-order {
+	width: 68px;
+	text-align: center;
+}
+
+.banner-name {
+	width: 200px;
+}
+
+.banner-btn-wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	width: 300px;
+}
+
+.new-banner-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 6px;
+	padding: 12px 0;
+	margin: 0 32px;
+	margin-top: 12px;
+	border-top: 1px solid var(--grey2);
+	border-bottom: 1px solid var(--grey2);
+}
+
+#banner-name {
+	width: 258px;
+	font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid var(--jw-blue);
+}
+
+#banner-name:focus {
+	outline: none;
+	border-bottom: 1px solid var(--jw-light-blue);
+}
+
+.img-input-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 400px;
+}
+
+#preview {
+	width: 400px;
+	aspect-ratio: 1.25/1;
+	object-fit: cover;
+}
+
+button {
+	background-color: black;
+	color: white;
+	padding: 6px 14px;
+	border-radius: 6px;
+	font-weight: 550;
+	font-size: 15px;
+}
+
+#banner-img {
+	display: none;
+}
+
+.btn-upload {
+	background-color: black;
+	color: white;
+	padding: 6px 14px;
+	border-radius: 6px;
+	font-weight: 550;
+	font-size: 15px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}

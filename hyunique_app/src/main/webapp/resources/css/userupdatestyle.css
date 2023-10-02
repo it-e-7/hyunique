@@ -1,6 +1,6 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 .txt-profile-title{
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
     font-size:2rem;
     font-weight:bold;
     margin-top:1rem;
@@ -31,7 +31,7 @@
 
 .form-label{
 	width:90%;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight:400;
 	font-size:0.9rem;
 	color: #5A5959;
@@ -53,7 +53,7 @@
 	border-radius:10rem;
 }
 .txt-user-img-change{
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-size:0.5rem;
 	color: #3F86F0;
 	text-align:center;
@@ -78,7 +78,7 @@ input{
 	outline: none;
 	padding: 0.7rem 0 0.5rem 0;
 	width:100%;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-size:1.3rem;
 	font-weight:400;
 	color: #111111;
@@ -90,7 +90,7 @@ input{
 }
 .btn-submit{
 	filter: drop-shadow(0px 58px 23px rgba(0, 0, 0, 0.01)) drop-shadow(0px 33px 20px rgba(0, 0, 0, 0.05)) drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.09)) drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.1));
-	background: linear-gradient(98.53deg, #13448C -3.94%, #032962 65.28%);
+	background: var(--jw-blue);
 	border-radius: 0.8rem;
 	color: #FFFFFF;
 	width: calc(100% - 60px);
@@ -103,7 +103,7 @@ input{
 	font-weight: 600;
 	font-size: 0.95rem;
 	text-align: center;
-	font-family: 'Inter';
+	/*font-family: 'Inter';*/
 	font-weight: 500;
 }
 
@@ -123,7 +123,7 @@ input[type="radio"] + label {
 	line-height:2rem;
 	margin-right:0.1rem;
 	margin-top:1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 	letter-spacing:0.05rem;
 	text-align:center;
 	color: var(--grey4);
@@ -149,7 +149,7 @@ input[type="checkbox"] + label {
 	line-height:2rem;
 	margin-right:0.1rem;
 	margin-top:1rem;
-    font-family: 'Inter';
+    /*font-family: 'Inter';*/
 	letter-spacing:0.05rem;
 	text-align:center;
 	color: var(--grey4);
@@ -205,4 +205,7 @@ input#sample3_extraAddress {
 }
 .footer-my-wrapper {
     background: var(--jw-light-blue2);
+}
+#footer-my-img {
+    content: url("/resources/img/ico-nav-my-selected.png");
 }

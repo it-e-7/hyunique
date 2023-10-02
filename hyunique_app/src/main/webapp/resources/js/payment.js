@@ -27,14 +27,12 @@ for (var i = 0; i < parsedValue.length; i++) {
 }
 
 var sessionData = JSON.parse(sessionStorage.getItem("productListSizeColor"))
-console.log(sessionData);
-console.log(productIds);
 
 for(let i=0 ; i<sessionData.length ; i++){
-    //console.log(sessionData[i].productId);
+    console.log(sessionData[i].productId);
     let check = 0;
     for(let j=0 ; j<productIds.length ; j++){
-        //console.log(productIds[i]);
+        console.log(productIds[i]);
         if (productIds[i] == sessionData[i].productId){
         check = 1;
         }
@@ -42,6 +40,9 @@ for(let i=0 ; i<sessionData.length ; i++){
     if (check == 0){
     let deleteId = sessionData[i].productId;
     filteredData = sessionData.filter(item => item.productId !== deleteId);
+    }
+    else{
+    filteredData = sessionData;
     }
 }
 console.log(JSON.stringify(filteredData));

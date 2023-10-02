@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosa5.hyunique.banner.service.BannerService;
 import com.kosa5.hyunique.banner.vo.BannerVO;
 import com.kosa5.hyunique.post.service.PostService;
+import com.kosa5.hyunique.user.vo.UserVO;
 
 import lombok.extern.java.Log;
 
@@ -45,5 +47,17 @@ public class HomeController {
     public List<BannerVO> getAllBanners() {
         return bannerService.getAllBanners();
     }
+	
+	@ResponseBody
+	@GetMapping("/randomusers")
+	public List<UserVO> getRandomUsers(@RequestParam int userId) {
+		return bannerService.getRandomUsers(userId);
+	}
     
+	@ResponseBody
+	@GetMapping("/userranking")
+	public List<UserVO> getUserRanking() {
+		return bannerService.getUserRanking();
+	}
+	
 }

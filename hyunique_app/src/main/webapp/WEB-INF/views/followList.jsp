@@ -45,6 +45,14 @@
 		</lord-icon>		        
 	</div>
 </div>
+    <lord-icon
+        id="loading-icon"
+        src="https://cdn.lordicon.com/dpinvufc.json"
+        trigger="loop"
+        colors="primary:#d9d8d8,secondary:#08a88a"
+        stroke="25"
+        style="width:100px;height:100%">
+    </lord-icon>
 <ul class="tab-bar">
     <li data-num="0" class="tab wave dark tab-button" data-tab-target="#tab1" id="tab-1">팔로워</li>
     <li data-num="1" class="tab wave dark tab-button" data-tab-target="#tab2" id="tab-2">팔로잉</li>
@@ -53,11 +61,17 @@
 
 <div id="tab1" class="tab-content"style="display: block;">
 	<p class="follow-title-sub">모든 팔로워</p>
+	<div id="search-bar-wrapper">
+	    <input type="text" id="searchInput1" placeholder="사용자 검색" oninput="followerFilterList()">
+	</div>
     <ul id="followerList"></ul>
 </div>
 
 <div id="tab2" class="tab-content"style="display: none;">
 	<p class="follow-title-sub">모든 팔로잉</p>
+	<div id="search-bar-wrapper">
+	    <input type="text" id="searchInput2" placeholder="사용자 검색" oninput="followingFilterList()">
+	</div>
     <ul id="followingList"></ul>
 </div>
 

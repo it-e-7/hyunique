@@ -21,6 +21,7 @@
   height: 56px;
   margin-left: 1.6rem;
   margin-right: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 #genderDiv, .rs-height, #tpoDiv, #seasonDiv, #seasonDiv  {
@@ -154,5 +155,5 @@ label {
 
 div#select-type-button label{
     font-size: 1.3rem;
-    font-family:Inter
+    /*font-family:Inter*/
 }
