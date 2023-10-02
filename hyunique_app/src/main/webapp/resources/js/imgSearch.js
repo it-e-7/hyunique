@@ -1,9 +1,11 @@
 const imageData = localStorage.getItem('image');
+
 if (imageData) {
     const imageElement = $("<img>").attr("src", imageData)
                                    .attr("draggable", 'false')
                                    .attr("class", "image");
     $('#container').append(imageElement);
+    localStorage.removeItem('image');
 }
 
 // 크롭 영역 및 핸들 생성
@@ -268,9 +270,6 @@ function renderImgSearchResults(results) {
         resultList.append(listItem);
     });
 }
-
-
-
 
 // Bottom Sheet 닫기
 $('#closeBottomSheet').click(function() {
