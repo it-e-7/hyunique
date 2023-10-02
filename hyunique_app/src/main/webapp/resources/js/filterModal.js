@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var scrollHeight = (element.scrollHeight !== undefined) ? element.scrollHeight : 0;
         var windowHeight = element.clientHeight || window.innerHeight;
 
-        return scrollTop + windowHeight+10 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
+        return scrollTop + windowHeight+100 >= scrollHeight; // 스크롤바가 가장 아래에 있는 경우 true를 반환
     }
 
     loadMoreImages();
