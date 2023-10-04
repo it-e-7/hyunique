@@ -1,5 +1,14 @@
 /* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); */
 
+.footer-wrapper {
+	display: none;
+}
+
+body {
+	min-height: 100vh;
+	margin-bottom: 0;
+}
+
 #form-usersex, #form-userheight, #form-userprefer, #form-finished{
     display: none;
 }
