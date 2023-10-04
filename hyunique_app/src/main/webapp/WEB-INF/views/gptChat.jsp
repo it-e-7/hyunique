@@ -69,7 +69,7 @@
                     <input type="text" id="sample3_extraAddress" class="d_form" placeholder="참고항목">
                     <div id="address-button-list">
                         <button id="address-cancel-button" class="modal-cancel-btn">다시찾기</button>
-                        <button id="address-apply-button" class="modal-check-btn">주소저장</button>
+                        <button id="address-apply-button" >주소저장</button>
                     </div>
                 </div>
             </div>

@@ -626,6 +626,17 @@ button.modal-check-btn {
     color: #FFFFFF;
 }
 
+#address-apply-button{
+    margin: 0 3.5px;
+    padding: 11px 10px;
+    line-height: 20px;
+    flex: 1;
+    text-align: center;
+    background: var(--jw-blue);
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
 #footer-ai-img {
     content: url("/resources/img/ico-nav-ai-selected.png");
 }
