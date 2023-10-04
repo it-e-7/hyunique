@@ -5,6 +5,14 @@ let scrollLock = false;
 
 getNextPost();
 
+$.ajax({
+    url: `/product/qrtag`,
+    type: 'POST',
+    data: {
+    	productId
+    }
+});
+
 function getNextPost() {
 	if(scrollLock) return; 
 	scrollLock = true;

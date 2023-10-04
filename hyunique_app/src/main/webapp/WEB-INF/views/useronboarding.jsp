@@ -75,7 +75,7 @@
 					<p id="user-height-cm">CM</p>
 				</div>
 				<div class="button-wrapper">
-		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났어요</button>
+		     		<button class="btn-next jw-btn-radius" id="finish-userheight">거의 다 끝났습니다</button>
 					<div class="skip-buttons" id="userheight-skip">나중에 입력할게요</div>
 				</div>
 			</div>
