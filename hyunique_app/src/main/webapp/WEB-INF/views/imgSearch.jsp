@@ -13,7 +13,7 @@
     <body>
         <div class="show-search-img-result">
             <div class="header-wrapper">
-                <button onclick="backward()">
+                <button onclick="back()">
                     <img src="/resources/img/ic-backward.png" />
                 </button>
             </div>

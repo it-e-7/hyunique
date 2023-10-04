@@ -1,4 +1,12 @@
+function back() {
+    setTimeout(function() {
+        history.back();
+        $('#container').empty();
+    }, 600);
+}
+
 const imageData = localStorage.getItem('image');
+localStorage.removeItem('image');
 
 if (imageData) {
     const imageElement = $("<img>").attr("src", imageData)

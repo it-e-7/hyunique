@@ -315,7 +315,9 @@ div#banner {
     /* max-width: 700px; */
     width: calc(100% - 3.2rem);
     margin-bottom: 1.2rem;
+    aspect-ratio: 330 / 264;
 }
+
 #ranking-wrapper{
 	display:flex;
 	flex-direction: column;
