@@ -1,12 +1,12 @@
 function back() {
     setTimeout(function() {
+        localStorage.removeItem('image');
         history.back();
         $('#container').empty();
     }, 600);
 }
 
 const imageData = localStorage.getItem('image');
-localStorage.removeItem('image');
 
 if (imageData) {
     const imageElement = $("<img>").attr("src", imageData)
@@ -62,12 +62,6 @@ const dragContainer = (e) => {
     const imgHeight = imgContainer.height();
 
     function moveAt(clientX, clientY) {
-//        let newLeft = clientX - shiftX;
-//        let newTop = clientY - shiftY;
-//
-//        newLeft = Math.max(imgLeft, Math.min(newLeft, imgLeft + imgWidth - target.width()));
-//        newTop = Math.max(imgTop, Math.min(newTop, imgTop + imgHeight - target.height()));
-
         target.css({
             left: clientX - shiftX + 'px',
             top: clientY - shiftY + 'px'
@@ -275,7 +269,6 @@ $('#rectangle').on('mousemove touchmove', function() {
         const bottomValue = windowHeight - totalHeight;
 
         const modalHeight = +$('.modal').outerHeight(true);
-        console.log(modalHeight);
         value = (bottomValue - modalHeight) + 10;
 
         $('.modal').css('bottom', value + 'px');
