@@ -8,6 +8,7 @@ let userImg;
 let userBackimg;
 let userImgData = null;
 let userBackImgData = null;
+const userFollowP = $('#user-follower');
 
 $(document).ready(function() {
 	if($('#user-isFollowing').length > 0){
@@ -111,8 +112,10 @@ function resizeImage(image, newHeight) {
 
 function toggleFollow(userId) {
 	  const url = checkbox.checked ? '/user/follow' : '/user/unfollow';
+	  
 	  if (checkbox.checked)  {
 		 label.innerText = '팔로잉 -';
+		 userFollowP.text(`${+userFollowP.text().replace('명','') + 1}명`);
 	    ajax({
 	      url: `/user/follow`,
 	      type: 'POST',
@@ -125,6 +128,7 @@ function toggleFollow(userId) {
 	    });
 	  } else {
 		  label.innerText = '팔로우 +';
+		  userFollowP.text(`${+userFollowP.text().replace('명','') - 1}명`);
 	    ajax({
 	      url: `/user/unfollow`,
 	      type: 'POST',

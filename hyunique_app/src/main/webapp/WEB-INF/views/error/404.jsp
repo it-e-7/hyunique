@@ -11,7 +11,7 @@ response.setStatus(HttpServletResponse.SC_OK);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/resources/css/style.css" />
-	<title>hyunique-404에러</title>
+	<title>HYUNIQUE-404</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
 </head>
 

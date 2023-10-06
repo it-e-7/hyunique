@@ -19,6 +19,9 @@
 	href="/resources/css/main.css" />
 <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
 
+<link rel="icon" href="/resources/icon/hyunique-favicon.png"/>
+<link rel="apple-touch-icon" href="/resources/icon/hyunique-favicon.png"/>
+
 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css" rel="stylesheet" type="text/css" />

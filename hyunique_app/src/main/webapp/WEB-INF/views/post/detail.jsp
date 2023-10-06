@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>스타일 상세보기</title>
+<title>@${postVO.userNickname}님의 유니크한 스타일 | 현대를 입다 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp" %>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/postdetail.css" />

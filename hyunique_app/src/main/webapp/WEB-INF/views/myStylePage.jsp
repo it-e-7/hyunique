@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
-<title>마이페이지</title>
+<title>@${user.userNickname}님의 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css" href="/resources/css/userStyle.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">

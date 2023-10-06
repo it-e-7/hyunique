@@ -9,7 +9,7 @@ $(document).ready(function() {
     success: function(banners) {  
       banners.forEach(function(banner) {
         const bannerDiv = `
-          <img src="${banner.bannerUrl}" alt="${banner.bannerName}"/>
+          <img src="${banner.bannerUrl}" alt="${banner.bannerName}" onclick="location.href = 'https://www.thehyundai.com/Home.html'"/>
         `;
         $('#banner').append(bannerDiv);
       });
@@ -59,6 +59,9 @@ $(document).ready(function() {
 		        if (index < 3) { // 상위 3명만 처리
 		          const rank = ["1st", "2nd", "3rd"][index];
 		          $(`#rank-${rank}-img`).attr("src", user.userImg);
+		          $(`#rank-${rank}-img`).click(function() {
+		        	  moveToUser(user.userId);
+		          });
 		          $(`#rank-${rank}`).find(".user-nickname").text(user.userNickname);
 		        }
 		      });

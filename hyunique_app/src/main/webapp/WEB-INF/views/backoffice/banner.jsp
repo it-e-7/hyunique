@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/backoffice/bocommon.jsp" %>
 <link rel="stylesheet" type="text/css" href="/resources/css/backoffice/banner.css" />
-<title>대시보드</title>
+<title>배너 관리</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/backoffice/layout.jsp" %>

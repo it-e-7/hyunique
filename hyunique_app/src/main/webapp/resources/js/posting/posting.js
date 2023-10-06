@@ -331,7 +331,9 @@ async function sendPostToServer(formData, nextPost) {
         if (responseBody === 'success') {
             console.log('Upload success');
             printSelectTagAndContent(nextPost);
-            showPage('.post-container');
+            //showPage('.post-container');
+            $('.write-container').css('display', 'none');
+            $('.post-container').css('display', 'flex');
             compressedFileList.length = 0;
         } else {
             console.log('Upload failed');

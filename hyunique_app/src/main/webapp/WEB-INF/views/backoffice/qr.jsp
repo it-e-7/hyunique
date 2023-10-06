@@ -7,7 +7,7 @@
 <%@ include file="/WEB-INF/views/backoffice/bocommon.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/backoffice/qr.css" />
-<title>대시보드</title>
+<title>QR 관리</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/backoffice/layout.jsp" %>

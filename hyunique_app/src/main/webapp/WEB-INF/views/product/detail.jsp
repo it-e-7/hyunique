@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${product.productName}</title>
+<title>${product.productName} | 현대를 입다 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/productdetail.css" />

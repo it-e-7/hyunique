@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로필 수정</title>
 	<%@ include file="/WEB-INF/views/common.jsp"%>
 	<script src="/resources/js/UserUpdate.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/userupdatestyle.css" />

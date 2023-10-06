@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>hyunique login</title>
+<title>로그인 | 현대를 입다 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/login.css" />

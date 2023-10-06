@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="/WEB-INF/views/backoffice/bocommon.jsp" %>
-<title>대시보드</title>
+<title>대시보드 로그인</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script src="/resources/js/backoffice/login.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/backoffice/login.css" />

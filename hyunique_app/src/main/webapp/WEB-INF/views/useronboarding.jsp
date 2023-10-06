@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>스타일의 완성 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <script src="/resources/js/UserUpdate.js"></script>
 <script src="/resources/js/onboarding.js"></script>
