@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Payment</title>
+    <title>구매 완료 | 현대를 입다 HYUNIQUE</title>
     <%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/paymentSuccess.css" />

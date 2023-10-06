@@ -201,7 +201,7 @@
                 <div class="content-text"></div>
             </div>
             <div class="button-container">
-                <button id="next-button" class="jw-btn jw-btn-fixed" onclick="moveHome()">계속하기</button>
+                <button id="next-button" class="jw-btn jw-btn-fixed" onclick="redirectToUserPage(${sessionId})">계속하기</button>
             </div>
         </div>
     </div>

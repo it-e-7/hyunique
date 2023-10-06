@@ -151,6 +151,6 @@ function generateProductCard(product) {
                 <img src="${product.productImg}" alt="${product.productName}" width="100" height="100"/>
                 <p class="product-brand">${product.productBrand}</p>
                 <p class="product-name">${product.productName}</p>
-                <p class="product-price">₩${product.productPrice}</p>
+                <p class="product-price">₩${product.productPrice.toLocaleString('kr-KR')}</p>
             </div>`;
 }

@@ -95,7 +95,7 @@ $('.product-list').scroll((e) => {
 
 $("#img-search-btn").click(function() {
     $("#imgInput").val("");
-    $("#imgInput").click();
+    $('#imgInput')[0].click();
 });
 
 $("#imgInput").change(imgSearchStart);

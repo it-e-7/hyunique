@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${product.productName}</title>
+<title>${product.productName}의 스타일링</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 
 </head>

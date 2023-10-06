@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>QR</title>
+	<title>QR코드 스캔 | 현대를 입다 HYUNIQUE</title>
 <%@ include file="/WEB-INF/views/common.jsp"%>
 <link rel="stylesheet" type="text/css" href="/resources/css/QRScanner.css" />
 <script src="/resources/js/jsQR.js"></script>

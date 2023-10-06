@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Post List</title>
+    <title>스타일의 완성 HYUNIQUE</title>
     <%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/filterModal.css" />

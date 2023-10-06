@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
-<title>팔로워/팔로잉</title>
+<title>@${userNickname}님의 팔로우 | 현대를 입다 HYUNIQUE</title>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
 	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
 	crossorigin="anonymous"></script>
