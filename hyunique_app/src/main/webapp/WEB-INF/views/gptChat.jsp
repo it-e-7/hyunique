@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <%@ include file="/WEB-INF/views/common.jsp"%>
     <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/postList.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/gpt.css" />
     <meta charset="UTF-8">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>AI휴니의 스타일 추천 | 현대를 입다 HYUNIQUE</title>
-    <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>	
+    <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
+    <%@ include file="/WEB-INF/views/common.jsp"%>	
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>

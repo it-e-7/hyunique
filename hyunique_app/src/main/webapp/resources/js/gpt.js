@@ -11,6 +11,10 @@ let i = 0, offset = 0, len = words.length;
 let forwards = true, skip_count = 0, skip_delay = 15, speed = 70;
 let animationInterval;
 
+let openProduct = function(productId) {
+	window.open(`https://www.hy-unique.com/product/${productId}`);
+}
+
 let wordflick = function () {
 	animationInterval = setInterval(function () {
 		if (forwards) {
@@ -131,7 +135,7 @@ function gptProductRequest (){
           $(".chat-section-wrapper").append(`
               <div class='gpt-product-list'>
               <li>
-              <div id="product-only-wrapper" onclick="moveToProduct('${product.productId}')">
+              <div id="product-only-wrapper" onclick="openProduct('${product.productId}')">
                   <img src=${product.productImg}>
                   <div id="product-info-wrapper">
                     <strong>${product.productBrand}</strong>
