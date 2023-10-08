@@ -114,8 +114,7 @@ public class GPTServiceImpl implements GPTService{
 
             String responseGpt;
             responseGpt = extractContentFromResponse(response.toString());
-            //engListString = translate(responseGpt);
-            engListString = responseGpt;
+            engListString = translate(responseGpt);
             if(checkParse==1) {
             	responseGpt = "*" + responseGpt;
             }
