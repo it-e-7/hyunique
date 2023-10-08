@@ -135,16 +135,16 @@ public class GPTServiceImpl implements GPTService{
 
     public String extractContentFromResponse(String response) {
     	gptvoList = new ArrayList<>(); // VO 리스트 객체 생성
-    	
+
     	try {
     		int jsonStartIndex = response.indexOf("{");
             if (jsonStartIndex == -1) {
                 log.warning("1차 에러 처리");
                 checkParse = 1;
-    			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요";	    
+    			return "스타일링에 관련된 질문만 받을 수 있어요<br><br>'주말에 바닷가 갈건데 스타일링 추천해줘'<br><br>와 같이 상황이나 장소를 말해보세요";
             }
             String jsonStr = response.substring(jsonStartIndex);
-            
+
 			JSONObject jsonResponse = new JSONObject(jsonStr);
 			JSONArray choices = jsonResponse.getJSONArray("choices");
 			JSONObject firstChoice = choices.getJSONObject(0);
@@ -156,19 +156,19 @@ public class GPTServiceImpl implements GPTService{
 		        if (jsonContentStartIndex == -1) {
 		            log.warning("2차 에러처리");
 		            checkParse = 1;
-					return content;	    
+					return content;
 		        }
 		        String jsonContentStr = content.substring(jsonContentStartIndex);
 		        JSONObject contentJson = new JSONObject(jsonContentStr);
-		        
+
 			for (String key : contentJson.keySet()) {
 	            JSONObject itemObject = contentJson.getJSONObject(key);
 	            GPTVO gptvo = new GPTVO();
 	            gptvo.setItemWithColor(itemObject.getString("color")+ " " + itemObject.getString("item"));
 	            gptvoList.add(gptvo); // VO 객체를 리스트에 추가
 	        }
-			
-			
+
+
 			StringBuilder convertList = new StringBuilder();  // StringBuilder 객체 생성
 			for(GPTVO gptvo : gptvoList) {
 			    String itemWithColor = gptvo.getItemWithColor();  // GPTVO 객체에서 값을 가져옴
@@ -176,14 +176,14 @@ public class GPTServiceImpl implements GPTService{
 			}
 			String finalConvertList = convertList.toString();  // 마지막으로 StringBuilder의 내용을 String으로 변환
 			log.info("finalConvertList : " + finalConvertList);
-			
+
 			return finalConvertList;
     	} catch (Exception e) {
 			log.warning("3차 에러 처리 " + e.getMessage());
 			checkParse = 1;
 			e.printStackTrace();
             conversation.remove(conversation.size() -1 );
-			return beforeParseString;	    
+			return beforeParseString;
 		}
     }
 
@@ -199,6 +199,7 @@ public class GPTServiceImpl implements GPTService{
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
             JSONObject jsonObj = new JSONObject();
+            //여기 부분이 영어 부분을 더하는 부분.
             jsonObj.put("prompt", messageFront + engListString + messageBack);
             jsonObj.put("n", 1);
             jsonObj.put("size", "256x256");
