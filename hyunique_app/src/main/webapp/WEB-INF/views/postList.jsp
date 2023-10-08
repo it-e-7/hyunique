@@ -137,7 +137,7 @@
                 <div id="modal_bottom">
                 <div id="type">
                   <div id ="genderDiv">
-                  <label>GENDER</label>
+                  <label>성별</label>
                   </div>
                   <div class="gender-options">
                       <div id=select-type-button>
@@ -154,7 +154,7 @@
                 <div id="rs">
                 <div class="rs-height" id="type">
                 <div id ="heightDiv">
-                    <label>HEIGHT</label>
+                    <label>키</label>
                 </div>
                 140cm - 190cm
                 </div>
@@ -174,7 +174,7 @@
 
                 <div id="type">
                     <div id ="tpoDiv">
-                         <label>TPO</label>
+                         <label>상황</label>
                     </div>
                     <div id="tpo-options">
                         <div id=select-type-button>
@@ -210,7 +210,7 @@
 
                 <div id="type">
                     <div id ="seasonDiv">
-                          <label>SEASON</label>
+                          <label>계절</label>
                     </div>
                         <div id="season-options">
                             <div id="select-type-button">
@@ -234,7 +234,7 @@
 
                 <div id="type">
                     <div id ="seasonDiv">
-                         <label>STYLE</label>
+                         <label>스타일</label>
                     </div>
                     <div id="tpo-options">
                         <div id="select-type-button">
