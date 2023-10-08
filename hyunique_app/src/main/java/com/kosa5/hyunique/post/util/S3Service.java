@@ -1,9 +1,15 @@
 package com.kosa5.hyunique.post.util;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -86,6 +92,57 @@ public class S3Service {
             log.info("e.printStackTrace(); = " + e.getStackTrace());
             return null;
         }
+    }
+    
+    public String uploadThumbnailImg(MultipartFile file) {
+        try {
+        	byte[] imgBytes = file.getBytes();
+        	InputStream is = new ByteArrayInputStream(imgBytes);
+        	
+            BufferedImage bi = ImageIO.read(is);
+            BufferedImage thumbnailImage = resizeImage(bi);
+            
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ImageIO.write(thumbnailImage, "jpeg", os);
+            byte[] buffer = os.toByteArray();
+            InputStream inputStream = new ByteArrayInputStream(buffer);
+            String fileName = createImgFileName();
+            
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(buffer.length);
+            metadata.setContentType("image/jpeg");
+            amazonS3.putObject(new PutObjectRequest(bucketName, "thumbnail/" + fileName, inputStream, metadata));
+
+            return amazonS3Client.getUrl(bucketName, "thumbnail/" + fileName).toString();
+        } catch(Exception e) {
+        	e.printStackTrace();
+        	log.info("e.printStackTrace(); = " + e.getStackTrace());
+            return null;
+        }
+    }
+
+    private BufferedImage resizeImage(BufferedImage originalImage) {
+    	int MAX_WIDTH = 400;
+    	int MAX_HEIGHT = 400;
+    	
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        if (width > MAX_WIDTH) {
+            height = (int) (height * (MAX_WIDTH / (float) width));
+            width = MAX_WIDTH;
+        }
+        if (height > MAX_HEIGHT) {
+            width = (int) (width * (MAX_HEIGHT / (float) height));
+            height = MAX_HEIGHT;
+        }
+
+        Image resizedImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = newImage.getGraphics();
+        g.drawImage(resizedImage, 0, 0, null);
+        g.dispose();
+
+        return newImage;
     }
 
     // 이미지 파일 업로드
