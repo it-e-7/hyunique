@@ -157,7 +157,7 @@
         </if>
         <if test='selectedType != null and selectedType.equals("style-ranking")'>
             SELECT DISTINCT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL,
-			COUNT(CASE WHEN SL.DATE_TIME >= TRUNC(SYSDATE-1) THEN SL.POST_ID END) AS LIKE_COUNT
+			COUNT(CASE WHEN SL.DATE_TIME >= TRUNC(SYSDATE-3) THEN SL.POST_ID END) AS LIKE_COUNT
         </if>
         FROM (
         SELECT P.POST_ID, P.POST_DATE, P.POST_CONTENT, P.THUMBNAIL_URL
