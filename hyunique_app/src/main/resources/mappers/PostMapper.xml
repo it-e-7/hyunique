@@ -82,7 +82,7 @@
 
 	<insert id="insertPostLike" parameterType="map">
 		INSERT INTO
-		hy_stylelike
+		hy_stylelike (user_id, post_id)
 		VALUES (#{userId}, #{postId})
 	</insert>
 
