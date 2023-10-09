@@ -58,6 +58,7 @@ function thumbnailUpload(e) {
             const reader = new FileReader();
             reader.onload = function(event) {
             const thumbnail = $("<img>").attr("src", event.target.result)
+                                        .attr("class", "thumbnail-img")
                                         .attr("data-file", file.name)
                                         .attr("draggable", "false");
             $('.thumbnail-img-wrap').append(thumbnail);
@@ -506,15 +507,16 @@ function imageSlider(slider) {
 }
 
 function showTutorial() {
-
     if (document.cookie.indexOf("tutorialSeen=true") === -1) {
         $('.tutorial-wrap').show();
-
-        setTimeout(function() {
+        // tutorial-wrap에 클릭 이벤트 적용
+        $('.tutorial-wrap').click(function(e) {
+            $('#thumbnail-img').off('click.block');
             $('.tutorial-wrap').hide();
-        }, 5000);
-
-        document.cookie = "tutorialSeen=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            document.cookie = "tutorialSeen=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            e.stopImmediatePropagation();
+            $('#thumbnail-img').on('click', onThumbnailClick);
+        });
     }
 }
 

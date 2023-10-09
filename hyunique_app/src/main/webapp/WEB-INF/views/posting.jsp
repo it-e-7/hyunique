@@ -70,7 +70,21 @@
             <div class="image-view">
                 <div id="thumbnail-img">
                     <div class="thumbnail-img-wrap"></div>
+                    <div class="tutorial-wrap">
+                        <div class="speech-bubble">
+                            <img src="/resources/img/ic_tag.png" class="tag-img">
+                            <div class="txt-wrapper">
+                                <p class="tutorial-txt">
+                                    착용한 의상을 눌러서 태그를 달아보세요.
+                                </p>
+                                <p class="tutorial-txt">
+                                    다른 사용자에게 노출될 확률이 올라갑니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                     <div class="add-img-wrapper">
                         <ul class="add-img-container">
                             <li>
@@ -83,6 +97,7 @@
                     </div>
                     <div class="tag-container" id="tag-container">
                 </div>
+
             </div>
             <div class="style-button-group">
                 <p style="font-size: 16px; font-weight: 550;">스타일</p>
@@ -111,16 +126,7 @@
             </lord-icon>
         </div>
 
-        <div class="tutorial-wrap">
-            <div class="speech-bubble">
-                <p class="tutorial-txt">
-                    의상을 눌러서 착용한 제품에 태그를 달아보세요.
-                </p>
-                <p class="tutorial-txt">
-                    다른 사용자에게 노출될 확률이 올라갑니다.
-                </p>
-            </div>
-        </div>
+
     </div>
 
     <div class="search-container">
