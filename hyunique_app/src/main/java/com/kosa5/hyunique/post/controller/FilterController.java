@@ -30,6 +30,9 @@ public class FilterController {
 			Integer sessionId = Integer.parseInt((String)session.getAttribute("sessionId"));
 			filterPostVO.setUserId(sessionId);
 		}
+		else {
+			filterPostVO.setUserId(1);
+		}
 		postVOList = postService.getfilterPostList(filterPostVO);
 		model.addAttribute("postVOList", postVOList);
 		return "ajax_response";

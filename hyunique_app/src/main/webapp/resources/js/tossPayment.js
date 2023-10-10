@@ -38,6 +38,41 @@ function paymentAddressCheck () {
     }
 }
 
+function paymentAddressCheckDetail () {
+localStorage.setItem('address', "경기도 화성시 동탄대로 22길 30 601동 1701호");
+let orderList = [];
+let currentURL = window.location.href;
+let number = currentURL.match(/\d+$/)[0];
+orderList.push(number);
+
+    if (orderList.length != 0){
+        if(localStorage.getItem('address')!=null){
+            const addressData = localStorage.getItem('address');
+                $.ajax({
+                        url: `/payment/confirm`,
+                        type: 'POST',
+                        contentType : 'application/json',
+                        data: JSON.stringify(orderList),
+                        success: function (response) {
+                            //토스를 위해 세션에도 저장해줍니다.
+                            sessionStorage.setItem('orderList', JSON.stringify(response.productList));
+                            paymentToss(response.apiKey,response.totalPrice,response.userId,response.url,JSON.stringify(orderList));
+                        },
+                        error: function (response) {
+                            console.error('결제 실패. 다시 시도해주세요');
+                            console.error(response);
+                        }
+                });
+        }
+        else{
+        $("#sample3_search").click();
+        }
+    }
+    else {
+    alert("상품을 선택해주세요");
+    }
+}
+
 //토스 결제를 하기 전에, 상품에 해당하는 정보를 가져옵시다
 function paymentInformation (userAddress) {
     localStorage.setItem('address', userAddress);

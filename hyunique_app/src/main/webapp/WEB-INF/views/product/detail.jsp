@@ -106,9 +106,11 @@
 		</div>
 	</div>
 	<button class="jw-btn jw-btn-fixed buy-btn"
-		onclick="window.open('${product.productUrl}')">
+		onclick="paymentAddressCheckDetail()">
 		<img src="/resources/img/ic-buy.png"> 구매하기
 	</button>
 </body>
+<script type="text/javascript" src="https://js.tosspayments.com/v1"></script>
 <script src="/resources/js/productdetail.js"></script>
+<script src="/resources/js/tossPayment.js"></script>
 </html>
