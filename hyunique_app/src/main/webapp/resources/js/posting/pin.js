@@ -8,7 +8,7 @@ let YOffset = 0;
 let isDragging = false; // 핀 움직임 여부 판별
 let isMouseDown = false; // 클릭 여부 판별
 
-$('#thumbnail-img').on('click', 'img', function(e){
+function onThumbnailClick(e) {
     imgWidth = $(this).width();
     imgHeight = $(this).height();
 
@@ -19,7 +19,11 @@ $('#thumbnail-img').on('click', 'img', function(e){
     $('.search-value').empty();
     $('.search-value-fixed').empty();
     $('.result-list').empty();
-});
+}
+
+if (document.cookie.indexOf("tutorialSeen=true") !== -1) {
+    $('#thumbnail-img').on('click', 'img', onThumbnailClick);
+}
 
 
 // 터치한 위치에 상품 정보 핀 찍기
