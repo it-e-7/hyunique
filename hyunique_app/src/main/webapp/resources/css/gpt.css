@@ -153,7 +153,6 @@ div#hyunique-main-top-logo {
     display: flex;
     flex-direction: row;
     padding-bottom: 1rem;
-    padding-top: 1rem;
     background: white;
     height: 3rem;
     width: 100%;
@@ -164,6 +163,7 @@ div#hyunique-main-top-logo {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: white;
 }
 
 div#voice-control {
