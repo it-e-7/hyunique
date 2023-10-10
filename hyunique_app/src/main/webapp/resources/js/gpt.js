@@ -53,8 +53,8 @@ if (!isSafari) {
 	  speech = new webkitSpeechRecognition;
 			siriWave = new SiriWave({
 		    container: document.getElementById('voice-control'),
-		    width: 600,
-		    height: 100,
+		    width: 360,
+		    height: 60,
 		    style: "ios9",
 		    autostart:true,
 		    amplitude:0.5,
